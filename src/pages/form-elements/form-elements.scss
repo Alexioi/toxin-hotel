@@ -1,0 +1,46 @@
+@import "@style/variables.scss";
+
+.input {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__hint {
+    font-weight: normal;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: rgba(31, 32, 65, 0.5);
+  }
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__text-field {
+    line-height: 44px;
+    width: 100%;
+    border: 1px solid rgba(31, 32, 65, 0.25);
+    border-radius: 4px;
+    padding: 0 44px 0 15px;
+    outline: none;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: normal;
+    color: rgba(31, 32, 65, 0.75);
+    color: rgba(31, 32, 65, 0.75);
+  }
+
+  &__button {
+    position: absolute;
+    height: 42px;
+    width: 42px;
+    right: 1px;
+    top: 1px;
+    background-color: white;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+  }
+}

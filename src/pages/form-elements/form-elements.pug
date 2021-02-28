@@ -1,0 +1,16 @@
+include ../../components/input/input
+include ../../components/title/title
+include ../../components/icon-text-list/icon-text-list
+
+div(style="width: 500px; margin: auto")
+  +input({
+    titleText: "Text Field",
+    hint: "Default"
+    })
+  +title({text: "test"})
+  +icon-text-list(
+    {items: [  
+    {img: "smile", title: "Комфорт", text: "Шумопоглощающие стены"},
+    {img: "house", title: "Удобство", text: "Окно в каждой из спален"},
+  ]}
+  )

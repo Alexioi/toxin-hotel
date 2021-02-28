@@ -1,0 +1,16 @@
+include ../title/title
+
+mixin input(options)
+  if !options
+    - options = {}
+  if !options.hint
+    - options.hint = false
+
+  .input
+    .input__header
+      +title({text: options.titleText})
+      if options.hint
+        span.input__hint= options.hint
+    .input__wrapper
+      input.input__text-field(type="text")
+      button.input__button 1

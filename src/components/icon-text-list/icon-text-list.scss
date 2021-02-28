@@ -1,0 +1,31 @@
+@import "@style/variables.scss";
+
+.icon-text-list {
+  &__item {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: solid 1px rgba(31, 32, 65, 0.1);
+  }
+
+  &__img {
+    width: 48px;
+    height: 48px;
+    object-position: 50% 50%;
+    object-fit: none;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    font-size: 14px;
+    line-height: 24px;
+    color: rgba(31, 32, 65, 0.75);
+  }
+
+  &__title {
+    font-weight: bold;
+  }
+}
