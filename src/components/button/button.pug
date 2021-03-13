@@ -1,0 +1,12 @@
+mixin button(options)
+  if !options
+    - options = {}
+  
+  -
+    var classes = ''
+    classes += options.type ? ' button_' + options.type : 'button_default'
+    classes += options.size ? ' button_' + options.size : ''
+    classes += options.isHovered ? ' button_hovered' : ''
+
+
+  a.button(class=classes href=options.link)= options.text

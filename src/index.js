@@ -5,9 +5,9 @@ function requireAll(requireContext) {
 }
 
 requireAll(
-  require.context("./components", true, /^\.\/(?!.*(?:__tests__)).*\.(jsx?)$/)
+  require.context("./components")
 );
 
 requireAll(
-  require.context("./pages", true, /^\.\/(?!.*(?:__tests__)).*\.(jsx?)$/)
+  require.context("./pages")
 );

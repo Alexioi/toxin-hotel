@@ -1,0 +1,67 @@
+@import "../../style/variables.scss";
+
+.button {
+  font-weight: bold;
+  font-size: 12px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 22px;
+  width: 100%;
+  display: inline-block;
+  text-align: center;
+  line-height: 44px;
+  position: relative;
+
+  &_default,
+  &_long {
+    background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+    color: white;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  &_long {
+    &::before {
+      content: "";
+      width: 44px;
+      height: 44px;
+      position: absolute;
+      background: no-repeat url("./img/arrow-forward.svg") 50% 50%;
+      right: 0;
+    }
+  }
+
+  &_outline {
+    color: #bc9cff;
+    line-height: 40px;
+    background: white;
+    margin: 2px;
+    width: calc(100% - 4px);
+
+    &::before {
+      content: "";
+      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+      width: calc(100% + 4px);
+      height: calc(100% + 4px);
+      position: absolute;
+      z-index: -1;
+      border-radius: 22px;
+      top: -2;
+      left: -2;
+    }
+
+    &:hover:before {
+      opacity: 0.5;
+    }
+  }
+
+  &_link {
+    color: #bc9cff;
+
+    &:hover {
+      color: rgba(31, 32, 65, 0.5);
+    }
+  }
+}

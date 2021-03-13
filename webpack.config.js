@@ -12,12 +12,6 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
   },
-  resolve: {
-    alias: {
-      "@": path.join(__dirname, "./src"),
-      "@style": path.join(__dirname, "./src/style"),
-    },
-  },
   module: {
     rules: [
       {

@@ -1,8 +1,9 @@
 include ../../components/input/input
 include ../../components/title/title
 include ../../components/icon-text-list/icon-text-list
+include ../../components/button/button
 
-div(style="width: 500px; margin: auto")
+div(style="width: 500px; margin: auto; border: 1px solid red;")
   +input({
     titleText: "Text Field",
     hint: "Default"
@@ -14,3 +15,22 @@ div(style="width: 500px; margin: auto")
     {img: "house", title: "Удобство", text: "Окно в каждой из спален"},
   ]}
   )
+  +button({
+    link: '#',
+    text: 'CLICK ME'
+  })
+  +button({
+    type: 'link',
+    link: '#',
+    text: 'CLICK ME'
+  })
+  +button({
+    type: 'outline',
+    link: '#',
+    text: 'CLICK ME'
+  })
+  +button({
+    type: 'long',
+    link: '#',
+    text: 'CLICK ME'
+  })
