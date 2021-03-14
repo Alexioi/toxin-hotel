@@ -1,0 +1,48 @@
+@import "../../style/variables.scss";
+
+.like-button {
+  background: rgba(31, 32, 65, 0.25);
+  border-radius: 10px;
+  border: none;
+  padding: 1px;
+
+  &__content {
+    display: flex;
+    background: white;
+    border-radius: 10px;
+    position: relative;
+    font-size: 10px;
+    line-height: 18px;
+    min-width: 38px;
+    padding-right: 10px;
+    color: rgba(31, 32, 65, 0.25);
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 19px;
+      height: 18px;
+      background: no-repeat url("./img/like-off.svg") 50% 50%;
+    }
+
+    // &_liked {
+    //   color: #bc9cff;
+
+    //   &::before {
+    //     background: no-repeat url("./img/like-on.svg") 50% 50%;
+    //   }
+    // }
+  }
+
+  &_liked {
+    background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+
+    & .like-button__content {
+      color: #bc9cff;
+
+      &::before {
+        background: no-repeat url("./img/like-on.svg") 50% 50%;
+      }
+    }
+  }
+}

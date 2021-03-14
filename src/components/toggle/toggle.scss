@@ -1,12 +1,10 @@
 @import "../../style/variables.scss";
 
 .toggle {
-  position: relative;
-  cursor: pointer;
-  display: flex;
-
   &__text {
     display: flex;
+    position: relative;
+    cursor: pointer;
     font-size: 14px;
     line-height: 24px;
     color: rgba(31, 32, 65, 0.75);

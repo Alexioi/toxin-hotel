@@ -3,6 +3,7 @@ include ../../components/title/title
 include ../../components/icon-text-list/icon-text-list
 include ../../components/button/button
 include ../../components/toggle/toggle
+include ../../components/like-button/like-button
 
 div(style="width: 500px; margin: auto; border: 1px solid red;")
   +input({
@@ -42,3 +43,5 @@ div(style="width: 500px; margin: auto; border: 1px solid red;")
   })
   +toggle
   +toggle({checked: true})
+  +like-button({counter: 1, liked: true})
+  +like-button({counter: 1})
