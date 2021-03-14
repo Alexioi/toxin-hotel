@@ -1,0 +1,9 @@
+mixin toggle(options)
+  if !options
+    - options = {}
+  if !options.checked
+    - options.checked = false 
+
+  label.toggle
+    input.toggle__checkbox(type="checkbox" checked=options.checked) 
+    span.toggle__text Получать спецпредложения

@@ -1,0 +1,55 @@
+@import "../../style/variables.scss";
+
+.toggle {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+
+  &__text {
+    display: flex;
+    font-size: 14px;
+    line-height: 24px;
+    color: rgba(31, 32, 65, 0.75);
+
+    &::before {
+      content: "";
+      display: inline-block;
+      border: 1px solid rgba(31, 32, 65, 0.25);
+      box-sizing: border-box;
+      border-radius: 10px;
+      width: 40px;
+      height: 20px;
+      margin-right: 10px;
+    }
+
+    &::after {
+      content: "";
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      background: rgba(31, 32, 65, 0.25);
+      border-radius: 10px;
+      position: absolute;
+      left: 4px;
+      top: 4px;
+    }
+  }
+
+  &__checkbox {
+    position: absolute;
+    opacity: 0;
+
+    &:checked {
+      & + .toggle__text {
+        &:before {
+          border-color: #bc9cff;
+        }
+
+        &:after {
+          background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+          left: 24px;
+        }
+      }
+    }
+  }
+}

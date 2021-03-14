@@ -2,6 +2,7 @@ include ../../components/input/input
 include ../../components/title/title
 include ../../components/icon-text-list/icon-text-list
 include ../../components/button/button
+include ../../components/toggle/toggle
 
 div(style="width: 500px; margin: auto; border: 1px solid red;")
   +input({
@@ -34,3 +35,10 @@ div(style="width: 500px; margin: auto; border: 1px solid red;")
     link: '#',
     text: 'CLICK ME'
   })
+  +button({
+    link: '#',
+    text: 'CLICK ME',
+    size: 'low',
+  })
+  +toggle
+  +toggle({checked: true})
