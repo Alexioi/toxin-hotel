@@ -12,12 +12,11 @@ class LikeButton {
     this.$component.on("click", () => {
       let text = this.$componentText.text();
       if (this.$component.hasClass("like-button_liked")) {
-        this.$component.toggleClass("like-button_liked");
         this.$componentText.text(text - 1);
       } else {
-        this.$component.toggleClass("like-button_liked");
         this.$componentText.text(+text + 1);
       }
+      this.$component.toggleClass("like-button_liked");
     });
   }
 }
