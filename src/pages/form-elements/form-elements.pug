@@ -4,8 +4,16 @@ include ../../components/icon-text-list/icon-text-list
 include ../../components/button/button
 include ../../components/toggle/toggle
 include ../../components/like-button/like-button
+include ../../components/comment/comment
 
 div(style="width: 500px; margin: auto; border: 1px solid red;")
+  +comment({
+    authorName: 'Мурад Сарафанов',
+    date: '5 дней назад',
+    counter: 12,
+    isLiked: true,
+    text: 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',
+  })
   +input({
     titleText: "Text Field",
     hint: "Default"
@@ -42,6 +50,6 @@ div(style="width: 500px; margin: auto; border: 1px solid red;")
     size: 'low',
   })
   +toggle
-  +toggle({checked: true})
-  +like-button({counter: 1, liked: true})
+  +toggle({isChecked: true})
+  +like-button({counter: 1, isLiked: true})
   +like-button({counter: 1})

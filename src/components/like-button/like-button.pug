@@ -4,7 +4,7 @@ mixin like-button(options)
 
   -
     var classes = ''
-    classes += options.liked ? ' like-button_liked': ''
+    classes += options.isLiked ? ' like-button_liked': ''
 
   button.like-button.js-like-button(class=classes)
     div.like-button__content= options.counter

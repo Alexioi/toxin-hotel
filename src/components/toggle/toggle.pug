@@ -1,8 +1,8 @@
 mixin toggle(options)
   if !options
     - options = {}
-  if !options.checked
-    - options.checked = false 
+  if !options.isChecked
+    - options.isChecked = false 
 
   label.toggle
     input.toggle__checkbox(type="checkbox" checked=options.checked) 
