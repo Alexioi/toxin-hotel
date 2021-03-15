@@ -5,7 +5,7 @@ mixin comment(options)
     - options = {}
 
   .comment 
-    img.comment__img(src=require(`../../components/comment/img/murad.jpg`).default alt='Фото автора')
+    img.comment__img(src=require(`../../components/comment/img/murad.png`).default alt='Фото автора')
     .comment__header 
       span.comment__author-name= options.authorName
       span.comment__date= options.date

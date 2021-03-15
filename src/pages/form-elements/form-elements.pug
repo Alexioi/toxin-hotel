@@ -5,8 +5,14 @@ include ../../components/button/button
 include ../../components/toggle/toggle
 include ../../components/like-button/like-button
 include ../../components/comment/comment
+include ../../components/bullet-list/bullet-list
 
-div(style="width: 500px; margin: auto; border: 1px solid red;")
+div(style="width: 500px; margin: auto;")
+  +bullet-list({
+    items: ['Нельзя с питомцами', 
+    'Без вечеринок и мероприятий', 
+    'Время прибытия — после 13:00, а выезд до 12:00'],
+  })
   +comment({
     authorName: 'Мурад Сарафанов',
     date: '5 дней назад',
