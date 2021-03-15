@@ -6,8 +6,11 @@ include ../../components/toggle/toggle
 include ../../components/like-button/like-button
 include ../../components/comment/comment
 include ../../components/bullet-list/bullet-list
+include ../../components/rate/rate
 
 div(style="width: 500px; margin: auto;")
+  +rate({quantity: 4})
+  +rate
   +bullet-list({
     items: ['Нельзя с питомцами', 
     'Без вечеринок и мероприятий', 
