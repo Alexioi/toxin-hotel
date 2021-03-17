@@ -1,0 +1,15 @@
+include ../title/title
+
+mixin checkbox-list(options)
+  if !options
+    - options = {}
+
+  .checkbox-list
+    .checkbox-list__header
+      +title({text: "Checkbox Buttons"})
+    ul.checkbox-list__list 
+      each item in options.items 
+        li.checkbox-list__item
+          label.checkbox-list__label
+            input.checkbox-list__input(type="checkbox")
+            span.checkbox-list__text= item
