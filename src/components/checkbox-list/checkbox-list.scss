@@ -3,6 +3,8 @@
 .checkbox-list {
   &__header {
     margin-bottom: 17px;
+    display: flex;
+    justify-content: space-between;
   }
 
   &__list {
@@ -13,6 +15,13 @@
 
   &__item {
     list-style: none;
+  }
+
+  &__label {
+    padding-left: 30px;
+    position: relative;
+    display: block;
+    cursor: pointer;
   }
 
   &__input {
@@ -43,9 +52,6 @@
     font-size: 14px;
     line-height: 18px;
     color: rgba(31, 32, 65, 0.5);
-    cursor: pointer;
-    position: relative;
-    padding-left: 30px;
 
     &::before {
       content: "";
@@ -55,6 +61,7 @@
       position: absolute;
       display: block;
       border-radius: 4px;
+      left: 0;
     }
   }
 }
