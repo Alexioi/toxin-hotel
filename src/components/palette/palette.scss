@@ -1,0 +1,61 @@
+@import '../../style/variables.scss';
+
+.palette {
+  display: flex;
+  gap: 34px;
+  flex-direction: column;
+  padding: 7px 0;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    font-size: 19px;
+    line-height: 28px;
+    color: #1F2041;
+    position: relative;
+    padding-left: 110px;
+
+    &::before {
+      display: inline-block;
+      content: '';
+      width: 70px;
+      height: 70px;
+      position: absolute;
+      left: 0;
+      top: -7px;
+      border-radius: 6px;
+    }
+
+    &_dark-shade-100::before {
+      background: #1F2041;
+    }
+
+    &_dark-shade-75::before {
+      background: rgba(31, 32, 65, 0.75);
+    }
+
+    &_dark-shade-50::before {
+      background: rgba(31, 32, 65, 0.5);
+    }
+
+    &_dark-shade-25::before {
+      background: rgba(31, 32, 65, 0.25);
+    }
+
+    &_dark-shade-5::before {
+      background: rgba(31, 32, 65, 0.05);
+    }
+
+    &_purple::before {
+      background: #BC9CFF;
+    }
+
+    &_green::before {
+      background: #6FCF97;
+    }
+  }
+
+  &__color-name {
+    font-weight: bold;
+  }
+}
