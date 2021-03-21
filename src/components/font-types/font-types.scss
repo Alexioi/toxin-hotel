@@ -1,0 +1,69 @@
+@import '../../style/variables.scss';
+
+$sample-width: 37px;
+
+.font-types {
+  display: grid;
+  gap: 51px;
+
+  &__item {
+    display: flex;
+  }
+
+  &__sample {
+    display: flex;
+    width: $sample-width;
+    justify-content: flex-end;
+    margin-right: 30px;
+    color: rgba(31, 32, 65, 0.25);
+
+    &_h1 {
+      font-size: 24px;
+    }
+
+    &_h2 {
+      font-size: 19px;
+    }
+
+    &_h3 {
+      font-size: 12px;
+    }
+
+    &_body {
+      font-size: 14px;
+    }
+  }
+
+  &__description {
+    display: block;
+    color: #1F2041;
+
+    &_h1 {
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 29px;
+      max-width: 369px;
+    }
+
+    &_h2 {
+      font-weight: bold;
+      font-size: 19px;
+      line-height: 23px;
+      max-width: 312px;;
+    }
+
+    &_h3 {
+      font-weight: bold;
+      font-size: 12px;
+      line-height: 15px;
+      text-transform: uppercase;
+    }
+
+    &_body {
+      max-width: 301px;
+      font-size: 14px;
+      line-height: 24px;
+      color: rgba(31, 32, 65, 0.75);
+    }
+  }
+}
