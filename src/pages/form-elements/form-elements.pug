@@ -8,8 +8,10 @@ include ../../components/comment/comment
 include ../../components/bullet-list/bullet-list
 include ../../components/rate/rate
 include ../../components/checkbox-list/checkbox-list 
+include ../../components/radio-buttons/radio-buttons 
 
 div(style="width: 500px; margin: auto;")
+  +radio-buttons
   +checkbox-list({items: [
     "Можно курить",
     "Можно с питомцами",
