@@ -1,0 +1,28 @@
+include ../../components/input/input
+include ../../components/button/button
+
+mixin card(options)
+
+  .card
+    case options.type
+
+      when 'login'
+        .card__header Войти
+        .card__inputs-group.card__inputs-group_margin-big
+          +input({})
+          +input({})
+        +button({
+          type: 'long',
+          link: './login.html',
+          text: 'Войти'
+        })
+        .card__footer
+          span.card__question Нет аккаунта на Toxin?
+          +button({
+            type: 'outline',
+            link: '#',
+            text: 'создать'
+          })
+
+      when 1
+        p you have a friend
