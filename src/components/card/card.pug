@@ -1,5 +1,6 @@
 include ../../components/input/input
 include ../../components/button/button
+include ../../components/radio-buttons/radio-buttons 
 
 mixin card(options)
 
@@ -8,7 +9,7 @@ mixin card(options)
 
       when 'login'
         .card__header Войти
-        .card__inputs-group.card__inputs-group_margin-big
+        .card__inputs-group.card__inputs-group_margin-bottom-20
           +input({})
           +input({})
         +button({
@@ -24,5 +25,9 @@ mixin card(options)
             text: 'создать'
           })
 
-      when 1
-        p you have a friend
+      when 'registration'
+        .card__header Регистрация аккаунта
+        .card__inputs-group
+          +input({})
+          +input({})
+        +radio-buttons 
