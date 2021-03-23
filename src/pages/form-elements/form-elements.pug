@@ -9,8 +9,10 @@ include ../../components/bullet-list/bullet-list
 include ../../components/rate/rate
 include ../../components/checkbox-list/checkbox-list 
 include ../../components/radio-buttons/radio-buttons 
+include ../../components/date-dropdown/date-dropdown
 
 div(style="width: 500px; margin: auto;")
+  +date-dropdown
   +radio-buttons
   +checkbox-list({items: [
     "Можно курить",
@@ -34,7 +36,17 @@ div(style="width: 500px; margin: auto;")
   +input({
     titleText: "Text Field",
     hint: "Default"
-    })
+  })
+  +input({
+    titleText: "Text Field",
+    hint: "Default",
+    type: 'dropdown'
+  })
+  +input({
+    titleText: "Text Field",
+    hint: "Default",
+    type: 'subscription'
+  })
   +title({text: "test"})
   +icon-text-list(
     {items: [  

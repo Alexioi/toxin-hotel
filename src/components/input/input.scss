@@ -4,6 +4,7 @@
   &__header {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 5px;
   }
 
   &__hint {
@@ -22,25 +23,32 @@
     width: 100%;
     border: 1px solid rgba(31, 32, 65, 0.25);
     border-radius: 4px;
-    padding: 0 44px 0 15px;
+    padding: 0 35px 0 15px;
     outline: none;
     font-family: Montserrat;
     font-size: 14px;
     font-style: normal;
     font-weight: normal;
     color: rgba(31, 32, 65, 0.75);
-    color: rgba(31, 32, 65, 0.75);
   }
 
   &__button {
     position: absolute;
-    height: 42px;
-    width: 42px;
-    right: 1px;
-    top: 1px;
+    height: 20px;
+    width: 20px;
+    right: 12px;
+    top: 12px;
     background-color: white;
     border: none;
-    outline: none;
     border-radius: 4px;
+    cursor: pointer;
+
+    &_more {
+      background: no-repeat 50% 50% url('./img/expand_more.svg');
+    }
+
+    &_arrow {
+      background: no-repeat 50% 50% url('./img/arrow_forward.svg');
+    }
   }
 }

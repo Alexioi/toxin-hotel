@@ -1,0 +1,15 @@
+include ../input/input
+
+mixin date-dropdown(options)
+  if !options
+    - options = {}
+  
+  .date-dropdown
+    +input({
+      titleText: "date Dropdown",
+      type: 'date-dropdown'
+    })
+    +input({
+      titleText: "date Dropdown",
+      type: 'date-dropdown'
+    })
