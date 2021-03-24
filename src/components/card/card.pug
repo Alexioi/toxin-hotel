@@ -1,33 +1,52 @@
 include ../../components/input/input
 include ../../components/button/button
-include ../../components/radio-buttons/radio-buttons 
+include ../../components/radio-buttons/radio-buttons
+include ../../components/login/login
+include  ../../components/registration/registration
 
 mixin card(options)
 
+  -
+    var card = {}
+
+  if options.type === 'login'
+    -
+      card = {
+        header: "Войти",
+        hasFooter: true,
+        button: 'Войти',
+        footerButton: 'создать',
+        question: 'Нет аккаунта на Toxin?',
+      }
+  else if options.type === 'registration'
+    -
+      card = {
+        header: "Регистрация аккаунта",
+        hasFooter: true,
+        button: 'перейти к оплате',
+        footerButton: 'войти',
+        question: 'Уже есть аккаунт на Toxin?',
+      }
+
   .card
+    .card__header= card.header
+
     case options.type
-
       when 'login'
-        .card__header Войти
-        .card__inputs-group.card__inputs-group_margin-bottom-20
-          +input({})
-          +input({})
-        +button({
-          type: 'long',
-          link: './login.html',
-          text: 'Войти'
-        })
-        .card__footer
-          span.card__question Нет аккаунта на Toxin?
-          +button({
-            type: 'outline',
-            link: '#',
-            text: 'создать'
-          })
-
+        +login
       when 'registration'
-        .card__header Регистрация аккаунта
-        .card__inputs-group
-          +input({})
-          +input({})
-        +radio-buttons 
+        +registration
+
+    +button({
+      type: 'long',
+      link: './login.html',
+      text: card.button
+    })
+
+    .card__footer
+      span.card__question= card.question
+      +button({
+        type: 'outline',
+        link: '#',
+        text: card.footerButton
+      })

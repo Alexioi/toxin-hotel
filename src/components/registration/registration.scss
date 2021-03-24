@@ -1,0 +1,17 @@
+@import '../../style/variables.scss';
+
+.registration {
+  &__inputs-group {
+    display: grid;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  &__birthday {
+    margin: 20px 0;
+  }
+
+  &__tooggle {
+    margin-bottom: 20px;
+  }
+}
