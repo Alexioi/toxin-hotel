@@ -2,7 +2,8 @@ include ../../components/input/input
 include ../../components/button/button
 include ../../components/radio-buttons/radio-buttons
 include ../../components/login/login
-include  ../../components/registration/registration
+include ../../components/registration/registration
+include ../../components/find-room/find-room
 
 mixin card(options)
 
@@ -14,7 +15,7 @@ mixin card(options)
       card = {
         header: "Войти",
         hasFooter: true,
-        button: 'Войти',
+        longButton: 'Войти',
         footerButton: 'создать',
         question: 'Нет аккаунта на Toxin?',
       }
@@ -23,9 +24,15 @@ mixin card(options)
       card = {
         header: "Регистрация аккаунта",
         hasFooter: true,
-        button: 'перейти к оплате',
+        longButton: 'перейти к оплате',
         footerButton: 'войти',
         question: 'Уже есть аккаунт на Toxin?',
+      }
+  else if options.type === 'find-room'
+    -
+      card = {
+        header: "Найдём номера под ваши пожелания",
+        longButton: 'подобрать номер',
       }
 
   .card
@@ -36,17 +43,20 @@ mixin card(options)
         +login
       when 'registration'
         +registration
+      when 'find-room'
+        +find-room
 
     +button({
       type: 'long',
       link: './login.html',
-      text: card.button
+      text: card.longButton
     })
 
-    .card__footer
-      span.card__question= card.question
-      +button({
-        type: 'outline',
-        link: '#',
-        text: card.footerButton
-      })
+    if card.hasFooter
+      .card__footer
+        span.card__question= card.question
+        +button({
+          type: 'outline',
+          link: '#',
+          text: card.footerButton
+        })
