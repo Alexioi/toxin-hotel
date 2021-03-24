@@ -16,6 +16,6 @@ mixin input(options)
         if options.hint
           span.input__hint= options.hint
     .input__wrapper
-      input.input__text-field(type="text")
+      input.input__text-field(type="text" value=options.value)
       if buttonClasses != ''
         button.input__button(class=buttonClasses)
