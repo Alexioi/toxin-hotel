@@ -10,3 +10,11 @@ $color-third: #6fcf97;
 // Font
 
 $font-first: "Montserrat";
+
+// Mixin
+
+@mixin media-tablet() {
+  @media (max-width: 769px) {
+    @content;
+  }
+}

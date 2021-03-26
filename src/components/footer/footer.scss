@@ -1,8 +1,13 @@
 @import '../../style/variables.scss';
 
 .footer {
+
   &__main {
     padding: 104px 0 100px 0;
+
+    @include media-tablet {
+      background: red;
+    }
   }
 
   &__container {
