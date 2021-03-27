@@ -1,9 +1,12 @@
 include ../../components/input/input
+include ../../components/logo/logo
 
-mixin footer
+mixin footer(options)
+  if !options
+    - options = {}
 
   -
-    var footerComponents = {
+    var component = {
       aboutText: 'Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»',
       navs: [
         {
@@ -13,46 +16,63 @@ mixin footer
           ]
         },
         {
-          header: 'навигация',
+          header: 'о нас',
           items: [
-            'О нас', 'Новости', 'Служба поддержки', 'Услуги'
+            'О сервисе', 'Наша команда', 'Вакансии', 'Инвесторы'
           ]
         },
         {
-          header: 'навигация',
+          header: 'Служба поддержки',
           items: [
-            'О нас', 'Новости', 'Служба поддержки', 'Услуги'
+            'Соглашения', 'Сообщества', 'Связь с нами'
           ]
         }
       ],
       subscriptionHeader: 'Подписка',
       subscriptionText: 'Получайте специальные предложения и новости сервиса',
-      copyrightText: 'Copyright © 2018 Toxin отель. Все права зачищены.'
+      copyrightText: 'Copyright © 2018 Toxin отель. Все права зачищены.',
+      socials: [
+        {link: '#', img: 'twitter'},
+        {link: '#', img: 'facebook'},
+        {link: '#', img: 'instagram'},
+      ]
     }
 
   footer.footer
     .footer__container
-      .footer__main
+      .footer__main(class=options.mobile ? 'footer__main_mobile' : '') 
         .footer__about
-          .footer__logo TOXIN
-          p.footer__text= footerComponents.aboutText
-        .footer__nav
-          each nav in footerComponents.navs
+          .footer__logo 
+            +logo
+          p.footer__about-text(
+            class=options.mobile ? 'footer__about-text_mobile' : ''
+          )= component.aboutText
+        .footer__nav(class=options.mobile ? 'footer__nav_mobile' : '')
+          each nav in component.navs
             .footer__nav-item
               span.footer__header= nav.header
               ul.footer__list
                 each item in nav.items
                   li.footer__list-item
                     a(href='#').footer__list-link= item
-        .footer__subscription
-          span.footer__header= footerComponents.subscriptionHeader
-          p.footer__text= footerComponents.subscriptionText
+        .footer__subscription(
+          class=options.mobile ? 'footer__subscription_mobile' : ''
+        )
+          span.footer__header= component.subscriptionHeader
+          p.footer__text= component.subscriptionText
           .footer__input
             +input({
               type: 'subscription'
             })
-    .footer__sub
-      .footer__sub-container
-        span.footer__copyright= footerComponents.copyrightText
+    .footer__sub(class=options.mobile ? 'footer__sub_mobile' : '')
+      .footer__sub-container(
+        class=options.mobile ? 'footer__sub-container_mobile' : ''
+      )
+        span.footer__copyright= component.copyrightText
         .footer__social
-          span link
+          each social in component.socials
+            a.footer__social-link(href=social.link) 
+              img(
+                src=require(`../../components/footer/img/${social.img}.svg`).default 
+                alt=social.img
+              )

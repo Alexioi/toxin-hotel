@@ -13,8 +13,15 @@ $font-first: "Montserrat";
 
 // Mixin
 
-@mixin media-tablet() {
-  @media (max-width: 769px) {
+@mixin media-laptop() {
+  @media (max-width: 1024px) {
     @content;
   }
 }
+
+@mixin media-tablet() {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
