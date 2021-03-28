@@ -1,0 +1,31 @@
+include ../../components/logo/logo
+include ../../components/button/button
+
+mixin header(options)
+  if !options
+    - options = {}
+
+  -
+    var navItems = ['О нас', 'Услуги', 'Вакансии', 'Новости', 'Соглашения']
+
+  header.header 
+    +logo
+    button.header__button 
+    .header__content 
+      ul.header__nav 
+        each navItem in navItems
+          li.header__nav-item
+            a(href='#').header__nav-link= navItem
+      .header__buttons 
+        +button({
+          type: 'outline',
+          link: '#',
+          text: 'войти',
+          size: 'low'
+        })
+        +button({
+          link: '#',
+          text: 'зарегистрироваться',
+          size: 'low'
+        })
+

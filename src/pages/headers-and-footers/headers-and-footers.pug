@@ -1,6 +1,18 @@
-include ../../components/footer/footer
+extends ../base/base
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+include ../../components/layout/layout
+include ../../components/header-for-ui-kit/header-for-ui-kit
 
-+footer
-+footer({mobile: true})
+block title 
+  | Headers and footers
+
+block header 
+  +header-for-ui-kit
+
+block main
+  +header 
+  +header
+  +footer
+  +footer({mobile: true})
+
+block footer

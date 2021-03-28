@@ -1,0 +1,36 @@
+@import "../../style/variables.scss";
+
+.header {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  padding: 15px 20px;
+  margin: auto;
+
+  &__button {
+    display: none;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  &__nav-item {
+    list-style: none;
+  }
+
+  &__buttons {
+    display: grid;
+    grid-template-columns: 87px 196px;
+  }
+}
