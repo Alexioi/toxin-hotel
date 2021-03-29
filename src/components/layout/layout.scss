@@ -1,1 +1,7 @@
 @import '../../style/variables.scss';
+
+.layout {
+    &_grid {
+        display: grid;
+    }
+}

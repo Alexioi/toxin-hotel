@@ -1,3 +1,12 @@
-mixin layout
-  .layout
+mixin layout(options)
+  if !options
+    - options = {}
+
+  -
+    var classes = ''
+    classes += options.display ? ' layout_' + options.display : ''
+    classes += options.mix ? ' ' + options.mix : ''
+
+  .layout(class= classes)
     block
+
