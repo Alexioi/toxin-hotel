@@ -1,14 +1,12 @@
-extends ../base/base
+extends ../../templates/ui-kit
 
-include ../../components/layout/layout
-include ../../components/header-for-ui-kit/header-for-ui-kit
+include ../../components/header/header
+include ../../components/footer/footer
 
 block title 
   | Headers and footers
 
-
-block header 
-  +header-for-ui-kit
+  //- - var fon = true
 
 block main
   +header 
@@ -16,4 +14,4 @@ block main
   +footer
   +footer({mobile: true})
 
-block footer
+

@@ -1,0 +1,14 @@
+include ../components/header-for-ui-kit/header-for-ui-kit
+
+doctype html
+html
+    head
+        meta(charset = 'utf-8')
+        meta(name='viewport', content="initial-scale=1.0, width=device-width")
+        title
+            block title
+    body
+        //- div(style=fon ? "background-color: red;" : "")
+        +header-for-ui-kit
+
+        block main

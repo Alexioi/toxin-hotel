@@ -14,19 +14,19 @@
     gap: 40px;
     padding: 104px 0 100px 0;
 
-    @include media-laptop {
-      grid-template-columns: 1fr 1fr;
-      grid-template-areas:
-        "about subscription"
-        "nav nav";
-    }
+    // @include media-laptop {
+    //   grid-template-columns: 1fr 1fr;
+    //   grid-template-areas:
+    //     "about subscription"
+    //     "nav nav";
+    // }
 
-    @include media-tablet {
-      grid-template-columns: auto;
-      grid-template-areas: "about";
-      justify-content: center;
-      padding: 120px 0 0 0;
-    }
+    // @include media-tablet {
+    //   grid-template-columns: auto;
+    //   grid-template-areas: "about";
+    //   justify-content: center;
+    //   padding: 120px 0 0 0;
+    // }
 
     &_mobile {
       grid-template-columns: auto;
@@ -49,9 +49,9 @@
     line-height: 24px;
     color: rgba(31, 32, 65, 0.75);
 
-    @include media-tablet {
-      display: none;
-    }
+    // @include media-tablet {
+    //   display: none;
+    // }
 
     &_mobile {
       display: none;
@@ -64,14 +64,14 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
 
-    @include media-laptop {
-      grid-template-columns: repeat(3, auto);
-      justify-content: space-between;
-    }
+    // @include media-laptop {
+    //   grid-template-columns: repeat(3, auto);
+    //   justify-content: space-between;
+    // }
 
-    @include media-tablet {
-      display: none;
-    }
+    // @include media-tablet {
+    //   display: none;
+    // }
 
     &_mobile {
       display: none;
@@ -108,9 +108,9 @@
   &__subscription {
     grid-area: subscription;
 
-    @include media-tablet {
-      display: none;
-    }
+    // @include media-tablet {
+    //   display: none;
+    // }
 
     &_mobile {
       display: none;
@@ -131,10 +131,10 @@
     padding: 23px 0;
     border-top: solid 1px #f4f4f6;
 
-    @include media-tablet {
-      border: none;
-      padding: 0 0 120px 0;
-    }
+    // @include media-tablet {
+    //   border: none;
+    //   padding: 0 0 120px 0;
+    // }
 
     &_mobile {
       border: none;
@@ -150,11 +150,11 @@
     justify-content: space-between;
     align-items: center;
 
-    @include media-tablet {
-      justify-content: center;
-      flex-direction: column;
-      gap: 25px;
-    }
+    // @include media-tablet {
+    //   justify-content: center;
+    //   flex-direction: column;
+    //   gap: 25px;
+    // }
 
     &_mobile {
       justify-content: center;

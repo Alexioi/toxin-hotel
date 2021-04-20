@@ -1,6 +1,12 @@
+extends ../../templates/ui-kit
+
 include ../../components/palette/palette
 include ../../components/font-types/font-types 
 
-.color-and-type
-  +palette
-  +font-types
+block title 
+  | Colors and type
+
+block main
+  .color-and-type
+    +palette
+    +font-types

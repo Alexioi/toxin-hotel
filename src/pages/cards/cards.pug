@@ -1,6 +1,13 @@
+extends ../../templates/ui-kit
+
 include ../../components/card/card
 include ../../components/button/button
 
-+card({type: 'login'})
-+card({type: 'registration'})
-+card({type: 'find-room'})
+
+block title 
+  | Cards
+
+block main
+    +card({type: 'login'})
+    +card({type: 'registration'})
+    +card({type: 'find-room'})
