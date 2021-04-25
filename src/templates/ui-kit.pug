@@ -1,14 +1,17 @@
 include ../components/header-for-ui-kit/header-for-ui-kit
+include ../components/layout/layout
 
 doctype html
 html
-    head
-        meta(charset = 'utf-8')
-        meta(name='viewport', content="initial-scale=1.0, width=device-width")
-        title
-            block title
-    body
-        //- div(style=fon ? "background-color: red;" : "")
-        +header-for-ui-kit
-
+  head
+    meta(charset = 'utf-8')
+    meta(name='viewport', content="initial-scale=1.0, width=device-width")
+    title
+        block title
+  body(class = hasBackground ? 'p-ui-kit__background' : '')
+    +layout
+      +layout__header
+        +layout__container({basis: 1380, align: 'center'})
+          +header-for-ui-kit
+      +layout__main
         block main

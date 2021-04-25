@@ -28,8 +28,16 @@
       @for $i from 1 to 150 {
         $basis: $i * 10;
   
-        &_basis-#{$basis}.layout__container {
+        &_basis-#{$basis} {
           flex-basis: #{$basis}px;
+        }
+      }
+
+      @for $i from 1 to 10 {
+        $gap: $i * 10;
+  
+        &_gap-#{$gap} {
+          gap: #{$gap}px;
         }
       }
   
