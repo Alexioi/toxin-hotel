@@ -1,3 +1,20 @@
-.p-ui-kit__background {
-  background-color: #F4F4F6;
+@import '../style/variables.scss';
+
+.t-ui-kit {
+
+  &__background {
+    background-color: #F4F4F6;
+  }
+
+  &__header {
+    padding: 1.875rem 0 3.875rem;
+
+    @include media-breakpoint-down($xl) {
+      padding-left: 1.25rem;
+    }
+  
+    @include media-breakpoint-down($sm) {
+      margin: auto;
+    }
+  }
 }

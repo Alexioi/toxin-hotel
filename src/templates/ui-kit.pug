@@ -1,4 +1,4 @@
-include ../components/header-for-ui-kit/header-for-ui-kit
+include ../components/logo/logo
 include ../components/layout/layout
 
 doctype html
@@ -8,10 +8,10 @@ html
     meta(name='viewport', content="initial-scale=1.0, width=device-width")
     title
         block title
-  body(class = hasBackground ? 'p-ui-kit__background' : '')
+  body(class = hasBackground ? 't-ui-kit__background' : '')
     +layout
       +layout__header
-        +layout__container({basis: 1380, align: 'center'})
-          +header-for-ui-kit
+        +layout__container({basis: 1380, align: 'center', mix: 't-ui-kit__header'})
+          +logo({type: 'mini'})
       +layout__main
         block main
