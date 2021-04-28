@@ -6,26 +6,36 @@ mixin header(options)
     - options = {}
 
   -
-    var navItems = ['О нас', 'Услуги', 'Вакансии', 'Новости', 'Соглашения']
+    var navItems = [
+      {link: '/change-it', text: 'О нас'}, 
+      {link: '/change-it', text: 'Услуги'},
+      {link: '/change-it', text: 'Вакансии'},
+      {link: '/change-it', text: 'Новости'},
+      {link: '/change-it', text: 'Соглашения'}
+    ]
 
-  header.header 
-    +logo
-    button.header__burger-button 
-    .header__content 
+  .header 
+    .header__logo
+      +logo
+      button.header__burger-button.js-header__burger-button
+    .header__content.js-header__content
       ul.header__nav 
         each navItem in navItems
           li.header__nav-item
-            a(href='#').header__nav-link= navItem
-      .header__buttons 
-        +button({
-          type: 'outline',
-          link: '#',
-          text: 'войти',
-          size: 'low'
-        })
-        +button({
-          link: '#',
-          text: 'зарегистрироваться',
-          size: 'low'
-        })
-
+            a(href=navItem.link).header__nav-link= navItem.text
+      if options.isLogin 
+        .header__username
+          span.header__username-text= options.username
+      else
+        .header__buttons 
+          +button({
+            type: 'outline',
+            link: '/sing-in',
+            text: 'войти',
+            size: 'low'
+          })
+          +button({
+            link: '/sing-up',
+            text: 'зарегистрироваться',
+            size: 'low'
+          })
