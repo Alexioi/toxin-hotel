@@ -1,28 +1,32 @@
 import "./like-button.scss";
-import $ from "jquery";
 
 class LikeButton {
-  constructor($component) {
-    this.$component = $component;
-    this.$componentText = $($component).children(".like-button__content");
+  constructor(component) {
+    this.component = component;
+    this.content = this.component.querySelector(".like-button__content");
     this._attachEventHandlers();
   }
 
   _attachEventHandlers() {
-    this.$component.on("click", () => {
-      let text = this.$componentText.text();
-      if (this.$component.hasClass("like-button_liked")) {
-        this.$componentText.text(text - 1);
-      } else {
-        this.$componentText.text(+text + 1);
-      }
-      this.$component.toggleClass("like-button_liked");
-    });
+    this.component.addEventListener("click", () => this._changeButtonStyle());
+    this.component.addEventListener("click", () => this._setCounterLikes());
+  }
+
+  _changeButtonStyle() {
+    this.component.classList.toggle("like-button_liked");
+  }
+
+  _setCounterLikes() {
+    if (this.component.classList.contains("like-button_liked")) {
+      this.content.innerHTML++;
+    } else {
+      this.content.innerHTML--;
+    }
   }
 }
 
-$(() => {
-  $(".js-like-button").each((index, node) => {
-    new LikeButton($(node));
+(() => {
+  document.querySelectorAll(".js-like-button").forEach((node) => {
+    new LikeButton(node);
   });
-});
+})();
