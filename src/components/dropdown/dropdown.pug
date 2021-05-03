@@ -1,0 +1,22 @@
+mixin dropdown(options)
+  if options.type === 'rooms'
+    - var component = {placeholder: 'Сколько комнат',items: ['спальни', 'кровати', 'ванные комнаты']}
+  else if options.type === 'guests'
+    - var component = {}
+
+  if !options.counters
+    - options.counters = [0, 0, 0]
+
+  .dropdown.js-dropdown
+    .dropdown__text-field.js-dropdown__text-field
+      input.dropdown__input.js-dropdown__input(placeholder=component.placeholder readonly)
+      .dropdown__toggle-button
+    ul.dropdown__list.js-dropdown__list.js-dropdown__list_open
+      each item, i in component.items 
+        li.dropdown__item
+          span.dropdown__item-name.js-dropdown__item-name= item 
+          .dropdown__counter
+            button.dropdown__counter-button.js-dropdown__counter-button-minus -
+            span.dropdown__counter-value.js-dropdown__counter-value= options.counters[i] || 0
+            button.dropdown__counter-button.js-dropdown__counter-button-plus +
+

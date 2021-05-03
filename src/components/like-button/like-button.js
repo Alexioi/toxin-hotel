@@ -8,8 +8,10 @@ class LikeButton {
   }
 
   _attachEventHandlers() {
-    this.component.addEventListener("click", () => this._changeButtonStyle());
-    this.component.addEventListener("click", () => this._setCounterLikes());
+    this.component.addEventListener("click", () => {
+      this._changeButtonStyle();
+      this._setCounterLikes();
+    });
   }
 
   _changeButtonStyle() {

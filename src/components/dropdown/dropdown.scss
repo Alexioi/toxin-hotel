@@ -1,0 +1,68 @@
+@import "../../style/variables.scss";
+
+.dropdown {
+  background: #ffffff;
+
+  &__text-field {
+    position: relative;
+  }
+
+  &__input {
+    border: 1px solid rgba(31, 32, 65, 0.5);
+    border-radius: 2px;
+    width: 100%;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 42px;
+    color: rgba(31, 32, 65, 0.75);
+    cursor: pointer;
+    padding: 0 44px 0 15px;
+  }
+
+  &__toggle-button {
+    position: absolute;
+    height: 100%;
+    width: 44px;
+    top: 0px;
+    right: 0px;
+    cursor: pointer;
+    background: no-repeat url(./img/toggle-button.svg) center center;
+  }
+
+  &__list {
+    padding: 7px 7px 0 15px;
+    border: 1px solid rgba(31, 32, 65, 0.5);
+    border-top: none;
+    border-radius: 0 0 2px 2px;
+    display: none;
+  }
+
+  &__item {
+    list-style: none;
+    margin-bottom: 7px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__counter-button {
+    border: 1px solid rgba(31, 32, 65, 0.25);
+    background: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 30px;
+    color: rgba(31, 32, 65, 0.5);
+  }
+}
+
+.js-dropdown {
+  &__list_open {
+    display: block;
+  }
+}
