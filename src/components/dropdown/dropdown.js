@@ -38,6 +38,7 @@ class Dropdown {
     if (this.counterValue[index].innerHTML !== "0") {
       this.counterValue[index].innerHTML--;
     }
+    this._disableCounterButton(index);
   }
 
   _increaseCounter(index) {
@@ -53,6 +54,12 @@ class Dropdown {
       }
     }
     this.input.value = inputValue;
+  }
+
+  _disableCounterButton(index) {
+    if (this.counterValue[index].innerHTML === "0") {
+      this.buttonMinus[index].classList.add("js-dropdown__counter-button_disabled");
+    }
   }
 }
 
