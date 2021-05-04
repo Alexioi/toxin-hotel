@@ -23,10 +23,33 @@ block main
     +dropdown({type: 'rooms', counters: [5,4,7], isOpened: true})
     +date-dropdown
     +radio-buttons
-    +checkbox-list({items: [
-      "Можно курить",
-      "Можно с питомцами",
-      "Можно пригласить гостей (до 10 человек)",
+    +checkbox-list({
+      title: 'Rich Checkbox Buttons',
+      items: [
+      {text: "Можно курить"},
+      {text: "Можно с питомцами", isChecked: true},
+      {text: "Можно пригласить гостей (до 10 человек)", isChecked: true},
+    ]})
+    +checkbox-list({
+      title: 'expandable checkbox list',
+      type: 'expanded',
+      isClosed: true,
+      items: [
+      {text: "Завтрак"},
+      {text: "Письменный стол", isChecked: true},
+      {text: "Стул для кормления", isChecked: true},
+      {text: "Кроватка", isChecked: true},
+      {text: "Телевизор"},
+      {text: "Шампунь"},
+    ]})
+    +checkbox-list({
+      title: 'Checkbox Buttons',
+      type: 'rich',
+      items: [
+      {text: "Широкий коридор", 
+      subText: 'Ширина коридоров в номере не менее 91 см.'},
+      {text: "Помощник для инвалидов", 
+      subText: 'На 1 этаже вас встретит специалист и проводит до номера.'},
     ]})
     +rate({quantity: 4})
     +rate

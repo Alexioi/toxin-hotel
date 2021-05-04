@@ -5,12 +5,21 @@
     margin-bottom: 17px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+  }
+
+  &__button {
+    width: 15px;
+    height: 15px;
+    background: no-repeat url('./img/more.svg') center center;
+    background-color: white;
+    border: none;
+    cursor: pointer;
   }
 
   &__list {
     display: grid;
-    gap: 12px;
-    padding-bottom: 1px;
+    gap: 10px;
   }
 
   &__item {
@@ -50,8 +59,13 @@
 
   &__text {
     font-size: 14px;
-    line-height: 18px;
+    line-height: 20px;
     color: rgba(31, 32, 65, 0.5);
+
+    &_bold {
+      font-weight: bold;
+      color: rgba(31, 32, 65, 0.75);
+    }
 
     &::before {
       content: "";
@@ -62,6 +76,27 @@
       display: block;
       border-radius: 4px;
       left: 0;
+    }
+  }
+
+  &__sub-text {
+    font-size: 12px;
+    line-height: 14px;
+    color: rgba(31, 32, 65, 0.5);
+    margin-top: 4px;
+  }
+}
+
+.js-checkbox-list {
+  &__list {
+    &_closed {
+      display: none;
+    }
+  }
+
+  &__button {
+    &_inverted {
+      transform: rotate(180deg);
     }
   }
 }
