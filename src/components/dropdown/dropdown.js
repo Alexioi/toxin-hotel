@@ -69,7 +69,7 @@ class DropdownRooms extends Dropdown {
 }
 
 (() => {
-  document.querySelectorAll(".js-dropdown").forEach((node) => {
+  document.querySelectorAll(".js-dropdown_rooms").forEach((node) => {
     new DropdownRooms(node);
   });
 })();
