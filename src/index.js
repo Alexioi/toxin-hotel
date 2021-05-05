@@ -1,5 +1,5 @@
 import "./style/main.scss";
-import "./templates/templates.scss"
+import "./templates/templates.scss";
 
 function requireAll(requireContext) {
   return requireContext.keys().map(requireContext);

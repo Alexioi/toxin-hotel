@@ -41,6 +41,11 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery",
+    }),
     new CleanWebpackPlugin(),
     ...PAGES.map(
       (page) =>
@@ -49,11 +54,6 @@ module.exports = {
           template: `./src/pages/${page}/${page}.pug`,
         })
     ),
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      mask: "jquery-mask-plugin",
-    }),
   ],
   devServer: {
     contentBase: path.join(__dirname, "dist"),

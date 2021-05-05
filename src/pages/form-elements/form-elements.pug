@@ -13,12 +13,14 @@ include ../../components/checkbox-list/checkbox-list
 include ../../components/radio-buttons/radio-buttons 
 include ../../components/date-dropdown/date-dropdown
 include ../../components/dropdown/dropdown
+include ../../components/pagination/pagination 
 
 block title 
   | Form elements
 
 block main
   div(style="width: 500px; margin: auto;")
+    +pagination 
     +dropdown({type: 'rooms'})
     +dropdown({type: 'rooms', counters: [5,4,7], isOpened: true})
     +date-dropdown
