@@ -2,6 +2,7 @@ const path = require("path");
 const fs = require("fs");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const webpack = require("webpack");
 
 const PAGES = fs.readdirSync(path.join(__dirname, "./src/pages"));
 
@@ -48,6 +49,11 @@ module.exports = {
           template: `./src/pages/${page}/${page}.pug`,
         })
     ),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      mask: "jquery-mask-plugin",
+    }),
   ],
   devServer: {
     contentBase: path.join(__dirname, "dist"),
