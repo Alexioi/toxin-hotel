@@ -1,71 +1,82 @@
 @import "../../style/variables.scss";
 
 .button {
-  font-weight: bold;
-  font-size: 12px;
-  text-transform: uppercase;
-  text-decoration: none;
-  border-radius: 22px;
   width: 100%;
-  display: inline-block;
-  text-align: center;
-  line-height: 44px;
-  position: relative;
+  border: none;
+  border-radius: 22px;
+  padding: 0.1667rem;
+  background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+  cursor: pointer;
 
   &_default,
+  &_outline,
   &_long {
-    background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-    color: white;
-
-    &:hover {
-      opacity: 0.5;
+    &:hover,
+    &:focus,
+    &.button_hovered {
+      &.button {
+        background: linear-gradient(
+          180deg,
+          rgba(188, 156, 255, 0.5) 0%,
+          rgba(139, 164, 249, 0.5) 100%
+        );
+      }
     }
   }
 
-  &_long {
-    &::before {
-      content: "";
-      width: 44px;
-      height: 100%;
-      position: absolute;
-      background: no-repeat url("./img/arrow-forward.svg") 50% 50%;
-      right: 0;
-    }
+  &_low .button__text {
+    line-height: 2.5rem;
   }
 
   &_outline {
-    color: #bc9cff;
-    line-height: 40px;
-    background: white;
-    margin: 2px;
-    width: calc(100% - 4px);
-
-    &::before {
-      content: "";
-      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-      width: calc(100% + 4px);
-      height: calc(100% + 4px);
-      position: absolute;
-      z-index: -1;
-      border-radius: 22px;
-      top: -2px;
-      left: -2px;
+    & .button__wrapper {
+      background-color: white;
     }
 
-    &:hover:before {
-      opacity: 0.5;
+    & .button__text {
+      color: #bc9cff;
     }
   }
 
   &_link {
-    color: #bc9cff;
+    width: auto;
+    padding: 0;
 
-    &:hover {
-      color: rgba(31, 32, 65, 0.5);
+    & .button__wrapper {
+      background-color: white;
+    }
+
+    & .button__text {
+      color: #bc9cff;
+      line-height: 1rem;
+    }
+
+    &:hover,
+    &:focus,
+    &.button_hovered {
+      & .button__text {
+        color: rgba(31, 32, 65, 0.5);
+      }
     }
   }
 
-  &_low {
-    line-height: 34px;
+  &__wrapper {
+    position: relative;
+    border-radius: 22px;
+  }
+
+  &__text {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+    line-height: 3.3333rem;
+  }
+
+  &__arrow {
+    position: absolute;
+    background: no-repeat url(./img/arrow-forward.svg) center center;
+    height: 100%;
+    width: 1.25rem;
+    right: 1.25rem;
   }
 }

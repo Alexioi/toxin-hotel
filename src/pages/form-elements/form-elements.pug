@@ -59,35 +59,40 @@ block main
         +toggle({isChecked: true})
         +like-button({counter: 1, isLiked: true})
         +like-button({counter: 1})
-        +rate({quantity: 4})
-        +rate
+        +layout__row
+          +layout__column({mr: 20})
+            +rate({quantity: 4})
+          +rate
 
       +layout__column({basis: 320})
+        +layout__column
           +button({
-            link: '#',
-            text: 'CLICK ME'
+            text: 'click me'
           })
           +button({
             type: 'link',
-            link: '#',
-            text: 'CLICK ME'
+            text: 'click me'
+          })
+          +button({
+            isHovered: true,
+            type: 'link',
+            text: 'click me'
           })
           +button({
             type: 'outline',
-            link: '#',
-            text: 'CLICK ME'
+            text: 'click me'
           })
           +button({
             type: 'long',
-            link: '#',
-            text: 'CLICK ME'
+            text: 'click me'
           })
           +button({
-            link: '#',
-            text: 'CLICK ME',
+            type: 'long',
+            size: 'low',
+            text: 'click me',
             size: 'low',
           })
-          +pagination 
+        +pagination 
 
     +layout__row
 

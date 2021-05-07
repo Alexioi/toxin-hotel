@@ -6,19 +6,9 @@ include ../../components/footer/footer
 block title 
   | Headers and footers
 
-  - var hasBackground = true
-
 block main
-  +layout__container({direction: 'column', gap: '40'})
-    +layout__container({mix: 'p-headers-and-footers__background-color-white'})
-      +layout__container({basis: '1160', align: 'center'})
-        +header 
-    +layout__container({mix: 'p-headers-and-footers__background-color-white'})
-      +layout__container({basis: '1160', align: 'center'})
-        +header({isLogin: true, username: 'Юлий Цезарь'})
-    +layout__container({mix: 'p-headers-and-footers__background-color-white'})
-      +layout__container({basis: '1160', align: 'center'})
-        +footer
-    +layout__container
-      +layout__container({basis: '770', align: 'center'})
-        +footer({mobile: true})
+  +layout__column({gap: 40})
+    +header 
+    +header({isLogin: true, username: 'Юлий Цезарь'})
+    +footer
+    +footer({mobile: true})

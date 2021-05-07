@@ -1,18 +1,18 @@
-@import '../../style/variables.scss';
+@import "../../style/variables.scss";
 
 .card {
   border: 1px solid rgba(0, 0, 0, 0.12);
   box-sizing: border-box;
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  max-width: 380px;
+  width: 100%;
   padding: 40px 29px 30px 29px;
 
   &__header {
     font-weight: bold;
     font-size: 24px;
     line-height: 30px;
-    color: #1F2041;
+    color: #1f2041;
     margin-bottom: 20px;
   }
 

@@ -7,7 +7,12 @@ block title
   | Cards
 
 block main
-    //- +card({type: 'login'})
-    //- +card({type: 'registration'})
-    //- +card({type: 'find-room'})
-    +calendar
+  +layout__container
+    +layout__row 
+      +layout__column({basis: 380, grow: '0', gap: 40})
+        +card
+        +card
+      +layout__column({basis: 380, grow: '0', gap: 40})
+        +card
+      +layout__column({basis: 320, grow: '0', gap: 40})
+        +calendar

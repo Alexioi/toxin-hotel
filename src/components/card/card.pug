@@ -6,57 +6,59 @@ include ../../components/registration/registration
 include ../../components/find-room/find-room
 
 mixin card(options)
-
-  -
-    var card = {}
-
-  if options.type === 'login'
-    -
-      card = {
-        header: "Войти",
-        hasFooter: true,
-        longButton: 'Войти',
-        footerButton: 'создать',
-        question: 'Нет аккаунта на Toxin?',
-      }
-  else if options.type === 'registration'
-    -
-      card = {
-        header: "Регистрация аккаунта",
-        hasFooter: true,
-        longButton: 'перейти к оплате',
-        footerButton: 'войти',
-        question: 'Уже есть аккаунт на Toxin?',
-      }
-  else if options.type === 'find-room'
-    -
-      card = {
-        header: "Найдём номера под ваши пожелания",
-        longButton: 'подобрать номер',
-      }
-
   .card
-    .card__header= card.header
+    block
 
-    case options.type
-      when 'login'
-        +login
-      when 'registration'
-        +registration
-      when 'find-room'
-        +find-room
+  //- -
+  //-   var card = {}
 
-    +button({
-      type: 'long',
-      link: './login.html',
-      text: card.longButton
-    })
+  //- if options.type === 'login'
+  //-   -
+  //-     card = {
+  //-       header: "Войти",
+  //-       hasFooter: true,
+  //-       longButton: 'Войти',
+  //-       footerButton: 'создать',
+  //-       question: 'Нет аккаунта на Toxin?',
+  //-     }
+  //- else if options.type === 'registration'
+  //-   -
+  //-     card = {
+  //-       header: "Регистрация аккаунта",
+  //-       hasFooter: true,
+  //-       longButton: 'перейти к оплате',
+  //-       footerButton: 'войти',
+  //-       question: 'Уже есть аккаунт на Toxin?',
+  //-     }
+  //- else if options.type === 'find-room'
+  //-   -
+  //-     card = {
+  //-       header: "Найдём номера под ваши пожелания",
+  //-       longButton: 'подобрать номер',
+  //-     }
 
-    if card.hasFooter
-      .card__footer
-        span.card__question= card.question
-        +button({
-          type: 'outline',
-          link: '#',
-          text: card.footerButton
-        })
+  //- .card
+  //-   .card__header= card.header
+
+  //-   case options.type
+  //-     when 'login'
+  //-       +login
+  //-     when 'registration'
+  //-       +registration
+  //-     when 'find-room'
+  //-       +find-room
+
+  //-   +button({
+  //-     type: 'long',
+  //-     link: './login.html',
+  //-     text: card.longButton
+  //-   })
+
+  //-   if card.hasFooter
+  //-     .card__footer
+  //-       span.card__question= card.question
+  //-       +button({
+  //-         type: 'outline',
+  //-         link: '#',
+  //-         text: card.footerButton
+  //-       })
