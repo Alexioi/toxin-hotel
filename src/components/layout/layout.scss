@@ -1,108 +1,88 @@
-@import '../../style/variables.scss';
+@import "../../style/variables.scss";
+
+$container-width: (1160 / $font-size) + rem;
 
 .layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &__header {
+    flex: 0 0 auto;
+  }
+
+  &__main {
+    flex: 1 0 auto;
+  }
+
+  &__footer {
+    flex: 0 0 auto;
+  }
+
+  &__container {
+    max-width: $container-width;
+    margin: 0 auto;
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__column {
     display: flex;
     flex-direction: column;
-    height: 100%;
-  
-    &__header {
-      display: flex;
-      flex: 0 0 auto;
+    align-items: flex-start;
+    flex: 1 1 auto;
+
+    &_grow-0 {
+      flex-grow: 0;
     }
-  
-    &__main {
-      display: flex;
-      flex: 1 0 auto;
+
+    &_shrink-0 {
+      flex-shrink: 0;
     }
-  
-    &__footer {
-      display: flex;
-      flex: 0 0 auto;
-    }
-  
-    &__container {
-      display: flex;
-      flex: 1 1 100%;
-      align-content: flex-start;
-  
-      @for $i from 1 to 150 {
-        $basis: $i * 10;
-  
-        &_basis-#{$basis} {
-          flex-basis: #{$basis}px;
-        }
+
+    @for $i from 1 to 1000 {
+      &_basis-#{$i} {
+        flex-basis: ($i / $font-size) + rem;
       }
 
-      @for $i from 1 to 10 {
-        $gap: $i * 10;
-  
-        &_gap-#{$gap} {
-          gap: #{$gap}px;
-        }
+      &_gap-#{$i} {
+        gap: ($i / $font-size) + rem;
       }
-  
-      @for $grow from 0 to 10 {
-        &_grow-#{$grow} {
-          flex-grow: $grow;
-        }
+
+      &_mt-#{$i} {
+        margin-top: ($i / $font-size) + rem;
       }
-  
-      @for $shrink from 0 to 10 {
-        &_shrink-#{$shrink} {
-          flex-shrink: $shrink;
-        }
+
+      &_mr-#{$i} {
+        margin-right: ($i / $font-size) + rem;
       }
-  
-      &_block {
-        display: block;
+
+      &_mb-#{$i} {
+        margin-bottom: ($i / $font-size) + rem;
       }
-  
-      &_left {
-        flex-grow: 0;
-        margin-right: auto;
+
+      &_ml-#{$i} {
+        margin-left: ($i / $font-size) + rem;
       }
-  
-      &_right {
-        flex-grow: 0;
-        margin-left: auto;
+
+      &_pt-#{$i} {
+        padding-top: ($i / $font-size) + rem;
       }
-  
-      &_center {
-        flex-grow: 0;
-        margin-right: auto;
-        margin-left: auto;
+
+      &_pr-#{$i} {
+        padding-right: ($i / $font-size) + rem;
       }
-  
-      &_column {
-        flex-direction: column;
-  
-        & > .layout__container {
-          flex-basis: auto;
-        }
+
+      &_pb-#{$i} {
+        padding-bottom: ($i / $font-size) + rem;
       }
-  
-      &_column-reverse {
-        flex-direction: column-reverse;
-  
-        & > .layout__container {
-          flex-basis: auto;
-        }
-      }
-  
-      &_row-reverse {
-        flex-direction: row-reverse;
-      }
-  
-      &_wrap {
-        flex-wrap: wrap;
-      }
-  
-      &_wrap-reverse {
-        flex-wrap: wrap-reverse;
-      }
-  
-      &_basis-auto.layout__container {
-        flex-basis: auto;
+
+      &_pl-#{$i} {
+        padding-left: ($i / $font-size) + rem;
       }
     }
   }
+}

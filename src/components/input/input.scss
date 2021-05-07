@@ -1,6 +1,7 @@
 @import "../../style/variables.scss";
 
 .input {
+  width: 100%;
   &__header {
     display: flex;
     justify-content: space-between;
@@ -44,11 +45,11 @@
     cursor: pointer;
 
     &_more {
-      background: no-repeat 50% 50% url('./img/expand_more.svg');
+      background: no-repeat 50% 50% url("./img/expand_more.svg");
     }
 
     &_arrow {
-      background: no-repeat 50% 50% url('./img/arrow_forward.svg');
+      background: no-repeat 50% 50% url("./img/arrow_forward.svg");
     }
   }
 }

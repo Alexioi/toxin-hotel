@@ -8,10 +8,10 @@ html
     meta(name='viewport', content="initial-scale=1.0, width=device-width")
     title
         block title
-  body(class = hasBackground ? 't-ui-kit__background' : '')
+  body
     +layout
       +layout__header
-        +layout__container({basis: 1380, align: 'center', mix: 't-ui-kit__header'})
+        +layout__container
           +logo({type: 'mini'})
       +layout__main
         block main

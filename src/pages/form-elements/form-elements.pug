@@ -19,106 +19,149 @@ block title
   | Form elements
 
 block main
-  div(style="width: 500px; margin: auto;")
-    +pagination 
-    +dropdown({type: 'rooms'})
-    +dropdown({type: 'rooms', counters: [5,4,7], isOpened: true})
-    +date-dropdown
-    +radio-buttons
-    +checkbox-list({
-      title: 'Rich Checkbox Buttons',
-      items: [
-      {text: "Можно курить"},
-      {text: "Можно с питомцами", isChecked: true},
-      {text: "Можно пригласить гостей (до 10 человек)", isChecked: true},
-    ]})
-    +checkbox-list({
-      title: 'expandable checkbox list',
-      type: 'expanded',
-      isClosed: true,
-      items: [
-      {text: "Завтрак"},
-      {text: "Письменный стол", isChecked: true},
-      {text: "Стул для кормления", isChecked: true},
-      {text: "Кроватка", isChecked: true},
-      {text: "Телевизор"},
-      {text: "Шампунь"},
-    ]})
-    +checkbox-list({
-      title: 'Checkbox Buttons',
-      type: 'rich',
-      items: [
-      {text: "Широкий коридор", 
-      subText: 'Ширина коридоров в номере не менее 91 см.'},
-      {text: "Помощник для инвалидов", 
-      subText: 'На 1 этаже вас встретит специалист и проводит до номера.'},
-    ]})
-    +rate({quantity: 4})
-    +rate
-    +bullet-list({
-      items: ['Нельзя с питомцами', 
-      'Без вечеринок и мероприятий', 
-      'Время прибытия — после 13:00, а выезд до 12:00'],
-    })
-    +comment({
-      authorName: 'Мурад Сарафанов',
-      date: '5 дней назад',
-      counter: 12,
-      isLiked: true,
-      text: 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',
-    })
-    +input({
-      titleText: "Text Field",
-      hint: "Default",
-      value: 'This is pretty awesome'
-    })
-    +input({
-      titleText: "Text Field",
-      hint: "Default",
-      type: 'dropdown'
-    })
-    +input({
-      titleText: "Text Field",
-      hint: "Default",
-      type: 'subscription'
-    })
-    +input({
-      titleText: "Text Field",
-      hint: "Default",
-      type: 'email'
-    })
-    +title({text: "test"})
-    +icon-text-list(
-      {items: [  
-      {img: "smile", title: "Комфорт", text: "Шумопоглощающие стены"},
-      {img: "house", title: "Удобство", text: "Окно в каждой из спален"},
-    ]}
-    )
-    +button({
-      link: '#',
-      text: 'CLICK ME'
-    })
-    +button({
-      type: 'link',
-      link: '#',
-      text: 'CLICK ME'
-    })
-    +button({
-      type: 'outline',
-      link: '#',
-      text: 'CLICK ME'
-    })
-    +button({
-      type: 'long',
-      link: '#',
-      text: 'CLICK ME'
-    })
-    +button({
-      link: '#',
-      text: 'CLICK ME',
-      size: 'low',
-    })
-    +toggle
-    +toggle({isChecked: true})
-    +like-button({counter: 1, isLiked: true})
-    +like-button({counter: 1})
+  +layout__container
+
+    +layout__row
+
+      +layout__column({basis: 320})
+        +input({
+          titleText: "Text Field",
+          hint: "Default",
+          value: 'This is pretty awesome'
+        })
+        +input({
+          titleText: "Text Field",
+          hint: "Default",
+          type: 'dropdown'
+        })
+        +input({
+          titleText: "Text Field",
+          hint: "Default",
+          type: 'subscription'
+        })
+        +input({
+          titleText: "Text Field",
+          hint: "Default",
+          type: 'email'
+        })
+        +date-dropdown
+
+      +layout__column({basis: 320, mr: 72, ml: 126})
+        +checkbox-list({
+          title: 'Rich Checkbox Buttons',
+          items: [
+          {text: "Можно курить"},
+          {text: "Можно с питомцами", isChecked: true},
+          {text: "Можно пригласить гостей (до 10 человек)", isChecked: true},
+        ]})
+        +radio-buttons
+        +toggle
+        +toggle({isChecked: true})
+        +like-button({counter: 1, isLiked: true})
+        +like-button({counter: 1})
+        +rate({quantity: 4})
+        +rate
+
+      +layout__column({basis: 320})
+          +button({
+            link: '#',
+            text: 'CLICK ME'
+          })
+          +button({
+            type: 'link',
+            link: '#',
+            text: 'CLICK ME'
+          })
+          +button({
+            type: 'outline',
+            link: '#',
+            text: 'CLICK ME'
+          })
+          +button({
+            type: 'long',
+            link: '#',
+            text: 'CLICK ME'
+          })
+          +button({
+            link: '#',
+            text: 'CLICK ME',
+            size: 'low',
+          })
+          +pagination 
+
+    +layout__row
+
+      +layout__column({basis: 320})
+        +dropdown({type: 'rooms'})
+        +dropdown({type: 'rooms', counters: [5,4,7], isOpened: true})
+
+      +layout__column({basis: 320, mr: 72, ml: 126})
+        +dropdown({type: 'rooms', counters: [5,4,7], isOpened: true})
+
+      +layout__column({basis: 320})
+        +dropdown({type: 'rooms', counters: [5,4,7], isOpened: true})
+
+    +layout__row
+
+      +layout__column({basis: 320})
+        +checkbox-list({
+          title: 'expandable checkbox list',
+          type: 'expanded',
+          isClosed: true,
+          items: [
+          {text: "Завтрак"},
+          {text: "Письменный стол", isChecked: true},
+          {text: "Стул для кормления", isChecked: true},
+          {text: "Кроватка", isChecked: true},
+          {text: "Телевизор"},
+          {text: "Шампунь"},
+        ]})
+        +checkbox-list({
+          title: 'expandable checkbox list',
+          type: 'expanded',
+          isClosed: false,
+          items: [
+          {text: "Завтрак"},
+          {text: "Письменный стол", isChecked: true},
+          {text: "Стул для кормления", isChecked: true},
+          {text: "Кроватка", isChecked: true},
+          {text: "Телевизор"},
+          {text: "Шампунь"},
+        ]})
+
+      +layout__column({basis: 320, mr: 72, ml: 126})
+        +checkbox-list({
+          title: 'Checkbox Buttons',
+          type: 'rich',
+          items: [
+          {text: "Широкий коридор", 
+          subText: 'Ширина коридоров в номере не менее 91 см.'},
+          {text: "Помощник для инвалидов", 
+          subText: 'На 1 этаже вас встретит специалист и проводит до номера.'},
+        ]})
+
+      +layout__column({basis: 320})
+        +bullet-list({
+          items: ['Нельзя с питомцами', 
+          'Без вечеринок и мероприятий', 
+          'Время прибытия — после 13:00, а выезд до 12:00'],
+        })
+
+    +layout__row
+
+      +layout__column({basis: 320, grow: '0'})
+        +icon-text-list(
+          {items: [  
+          {img: "smile", title: "Комфорт", text: "Шумопоглощающие стены"},
+          {img: "house", title: "Удобство", text: "Окно в каждой из спален"},
+        ]}
+        )
+
+      +layout__column({basis: 711, grow: '0'})
+        +comment({
+          authorName: 'Мурад Сарафанов',
+          date: '5 дней назад',
+          counter: 12,
+          isLiked: true,
+          text: 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',
+        })
