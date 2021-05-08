@@ -14,6 +14,8 @@ include ../../components/radio-buttons/radio-buttons
 include ../../components/date-dropdown/date-dropdown
 include ../../components/dropdown/dropdown
 include ../../components/pagination/pagination 
+include ../../components/label/label
+include ../../components/text-field/text-field
 
 block title 
   | Form elements
@@ -24,27 +26,45 @@ block main
     +layout__row
 
       +layout__column({basis: 320})
-        +input({
-          titleText: "Text Field",
-          hint: "Default",
-          value: 'This is pretty awesome'
-        })
-        +input({
-          titleText: "Text Field",
-          hint: "Default",
-          type: 'dropdown'
-        })
-        +input({
-          titleText: "Text Field",
-          hint: "Default",
-          type: 'subscription'
-        })
-        +input({
-          titleText: "Text Field",
-          hint: "Default",
-          type: 'email'
-        })
-        +date-dropdown
+        +layout__row
+          +layout__column({gap: 20})
+            +text-field({
+              title: 'Text Field',
+              hasHint: true,
+              hint: "Default",
+              placeholder: 'Email',
+              type: "email"
+            })
+            +text-field({
+              isHovered: true,
+              title: 'Text Field',
+              hasHint: true,
+              hint: "Default",
+              value: "This is pretty awesome",
+              placeholder: 'This is pretty awesome',
+              type: "text"
+            })
+            +text-field({
+              title: 'masked text field',
+              isMasked: true
+            })
+            +input({
+              titleText: "Text Field",
+              hint: "Default",
+              type: 'subscription'
+            })
+        +layout__row
+          +layout__column({gap: 40, mt: 40})
+            +input({
+              titleText: "Text Field",
+              hint: "Default",
+              type: 'email'
+            })
+            +date-dropdown
+            +layout__row
+              +layout__column({gap: 40, mb: 100, basis: 266, grow: '0'})
+                +date-dropdown
+                +date-dropdown
 
       +layout__column({basis: 320, mr: 72, ml: 126})
         +checkbox-list({
@@ -65,8 +85,9 @@ block main
           +rate
 
       +layout__column({basis: 320})
+        +label({text: 'pagination'})
         +layout__row
-          +layout__column({gap: 30})
+          +layout__column({gap: 30, mt: 16})
             +layout__row
               +layout__column({basis: 99, mr: 20, grow: '0'})
                 +button({
@@ -168,7 +189,7 @@ block main
 
     +layout__row
 
-      +layout__column({basis: 320, grow: '0'})
+      +layout__column({basis: 280, grow: '0'})
         +icon-text-list(
           {items: [  
           {img: "smile", title: "Комфорт", text: "Шумопоглощающие стены"},

@@ -1,0 +1,23 @@
+@import "../../style/variables.scss";
+
+.label {
+  &__title {
+    font-family: Montserrat;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #1f2041;
+  }
+
+  &__hint {
+    font-family: Montserrat;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: uppercase;
+    font-weight: normal;
+    color: rgba(31, 32, 65, 0.5);
+  }
+}

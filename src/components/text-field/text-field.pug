@@ -1,0 +1,27 @@
+include ../label/label
+
+mixin text-field(options)
+  if !options.hasHeader
+  - options.hasHeader = true
+
+  -
+    var classes = ''
+    classes += options.isHovered ? ' text-field__input_hovered' : '' 
+    classes += options.isMasked ? ' js-text-field__input' : '' 
+  
+  .text-field 
+    if options.hasHeader
+      .text-field__header 
+        +label({text: options.title})
+        if options.hasHint
+           +label({text: options.hint, type: 'hint'})
+      .text-field__content 
+        input.text-field__input(
+          class=classes
+          type=options.type
+          value=options.value 
+          name=options.name
+          placeholder=options.placeholder
+        )
+        if options.type === 'subscription'
+          .text-field__subscription-button
