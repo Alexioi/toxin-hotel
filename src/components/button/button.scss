@@ -12,7 +12,6 @@
   &_outline,
   &_long {
     &:hover,
-    &:focus,
     &.button_hovered {
       &.button {
         background: linear-gradient(
@@ -48,11 +47,10 @@
 
     & .button__text {
       color: #bc9cff;
-      line-height: 1rem;
+      line-height: 1.25rem;
     }
 
     &:hover,
-    &:focus,
     &.button_hovered {
       & .button__text {
         color: rgba(31, 32, 65, 0.5);
@@ -70,6 +68,7 @@
     font-weight: bold;
     color: white;
     line-height: 3.3333rem;
+    white-space: nowrap;
   }
 
   &__arrow {

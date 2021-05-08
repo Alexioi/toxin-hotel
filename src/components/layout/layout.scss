@@ -26,7 +26,8 @@ $container-width: (1160 / $font-size) + rem;
 
   &__row {
     display: flex;
-    justify-content: space-between;
+    width: 100%;
+    align-items: flex-start;
   }
 
   &__column {

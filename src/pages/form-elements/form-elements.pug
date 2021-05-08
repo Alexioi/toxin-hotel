@@ -60,38 +60,52 @@ block main
         +like-button({counter: 1, isLiked: true})
         +like-button({counter: 1})
         +layout__row
-          +layout__column({mr: 20})
+          +layout__column({mr: 20, grow: '0'})
             +rate({quantity: 4})
           +rate
 
       +layout__column({basis: 320})
-        +layout__column
-          +button({
-            text: 'click me'
-          })
-          +button({
-            type: 'link',
-            text: 'click me'
-          })
-          +button({
-            isHovered: true,
-            type: 'link',
-            text: 'click me'
-          })
-          +button({
-            type: 'outline',
-            text: 'click me'
-          })
-          +button({
-            type: 'long',
-            text: 'click me'
-          })
-          +button({
-            type: 'long',
-            size: 'low',
-            text: 'click me',
-            size: 'low',
-          })
+        +layout__row
+          +layout__column({gap: 30})
+            +layout__row
+              +layout__column({basis: 99, mr: 20, grow: '0'})
+                +button({
+                  text: 'click me'
+                })
+              +layout__column({basis: 99, grow: '0'})
+                +button({
+                  text: 'click me',
+                  isHovered: true,
+                })
+            +layout__row
+              +layout__column({basis: 99, mr: 20, grow: '0'})
+                +button({
+                  type: 'outline',
+                  text: 'click me'
+                })
+              +layout__column({basis: 99, grow: '0'})
+                +button({
+                  type: 'outline',
+                  isHovered: true,
+                  text: 'click me'
+                })
+            +layout__row
+              +layout__column({mr: 20, grow: '0'})
+                +button({
+                  type: 'link',
+                  text: 'click me'
+                })
+              +layout__column
+                +button({
+                  type: 'link',
+                  text: 'click me',
+                  isHovered: true,
+                })
+            +layout__row 
+              +button({
+                type: 'long',
+                text: 'перейти к оплате',
+              })
         +pagination 
 
     +layout__row
