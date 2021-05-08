@@ -7,24 +7,4 @@
   border-radius: 4px;
   width: 100%;
   padding: 40px 29px 30px 29px;
-
-  &__header {
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 30px;
-    color: #1f2041;
-    margin-bottom: 20px;
-  }
-
-  &__footer {
-    margin-top: 30px;
-    display: grid;
-    grid-template-columns: auto 99px;
-    align-items: center;
-  }
-
-  &__question {
-    font-size: 14px;
-    line-height: 18px;
-  }
 }

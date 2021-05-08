@@ -1,8 +1,6 @@
 include ../label/label
 
 mixin text-field(options)
-  if !options.hasHeader
-  - options.hasHeader = true
 
   -
     var classes = ''
@@ -15,13 +13,13 @@ mixin text-field(options)
         +label({text: options.title})
         if options.hasHint
            +label({text: options.hint, type: 'hint'})
-      .text-field__content 
-        input.text-field__input(
-          class=classes
-          type=options.type
-          value=options.value 
-          name=options.name
-          placeholder=options.placeholder
-        )
-        if options.type === 'subscription'
-          .text-field__subscription-button
+    .text-field__content 
+      input.text-field__input(
+        class=classes
+        type=options.type
+        value=options.value 
+        name=options.name
+        placeholder=options.placeholder
+      )
+      if options.isSubscription === 'subscription'
+        .text-field__subscription-button
