@@ -1,3 +1,1 @@
-import './header.scss';
-import $ from 'jquery';
-
+import "./header.scss";

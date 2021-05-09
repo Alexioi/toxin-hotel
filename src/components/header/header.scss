@@ -1,39 +1,42 @@
 @import "../../style/variables.scss";
 
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 0;
   width: 100%;
+  box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+  background-color: white;
+  padding: 15px 0;
 
-  @include media-breakpoint-down($md) {
-    justify-content: center;
-    flex-direction: column;
+  &__wrapper {
+    display: grid;
+    grid-template-areas: "logo content";
+    justify-content: space-between;
+    align-items: center;
+
+    @include media-breakpoint-down($md) {
+      grid-template-areas:
+        "logo burger"
+        "content content";
+    }
   }
 
   &__logo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+    grid-area: logo;
+    display: inline-block;
   }
 
   &__burger-button {
-    background: white;
+    grid-area: burger;
     border: none;
+    background-color: white;
     display: none;
-    background-image: url(./img/burger-button.svg);
-    width: 32px;
-    height: 32px;
-    
 
     @include media-breakpoint-down($md) {
       display: block;
     }
   }
 
-  &__content {  
+  &__content {
+    grid-area: content;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -53,18 +56,27 @@
     @include media-breakpoint-down($md) {
       justify-content: center;
       flex-direction: column;
+      margin-bottom: 20px;
     }
   }
 
   &__nav-item {
     list-style: none;
+    display: flex;
+    align-items: center;
   }
 
   &__nav-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: rgba(31, 32, 65, 0.5);
+  }
+
+  &__nav-text {
     font-size: 14px;
     line-height: 17px;
     color: rgba(31, 32, 65, 0.5);
-    text-decoration: none;
   }
 
   &__username {
