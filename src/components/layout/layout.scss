@@ -22,6 +22,10 @@ $container-width: (1160 / $font-size) + rem;
   &__container {
     max-width: $container-width;
     margin: 0 auto;
+
+    @include media-breakpoint-down($lg) {
+      padding: 0 1.6667rem;
+    }
   }
 
   &__row {

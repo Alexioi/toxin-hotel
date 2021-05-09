@@ -1,5 +1,6 @@
 include ../../components/input/input
 include ../../components/logo/logo
+include ../../components/layout/layout
 
 mixin footer(options)
   if !options
@@ -8,23 +9,31 @@ mixin footer(options)
   -
     var component = {
       aboutText: 'Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»',
-      navs: [
+      navItems: [
         {
           header: 'навигация',
           items: [
-            'О нас', 'Новости', 'Служба поддержки', 'Услуги'
+            {text: 'О нас', link: '/change-it'},
+            {text: 'Новости', link: '/change-it'},
+            {text: 'Служба поддержки', link: '/change-it'},
+            {text: 'Услуги', link: '/change-it'},
           ]
         },
         {
           header: 'о нас',
           items: [
-            'О сервисе', 'Наша команда', 'Вакансии', 'Инвесторы'
+            {text: 'О сервисе', link: '/change-it'}, 
+            {text: 'Наша команда', link: '/change-it'},
+            {text: 'Вакансии', link: '/change-it'},
+            {text: 'Инвесторы', link: '/change-it'},
           ]
         },
         {
           header: 'Служба поддержки',
           items: [
-            'Соглашения', 'Сообщества', 'Связь с нами'
+            {text: 'Соглашения', link: '/change-it'},
+            {text: 'Сообщества', link: '/change-it'},
+            {text: 'Связь с нами', link: '/change-it'},
           ]
         }
       ],
@@ -32,47 +41,46 @@ mixin footer(options)
       subscriptionText: 'Получайте специальные предложения и новости сервиса',
       copyrightText: 'Copyright © 2018 Toxin отель. Все права зачищены.',
       socials: [
-        {link: '#', img: 'twitter'},
-        {link: '#', img: 'facebook'},
-        {link: '#', img: 'instagram'},
+        {link: '/change-it', img: 'twitter'},
+        {link: '/change-it', img: 'facebook'},
+        {link: '/change-it', img: 'instagram'},
       ]
     }
 
-  footer.footer
-    .footer__container
-      .footer__main(class=options.mobile ? 'footer__main_mobile' : '') 
+    var classes = ''
+    classes += options.mobile ? 'footer_mobile' : ''
+
+  .footer(class=classes)
+    +layout__container
+      .footer__main
         .footer__about
           .footer__logo 
             +logo
-          p.footer__about-text(
-            class=options.mobile ? 'footer__about-text_mobile' : ''
-          )= component.aboutText
-        .footer__nav(class=options.mobile ? 'footer__nav_mobile' : '')
-          each nav in component.navs
+          p.footer__text.footer__about-text= component.aboutText
+        .footer__nav
+          each navItem in component.navItems
             .footer__nav-item
-              span.footer__header= nav.header
+              span.footer__header= navItem.header
               ul.footer__list
-                each item in nav.items
+                each item in navItem.items
                   li.footer__list-item
-                    a(href='#').footer__list-link= item
-        .footer__subscription(
-          class=options.mobile ? 'footer__subscription_mobile' : ''
-        )
+                    a.footer__list-link(href=item.link)= item.text
+        form.footer__subscription(method="POST" action="/change-it")
           span.footer__header= component.subscriptionHeader
           p.footer__text= component.subscriptionText
           .footer__input
             +input({
               type: 'subscription'
             })
-    .footer__sub(class=options.mobile ? 'footer__sub_mobile' : '')
-      .footer__sub-container(
-        class=options.mobile ? 'footer__sub-container_mobile' : ''
-      )
-        span.footer__copyright= component.copyrightText
-        .footer__social
-          each social in component.socials
-            a.footer__social-link(href=social.link) 
-              img(
-                src=require(`../../components/footer/img/${social.img}.svg`).default 
-                alt=social.img
-              )
+    .footer__line
+      +layout__container
+        .footer__sub
+          span.footer__text.footer__text-copyright= component.copyrightText
+          .footer__social
+            each social in component.socials
+              a.footer__social-link(href=social.link) 
+                img(
+                  src=require(
+                    `../../components/footer/img/${social.img}.svg`).default 
+                  alt=social.img
+                )
