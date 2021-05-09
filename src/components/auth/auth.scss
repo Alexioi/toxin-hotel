@@ -1,6 +1,20 @@
 @import "../../style/variables.scss";
 
 .auth {
+  &_registration {
+    & .auth__sing-up {
+      display: block;
+    }
+
+    & .auth__sing-in {
+      display: none;
+    }
+  }
+
+  &__sing-up {
+    display: none;
+  }
+
   &__title {
     font-family: Montserrat;
     font-style: normal;
