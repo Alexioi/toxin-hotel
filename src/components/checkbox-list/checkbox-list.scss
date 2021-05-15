@@ -1,6 +1,25 @@
 @import "../../style/variables.scss";
 
 .checkbox-list {
+  width: 100%;
+
+  &_rich {
+    & .checkbox-list__text {
+      font-weight: bold;
+      color: rgba(31, 32, 65, 0.75);
+    }
+  }
+
+  &_closed {
+    & .checkbox-list__list {
+      display: none;
+    }
+
+    & .checkbox-list__button {
+      transform: rotate(0deg);
+    }
+  }
+
   &__header {
     margin-bottom: 17px;
     display: flex;
@@ -9,9 +28,7 @@
   }
 
   &__button {
-    width: 15px;
-    height: 15px;
-    background: no-repeat url('./img/more.svg') center center;
+    transform: rotate(180deg);
     background-color: white;
     border: none;
     cursor: pointer;
@@ -62,11 +79,6 @@
     line-height: 20px;
     color: rgba(31, 32, 65, 0.5);
 
-    &_bold {
-      font-weight: bold;
-      color: rgba(31, 32, 65, 0.75);
-    }
-
     &::before {
       content: "";
       border: 1px solid rgba(31, 32, 65, 0.25);
@@ -84,19 +96,5 @@
     line-height: 14px;
     color: rgba(31, 32, 65, 0.5);
     margin-top: 4px;
-  }
-}
-
-.js-checkbox-list {
-  &__list {
-    &_closed {
-      display: none;
-    }
-  }
-
-  &__button {
-    &_inverted {
-      transform: rotate(180deg);
-    }
   }
 }

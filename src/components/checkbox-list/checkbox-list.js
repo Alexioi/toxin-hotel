@@ -1,11 +1,9 @@
-import './checkbox-list.scss';
-
+import "./checkbox-list.scss";
 
 class CheckboxList {
   constructor(component) {
     this.component = component;
-    this.button = this.component.querySelector(".js-checkbox-list__button");
-    this.list = this.component.querySelector(".js-checkbox-list__list");
+    this.button = this.component.querySelector(".checkbox-list__button");
     this._attachEventHandlers();
   }
 
@@ -16,14 +14,12 @@ class CheckboxList {
   }
 
   _toggleList() {
-    this.list.classList.toggle("js-checkbox-list__list_closed");
-    this.button.classList.toggle("js-checkbox-list__button_inverted");
+    this.component.classList.toggle("checkbox-list_closed");
   }
-
 }
 
 (() => {
-  document.querySelectorAll(".js-checkbox-list").forEach((node) => {
+  document.querySelectorAll(".js-checkbox-list_expanded").forEach((node) => {
     new CheckboxList(node);
   });
 })();

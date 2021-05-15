@@ -1,30 +1,23 @@
 include ../title/title
 
-mixin checkbox-list(options)
-
-  if options.isClosed && options.type === "expanded"
-    - options.isClosed = true
+mixin checkbox-list({title='title', type='', isOpened=false, items=[{text:'example', isChecked: true}]})
 
   -
-    var textClasses = ''
-    textClasses += options.type === "rich" ? 'checkbox-list__text_bold' : ''
-    var checkboxListClasses = ''
-    checkboxListClasses += options.type === "expanded" ? 'js-checkbox-list' : ''
-    var listClasses = ''
-    listClasses += options.isClosed ? 'js-checkbox-list__list_closed' : ''
-    var buttonClasses = ''
-    buttonClasses += options.isClosed ? '' : 'js-checkbox-list__button_inverted'
+    var classes = ''
+    classes += type === 'rich' ? ' checkbox-list_' + type : ''
+    classes += type === 'expanded' ? ' js-checkbox-list_' + type : ''
+    classes += type === 'expanded' && isOpened === false ? ' checkbox-list_closed' : ''
 
-  .checkbox-list(class = checkboxListClasses)
+  .checkbox-list.js-checkbox-list(class = classes)
     .checkbox-list__header
-      +title({text: options.title})
-      if options.type === "expanded"
-        button.checkbox-list__button.js-checkbox-list__button(class = buttonClasses)
-    ul.checkbox-list__list.js-checkbox-list__list(class = listClasses)
-      each item in options.items 
+      +title({text: title})
+      if type === "expanded"
+        button.checkbox-list__button.js-checkbox-list__button.material-icons expand_more
+    ul.checkbox-list__list
+      each item in items 
         li.checkbox-list__item
           label.checkbox-list__label
             input.checkbox-list__input(type="checkbox" checked = item.isChecked)
-            span.checkbox-list__text(class=textClasses)= item.text
-            if options.type === "rich"
+            span.checkbox-list__text= item.text
+            if type === "rich"
               p.checkbox-list__sub-text= item.subText
