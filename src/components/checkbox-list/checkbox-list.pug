@@ -4,8 +4,7 @@ mixin checkbox-list({title='title', type='', isOpened=false, items=[{text:'examp
 
   -
     var classes = ''
-    classes += type === 'rich' ? ' checkbox-list_' + type : ''
-    classes += type === 'expanded' ? ' js-checkbox-list_' + type : ''
+    classes += ' checkbox-list_' + type
     classes += type === 'expanded' && isOpened === false ? ' checkbox-list_closed' : ''
 
   .checkbox-list.js-checkbox-list(class = classes)

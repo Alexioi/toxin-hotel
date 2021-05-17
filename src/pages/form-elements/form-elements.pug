@@ -30,7 +30,6 @@ block main
           +layout__column({gap: 20})
             +text-field({
               title: 'Text Field',
-              hasHint: true,
               hint: "Default",
               placeholder: 'Email',
               type: "email"
@@ -38,20 +37,19 @@ block main
             +text-field({
               isHovered: true,
               title: 'Text Field',
-              hasHint: true,
-              hint: "Default",
+              hint: "Hover / Focus",
               value: "This is pretty awesome",
               placeholder: 'This is pretty awesome',
               type: "text"
-            })
-            +text-field({
-              title: 'masked text field',
-              isMasked: true
             })
             +input({
               titleText: "Text Field",
               hint: "Default",
               type: 'subscription'
+            })
+            +text-field({
+              title: 'masked text field',
+              isMasked: true
             })
         +layout__row
           +layout__column({gap: 40, mt: 40})
@@ -64,7 +62,12 @@ block main
             +layout__row
               +layout__column({gap: 40, mb: 100, basis: 266, grow: '0'})
                 +date-dropdown
-                +date-dropdown
+                +text-field({
+                  title: 'subscription text field',
+                  placeholder: 'Email',
+                  type: "email",
+                  isSubscription: true
+                })
 
       +layout__column({basis: 320, mr: 72, ml: 126})
         +checkbox-list({

@@ -31,7 +31,9 @@ let maskOptions = {
   lazy: false,
 };
 
-let date = document.getElementsByClassName("js-text-field__input");
+let date = document.querySelectorAll(
+  ".js-text-field__input.text-field__input_masked"
+);
 
 if (date.length != 0) {
   for (let i = 0; i < date.length; i++) {

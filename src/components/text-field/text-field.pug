@@ -1,25 +1,23 @@
 include ../label/label
 
-mixin text-field(options)
+mixin text-field({isHovered=false, isMasked=false, title='', hint='', type='text', value='', name='', placeholder='text', isSubscription=false})
 
   -
     var classes = ''
-    classes += options.isHovered ? ' text-field__input_hovered' : '' 
-    classes += options.isMasked ? ' js-text-field__input' : '' 
+    classes += isHovered ? ' text-field__input_hovered' : '' 
+    classes += isMasked ? ' text-field__input_masked' : '' 
   
   .text-field 
-    if options.hasHeader
+    if title != ''
       .text-field__header 
-        +label({text: options.title})
-        if options.hasHint
-           +label({text: options.hint, type: 'hint'})
+        +label({title, hint})
     .text-field__content 
-      input.text-field__input(
+      input.text-field__input.js-text-field__input(
         class=classes
-        type=options.type
-        value=options.value 
-        name=options.name
-        placeholder=options.placeholder
+        type=type
+        value=value 
+        name=name
+        placeholder=placeholder
       )
-      if options.isSubscription === 'subscription'
-        .text-field__subscription-button
+      if isSubscription
+        button.text-field__subscription-button 

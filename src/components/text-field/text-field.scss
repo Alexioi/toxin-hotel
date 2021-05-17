@@ -4,9 +4,6 @@
   width: 100%;
 
   &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-bottom: 5px;
   }
 
@@ -37,5 +34,16 @@
       border: 1px solid rgba(31, 32, 65, 0.5);
       color: rgba(31, 32, 65, 0.75);
     }
+  }
+
+  &__subscription-button {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 44px;
+    border: none;
+    background: no-repeat rgba(0, 0, 0, 0) center center;
+    background-image: url(./img/arrow.svg);
+    cursor: pointer;
   }
 }

@@ -1,6 +1,9 @@
 @import "../../style/variables.scss";
 
 .label {
+  display: flex;
+  justify-content: space-between;
+
   &__title {
     font-family: Montserrat;
     font-style: normal;

@@ -3,7 +3,7 @@ import "./checkbox-list.scss";
 class CheckboxList {
   constructor(component) {
     this.component = component;
-    this.button = this.component.querySelector(".checkbox-list__button");
+    this.button = this.component.querySelector(".js-checkbox-list__button");
     this._attachEventHandlers();
   }
 
@@ -19,7 +19,9 @@ class CheckboxList {
 }
 
 (() => {
-  document.querySelectorAll(".js-checkbox-list_expanded").forEach((node) => {
-    new CheckboxList(node);
-  });
+  document
+    .querySelectorAll(".js-checkbox-list.checkbox-list_expanded")
+    .forEach((node) => {
+      new CheckboxList(node);
+    });
 })();

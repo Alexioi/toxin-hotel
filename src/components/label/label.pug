@@ -1,7 +1,6 @@
-mixin label(options)
- 
-  -
-    var classes = ""
-    classes += options.type === "hint" ?  " label__hint" : " label__title"
+mixin label({title='example', hint=''})
 
-  span(class=classes)= options.text
+  .label 
+    span.label__title= title
+    if hint != ''
+      span.label__hint= hint
