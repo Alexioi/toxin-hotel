@@ -26,50 +26,53 @@ block main
     +layout__row
 
       +layout__column({basis: 320})
-        +layout__row
-          +layout__column({gap: 20})
-            +text-field({
-              title: 'Text Field',
-              hint: "Default",
-              placeholder: 'Email',
-              type: "email"
-            })
-            +text-field({
-              isHovered: true,
-              title: 'Text Field',
-              hint: "Hover / Focus",
-              value: "This is pretty awesome",
-              placeholder: 'This is pretty awesome',
-              type: "text"
-            })
-            +input({
-              titleText: "Text Field",
-              hint: "Default",
-              type: 'subscription'
-            })
-            +text-field({
-              title: 'masked text field',
-              isMasked: true
-            })
-        +layout__row
-          +layout__column({gap: 40, mt: 40})
-            +input({
-              titleText: "Text Field",
-              hint: "Default",
-              type: 'email'
-            })
-            +date-dropdown
-            +layout__row
-              +layout__column({gap: 40, mb: 100, basis: 266, grow: '0'})
-                +date-dropdown
-                +text-field({
-                  title: 'subscription text field',
-                  placeholder: 'Email',
-                  type: "email",
-                  isSubscription: true
-                })
+        +text-field({
+          title: 'Text Field',
+          hint: "Default",
+          placeholder: 'Email',
+          type: "email"
+        })
+        +layout__box({mt: 20})
+          +text-field({
+            isHovered: true,
+            title: 'Text Field',
+            hint: "Hover / Focus",
+            value: "This is pretty awesome",
+            placeholder: 'This is pretty awesome',
+            type: "text"
+          })
+        +layout__box({mt: 20})
+          +input({
+            titleText: "Text Field",
+            hint: "Default",
+            type: 'subscription'
+          })
+        +layout__box({mt: 20})
+          +text-field({
+            title: 'masked text field',
+            isMasked: true
+          })
+        +layout__box({mt: 40})        
+          +input({
+            titleText: "Text Field",
+            hint: "Default",
+            type: 'email'
+          })
+        +layout__box({mt: 40})
+          +date-dropdown
+        +layout__box({mt: 40, width: 266})
+          +date-dropdown
+        +layout__box({mt: 40, mb: 100, width: 266})
+          +text-field({
+            title: 'subscription text field',
+            placeholder: 'Email',
+            type: "email",
+            isSubscription: true
+          })
 
-      +layout__column({basis: 320, mr: 72, ml: 126})
+      +layout__column({basis: 126})
+
+      +layout__column({basis: 320})
         +checkbox-list({
           title: 'Rich Checkbox Buttons',
           items: [
@@ -77,76 +80,96 @@ block main
           {text: "Можно с питомцами", isChecked: true},
           {text: "Можно пригласить гостей (до 10 человек)", isChecked: true},
         ]})
-        +radio-buttons
-        +toggle
-        +toggle({isChecked: true})
-        +like-button({counter: 1, isLiked: true})
-        +like-button({})
-        +layout__row
-          +layout__column({mr: 20, grow: '0'})
-            +rate({quantity: 4})
-          +rate
+        +layout__box({mt: 41})
+          +label({title: 'Radio Buttons'}) 
+        +layout__box({mt: 16})
+          +radio-buttons
+        +layout__box({mt: 37})
+          +label({title: 'Toggle'})
+        +layout__box({mt: 16})
+          +toggle
+        +layout__box({mt: 10})
+          +toggle({isChecked: true})
+        +layout__box({mt: 40})
+          +label({title: 'like button'})
+        +layout__box({mt: 16})
+          +like-button({counter: 1, isLiked: true})
+          +layout__box({ml: 10})
+            +like-button({})
+        +layout__box({mt: 40})
+        +label({title: 'rate button'})
+        +layout__box({mt: 16})
+          +rate({quantity: 4})
+          +layout__box({ml: 20})
+            +rate
 
-      +layout__column({basis: 320})
-        +label({text: 'pagination'})
-        +layout__row
-          +layout__column({gap: 30, mt: 16})
-            +layout__row
-              +layout__column({basis: 99, mr: 20, grow: '0'})
-                +button({
-                  text: 'click me'
-                })
-              +layout__column({basis: 99, grow: '0'})
-                +button({
-                  text: 'click me',
-                  isHovered: true,
-                })
-            +layout__row
-              +layout__column({basis: 99, mr: 20, grow: '0'})
-                +button({
-                  type: 'outline',
-                  text: 'click me'
-                })
-              +layout__column({basis: 99, grow: '0'})
-                +button({
-                  type: 'outline',
-                  isHovered: true,
-                  text: 'click me'
-                })
-            +layout__row
-              +layout__column({mr: 20, grow: '0'})
-                +button({
-                  type: 'link',
-                  text: 'click me'
-                })
-              +layout__column
-                +button({
-                  type: 'link',
-                  text: 'click me',
-                  isHovered: true,
-                })
-            +layout__row 
-              +button({
-                type: 'long',
-                text: 'перейти к оплате',
-              })
-        +pagination 
+      +layout__column({basis: 72})
+
+      +layout__column({basis: 320})  
+        +label({title: 'pagination'}) 
+        +layout__box({mt: 16}) 
+          +layout__box({width: 99}) 
+            +button({
+              text: 'click me'
+            })
+          +layout__box({width: 99, ml: 19}) 
+            +button({
+              text: 'click me',
+              isHovered: true,
+            })
+        +layout__box({mt: 30}) 
+          +layout__box({width: 99}) 
+            +button({
+              type: 'outline',
+              text: 'click me'
+            })
+          +layout__box({width: 99, ml: 20}) 
+            +button({
+              type: 'outline',
+              isHovered: true,
+              text: 'click me'
+            })
+        +layout__box({mt: 31}) 
+          +button({
+            type: 'link',
+            text: 'click me'
+          })
+          +layout__box({ml: 20}) 
+            +button({
+              type: 'link',
+              text: 'click me',
+              isHovered: true,
+            })
+        +layout__box({mt: 30}) 
+          +button({
+            type: 'long',
+            text: 'перейти к оплате',
+          })
+        +layout__box({mt: 40}) 
+          +label({title: 'pagination'})
+        +layout__box({mt: 16}) 
+          +pagination 
 
     +layout__row
 
-      +layout__column({basis: 320})
+      +layout__column({basis: 266})
         +dropdown({type: 'rooms'})
-        +dropdown({type: 'rooms', counters: [5,4,7], isOpened: true})
+        +layout__box({mt: 20, mb: 159}) 
+          +dropdown({type: 'rooms', counters: [5,4,7], isOpened: true})
+
+      +layout__column({basis: 181})
 
       +layout__column({basis: 320, mr: 72, ml: 126})
         +dropdown({type: 'rooms', counters: [5,4,7], isOpened: true})
+      
+      +layout__column({basis: 72})
 
       +layout__column({basis: 320})
         +dropdown({type: 'rooms', counters: [5,4,7], isOpened: true})
 
     +layout__row
 
-      +layout__column({basis: 320})
+      +layout__column({basis: 266})
         +checkbox-list({
           title: 'expandable checkbox list',
           type: 'expanded',
@@ -158,20 +181,23 @@ block main
           {text: "Телевизор"},
           {text: "Шампунь"},
         ]})
-        +checkbox-list({
-          title: 'expandable checkbox list',
-          type: 'expanded',
-          isOpened: true,
-          items: [
-          {text: "Завтрак"},
-          {text: "Письменный стол", isChecked: true},
-          {text: "Стул для кормления", isChecked: true},
-          {text: "Кроватка", isChecked: true},
-          {text: "Телевизор"},
-          {text: "Шампунь"},
-        ]})
+        +layout__box({mt: 35, mb: 102})
+          +checkbox-list({
+            title: 'expandable checkbox list',
+            type: 'expanded',
+            isOpened: true,
+            items: [
+            {text: "Завтрак"},
+            {text: "Письменный стол", isChecked: true},
+            {text: "Стул для кормления", isChecked: true},
+            {text: "Кроватка", isChecked: true},
+            {text: "Телевизор"},
+            {text: "Шампунь"},
+          ]})
 
-      +layout__column({basis: 320, mr: 72, ml: 126})
+      +layout__column({basis: 181})
+
+      +layout__column({basis: 266})
         +checkbox-list({
           title: 'Checkbox Buttons',
           type: 'rich',
@@ -182,7 +208,9 @@ block main
           subText: 'На 1 этаже вас встретит специалист и проводит до номера.'},
         ]})
 
-      +layout__column({basis: 320})
+      +layout__column({basis: 126})
+
+      +layout__column({basis: 292})
         +bullet-list({
           items: ['Нельзя с питомцами', 
           'Без вечеринок и мероприятий', 

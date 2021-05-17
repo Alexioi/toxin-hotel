@@ -30,14 +30,13 @@ $container-width: (1160 / $font-size) + rem;
 
   &__row {
     display: flex;
-    width: 100%;
+    justify-content: space-between;
     align-items: flex-start;
   }
 
   &__column {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     flex: 1 1 auto;
 
     &_grow-0 {
@@ -52,11 +51,21 @@ $container-width: (1160 / $font-size) + rem;
       &_basis-#{$i} {
         flex-basis: ($i / $font-size) + rem;
       }
+    }
+  }
 
-      &_gap-#{$i} {
-        gap: ($i / $font-size) + rem;
+  &__box {
+    display: flex;
+    justify-content: stretch;
+    width: 100%;
+
+    @for $i from 1 to 1000 {
+      &_max-width-#{$i} {
+        max-width: ($i / $font-size) + rem;
       }
+    }
 
+    @for $i from 1 to 1000 {
       &_mt-#{$i} {
         margin-top: ($i / $font-size) + rem;
       }

@@ -31,15 +31,25 @@ mixin layout__column(options)
     classes += options.grow ? ' layout__column_grow-' + options.grow : ''
     classes += options.shrink ? ' layout__column_shrink-' + options.shrink : ''
     classes += options.basis ? ' layout__column_basis-' + options.basis : ''
-    classes += options.gap ? ' layout__column_gap-' + options.gap : ''
-    classes += options.mt ? ' layout__column_mt-' + options.mt : ''
-    classes += options.mr ? ' layout__column_mr-' + options.mr : ''
-    classes += options.mb ? ' layout__column_mb-' + options.mb : ''
-    classes += options.ml ? ' layout__column_ml-' + options.ml : ''
+
+  .layout__column(class= classes)
+    block
+
+mixin layout__box(options)
+  if !options
+    - options = {}
+
+  -
+    var classes = ''
+    classes += options.width ? ' layout__box_max-width-' + options.width : ''
+    classes += options.mt ? ' layout__box_mt-' + options.mt : ''
+    classes += options.mr ? ' layout__box_mr-' + options.mr : ''
+    classes += options.mb ? ' layout__box_mb-' + options.mb : ''
+    classes += options.ml ? ' layout__box_ml-' + options.ml : ''
     classes += options.pt ? ' layout__column_pt-' + options.pt : ''
     classes += options.pr ? ' layout__column_pr-' + options.pr : ''
     classes += options.pb ? ' layout__column_pb-' + options.pb : ''
     classes += options.pl ? ' layout__column_pl-' + options.pl : ''
 
-  .layout__column(class= classes)
+  .layout__box(class= classes)
     block
