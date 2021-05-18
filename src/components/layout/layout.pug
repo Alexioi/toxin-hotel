@@ -46,10 +46,10 @@ mixin layout__box(options)
     classes += options.mr ? ' layout__box_mr-' + options.mr : ''
     classes += options.mb ? ' layout__box_mb-' + options.mb : ''
     classes += options.ml ? ' layout__box_ml-' + options.ml : ''
-    classes += options.pt ? ' layout__column_pt-' + options.pt : ''
-    classes += options.pr ? ' layout__column_pr-' + options.pr : ''
-    classes += options.pb ? ' layout__column_pb-' + options.pb : ''
-    classes += options.pl ? ' layout__column_pl-' + options.pl : ''
+    classes += options.pt ? ' layout__box_pt-' + options.pt : ''
+    classes += options.pr ? ' layout__box_pr-' + options.pr : ''
+    classes += options.pb ? ' layout__box_pb-' + options.pb : ''
+    classes += options.pl ? ' layout__box_pl-' + options.pl : ''
 
   .layout__box(class= classes)
     block

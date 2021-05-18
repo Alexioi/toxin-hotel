@@ -1,0 +1,9 @@
+include ../room-info/room-info
+include ../card/card
+
+mixin room-booking(options)
+  if !options
+    - options = {}
+
+  +card
+    +room-info({})

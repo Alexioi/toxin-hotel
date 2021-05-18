@@ -2,6 +2,7 @@ extends ../../templates/ui-kit
 
 include ../../components/auth/auth
 include ../../components/calendar/calendar
+include ../../components/room-booking/room-booking
 
 block title 
   | Cards
@@ -12,6 +13,7 @@ block main
       +layout__column({basis: 380, grow: '0', gap: 40})
         +auth({isRegistration: true})
       +layout__column({basis: 380, grow: '0', gap: 40})
+        +room-booking
         +auth
       +layout__column({basis: 320, grow: '0', gap: 40})
         +calendar
