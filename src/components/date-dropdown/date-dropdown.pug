@@ -1,6 +1,13 @@
 include ../label/label
 
-mixin date-dropdown({title=["date Dropdown", "date Dropdown"], type='default', value=['', '']})
+mixin date-dropdown(options)
+
+  -
+    const {
+      title=["date Dropdown", "date Dropdown"], 
+      type='default',
+      value=['', '']
+    } = options || {};
 
   .date-dropdown
     if type === 'default'

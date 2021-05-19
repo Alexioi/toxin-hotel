@@ -36,15 +36,15 @@ mixin auth(options)
               type: 'long',
               text: 'войти',
             })
-          +layout__box({mt: 30})
-            +layout__row 
-              span.auth__question Нет аккаунта на Toxin?
-              .auth__button
-                +button({
-                  type: 'outline',
-                  isHovered: true,
-                  text: 'создать'
-                })
+        +layout__box({mt: 30})
+          +layout__row 
+            span.auth__question Нет аккаунта на Toxin?
+            .auth__button
+              +button({
+                type: 'outline',
+                isHovered: true,
+                text: 'создать'
+              })
     
       .auth__sing-up
         form.auth__form(method="POST" action="/change-it") 

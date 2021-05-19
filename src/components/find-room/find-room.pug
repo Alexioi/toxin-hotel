@@ -1,9 +1,21 @@
-//- include ../../components/input/input
+include ../../components/dropdown/dropdown
 include ../../components/date-dropdown/date-dropdown
+include ../../components/layout/layout
+include ../../components/button/button
+include ../../components/card/card
 
 mixin find-room(options)
 
-  .find-room
-    +date-dropdown
-    .find-room__input
-      //- +input({})
+  +card
+    .find-room
+      .find-room__title Найдём номера под ваши пожелания
+      form.find-room__form(method="POST" action="/change-it")
+        +layout__box({mt: 21})
+          +date-dropdown
+        +layout__box({mt: 20, mb: 31})
+          +dropdown({type: 'rooms', counters: [5,4,7], isOpened: true})
+        +button({
+          type: 'long',
+          text: 'подобрать номер',
+        })
+      

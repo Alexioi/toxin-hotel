@@ -3,6 +3,7 @@ extends ../../templates/ui-kit
 include ../../components/auth/auth
 include ../../components/calendar/calendar
 include ../../components/room-booking/room-booking
+include ../../components/find-room/find-room
 
 block title 
   | Cards
@@ -10,10 +11,11 @@ block title
 block main
   +layout__container
     +layout__row 
-      +layout__column({basis: 380, grow: '0', gap: 40})
+      +layout__column({basis: 380, grow: '0'})
+        +find-room
         +auth({isRegistration: true})
-      +layout__column({basis: 380, grow: '0', gap: 40})
+      +layout__column({basis: 380, grow: '0'})
         +room-booking
         +auth
-      +layout__column({basis: 320, grow: '0', gap: 40})
+      +layout__column({basis: 320, grow: '0'})
         +calendar
