@@ -1,4 +1,4 @@
-include ../../components/input/input
+include ../../components/text-field/text-field
 include ../../components/logo/logo
 include ../../components/layout/layout
 
@@ -69,8 +69,10 @@ mixin footer(options)
           span.footer__header= component.subscriptionHeader
           p.footer__text= component.subscriptionText
           .footer__input
-            +input({
-              type: 'subscription'
+            +text-field({
+              placeholder: 'Email',
+              type: "email",
+              isSubscription: true
             })
     .footer__line
       +layout__container

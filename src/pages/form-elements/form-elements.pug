@@ -1,6 +1,5 @@
 extends ../../templates/ui-kit
 
-include ../../components/input/input
 include ../../components/title/title
 include ../../components/icon-text-list/icon-text-list
 include ../../components/button/button
@@ -42,10 +41,11 @@ block main
             type: "text"
           })
         +layout__box({mt: 20})
-          +input({
-            titleText: "Text Field",
+          +text-field({
+            title: 'Text Field',
             hint: "Default",
-            type: 'subscription'
+            placeholder: 'Email',
+            type: "email"
           })
         +layout__box({mt: 20})
           +text-field({
@@ -53,15 +53,9 @@ block main
             isMasked: true
           })
         +layout__box({mt: 40})        
-          +input({
-            titleText: "Text Field",
-            hint: "Default",
-            type: 'email'
-          })
-        +layout__box({mt: 40})
-          +date-dropdown
+          +date-dropdown({})
         +layout__box({mt: 40, width: 266})
-          +date-dropdown
+          +date-dropdown({type: 'filter'})
         +layout__box({mt: 40, mb: 100, width: 266})
           +text-field({
             title: 'subscription text field',

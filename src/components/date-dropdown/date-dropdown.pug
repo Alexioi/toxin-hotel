@@ -1,15 +1,41 @@
-include ../input/input
+include ../label/label
 
-mixin date-dropdown(options)
-  if !options
-    - options = {}
-  
+mixin date-dropdown({title=["date Dropdown", "date Dropdown"], type='default', value=['', '']})
+
   .date-dropdown
-    +input({
-      titleText: "date Dropdown",
-      type: 'date-dropdown'
-    })
-    +input({
-      titleText: "date Dropdown",
-      type: 'date-dropdown'
-    })
+    if type === 'default'
+      .date-dropdown__items 
+        .date-dropdown__item 
+          .date-dropdown__header 
+            +label({title: title[0]})
+          .date-dropdown__content 
+            input.date-dropdown__input.js-date-dropdown__input(
+              value=value[0] 
+              name='date-from'
+              placeholder='дд.мм.гггг'
+              readonly="readonly"
+            )
+            span.date-dropdown__button.material-icons keyboard_arrow_down
+        .date-dropdown__item 
+          .date-dropdown__header 
+            +label({title: title[1]})
+          .date-dropdown__content 
+            input.date-dropdown__input.js-date-dropdown__input(
+              value=value[1] 
+              name='date-to'
+              placeholder='дд.мм.гггг'
+              readonly="readonly"
+            )
+            span.date-dropdown__button.material-icons keyboard_arrow_down
+    if type === 'filter'  
+      .date-dropdown__item 
+          .date-dropdown__header 
+            +label({title: title[0]})
+          .date-dropdown__content 
+            input.date-dropdown__input.js-date-dropdown__input(
+              value=value[0] 
+              name='date-from'
+              placeholder='дд.мм.гггг'
+              readonly="readonly"
+            )
+            span.date-dropdown__button.material-icons keyboard_arrow_down
