@@ -33,12 +33,29 @@ $container-width: (1160 / $font-size) + rem;
     justify-content: space-between;
     align-items: flex-start;
     width: 100%;
+    height: 100%;
+
+    &_justify-center {
+      justify-content: center;
+    }
+
+    &_align-center {
+      align-items: center;
+    }
+
+    &_align-stretch {
+      align-items: stretch;
+    }
   }
 
   &__column {
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;
+
+    &_justify-center {
+      justify-content: center;
+    }
 
     &_grow-0 {
       flex-grow: 0;

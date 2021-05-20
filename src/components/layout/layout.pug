@@ -18,8 +18,16 @@ mixin layout__container
   .layout__container
     block
 
-mixin layout__row
-  .layout__row
+mixin layout__row(options)
+  if !options
+    - options = {}
+
+  -
+    var classes = ''
+    classes += options.justify ? ' layout__row_justify-' + options.justify : ''
+    classes += options.align ? ' layout__row_align-' + options.align : ''
+
+  .layout__row(class= classes)
     block
 
 mixin layout__column(options)
@@ -28,6 +36,7 @@ mixin layout__column(options)
 
   -
     var classes = ''
+    classes += options.justify ? ' layout__row_justify-' + options.justify : ''
     classes += options.grow ? ' layout__column_grow-' + options.grow : ''
     classes += options.shrink ? ' layout__column_shrink-' + options.shrink : ''
     classes += options.basis ? ' layout__column_basis-' + options.basis : ''
@@ -50,6 +59,7 @@ mixin layout__box(options)
     classes += options.pr ? ' layout__box_pr-' + options.pr : ''
     classes += options.pb ? ' layout__box_pb-' + options.pb : ''
     classes += options.pl ? ' layout__box_pl-' + options.pl : ''
+    classes += options.mix ? ' ' + options.mix : ''
 
   .layout__box(class= classes)
     block

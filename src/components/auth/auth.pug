@@ -37,7 +37,7 @@ mixin auth(options)
               text: 'войти',
             })
         +layout__box({mt: 30})
-          +layout__row 
+          +layout__row({align: 'center'})
             span.auth__question Нет аккаунта на Toxin?
             .auth__button
               +button({
@@ -88,7 +88,7 @@ mixin auth(options)
               text: 'перейти к оплате',
             })
         +layout__box({mt: 30})
-          +layout__row
+          +layout__row({align: 'center'})
             span.auth__question Уже есть аккаунт на Toxin
             .auth__button
               +button({

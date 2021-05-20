@@ -10,10 +10,14 @@ html
     title
       block title
   body
-    block header
-      +header
+    +layout
+      +layout__header
+        block header
+          +header
 
-    block main
+      +layout__main
+        block main
 
-    block footer
-      +footer
+      +layout__footer
+        block footer
+          +footer
