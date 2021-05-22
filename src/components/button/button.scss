@@ -1,7 +1,6 @@
 @import "../../style/variables.scss";
 
 .button {
-  width: 100%;
   border: none;
   border-radius: 22px;
   padding: 0.1667rem;
@@ -32,6 +31,7 @@
   }
 
   &_link {
+    padding: 0;
     width: auto;
     padding: 0;
 
@@ -53,7 +53,8 @@
   }
 
   &__wrapper {
-    display: grid;
+    display: inline-grid;
+    padding: 0 21px 0 19px;
     grid-template-columns: 1fr auto 1fr;
     grid-template-areas: ". text arrow";
     justify-content: center;

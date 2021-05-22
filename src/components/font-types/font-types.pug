@@ -1,16 +1,34 @@
-mixin font-types
+mixin font-types(options)
 
   -
-    var items = [
-      {style: 'h1', sample: 'H1', description: 'This one is the sub-section or widget title'},
-      {style: 'h2', sample: 'H2', description: 'Next one is the item title inside widgets'},
-      {style: 'h3', sample: 'H3', description: 'This is a label or CTA text'},
-      {style: 'body', sample: 'Body', description: 'This is the body text which is used for most of the design, like paragraphs, lists, etc.'},
-    ]
+    const {
+      items = [
+        {
+          theme: 'h1', 
+          sample: 'H1', 
+          description: 'This one is the sub-section or widget title'
+        },
+        {
+          theme: 'h2', 
+          sample: 'H2', 
+          description: 'Next one is the item title inside widgets'
+        },
+        {
+          theme: 'h3', 
+          sample: 'H3', 
+          description: 'This is a label or CTA text'
+        },
+        {
+          theme: 'body', 
+          sample: 'Body', 
+          description: 'This is the body text which is used for most of the design, like paragraphs, lists, etc.'
+        },
+      ] 
+    } = options || {}
 
   .font-types
     each item in items
-      .font-types__item
-        span.font-types__sample(class=`font-types__sample_${item.style}`)= item.sample 
-        span.font-types__description(class=`font-types__description_${item.style}`)=item.description
+      .font-types__item(class= `font-types__item_theme-${item.theme}`)
+        span.font-types__sample= item.sample 
+        span.font-types__description=item.description
 

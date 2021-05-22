@@ -3,17 +3,18 @@ include ../../components/layout/layout
 include ../../components/button/button
 
 mixin header(options)
-  if !options
-    - options = {}
 
   -
-    var navItems = [
-      {link: '/change-it', text: 'О нас'}, 
-      {link: '/change-it', text: 'Услуги', hasMore: true},
-      {link: '/change-it', text: 'Вакансии'},
-      {link: '/change-it', text: 'Новости'},
-      {link: '/change-it', text: 'Соглашения', hasMore: true}
-    ]
+    const { 
+      navItems = [
+        {link: '/change-it', text: 'О нас'}, 
+        {link: '/change-it', text: 'Услуги', hasMore: true},
+        {link: '/change-it', text: 'Вакансии'},
+        {link: '/change-it', text: 'Новости'},
+        {link: '/change-it', text: 'Соглашения', hasMore: true}
+      ],
+      username = ''
+    } = options || {}
 
   .header 
     +layout__container
@@ -21,27 +22,25 @@ mixin header(options)
         .header__logo
           +logo
         button.header__burger-button.js-header__burger-button.material-icons menu
-        .header__content
-          ul.header__nav 
-            each navItem in navItems
-              li.header__nav-item
-                a(href=navItem.link).header__nav-link
-                  span.header__nav-text= navItem.text
-                  if navItem.hasMore 
-                    span.material-icons expand_more
-          if options.isLogin 
-            .header__username
-              span.header__username-text= options.username
-          else
-            .header__buttons 
-              +button({
-                type: 'outline',
-                link: '/auth',
-                text: 'войти',
-                size: 'low'
-              })
-              +button({
-                link: '/auth',
-                text: 'зарегистрироваться',
-                size: 'low'
-              })
+        ul.header__nav 
+          each navItem in navItems
+            li.header__nav-item
+              a.header__nav-link(href=navItem.link)
+                span.header__nav-text= navItem.text
+                if navItem.hasMore 
+                  span.material-icons expand_more
+        if username !== ''
+          span.header__username= username
+        else
+          .header__buttons 
+            +button({
+              type: 'outline',
+              link: '/auth',
+              text: 'войти',
+              size: 'low'
+            })
+            +button({
+              link: '/auth',
+              text: 'зарегистрироваться',
+              size: 'low'
+            })

@@ -1,69 +1,72 @@
-@import '../../style/variables.scss';
+@import "../../style/variables.scss";
 
-$sample-width: 37px;
+$sample-width: 3.0833rem;
 
 .font-types {
   display: grid;
-  gap: 51px;
+  gap: 4.25rem;
 
   &__item {
     display: flex;
+
+    &_theme-h1 {
+      & .font-types__sample {
+        font-size: 2rem;
+      }
+      & .font-types__description {
+        font-size: 2rem;
+        line-height: 2.4167rem;
+        max-width: 30.75rem;
+      }
+    }
+
+    &_theme-h2 {
+      & .font-types__sample {
+        font-size: 1.5833rem;
+      }
+      & .font-types__description {
+        font-size: 1.5833rem;
+        line-height: 1.9167rem;
+        max-width: 26rem;
+      }
+    }
+
+    &_theme-h3 {
+      & .font-types__sample {
+        font-size: 1rem;
+      }
+      & .font-types__description {
+        font-size: 1rem;
+        line-height: 1.25rem;
+        text-transform: uppercase;
+      }
+    }
+
+    &_theme-body {
+      & .font-types__sample {
+        font-size: 1.1667rem;
+      }
+      & .font-types__description {
+        font-weight: normal;
+        max-width: 25.0833rem;
+        font-size: 1.1667rem;
+        line-height: 2rem;
+        color: $color-first-75;
+      }
+    }
   }
 
   &__sample {
     display: flex;
     width: $sample-width;
     justify-content: flex-end;
-    margin-right: 30px;
-    color: rgba(31, 32, 65, 0.25);
-
-    &_h1 {
-      font-size: 24px;
-    }
-
-    &_h2 {
-      font-size: 19px;
-    }
-
-    &_h3 {
-      font-size: 12px;
-    }
-
-    &_body {
-      font-size: 14px;
-    }
+    margin-right: 2.5rem;
+    color: $color-first-25;
   }
 
   &__description {
+    font-weight: bold;
     display: block;
-    color: #1F2041;
-
-    &_h1 {
-      font-weight: bold;
-      font-size: 24px;
-      line-height: 29px;
-      max-width: 369px;
-    }
-
-    &_h2 {
-      font-weight: bold;
-      font-size: 19px;
-      line-height: 23px;
-      max-width: 312px;;
-    }
-
-    &_h3 {
-      font-weight: bold;
-      font-size: 12px;
-      line-height: 15px;
-      text-transform: uppercase;
-    }
-
-    &_body {
-      max-width: 301px;
-      font-size: 14px;
-      line-height: 24px;
-      color: rgba(31, 32, 65, 0.75);
-    }
+    color: $color-first;
   }
 }
