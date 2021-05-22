@@ -14,14 +14,12 @@ class CheckboxList {
   }
 
   _toggleList() {
-    this.component.classList.toggle("checkbox-list_closed");
+    this.component.classList.toggle("checkbox-list_opened");
   }
 }
 
 (() => {
-  document
-    .querySelectorAll(".js-checkbox-list.checkbox-list_expanded")
-    .forEach((node) => {
-      new CheckboxList(node);
-    });
+  document.querySelectorAll(".js-checkbox-list").forEach((node) => {
+    new CheckboxList(node);
+  });
 })();

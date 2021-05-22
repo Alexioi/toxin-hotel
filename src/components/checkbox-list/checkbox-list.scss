@@ -6,37 +6,43 @@
   &_rich {
     & .checkbox-list__text {
       font-weight: bold;
-      color: rgba(31, 32, 65, 0.75);
+      color: $color-first-75;
     }
   }
 
-  &_closed {
+  &_expanded {
     & .checkbox-list__list {
       display: none;
     }
+  }
+
+  &_opened {
+    & .checkbox-list__list {
+      display: grid;
+    }
 
     & .checkbox-list__button {
-      transform: rotate(0deg);
+      transform: rotate(180deg);
     }
   }
 
   &__header {
-    margin-bottom: 17px;
+    margin-bottom: 1.3333rem;
     display: flex;
     justify-content: space-between;
-    align-items: center;
   }
 
   &__button {
-    transform: rotate(180deg);
     background-color: white;
     border: none;
     cursor: pointer;
+    line-height: 15px;
+    color: $color-first-50;
   }
 
   &__list {
     display: grid;
-    gap: 10px;
+    gap: 0.8333rem;
   }
 
   &__item {
@@ -44,7 +50,7 @@
   }
 
   &__label {
-    padding-left: 30px;
+    padding-left: 2.5rem;
     position: relative;
     display: block;
     cursor: pointer;
@@ -56,34 +62,34 @@
 
     &:checked + .checkbox-list__text {
       &::before {
-        border-color: #bc9cff;
+        border-color: $color-second;
       }
 
       &::after {
         content: "";
-        border-bottom: 2px solid #bc9cff;
-        border-right: 2px solid #bc9cff;
+        border-bottom: 2px solid $color-second;
+        border-right: 2px solid $color-second;
         transform: rotate(45deg);
-        width: 4px;
-        height: 6px;
+        width: 0.3333rem;
+        height: 0.5rem;
         position: absolute;
         display: block;
-        top: 4px;
-        left: 7px;
+        top: 0.4167rem;
+        left: 0.6667rem;
       }
     }
   }
 
   &__text {
-    font-size: 14px;
-    line-height: 20px;
-    color: rgba(31, 32, 65, 0.5);
+    font-size: 1.1667rem;
+    line-height: 1.6667rem;
+    color: $color-first-50;
 
     &::before {
       content: "";
-      border: 1px solid rgba(31, 32, 65, 0.25);
-      width: 18px;
-      height: 18px;
+      border: 1px solid $color-first-25;
+      width: 1.5rem;
+      height: 1.5rem;
       position: absolute;
       display: block;
       border-radius: 4px;
@@ -92,9 +98,9 @@
   }
 
   &__sub-text {
-    font-size: 12px;
-    line-height: 14px;
-    color: rgba(31, 32, 65, 0.5);
-    margin-top: 4px;
+    font-size: 1rem;
+    line-height: 1.1667rem;
+    color: $color-first-50;
+    margin-top: 0.3333rem;
   }
 }

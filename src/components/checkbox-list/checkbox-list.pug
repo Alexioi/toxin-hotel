@@ -1,15 +1,31 @@
-include ../title/title
+include ../label/label
 
-mixin checkbox-list({title='title', type='', isOpened=false, items=[{text:'example', isChecked: true}]})
+mixin checkbox-list(options)
+
+  - 
+      const { 
+        title='title', 
+        type='default', 
+        isOpened=false,
+        items= [
+          {text: "Завтрак"},
+          {text: "Письменный стол", isChecked: true},
+          {text: "Стул для кормления", isChecked: true},
+          {text: "Кроватка", isChecked: true},
+          {text: "Телевизор"},
+          {text: "Шампунь"},
+        ],
+      } = options || {}
 
   -
     var classes = ''
-    classes += ' checkbox-list_' + type
-    classes += type === 'expanded' && isOpened === false ? ' checkbox-list_closed' : ''
+    classes += type != 'default' ? ' checkbox-list_' + type : ''
+    classes += type === 'expanded' ? ' js-checkbox-list' : ''
+    classes += type === 'expanded' && isOpened ? ' checkbox-list_opened' : ''
 
-  .checkbox-list.js-checkbox-list(class = classes)
+  .checkbox-list(class = classes)
     .checkbox-list__header
-      +title({text: title})
+      +label({title})
       if type === "expanded"
         button.checkbox-list__button.js-checkbox-list__button.material-icons expand_more
     ul.checkbox-list__list

@@ -103,35 +103,28 @@ block main
         +label({title: 'pagination'}) 
         +layout__box({mt: 16}) 
           +layout__box({width: 99}) 
-            +button({
-              text: 'click me'
-            })
+            +button
           +layout__box({width: 99, ml: 19}) 
             +button({
-              text: 'click me',
               isHovered: true,
             })
         +layout__box({mt: 30}) 
           +layout__box({width: 99}) 
             +button({
               type: 'outline',
-              text: 'click me'
             })
           +layout__box({width: 99, ml: 20}) 
             +button({
               type: 'outline',
               isHovered: true,
-              text: 'click me'
             })
         +layout__box({mt: 31}) 
           +button({
             type: 'link',
-            text: 'click me'
           })
           +layout__box({ml: 20}) 
             +button({
               type: 'link',
-              text: 'click me',
               isHovered: true,
             })
         +layout__box({mt: 30}) 
@@ -167,27 +160,13 @@ block main
         +checkbox-list({
           title: 'expandable checkbox list',
           type: 'expanded',
-          items: [
-          {text: "Завтрак"},
-          {text: "Письменный стол", isChecked: true},
-          {text: "Стул для кормления", isChecked: true},
-          {text: "Кроватка", isChecked: true},
-          {text: "Телевизор"},
-          {text: "Шампунь"},
-        ]})
+          })
         +layout__box({mt: 35, mb: 102})
           +checkbox-list({
             title: 'expandable checkbox list',
             type: 'expanded',
             isOpened: true,
-            items: [
-            {text: "Завтрак"},
-            {text: "Письменный стол", isChecked: true},
-            {text: "Стул для кормления", isChecked: true},
-            {text: "Кроватка", isChecked: true},
-            {text: "Телевизор"},
-            {text: "Шампунь"},
-          ]})
+            })
 
       +layout__column({basis: 181})
 
@@ -205,11 +184,7 @@ block main
       +layout__column({basis: 126})
 
       +layout__column({basis: 292})
-        +bullet-list({
-          items: ['Нельзя с питомцами', 
-          'Без вечеринок и мероприятий', 
-          'Время прибытия — после 13:00, а выезд до 12:00'],
-        })
+        +bullet-list
 
     +layout__row
 
@@ -222,10 +197,4 @@ block main
         )
 
       +layout__column({basis: 711, grow: '0'})
-        +comment({
-          authorName: 'Мурад Сарафанов',
-          date: '5 дней назад',
-          counter: 12,
-          isLiked: true,
-          text: 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',
-        })
+        +comment

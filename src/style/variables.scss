@@ -7,13 +7,13 @@ $lg: 1200px;
 $xl: 1440px;
 
 // Color
-$color-first: #1f2041;
-$color-first-75: rgba(31, 32, 65, 0.75);
-$color-first-50: rgba(31, 32, 65, 0.5);
-$color-first-25: rgba(31, 32, 65, 0.25);
-$color-first-5: rgba(31, 32, 65, 0.05);
-$color-second: #bc9cff;
-$color-third: #6fcf97;
+$color-first: rgb(31, 32, 65);
+$color-first-75: rgba($color-first, 0.75);
+$color-first-50: rgba($color-first, 0.5);
+$color-first-25: rgba($color-first, 0.25);
+$color-first-5: rgba($color-first, 0.05);
+$color-second: rgb(188, 156, 255);
+$color-third: rgb(111, 207, 151);
 
 // Font
 

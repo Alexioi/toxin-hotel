@@ -1,41 +1,41 @@
-@import '../../style/variables.scss';
+@import "../../style/variables.scss";
 
 .comment {
-	display: grid;
-	grid-template-areas: 
-		'img         header'
-		'like-button text';
-  gap: 10px;
-  font-size: 14px;
-  line-height: 24px;
-  color: rgba(31, 32, 65, 0.75);
+  display: grid;
+  grid-template-areas:
+    "img         header"
+    "like-button text";
+  gap: 0.8333rem;
+  font-size: 1.1667rem;
+  line-height: 2rem;
+  color: $color-first-75;
 
-	&__img {
-		grid-area: img;
-    width: 48px;
-    height: 48px;
-    border: 2px solid #FFFFFF;
+  &__img {
+    grid-area: img;
+    width: 4rem;
+    height: 4rem;
+    border: 2px solid #ffffff;
     filter: drop-shadow(0px 10px 20px rgba(31, 32, 65, 0.1));
     border-radius: 32px;
-	}
+  }
 
   &__header {
-		grid-area: header;  
+    grid-area: header;
     display: flex;
-    flex-direction: column; 
-	}
+    flex-direction: column;
+  }
 
   &__author-name {
     font-weight: bold;
   }
 
-	&__like-button {
-		grid-area: like-button;
-    padding-top: 2px;
+  &__like-button {
+    grid-area: like-button;
+    padding-top: 0.1667rem;
     margin: 0 auto;
-	}
+  }
 
   &__text {
-		grid-area: text;
-	}
+    grid-area: text;
+  }
 }

@@ -1,15 +1,26 @@
 include ../like-button/like-button
 
 mixin comment(options)
-  if !options
-    - options = {}
+  
+  -
+    const {
+      authorName = 'Мурад Сарафанов',
+      image = 'murad',
+      date = '5 дней назад',
+      counter = 12,
+      isLiked = true,
+      text = 'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',
+    } = options || {}
 
   .comment 
-    img.comment__img(src=require(`../../components/comment/img/murad.png`).default alt='Фото автора')
+    img.comment__img(
+      src = require(`../../components/comment/img/${image}.png`).default 
+      alt = `Фото автора ${authorName}`
+    )
     .comment__header 
-      span.comment__author-name= options.authorName
-      span.comment__date= options.date
+      span.comment__author-name= authorName
+      span.comment__date= date
     .comment__like-button
-      +like-button({counter: options.counter, isLiked: options.isLiked})
-    p.comment__text= options.text
+      +like-button({counter, isLiked})
+    p.comment__text= text
     

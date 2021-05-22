@@ -1,8 +1,12 @@
-//-
-  options.items - массив элементов списка
-
 mixin bullet-list(options)
 
+  -
+    const {
+      items = ['Нельзя с питомцами', 
+          'Без вечеринок и мероприятий', 
+          'Время прибытия — после 13:00, а выезд до 12:00']
+    } = options || {}
+
   ul.bullet-list
-    each item in options.items 
+    each item in items 
       li.bullet-list__item= item
