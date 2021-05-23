@@ -51,7 +51,7 @@ mixin footer(options)
     classes += options.mobile ? 'footer_mobile' : ''
 
   .footer(class=classes)
-    +layout__container
+    +layout__box({isContainer: true})
       .footer__main
         .footer__about
           .footer__logo 
@@ -75,7 +75,7 @@ mixin footer(options)
               isSubscription: true
             })
     .footer__line
-      +layout__container
+      +layout__box({isContainer: true})
         .footer__sub
           span.footer__text.footer__text-copyright= component.copyrightText
           .footer__social

@@ -17,7 +17,6 @@ html
     meta(name='viewport', content="initial-scale=1.0, width=device-width")
     title Toxin
   body
-    +layout__container
-      +layout__column({mt: 100, gap: 10})
-        each link in links
-          a(href=link.link)= link.text
+    +layout__box({direction: 'column',mix: 'p-index'})
+      each link in links
+        a(href=link.link)= link.text

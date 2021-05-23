@@ -4,6 +4,7 @@ $sample-width: 3.0833rem;
 
 .font-types {
   display: grid;
+  align-self: start;
   gap: 4.25rem;
 
   &__item {

@@ -3,12 +3,21 @@ extends ../../templates/ui-kit
 include ../../components/header/header
 include ../../components/footer/footer
 
+block var
+  -
+    var withThemeGray = true
+
 block title 
   | Headers and footers
 
 block main
-  +layout__column({gap: 40})
-    +header 
-    +header({username: 'Юлий Цезарь'})
-    +footer
-    +footer({mobile: true})
+  +layout__box({direction: 'column', grow: 1})
+    +layout__box({mt: 40})
+      +header 
+    +layout__box({mt: 40})
+      +header({username: 'Юлий Цезарь'})
+    +layout__box({mt: 40})
+      +footer
+    +layout__box({mt: 40, mb: 140})
+      +layout__box({basis: 768, shrink: '0', align: 'center'})
+        +footer({mobile: true})

@@ -7,6 +7,9 @@ block title
   | Colors and type
 
 block main
-  .color-and-type
-    +palette
-    +font-types
+  +layout__box({isContainer: true, grow: 1, pt: 5, pb: 145})
+    +layout__box
+      +layout__box({pl: 10})
+        +palette
+      +layout__box({align: 'right', pr: 17})
+        +font-types

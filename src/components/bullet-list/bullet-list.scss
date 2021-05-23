@@ -2,6 +2,7 @@
 
 .bullet-list {
   display: grid;
+  align-self: start;
   gap: 0.8333rem;
 
   &__item {

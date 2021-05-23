@@ -5,6 +5,7 @@
   grid-template-areas:
     "img         header"
     "like-button text";
+  align-self: start;
   gap: 0.8333rem;
   font-size: 1.1667rem;
   line-height: 2rem;

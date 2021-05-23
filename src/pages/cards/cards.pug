@@ -5,17 +5,23 @@ include ../../components/calendar/calendar
 include ../../components/room-booking/room-booking
 include ../../components/find-room/find-room
 
+block var
+  -
+    var withThemeGray = true
+
 block title 
   | Cards
 
 block main
-  +layout__container
-    +layout__row 
-      +layout__column({basis: 380, grow: '0'})
+  +layout__box({isContainer:true})
+    +layout__box({pt: 10})
+      +layout__box({basis: 380, direction: 'column'})
         +find-room
-        +auth({isRegistration: true})
-      +layout__column({basis: 380, grow: '0'})
+        +layout__box({mt: 40, pb: 200})
+          +auth({isRegistration: true})
+      +layout__box({basis: 380, direction: 'column', mr: 40, ml: 40})
         +room-booking
-        +auth
-      +layout__column({basis: 320, grow: '0'})
+        +layout__box({mt: 40})
+          +auth
+      +layout__box({basis: 320, direction: 'column'})
         +calendar

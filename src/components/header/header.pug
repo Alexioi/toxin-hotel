@@ -17,7 +17,7 @@ mixin header(options)
     } = options || {}
 
   .header 
-    +layout__container
+    +layout__box({isContainer: true})
       .header__wrapper
         .header__logo
           +logo

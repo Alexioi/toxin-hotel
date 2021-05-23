@@ -6,6 +6,10 @@
     display: flex;
     padding: 20px 0;
     border-bottom: solid 1px rgba(31, 32, 65, 0.1);
+
+    &:first-child {
+      padding-top: 0;
+    }
   }
 
   &__img {

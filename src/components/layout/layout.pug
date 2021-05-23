@@ -18,48 +18,44 @@ mixin layout__container
   .layout__container
     block
 
-mixin layout__row(options)
-  if !options
-    - options = {}
-
-  -
-    var classes = ''
-    classes += options.justify ? ' layout__row_justify-' + options.justify : ''
-    classes += options.align ? ' layout__row_align-' + options.align : ''
-
-  .layout__row(class= classes)
-    block
-
-mixin layout__column(options)
-  if !options
-    - options = {}
-
-  -
-    var classes = ''
-    classes += options.justify ? ' layout__row_justify-' + options.justify : ''
-    classes += options.grow ? ' layout__column_grow-' + options.grow : ''
-    classes += options.shrink ? ' layout__column_shrink-' + options.shrink : ''
-    classes += options.basis ? ' layout__column_basis-' + options.basis : ''
-
-  .layout__column(class= classes)
-    block
-
 mixin layout__box(options)
-  if !options
-    - options = {}
+  
+  -
+    const {
+      isContainer,
+      align,
+      grow,
+      shrink,
+      basis,
+      direction,
+      mt,
+      mr,
+      mb,
+      ml,
+      pt,
+      pr,
+      pb,
+      pl,
+      mix
+    } = options || {}
 
   -
     var classes = ''
-    classes += options.width ? ' layout__box_max-width-' + options.width : ''
-    classes += options.mt ? ' layout__box_mt-' + options.mt : ''
-    classes += options.mr ? ' layout__box_mr-' + options.mr : ''
-    classes += options.mb ? ' layout__box_mb-' + options.mb : ''
-    classes += options.ml ? ' layout__box_ml-' + options.ml : ''
-    classes += options.pt ? ' layout__box_pt-' + options.pt : ''
-    classes += options.pr ? ' layout__box_pr-' + options.pr : ''
-    classes += options.pb ? ' layout__box_pb-' + options.pb : ''
-    classes += options.pl ? ' layout__box_pl-' + options.pl : ''
-    classes += options.mix ? ' ' + options.mix : ''
+    classes += isContainer ? ' layout__box_container' : ''
+    classes += align ? ' layout__box_align-' + align : ''
+    classes += basis ? ' layout__box_basis-' + basis : ''
+    classes += grow ? ' layout__box_grow-' + grow : ''
+    classes += shrink ? ' layout__box_shrink-' + shrink : ''
+    classes += direction ? ' layout__box_' + direction : ''
+    classes += mt ? ' layout__box_mt-' + mt : ''
+    classes += mr ? ' layout__box_mr-' + mr : ''
+    classes += mb ? ' layout__box_mb-' + mb : ''
+    classes += ml ? ' layout__box_ml-' + ml : ''
+    classes += pt ? ' layout__box_pt-' + pt : ''
+    classes += pr ? ' layout__box_pr-' + pr : ''
+    classes += pb ? ' layout__box_pb-' + pb : ''
+    classes += pl ? ' layout__box_pl-' + pl : ''
+    classes += mix ? ' ' + mix : ''
 
   .layout__box(class= classes)
     block

@@ -6,8 +6,7 @@ block title
   | Landing page
 
 block main
-  +layout__box({pt: 19, pb: 19, mix: 'p-registration-and-sing-in__background'})
-    +layout__container 
-      +layout__row
-        +layout__column({basis: 380, grow: '0'})
-          +find-room
+  +layout__box({pt: 19, pb: 19, mix: 'p-registration-and-sing-in__background', grow: 1})
+    +layout__container({isContainer: true})
+      +layout__box
+        +find-room

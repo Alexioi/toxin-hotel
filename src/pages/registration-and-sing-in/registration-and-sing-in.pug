@@ -6,8 +6,6 @@ block title
   | Registration and sing-in 
 
 block main
-  +layout__box({pt: 19, pb: 19, mix: 'p-registration-and-sing-in__background'})
-    +layout__container 
-      +layout__row({justify: 'center', align: 'stretch'})
-        +layout__column({basis: 380, shrink: '0', justify: 'center'})
-          +auth
+  +layout__box({pt: 19, pb: 19, mix: 'p-registration-and-sing-in__background', grow: 1})
+    +layout__box({basis: 380, align: 'center'})
+      +auth

@@ -20,11 +20,11 @@ block title
   | Form elements
 
 block main
-  +layout__container
+  +layout__box({isContainer: true})
 
-    +layout__row
+    +layout__box
 
-      +layout__column({basis: 320})
+      +layout__box({basis: 320, direction: 'column'})
         +text-field({
           title: 'Text Field',
           hint: "Default",
@@ -47,26 +47,26 @@ block main
             placeholder: 'Email',
             type: "email"
           })
-        +layout__box({mt: 20})
+        +layout__box({mt: 22})
           +text-field({
             title: 'masked text field',
             isMasked: true
           })
         +layout__box({mt: 40})        
           +date-dropdown()
-        +layout__box({mt: 40, width: 266})
-          +date-dropdown({type: 'filter'})
-        +layout__box({mt: 40, mb: 100, width: 266})
-          +text-field({
-            title: 'subscription text field',
-            placeholder: 'Email',
-            type: "email",
-            isSubscription: true
-          })
+        +layout__box({mt: 40})
+          +layout__box({basis: 266})
+            +date-dropdown({type: 'filter'})
+        +layout__box({mt: 40, mb: 100})
+          +layout__box({basis: 266})
+            +text-field({
+              title: 'subscription text field',
+              placeholder: 'Email',
+              type: "email",
+              isSubscription: true
+            })
 
-      +layout__column({basis: 126})
-
-      +layout__column({basis: 320})
+      +layout__box({basis: 260, direction: 'column', mr: 132, ml: 126})
         +checkbox-list({
           title: 'Rich Checkbox Buttons',
           items: [
@@ -97,14 +97,11 @@ block main
           +layout__box({ml: 20})
             +rate
 
-      +layout__column({basis: 72})
-
-      +layout__column({basis: 320})  
-        +label({title: 'pagination'}) 
+      +layout__box({basis: 320, direction: 'column'})  
+        +label({title: 'buttons'}) 
         +layout__box({mt: 16}) 
-          +layout__box({width: 99}) 
-            +button
-          +layout__box({width: 99, ml: 19}) 
+          +button
+          +layout__box({ml: 19}) 
             +button({
               isHovered: true,
             })
@@ -113,7 +110,7 @@ block main
             +button({
               type: 'outline',
             })
-          +layout__box({width: 99, ml: 20}) 
+          +layout__box({ml: 20}) 
             +button({
               type: 'outline',
               isHovered: true,
@@ -137,26 +134,22 @@ block main
         +layout__box({mt: 16}) 
           +pagination 
 
-    +layout__row
+    +layout__box
 
-      +layout__column({basis: 266})
+      +layout__box({basis: 266, direction: 'column'})
         +dropdown({type: 'rooms'})
         +layout__box({mt: 20, mb: 159}) 
           +dropdown({type: 'rooms', counters: [5,4,7], isOpened: true})
 
-      +layout__column({basis: 181})
-
-      +layout__column({basis: 320, mr: 72, ml: 126})
-        +dropdown({type: 'rooms', counters: [5,4,7], isOpened: true})
-      
-      +layout__column({basis: 72})
-
-      +layout__column({basis: 320})
+      +layout__box({basis: 320, mr: 72, ml: 181})
         +dropdown({type: 'rooms', counters: [5,4,7], isOpened: true})
 
-    +layout__row
+      +layout__box({basis: 320, direction: 'column'})
+        +dropdown({type: 'rooms', counters: [5,4,7], isOpened: true})
 
-      +layout__column({basis: 266})
+    +layout__box
+
+      +layout__box({basis: 266, direction: 'column'})
         +checkbox-list({
           title: 'expandable checkbox list',
           type: 'expanded',
@@ -168,9 +161,7 @@ block main
             isOpened: true,
             })
 
-      +layout__column({basis: 181})
-
-      +layout__column({basis: 266})
+      +layout__box({basis: 266, direction: 'column', ml: 180, mr: 126})
         +checkbox-list({
           title: 'Checkbox Buttons',
           type: 'rich',
@@ -181,14 +172,12 @@ block main
           subText: 'На 1 этаже вас встретит специалист и проводит до номера.'},
         ]})
 
-      +layout__column({basis: 126})
-
-      +layout__column({basis: 292})
+      +layout__box({basis: 292, direction: 'column'})
         +bullet-list
 
-    +layout__row
+    +layout__box
 
-      +layout__column({basis: 280, grow: '0'})
+      +layout__box({basis: 280, pb: 131})
         +icon-text-list(
           {items: [  
           {img: "smile", title: "Комфорт", text: "Шумопоглощающие стены"},
@@ -196,5 +185,5 @@ block main
         ]}
         )
 
-      +layout__column({basis: 711, grow: '0'})
+      +layout__box({basis: 712, align: 'right', pt: 10})
         +comment

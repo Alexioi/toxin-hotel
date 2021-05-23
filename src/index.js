@@ -1,4 +1,5 @@
 import "./style/main.scss";
+import "./templates/ui-kit.scss";
 
 function requireAll(requireContext) {
   return requireContext.keys().map(requireContext);
