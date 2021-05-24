@@ -1,15 +1,25 @@
 @import "../../style/variables.scss";
 
 .dropdown {
+  position: relative;
   width: 100%;
   background: #ffffff;
-  font-family: Montserrat;
-  font-style: normal;
   font-weight: bold;
-  font-size: 12px;
   line-height: 15px;
   text-transform: uppercase;
   color: #1f2041;
+
+  &_opened {
+    & .dropdown__input {
+      border-color: rgba(31, 32, 65, 0.5);
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    & .dropdown__list {
+      display: block;
+    }
+  }
 
   &__text-field {
     position: relative;
@@ -27,6 +37,12 @@
     color: rgba(31, 32, 65, 0.75);
     cursor: pointer;
     padding: 0 44px 0 15px;
+
+    &:hover,
+    &:focus {
+      border-color: rgba(31, 32, 65, 0.5);
+      outline: none;
+    }
   }
 
   &__toggle-button {
@@ -40,6 +56,10 @@
   }
 
   &__list {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    background-color: white;
     padding: 7px 7px 0 15px;
     border: 1px solid rgba(31, 32, 65, 0.5);
     border-top: none;
@@ -51,15 +71,22 @@
     list-style: none;
     margin-bottom: 7px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  &__item-name {
+    margin-right: auto;
   }
 
   &__counter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: block;
+    width: 32px;
+    text-align: center;
+    flex-shrink: 0;
 
     &-button {
+      flex-shrink: 0;
       border: 1px solid rgba(31, 32, 65, 0.25);
       background: white;
       width: 30px;
@@ -71,22 +98,10 @@
       font-size: 18px;
       line-height: 22px;
       color: rgba(31, 32, 65, 0.5);
+
+      &_disabled {
+        opacity: 0.38;
+      }
     }
-
-    &-value {
-      display: block;
-      width: 32px;
-      text-align: center;
-    }
-  }
-}
-
-.js-dropdown {
-  &__list_open {
-    display: block;
-  }
-
-  &__counter-button_disabled {
-    opacity: 0.38;
   }
 }

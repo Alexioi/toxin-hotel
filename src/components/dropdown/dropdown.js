@@ -4,16 +4,12 @@ class Dropdown {
   constructor(component) {
     this.component = component;
     this.textField = this.component.querySelector(".js-dropdown__text-field");
-    this.list = this.component.querySelector(".js-dropdown__list");
     this.input = this.component.querySelector(".js-dropdown__input");
-    this.buttonMinus = this.component.querySelectorAll(
-      ".js-dropdown__counter-button-minus"
+    this.buttons = this.component.querySelectorAll(
+      ".js-dropdown__counter-button"
     );
     this.counterValue = this.component.querySelectorAll(
-      ".js-dropdown__counter-value"
-    );
-    this.buttonPlus = this.component.querySelectorAll(
-      ".js-dropdown__counter-button-plus"
+      ".js-dropdown__counter"
     );
     this.itemName = this.component.querySelectorAll(".js-dropdown__item-name");
     this._attachEventHandlers();
@@ -22,27 +18,37 @@ class Dropdown {
 
   _attachEventHandlers() {
     this.textField.addEventListener("click", () => this._toggleDropdownList());
-    this.buttonMinus.forEach((node, index) => {
-      node.addEventListener("click", () => this._reduceCounter(index));
-    });
-    this.buttonPlus.forEach((node, index) => {
-      node.addEventListener("click", () => this._increaseCounter(index));
+    this.buttons.forEach((node) => {
+      if (node.dataset.type === "minus") {
+        node.addEventListener("click", () => this._reduceCounter());
+      } else if (node.dataset.type === "plus") {
+        node.addEventListener("click", () => this._increaseCounter());
+      }
     });
   }
 
   _toggleDropdownList() {
-    this.list.classList.toggle("js-dropdown__list_open");
+    this.component.classList.toggle("dropdown_opened");
   }
 
-  _reduceCounter(index) {
-    if (this.counterValue[index].innerHTML !== "0") {
-      this.counterValue[index].innerHTML--;
+  _reduceCounter() {
+    let index = event.target.dataset.index;
+    let counterValue = this.counterValue[index];
+
+    if (this._isCounterZero(index)) {
+      counterValue.innerHTML--;
     }
     this._disableCounterButton(index);
   }
 
-  _increaseCounter(index) {
+  _increaseCounter() {
+    let index = event.target.dataset.index;
     this.counterValue[index].innerHTML++;
+    this._disableCounterButton(index);
+  }
+
+  _isCounterZero(index) {
+    return this.counterValue[index].innerHTML !== "0";
   }
 
   _addInputValue() {
@@ -57,26 +63,37 @@ class Dropdown {
   }
 
   _disableCounterButton(index) {
-    if (this.counterValue[index].innerHTML === "0") {
-      this.buttonMinus[index].classList.add("js-dropdown__counter-button_disabled");
+    let minus = this.component.querySelectorAll("[data-type='minus']");
+    if (this.counterValue[index].innerHTML !== "0") {
+      minus[index].classList.remove("dropdown__counter-button_disabled");
+    } else {
+      minus[index].classList.add("dropdown__counter-button_disabled");
     }
   }
 }
 
 class DropdownRooms extends Dropdown {
-  _reduceCounter(index) {
-    super._reduceCounter(index);
+  _reduceCounter() {
+    super._reduceCounter();
     super._addInputValue();
   }
 
-  _increaseCounter(index) {
-    super._increaseCounter(index);
+  _increaseCounter() {
+    super._increaseCounter();
     super._addInputValue();
   }
 }
 
+class DropdownGuests extends Dropdown {}
+
 (() => {
-  document.querySelectorAll(".js-dropdown_rooms").forEach((node) => {
+  document.querySelectorAll(".js-dropdown.dropdown_rooms").forEach((node) => {
     new DropdownRooms(node);
+  });
+})();
+
+(() => {
+  document.querySelectorAll(".js-dropdown.dropdown_guests").forEach((node) => {
+    new DropdownGuests(node);
   });
 })();
