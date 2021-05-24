@@ -42,6 +42,7 @@ mixin layout__box(options)
   -
     var classes = ''
     classes += isContainer ? ' layout__box_container' : ''
+    classes += isBlock ? ' layout__box_block' : ''
     classes += align ? ' layout__box_align-' + align : ''
     classes += basis ? ' layout__box_basis-' + basis : ''
     classes += grow ? ' layout__box_grow-' + grow : ''

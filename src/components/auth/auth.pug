@@ -36,14 +36,13 @@ mixin auth(options)
               text: 'войти',
             })
         +layout__box({mt: 30})
-          +layout__box({align: 'center'})
-            span.auth__question Нет аккаунта на Toxin?
-            .auth__button
-              +button({
-                type: 'outline',
-                isHovered: true,
-                text: 'создать'
-              })
+          p.auth__question Нет аккаунта на Toxin?
+          .auth__button
+            +button({
+              type: 'outline',
+              isHovered: true,
+              text: 'создать'
+            })
     
       .auth__sing-up
         form.auth__form(method="POST" action="/change-it") 
@@ -87,12 +86,11 @@ mixin auth(options)
               text: 'перейти к оплате',
             })
         +layout__box({mt: 30})
-          +layout__box({align: 'center'})
-            span.auth__question Уже есть аккаунт на Toxin
-            .auth__button
-              +button({
-                type: 'outline',
-                isHovered: true,
-                text: 'войти'
-              })
+          p.auth__question Уже есть аккаунт на Toxin
+          .auth__button
+            +button({
+              type: 'outline',
+              isHovered: true,
+              text: 'войти'
+            })
       

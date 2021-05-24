@@ -8,5 +8,13 @@
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
+
+    @include media-breakpoint-down($sm) {
+      min-height: 0;
+    }
+  }
+
+  &__auth {
+    margin: auto;
   }
 }

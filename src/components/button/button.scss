@@ -39,6 +39,10 @@
       background: white;
     }
 
+    & .button__wrapper {
+      padding: 0;
+    }
+
     & .button__text {
       color: $color-second;
       line-height: 1.25rem;
@@ -49,6 +53,17 @@
       & .button__text {
         color: $color-first-50;
       }
+    }
+  }
+
+  &_long {
+    &.button {
+      width: 100%;
+    }
+
+    & .button__wrapper {
+      padding: 0;
+      width: 100%;
     }
   }
 

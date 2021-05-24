@@ -7,6 +7,10 @@ block title
 
 block main
   +layout__box({pt: 19, pb: 19, mix: 'p-registration-and-sing-in__background', grow: 1})
-    +layout__container({isContainer: true})
+    +layout__box({isContainer: true, grow: 1})
       +layout__box
-        +find-room
+        +layout__box({basis: 380, align: 'left'})
+          +find-room
+      +layout__box
+        +layout__box({pt: 320, basis: 260, align: 'right'})
+          p Лучшие номера для вашей работы, отдыха и просто вдохновения

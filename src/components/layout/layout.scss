@@ -26,14 +26,14 @@ $container-width: (1160 / $font-size) + rem;
     display: flex;
     align-content: flex-start;
 
+    &_block {
+      display: block;
+    }
+
     &_container {
       max-width: $container-width;
       margin: 0 auto;
       flex-direction: column;
-
-      @include media-breakpoint-down($lg) {
-        padding: 0 1.6667rem;
-      }
     }
 
     &_grow-1 {
