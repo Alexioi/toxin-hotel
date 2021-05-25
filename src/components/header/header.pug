@@ -8,31 +8,36 @@ mixin header(options)
     const { 
       navItems = [
         {link: '/change-it', text: 'О нас'}, 
-        {link: '/change-it', text: 'Услуги', hasMore: true},
+        {text: 'Услуги', isButton: true},
         {link: '/change-it', text: 'Вакансии'},
         {link: '/change-it', text: 'Новости'},
-        {link: '/change-it', text: 'Соглашения', hasMore: true}
+        {text: 'Соглашения', isButton: true}
       ],
+      active = null,
       username = ''
     } = options || {}
 
-  .header 
-    +layout__box({isContainer: true})
+  .header.js-header 
+    +layout__box({isContainer: true, mix: 'header__container'})
       .header__wrapper
         .header__logo
           +logo
         button.header__burger-button.js-header__burger-button.material-icons menu
-        ul.header__nav 
-          each navItem in navItems
+        ul.header__nav.js-header__nav
+          each navItem, index in navItems
             li.header__nav-item
-              a.header__nav-link(href=navItem.link)
-                span.header__nav-text= navItem.text
-                if navItem.hasMore 
-                  span.material-icons expand_more
-        if username !== ''
-          span.header__username= username
-        else
-          .header__buttons 
+              if navItem.isButton
+                button.header__nav-button
+                  span.header__button-content= navItem.text    
+              else
+                a.header__nav-link(
+                  href = navItem.link
+                  class = index === active ? 'header__nav-link_active' : ''
+                )= navItem.text
+        .header__login.js-header__login
+          if username !== ''
+            span.header__username= username
+          else
             +button({
               type: 'outline',
               link: '/auth',

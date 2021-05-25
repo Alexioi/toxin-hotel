@@ -2,9 +2,15 @@
 
 .header {
   width: 100%;
-  box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+  box-shadow: 0 0.8333rem 1.6667rem rgba(31, 32, 65, 0.05);
   background-color: white;
-  padding: 15px 0;
+  padding: 1.25rem 0;
+
+  &__container {
+    @include media-breakpoint-down($lg) {
+      padding: 0 1.6667rem;
+    }
+  }
 
   &__wrapper {
     display: flex;
@@ -19,9 +25,10 @@
   }
 
   &__burger-button {
-    border: none;
-    background-color: white;
     display: none;
+    background-color: white;
+    border: none;
+    font-size: 2.5rem;
 
     @include media-breakpoint-down($md) {
       display: inline;
@@ -30,35 +37,83 @@
 
   &__nav {
     display: flex;
-    gap: 20px;
-    margin-right: 20px;
+    gap: 1.6667rem;
+    margin-right: 1.6667rem;
 
     @include media-breakpoint-down($md) {
+      display: none;
       width: 100%;
       align-items: center;
       flex-direction: column;
-      margin-bottom: 20px;
-      margin-right: 0;
+      margin: 1.6667rem 0 1.6667rem 0;
+    }
+
+    &_opened {
+      display: flex;
     }
   }
 
   &__nav-item {
     list-style: none;
+  }
+
+  &__nav-button {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__button-content {
+    font-family: $font-first;
     display: flex;
-    align-items: center;
+    font-size: 1.1667rem;
+    line-height: 1.4167rem;
+    color: $color-first-50;
+
+    &::after {
+      content: "keyboard_arrow_down";
+      font-family: "Material Icons";
+      font-size: 2rem;
+    }
+
+    &:hover {
+      color: $color-first-75;
+    }
   }
 
   &__nav-link {
     text-decoration: none;
-    display: flex;
     align-items: center;
-    color: rgba(31, 32, 65, 0.5);
+    color: $color-first-50;
+    font-size: 1.1667rem;
+    line-height: 1.4167rem;
+
+    &_active {
+      font-weight: bold;
+      color: $color-first-75;
+    }
+
+    &:hover {
+      color: $color-first-75;
+    }
   }
 
-  &__nav-text {
-    font-size: 14px;
-    line-height: 17px;
-    color: rgba(31, 32, 65, 0.5);
+  &__login {
+    display: flex;
+    gap: 20px;
+
+    @include media-breakpoint-down($md) {
+      width: 100%;
+      display: none;
+    }
+
+    &_opened {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid rgba(31, 32, 65, 0.1);
+    }
   }
 
   &__username {
@@ -73,17 +128,6 @@
       width: 100%;
       border: none;
       padding: 0;
-    }
-  }
-
-  &__buttons {
-    display: flex;
-    gap: 20px;
-
-    @include media-breakpoint-down($md) {
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
     }
   }
 }
