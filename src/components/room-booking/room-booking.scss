@@ -1,1 +1,65 @@
-@import '../../style/variables.scss';
+@import "../../style/variables.scss";
+
+.room-booking {
+  &__date-dropdown {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  &__expenses {
+    &-list {
+      display: grid;
+      margin-top: 20px;
+      gap: 16px;
+    }
+
+    &-item {
+      padding-left: 1px;
+      display: flex;
+      justify-content: flex-end;
+      font-size: 14px;
+      line-height: 18px;
+      color: rgba(31, 32, 65, 0.75);
+    }
+
+    &-about {
+      margin-right: auto;
+    }
+
+    &-info {
+      color: rgba(31, 32, 65, 0.25);
+      line-height: 18px;
+      flex: 0 0 20px;
+    }
+
+    &-value {
+      flex: 0 0 77px;
+      text-align: right;
+    }
+  }
+
+  &__total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 34px;
+    margin-bottom: 25px;
+    padding-left: 1px;
+    font-weight: bold;
+    font-size: 19px;
+    line-height: 16px;
+    color: #1f2041;
+
+    &-text {
+      margin-right: 4px;
+    }
+
+    &-line {
+      flex-grow: 1;
+      border-bottom: 1px dotted rgba(31, 32, 65, 0.25);
+    }
+
+    &-value {
+      margin-left: 5px;
+    }
+  }
+}

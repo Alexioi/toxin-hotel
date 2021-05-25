@@ -1,9 +1,38 @@
 include ../room-info/room-info
 include ../card/card
+include ../dropdown/dropdown
+include ../button/button
+include ../date-dropdown/date-dropdown
 
 mixin room-booking(options)
-  if !options
-    - options = {}
+  
+  -
+    const {
+      expensesItems = [
+        {about: '9 990₽ х 4 суток', hasInfo: false, value: '39 960₽'},
+        {about: 'Сбор за услуги: скидка 2 179₽', hasInfo: true, value: '0₽'},
+        {about: 'Сбор за дополнительные услуги', hasInfo: true, value: '300₽'},   
+      ],
+
+    } = options || {}
 
   +card
     +room-info({})
+    .room-booking__date-dropdown
+      +date-dropdown
+    +dropdown
+    ul.room-booking__expenses-list
+      each expensesItem in expensesItems
+        li.room-booking__expenses-item
+          .room-booking__expenses-about= expensesItem.about
+          if expensesItem.hasInfo
+            span.room-booking__expenses-info.material-icons info_outline
+          .room-booking__expenses-value= expensesItem.value
+    .room-booking__total  
+      span.room-booking__total-text Итого
+      span.room-booking__total-line 
+      span.room-booking__total-value 38 081₽
+    +button({
+      type: 'long',
+      text: 'забронировать'
+    })

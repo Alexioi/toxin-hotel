@@ -15,3 +15,10 @@ body {
   font-size: $font-size + px;
   color: #1f2041;
 }
+
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+}
