@@ -17,9 +17,9 @@ mixin room-card(options)
           alt = `${img}`
         ).room-card__img.js-room-card__img
       .room-card__buttons
-      each img, index in imgs
-        button(
-          data-button-number = index
-        ).room-card__button.js-room-card__button= index
-      button.room-card__back.js-room-card__back -
-      button.room-card__next.js-room-card__next +
+        each img, index in imgs
+          button(
+            data-button-number = index
+          ).room-card__button.js-room-card__button
+      button.room-card__back.js-room-card__back.material-icons arrow_back_ios
+      button.room-card__next.js-room-card__next.material-icons arrow_forward_ios
