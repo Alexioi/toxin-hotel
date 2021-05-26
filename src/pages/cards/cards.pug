@@ -4,6 +4,7 @@ include ../../components/auth/auth
 include ../../components/calendar/calendar
 include ../../components/room-booking/room-booking
 include ../../components/find-room/find-room
+include ../../components/room-card/room-card 
 
 block var
   -
@@ -25,3 +26,7 @@ block main
           +auth
       +layout__box({basis: 320, direction: 'column'})
         +calendar
+        +layout__box({mt: 40})
+         +room-card 
+        +layout__box({mt: 40})
+         +room-card 

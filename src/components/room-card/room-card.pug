@@ -1,0 +1,25 @@
+mixin room-card(options)
+
+  -
+    const {
+      imgs = ['room-img-1', 'room-img-2', 'room-img-3'],
+      currentImg = 0,
+    } = options || {}
+
+  .room-card 
+    div(
+      data-current-img = currentImg
+      data-quantity-img = imgs.length - 1  
+    ).room-card__carousel.js-room-card__carousel
+      each img, index in imgs
+        img(
+          src = require(`../../components/room-card/img/${img}.png`).default, 
+          alt = `${img}`
+        ).room-card__img.js-room-card__img
+      .room-card__buttons
+      each img, index in imgs
+        button(
+          data-button-number = index
+        ).room-card__button.js-room-card__button= index
+      button.room-card__back.js-room-card__back -
+      button.room-card__next.js-room-card__next +
