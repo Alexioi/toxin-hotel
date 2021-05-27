@@ -1,9 +1,16 @@
 mixin icon-text-list(options)
-  if !options
-    - options = {}
+ 
+  -
+    const {
+      items = [  
+        {img: "smile", title: "Комфорт", text: "Шумопоглощающие стены"},
+        {img: "house", title: "Удобство", text: "Окно в каждой из спален"},
+      ]
+    } = options || {}
+        
 
   .icon-text-list
-    each item in options.items
+    each item in items
       .icon-text-list__item
         img.icon-text-list__img(
           src=require(`../../components/icon-text-list/img/${item.img}.svg`).default

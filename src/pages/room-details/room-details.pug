@@ -1,0 +1,28 @@
+extends ../../templates/website-pages
+
+include ../../components/layout/layout
+include ../../components/icon-text-list/icon-text-list
+include ../../components/comment/comment
+include ../../components/bullet-list/bullet-list
+include ../../components/room-booking/room-booking
+
+block title 
+  | Search room
+
+block main
+  +layout__box({isContainer: true, grow: 1})
+    +layout__box
+      +layout__box({basis: 712, direction: 'column'})
+        +layout__box
+          +layout__box({basis: 291})
+            +icon-text-list
+          +layout__box({align: 'right'})
+            span test
+        +layout__box({pt: 23})
+          +comment 
+        +layout__box({pt: 23})
+          +comment
+        +layout__box({pt: 30})
+          +bullet-list
+      +layout__box({basis: 380, align: 'right'})
+        +room-booking
