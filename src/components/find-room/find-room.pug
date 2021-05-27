@@ -3,12 +3,13 @@ include ../../components/date-dropdown/date-dropdown
 include ../../components/layout/layout
 include ../../components/button/button
 include ../../components/card/card
+include ../../components/title/title
 
 mixin find-room(options)
 
   +card
     .find-room
-      .find-room__title Найдём номера под ваши пожелания
+      +title({text: 'Найдём номера под ваши пожелания'}) 
       form.find-room__form(method="POST" action="/change-it")
         +layout__box({mt: 21})
           +date-dropdown

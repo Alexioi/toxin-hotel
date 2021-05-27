@@ -4,6 +4,7 @@ include ../../components/button/button
 include ../../components/radio-buttons/radio-buttons
 include ../../components/toggle/toggle
 include ../../components/layout/layout
+include ../../components/title/title
 
 mixin auth(options)
   if !options
@@ -17,7 +18,7 @@ mixin auth(options)
     .auth.js-auth(class=classes)
       .auth__sing-in
         form.auth__form(method="POST" action="/change-it") 
-          .auth__title Войти
+          +title({text: 'Войти'}) 
           +layout__box({mt: 20})
             +text-field({
               hasHeader: true,
@@ -46,7 +47,7 @@ mixin auth(options)
     
       .auth__sing-up
         form.auth__form(method="POST" action="/change-it") 
-          .auth__title Регистрация аккаунта
+          +title({text: 'Регистрация аккаунта'})  
           +layout__box({mt: 20})
             +text-field({
               placeholder: 'Имя',
