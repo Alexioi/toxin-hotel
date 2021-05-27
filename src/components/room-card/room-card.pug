@@ -1,9 +1,18 @@
+include ../room-info/room-info
+include ../rate/rate
+
 mixin room-card(options)
 
   -
     const {
       imgs = ['room-img-1', 'room-img-2', 'room-img-3'],
       currentImg = 0,
+      number = 888,
+      link  = '/change-it',
+      isLux = false,
+      price = "9 990",
+      quantity =3,
+      reviews = 65,
     } = options || {}
 
   .room-card 
@@ -23,3 +32,16 @@ mixin room-card(options)
           ).room-card__button.js-room-card__button
       button.room-card__back.js-room-card__back.material-icons arrow_back_ios
       button.room-card__next.js-room-card__next.material-icons arrow_forward_ios
+    .room-card__about 
+      +room-info({
+        number,
+        isLink: true,
+        link,
+        isLux,
+        price
+      })
+      .room-card__rating
+        +rate({quantity})
+        span.room-card__reviews
+          span.room-card__reviews-value= reviews
+          span.room-card__reviews-text= " Отзывов"

@@ -83,4 +83,28 @@
   &__next {
     display: none;
   }
+
+  &__about {
+    padding: 20px 16px 21px 20px;
+  }
+
+  &__rating {
+    margin-top: 10px;
+    border-top: 1px solid rgba(31, 32, 65, 0.1);
+    padding-top: 8px;
+    padding-right: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__reviews {
+    font-size: 14px;
+    line-height: 18px;
+    color: rgba(31, 32, 65, 0.5);
+
+    &-value {
+      font-weight: bold;
+    }
+  }
 }
