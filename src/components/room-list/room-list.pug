@@ -1,0 +1,149 @@
+include ../room-card/room-card
+include ../pagination/pagination
+
+mixin room-list(options)
+  
+  - 
+    const {
+      items = [
+        {
+          imgs: ['room-img-1', 'room-img-2', 'room-img-3'],
+          currentImg: 0,
+          number: 888,
+          link: '/change-it',
+          isLux: false,
+          price: "9 990",
+          quantity: 3,
+          reviews: 65,
+        },
+        {
+          imgs: ['room-img-1', 'room-img-2', 'room-img-3'],
+          currentImg: 0,
+          number: 888,
+          link: '/change-it',
+          isLux: false,
+          price: "9 990",
+          quantity: 3,
+          reviews: 65,
+        },
+        {
+          imgs: ['room-img-1', 'room-img-2', 'room-img-3'],
+          currentImg: 0,
+          number: 888,
+          link: '/change-it',
+          isLux: false,
+          price: "9 990",
+          quantity: 3,
+          reviews: 65,
+        },
+       {
+          imgs: ['room-img-1', 'room-img-2', 'room-img-3'],
+          currentImg: 0,
+          number: 888,
+          link: '/change-it',
+          isLux: false,
+          price: "9 990",
+          quantity: 3,
+          reviews: 65,
+        },
+        {
+          imgs: ['room-img-1', 'room-img-2', 'room-img-3'],
+          currentImg: 0,
+          number: 888,
+          link: '/change-it',
+          isLux: false,
+          price: "9 990",
+          quantity: 3,
+          reviews: 65,
+        },
+        {
+          imgs: ['room-img-1', 'room-img-2', 'room-img-3'],
+          currentImg: 0,
+          number: 888,
+          link: '/change-it',
+          isLux: false,
+          price: "9 990",
+          quantity: 3,
+          reviews: 65,
+        },
+        {
+          imgs: ['room-img-1', 'room-img-2', 'room-img-3'],
+          currentImg: 0,
+          number: 888,
+          link: '/change-it',
+          isLux: false,
+          price: "9 990",
+          quantity: 3,
+          reviews: 65,
+        },
+        {
+          imgs: ['room-img-1', 'room-img-2', 'room-img-3'],
+          currentImg: 0,
+          number: 888,
+          link: '/change-it',
+          isLux: false,
+          price: "9 990",
+          quantity: 3,
+          reviews: 65,
+        },
+        {
+          imgs: ['room-img-1', 'room-img-2', 'room-img-3'],
+          currentImg: 0,
+          number: 888,
+          link: '/change-it',
+          isLux: false,
+          price: "9 990",
+          quantity: 3,
+          reviews: 65,
+        },
+        {
+          imgs: ['room-img-1', 'room-img-2', 'room-img-3'],
+          currentImg: 0,
+          number: 888,
+          link: '/change-it',
+          isLux: false,
+          price: "9 990",
+          quantity: 3,
+          reviews: 65,
+        },
+        {
+          imgs: ['room-img-1', 'room-img-2', 'room-img-3'],
+          currentImg: 0,
+          number: 888,
+          link: '/change-it',
+          isLux: false,
+          price: "9 990",
+          quantity: 3,
+          reviews: 65,
+        },
+        {
+          imgs: ['room-img-1', 'room-img-2', 'room-img-3'],
+          currentImg: 0,
+          number: 888,
+          link: '/change-it',
+          isLux: false,
+          price: "9 990",
+          quantity: 3,
+          reviews: 65,
+        },   
+      ]
+
+    } = options || {}
+  
+  .room-list
+    .room-list__title Номера, которые мы для вас подобрали
+    ul.room-list__list 
+      each item in items
+        li.room-list__item
+          +room-card({
+            imgs: item.imgs,
+            currentImg: item.currentImg,
+            number: item.number,
+            link: item.link,
+            isLux: item.isLux,
+            price: item.price,
+            quantity: item.quantity,
+            reviews: item.reviews,
+          })
+    .room-list__pagination 
+      +pagination

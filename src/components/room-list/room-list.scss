@@ -1,0 +1,21 @@
+@import "../../style/variables.scss";
+
+.room-list {
+  width: 100%;
+
+  &__list {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  &__item {
+    margin-top: 20px;
+    list-style-type: none;
+  }
+
+  &__pagination {
+    margin: 40px auto 0;
+  }
+}
