@@ -1,11 +1,26 @@
-mixin room-info({number=888, isLux=false, price=9990})
+mixin room-info(options)
+
+  -
+    const {
+      number = 888, 
+      isLink = true,
+      link = '/change-it',
+      isLux = false, 
+      price = "9 990"
+    } = options || {}
+
+  -
+    var tag = "span"
+    tag = isLink ? 
+    `a href=${link} class = "room-info__number-value room-info__number-value_type-link"` 
+    : ''
   
   .room-info
-    .room-info__number
-      span.room-info__number-signs №
-      span.room-info__number-value= number
+    span.room-info__number
+      span.room-info__number-signs= "№ "
+      #{tag}.room-info__number-value= number
       if isLux
-        span.room-info__lux люкс
-    .room-info__price
-      span.room-info__price-number= price + '₽'
+        span.room-info__lux= " люкс"
+    span.room-info__price
+      span.room-info__price-number= price + "₽ "
       span.room-info__price-text в сутки

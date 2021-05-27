@@ -3,11 +3,9 @@
 .room-info {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
 
   &__number-signs {
-    font-family: Montserrat;
-    font-style: normal;
     font-weight: bold;
     font-size: 14px;
     line-height: 17px;
@@ -15,17 +13,19 @@
   }
 
   &__number-value {
-    font-family: Montserrat;
-    font-style: normal;
     font-weight: bold;
     font-size: 24px;
     line-height: 30px;
     color: #1f2041;
+
+    &_type-link {
+      font-size: 19px;
+      line-height: 23px;
+      text-decoration: none;
+    }
   }
 
   &__lux {
-    font-family: Montserrat;
-    font-style: normal;
     font-weight: bold;
     font-size: 12px;
     line-height: 15px;
@@ -34,8 +34,6 @@
   }
 
   &__price-number {
-    font-family: Montserrat;
-    font-style: normal;
     font-weight: bold;
     font-size: 14px;
     line-height: 18px;
@@ -43,9 +41,6 @@
   }
 
   &__price-text {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: bold;
     font-size: 12px;
     line-height: 18px;
     color: rgba(31, 32, 65, 0.5);
