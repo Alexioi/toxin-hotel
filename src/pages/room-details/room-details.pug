@@ -6,36 +6,39 @@ include ../../components/comment/comment
 include ../../components/bullet-list/bullet-list
 include ../../components/room-booking/room-booking
 include ../../components/title/title
+include ../../components/gallery/gallery
 
 block title 
   | Search room
 
 block main
-  +layout__box({isContainer: true, grow: 1})
-    +layout__box
-      +layout__box({basis: 712, direction: 'column'})
-        +layout__box
-          +layout__box({basis: 291, direction: 'column'})
-            +title({text: 'Сведения о номере', type: 'h3'})
-            +layout__box({mt: 20})
-              +icon-text-list
-          +layout__box({align: 'right'})
-            +title({text: 'Впечатления от номера', type: 'h3'})
-        +layout__box({pt: 34})
-          +title({text: 'Отзывы посетителей номера', type: 'h3'})
-        +layout__box({pt: 23})
-          +comment 
-        +layout__box({pt: 23})
-          +comment
-        +layout__box({pt: 30})
+  +layout__box({direction: 'column', grow: 1})
+    +gallery
+    +layout__box({isContainer: true, grow: 1, mt: 70})
+      +layout__box
+        +layout__box({basis: 712, direction: 'column'})
           +layout__box
-            +layout__box({direction: 'column'})
-              +layout__box({mb: 20, pl: 20})
-                +title({text: 'Правила', type: 'h3'})
-              +bullet-list
-            +layout__box({direction: 'column', align: 'right', basis: 341})
-              +layout__box({mb: 20})
-                +title({text: 'Отмена', type: 'h3'})
-              p Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
-      +layout__box({basis: 380, align: 'right'})
-        +room-booking
+            +layout__box({basis: 291, direction: 'column'})
+              +title({text: 'Сведения о номере', type: 'h3'})
+              +layout__box({mt: 20})
+                +icon-text-list
+            +layout__box({align: 'right'})
+              +title({text: 'Впечатления от номера', type: 'h3'})
+          +layout__box({pt: 34})
+            +title({text: 'Отзывы посетителей номера', type: 'h3'})
+          +layout__box({pt: 23})
+            +comment 
+          +layout__box({pt: 23})
+            +comment
+          +layout__box({pt: 30})
+            +layout__box
+              +layout__box({direction: 'column'})
+                +layout__box({mb: 20, pl: 20})
+                  +title({text: 'Правила', type: 'h3'})
+                +bullet-list
+              +layout__box({direction: 'column', align: 'right', basis: 341})
+                +layout__box({mb: 20})
+                  +title({text: 'Отмена', type: 'h3'})
+                p Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
+        +layout__box({basis: 380, align: 'right'})
+          +room-booking

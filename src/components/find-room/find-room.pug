@@ -1,22 +1,21 @@
-include ../../components/dropdown/dropdown
-include ../../components/date-dropdown/date-dropdown
-include ../../components/layout/layout
-include ../../components/button/button
-include ../../components/card/card
-include ../../components/title/title
+include ../dropdown/dropdown
+include ../date-dropdown/date-dropdown
+include ../layout/layout
+include ../button/button
+include ../card/card
+include ../title/title
 
 mixin find-room(options)
 
   +card
-    .find-room
-      +title({text: 'Найдём номера под ваши пожелания'}) 
-      form.find-room__form(method="POST" action="/change-it")
-        +layout__box({mt: 21})
-          +date-dropdown
-        +layout__box({mt: 20, mb: 31})
-          +dropdown({type: 'rooms', counters: [5,4,7], isOpened: true})
-        +button({
-          type: 'long',
-          text: 'подобрать номер',
-        })
+    +title({text: 'Найдём номера под ваши пожелания'}) 
+    form(method="POST" action="/change-it")
+      +layout__box({mt: 21})
+        +date-dropdown
+      +layout__box({mt: 20, mb: 31})
+        +dropdown({type: 'rooms', counters: [5,4,7]})
+      +button({
+        type: 'long',
+        text: 'подобрать номер',
+      })
       

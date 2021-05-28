@@ -1,0 +1,20 @@
+mixin gallery(options)
+ 
+  -
+    const {
+      imgs = ['main', 'sub-top', 'sub-bottom']
+    } = options || {}
+
+  figure.gallery
+    img(
+      src=require(`../../components/gallery/img/img-${imgs[0]}.png`).default 
+      alt=""
+    ).gallery__img-main
+    img(
+      src=require(`../../components/gallery/img/img-${imgs[1]}.png`).default 
+      alt=""
+    ).gallery__sub
+    img(
+      src=require(`../../components/gallery/img/img-${imgs[2]}.png`).default 
+      alt=""
+    ).gallery__sub
