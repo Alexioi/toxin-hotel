@@ -1,0 +1,39 @@
+include ../../components/date-dropdown/date-dropdown
+include ../../components/dropdown/dropdown
+include ../../components/checkbox-list/checkbox-list
+include ../../components/button/button
+include ../../components/layout/layout
+
+mixin filter(options)
+ 
+  .filter
+    +date-dropdown()
+    +layout__box({mt: 19})
+      +dropdown({counters: [3,0,1]})
+    +layout__box({mt: 30})
+      +checkbox-list({
+        title: 'правила дома',
+        items: [
+          {text: "Можно курить"},
+          {text: "Можно с питомцами", isChecked: true},
+          {text: "Можно пригласить гостей (до 10 человек)", isChecked: true},
+        ]
+      })
+    +layout__box({mt: 31})
+      +checkbox-list({
+        title: 'доступность',
+        type: 'rich',
+        items: [
+          {text: "Широкий коридор", 
+          subText: 'Ширина коридоров в номере не менее 91 см.'},
+          {text: "Помощник для инвалидов", 
+          subText: 'На 1 этаже вас встретит специалист и проводит до номера.'},
+        ]
+      })
+    +layout__box({mt: 30})
+      +dropdown({type: 'rooms', counters: [5,4,7]})
+    +layout__box({mt: 30})
+      +checkbox-list({
+        title: 'expandable checkbox list',
+        type: 'expanded',
+      })
