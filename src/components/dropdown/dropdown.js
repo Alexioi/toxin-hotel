@@ -8,22 +8,19 @@ class Dropdown {
     this.buttons = this.component.querySelectorAll(
       ".js-dropdown__counter-button"
     );
-    this.counterValue = this.component.querySelectorAll(
+    this.counterValues = this.component.querySelectorAll(
       ".js-dropdown__counter"
     );
     this.itemName = this.component.querySelectorAll(".js-dropdown__item-name");
     this._attachEventHandlers();
     this._addInputValue();
+    this._disableEachCounterButton()
   }
 
   _attachEventHandlers() {
     this.textField.addEventListener("click", () => this._toggleDropdownList());
     this.buttons.forEach((node) => {
-      if (node.dataset.type === "minus") {
-        node.addEventListener("click", () => this._reduceCounter());
-      } else if (node.dataset.type === "plus") {
-        node.addEventListener("click", () => this._increaseCounter());
-      }
+      node.addEventListener("click", () => this._clickCounterButton());
     });
   }
 
@@ -31,44 +28,95 @@ class Dropdown {
     this.component.classList.toggle("dropdown_opened");
   }
 
+  _clickCounterButton() {
+    let counterButtonType = event.target.dataset.type
+
+    counterButtonType === "minus" ? 
+    this._reduceCounter() : 
+    this._increaseCounter()
+  }
+
   _reduceCounter() {
     let index = event.target.dataset.index;
-    let counterValue = this.counterValue[index];
+    let counterValues = this.counterValues[index];
+    let counterButton = event.target
 
-    if (this._isCounterZero(index)) {
-      counterValue.innerHTML--;
-    }
-    this._disableCounterButton(index);
+    if (this._isCounterMoreZero(index)) {
+      counterValues.innerHTML-- 
+    } 
+    
+    this._disableCounterButton(counterButton, index);
   }
 
   _increaseCounter() {
     let index = event.target.dataset.index;
-    this.counterValue[index].innerHTML++;
-    this._disableCounterButton(index);
+    let counterValues = this.counterValues[index];
+    let counterButton = event.target
+
+    counterValues.innerHTML++;
+
+    this._enableCounterButton(counterButton, index);
   }
 
-  _isCounterZero(index) {
-    return this.counterValue[index].innerHTML !== "0";
+  _isCounterMoreZero(index) {
+    let counterValues = this.counterValues[index];
+    
+    return counterValues.innerHTML > 0;
+  }
+
+  _disableCounterButton(counterButton, index) {
+    if (!(this._isCounterMoreZero(index))) {
+      counterButton.classList.add("dropdown__counter-button_disabled")
+    } 
+  }
+
+  _disableEachCounterButton() {
+    let counterButtons = this.component.querySelectorAll('[data-type="minus"]')
+    
+    counterButtons.forEach((counterButton, index) => this._disableCounterButton(counterButton, index))
+    
+  }
+
+  _enableCounterButton() { 
+    let index = event.target.dataset.index;
+
+    let counterButton = this.component.querySelectorAll('[data-type="minus"]')[index]
+
+    counterButton.classList.remove("dropdown__counter-button_disabled")   
   }
 
   _addInputValue() {
-    let inputValue = "";
-    for (let i = 0; i < this.counterValue.length; i++) {
-      if (this.counterValue[i].innerHTML !== "0") {
-        inputValue +=
-          this.counterValue[i].innerHTML + " " + this.itemName[i].innerHTML;
+    let inputValues = [];
+
+    this.counterValues.forEach( (counterValue, index) =>
+    {
+      let counterValueText = counterValue.innerHTML
+      let itemNameText = this.itemName[index].innerHTML
+
+      if (this._isCounterMoreZero(index)) {
+        let obj = {count: counterValueText, text: itemNameText}
+
+        inputValues.push(obj)
+
       }
-    }
-    this.input.value = inputValue;
+    })
+    
+    inputValues = this._correctEnding(inputValues)
+
+    
+
+    this.input.value = inputValues.join(', ');
   }
 
-  _disableCounterButton(index) {
-    let minus = this.component.querySelectorAll("[data-type='minus']");
-    if (this.counterValue[index].innerHTML !== "0") {
-      minus[index].classList.remove("dropdown__counter-button_disabled");
-    } else {
-      minus[index].classList.add("dropdown__counter-button_disabled");
-    }
+  _correctEnding(inputValues) {
+    inputValues = inputValues.map((inputValue) =>
+    {
+      // switch (inputValue.count) {
+      // case 
+      // }
+    })
+
+    return inputValues
   }
 }
 

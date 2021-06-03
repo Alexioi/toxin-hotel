@@ -47,7 +47,6 @@ mixin dropdown(options)
           ).dropdown__counter.js-dropdown__counter= counters[index]
           button(
             data-index=`${index}`
-            data-type="plus"
           ).dropdown__counter-button.js-dropdown__counter-button +
       if hasButtons
         +button({
@@ -58,4 +57,3 @@ mixin dropdown(options)
           text: 'применить',
           type: 'link',
         })
-
