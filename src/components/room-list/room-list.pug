@@ -1,5 +1,6 @@
 include ../room-card/room-card
 include ../pagination/pagination
+include ../title/title
 
 mixin room-list(options)
   
@@ -12,7 +13,7 @@ mixin room-list(options)
     } = options || {}
   
   .room-list
-    .room-list__title Номера, которые мы для вас подобрали
+    +title({text: 'Номера, которые мы для вас подобрали'})
     ul.room-list__list 
       each item in items
         li.room-list__item
