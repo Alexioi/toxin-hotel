@@ -1,12 +1,21 @@
 @import "../../style/variables.scss";
 
-.datepicker {
+.calendar {
   width: 320px;
   padding: 20px;
   background: white;
   border: 1px solid rgba(31, 32, 65, 0.25);
   box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
   border-radius: 4px;
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.datepicker {
+
 
   &--nav {
     display: flex;
