@@ -11,7 +11,8 @@ class Dropdown {
     this.counterValues = this.component.querySelectorAll(
       ".js-dropdown__counter"
     );
-    this.itemName = this.component.querySelectorAll(".js-dropdown__item-name");
+    this.cancel = this.component.querySelector(".js-dropdown__cancel");
+    this.apply = this.component.querySelector(".js-dropdown__apply");
     this._attachEventHandlers();
     this._addInputValue();
     this._disableEachCounterButton()
@@ -22,6 +23,10 @@ class Dropdown {
     this.buttons.forEach((node) => {
       node.addEventListener("click", () => this._clickCounterButton());
     });
+    if (this.component.querySelector(".dropdown__buttons")) {
+      this.cancel.addEventListener("click", () => this._cancelCounterValue());
+      this.apply.addEventListener("click", () => this._applyCounterValue());
+    }
   }
 
   _toggleDropdownList() {
@@ -31,9 +36,9 @@ class Dropdown {
   _clickCounterButton() {
     let counterButtonType = event.target.dataset.type
 
-    counterButtonType === "minus" ? 
-    this._reduceCounter() : 
-    this._increaseCounter()
+    counterButtonType === "minus" ?
+      this._reduceCounter() :
+      this._increaseCounter()
   }
 
   _reduceCounter() {
@@ -42,9 +47,9 @@ class Dropdown {
     let counterButton = event.target
 
     if (this._isCounterMoreZero(index)) {
-      counterValues.innerHTML-- 
-    } 
-    
+      counterValues.innerHTML--
+    }
+
     this._disableCounterButton(counterButton, index);
   }
 
@@ -60,64 +65,86 @@ class Dropdown {
 
   _isCounterMoreZero(index) {
     let counterValues = this.counterValues[index];
-    
+
     return counterValues.innerHTML > 0;
   }
 
   _disableCounterButton(counterButton, index) {
     if (!(this._isCounterMoreZero(index))) {
       counterButton.classList.add("dropdown__counter-button_disabled")
-    } 
+    }
   }
 
   _disableEachCounterButton() {
     let counterButtons = this.component.querySelectorAll('[data-type="minus"]')
-    
+
     counterButtons.forEach((counterButton, index) => this._disableCounterButton(counterButton, index))
-    
+
   }
 
-  _enableCounterButton() { 
+  _enableCounterButton() {
     let index = event.target.dataset.index;
 
     let counterButton = this.component.querySelectorAll('[data-type="minus"]')[index]
 
-    counterButton.classList.remove("dropdown__counter-button_disabled")   
+    counterButton.classList.remove("dropdown__counter-button_disabled")
   }
 
   _addInputValue() {
-    let inputValues = [];
-
-    this.counterValues.forEach( (counterValue, index) =>
-    {
-      let counterValueText = counterValue.innerHTML
-      let itemNameText = this.itemName[index].innerHTML
-
-      if (this._isCounterMoreZero(index)) {
-        let obj = {count: counterValueText, text: itemNameText}
-
-        inputValues.push(obj)
-
-      }
-    })
     
-    inputValues = this._correctEnding(inputValues)
+    let dropdownItems = this._dropdownItems()
 
-    
+    let counterValues = this.counterValues
+
+    let inputValues = this._addEnding(counterValues, dropdownItems)
 
     this.input.value = inputValues.join(', ');
   }
 
-  _correctEnding(inputValues) {
-    inputValues = inputValues.map((inputValue) =>
-    {
-      // switch (inputValue.count) {
-      // case 
-      // }
+  _dropdownItems() {
+    const dropdownItems = [
+      {one: 'спальня', two: 'спальни', more: 'спален'},
+      {one: 'кровать', two: 'кровати', more: 'кроватей'},
+      {one: 'ванная комната', two: 'ванные комнаты', more: 'ванных комнат'},
+    ]
+
+    return dropdownItems
+  }
+
+  _addEnding(counterValues, dropdownItems) {
+    let inputValues = [];
+
+    counterValues.forEach((counterValue, index) => {
+      switch (counterValue.innerHTML) {
+        case '0':
+          break
+        case '1':
+          counterValue = counterValue.innerHTML + ' ' + dropdownItems[index].one
+          inputValues.push(counterValue)
+          break
+        case '2':
+          counterValue = counterValue.innerHTML + ' ' + dropdownItems[index].two
+          inputValues.push(counterValue)
+          break
+        default:
+          counterValue = counterValue.innerHTML + ' ' + dropdownItems[index].more
+          inputValues.push(counterValue)
+          break
+      }
     })
 
     return inputValues
   }
+
+  _cancelCounterValue() {
+    this.counterValues.forEach((counterValue) => counterValue.innerHTML = 0)
+    this._disableEachCounterButton()
+  }
+
+  _applyCounterValue() {
+    this._addInputValue();
+  }
+
 }
 
 class DropdownRooms extends Dropdown {
@@ -132,7 +159,8 @@ class DropdownRooms extends Dropdown {
   }
 }
 
-class DropdownGuests extends Dropdown {}
+class DropdownGuests extends Dropdown {
+}
 
 (() => {
   document.querySelectorAll(".js-dropdown.dropdown_rooms").forEach((node) => {
