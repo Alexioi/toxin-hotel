@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --mode production",
+    "deploy": "npm run build && gh-pages -d dist",
     "server": "webpack serve --open"
   },
   "keywords": [],
@@ -14,6 +15,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^5.1.0",
     "file-loader": "^6.2.0",
+    "gh-pages": "^3.2.0",
     "html-webpack-plugin": "^5.2.0",
     "pug": "^3.0.0",
     "pug-loader": "^2.4.0",
