@@ -1,7 +1,6 @@
 include ../like-button/like-button
 
 mixin comment(options)
-  
   -
     const {
       authorName = 'Мурад Сарафанов',
@@ -14,8 +13,8 @@ mixin comment(options)
 
   .comment 
     img.comment__img(
-      src = require(`../../components/comment/img/${image}.png`).default 
-      alt = `Фото автора ${authorName}`
+      src=require(`../../components/comment/img/${image}.png`).default,
+      alt=`Фото автора ${authorName}`
     )
     .comment__header 
       span.comment__author-name= authorName
@@ -23,4 +22,3 @@ mixin comment(options)
     .comment__like-button
       +like-button({counter, isLiked})
     p.comment__text= text
-    

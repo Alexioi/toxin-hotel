@@ -1,8 +1,7 @@
 include ../button/button
 
 mixin dropdown(options)
-
-  - 
+  -
     const {
       counters = [0, 0, 0],
       isOpened = false,
@@ -15,12 +14,12 @@ mixin dropdown(options)
     var hasButtons = false
 
   if type === 'rooms'
-    - 
+    -
       placeholder = 'Сколько комнат'
       items = ['спальни', 'кровати', 'ванные комнаты']
 
   else if type === 'guests'
-    - 
+    -
       placeholder = 'Сколько гостей'
       items = ['взрослые', 'дети', 'младенцы']
       hasButtons = true
@@ -30,33 +29,28 @@ mixin dropdown(options)
     classes += isOpened ? ' dropdown_opened' : ''
     classes += ' dropdown_' + type
 
-  .dropdown.js-dropdown(class = classes)
+  .dropdown.js-dropdown(class=classes)
     .dropdown__text-field.js-dropdown__text-field
-      input.dropdown__input.js-dropdown__input(placeholder = placeholder readonly)
+      input.dropdown__input.js-dropdown__input(
+        placeholder=placeholder,
+        readonly
+      )
       span.dropdown__toggle-button
     ul.dropdown__list
       each item, index in items 
         li.dropdown__item
-          span.dropdown__item-name= item 
-          button(
-            data-index=`${index}`
+          span.dropdown__item-name= item
+          button.dropdown__counter-button.js-dropdown__counter-button(
+            data-index=`${index}`,
             data-type="minus"
-          ).dropdown__counter-button.js-dropdown__counter-button -
-          span(
+          ) -
+          span.dropdown__counter.js-dropdown__counter(data-index=`${index}`)= counters[index]
+          button.dropdown__counter-button.js-dropdown__counter-button(
             data-index=`${index}`
-          ).dropdown__counter.js-dropdown__counter= counters[index]
-          button(
-            data-index=`${index}`
-          ).dropdown__counter-button.js-dropdown__counter-button +
+          ) +
       if hasButtons
         .dropdown__buttons
           .dropdown__cancel.js-dropdown__cancel
-            +button({
-              text: 'очистить',
-              type: 'link',
-            })
+            +button({ text: 'очистить', type: 'link', })
           .dropdown__apply.js-dropdown__apply
-            +button({
-              text: 'применить',
-              type: 'link',
-            })
+            +button({ text: 'применить', type: 'link', })

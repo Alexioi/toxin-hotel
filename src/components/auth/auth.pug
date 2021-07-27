@@ -8,7 +8,7 @@ include ../../components/title/title
 
 mixin auth(options)
   if !options
-    - options = {}
+    - options = {};
 
   -
     var classes = ''
@@ -17,81 +17,39 @@ mixin auth(options)
   +card 
     .auth.js-auth(class=classes)
       .auth__sing-in
-        form.auth__form(method="POST" action="/change-it") 
+        form.auth__form(method="POST", action="/change-it") 
           +title({text: 'Войти'}) 
           +layout__box({mt: 20})
-            +text-field({
-              hasHeader: true,
-              placeholder: 'Email',
-              type: "text",
-              name: "email"
-            })
+            +text-field({ hasHeader: true, placeholder: 'Email', type: "text", name: "email" })
           +layout__box({mt: 10})
-            +text-field({
-              placeholder: 'Пароль',
-              type: "text"
-            })
+            +text-field({ placeholder: 'Пароль', type: "text" })
           +layout__box({mt: 20})
-            +button({
-              type: 'long',
-              text: 'войти',
-            })
+            +button({ type: 'long', text: 'войти', })
         +layout__box({mt: 30})
           p.auth__question Нет аккаунта на Toxin?
           .auth__button
-            +button({
-              type: 'outline',
-              isHovered: true,
-              text: 'создать'
-            })
-    
+            +button({ type: 'outline', isHovered: true, text: 'создать' })
+
       .auth__sing-up
-        form.auth__form(method="POST" action="/change-it") 
-          +title({text: 'Регистрация аккаунта'})  
+        form.auth__form(method="POST", action="/change-it") 
+          +title({text: 'Регистрация аккаунта'}) 
           +layout__box({mt: 20})
-            +text-field({
-              placeholder: 'Имя',
-              type: "text",
-              name: "name"
-            })
+            +text-field({ placeholder: 'Имя', type: "text", name: "name" })
           +layout__box({mt: 10})
-            +text-field({
-              placeholder: 'Фамилия',
-              type: "text"
-            })
+            +text-field({ placeholder: 'Фамилия', type: "text" })
           +layout__box({mt: 10})
             +radio-buttons
           +layout__box({mt: 20})
-            +text-field({
-              title: 'дата рождения',
-              hasHeader: true,
-              isMasked: true
-            })
+            +text-field({ title: 'дата рождения', hasHeader: true, isMasked: true })
           +layout__box({mt: 20})
-            +text-field({
-              title: 'данные для входа в сервис',
-              hasHeader: true,
-              placeholder: 'Email',
-              type: "text"
-            })
+            +text-field({ title: 'данные для входа в сервис', hasHeader: true, placeholder: 'Email', type: "text" })
           +layout__box({mt: 10})
-            +text-field({
-              placeholder: 'Пароль',
-              type: "text"
-            })
+            +text-field({ placeholder: 'Пароль', type: "text" })
           +layout__box({mt: 10})
             +toggle
           +layout__box({mt: 20})
-            +button({
-              type: 'long',
-              text: 'перейти к оплате',
-            })
+            +button({ type: 'long', text: 'перейти к оплате', })
         +layout__box({mt: 30})
           p.auth__question Уже есть аккаунт на Toxin
           .auth__button
-            +button({
-              type: 'outline',
-              isHovered: true,
-              text: 'войти'
-            })
-      
+            +button({ type: 'outline', isHovered: true, text: 'войти' })

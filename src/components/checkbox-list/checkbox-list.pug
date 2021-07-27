@@ -1,21 +1,20 @@
 include ../label/label
 
 mixin checkbox-list(options)
-
-  - 
-      const { 
-        title='title', 
-        type='default', 
-        isOpened=false,
-        items= [
-          {text: "Завтрак"},
-          {text: "Письменный стол", isChecked: true},
-          {text: "Стул для кормления", isChecked: true},
-          {text: "Кроватка", isChecked: true},
-          {text: "Телевизор"},
-          {text: "Шампунь"},
-        ],
-      } = options || {}
+  -
+    const { 
+      title='title', 
+      type='default', 
+      isOpened=false,
+      items= [
+        {text: "Завтрак"},
+        {text: "Письменный стол", isChecked: true},
+        {text: "Стул для кормления", isChecked: true},
+        {text: "Кроватка", isChecked: true},
+        {text: "Телевизор"},
+        {text: "Шампунь"},
+      ],
+    } = options || {}
 
   -
     var classes = ''
@@ -23,7 +22,7 @@ mixin checkbox-list(options)
     classes += type === 'expanded' ? ' js-checkbox-list' : ''
     classes += type === 'expanded' && isOpened ? ' checkbox-list_opened' : ''
 
-  .checkbox-list(class = classes)
+  .checkbox-list(class=classes)
     .checkbox-list__header
       +label({title})
       if type === "expanded"
@@ -32,7 +31,7 @@ mixin checkbox-list(options)
       each item in items 
         li.checkbox-list__item
           label.checkbox-list__label
-            input.checkbox-list__input(type="checkbox" checked = item.isChecked)
+            input.checkbox-list__input(type="checkbox", checked=item.isChecked)
             span.checkbox-list__text= item.text
             if type === "rich"
               p.checkbox-list__sub-text= item.subText

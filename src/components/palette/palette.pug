@@ -1,5 +1,4 @@
 mixin palette
-
   -
     var items = [
       { color: "dark-shade-100", colorName: "Dark Shade 100%", colorHash: "#1F2041" },
@@ -13,6 +12,6 @@ mixin palette
 
   .palette
     each item in items
-      .palette__item(class=`palette__item_${item.color}`)
+      .palette__item(class='palette__item_' + item.color)
         span.palette__color-name= item.colorName
         span.palette__color-hash= item.colorHash

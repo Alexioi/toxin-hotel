@@ -6,16 +6,11 @@ include ../card/card
 include ../title/title
 
 mixin find-room(options)
-
   +card
     +title({text: 'Найдём номера под ваши пожелания'}) 
-    form(method="POST" action="/change-it")
+    form(method="POST", action="/change-it")
       +layout__box({mt: 21})
         +date-dropdown
       +layout__box({mt: 20, mb: 31})
         +dropdown({type: 'rooms', counters: [5,4,7]})
-      +button({
-        type: 'long',
-        text: 'подобрать номер',
-      })
-      
+      +button({ type: 'long', text: 'подобрать номер', })

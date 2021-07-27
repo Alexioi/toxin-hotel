@@ -1,21 +1,16 @@
-//-
-  options.quantity - количество звезд
-
 mixin rate(options)
-  if !options
-    - options = {}
-  if !options.quantity
-    - options.quantity = 0
-  
+  - const { quantity = 0 } = options || {};
+
+  - var i = 0;
+  - var starType = '';
+
   .rate
-    - for (var i = 0; i < 5; i++)
-      if options.quantity > i
-        img.rate__img(
-          src=require(`../../components/rate/img/star.svg`).default
-          alt='star'
-        )
-      else 
-        img.rate__img(
-          src=require(`../../components/rate/img/star_border.svg`).default
-          alt='star_border'
-        )
+    while i < 5
+      -
+        starType = quantity > i ? '' : '_border'
+        i += 1
+
+      img.rate__img(
+        src=require('../../components/rate/img/star' + starType + '.svg').default,
+        alt='star' + starType
+      )

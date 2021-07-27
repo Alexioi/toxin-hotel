@@ -3,29 +3,19 @@ include ../pagination/pagination
 include ../title/title
 
 mixin room-list(options)
-  
   -
     var data = require('../../components/room-list/data.json')
 
-  - 
+  -
     const {
       items = data.items
     } = options || {}
-  
+
   .room-list
     +title({text: 'Номера, которые мы для вас подобрали'})
     ul.room-list__list 
       each item in items
         li.room-list__item
-          +room-card({
-            imgs: item.images,
-            currentImg: item.currentImg,
-            number: item.number,
-            link: item.link,
-            isLux: item.isLux,
-            price: item.price,
-            quantity: item.quantity,
-            reviews: item.reviews,
-          })
+          +room-card({ imgs: item.images, currentImg: item.currentImg, number: item.number, link: item.link, isLux: item.isLux, price: item.price, quantity: item.quantity, reviews: item.reviews, })
     .room-list__pagination 
       +pagination

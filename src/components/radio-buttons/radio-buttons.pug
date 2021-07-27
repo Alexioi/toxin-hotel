@@ -1,11 +1,13 @@
 mixin radio-buttons
-
   .radio-buttons
     label.radio-buttons__item
       input.radio-buttons__input(
-        name="sex" type="radio" value="man" checked)
+        name="sex",
+        type="radio",
+        value="man",
+        checked
+      )
       span.radio-buttons__text Мужчина
     label.radio-buttons__item
-      input.radio-buttons__input(
-        name="sex" type="radio" value="woman")  
-      span.radio-buttons__text| Женщина
+      input.radio-buttons__input(name="sex", type="radio", value="woman") 
+      span.radio-buttons__text Женщина

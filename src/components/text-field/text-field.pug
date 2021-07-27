@@ -1,22 +1,21 @@
 include ../label/label
 
 mixin text-field({isHovered=false, isMasked=false, title='', hint='', type='text', value='', name='', placeholder='text', isSubscription=false})
-
   -
     var classes = ''
     classes += isHovered ? ' text-field__input_hovered' : '' 
     classes += isMasked ? ' text-field__input_masked' : '' 
-  
+
   .text-field 
     if title != ''
       .text-field__header 
         +label({title, hint})
     .text-field__content 
       input.text-field__input.js-text-field__input(
-        class=classes
-        type=type
-        value=value 
-        name=name
+        class=classes,
+        type=type,
+        value=value,
+        name=name,
         placeholder=placeholder
       )
       if isSubscription

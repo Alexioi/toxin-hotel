@@ -3,7 +3,6 @@ include ../../components/layout/layout
 include ../../components/button/button
 
 mixin header(options)
-
   -
     const { 
       navItems = [
@@ -28,24 +27,15 @@ mixin header(options)
             li.header__nav-item
               if navItem.isButton
                 button.header__nav-button
-                  span.header__button-content= navItem.text    
+                  span.header__button-content= navItem.text
               else
                 a.header__nav-link(
-                  href = navItem.link
-                  class = index === active ? 'header__nav-link_active' : ''
+                  href=navItem.link,
+                  class=index === active ? 'header__nav-link_active' : ''
                 )= navItem.text
         .header__login.js-header__login
           if username !== ''
             span.header__username= username
           else
-            +button({
-              type: 'outline',
-              link: '/auth',
-              text: 'войти',
-              size: 'low'
-            })
-            +button({
-              link: '/auth',
-              text: 'зарегистрироваться',
-              size: 'low'
-            })
+            +button({ type: 'outline', link: '/auth', text: 'войти', size: 'low' })
+            +button({ link: '/auth', text: 'зарегистрироваться', size: 'low' })

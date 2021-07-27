@@ -2,7 +2,6 @@ include ../room-info/room-info
 include ../rate/rate
 
 mixin room-card(options)
-
   -
     const {
       imgs = ['room-img-1', 'room-img-2', 'room-img-3'],
@@ -16,32 +15,26 @@ mixin room-card(options)
     } = options || {}
 
   .room-card 
-    div(
-      data-current-img = currentImg
-      data-quantity-img = imgs.length - 1  
-    ).room-card__carousel.js-room-card__carousel
+    .room-card__carousel.js-room-card__carousel(
+      data-current-img=currentImg,
+      data-quantity-img=imgs.length - 1
+    )
       each img, index in imgs
-        img(
-          src = require(`../../components/room-card/img/${img}.png`).default, 
-          alt = `${img}`
-        ).room-card__img.js-room-card__img
+        img.room-card__img.js-room-card__img(
+          src=require(`../../components/room-card/img/${img}.png`).default,
+          alt=`${img}`
+        )
       .room-card__buttons
         each img, index in imgs
-          button(
-            data-button-number = index
-          ).room-card__button.js-room-card__button
+          button.room-card__button.js-room-card__button(
+            data-button-number=index
+          )
       button.room-card__back.js-room-card__back.material-icons arrow_back_ios
       button.room-card__next.js-room-card__next.material-icons arrow_forward_ios
     .room-card__about 
-      +room-info({
-        number,
-        isLink: true,
-        link,
-        isLux,
-        price
-      })
+      +room-info({ number, isLink: true, link, isLux, price })
       .room-card__rating
         +rate({quantity})
         span.room-card__reviews
           span.room-card__reviews-value= reviews
-          span.room-card__reviews-text= " Отзывов"
+          span.room-card__reviews-text= ' Отзывов'

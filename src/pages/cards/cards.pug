@@ -4,13 +4,13 @@ include ../../components/auth/auth
 include ../../components/calendar/calendar
 include ../../components/room-booking/room-booking
 include ../../components/find-room/find-room
-include ../../components/room-card/room-card 
+include ../../components/room-card/room-card
 
 block var
   -
     var withThemeGray = true
 
-block title 
+block title
   | Cards
 
 block main
@@ -27,6 +27,6 @@ block main
       +layout__box({basis: 320, direction: 'column'})
         +calendar
         +layout__box({mt: 40})
-         +room-card 
+          +room-card 
         +layout__box({mt: 40})
-         +room-card 
+          +room-card 

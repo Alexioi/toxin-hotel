@@ -1,5 +1,4 @@
 mixin room-info(options)
-
   -
     const {
       number = 888, 
@@ -14,13 +13,13 @@ mixin room-info(options)
     tag = isLink ? 
     `a href=${link} class = "room-info__number-value room-info__number-value_type-link"` 
     : 'span'
-  
+
   .room-info
     span.room-info__number
-      span.room-info__number-signs= "№ "
+      span.room-info__number-signs= '№ '
       #{tag}.room-info__number-value= number
       if isLux
-        span.room-info__lux= " люкс"
+        span.room-info__lux= ' люкс'
     span.room-info__price
-      span.room-info__price-number= price + "₽ "
+      span.room-info__price-number= price + '₽ '
       span.room-info__price-text в сутки

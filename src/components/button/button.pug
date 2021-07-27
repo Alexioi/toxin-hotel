@@ -1,5 +1,4 @@
 mixin button(options)
-
   -
     const {
       text = 'click me',
@@ -9,8 +8,8 @@ mixin button(options)
       type = 'default',
       isLink = false
     } = options || {}
-  
-  - 
+
+  -
     var tag = ''
     tag += isLink ? 'a' : 'button'
 
@@ -20,9 +19,8 @@ mixin button(options)
     classes += isHovered ? ' button_hovered' : ''
 
 
-  #{tag}.button(class=classes href=link)
+  #{tag}.button(class=classes, href=link)
     .button__wrapper 
       span.button__text= text
       if type === 'long'
         span.button__arrow.material-icons arrow_forward
-        

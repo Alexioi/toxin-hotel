@@ -1,16 +1,16 @@
-mixin layout()
+mixin layout
   .layout
     block
 
-mixin layout__header()
+mixin layout__header
   header.layout__header
     block
 
-mixin layout__main()
+mixin layout__main
   main.layout__main
     block
 
-mixin layout__footer()
+mixin layout__footer
   footer.layout__footer
     block
 
@@ -19,7 +19,6 @@ mixin layout__container
     block
 
 mixin layout__box(options)
-  
   -
     const {
       isContainer,
@@ -58,5 +57,5 @@ mixin layout__box(options)
     classes += pl ? ' layout__box_pl-' + pl : ''
     classes += mix ? ' ' + mix : ''
 
-  .layout__box(class= classes)
+  .layout__box(class=classes)
     block

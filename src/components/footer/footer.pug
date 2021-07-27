@@ -4,7 +4,7 @@ include ../../components/layout/layout
 
 mixin footer(options)
   if !options
-    - options = {}
+    - options = {};
 
   -
     var component = {
@@ -65,15 +65,11 @@ mixin footer(options)
                 each item in navItem.items
                   li.footer__list-item
                     a.footer__list-link(href=item.link)= item.text
-        form.footer__subscription(method="POST" action="/change-it")
+        form.footer__subscription(method="POST", action="/change-it")
           span.footer__header= component.subscriptionHeader
           p.footer__text= component.subscriptionText
           .footer__input
-            +text-field({
-              placeholder: 'Email',
-              type: "email",
-              isSubscription: true
-            })
+            +text-field({ placeholder: 'Email', type: "email", isSubscription: true })
     .footer__line
       +layout__box({isContainer: true})
         .footer__sub
@@ -82,7 +78,6 @@ mixin footer(options)
             each social in component.socials
               a.footer__social-link(href=social.link) 
                 img(
-                  src=require(
-                    `../../components/footer/img/${social.img}.svg`).default 
+                  src=require(`../../components/footer/img/${social.img}.svg`).default,
                   alt=social.img
                 )

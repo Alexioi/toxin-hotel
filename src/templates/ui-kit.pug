@@ -8,11 +8,11 @@ block var
 doctype html
 html
   head
-    meta(charset = 'utf-8')
-    meta(name='viewport', content="initial-scale=1.0, width=device-width")
+    meta(charset="utf-8")
+    meta(name="viewport", content="initial-scale=1.0, width=device-width")
     title
-        block title
-  body(class = withThemeGray ? 't-ui-kit_with-theme-gray': '')
+      block title
+  body(class=withThemeGray ? 't-ui-kit_with-theme-gray' : '')
     +layout
       +layout__header
         +layout__box({pt: 30, pb: 62, basis: 1380, align: 'center'})
