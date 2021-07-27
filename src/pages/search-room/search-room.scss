@@ -1,19 +1,20 @@
-@import '../../style/variables.scss';
+@import "../../style/variables.scss";
 
 .p-search-room {
-    &__content {
-        @include media-breakpoint-down($lg) {
-        margin: 0 1.6667rem; }
-
-        @include media-breakpoint-down($md) {
-            flex-direction: column;
-          }
+  &__content {
+    @include media-breakpoint-down($lg) {
+      margin: 0 1.6667rem;
     }
 
-    &__filter {
-        @include media-breakpoint-down($md) {
-        
-        margin-right: 0;
-        flex-basis: auto;}
+    @include media-breakpoint-down($md) {
+      flex-direction: column;
     }
+  }
+
+  &__filter {
+    @include media-breakpoint-down($md) {
+      margin-right: 0;
+      flex-basis: auto;
+    }
+  }
 }

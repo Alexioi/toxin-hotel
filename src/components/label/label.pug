@@ -1,5 +1,13 @@
-mixin label({title='example', hint=''})
+mixin label(options)
+  -
+    const {
+      title='example',
+      hasHint=false, 
+      hint=''
+    } = options || {}
+
   .label 
     span.label__title= title
-    if hint != ''
+    if hasHint
       span.label__hint= hint
+    block
