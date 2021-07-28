@@ -9,52 +9,6 @@ $sample-width: 3.0833rem;
 
   &__item {
     display: flex;
-
-    &_theme-h1 {
-      & .font-types__sample {
-        font-size: 2rem;
-      }
-      & .font-types__description {
-        font-size: 2rem;
-        line-height: 2.4167rem;
-        max-width: 30.75rem;
-      }
-    }
-
-    &_theme-h2 {
-      & .font-types__sample {
-        font-size: 1.5833rem;
-      }
-      & .font-types__description {
-        font-size: 1.5833rem;
-        line-height: 1.9167rem;
-        max-width: 26rem;
-      }
-    }
-
-    &_theme-h3 {
-      & .font-types__sample {
-        font-size: 1rem;
-      }
-      & .font-types__description {
-        font-size: 1rem;
-        line-height: 1.25rem;
-        text-transform: uppercase;
-      }
-    }
-
-    &_theme-body {
-      & .font-types__sample {
-        font-size: 1.1667rem;
-      }
-      & .font-types__description {
-        font-weight: normal;
-        max-width: 25.0833rem;
-        font-size: 1.1667rem;
-        line-height: 2rem;
-        color: $color-first-75;
-      }
-    }
   }
 
   &__sample {
@@ -65,9 +19,50 @@ $sample-width: 3.0833rem;
     color: $color-first-25;
   }
 
+  &__item_theme-h1 &__sample {
+    font-size: 2rem;
+  }
+
+  &__item_theme-h2 &__sample {
+    font-size: 1.5833rem;
+  }
+
+  &__item_theme-h3 &__sample {
+    font-size: 1rem;
+  }
+
+  &__item_theme-body &__sample {
+    font-size: 1.1667rem;
+  }
+
   &__description {
     font-weight: bold;
-    display: block;
     color: $color-first;
+  }
+
+  &__item_theme-h1 &__description {
+    font-size: 2rem;
+    line-height: 2.4167rem;
+    max-width: 30.75rem;
+  }
+
+  &__item_theme-h2 &__description {
+    font-size: 1.5833rem;
+    line-height: 1.9167rem;
+    max-width: 26rem;
+  }
+
+  &__item_theme-h3 &__description {
+    font-size: 1rem;
+    line-height: 1.25rem;
+    text-transform: uppercase;
+  }
+
+  &__item_theme-body &__description {
+    font-weight: normal;
+    max-width: 25.0833rem;
+    font-size: 1.1667rem;
+    line-height: 2rem;
+    color: rgba($color-first, 0.75);
   }
 }

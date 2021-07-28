@@ -25,8 +25,14 @@ mixin font-types(options)
       ] 
     } = options || {}
 
+    var classes = ''
+    
+
   .font-types
     each item in items
-      .font-types__item(class="font-types__item_theme-${item.theme}")
+
+      - classes = 'font-types__item_theme-' + item.theme
+
+      .font-types__item(class=classes)
         span.font-types__sample= item.sample
         span.font-types__description= item.description
