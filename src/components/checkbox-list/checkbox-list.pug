@@ -18,9 +18,9 @@ mixin checkbox-list(options)
 
   -
     var classes = ''
-    classes += type != 'default' ? ' checkbox-list_' + type : ''
+    classes += ' checkbox-list_' + type 
     classes += type === 'expanded' ? ' js-checkbox-list' : ''
-    classes += type === 'expanded' && isOpened ? ' checkbox-list_opened' : ''
+    classes += isOpened ? ' checkbox-list_opened' : ''
 
   .checkbox-list(class=classes)
     .checkbox-list__header
@@ -31,7 +31,11 @@ mixin checkbox-list(options)
       each item in items 
         li.checkbox-list__item
           label.checkbox-list__label
-            input.checkbox-list__input(type="checkbox", checked=item.isChecked)
+            input(
+              class="checkbox-list__input"
+              type="checkbox" 
+              checked=item.isChecked
+            )
             span.checkbox-list__text= item.text
             if type === "rich"
               p.checkbox-list__sub-text= item.subText

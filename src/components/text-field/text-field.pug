@@ -1,15 +1,13 @@
-include ../label/label
-
 mixin text-field(options)
   -
     const {
-      isHovered=false, 
-      isMasked=false, 
-      type='text', 
-      value='', 
-      name='', 
-      placeholder='text', 
-      isSubscription=false
+      isHovered = false, 
+      isMasked = false, 
+      type = 'text', 
+      value = '', 
+      name = '', 
+      placeholder = 'text', 
+      isSubscription = false
     } = options || {}
 
     var classes = ''
@@ -18,10 +16,10 @@ mixin text-field(options)
 
   .text-field(class=classes)
     input.text-field__input.js-text-field__input(
-      type=type,
-      value=value,
-      name=name,
-      placeholder=placeholder
+      type = type,
+      value = value,
+      name = name,
+      placeholder = placeholder
     )
     if isSubscription
       button.text-field__subscription-button(type="submit") 

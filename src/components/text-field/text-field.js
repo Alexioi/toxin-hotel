@@ -34,5 +34,5 @@ import IMask from "imask";
     ".text-field_masked .js-text-field__input"
   );
 
-  maskedInputs.forEach((item) => IMask(item, config));
+  maskedInputs.forEach((node) => IMask(node, config));
 })();

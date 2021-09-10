@@ -3,27 +3,21 @@
 .checkbox-list {
   width: 100%;
 
-  &_rich {
-    & .checkbox-list__text {
-      font-weight: bold;
-      color: $color-first-75;
-    }
+  &_rich &__text {
+    font-weight: bold;
+    color: $color-first-75;
   }
 
-  &_expanded {
-    & .checkbox-list__list {
-      display: none;
-    }
+  &_expanded &__list {
+    display: none;
   }
 
-  &_opened {
-    & .checkbox-list__list {
-      display: grid;
-    }
+  &_opened &__list {
+    display: grid;
+  }
 
-    & .checkbox-list__button {
-      transform: rotate(180deg);
-    }
+  &_opened &__button {
+    transform: rotate(180deg);
   }
 
   &__header {
@@ -59,24 +53,24 @@
   &__input {
     position: absolute;
     opacity: 0;
+  }
 
-    &:checked + .checkbox-list__text {
-      &::before {
-        border-color: $color-second;
-      }
+  &__input:checked + &__text {
+    &::before {
+      border-color: $color-second;
+    }
 
-      &::after {
-        content: "";
-        border-bottom: 2px solid $color-second;
-        border-right: 2px solid $color-second;
-        transform: rotate(45deg);
-        width: 0.3333rem;
-        height: 0.5rem;
-        position: absolute;
-        display: block;
-        top: 0.4167rem;
-        left: 0.6667rem;
-      }
+    &::after {
+      content: "";
+      border-bottom: 2px solid $color-second;
+      border-right: 2px solid $color-second;
+      transform: rotate(45deg);
+      width: 0.3333rem;
+      height: 0.5rem;
+      position: absolute;
+      display: block;
+      top: 0.4167rem;
+      left: 0.6667rem;
     }
   }
 

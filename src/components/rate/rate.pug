@@ -10,7 +10,8 @@ mixin rate(options)
         starType = quantity > i ? '' : '_border'
         i += 1
 
-      img.rate__img(
+      img(
+        class = 'rate__img'
         src=require('../../components/rate/img/star' + starType + '.svg').default,
         alt='star' + starType
       )

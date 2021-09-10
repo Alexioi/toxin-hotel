@@ -1,13 +1,15 @@
 mixin logo(options)
-  if !options
-    - options = {};
-  if !options.type
-    - options.type = 'logo';
-  if options.type === 'mini'
-    - options.type = 'logo-mini';
+  -
+    const {
+      type = 'logo'
+    } = options || {}
 
-  a.logo(href="./index.html") 
-    img.logo__img(
-      src=require(`../../components/logo/img/${options.type}.svg`).default,
-      alt="Toxin"
+  a(
+    class = 'logo'
+    href = "./index.html"
+  ) 
+    img(
+      class = 'logo__img'
+      src = require(`../../components/logo/img/${type}.svg`).default
+      alt = "Toxin"
     )
