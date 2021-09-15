@@ -1,26 +1,24 @@
-@import "../../style/variables.scss";
+@import '../../style/variables.scss';
 
 .button {
+  display: block;
   border: none;
   border-radius: 22px;
   padding: 0.1667rem;
   background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
   cursor: pointer;
+  text-decoration-line: none;
 
   &:hover,
   &.button_hovered {
-    background: linear-gradient(
-      180deg,
-      rgba($color-second, 0.5) 0%,
-      rgba(139, 164, 249, 0.5) 100%
-    );
+    background: linear-gradient(180deg, rgba($color-second, 0.5) 0%, rgba(139, 164, 249, 0.5) 100%);
   }
 
   &__wrapper {
     display: inline-grid;
     padding: 0 21px 0 19px;
     grid-template-columns: 1fr auto 1fr;
-    grid-template-areas: ". text arrow";
+    grid-template-areas: '. text arrow';
     justify-content: center;
     align-items: center;
     border-radius: 22px;

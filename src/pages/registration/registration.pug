@@ -1,11 +1,11 @@
 extends ../../templates/website-pages
 
-include ../../components/auth/auth
+include ../../components/registration-card/registration-card
 
 block title
-  | Registration and sing-in
+  | Registration
 
 block main
   +layout__box({pt: 19, pb: 19, mix: 'p-registration-and-sing-in__background', grow: 1})
     +layout__box({mix: 'p-registration-and-sing-in__auth', basis: 380, pr: 5, pl: 5})
-      +auth
+      +registration-card()

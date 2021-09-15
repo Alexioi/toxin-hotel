@@ -1,0 +1,37 @@
+@import '../../style/variables.scss';
+
+.wrapper {
+  @for $i from 1 to 2000 {
+    &_margin-top-#{$i} {
+      margin-top: ($i / $font-size) + rem;
+    }
+
+    &_margin-right-#{$i} {
+      margin-right: ($i / $font-size) + rem;
+    }
+
+    &_margin-bottom-#{$i} {
+      margin-bottom: ($i / $font-size) + rem;
+    }
+
+    &_margin-left-#{$i} {
+      margin-left: ($i / $font-size) + rem;
+    }
+
+    &_padding-top-#{$i} {
+      padding-top: ($i / $font-size) + rem;
+    }
+
+    &_padding-left-#{$i} {
+      padding-right: ($i / $font-size) + rem;
+    }
+
+    &_padding-bottom-#{$i} {
+      padding-bottom: ($i / $font-size) + rem;
+    }
+
+    &_padding-left-#{$i} {
+      padding-left: ($i / $font-size) + rem;
+    }
+  }
+}

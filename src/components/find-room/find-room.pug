@@ -1,16 +1,18 @@
 include ../dropdown/dropdown
 include ../date-dropdown/date-dropdown
-include ../layout/layout
+include ../wrapper/wrapper
 include ../button/button
 include ../card/card
 include ../title/title
 
 mixin find-room(options)
-  +card
-    +title({text: 'Найдём номера под ваши пожелания'}) 
-    form(method="POST", action="/change-it")
-      +layout__box({mt: 21})
-        +date-dropdown
-      +layout__box({mt: 20, mb: 31})
-        +dropdown({type: 'rooms', counters: [5,4,7]})
-      +button({ type: 'long', text: 'подобрать номер', })
+  .find-room
+    +card
+      +wrapper({marginBottom: 21})
+        +title({text: 'Найдём номера под ваши пожелания'}) 
+      form(method="POST", action="/change-it")
+        +wrapper({marginBottom: 20})
+          +date-dropdown
+        +wrapper({marginBottom: 31})
+          +dropdown({type: 'rooms', counters: [5,4,7]})
+        +button({ type: 'long', text: 'подобрать номер', })

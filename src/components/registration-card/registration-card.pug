@@ -1,0 +1,37 @@
+include ../wrapper/wrapper
+include ../question-form-about-auth/question-form-about-auth
+include ../text-field/text-field
+include ../radio-buttons/radio-buttons
+include ../button/button
+include ../toggle/toggle
+include ../title/title
+include ../card/card
+
+mixin registration-card() 
+
+  .registration-card
+    +card 
+      form(
+        class="registration-card__form" 
+        method="POST" 
+        action="/change-it"
+      ) 
+        +wrapper({marginBottom: 20})
+          +title({text: 'Регистрация аккаунта'}) 
+        +wrapper({marginBottom: 10})
+          +text-field({ placeholder: 'Имя', type: "text", name: "name" })
+        +wrapper({marginBottom: 10})
+          +text-field({ placeholder: 'Фамилия', type: "text" })
+        +wrapper({marginBottom: 20})
+          +radio-buttons
+        +wrapper({marginBottom: 20})
+          +text-field({ title: 'дата рождения', hasHeader: true, isMasked: true })
+        +wrapper({marginBottom: 10})
+          +text-field({ title: 'данные для входа в сервис', hasHeader: true, placeholder: 'Email', type: "text" })
+        +wrapper({marginBottom: 10})
+          +text-field({ placeholder: 'Пароль', type: "text" })
+        +wrapper({marginBottom: 20})
+          +toggle
+        +wrapper({marginBottom: 30})
+          +button({ type: 'long', text: 'перейти к оплате', })
+      +question-form-about-auth({questionText: "Уже есть аккаунт на Toxin", buttonText: "войти", buttonLink: "/"})

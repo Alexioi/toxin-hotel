@@ -1,10 +1,11 @@
 extends ../../templates/ui-kit
 
-include ../../components/auth/auth
 include ../../components/calendar/calendar
 include ../../components/room-booking/room-booking
 include ../../components/find-room/find-room
 include ../../components/room-card/room-card
+include ../../components/registration-card/registration-card
+include ../../components/authorization/authorization
 
 block var
   -
@@ -19,11 +20,11 @@ block main
       +layout__box({basis: 380, direction: 'column'})
         +find-room
         +layout__box({mt: 40, pb: 200})
-          +auth({isRegistration: true})
+          +registration-card
       +layout__box({basis: 380, direction: 'column', mr: 40, ml: 40})
         +room-booking
         +layout__box({mt: 40})
-          +auth
+          +authorization
       +layout__box({basis: 320, direction: 'column'})
         +calendar
         +layout__box({mt: 40})

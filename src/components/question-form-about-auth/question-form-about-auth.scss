@@ -1,0 +1,16 @@
+.question-form-about-auth {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__question {
+    font-size: 1.1667rem;
+    line-height: 1.5rem;
+    color: #000000;
+    width: 100%;
+  }
+
+  &__button {
+    width: 8.25rem;
+  }
+}
