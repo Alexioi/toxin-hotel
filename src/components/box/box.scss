@@ -1,0 +1,9 @@
+@import '../../style/variables.scss';
+
+.box {
+  @for $i from 1 to 2000 {
+    &_width-#{$i} {
+      max-width: ($i / $font-size) + rem;
+    }
+  }
+}

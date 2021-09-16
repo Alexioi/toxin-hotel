@@ -6,6 +6,10 @@ include ../../components/find-room/find-room
 include ../../components/room-card/room-card
 include ../../components/registration-card/registration-card
 include ../../components/authorization/authorization
+include ../../components/container/container
+include ../../components/wrapper/wrapper
+include ../../components/row/row
+include ../../components/box/box
 
 block var
   -
@@ -15,19 +19,22 @@ block title
   | Cards
 
 block main
-  +layout__box({isContainer:true})
-    +layout__box({pt: 10})
-      +layout__box({basis: 380, direction: 'column'})
-        +find-room
-        +layout__box({mt: 40, pb: 200})
+  +container
+    +wrapper({paddingTop: 10, paddingBottom: 140})
+      +row
+        +box({width: 380})
+          +wrapper({marginBottom: 40})
+            +find-room
           +registration-card
-      +layout__box({basis: 380, direction: 'column', mr: 40, ml: 40})
-        +room-booking
-        +layout__box({mt: 40})
-          +authorization
-      +layout__box({basis: 320, direction: 'column'})
-        +calendar
-        +layout__box({mt: 40})
-          +room-card 
-        +layout__box({mt: 40})
-          +room-card 
+        +wrapper({marginLeft: 40, marginRight: 40})
+          +box({width: 380})
+            +wrapper({marginBottom: 40})
+              +room-booking
+            +authorization
+        +box({width: 320})
+          +wrapper({marginBottom: 40})
+            +calendar
+          +box({width: 270})
+            +wrapper({marginBottom: 40})
+              +room-card 
+            +room-card 

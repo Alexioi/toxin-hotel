@@ -1,0 +1,12 @@
+mixin box(options)
+  - 
+    const {
+      width,
+    } = options || {}
+
+  -
+    var classes = ''
+    classes += width ? ' box_width-' + width : ''
+
+  .box(class=classes)
+    block
