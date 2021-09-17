@@ -1,6 +1,6 @@
 include ../../components/text-field/text-field
 include ../../components/logo/logo
-include ../../components/layout/layout
+include ../../components/container/container
 
 mixin footer(options)
   if !options
@@ -51,7 +51,7 @@ mixin footer(options)
     classes += options.mobile ? 'footer_mobile' : ''
 
   .footer(class=classes)
-    +layout__box({isContainer: true})
+    +container
       .footer__main
         .footer__about
           .footer__logo 
@@ -71,7 +71,7 @@ mixin footer(options)
           .footer__input
             +text-field({ placeholder: 'Email', type: "email", isSubscription: true })
     .footer__line
-      +layout__box({isContainer: true})
+      +container
         .footer__sub
           span.footer__text.footer__text-copyright= component.copyrightText
           .footer__social

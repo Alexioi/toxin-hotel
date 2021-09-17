@@ -1,7 +1,5 @@
 @import '../../style/variables.scss';
 
-$container-width: (1160 / $font-size) + rem;
-
 .layout {
   display: flex;
   flex-direction: column;
@@ -17,85 +15,5 @@ $container-width: (1160 / $font-size) + rem;
 
   &__footer {
     flex: 0 0 auto;
-  }
-
-  &__box {
-    display: flex;
-    align-content: flex-start;
-
-    &_block {
-      display: block;
-    }
-
-    &_container {
-      max-width: $container-width;
-      margin: 0 auto;
-      flex-direction: column;
-    }
-
-    &_grow-1 {
-      flex-grow: 1;
-    }
-
-    &_shrink-0 {
-      flex-shrink: 0;
-    }
-
-    &_align {
-      &-left {
-        margin-right: auto;
-      }
-
-      &-right {
-        margin-left: auto;
-      }
-
-      &-center {
-        margin-right: auto;
-        margin-left: auto;
-      }
-    }
-
-    &_column {
-      flex-direction: column;
-    }
-
-    @for $i from 1 to 1400 {
-      &_basis-#{$i} {
-        flex-basis: ($i / $font-size) + rem;
-      }
-
-      &_mt-#{$i} {
-        margin-top: ($i / $font-size) + rem;
-      }
-
-      &_mr-#{$i} {
-        margin-right: ($i / $font-size) + rem;
-      }
-
-      &_mb-#{$i} {
-        margin-bottom: ($i / $font-size) + rem;
-      }
-
-      &_ml-#{$i} {
-        margin-left: ($i / $font-size) + rem;
-      }
-
-      &_pt-#{$i} {
-        padding-top: ($i / $font-size) + rem;
-      }
-
-      &_pr-#{$i} {
-        padding-right: ($i / $font-size) + rem;
-      }
-
-      &_pb-#{$i} {
-        padding-bottom: ($i / $font-size) + rem;
-      }
-
-      &_pl-#{$i} {
-        padding-left: ($i / $font-size) + rem;
-      }
-    }
   }
 }

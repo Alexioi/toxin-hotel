@@ -2,6 +2,8 @@ extends ../../templates/ui-kit
 
 include ../../components/header/header
 include ../../components/footer/footer
+include ../../components/wrapper/wrapper
+include ../../components/box/box
 
 block var
   -
@@ -11,13 +13,12 @@ block title
   | Headers and footers
 
 block main
-  +layout__box({direction: 'column', grow: 1})
-    +layout__box({mt: 40})
-      +header 
-    +layout__box({mt: 40})
-      +header({username: 'Юлий Цезарь'})
-    +layout__box({mt: 40})
-      +footer
-    +layout__box({mt: 40, mb: 140})
-      +layout__box({basis: 768, shrink: '0', align: 'center'})
-        +footer({mobile: true})
+  +wrapper({marginTop: 40})
+    +header 
+  +wrapper({marginTop: 40})
+    +header({username: 'Юлий Цезарь'})
+  +wrapper({marginTop: 40})
+    +footer
+  +wrapper({marginTop: 40, marginBottom: 140})
+    +box({width: 768})
+      +footer({mobile: true})

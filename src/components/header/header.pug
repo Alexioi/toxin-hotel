@@ -1,5 +1,5 @@
 include ../../components/logo/logo
-include ../../components/layout/layout
+include ../../components/container/container
 include ../../components/button/button
 
 mixin header(options)
@@ -17,7 +17,7 @@ mixin header(options)
     } = options || {}
 
   .header.js-header 
-    +layout__box({isContainer: true, mix: 'header__container'})
+    +container
       .header__wrapper
         .header__logo
           +logo

@@ -1,16 +1,18 @@
 extends ../../templates/website-pages
 
-include ../../components/layout/layout
 include ../../components/room-list/room-list
 include ../../components/filter/filter
+include ../../components/container/container
+include ../../components/row/row
+include ../../components/box/box
 
 block title
   | Search room
 
 block main
-  +layout__box({isContainer: true, grow: 1, mt: 30})
-    +layout__box({mix: 'p-search-room__content'})
-      +layout__box({basis: 266, shrink: '0', mr: 60, mix: 'p-search-room__filter'})
+  +container
+    +row
+      +box
         +filter
-      +layout__box({basis: 834, align: 'right'})
+      +box
         +room-list

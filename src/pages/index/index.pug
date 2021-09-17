@@ -1,4 +1,4 @@
-include ../../components/layout/layout
+include ../../components/row/row
 
 -
   var links = [
@@ -19,6 +19,6 @@ html
     meta(name="viewport", content="initial-scale=1.0, width=device-width")
     title Toxin
   body
-    +layout__box({direction: 'column',mix: 'p-index'})
+    +row
       each link in links
         a(href=link.link)= link.text

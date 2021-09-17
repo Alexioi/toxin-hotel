@@ -1,3 +1,12 @@
-mixin row()
-  .row  
+mixin row(options)
+  -
+    const {
+      justifyContent
+    } = options || {}
+
+  -
+    var classes = ''
+    classes += justifyContent === 'space-between' ? 'row_justify-content-space-between' : ''
+
+  .row(class=classes)
     block

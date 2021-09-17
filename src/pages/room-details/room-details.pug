@@ -1,44 +1,48 @@
 extends ../../templates/website-pages
 
-include ../../components/layout/layout
 include ../../components/icon-text-list/icon-text-list
 include ../../components/comment/comment
 include ../../components/bullet-list/bullet-list
 include ../../components/room-booking/room-booking
 include ../../components/title/title
 include ../../components/gallery/gallery
+include ../../components/container/container
+include ../../components/wrapper/wrapper
+include ../../components/row/row
+include ../../components/box/box
 
 block title
   | Search room
 
 block main
-  +layout__box({direction: 'column', grow: 1})
+  //- +box
     +gallery
-    +layout__box({isContainer: true, grow: 1, mt: 70})
-      +layout__box
-        +layout__box({basis: 712, direction: 'column'})
-          +layout__box
-            +layout__box({basis: 291, direction: 'column'})
+  +wrapper({marginTop: 70})
+    +container
+      +row({justifyContent: 'space-between'})
+        +box({width: 712})
+          +row({justifyContent: 'space-between'})
+            +box({width: 291})
               +title({text: 'Сведения о номере', type: 'h3'})
-              +layout__box({mt: 20})
+              +wrapper({marginTop: 20})
                 +icon-text-list
-            +layout__box({align: 'right'})
-              +title({text: 'Впечатления от номера', type: 'h3'})
-          +layout__box({pt: 34})
+            +title({text: 'Впечатления от номера', type: 'h3'})
+          +wrapper({marginTop: 34})
             +title({text: 'Отзывы посетителей номера', type: 'h3'})
-          +layout__box({pt: 23})
+          +wrapper({marginTop: 23})
             +comment 
-          +layout__box({pt: 23})
+          +wrapper({marginTop: 23})
             +comment
-          +layout__box({pt: 30})
-            +layout__box
-              +layout__box({direction: 'column'})
-                +layout__box({mb: 20, pl: 20})
+          +wrapper({marginTop: 30})
+            +row
+              +box
+                +wrapper({marginBottom: 20, marginLeft: 20})
                   +title({text: 'Правила', type: 'h3'})
                 +bullet-list
-              +layout__box({direction: 'column', align: 'right', basis: 341})
-                +layout__box({mb: 20})
+              +box({width: 341})
+                +wrapper({marginBottom: 20})
                   +title({text: 'Отмена', type: 'h3'})
                 p Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
-        +layout__box({basis: 380, align: 'right'})
+
+        +box({width: 380})
           +room-booking

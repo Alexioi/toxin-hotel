@@ -1,16 +1,18 @@
 extends ../../templates/website-pages
 
 include ../../components/find-room/find-room
+include ../../components/container/container
+include ../../components/row/row
+include ../../components/box/box
 
 block title
   | Landing page
 
 block main
-  +layout__box({pt: 19, pb: 19, mix: 'p-registration-and-sing-in__background', grow: 1})
-    +layout__box({isContainer: true, grow: 1})
-      +layout__box
-        +layout__box({basis: 380, align: 'left'})
-          +find-room
-      +layout__box
-        +layout__box({pt: 320, basis: 260, align: 'right'})
-          p Лучшие номера для вашей работы, отдыха и просто вдохновения
+  +container
+    +row
+      +box
+        +find-room
+    +row
+      +box
+        p Лучшие номера для вашей работы, отдыха и просто вдохновения
