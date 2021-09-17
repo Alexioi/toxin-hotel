@@ -1,5 +1,7 @@
 include ../components/logo/logo
 include ../components/layout/layout
+include ../components/wrapper/wrapper
+include ../components/container/container
 
 block var
   -
@@ -15,7 +17,8 @@ html
   body(class=withThemeGray ? 't-ui-kit_with-theme-gray' : '')
     +layout
       +layout__header
-        +layout__box({pt: 30, pb: 62, basis: 1380, align: 'center'})
-          +logo({type: 'mini'})
+        +container({size: 'big'})
+          +wrapper({paddingTop: 30, paddingBottom: 62})
+            +logo({type: 'mini'})
       +layout__main
         block main

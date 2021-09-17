@@ -1,43 +1,45 @@
-@import "../../style/variables.scss";
+@import '../../style/variables.scss';
 
 .checkbox-list {
   width: 100%;
+  display: grid;
+  gap: 0.8333rem;
 
   &_rich &__text {
     font-weight: bold;
     color: $color-first-75;
   }
 
-  &_expanded &__list {
-    display: none;
-  }
+  // &_expanded &__list {
+  //   display: none;
+  // }
 
-  &_opened &__list {
-    display: grid;
-  }
+  // &_opened &__list {
+  //   display: grid;
+  // }
 
-  &_opened &__button {
-    transform: rotate(180deg);
-  }
+  // &_opened &__button {
+  //   transform: rotate(180deg);
+  // }
 
-  &__header {
-    margin-bottom: 1.3333rem;
-    display: flex;
-    justify-content: space-between;
-  }
+  // &__header {
+  //   margin-bottom: 1.3333rem;
+  //   display: flex;
+  //   justify-content: space-between;
+  // }
 
-  &__button {
-    background-color: white;
-    border: none;
-    cursor: pointer;
-    line-height: 15px;
-    color: $color-first-50;
-  }
+  // &__button {
+  //   background-color: white;
+  //   border: none;
+  //   cursor: pointer;
+  //   line-height: 15px;
+  //   color: $color-first-50;
+  // }
 
-  &__list {
-    display: grid;
-    gap: 0.8333rem;
-  }
+  // &__list {
+  //   display: grid;
+  //   gap: 0.8333rem;
+  // }
 
   &__item {
     list-style: none;
@@ -61,7 +63,7 @@
     }
 
     &::after {
-      content: "";
+      content: '';
       border-bottom: 2px solid $color-second;
       border-right: 2px solid $color-second;
       transform: rotate(45deg);
@@ -80,7 +82,7 @@
     color: $color-first-50;
 
     &::before {
-      content: "";
+      content: '';
       border: 1px solid $color-first-25;
       width: 1.5rem;
       height: 1.5rem;

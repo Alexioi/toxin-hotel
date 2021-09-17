@@ -1,4 +1,4 @@
-@import "../../style/variables.scss";
+@import '../../style/variables.scss';
 
 $container-width: (1160 / $font-size) + rem;
 
@@ -8,17 +8,14 @@ $container-width: (1160 / $font-size) + rem;
   height: 100%;
 
   &__header {
-    display: flex;
     flex: 0 0 auto;
   }
 
   &__main {
-    display: flex;
     flex: 1 0 auto;
   }
 
   &__footer {
-    display: flex;
     flex: 0 0 auto;
   }
 

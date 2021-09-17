@@ -1,8 +1,10 @@
 @import '../../style/variables.scss';
 
-$container-width: (1160 / $font-size) + rem;
-
 .container {
-  max-width: $container-width;
+  max-width: (1160 / $font-size) + rem;
   margin: 0 auto;
+
+  &_size-big {
+    max-width: (1380 / $font-size) + rem;
+  }
 }

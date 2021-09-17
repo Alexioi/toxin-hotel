@@ -23,19 +23,19 @@ mixin checkbox-list(options)
     classes += isOpened ? ' checkbox-list_opened' : ''
 
   .checkbox-list(class=classes)
-    .checkbox-list__header
-      +label({title})
-      if type === "expanded"
-        button.checkbox-list__button.js-checkbox-list__button.material-icons expand_more
-    ul.checkbox-list__list
-      each item in items 
-        li.checkbox-list__item
-          label.checkbox-list__label
-            input(
-              class="checkbox-list__input"
-              type="checkbox" 
-              checked=item.isChecked
-            )
-            span.checkbox-list__text= item.text
-            if type === "rich"
-              p.checkbox-list__sub-text= item.subText
+    //- .checkbox-list__header
+    //-   +label({title})
+    //-   if type === "expanded"
+    //-     button.checkbox-list__button.js-checkbox-list__button.material-icons expand_more
+    //- ul.checkbox-list__list
+    each item in items 
+      li.checkbox-list__item
+        label.checkbox-list__label
+          input(
+            class="checkbox-list__input"
+            type="checkbox" 
+            checked=item.isChecked
+          )
+          span.checkbox-list__text= item.text
+          if type === "rich"
+            p.checkbox-list__sub-text= item.subText

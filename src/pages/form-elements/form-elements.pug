@@ -14,104 +14,134 @@ include ../../components/dropdown/dropdown
 include ../../components/pagination/pagination
 include ../../components/label/label
 include ../../components/text-field/text-field
+include ../../components/container/container
+include ../../components/box/box
+include ../../components/wrapper/wrapper
+include ../../components/row/row
+include ../../components/label/label
 
 block title
   | Form elements
 
 block main
-  +layout__box({isContainer: true})
-    +layout__box({pt: 3})
-      +layout__box({basis: 320, direction: 'column'})
-        +text-field({ title: 'Text Field', hint: "Default", placeholder: 'Email', type: "email" })
-        +layout__box({mt: 20})
-          +text-field({ isHovered: true, title: 'Text Field', hint: "Hover / Focus", value: "This is pretty awesome", placeholder: 'This is pretty awesome', type: "text" })
-        +layout__box({mt: 20})
-          +text-field({ title: 'Text Field', hint: "Default", placeholder: 'Email', type: "email" })
-        +layout__box({mt: 22})
-          +text-field({ title: 'masked text field', isMasked: true })
-        +layout__box({mt: 40}) 
-          +date-dropdown
-        +layout__box({mt: 40})
-          +layout__box({basis: 266})
-            +date-dropdown({type: 'filter'})
-        +layout__box({mt: 40, mb: 100})
-          +layout__box({basis: 266})
-            +text-field({ title: 'subscription text field', placeholder: 'Email', type: "email", isSubscription: true })
+  +container
+    +wrapper({ marginTop: 3})
+      +row
+        +box({width: 320})
+          +label({title: 'Text Field', hint: 'Default'})
+            +wrapper({marginTop: 5})
+              +text-field({ title: 'Text Field', hint: "Default", placeholder: 'Email', type: "email" })
+          +wrapper({marginTop: 20})
+            +label({title: 'Text Field', hint: 'Hover / Focus'})
+              +wrapper({marginTop: 5})
+                +text-field({ isHovered: true, title: 'Text Field', hint: "Hover / Focus", value: "This is pretty awesome", placeholder: 'This is pretty awesome', type: "text" })
+          +wrapper({marginTop: 20})
+            +label({title: 'label'})
+              +wrapper({marginTop: 5})
+                +text-field({ title: 'Text Field', hint: "Default", placeholder: 'Email', type: "email" })
+          +wrapper({marginTop: 22})
+            +label({title: 'masked text field'})
+              +wrapper({marginTop: 5})
+                +text-field({ title: 'masked text field', isMasked: true })
+          +wrapper({marginTop: 40})
+            +date-dropdown
+          +box({width: 266})
+            +wrapper({marginTop: 40})
+              +date-dropdown({type: 'filter'})
+            +wrapper({marginTop: 40})
+              +label({title: 'subscription text field'})
+                +wrapper({marginTop: 5})
+                  +text-field({ title: 'subscription text field', placeholder: 'Email', type: "email", isSubscription: true })
 
-      +layout__box({basis: 260, direction: 'column', mr: 132, ml: 126})
-        +checkbox-list({ title: 'Rich Checkbox Buttons', items: [ {text: "Можно курить"}, {text: "Можно с питомцами", isChecked: true}, {text: "Можно пригласить гостей (до 10 человек)", isChecked: true}, ]})
-        +layout__box({mt: 41})
-          +label({title: 'Radio Buttons'}) 
-        +layout__box({mt: 16})
-          +radio-buttons
-        +layout__box({mt: 37})
-          +label({title: 'Toggle'})
-        +layout__box({mt: 16})
-          +toggle
-        +layout__box({mt: 10})
-          +toggle({isChecked: true})
-        +layout__box({mt: 40})
-          +label({title: 'like button'})
-        +layout__box({mt: 16})
-          +like-button({counter: 1, isLiked: true})
-          +layout__box({ml: 10})
-            +like-button({})
-        +layout__box({mt: 40})
-        +label({title: 'rate button'})
-        +layout__box({mt: 16})
-          +rate({quantity: 4})
-          +layout__box({ml: 20})
-            +rate
+        +wrapper({marginRight: 132, marginLeft: 126})
+          +box({width: 320})
+            +label({title: 'Checkbox Buttons'})
+            +wrapper({marginTop: 16})
+            +checkbox-list({ title: 'Rich Checkbox Buttons', items: [ {text: "Можно курить"}, {text: "Можно с питомцами", isChecked: true}, {text: "Можно пригласить гостей (до 10 человек)", isChecked: true}, ]})
+            +wrapper({marginTop: 41})
+              +label({title: 'Radio Buttons'}) 
+            +wrapper({marginTop: 16})
+              +radio-buttons
+            +wrapper({marginTop: 37})
+              +label({title: 'Toggle'})
+            +wrapper({marginTop: 16})
+              +toggle
+            +wrapper({marginTop: 10})
+              +toggle({isChecked: true})
+            +wrapper({marginTop: 40})
+              +label({title: 'like button'})
+            +wrapper({marginTop: 10})
+              +row
+                +like-button({counter: 1, isLiked: true})
+                +wrapper({marginLeft: 16})
+                  +like-button
+            +wrapper({marginTop: 16})
+            +label({title: 'rate button'})
+            +row
+              +rate({quantity: 4})
+              +wrapper({marginLeft: 20})
+                +rate
 
-      +layout__box({basis: 320, direction: 'column'}) 
-        +label({title: 'buttons'}) 
-        +layout__box({mt: 16}) 
-          +button
-          +layout__box({ml: 19}) 
-            +button({ isHovered: true, })
-        +layout__box({mt: 30}) 
-          +layout__box({width: 99}) 
-            +button({ type: 'outline', })
-          +layout__box({ml: 20}) 
-            +button({ type: 'outline', isHovered: true, })
-        +layout__box({mt: 31}) 
-          +button({ type: 'link', })
-          +layout__box({ml: 20}) 
-            +button({ type: 'link', isHovered: true, })
-        +layout__box({mt: 30}) 
-          +button({ type: 'long', text: 'перейти к оплате', })
-        +layout__box({mt: 40}) 
-          +label({title: 'pagination'})
-        +layout__box({mt: 16}) 
-          +pagination 
+        +box({width: 320}) 
+          +label({title: 'buttons'}) 
+          +wrapper({marginTop: 16})
+            +row
+              +button
+              +wrapper({marginLeft: 19})
+                +button({ isHovered: true, })
+          +wrapper({marginTop: 30})
+            +row
+              +button({ type: 'outline', })
+              +wrapper({marginLeft: 20})
+                +button({ type: 'outline', isHovered: true, })
+          +wrapper({marginTop: 31}) 
+            +row
+              +button({ type: 'link', })
+              +wrapper({marginLeft: 20})
+                +button({ type: 'link', isHovered: true, })
+          +wrapper({marginTop: 30})
+            +button({ type: 'long', text: 'перейти к оплате', })
+          +wrapper({marginTop: 40})
+            +label({title: 'pagination'})
+          +wrapper({marginTop: 16})
+            +pagination 
 
-    +layout__box
-      +layout__box({basis: 266, direction: 'column'})
-        +dropdown({type: 'rooms'})
-        +layout__box({mt: 20, mb: 159}) 
-          +dropdown({type: 'rooms', counters: [5,4,7], isOpened: true})
+    +wrapper({marginTop: 100})
+      +row
+        +box({width: 266})
+          +dropdown({type: 'rooms'})
+          +layout__box({mt: 20, mb: 159}) 
+            +dropdown({type: 'rooms', counters: [5,4,7], isOpened: true})
 
-      +layout__box({basis: 320, mr: 72, ml: 181})
-        +dropdown({isOpened: true})
+        +wrapper({marginLeft: 181, marginRight: 72})
+          +box({width: 320})
+            +dropdown({isOpened: true})
 
-      +layout__box({basis: 320, direction: 'column'})
-        +dropdown({counters: [2,1,0], isOpened: true})
+        +box({width: 320})
+          +dropdown({counters: [2,1,0], isOpened: true})
 
-    +layout__box
-      +layout__box({basis: 266, direction: 'column'})
-        +checkbox-list({ title: 'expandable checkbox list', type: 'expanded', })
-        +layout__box({mt: 35, mb: 102})
+    +wrapper({marginTop: 158})
+      +row
+        +box({width: 266})
+          +checkbox-list({ title: 'expandable checkbox list', type: 'expanded', })
           +checkbox-list({ title: 'expandable checkbox list', type: 'expanded', isOpened: true, })
 
-      +layout__box({basis: 266, direction: 'column', ml: 180, mr: 126})
-        +checkbox-list({ title: 'Checkbox Buttons', type: 'rich', items: [ {text: "Широкий коридор", subText: 'Ширина коридоров в номере не менее 91 см.'}, {text: "Помощник для инвалидов", subText: 'На 1 этаже вас встретит специалист и проводит до номера.'}, ]})
+        +wrapper({marginLeft: 181, marginRight: 126})
+          +box({width: 266})
+            +label({title: 'rich Checkbox Buttons'})
+            +wrapper({marginTop: 16})
+            +checkbox-list({ title: 'Checkbox Buttons', type: 'rich', items: [ {text: "Широкий коридор", subText: 'Ширина коридоров в номере не менее 91 см.'}, {text: "Помощник для инвалидов", subText: 'На 1 этаже вас встретит специалист и проводит до номера.'}, ]})
 
-      +layout__box({basis: 292, direction: 'column'})
-        +bullet-list
+        +box({width: 292})
+          +label({title: 'bullet list'})
+          +wrapper({marginTop: 16})
+          +bullet-list
 
-    +layout__box
-      +layout__box({basis: 280, pb: 131})
-        +icon-text-list
+    +wrapper({marginTop: 236})
+      +row
+        +box({width: 280})
+          +icon-text-list
 
-      +layout__box({basis: 712, align: 'right', pt: 10})
-        +comment
+        +wrapper({marginLeft: 167, marginTop: 10})
+          +box({width: 712})
+            +comment

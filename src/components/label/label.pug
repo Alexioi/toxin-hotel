@@ -1,13 +1,12 @@
 mixin label(options)
   -
     const {
-      title='example',
-      hasHint=false, 
+      title='label',
       hint=''
     } = options || {}
 
-  .label 
+  label.label 
     span.label__title= title
-    if hasHint
+    if hint !== ''
       span.label__hint= hint
     block

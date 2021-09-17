@@ -1,9 +1,6 @@
-@import "../../style/variables.scss";
+@import '../../style/variables.scss';
 
 .label {
-  display: flex;
-  justify-content: space-between;
-
   &__title {
     font: normal bold 1rem/1.25rem $font-first;
     text-transform: uppercase;
@@ -14,5 +11,6 @@
     font: normal normal 1rem/1.25rem $font-first;
     text-transform: uppercase;
     color: rgba($color-first, 0.5);
+    float: right;
   }
 }

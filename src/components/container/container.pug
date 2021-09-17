@@ -1,3 +1,12 @@
-mixin container()
-  .container
+mixin container(options)
+  -
+    const {
+      size,
+    } = options || {}
+
+  -
+    var classes = ''
+    classes += size === 'big' ? ' container_size-big' : ''
+
+  .container(class=classes)
     block

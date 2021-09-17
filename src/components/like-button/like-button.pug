@@ -1,4 +1,10 @@
-mixin like-button({isLiked = false, counter = 1})
+mixin like-button(options)
+  -
+    const {
+      isLiked = false, 
+      counter = 1
+    } = options || {}
+
   -
     var classes = ''
     classes += isLiked ? ' like-button_liked': ''
