@@ -1,12 +1,13 @@
 mixin row(options)
   -
     const {
-      justifyContent
+      justifyContent,
+      alignItems
     } = options || {}
 
   -
     var classes = ''
-    classes += justifyContent === 'space-between' ? 'row_justify-content-space-between' : ''
+    classes += justifyContent ? ' row_justify-content-' + justifyContent : ''
 
   .row(class=classes)
     block

@@ -4,6 +4,13 @@
   width: 100%;
 
   @for $i from 1 to 2000 {
+    &_width-#{$i} {
+      max-width: ($i / $font-size) + rem;
+    }
+    &_flex-basis-#{$i} {
+      flex-basis: ($i / $font-size) + rem;
+    }
+
     &_margin-top-#{$i} {
       margin-top: ($i / $font-size) + rem;
     }

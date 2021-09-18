@@ -4,7 +4,6 @@ include ../../components/room-list/room-list
 include ../../components/filter/filter
 include ../../components/container/container
 include ../../components/row/row
-include ../../components/box/box
 
 block title
   | Search room
@@ -12,7 +11,5 @@ block title
 block main
   +container
     +row
-      +box
-        +filter
-      +box
-        +room-list
+      +filter
+      +room-list

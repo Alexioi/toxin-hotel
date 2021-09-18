@@ -15,7 +15,6 @@ include ../../components/pagination/pagination
 include ../../components/label/label
 include ../../components/text-field/text-field
 include ../../components/container/container
-include ../../components/box/box
 include ../../components/wrapper/wrapper
 include ../../components/row/row
 include ../../components/label/label
@@ -27,7 +26,7 @@ block main
   +container
     +wrapper({ marginTop: 3})
       +row
-        +box({width: 320})
+        +wrapper({basis: 320})
           +label({title: 'Text Field', hint: 'Default'})
             +wrapper({marginTop: 5})
               +text-field({ title: 'Text Field', hint: "Default", placeholder: 'Email', type: "email" })
@@ -45,44 +44,43 @@ block main
                 +text-field({ title: 'masked text field', isMasked: true })
           +wrapper({marginTop: 40})
             +date-dropdown
-          +box({width: 266})
-            +wrapper({marginTop: 40})
+          +wrapper({width: 266})
+            +wrapper({marginTop: 40, width: 266})
               +date-dropdown({type: 'filter'})
             +wrapper({marginTop: 40})
               +label({title: 'subscription text field'})
                 +wrapper({marginTop: 5})
                   +text-field({ title: 'subscription text field', placeholder: 'Email', type: "email", isSubscription: true })
 
-        +wrapper({marginRight: 132, marginLeft: 126})
-          +box({width: 320})
-            +label({title: 'Checkbox Buttons'})
-            +wrapper({marginTop: 16})
-            +checkbox-list({ title: 'Rich Checkbox Buttons', items: [ {text: "Можно курить"}, {text: "Можно с питомцами", isChecked: true}, {text: "Можно пригласить гостей (до 10 человек)", isChecked: true}, ]})
-            +wrapper({marginTop: 41})
-              +label({title: 'Radio Buttons'}) 
-            +wrapper({marginTop: 16})
-              +radio-buttons
-            +wrapper({marginTop: 37})
-              +label({title: 'Toggle'})
-            +wrapper({marginTop: 16})
-              +toggle
-            +wrapper({marginTop: 10})
-              +toggle({isChecked: true})
-            +wrapper({marginTop: 40})
-              +label({title: 'like button'})
-            +wrapper({marginTop: 10})
-              +row
-                +like-button({counter: 1, isLiked: true})
-                +wrapper({marginLeft: 16})
-                  +like-button
-            +wrapper({marginTop: 16})
-            +label({title: 'rate button'})
+        +wrapper({basis: 260, marginRight: 132, marginLeft: 126}) 
+          +label({title: 'Checkbox Buttons'})
+          +wrapper({marginTop: 16})
+          +checkbox-list({ title: 'Rich Checkbox Buttons', items: [ {text: "Можно курить"}, {text: "Можно с питомцами", isChecked: true}, {text: "Можно пригласить гостей (до 10 человек)", isChecked: true}, ]})
+          +wrapper({marginTop: 41})
+            +label({title: 'Radio Buttons'}) 
+          +wrapper({marginTop: 16})
+            +radio-buttons
+          +wrapper({marginTop: 37})
+            +label({title: 'Toggle'})
+          +wrapper({marginTop: 16})
+            +toggle
+          +wrapper({marginTop: 10})
+            +toggle({isChecked: true})
+          +wrapper({marginTop: 40})
+            +label({title: 'like button'})
+          +wrapper({marginTop: 10})
             +row
-              +rate({quantity: 4})
-              +wrapper({marginLeft: 20})
-                +rate
+              +like-button({counter: 1, isLiked: true})
+              +wrapper({marginLeft: 16})
+                +like-button
+          +wrapper({marginTop: 16})
+          +label({title: 'rate button'})
+          +row
+            +rate({quantity: 4})
+            +wrapper({marginLeft: 20})
+              +rate
 
-        +box({width: 320}) 
+        +wrapper({basis: 320}) 
           +label({title: 'buttons'}) 
           +wrapper({marginTop: 16})
             +row
@@ -108,39 +106,36 @@ block main
 
     +wrapper({marginTop: 100})
       +row
-        +box({width: 266})
+        +wrapper({basis: 266})
           +dropdown({type: 'rooms'})
             +dropdown({type: 'rooms', counters: [5,4,7], isOpened: true})
 
-        +wrapper({marginLeft: 181, marginRight: 72})
-          +box({width: 320})
-            +dropdown({isOpened: true})
+        +wrapper({basis: 320, marginLeft: 181, marginRight: 72})
+          +dropdown({isOpened: true})
 
-        +box({width: 320})
+        +wrapper({basis: 320})
           +dropdown({counters: [2,1,0], isOpened: true})
 
     +wrapper({marginTop: 158})
       +row
-        +box({width: 266})
+        +wrapper({basis: 266})
           +checkbox-list({ title: 'expandable checkbox list', type: 'expanded', })
           +checkbox-list({ title: 'expandable checkbox list', type: 'expanded', isOpened: true, })
 
-        +wrapper({marginLeft: 181, marginRight: 126})
-          +box({width: 266})
-            +label({title: 'rich Checkbox Buttons'})
-            +wrapper({marginTop: 16})
-            +checkbox-list({ title: 'Checkbox Buttons', type: 'rich', items: [ {text: "Широкий коридор", subText: 'Ширина коридоров в номере не менее 91 см.'}, {text: "Помощник для инвалидов", subText: 'На 1 этаже вас встретит специалист и проводит до номера.'}, ]})
+        +wrapper({marginLeft: 181, marginRight: 126, basis: 266})
+          +label({title: 'rich Checkbox Buttons'})
+          +wrapper({marginTop: 16})
+          +checkbox-list({ title: 'Checkbox Buttons', type: 'rich', items: [ {text: "Широкий коридор", subText: 'Ширина коридоров в номере не менее 91 см.'}, {text: "Помощник для инвалидов", subText: 'На 1 этаже вас встретит специалист и проводит до номера.'}, ]})
 
-        +box({width: 292})
+        +wrapper({basis: 292})
           +label({title: 'bullet list'})
           +wrapper({marginTop: 16})
           +bullet-list
 
     +wrapper({marginTop: 236})
       +row
-        +box({width: 280})
+        +wrapper({basis: 280})
           +icon-text-list
 
-        +wrapper({marginLeft: 167, marginTop: 10})
-          +box({width: 712})
-            +comment
+        +wrapper({marginLeft: 167, marginTop: 10, basis: 712})
+          +comment

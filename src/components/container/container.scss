@@ -3,6 +3,15 @@
 .container {
   max-width: (1160 / $font-size) + rem;
   margin: 0 auto;
+  height: 100%;
+
+  @include media-breakpoint-down($lg) {
+    padding: 0 1.6667rem;
+  }
+
+  @include media-breakpoint-down($sm) {
+    padding: 0 0.8333rem;
+  }
 
   &_size-big {
     max-width: (1380 / $font-size) + rem;

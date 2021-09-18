@@ -19,6 +19,7 @@ html
     meta(name="viewport", content="initial-scale=1.0, width=device-width")
     title Toxin
   body
-    +row
-      each link in links
+    ul
+    each link in links
+      li
         a(href=link.link)= link.text

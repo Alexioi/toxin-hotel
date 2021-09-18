@@ -1,20 +1,17 @@
-@import "../../style/variables.scss";
+@import '../../style/variables.scss';
 
-.p-registration-and-sing-in {
+.p-registration {
   &__background {
     height: 100%;
-    min-height: 684px;
-    background-image: url(./img/background.png);
-    background-position: center top;
-    background-repeat: no-repeat;
+    min-height: 57rem;
+    background: no-repeat center center url(./img/background.png);
     background-size: cover;
-
-    @include media-breakpoint-down($sm) {
-      min-height: 0;
-    }
   }
 
-  &__auth {
-    margin: auto;
+  &__form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
   }
 }

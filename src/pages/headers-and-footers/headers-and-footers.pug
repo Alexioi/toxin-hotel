@@ -3,7 +3,7 @@ extends ../../templates/ui-kit
 include ../../components/header/header
 include ../../components/footer/footer
 include ../../components/wrapper/wrapper
-include ../../components/box/box
+include ../../components/row/row
 
 block var
   -
@@ -13,12 +13,12 @@ block title
   | Headers and footers
 
 block main
-  +wrapper({marginTop: 40})
-    +header 
+  +header 
   +wrapper({marginTop: 40})
     +header({username: 'Юлий Цезарь'})
   +wrapper({marginTop: 40})
     +footer
   +wrapper({marginTop: 40, marginBottom: 140})
-    +box({width: 768})
-      +footer({mobile: true})
+    +row({justifyContent: 'center'})
+      +wrapper({width: 768})
+        +footer({mobile: true})

@@ -9,7 +9,6 @@ include ../../components/authorization/authorization
 include ../../components/container/container
 include ../../components/wrapper/wrapper
 include ../../components/row/row
-include ../../components/box/box
 
 block var
   -
@@ -22,19 +21,22 @@ block main
   +container
     +wrapper({paddingTop: 10, paddingBottom: 140})
       +row
-        +box({width: 380})
+        +wrapper({basis: 380})
           +wrapper({marginBottom: 40})
             +find-room
           +registration-card
-        +wrapper({marginLeft: 40, marginRight: 40})
-          +box({width: 380})
-            +wrapper({marginBottom: 40})
-              +room-booking
-            +authorization
-        +box({width: 320})
+        +wrapper({marginLeft: 40, marginRight: 40, basis: 380})
+          +wrapper({marginBottom: 40})
+            +room-booking
+          +authorization
+        +wrapper({basis: 320})
           +wrapper({marginBottom: 40})
             +calendar
-          +box({width: 270})
+              input(type="text")
+              input(type="text")
+              button o
+              button p
+          +wrapper({width: 270})
             +wrapper({marginBottom: 40})
               +room-card 
             +room-card 

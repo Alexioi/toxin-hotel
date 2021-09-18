@@ -1,7 +1,13 @@
 .row {
   display: flex;
 
-  &_justify-content-space-between {
-    justify-content: space-between;
+  &_justify-content {
+    &-space-between {
+      justify-content: space-between;
+    }
+
+    &-center {
+      justify-content: center;
+    }
   }
 }
