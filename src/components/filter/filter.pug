@@ -1,11 +1,23 @@
-include ../../components/date-dropdown/date-dropdown
 include ../../components/dropdown/dropdown
 include ../../components/checkbox-list/checkbox-list
 include ../../components/button/button
+include ../../components/calendar/calendar
+include ../../components/dropdown-field/dropdown-field
+include ../../components/wrapper/wrapper
+include ../../components/label/label
 
 mixin filter(options)
   .filter
-    +date-dropdown
+    +calendar   
+      +row
+        +wrapper({paddingRight: 10})
+          +label({title: 'date Dropdown'})
+            +wrapper({marginTop: 5})
+              +dropdown-field
+        +wrapper({paddingLeft: 10})
+          +label({title: 'date Dropdown'})
+            +wrapper({marginTop: 5})
+              +dropdown-field
     +dropdown({counters: [3,0,1]})
     +checkbox-list({ title: 'правила дома', items: [ {text: "Можно курить"}, {text: "Можно с питомцами", isChecked: true}, {text: "Можно пригласить гостей (до 10 человек)", isChecked: true}, ] })
     +checkbox-list({ title: 'доступность', type: 'rich', items: [ {text: "Широкий коридор", subText: 'Ширина коридоров в номере не менее 91 см.'}, {text: "Помощник для инвалидов", subText: 'На 1 этаже вас встретит специалист и проводит до номера.'}, ] })

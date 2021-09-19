@@ -9,7 +9,6 @@ include ../../components/bullet-list/bullet-list
 include ../../components/rate/rate
 include ../../components/checkbox-list/checkbox-list
 include ../../components/radio-buttons/radio-buttons
-include ../../components/date-dropdown/date-dropdown
 include ../../components/dropdown/dropdown
 include ../../components/pagination/pagination
 include ../../components/label/label
@@ -18,6 +17,9 @@ include ../../components/container/container
 include ../../components/wrapper/wrapper
 include ../../components/row/row
 include ../../components/label/label
+include ../../components/calendar/calendar
+include ../../components/dropdown-field/dropdown-field
+include ../../components/dropdown-menu/dropdown-menu
 
 block title
   | Form elements
@@ -43,10 +45,22 @@ block main
               +wrapper({marginTop: 5})
                 +text-field({ title: 'masked text field', isMasked: true })
           +wrapper({marginTop: 40})
-            +date-dropdown
+            +calendar   
+              +row
+                +wrapper({paddingRight: 10})
+                  +label({title: 'date Dropdown'})
+                    +wrapper({marginTop: 5})
+                      +dropdown-field
+                +wrapper({paddingLeft: 10})
+                  +label({title: 'date Dropdown'})
+                    +wrapper({marginTop: 5})
+                      +dropdown-field
           +wrapper({width: 266})
             +wrapper({marginTop: 40, width: 266})
-              +date-dropdown({type: 'filter'})
+              +calendar   
+                +label({title: 'filter date dropdown'})
+                  +wrapper({marginTop: 5})
+                    +dropdown-field
             +wrapper({marginTop: 40})
               +label({title: 'subscription text field'})
                 +wrapper({marginTop: 5})
@@ -111,7 +125,10 @@ block main
             +dropdown({type: 'rooms', counters: [5,4,7], isOpened: true})
 
         +wrapper({basis: 320, marginLeft: 181, marginRight: 72})
-          +dropdown({isOpened: true})
+          +dropdown-menu({})
+            +label({title: 'masked text field'})
+              +wrapper({marginTop: 5})
+                +dropdown-field
 
         +wrapper({basis: 320})
           +dropdown({counters: [2,1,0], isOpened: true})

@@ -2,7 +2,6 @@ import 'air-datepicker';
 
 const calendarOptions = {
   range: true,
-  multipleDatesSeparator: ' - ',
   navTitles: {
     days: 'MM yyyy',
   },
@@ -20,9 +19,16 @@ class Calendar {
     this.$button = $node.find('.calendar__inputs button');
     this.$card = $node.find('.calendar__card');
 
+    this._init();
     this._initDatepiker();
 
     this._attachEventsHandler();
+  }
+
+  _init() {
+    this.$inputs.each((i) => {
+      this.$inputs[i].value = 'дд.мм.гггг';
+    });
   }
 
   _attachEventsHandler() {
@@ -50,15 +56,18 @@ class Calendar {
       return;
     }
 
-    const date0 = this._calculateDate(dates[0]);
-    const date1 = this._calculateDate(dates[1]);
-
     if (this.$inputs.length === 2) {
+      const date0 = this._calculateDate(dates[0]);
+      const date1 = this._calculateDate(dates[1]);
+
       this.$inputs[0].value = date0;
       this.$inputs[1].value = date1;
       this._toggleVisible();
       return;
     }
+
+    const date0 = this._calculateDayAndMount(dates[0]);
+    const date1 = this._calculateDayAndMount(dates[1]);
 
     this.$inputs[0].value = date0 + ' - ' + date1;
     this._toggleVisible();
@@ -86,6 +95,30 @@ class Calendar {
 
   _toggleVisible() {
     this.$card.toggleClass('calendar__card__visible');
+  }
+
+  _calculateDayAndMount(date) {
+    const namesOfMonth = [
+      'янв',
+      'фев',
+      'мар',
+      'апр',
+      'май',
+      'июн',
+      'июл',
+      'авг',
+      'сен',
+      'окт',
+      'ноя',
+      'дек',
+    ];
+
+    const day = String(date.getDate());
+    const monthNumber = date.getMonth();
+
+    const month = namesOfMonth[monthNumber];
+
+    return day + ' ' + month;
   }
 }
 

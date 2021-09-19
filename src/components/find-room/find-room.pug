@@ -1,9 +1,12 @@
 include ../dropdown/dropdown
-include ../date-dropdown/date-dropdown
 include ../wrapper/wrapper
 include ../button/button
 include ../card/card
 include ../title/title
+include ../calendar/calendar
+include ../dropdown-field/dropdown-field
+include ../wrapper/wrapper
+include ../label/label
 
 mixin find-room(options)
   .find-room
@@ -12,7 +15,16 @@ mixin find-room(options)
         +title({text: 'Найдём номера под ваши пожелания'}) 
       form(method="POST", action="/change-it")
         +wrapper({marginBottom: 20})
-          +date-dropdown
+          +calendar   
+            +row
+              +wrapper({paddingRight: 10})
+                +label({title: 'date Dropdown'})
+                  +wrapper({marginTop: 5})
+                    +dropdown-field
+              +wrapper({paddingLeft: 10})
+                +label({title: 'date Dropdown'})
+                  +wrapper({marginTop: 5})
+                    +dropdown-field
         +wrapper({marginBottom: 31})
           +dropdown({type: 'rooms', counters: [5,4,7]})
         +button({ type: 'long', text: 'подобрать номер', })

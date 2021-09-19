@@ -1,0 +1,42 @@
+include ../button/button
+
+mixin dropdown-menu(options)
+  -
+    const {
+      counters = [0, 0, 0],
+      isOpened = false,
+      type = 'guests'
+    } = options || {}
+
+  if type === 'rooms'
+    -
+      var items = ['спальни', 'кровати', 'ванные комнаты']
+      var hasButtons = false
+
+  if type === 'guests'
+    -
+      var items = ['взрослые', 'дети', 'младенцы']
+      var hasButtons = true
+
+  -
+    var classes = ''
+    classes += isOpened ? ' dropdown-menu_opened' : ''
+    classes += ' dropdown-menu_type-' + type
+
+  .dropdown-menu.js-dropdown-menu(class=classes)
+    .dropdown-menu__input
+      block
+    .dropdown-menu__menu
+      ul.dropdown-menu__list
+        each item, index in items 
+          li.dropdown-menu__item
+            span.dropdown-menu__item-name= item
+            button.dropdown-menu__counter-button.js-dropdown__counter-button -
+            span.dropdown-menu__counter.js-dropdown__counter= counters[index]
+            button.dropdown-menu__counter-button.js-dropdown__counter-button +
+      .dropdown-menu__buttons
+        if hasButtons
+          .dropdown-menu__clear
+            +button({type: 'link', text: 'очистить'})
+          .dropdown-menu__apply
+            +button({type: 'link', text: 'применить'})
