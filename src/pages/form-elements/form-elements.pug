@@ -125,13 +125,16 @@ block main
             +dropdown({type: 'rooms', counters: [5,4,7], isOpened: true})
 
         +wrapper({basis: 320, marginLeft: 181, marginRight: 72})
-          +dropdown-menu({})
+          +dropdown-menu
             +label({title: 'masked text field'})
               +wrapper({marginTop: 5})
                 +dropdown-field
 
         +wrapper({basis: 320})
-          +dropdown({counters: [2,1,0], isOpened: true})
+          +dropdown-menu({ counters: [5, 3, 1],type: 'rooms'})
+            +label({title: 'masked text field'})
+              +wrapper({marginTop: 5})
+                +dropdown-field
 
     +wrapper({marginTop: 158})
       +row
