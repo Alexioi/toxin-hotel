@@ -1,3 +1,5 @@
+import EventEmitter from 'event-emitter';
+
 class DropdownMenu {
   constructor($node) {
     this.$node = $node;
@@ -16,7 +18,7 @@ class DropdownMenu {
     this.dropdownItems = [];
 
     this.$items.each((i, node) => {
-      this.dropdownItems[i] = new dropdownMenuCounter($(node));
+      this.dropdownItems[i] = new DropdownMenuCounter($(node));
     });
   }
 
@@ -29,6 +31,18 @@ class DropdownMenu {
       this._resetCounters();
     });
     this.$applyButton.on('click', () => {
+      this._updateInput();
+    });
+
+    this.dropdownItems[0].on('updatedCounter', () => {
+      this._updateInput();
+    });
+
+    this.dropdownItems[1].on('updatedCounter', () => {
+      this._updateInput();
+    });
+
+    this.dropdownItems[2].on('updatedCounter', () => {
       this._updateInput();
     });
   }
@@ -120,7 +134,7 @@ class DropdownMenuRooms extends DropdownMenu {
   }
 }
 
-class dropdownMenuCounter {
+class DropdownMenuCounter {
   constructor($node) {
     this.$node = $node;
     this.$counter = this.$node.find('.js-dropdown__counter');
@@ -144,6 +158,7 @@ class dropdownMenuCounter {
     const newCounter = String(oldCounter + 1);
 
     this.$counter.text(newCounter);
+    this.emit('updatedCounter');
   }
 
   _reduceCounter() {
@@ -156,16 +171,21 @@ class dropdownMenuCounter {
     const newCounter = String(oldCounter - 1);
 
     this.$counter.text(newCounter);
+    this.emit('updatedCounter');
   }
 
   resetCounter() {
     this.$counter.text('0');
+    this.emit('updatedCounter');
   }
 
   getCounter() {
     return this.$counter.text();
   }
 }
+
+// EventEmitter(DropdownMenu.prototype);
+EventEmitter(DropdownMenuCounter.prototype);
 
 (() => {
   $('.js-dropdown-menu.dropdown-menu_type-guests').each((i, node) => {

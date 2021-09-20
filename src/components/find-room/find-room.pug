@@ -1,4 +1,3 @@
-include ../dropdown/dropdown
 include ../wrapper/wrapper
 include ../button/button
 include ../card/card
@@ -7,6 +6,7 @@ include ../calendar/calendar
 include ../dropdown-field/dropdown-field
 include ../wrapper/wrapper
 include ../label/label
+include ../../components/dropdown-menu/dropdown-menu
 
 mixin find-room(options)
   .find-room
@@ -26,5 +26,8 @@ mixin find-room(options)
                   +wrapper({marginTop: 5})
                     +dropdown-field
         +wrapper({marginBottom: 31})
-          +dropdown({type: 'rooms', counters: [5,4,7]})
+          +dropdown-menu({ counters: [5, 3, 1],type: 'rooms'})
+            +label({title: 'masked text field'})
+              +wrapper({marginTop: 5})
+                +dropdown-field
         +button({ type: 'long', text: 'подобрать номер', })

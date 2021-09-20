@@ -1,11 +1,11 @@
 include ../room-info/room-info
 include ../card/card
-include ../dropdown/dropdown
 include ../button/button
 include ../calendar/calendar
 include ../dropdown-field/dropdown-field
 include ../wrapper/wrapper
 include ../label/label
+include ../../components/dropdown-menu/dropdown-menu
 
 mixin room-booking(options)
   -
@@ -25,7 +25,10 @@ mixin room-booking(options)
         +label({title: 'filter date dropdown'})
           +wrapper({marginTop: 5})
             +dropdown-field
-    +dropdown
+    +dropdown-menu({ counters: [5, 3, 1],type: 'rooms'})
+      +label({title: 'masked text field'})
+        +wrapper({marginTop: 5})
+          +dropdown-field
     ul.room-booking__expenses-list
       each expensesItem in expensesItems
         li.room-booking__expenses-item
