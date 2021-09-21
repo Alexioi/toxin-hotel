@@ -1,11 +1,7 @@
-include ../label/label
-
 mixin checkbox-list(options)
   -
-    const { 
-      title='title', 
+    const {  
       type='default', 
-      isOpened=false,
       items= [
         {text: "Завтрак"},
         {text: "Письменный стол", isChecked: true},
@@ -19,15 +15,9 @@ mixin checkbox-list(options)
   -
     var classes = ''
     classes += ' checkbox-list_' + type 
-    classes += type === 'expanded' ? ' js-checkbox-list' : ''
-    classes += isOpened ? ' checkbox-list_opened' : ''
 
   .checkbox-list(class=classes)
-    //- .checkbox-list__header
-    //-   +label({title})
-    //-   if type === "expanded"
-    //-     button.checkbox-list__button.js-checkbox-list__button.material-icons expand_more
-    //- ul.checkbox-list__list
+    ul.checkbox-list__list
     each item in items 
       li.checkbox-list__item
         label.checkbox-list__label

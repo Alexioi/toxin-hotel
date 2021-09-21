@@ -1,0 +1,28 @@
+@import '../../style/variables.scss';
+
+.dropdown-list {
+  &_opened &__menu {
+    display: block;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button {
+    background-color: white;
+    border: none;
+    cursor: pointer;
+    line-height: 1.25rem;
+    color: rgba($color-first, 0.5);
+  }
+
+  &_opened &__button {
+    transform: rotate(180deg);
+  }
+
+  &__menu {
+    display: none;
+  }
+}

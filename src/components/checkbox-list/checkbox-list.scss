@@ -10,37 +10,6 @@
     color: $color-first-75;
   }
 
-  // &_expanded &__list {
-  //   display: none;
-  // }
-
-  // &_opened &__list {
-  //   display: grid;
-  // }
-
-  // &_opened &__button {
-  //   transform: rotate(180deg);
-  // }
-
-  // &__header {
-  //   margin-bottom: 1.3333rem;
-  //   display: flex;
-  //   justify-content: space-between;
-  // }
-
-  // &__button {
-  //   background-color: white;
-  //   border: none;
-  //   cursor: pointer;
-  //   line-height: 15px;
-  //   color: $color-first-50;
-  // }
-
-  // &__list {
-  //   display: grid;
-  //   gap: 0.8333rem;
-  // }
-
   &__item {
     list-style: none;
   }

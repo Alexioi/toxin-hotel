@@ -19,6 +19,8 @@ include ../../components/label/label
 include ../../components/calendar/calendar
 include ../../components/dropdown-field/dropdown-field
 include ../../components/dropdown-menu/dropdown-menu
+include ../../components/dropdown-list/dropdown-list
+
 
 block title
   | Form elements
@@ -143,11 +145,16 @@ block main
 
     +wrapper({marginTop: 158})
       +row
-        +wrapper({basis: 266})
-          +checkbox-list({ title: 'expandable checkbox list', type: 'expanded', })
-          +checkbox-list({ title: 'expandable checkbox list', type: 'expanded', isOpened: true, })
+        +wrapper({basis: 258})
+          +dropdown-list({title: 'expandable checkbox list'})
+            +wrapper({marginTop: 10})
+              +checkbox-list({ title: 'expandable checkbox list', type: 'expanded', })
+          +wrapper({marginTop: 47})
+            +dropdown-list({title: 'expandable checkbox list', isOpened: true})
+              +wrapper({marginTop: 10})
+                +checkbox-list({ title: 'expandable checkbox list', type: 'expanded', isOpened: true, })
 
-        +wrapper({marginLeft: 181, marginRight: 126, basis: 266})
+        +wrapper({marginLeft: 189, marginRight: 126, basis: 266})
           +label({title: 'rich Checkbox Buttons'})
           +wrapper({marginTop: 16})
           +checkbox-list({ title: 'Checkbox Buttons', type: 'rich', items: [ {text: "Широкий коридор", subText: 'Ширина коридоров в номере не менее 91 см.'}, {text: "Помощник для инвалидов", subText: 'На 1 этаже вас встретит специалист и проводит до номера.'}, ]})

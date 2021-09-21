@@ -1,4 +1,20 @@
-mixin dropdown-list(options)
+include ../label/label
 
-  .dropdown-list
-  
+mixin dropdown-list(options)
+  - 
+    const {
+      title = 'title',
+      isOpened = false
+    } = options || {}
+
+  -
+    var classes = ''
+    classes += isOpened ? ' dropdown-list_opened' : ''
+
+  .dropdown-list.js-dropdown-list(class=classes)
+    .dropdown-list__header 
+      +label({title: title})
+      button.dropdown-list__button.js-dropdown-list__button.material-icons expand_more
+    .dropdown-list__menu
+      block
+
