@@ -101,6 +101,12 @@ class Calendar {
 
   _toggleVisible() {
     this.$menu.toggleClass('calendar__menu__visible');
+
+    this.$inputs.each((i) => {
+      const isFocus = this.$inputs[i].dataset.focus === 'true';
+
+      this.$inputs[i].dataset.focus = isFocus ? 'false' : 'true';
+    });
   }
 
   _calculateDayAndMount(date) {

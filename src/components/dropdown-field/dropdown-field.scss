@@ -5,20 +5,17 @@
   width: 100%;
 
   &__input {
-    border: 1px solid rgba(31, 32, 65, 0.25);
-    border-radius: 2px;
+    border: 0.0833rem solid rgba($color-first, 0.25);
+    border-radius: 0.1667rem;
     width: 100%;
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 42px;
-    color: rgba(31, 32, 65, 0.75);
-    padding: 0 44px 0 15px;
+    font: 1.1667rem/3.5rem $font-first;
+    color: rgba($color-first, 0.75);
+    padding: 0 3.6667rem 0 1.25rem;
 
     &:hover,
-    &:focus {
-      border-color: rgba(31, 32, 65, 0.5);
+    &:focus,
+    &[data-focus='true'] {
+      border-color: rgba($color-first, 0.5);
       outline: none;
     }
   }
@@ -26,11 +23,11 @@
   &__button {
     position: absolute;
     height: 100%;
-    width: 44px;
+    width: 3.6667rem;
     top: 0px;
     right: 0px;
     cursor: pointer;
-    background: no-repeat url(./img/toggle-button-off.svg) center center;
+    background: no-repeat url(./img/toggle-button.svg) center center;
     border: none;
   }
 }
