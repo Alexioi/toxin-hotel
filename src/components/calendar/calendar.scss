@@ -3,17 +3,17 @@
 .calendar {
   position: relative;
 
-  &__card {
+  &__menu {
     display: none;
     position: absolute;
     z-index: 100;
-    width: 320px;
-    padding: 20px;
+    width: 26.6667rem;
+    padding: 1.6667rem;
     background: white;
-    border: 1px solid rgba(31, 32, 65, 0.25);
-    box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
-    border-radius: 4px;
-    margin-top: 5px;
+    border: 0.0833rem solid rgba($color-first, 0.25);
+    box-shadow: 0px 0.8333rem 1.6667rem rgba($color-first, 0.05);
+    border-radius: 0.3333rem;
+    margin-top: 0.4167rem;
 
     &__visible {
       display: block;
@@ -23,7 +23,7 @@
   &__buttons {
     display: flex;
     justify-content: space-between;
-    margin-top: 18px;
+    margin-top: 2rem;
   }
 }
 
@@ -31,29 +31,28 @@
   &--nav {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 30px;
+    margin-bottom: 2.5rem;
 
     &-action {
-      height: 24px;
-      width: 24px;
+      height: 2rem;
+      width: 2rem;
+      color: $color-second;
+      cursor: pointer;
     }
 
     &-title {
-      font-family: Montserrat;
-      font-weight: bold;
-      font-size: 19px;
-      line-height: 24px;
-      color: #1f2041;
+      font: bold 1.5833rem/2rem $font-first;
+      color: $color-first;
       cursor: pointer;
     }
   }
 
   &--body {
     display: none;
-  }
 
-  .active {
-    display: block;
+    &.active {
+      display: block;
+    }
   }
 
   &--days-names {
@@ -62,18 +61,14 @@
 
   &--day-name {
     flex-grow: 1;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 40px;
-    color: #bc9cff;
+    font: bold 1rem/3.3333rem $font-first;
+    color: $color-second;
     text-align: center;
   }
 
   &--cells {
-    &-days {
-      display: flex;
-      flex-wrap: wrap;
-    }
+    display: flex;
+    flex-wrap: wrap;
   }
 
   &--cell {
@@ -82,69 +77,82 @@
     &-day {
       width: calc(100% / 7);
       text-align: center;
-      font-size: 12px;
-      line-height: 40px;
-      color: rgba(31, 32, 65, 0.5);
+      font: 1rem/3.3333rem $font-first;
+      color: rgba($color-first, 0.5);
       position: relative;
+
+      &.-other-month- {
+        color: rgba($color-first, 0.25);
+      }
+
+      &.-in-range- {
+        background: rgba($color-second, 0.25);
+      }
+
+      &.-current- {
+        color: #ffffff;
+        font-weight: bold;
+        background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+        border-radius: 1.8333rem;
+      }
+
+      &.-selected- {
+        font-weight: bold;
+        color: #ffffff;
+        background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+        border-radius: 1.8333rem;
+      }
+
+      &.-range-from-::before {
+        display: block;
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        border-radius: 1.8333rem 0 0 1.8333rem;
+        background: linear-gradient(
+          180deg,
+          rgba($color-second, 0.25) 0%,
+          rgba(139, 164, 249, 0.25) 100%
+        );
+      }
+
+      &.-range-to-::before {
+        display: block;
+        content: '';
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: linear-gradient(
+          180deg,
+          rgba($color-second, 0.25) 0%,
+          rgba(139, 164, 249, 0.25) 100%
+        );
+        border-radius: 0 22px 22px 0;
+      }
+
+      &.-disabled- {
+        cursor: default;
+        background: white;
+
+        &::before {
+          content: none;
+        }
+      }
     }
-  }
 
-  .-other-month- {
-    color: rgba(31, 32, 65, 0.25);
-  }
-
-  .-current- {
-    color: #ffffff;
-    font-weight: bold;
-    background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
-    border-radius: 22px;
-
-    &.-in-range- {
-      background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
-      border-radius: 0;
+    &-month {
+      width: calc(100% / 3);
+      text-align: center;
+      font: 1rem/3.3333rem $font-first;
+      color: rgba($color-first, 0.5);
     }
-  }
 
-  .-selected- {
-    font-weight: bold;
-    color: #ffffff;
-    background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-    border-radius: 22px;
-  }
-
-  .-range-from-::before {
-    display: block;
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    border-radius: 22px 0 0 22px;
-    background: linear-gradient(
-      180deg,
-      rgba(188, 156, 255, 0.25) 0%,
-      rgba(139, 164, 249, 0.25) 100%
-    );
-  }
-
-  .-in-range- {
-    background: rgba(188, 156, 255, 0.25);
-  }
-
-  .-range-to-::before {
-    display: block;
-    content: '';
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background: linear-gradient(
-      180deg,
-      rgba(188, 156, 255, 0.25) 0%,
-      rgba(139, 164, 249, 0.25) 100%
-    );
-    border-radius: 0 22px 22px 0;
-  }
-
-  &--buttons {
-    margin-top: 20px;
+    &-year {
+      width: calc(100% / 4);
+      text-align: center;
+      font: 1rem/3.3333rem $font-first;
+      color: rgba($color-first, 0.5);
+    }
   }
 }

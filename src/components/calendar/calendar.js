@@ -1,55 +1,61 @@
 import 'air-datepicker';
 
-const calendarOptions = {
-  range: true,
-  navTitles: {
-    days: 'MM yyyy',
-  },
-  prevHtml: '<span class="material-icons">arrow_back</span>',
-  nextHtml: '<span class="material-icons">arrow_forward</span>',
-  minDate: new Date(),
-};
-
 class Calendar {
   constructor($node) {
     this.$node = $node;
-    this.$inputs = $node.find('input');
-    this.$apply = $node.find('.calendar__apply');
-    this.$cancel = $node.find('.calendar__cancel');
-    this.$button = $node.find('.calendar__inputs button');
-    this.$card = $node.find('.calendar__card');
 
     this._init();
-    this._initDatepiker();
-
-    this._attachEventsHandler();
   }
 
   _init() {
+    this._findNodes();
+    this._addValueToInputs();
+    this._initDatepicker();
+    this._attachEventsHandler();
+  }
+
+  _findNodes() {
+    this.$inputs = this.$node.find('.js-calendar__inputs input');
+    this.$apply = this.$node.find('.js-calendar__apply');
+    this.$clear = this.$node.find('.js-calendar__clear');
+    this.$button = this.$node.find('.js-calendar__inputs button');
+    this.$menu = this.$node.find('.js-calendar__menu');
+    this.$nodeForDatepicker = this.$node.find('.js-calendar__datepicker');
+  }
+
+  _addValueToInputs() {
     this.$inputs.each((i) => {
-      this.$inputs[i].value = 'дд.мм.гггг';
+      this.$inputs[i].value = 'ДД.ММ.ГГГГ';
     });
+  }
+
+  _initDatepicker() {
+    const calendarOptions = {
+      range: true,
+      navTitles: {
+        days: 'MM yyyy',
+      },
+      prevHtml: '<span class="material-icons">arrow_back</span>',
+      nextHtml: '<span class="material-icons">arrow_forward</span>',
+      minDate: new Date(),
+    };
+
+    this.datepicker = this.$nodeForDatepicker.datepicker(calendarOptions).data().datepicker;
   }
 
   _attachEventsHandler() {
     this.$apply.on('click', () => {
-      this._applyDate();
+      this._applyDates();
     });
-    this.$cancel.on('click', () => {
-      this._clearDate();
+    this.$clear.on('click', () => {
+      this._clearDates();
     });
     this.$button.on('click', () => {
       this._toggleVisible();
     });
   }
 
-  _initDatepiker() {
-    const $datepicker = this.$node.find('.js-calendar__datepicker');
-
-    this.datepicker = $datepicker.datepicker(calendarOptions).data().datepicker;
-  }
-
-  _applyDate() {
+  _applyDates() {
     const dates = this.datepicker.selectedDates;
 
     if (dates.length !== 2) {
@@ -57,44 +63,44 @@ class Calendar {
     }
 
     if (this.$inputs.length === 2) {
-      const date0 = this._calculateDate(dates[0]);
-      const date1 = this._calculateDate(dates[1]);
+      const firstDate = this._calculateFullDate(dates[0]);
+      const secondDate = this._calculateFullDate(dates[1]);
 
-      this.$inputs[0].value = date0;
-      this.$inputs[1].value = date1;
+      this.$inputs[0].value = firstDate;
+      this.$inputs[1].value = secondDate;
       this._toggleVisible();
       return;
     }
 
-    const date0 = this._calculateDayAndMount(dates[0]);
-    const date1 = this._calculateDayAndMount(dates[1]);
+    const firstDate = this._calculateDayAndMount(dates[0]);
+    const secondDate = this._calculateDayAndMount(dates[1]);
 
-    this.$inputs[0].value = date0 + ' - ' + date1;
+    this.$inputs[0].value = `${firstDate} - ${secondDate}`;
     this._toggleVisible();
   }
 
-  _calculateDate(date) {
+  _calculateFullDate(date) {
     let day = String(date.getDate());
-    let month = String(date.getMonth() + 1);
-    const year = String(date.getFullYear());
+    let month = String(Number(date.getMonth()) + 1);
+    const year = date.getFullYear();
 
     if (day.length !== 2) {
-      day = '0' + day;
+      day = `0${day}`;
     }
 
     if (month.length !== 2) {
-      month = '0' + month;
+      month = `0${month}`;
     }
 
-    return day + '.' + month + '.' + year;
+    return `${day}.${month}.${year}`;
   }
 
-  _clearDate() {
+  _clearDates() {
     this.datepicker.clear();
   }
 
   _toggleVisible() {
-    this.$card.toggleClass('calendar__card__visible');
+    this.$menu.toggleClass('calendar__menu__visible');
   }
 
   _calculateDayAndMount(date) {
@@ -113,15 +119,17 @@ class Calendar {
       'дек',
     ];
 
-    const day = String(date.getDate());
+    const day = date.getDate();
     const monthNumber = date.getMonth();
 
     const month = namesOfMonth[monthNumber];
 
-    return day + ' ' + month;
+    return `${day} ${month}`;
   }
 }
 
-$('.js-calendar').each((i, node) => {
-  new Calendar($(node));
+$(() => {
+  $('.js-calendar').each((i, node) => {
+    new Calendar($(node));
+  });
 });

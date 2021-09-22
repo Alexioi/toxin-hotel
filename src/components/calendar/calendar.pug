@@ -2,12 +2,12 @@ include ../button/button
 
 mixin calendar
   .calendar.js-calendar
-    .calendar__inputs
+    .calendar__inputs.js-calendar__inputs
       block
-    .calendar__card
+    .calendar__menu.js-calendar__menu
       .calendar__datepicker.js-calendar__datepicker
       .calendar__buttons
-        .calendar__cancel
+        .calendar__clear.js-calendar__clear
           +button({type: 'link', text: 'очистить'})
-        .calendar__apply
+        .calendar__apply.js-calendar__apply
           +button({type: 'link', text: 'применить'})
