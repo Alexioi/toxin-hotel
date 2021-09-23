@@ -1,4 +1,7 @@
+@import '../../style/variables.scss';
+
 .dropdown-menu {
+  width: 100%;
   position: relative;
 
   &_opened &__menu {
@@ -11,15 +14,20 @@
     display: none;
     width: 100%;
     background-color: white;
-    padding: 7px 7px 13px 15px;
-    border: 1px solid rgba(31, 32, 65, 0.5);
+    padding: 0.5833rem 0.5833rem 0.5rem 1.25rem;
+    border: 0.0833rem solid rgba($color-first, 0.5);
     border-top: none;
-    border-radius: 0 0 2px 2px;
+    border-radius: 0 0 0.1667rem 0.1667rem;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5833rem;
   }
 
   &__item {
     list-style: none;
-    margin-bottom: 7px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -27,37 +35,39 @@
 
   &__item-name {
     margin-right: auto;
+    font: bold 1rem/1.25rem $font-first;
+    text-transform: uppercase;
   }
 
   &__counter {
-    display: block;
-    width: 32px;
+    flex: 0 0 2.6667rem;
     text-align: center;
-    flex-shrink: 0;
+    font: bold 1rem/1.25rem $font-first;
 
     &-button {
       flex-shrink: 0;
-      border: 1px solid rgba(31, 32, 65, 0.25);
+      border: 0.0833rem solid rgba($color-first, 0.25);
       background: white;
-      width: 30px;
-      height: 30px;
+      width: 2.5rem;
+      height: 2.5rem;
       border-radius: 50%;
-      font-family: Montserrat;
-      font-style: normal;
-      font-weight: normal;
-      font-size: 18px;
-      line-height: 22px;
-      color: rgba(31, 32, 65, 0.5);
+      font: 1.5rem/2.5rem $font-first;
+      color: rgba($color-first, 0.5);
+      cursor: pointer;
 
       &_disabled {
         opacity: 0.38;
+        cursor: default;
       }
     }
   }
 
   &__buttons {
-    margin-top: 20px;
+    margin: 1.5rem 0 0.9167rem 0;
     display: flex;
-    justify-content: space-between;
+  }
+
+  &__apply {
+    margin-left: auto;
   }
 }

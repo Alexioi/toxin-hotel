@@ -18,6 +18,13 @@
       border-color: rgba($color-first, 0.5);
       outline: none;
     }
+
+    &[data-opened='true'] {
+      border-color: rgba($color-first, 0.5);
+      outline: none;
+      border-bottom-left-radius: 0rem;
+      border-bottom-right-radius: 0rem;
+    }
   }
 
   &__button {
