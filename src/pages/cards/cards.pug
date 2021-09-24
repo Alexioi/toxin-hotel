@@ -1,4 +1,4 @@
-extends ../../templates/ui-kit
+extends ../../templates/ui-kit/ui-kit
 
 include ../../components/calendar/calendar
 include ../../components/room-booking/room-booking
@@ -20,27 +20,18 @@ block title
 block main
   +container
     +wrapper({paddingTop: 10, paddingBottom: 140})
-      +row
+      +row({gap: 40})
         +wrapper({basis: 380})
           +wrapper({marginBottom: 40})
             +find-room
           +registration-card
-        +wrapper({marginLeft: 40, marginRight: 40, basis: 380})
+        +wrapper({basis: 380})
           +wrapper({marginBottom: 40})
             +room-booking
           +authorization
         +wrapper({basis: 320})
           +wrapper({marginBottom: 40})
             +calendar
-              input(type="text")
-              input(type="text")
-              button o
-              button p
-            +calendar
-              input(type="text")
-              //- input(type="text")
-              button o
-              button p
           +wrapper({width: 270})
             +wrapper({marginBottom: 40})
               +room-card 

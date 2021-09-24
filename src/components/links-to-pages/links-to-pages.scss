@@ -1,0 +1,13 @@
+@import '../../style/variables.scss';
+
+.links-to-pages {
+  &__item {
+    list-style: none;
+    text-align: center;
+  }
+
+  &__link {
+    font: bold 2rem/3rem $font-first;
+    color: $color-second;
+  }
+}

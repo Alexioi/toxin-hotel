@@ -1,0 +1,18 @@
+mixin links-to-pages()
+  -
+    var links = [
+      {link: './colors-and-type.html', text: 'Colors and type'},
+      {link: './form-elements.html', text: 'Form elements'},
+      {link: './cards.html', text: 'Cards'},
+      {link: './headers-and-footers.html', text: 'Headers and footers'},
+      {link: './landing-page.html', text: 'Landing page'},
+      {link: './search-room.html', text: 'Search room'},
+      {link: './room-details.html', text: ' Room details'},
+      {link: './registration.html', text: 'Registration'}, 
+      {link: './sing-in.html', text: 'Sing in'},
+    ]
+
+  ul.links-to-pages
+    each link in links
+      li.links-to-pages__item
+        a.links-to-pages__link(href=link.link)= link.text
