@@ -12,6 +12,7 @@ class DropdownMenu {
     this._initItems();
     this._attachEventHandlers();
     this._updateInput();
+    this._toggleInputFocus();
   }
 
   _findNodes() {
@@ -39,9 +40,13 @@ class DropdownMenu {
   _toggleMenu() {
     this.$node.toggleClass('dropdown-menu_opened');
 
-    const isOpened = this.$input[0].dataset.opened === 'true';
+    this._toggleInputFocus();
+  }
 
-    this.$input[0].dataset.opened = isOpened ? 'false' : 'true';
+  _toggleInputFocus() {
+    const isOpened = this.$node.hasClass('dropdown-menu_opened');
+
+    this.$input[0].dataset.opened = isOpened ? 'true' : 'false';
   }
 
   _resetCounters() {
@@ -66,6 +71,12 @@ class DropdownMenu {
 }
 
 class DropdownMenuGuests extends DropdownMenu {
+  _init() {
+    super._init();
+
+    this._checkDisplayOfClearButton();
+  }
+
   _attachEventHandlers() {
     super._attachEventHandlers();
 
@@ -76,6 +87,33 @@ class DropdownMenuGuests extends DropdownMenu {
       this._updateInput();
       this._toggleMenu();
     });
+
+    this.$items.each((i) => {
+      this.dropdownItems[i].on('increasedCounterValue', () => {
+        this._showClearButton();
+      });
+    });
+
+    this.$items.each((i) => {
+      this.dropdownItems[i].on('counterValueIsZero', () => {
+        this._checkDisplayOfClearButton();
+      });
+    });
+  }
+
+  _checkDisplayOfClearButton() {
+    let sumOfCounterValues = 0;
+
+    this.$items.each((i) => {
+      sumOfCounterValues += Number(this.dropdownItems[i].getCounter());
+    });
+
+    if (sumOfCounterValues === 0) {
+      this._hideClearButton();
+      return;
+    }
+
+    this._showClearButton();
   }
 
   _calculateValue(counterValues) {
@@ -104,6 +142,20 @@ class DropdownMenuGuests extends DropdownMenu {
     }
 
     return value.join(', ');
+  }
+
+  _resetCounters() {
+    super._resetCounters();
+
+    this._hideClearButton();
+  }
+
+  _hideClearButton() {
+    this.$clearButton.hide();
+  }
+
+  _showClearButton() {
+    this.$clearButton.show();
   }
 }
 
@@ -157,6 +209,7 @@ class DropdownMenuItem {
 
   resetCounter() {
     this.$counter.text('0');
+    this._disableButton();
     this.emit('updatedCounter');
   }
 
@@ -192,6 +245,7 @@ class DropdownMenuItem {
     this.$counter.text(newCounter);
     this._enableButton();
     this.emit('updatedCounter');
+    this.emit('increasedCounterValue');
   }
 
   _reduceCounter() {
@@ -206,6 +260,10 @@ class DropdownMenuItem {
     this.$counter.text(newCounter);
     this._disableButton();
     this.emit('updatedCounter');
+
+    if (Number(newCounter) === 0) {
+      this.emit('counterValueIsZero');
+    }
   }
 
   _disableButton() {

@@ -38,62 +38,60 @@ block main
               +wrapper({marginTop: 5})
                 +text-field({ isHovered: true, title: 'Text Field', hint: "Hover / Focus", value: "This is pretty awesome", placeholder: 'This is pretty awesome', type: "text" })
           +wrapper({marginTop: 20})
-            +label({title: 'label'})
-              +wrapper({marginTop: 5})
-                +text-field({ title: 'Text Field', hint: "Default", placeholder: 'Email', type: "email" })
-          +wrapper({marginTop: 22})
+            +dropdown-menu
+              +label({title: 'Dropdown'})
+                +wrapper({marginTop: 5})
+                  +dropdown-field
+          +wrapper({marginTop: 23})
             +label({title: 'masked text field'})
               +wrapper({marginTop: 5})
                 +text-field({ title: 'masked text field', isMasked: true })
           +wrapper({marginTop: 40})
             +calendar   
-              +row
-                +wrapper({paddingRight: 10})
-                  +label({title: 'date Dropdown'})
-                    +wrapper({marginTop: 5})
-                      +dropdown-field
-                +wrapper({paddingLeft: 10})
-                  +label({title: 'date Dropdown'})
-                    +wrapper({marginTop: 5})
-                      +dropdown-field
+              +row({gap: 20})
+                +label({title: 'date Dropdown'})
+                  +wrapper({marginTop: 5})
+                    +dropdown-field
+                +label({title: 'date Dropdown'})
+                  +wrapper({marginTop: 5})
+                    +dropdown-field
           +wrapper({width: 266})
             +wrapper({marginTop: 40, width: 266})
               +calendar   
                 +label({title: 'filter date dropdown'})
                   +wrapper({marginTop: 5})
                     +dropdown-field
-            +wrapper({marginTop: 40})
+            +wrapper({marginTop: 42})
               +label({title: 'subscription text field'})
                 +wrapper({marginTop: 5})
                   +text-field({ title: 'subscription text field', placeholder: 'Email', type: "email", isSubscription: true })
 
         +wrapper({basis: 260, marginRight: 132, marginLeft: 126}) 
           +label({title: 'Checkbox Buttons'})
-          +wrapper({marginTop: 16})
-          +checkbox-list({ title: 'Rich Checkbox Buttons', items: [ {text: "Можно курить"}, {text: "Можно с питомцами", isChecked: true}, {text: "Можно пригласить гостей (до 10 человек)", isChecked: true}, ]})
-          +wrapper({marginTop: 41})
+          +wrapper({marginTop: 7, width: 240})
+            +checkbox-list({ title: 'Rich Checkbox Buttons', items: [ {text: "Можно курить"}, {text: "Можно с питомцами", isChecked: true}, {text: "Можно пригласить гостей (до 10 человек)", isChecked: true}, ]})
+          +wrapper({marginTop: 39})
             +label({title: 'Radio Buttons'}) 
-          +wrapper({marginTop: 16})
+          +wrapper({marginTop: 14})
             +radio-buttons
-          +wrapper({marginTop: 37})
+          +wrapper({marginTop: 38})
             +label({title: 'Toggle'})
           +wrapper({marginTop: 16})
-            +toggle
-          +wrapper({marginTop: 10})
             +toggle({isChecked: true})
+          +wrapper({marginTop: 10})
+            +toggle
           +wrapper({marginTop: 40})
             +label({title: 'like button'})
-          +wrapper({marginTop: 10})
-            +row
-              +like-button({counter: 1, isLiked: true})
-              +wrapper({marginLeft: 16})
-                +like-button
           +wrapper({marginTop: 16})
+            +row({gap: 11})
+              +like-button({counter: 2})
+              +like-button({counter: 12, isLiked: true})
+          +wrapper({marginTop: 40})
           +label({title: 'rate button'})
-          +row
-            +rate({quantity: 4})
-            +wrapper({marginLeft: 20})
-              +rate
+          +wrapper({marginTop: 18})
+            +row({gap: 25})
+              +rate({quantity: 4})
+              +rate({quantity: 5})
 
         +wrapper({basis: 320}) 
           +label({title: 'buttons'}) 
@@ -122,36 +120,37 @@ block main
     +wrapper({marginTop: 100})
       +row
         +wrapper({basis: 266})
-          +dropdown-menu({ counters: [5, 3, 1],type: 'rooms'})
-            +label({title: 'masked text field'})
+          +dropdown-menu({ counters: [2, 2, 0], type: 'rooms'})
+            +label({title: 'dropdown', hint: 'Default'})
               +wrapper({marginTop: 5})
                 +dropdown-field
-          +dropdown-menu({ counters: [5, 3, 1],type: 'rooms'})
-            +label({title: 'masked text field'})
-              +wrapper({marginTop: 5})
-                +dropdown-field
+          +wrapper({marginTop: 20})
+            +dropdown-menu({ counters: [2, 2, 0], type: 'rooms', isOpened: true})
+              +label({title: 'dropdown', hint: 'expanded'})
+                +wrapper({marginTop: 5})
+                  +dropdown-field
 
         +wrapper({basis: 320, marginLeft: 181, marginRight: 72})
-          +dropdown-menu
-            +label({title: 'masked text field'})
+          +dropdown-menu({isOpened: true})
+            +label({title: 'dropdown'})
               +wrapper({marginTop: 5})
                 +dropdown-field
 
         +wrapper({basis: 320})
-          +dropdown-menu({ counters: [5, 3, 1],type: 'rooms'})
-            +label({title: 'masked text field'})
+          +dropdown-menu({ counters: [2, 1, 0], isOpened: true})
+            +label({title: 'dropdown'})
               +wrapper({marginTop: 5})
                 +dropdown-field
 
-    +wrapper({marginTop: 158})
+    +wrapper({marginTop: 172})
       +row
         +wrapper({basis: 258})
           +dropdown-list({title: 'expandable checkbox list'})
             +wrapper({marginTop: 10})
               +checkbox-list({ title: 'expandable checkbox list', type: 'expanded', })
-          +wrapper({marginTop: 47})
+          +wrapper({marginTop: 48})
             +dropdown-list({title: 'expandable checkbox list', isOpened: true})
-              +wrapper({marginTop: 10})
+              +wrapper({marginTop: 9})
                 +checkbox-list({ title: 'expandable checkbox list', type: 'expanded', isOpened: true, })
 
         +wrapper({marginLeft: 189, marginRight: 126, basis: 266})
@@ -164,10 +163,10 @@ block main
           +wrapper({marginTop: 14, width: 260})
             +bullet-list
 
-    +wrapper({marginTop: 102, marginBottom: 149})
-      +row
+    +wrapper({marginTop: 101, marginBottom: 149})
+      +row({justifyContent: 'space-between'})
         +wrapper({basis: 280})
           +icon-text-list
 
-        +wrapper({marginLeft: 167, marginTop: 10, basis: 712})
+        +wrapper({marginTop: 10, basis: 712})
           +comment
