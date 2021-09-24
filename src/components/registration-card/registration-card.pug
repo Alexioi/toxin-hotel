@@ -6,6 +6,7 @@ include ../button/button
 include ../toggle/toggle
 include ../title/title
 include ../card/card
+include ../label/label
 
 mixin registration-card() 
 
@@ -16,22 +17,26 @@ mixin registration-card()
         method="POST" 
         action="/change-it"
       ) 
-        +wrapper({marginBottom: 20})
-          +title({text: 'Регистрация аккаунта'}) 
-        +wrapper({marginBottom: 10})
+        +title({text: 'Регистрация аккаунта'}) 
+        +wrapper({marginTop: 20})
           +text-field({ placeholder: 'Имя', type: "text", name: "name" })
-        +wrapper({marginBottom: 10})
+        +wrapper({marginTop: 10})
           +text-field({ placeholder: 'Фамилия', type: "text" })
-        +wrapper({marginBottom: 20})
+        +wrapper({marginTop: 10})
           +radio-buttons
-        +wrapper({marginBottom: 20})
-          +text-field({ title: 'дата рождения', hasHeader: true, isMasked: true })
-        +wrapper({marginBottom: 10})
-          +text-field({ title: 'данные для входа в сервис', hasHeader: true, placeholder: 'Email', type: "text" })
-        +wrapper({marginBottom: 10})
+        +wrapper({marginTop: 20})
+          +label({title: 'дата рождения'})
+            +wrapper({marginTop: 5})
+              +text-field({ hasHeader: true, isMasked: true })
+        +wrapper({marginTop: 20})
+          +label({title: 'данные для входа в сервис'})
+            +wrapper({marginTop: 5})
+              +text-field({ hasHeader: true, placeholder: 'Email', type: "text" })
+        +wrapper({marginTop: 10})
           +text-field({ placeholder: 'Пароль', type: "text" })
-        +wrapper({marginBottom: 20})
+        +wrapper({marginTop: 10})
           +toggle
-        +wrapper({marginBottom: 30})
+        +wrapper({marginTop: 21})
           +button({ type: 'long', text: 'перейти к оплате', })
-      +question-form-about-auth({questionText: "Уже есть аккаунт на Toxin", buttonText: "войти", buttonLink: "/"})
+      +wrapper({marginTop: 30})
+        +question-form-about-auth({questionText: "Уже есть аккаунт на Toxin", buttonText: "войти", buttonLink: "/"})

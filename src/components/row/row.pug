@@ -2,13 +2,15 @@ mixin row(options)
   -
     const {
       justifyContent,
-      gap
+      gap,
+      mix
     } = options || {}
 
   -
     var classes = ''
     classes += justifyContent ? ' row_justify-content-' + justifyContent : ''
     classes += gap ? ' row_gap-' + gap : ''
+    classes += mix ? ' ' + mix : ''
 
   .row(class=classes)
     block

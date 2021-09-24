@@ -1,15 +1,15 @@
 extends ../../templates/website-pages
 
-include ../../components/registration-card/registration-card
+include ../../components/authorization/authorization
 include ../../components/container/container
 include ../../components/row/row
 
 block title
-  | Registration
+  | Sing in
 
 block main
-  .p-registration__background
+  .p-sing-in__background
     +container
       +row({mix:'p-registration__form'})
         +wrapper({basis: 380})
-          +registration-card
+          +authorization
