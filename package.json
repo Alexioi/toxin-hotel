@@ -4,24 +4,28 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production",
+    "build": "cross-env NODE_ENV=production webpack --mode production && npm run purgecss",
+    "purgecss": "purgecss --config ./purgecss.config.js --output ./dist/*.css",
     "deploy": "npm run build && gh-pages -d dist",
-    "server": "webpack serve --open"
+    "server": "cross-env NODE_ENV=development webpack serve --open"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^9.0.1",
+    "cross-env": "^7.0.3",
     "css-loader": "^5.1.0",
     "file-loader": "^6.2.0",
     "gh-pages": "^3.2.0",
     "html-webpack-plugin": "^5.2.0",
+    "mini-css-extract-plugin": "^2.3.0",
     "pug": "^3.0.0",
     "pug-loader": "^2.4.0",
+    "purgecss": "^4.0.3",
     "sass": "^1.32.8",
     "sass-loader": "^11.0.1",
-    "style-loader": "^2.0.0",
     "webpack": "^5.24.2",
     "webpack-cli": "^4.5.0",
     "webpack-dev-server": "^3.11.2"

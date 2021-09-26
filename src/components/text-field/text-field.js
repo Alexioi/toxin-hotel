@@ -1,26 +1,26 @@
-import IMask from "imask";
+import IMask from 'imask';
 
-(function () {
+$(() => {
   const config = {
     mask: Date,
     blocks: {
       d: {
         mask: IMask.MaskedRange,
-        placeholderChar: "Д",
+        placeholderChar: 'Д',
         from: 1,
         to: 31,
         maxLength: 2,
       },
       m: {
         mask: IMask.MaskedRange,
-        placeholderChar: "М",
+        placeholderChar: 'М',
         from: 1,
         to: 12,
         maxLength: 2,
       },
       Y: {
         mask: IMask.MaskedRange,
-        placeholderChar: "Г",
+        placeholderChar: 'Г',
         from: 1900,
         to: 9999,
       },
@@ -30,9 +30,7 @@ import IMask from "imask";
     lazy: false,
   };
 
-  const maskedInputs = document.querySelectorAll(
-    ".text-field_masked .js-text-field__input"
-  );
+  const maskedInputs = document.querySelectorAll('.text-field_masked .js-text-field__input');
 
   maskedInputs.forEach((node) => IMask(node, config));
-})();
+});
