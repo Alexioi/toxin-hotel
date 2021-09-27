@@ -1,0 +1,8 @@
+include ../label/label
+
+mixin range-slider()
+  .range-slider
+    .range-slider__header 
+      +label({title: 'Range Slider'})
+      span.range-slider__value.js-range-slider__value
+    input.range-slider__slider.js-range-slider__slider

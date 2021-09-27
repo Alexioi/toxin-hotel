@@ -20,6 +20,7 @@ include ../../components/calendar/calendar
 include ../../components/dropdown-field/dropdown-field
 include ../../components/dropdown-menu/dropdown-menu
 include ../../components/dropdown-list/dropdown-list
+include ../../components/range-slider/range-slider
 
 
 block title
@@ -94,12 +95,14 @@ block main
               +rate({quantity: 5})
 
         +wrapper({basis: 320}) 
-          +label({title: 'buttons'}) 
-          +wrapper({marginTop: 16})
-            +row
-              +button
-              +wrapper({marginLeft: 19})
-                +button({ isHovered: true, })
+          +wrapper({width: 266})
+            +range-slider
+          +wrapper({marginTop: 44})
+            +label({title: 'buttons'}) 
+            +wrapper({marginTop: 16})
+              +row({gap: 19})
+                +button
+                +button({ isHovered: true})
           +wrapper({marginTop: 30})
             +row
               +button({ type: 'outline', })

@@ -4,12 +4,16 @@ include ../../components/palette/palette
 include ../../components/font-types/font-types
 include ../../components/container/container
 include ../../components/row/row
+include ../../components/wrapper/wrapper
 
 block title
   | Colors and type
 
 block main
   +container
-    +row
-      +palette
-      +font-types
+    +wrapper({paddingTop: 5})
+      +row({justifyContent: 'space-between'})
+        +wrapper({basis: 300, paddingLeft: 10})
+          +palette
+        +wrapper({basis: 455})
+          +font-types

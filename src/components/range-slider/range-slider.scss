@@ -1,0 +1,54 @@
+.range-slider {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 23px;
+  }
+
+  &__value {
+    font: 12px/15px Montserrat;
+    color: rgba(31, 32, 65, 0.5);
+  }
+
+  &__slider {
+    margin-top: 23px;
+    display: none;
+  }
+}
+
+.irs {
+  position: relative;
+  display: block;
+
+  &-line {
+    display: block;
+    height: 6px;
+    background: #ffffff;
+    border: 1px solid rgba(31, 32, 65, 0.25);
+    box-sizing: border-box;
+    border-radius: 3px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &-bar {
+    display: block;
+    position: absolute;
+    height: 6px;
+    top: 0;
+    background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+  }
+
+  &-handle {
+    top: -5px;
+    position: absolute;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+  }
+}

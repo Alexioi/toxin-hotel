@@ -1,31 +1,3 @@
-include ../../components/checkbox-list/checkbox-list
-include ../../components/button/button
-include ../../components/calendar/calendar
-include ../../components/dropdown-field/dropdown-field
-include ../../components/wrapper/wrapper
-include ../../components/label/label
-include ../../components/dropdown-menu/dropdown-menu
-
 mixin filter(options)
   .filter
-    +calendar   
-      +row
-        +wrapper({paddingRight: 10})
-          +label({title: 'date Dropdown'})
-            +wrapper({marginTop: 5})
-              +dropdown-field
-        +wrapper({paddingLeft: 10})
-          +label({title: 'date Dropdown'})
-            +wrapper({marginTop: 5})
-              +dropdown-field
-    +dropdown-menu({ counters: [5, 3, 1],type: 'rooms'})
-      +label({title: 'masked text field'})
-        +wrapper({marginTop: 5})
-          +dropdown-field
-    +checkbox-list({ title: 'правила дома', items: [ {text: "Можно курить"}, {text: "Можно с питомцами", isChecked: true}, {text: "Можно пригласить гостей (до 10 человек)", isChecked: true}, ] })
-    +checkbox-list({ title: 'доступность', type: 'rich', items: [ {text: "Широкий коридор", subText: 'Ширина коридоров в номере не менее 91 см.'}, {text: "Помощник для инвалидов", subText: 'На 1 этаже вас встретит специалист и проводит до номера.'}, ] })
-    +dropdown-menu({ counters: [5, 3, 1],type: 'rooms'})
-      +label({title: 'masked text field'})
-        +wrapper({marginTop: 5})
-          +dropdown-field
-    +checkbox-list({ title: 'expandable checkbox list', type: 'expanded', })
+    block

@@ -4,12 +4,32 @@ include ../../components/room-list/room-list
 include ../../components/filter/filter
 include ../../components/container/container
 include ../../components/row/row
+include ../../components/wrapper/wrapper
+include ../../components/checkbox-list/checkbox-list
+include ../../components/button/button
+include ../../components/calendar/calendar
+include ../../components/dropdown-field/dropdown-field
+include ../../components/wrapper/wrapper
+include ../../components/label/label
+include ../../components/dropdown-menu/dropdown-menu
 
 block title
   | Search room
 
 block main
   +container
-    +row
-      +filter
-      +room-list
+    +wrapper({paddingTop: 30})
+      +row({justifyContent: 'space-between'})
+        +wrapper({basis: 266})
+          +filter
+            +calendar
+              +label({title: 'даты пребывания в отеле'})
+                +wrapper({marginTop: 5})
+                  +dropdown-field
+            +wrapper({marginTop: 20})
+              +dropdown-menu({counters: [2, 1, 1]})
+                +label({title: 'гости'})
+                  +wrapper({marginTop: 5})
+                    +dropdown-field
+        +wrapper({basis: 834})
+          +room-list
