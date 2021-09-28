@@ -1,8 +1,7 @@
-@import "../../style/variables.scss";
+@import '../../style/variables.scss';
 
 .bullet-list {
   display: grid;
-  align-self: start;
   gap: 0.8333rem;
 
   &__item {
@@ -15,7 +14,7 @@
 
     &::before {
       position: absolute;
-      content: "";
+      content: '';
       display: inline-block;
       width: 0.8333rem;
       height: 0.8333rem;

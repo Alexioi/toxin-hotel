@@ -4,16 +4,18 @@ mixin gallery(options)
       imgs = ['main', 'sub-top', 'sub-bottom']
     } = options || {}
 
-  figure.gallery
-    img.gallery__img-main(
-      src=require(`../../components/gallery/img/img-${imgs[0]}.png`).default,
-      alt=""
-    )
-    img.gallery__sub(
-      src=require(`../../components/gallery/img/img-${imgs[1]}.png`).default,
-      alt=""
-    )
-    img.gallery__sub(
-      src=require(`../../components/gallery/img/img-${imgs[2]}.png`).default,
-      alt=""
-    )
+  .gallery
+    .gallery__main-column
+      img.gallery__img(
+        src=require(`../../components/gallery/img/img-${imgs[0]}.png`).default,
+        alt=""
+      )
+    .gallery__sub-column
+      img.gallery__img(
+        src=require(`../../components/gallery/img/img-${imgs[1]}.png`).default,
+        alt=""
+      )
+      img.gallery__img(
+        src=require(`../../components/gallery/img/img-${imgs[2]}.png`).default,
+        alt=""
+      )

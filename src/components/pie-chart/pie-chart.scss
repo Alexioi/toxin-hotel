@@ -1,0 +1,70 @@
+@import '../../style/variables.scss';
+
+.pie-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 30px;
+
+  &__review {
+    &-counter {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 120px;
+      height: 121px;
+      background: url('./img/pie-chart.svg');
+    }
+
+    &-value {
+      font: bold 24px/29px Montserrat;
+      color: #bc9cff;
+    }
+
+    &-text {
+      font: bold 12px/15px Montserrat;
+      text-transform: uppercase;
+      color: #bc9cff;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__item {
+    position: relative;
+    font: 14px/18px Montserrat;
+    padding-left: 15px;
+    color: rgba($color-first, 0.75);
+    list-style-type: none;
+
+    &::before {
+      position: absolute;
+      content: '';
+      display: inline-block;
+      width: 0.8333rem;
+      height: 0.8333rem;
+      border-radius: 50%;
+      left: 0;
+      top: 4px;
+    }
+
+    &_type {
+      &-perfectly::before {
+        background: linear-gradient(180deg, #ffe39c 0%, #ffba9c 100%);
+      }
+      &-good::before {
+        background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+      }
+      &-satisfactory::before {
+        background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+      }
+      &-disappointment::before {
+        background: linear-gradient(180deg, #919191 0%, #3d4975 100%);
+      }
+    }
+  }
+}

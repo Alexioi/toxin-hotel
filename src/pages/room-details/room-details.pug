@@ -9,12 +9,13 @@ include ../../components/gallery/gallery
 include ../../components/container/container
 include ../../components/wrapper/wrapper
 include ../../components/row/row
+include ../../components/pie-chart/pie-chart
 
 block title
   | Search room
 
 block main
-  //- +box
+  +row
     +gallery
   +wrapper({marginTop: 70})
     +container
@@ -25,7 +26,10 @@ block main
               +title({text: 'Сведения о номере', type: 'h3'})
               +wrapper({marginTop: 20})
                 +icon-text-list
-            +title({text: 'Впечатления от номера', type: 'h3'})
+            +wrapper({basis: 351})
+              +title({text: 'Впечатления от номера', type: 'h3'})
+              +wrapper({marginTop: 20})
+                +pie-chart
           +wrapper({marginTop: 34})
             +title({text: 'Отзывы посетителей номера', type: 'h3'})
           +wrapper({marginTop: 23})

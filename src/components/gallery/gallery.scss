@@ -1,16 +1,12 @@
-@import "../../style/variables.scss";
+@import '../../style/variables.scss';
 
 .gallery {
+  display: grid;
+  grid-template-columns: (981 / 1440 * 100%) (459 / 1440 * 100%);
   width: 100%;
 
-  &__img-main {
-    width: 981 / 1440 * 100%;
-    float: left;
-  }
-
-  &__sub {
-    float: left;
-    width: 459 / 1440 * 100%;
-    height: 50%;
+  &__img {
+    display: flex;
+    width: 100%;
   }
 }
