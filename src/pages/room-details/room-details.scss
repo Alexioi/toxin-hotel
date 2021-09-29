@@ -1,0 +1,16 @@
+.p-room-details {
+  &__review {
+    font-family: Montserrat;
+    font-size: 1.1667rem;
+    line-height: 1.1667rem;
+    white-space: nowrap;
+    color: rgba(31, 32, 65, 0.5);
+  }
+
+  &__reset-text {
+    font-family: Montserrat;
+    font-size: 1.1667rem;
+    line-height: 2rem;
+    color: rgba(31, 32, 65, 0.75);
+  }
+}

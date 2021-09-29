@@ -3,7 +3,7 @@
 .pie-chart {
   display: flex;
   align-items: flex-end;
-  gap: 30px;
+  gap: 2.5rem;
 
   &__review {
     &-counter {
@@ -11,33 +11,33 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      width: 120px;
-      height: 121px;
+      width: 10rem;
+      height: 10.0833rem;
       background: url('./img/pie-chart.svg');
     }
 
     &-value {
-      font: bold 24px/29px Montserrat;
-      color: #bc9cff;
+      font: bold 2rem/2.4167rem $font-first;
+      color: $color-second;
     }
 
     &-text {
-      font: bold 12px/15px Montserrat;
+      font: bold 1rem/1.25rem $font-first;
       text-transform: uppercase;
-      color: #bc9cff;
+      color: $color-second;
     }
   }
 
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 0.5rem;
   }
 
   &__item {
     position: relative;
-    font: 14px/18px Montserrat;
-    padding-left: 15px;
+    font: 1.1667rem/1.5rem $font-first;
+    padding-left: 1.25rem;
     color: rgba($color-first, 0.75);
     list-style-type: none;
 
@@ -49,7 +49,7 @@
       height: 0.8333rem;
       border-radius: 50%;
       left: 0;
-      top: 4px;
+      top: 0.3333rem;
     }
 
     &_type {

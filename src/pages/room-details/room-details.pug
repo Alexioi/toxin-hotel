@@ -12,12 +12,12 @@ include ../../components/row/row
 include ../../components/pie-chart/pie-chart
 
 block title
-  | Search room
+  | Room details
 
 block main
   +row
     +gallery
-  +wrapper({marginTop: 70})
+  +wrapper({marginTop: 70, marginBottom: 70})
     +container
       +row({justifyContent: 'space-between'})
         +wrapper({basis: 712})
@@ -25,27 +25,43 @@ block main
             +wrapper({basis: 291})
               +title({text: 'Сведения о номере', type: 'h3'})
               +wrapper({marginTop: 20})
-                +icon-text-list
+                +icon-text-list({
+                  items: [  
+                    {img: "smile", title: "Комфорт", text: "Шумопоглощающие стены"},
+                    {img: "house", title: "Удобство", text: "Окно в каждой из спален"},
+                    {img: "flame", title: "Уют", text: "Номер оснащён камином"},
+                  ]
+                })
             +wrapper({basis: 351})
               +title({text: 'Впечатления от номера', type: 'h3'})
               +wrapper({marginTop: 20})
                 +pie-chart
-          +wrapper({marginTop: 34})
-            +title({text: 'Отзывы посетителей номера', type: 'h3'})
-          +wrapper({marginTop: 23})
+          +wrapper({marginTop: 17})
+            +row({justifyContent: 'space-between'})          
+              +wrapper({paddingLeft: 20})
+                +title({text: 'Отзывы посетителей номера', type: 'h3'})
+              span.p-room-details__review 2 отзыва
+          +wrapper({marginTop: 18})
             +comment 
           +wrapper({marginTop: 23})
-            +comment
-          +wrapper({marginTop: 30})
-            +row
-              +wrapper
+            +comment({
+              authorName: 'Патрисия Стёклышкова',
+              image: 'patrisia',
+              date: 'Неделю назад',
+              counter: 2,
+              isLiked: false,
+              text: 'Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент',
+            })
+          +wrapper({marginTop: 32})
+            +row({justifyContent: 'space-between'})
+              +wrapper({width: 260})
                 +wrapper({marginBottom: 20, marginLeft: 20})
                   +title({text: 'Правила', type: 'h3'})
                 +bullet-list
-              +wrapper({width: 341})
+              +wrapper({width: 351, paddingRight: 9})
                 +wrapper({marginBottom: 20})
                   +title({text: 'Отмена', type: 'h3'})
-                p Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
+                p.p-room-details__reset-text Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
 
         +wrapper({basis: 380})
           +room-booking
