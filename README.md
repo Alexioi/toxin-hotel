@@ -32,38 +32,38 @@ npm run server
 
 - Компилирует билд и запускает скрипт purgecss
 
-
 ```bash
 npm run build
 ```
-- Удаляет из билда неиспользуемые css классы
 
+- Удаляет из билда неиспользуемые css классы
 
 ```bash
 npm run purgecss
 ```
-- Запустить скрипт build и после компиляции проекта отправить на gh-pages
 
+- Запустить скрипт build и после компиляции проекта отправить на gh-pages
 
 ```bash
 npm run deploy
 ```
-- Запустить live-server реагирующий на изменения в рабочей директории
 
+- Запустить live-server реагирующий на изменения в рабочей директории
 
 ```bash
 npm run server
 ```
+
 ### Используемые плагины
 
 [air-datepicker](https://www.npmjs.com/package/air-datepicker) - добавляет календарь
 
-[event-emitter]( https://www.npmjs.com/package/event-emitter)  - реализация event emitter
+[event-emitter](https://www.npmjs.com/package/event-emitter) - реализация event emitter
 
-[imask]( https://www.npmjs.com/package/imask)  - добавляет маску в инпуты
+[imask](https://www.npmjs.com/package/imask) - добавляет маску в инпуты
 
-[ion-rangeslider]( https://www.npmjs.com/package/ion-rangeslider) - плагин ползунка
+[ion-rangeslider](https://www.npmjs.com/package/ion-rangeslider) - плагин ползунка
 
-[material-icons]( https://www.npmjs.com/package/material-icons) - иконочный шрифт
+[material-icons](https://www.npmjs.com/package/material-icons) - иконочный шрифт
 
 [paginationjs](https://www.npmjs.com/package/paginationjs) - плагин пагинации

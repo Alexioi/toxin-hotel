@@ -37,5 +37,5 @@ mixin header(options)
           if username !== ''
             span.header__username= username
           else
-            +button({ type: 'outline', link: '/auth', text: 'войти', size: 'low' })
+            +button({ theme: 'outline', link: '/auth', text: 'войти', size: 'low' })
             +button({ link: '/auth', text: 'зарегистрироваться', size: 'low' })

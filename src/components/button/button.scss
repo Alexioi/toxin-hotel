@@ -1,90 +1,84 @@
 @import '../../style/variables.scss';
 
 .button {
-  display: block;
   border: none;
-  border-radius: 22px;
-  padding: 0.1667rem;
-  background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
   cursor: pointer;
-  text-decoration-line: none;
+  position: relative;
 
   &:hover,
   &.button_hovered {
-    background: linear-gradient(180deg, rgba($color-second, 0.5) 0%, rgba(139, 164, 249, 0.5) 100%);
+    opacity: 0.5;
   }
 
-  &__wrapper {
-    display: inline-grid;
-    padding: 0 21px 0 19px;
-    grid-template-columns: 1fr auto 1fr;
-    grid-template-areas: '. text arrow';
-    justify-content: center;
-    align-items: center;
+  &_theme-default {
+    padding: 14px 20px;
+    background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
     border-radius: 22px;
   }
 
-  &_low &__text {
-    line-height: 2.5rem;
+  &_theme-outline {
+    padding: 14px 20px;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+
+    &::before {
+      content: '';
+      position: absolute;
+      background: white;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: 2px;
+      border-radius: inherit;
+    }
   }
 
-  &_outline &__wrapper {
-    background-color: white;
+  &_theme-link {
+    background: none;
   }
 
-  &_outline &__text {
-    color: $color-second;
-  }
-
-  &_link {
-    padding: 0;
-    width: auto;
-    padding: 0;
-  }
-
-  &.button_link {
-    background: white;
-  }
-
-  &_link &__wrapper {
-    padding: 0;
-  }
-
-  &_link &__text {
-    color: $color-second;
-    line-height: 1.25rem;
-  }
-
-  &_link &_link:hover &__text,
-  &_link &_hovered &__text {
-    color: $color-first-50;
-  }
-
-  &_long.button {
+  &_theme-long {
     width: 100%;
+    padding: 14px 0;
+    background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+    border-radius: 22px;
   }
 
-  &_long &__wrapper {
-    padding: 0;
-    width: 100%;
+  &_size-low {
+    padding-top: 9px;
+    padding-bottom: 9px;
   }
 
   &__text {
-    font-family: $font-first;
-    grid-area: text;
+    font: bold 12px/15px $font-first;
     text-transform: uppercase;
-    font-weight: bold;
-    color: white;
-    font-size: 1rem;
-    line-height: 3.3333rem;
     white-space: nowrap;
+    position: relative;
+    text-decoration-line: none;
+    z-index: 2;
+  }
+
+  &_theme-default &__text {
+    color: white;
+  }
+
+  &_theme-outline &__text {
+    color: $color-second;
+  }
+
+  &_theme-link &__text {
+    color: #bc9cff;
+  }
+
+  &_theme-long &__text {
+    color: white;
   }
 
   &__arrow {
-    grid-area: arrow;
+    position: absolute;
     color: white;
-    font-size: 2rem;
-    margin-left: auto;
-    padding-right: 0.8333rem;
+    top: 10px;
+    right: 10px;
   }
 }
