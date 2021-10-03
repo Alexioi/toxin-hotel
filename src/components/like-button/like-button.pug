@@ -10,4 +10,5 @@ mixin like-button(options)
     classes += isLiked ? ' like-button_liked': ''
 
   button.like-button.js-like-button(class=classes)
-    .like-button__content= counter
+    span.like-button__icon.material-icons 
+    span.like-button__counter= counter
