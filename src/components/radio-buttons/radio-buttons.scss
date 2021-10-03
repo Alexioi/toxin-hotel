@@ -1,24 +1,26 @@
-@import "../../style/variables.scss";
+@import '../../style/variables.scss';
 
 .radio-buttons {
   display: flex;
   gap: 20px;
 
+  &__item {
+    cursor: pointer;
+  }
+
   &__text {
-    font-size: 14px;
-    line-height: 24px;
-    color: rgba(31, 32, 65, 0.75);
-    display: flex;
-    align-items: center;
+    font: 14px/20px $font-first;
+    color: rgba($color-first, 0.75);
+    margin-left: 30px;
     position: relative;
 
     &::before {
+      content: '';
+      position: absolute;
       display: block;
       width: 18px;
       height: 18px;
-      content: "";
-      margin-right: 10px;
-      border: 1px solid rgba(31, 32, 65, 0.25);
+      border: 1px solid rgba($color-first, 0.25);
       border-radius: 10px;
     }
   }
@@ -26,22 +28,23 @@
   &__input {
     position: absolute;
     opacity: 0;
+  }
 
-    &:checked {
-      & + .radio-buttons__text::before {
-        border-color: #bc9cff;
-      }
+  &__input:checked + &__text {
+    &:before {
+      border-color: #bc9cff;
+    }
 
-      & + .radio-buttons__text::after {
-        display: block;
-        width: 12px;
-        height: 12px;
-        left: 4px;
-        position: absolute;
-        content: "";
-        background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-        border-radius: 10px;
-      }
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      top: 3px;
+      left: -26px;
+      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+      border-radius: 10px;
     }
   }
 }
