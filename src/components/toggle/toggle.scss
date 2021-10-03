@@ -1,53 +1,49 @@
-@import "../../style/variables.scss";
+@import '../../style/variables.scss';
 
 .toggle {
   &__text {
-    display: flex;
+    font: 14px/20px $font-first;
     position: relative;
     cursor: pointer;
-    font-size: 14px;
-    line-height: 24px;
-    color: rgba(31, 32, 65, 0.75);
+    color: rgba($color-first, 0.75);
+    padding-left: 50px;
 
     &::before {
-      content: "";
-      display: inline-block;
-      border: 1px solid rgba(31, 32, 65, 0.25);
-      box-sizing: border-box;
+      content: '';
+      display: block;
+      position: absolute;
+      border: 1px solid rgba($color-first, 0.25);
       border-radius: 10px;
-      width: 40px;
-      height: 20px;
-      margin-right: 10px;
+      width: 38px;
+      height: 18px;
     }
 
     &::after {
-      content: "";
-      display: inline-block;
+      content: '';
+      position: absolute;
+      display: block;
       width: 12px;
       height: 12px;
-      background: rgba(31, 32, 65, 0.25);
+      background: rgba($color-first, 0.25);
       border-radius: 10px;
-      position: absolute;
       left: 4px;
-      top: 4px;
+      top: 3px;
     }
   }
 
   &__checkbox {
     position: absolute;
     opacity: 0;
+  }
 
-    &:checked {
-      & + .toggle__text {
-        &:before {
-          border-color: #bc9cff;
-        }
+  &__checkbox:checked + &__text {
+    &:before {
+      border-color: #bc9cff;
+    }
 
-        &:after {
-          background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-          left: 24px;
-        }
-      }
+    &:after {
+      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+      left: 24px;
     }
   }
 }
