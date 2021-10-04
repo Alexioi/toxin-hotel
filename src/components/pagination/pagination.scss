@@ -1,6 +1,10 @@
-@import "../../style/variables.scss";
+@import '../../style/variables.scss';
 
 .pagination {
+  &__buttons {
+    position: relative;
+  }
+
   &js {
     &-pages {
       & > ul {
@@ -21,31 +25,42 @@
     &-next {
       background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
       border-radius: 22px;
+      cursor: pointer;
+
+      & > a {
+        color: white;
+      }
 
       &.disabled {
         display: none;
       }
     }
+
     &-page {
-      &.active {
-        font-weight: bold;
-        font-size: 12px;
-        line-height: 15px;
-
-        background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-        border-radius: 22px;
-
-        & > a {
-          color: #ffffff;
-        }
-      }
+      border-radius: 22px;
+      cursor: pointer;
 
       & > a {
-        font-size: 12px;
-        line-height: 15px;
-        color: rgba(31, 32, 65, 0.5);
+        font: 12px/15px $font-first;
+        color: rgba($color-first, 0.5);
         text-decoration: none;
       }
+
+      &.active {
+        background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+
+        & > a {
+          font-weight: bold;
+          color: white;
+        }
+      }
     }
+  }
+
+  &__text {
+    margin-top: 8px;
+    padding-left: 6px;
+    font: 14px/24px $font-first;
+    color: rgba($color-first, 0.75);
   }
 }
