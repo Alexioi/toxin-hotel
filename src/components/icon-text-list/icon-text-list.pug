@@ -8,9 +8,9 @@ mixin icon-text-list(options)
     } = options || {}
 
 
-  .icon-text-list
+  ul.icon-text-list
     each item in items
-      .icon-text-list__item
+      li.icon-text-list__item
         img.icon-text-list__img(
           src=require(`../../components/icon-text-list/img/${item.img}.svg`).default
           alt=item.img
