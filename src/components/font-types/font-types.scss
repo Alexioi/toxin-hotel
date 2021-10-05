@@ -1,11 +1,11 @@
 @import '../../style/variables.scss';
 
-$sample-width: 3.0833rem;
+$sample-width: 37px;
 
 .font-types {
   display: grid;
   align-self: start;
-  gap: 4.25rem;
+  gap: 51px;
 
   &__item {
     display: flex;
@@ -15,54 +15,48 @@ $sample-width: 3.0833rem;
     display: flex;
     width: $sample-width;
     justify-content: flex-end;
-    margin-right: 2.5rem;
-    color: $color-first-25;
+    margin-right: 30px;
+    color: rgba($color-first, 0.25);
   }
 
   &__item_theme-h1 &__sample {
-    font-size: 2rem;
+    font: 24px/29px $font-first;
   }
 
   &__item_theme-h2 &__sample {
-    font-size: 1.5833rem;
+    font: 19px/23px $font-first;
   }
 
   &__item_theme-h3 &__sample {
-    font-size: 1rem;
+    font: 12px/15px $font-first;
   }
 
   &__item_theme-body &__sample {
-    font-size: 1.1667rem;
+    font: 14px/24px $font-first;
   }
 
   &__description {
-    font-weight: bold;
     color: $color-first;
   }
 
   &__item_theme-h1 &__description {
-    font-size: 2rem;
-    line-height: 2.4167rem;
-    max-width: 30.75rem;
+    font: bold 24px/29px $font-first;
+    max-width: 369px;
   }
 
   &__item_theme-h2 &__description {
-    font-size: 1.5833rem;
-    line-height: 1.9167rem;
-    max-width: 26rem;
+    font: bold 19px/23px $font-first;
+    max-width: 312px;
   }
 
   &__item_theme-h3 &__description {
-    font-size: 1rem;
-    line-height: 1.25rem;
+    font: bold 12px/15px $font-first;
     text-transform: uppercase;
   }
 
   &__item_theme-body &__description {
-    font-weight: normal;
-    max-width: 25.0833rem;
-    font-size: 1.1667rem;
-    line-height: 2rem;
+    font: 14px/24px $font-first;
+    max-width: 301px;
     color: rgba($color-first, 0.75);
   }
 }
