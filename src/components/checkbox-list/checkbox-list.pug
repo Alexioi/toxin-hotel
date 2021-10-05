@@ -1,8 +1,8 @@
 mixin checkbox-list(options)
   -
     const {  
-      type='default', 
-      items= [
+      isRich = false,
+      items = [
         {text: "Завтрак"},
         {text: "Письменный стол", isChecked: true},
         {text: "Стул для кормления", isChecked: true},
@@ -14,7 +14,7 @@ mixin checkbox-list(options)
 
   -
     var classes = ''
-    classes += ' checkbox-list_' + type 
+    classes += isRich ? ' checkbox-list_rich' : ''
 
   .checkbox-list(class=classes)
     ul.checkbox-list__list
@@ -27,5 +27,5 @@ mixin checkbox-list(options)
             checked=item.isChecked
           )
           span.checkbox-list__text= item.text
-          if type === "rich"
+          if isRich
             p.checkbox-list__sub-text= item.subText

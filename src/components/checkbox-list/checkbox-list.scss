@@ -1,13 +1,11 @@
 @import '../../style/variables.scss';
 
 .checkbox-list {
-  width: 100%;
   display: grid;
-  gap: 0.8333rem;
+  gap: 12px;
 
-  &_rich &__text {
-    font-weight: bold;
-    color: $color-first-75;
+  &_rich {
+    gap: 10px;
   }
 
   &__item {
@@ -15,7 +13,7 @@
   }
 
   &__label {
-    padding-left: 2.5rem;
+    padding-left: 30px;
     position: relative;
     display: block;
     cursor: pointer;
@@ -33,28 +31,27 @@
 
     &::after {
       content: '';
+      display: block;
       border-bottom: 2px solid $color-second;
       border-right: 2px solid $color-second;
       transform: rotate(45deg);
-      width: 0.3333rem;
-      height: 0.5rem;
+      width: 5px;
+      height: 6px;
       position: absolute;
-      display: block;
-      top: 0.4167rem;
-      left: 0.6667rem;
+      top: 5px;
+      left: 6px;
     }
   }
 
   &__text {
-    font-size: 1.1667rem;
-    line-height: 1.6667rem;
-    color: $color-first-50;
+    font: 14px/18px $font-first;
+    color: rgba($color-first, 0.5);
 
     &::before {
       content: '';
-      border: 1px solid $color-first-25;
-      width: 1.5rem;
-      height: 1.5rem;
+      border: 1px solid rgba($color-first, 0.25);
+      width: 18px;
+      height: 18px;
       position: absolute;
       display: block;
       border-radius: 4px;
@@ -62,10 +59,14 @@
     }
   }
 
+  &_rich &__text {
+    font-weight: bold;
+    color: rgba($color-first, 0.75);
+  }
+
   &__sub-text {
-    font-size: 1rem;
-    line-height: 1.1667rem;
-    color: $color-first-50;
-    margin-top: 0.3333rem;
+    margin-top: 4px;
+    font: 12px/14px $color-first;
+    color: rgba($color-first, 0.5);
   }
 }
