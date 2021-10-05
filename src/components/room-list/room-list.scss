@@ -1,29 +1,21 @@
-@import "../../style/variables.scss";
+@import '../../style/variables.scss';
 
 .room-list {
-  width: 100%;
-
-  &__list {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
 
   &__item {
-    margin-top: 1.6667rem;
+    margin-top: 21px;
     list-style-type: none;
-    width: calc(100% / 3 - 0.6667rem);
+    width: calc(100% / 3 - 24px);
 
     @include media-breakpoint-down($lg) {
-      width: calc(100% / 2 - 0.6667rem);
+      width: calc(100% / 2 - 12px);
     }
 
     @include media-breakpoint-down($xs) {
       width: 100%;
     }
-  }
-
-  &__pagination {
-    margin: 40px auto 0;
   }
 }

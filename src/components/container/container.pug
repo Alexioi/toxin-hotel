@@ -6,7 +6,7 @@ mixin container(options)
 
   -
     var classes = ''
-    classes += size === 'big' ? ' container_size-big' : ''
+    classes += size ? ' container_size-' + size : ''
 
   .container(class=classes)
     block

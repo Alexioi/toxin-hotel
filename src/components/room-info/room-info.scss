@@ -1,4 +1,4 @@
-@import "../../style/variables.scss";
+@import '../../style/variables.scss';
 
 .room-info {
   display: flex;
@@ -6,43 +6,33 @@
   align-items: flex-end;
 
   &__number-signs {
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 17px;
-    color: #1f2041;
+    font: bold 14px/17px $font-first;
+    color: $color-first;
   }
 
   &__number-value {
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 30px;
-    color: #1f2041;
+    font: bold 24px/30px $font-first;
+    color: $color-first;
 
     &_type-link {
-      font-size: 19px;
-      line-height: 23px;
+      font: 19px/23px $font-first;
       text-decoration: none;
     }
   }
 
   &__lux {
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 15px;
+    font: bold 12px/15px $font-first;
     text-transform: uppercase;
-    color: #bc9cff;
+    color: $color-second;
   }
 
   &__price-number {
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 18px;
-    color: rgba(31, 32, 65, 0.5);
+    font: bold 14px/18px $font-first;
+    color: rgba($color-first, 0.5);
   }
 
   &__price-text {
-    font-size: 12px;
-    line-height: 18px;
-    color: rgba(31, 32, 65, 0.5);
+    font: 12px/18px $font-first;
+    color: rgba($color-first, 0.5);
   }
 }

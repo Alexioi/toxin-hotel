@@ -9,15 +9,15 @@ mixin room-info(options)
     } = options || {}
 
   -
-    var tag = "span"
-    tag = isLink ? 
-    `a href=${link} class = "room-info__number-value room-info__number-value_type-link"` 
-    : 'span'
+    const linkTag = `a href=${link} class = "room-info__number-value room-info__number-value_type-link"` 
+    const spanTag = 'span class = "room-info__number-value"'
+
+    const tag = isLink ? linkTag : spanTag
 
   .room-info
     span.room-info__number
       span.room-info__number-signs= '№ '
-      #{tag}.room-info__number-value= number
+      #{tag}= number
       if isLux
         span.room-info__lux= ' люкс'
     span.room-info__price
