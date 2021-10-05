@@ -1,15 +1,10 @@
-@import "../../style/variables.scss";
+@import '../../style/variables.scss';
 
 .text-field {
-  width: 100%;
   position: relative;
 
   &__input {
-    font-family: $font-first;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 42px;
+    font: 14px/42px $font-first;
     border: 1px solid rgba($color-first, 0.25);
     border-radius: 4px;
     width: 100%;

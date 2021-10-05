@@ -1,3 +1,5 @@
+@import '../../style/variables.scss';
+
 .range-slider {
   &__header {
     display: flex;
@@ -6,8 +8,8 @@
   }
 
   &__value {
-    font: 12px/15px Montserrat;
-    color: rgba(31, 32, 65, 0.5);
+    font: 12px/15px $font-first;
+    color: rgba($color-first, 0.5);
   }
 
   &__slider {
@@ -24,7 +26,7 @@
     display: block;
     height: 6px;
     background: #ffffff;
-    border: 1px solid rgba(31, 32, 65, 0.25);
+    border: 1px solid rgba($color-first, 0.25);
     box-sizing: border-box;
     border-radius: 3px;
 
@@ -50,5 +52,6 @@
     background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
     border: 2px solid #ffffff;
     border-radius: 10px;
+    cursor: pointer;
   }
 }

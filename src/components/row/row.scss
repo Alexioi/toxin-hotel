@@ -11,11 +11,15 @@
     &-center {
       justify-content: center;
     }
+
+    &-end {
+      justify-content: end;
+    }
   }
 
   @for $i from 1 to 2000 {
     &_gap-#{$i} {
-      gap: ($i / $font-size) + rem;
+      gap: $i + px;
     }
   }
 }

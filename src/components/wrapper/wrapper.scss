@@ -5,42 +5,42 @@
 
   @for $i from 1 to 2000 {
     &_width-#{$i} {
-      max-width: ($i / $font-size) + rem;
+      max-width: $i + px;
     }
     &_flex-basis-#{$i} {
-      flex-basis: ($i / $font-size) + rem;
+      flex-basis: $i + px;
     }
 
     &_margin-top-#{$i} {
-      margin-top: ($i / $font-size) + rem;
+      margin-top: $i + px;
     }
 
     &_margin-right-#{$i} {
-      margin-right: ($i / $font-size) + rem;
+      margin-right: $i + px;
     }
 
     &_margin-bottom-#{$i} {
-      margin-bottom: ($i / $font-size) + rem;
+      margin-bottom: $i + px;
     }
 
     &_margin-left-#{$i} {
-      margin-left: ($i / $font-size) + rem;
+      margin-left: $i + px;
     }
 
     &_padding-top-#{$i} {
-      padding-top: ($i / $font-size) + rem;
+      padding-top: $i + px;
     }
 
     &_padding-right-#{$i} {
-      padding-right: ($i / $font-size) + rem;
+      padding-right: $i + px;
     }
 
     &_padding-bottom-#{$i} {
-      padding-bottom: ($i / $font-size) + rem;
+      padding-bottom: $i + px;
     }
 
     &_padding-left-#{$i} {
-      padding-left: ($i / $font-size) + rem;
+      padding-left: $i + px;
     }
   }
 }

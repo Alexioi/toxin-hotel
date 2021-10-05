@@ -30,7 +30,7 @@ $(() => {
     lazy: false,
   };
 
-  const maskedInputs = document.querySelectorAll('.text-field_masked .js-text-field__input');
-
-  maskedInputs.forEach((node) => IMask(node, config));
+  $('.text-field_masked .js-text-field__input').each((i, node) => {
+    IMask(node, config);
+  });
 });

@@ -7,11 +7,11 @@ mixin rate(options)
   .rate
     while i < 5
       -
-        starType = quantity > i ? '' : '_border'
+        starType = quantity > i ? 'star' : 'star_border'
         i += 1
 
       img(
         class = 'rate__img'
-        src=require('../../components/rate/img/star' + starType + '.svg').default,
-        alt='star' + starType
+        src= require('../../components/rate/img/' + starType + '.svg').default,
+        alt= starType
       )

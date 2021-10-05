@@ -1,22 +1,20 @@
-@import "../../style/variables.scss";
+@import '../../style/variables.scss';
 
 .comment {
   display: grid;
   grid-template-areas:
-    "img         header"
-    "like-button text";
+    'img         header'
+    'like-button text';
   align-self: start;
-  gap: 0.8333rem;
-  font-size: 1.1667rem;
-  line-height: 2rem;
-  color: $color-first-75;
+  gap: 10px;
+  color: rgba($color-first, 0.75);
 
   &__img {
     grid-area: img;
-    width: 4rem;
-    height: 4rem;
-    border: 2px solid #ffffff;
-    filter: drop-shadow(0px 10px 20px rgba(31, 32, 65, 0.1));
+    width: 48px;
+    height: 48px;
+    border: 2px solid white;
+    filter: drop-shadow(0px 10px 20px rgba($color-first, 0.1));
     border-radius: 32px;
   }
 
@@ -27,16 +25,21 @@
   }
 
   &__author-name {
-    font-weight: bold;
+    font: bold 14px/24px $font-first;
+  }
+
+  &__date {
+    font: 14px/24px $font-first;
   }
 
   &__like-button {
     grid-area: like-button;
-    padding-top: 0.1667rem;
+    padding-top: 2px;
     margin: 0 auto;
   }
 
   &__text {
+    font: 14px/24px $font-first;
     grid-area: text;
   }
 }

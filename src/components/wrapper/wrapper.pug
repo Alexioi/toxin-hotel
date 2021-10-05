@@ -11,6 +11,7 @@ mixin wrapper(options)
       paddingRight,
       paddingBottom,
       paddingLeft,
+      mix
     } = options || {}
 
   -
@@ -25,6 +26,7 @@ mixin wrapper(options)
     classes += paddingRight ? ' wrapper_padding-right-' + paddingRight : ''
     classes += paddingBottom ? ' wrapper_padding-bottom-' + paddingBottom : ''
     classes += paddingLeft ? ' wrapper_padding-left-' + paddingLeft : ''
+    classes += mix ? ' ' + mix : ''
     
   .wrapper(class=classes)
     block
