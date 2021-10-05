@@ -2,26 +2,25 @@
 
 .bullet-list {
   display: grid;
-  gap: 0.8333rem;
+  gap: 10px;
 
   &__item {
     position: relative;
-    font-size: 1.1667rem;
-    line-height: 2rem;
-    padding-left: 1.75rem;
-    color: $color-first-75;
+    font: 14px/24px $font-first;
+    padding-left: 20px;
+    color: rgba($color-first, 0.75);
     list-style-type: none;
 
     &::before {
       position: absolute;
       content: '';
-      display: inline-block;
-      width: 0.8333rem;
-      height: 0.8333rem;
-      background: $color-first-25;
+      display: block;
+      width: 10px;
+      height: 10px;
+      background: rgba($color-first, 0.25);
       border-radius: 50%;
       left: 0;
-      top: 0.5rem;
+      top: 6px;
     }
   }
 }
