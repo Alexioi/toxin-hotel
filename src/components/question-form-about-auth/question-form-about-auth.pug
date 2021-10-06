@@ -10,5 +10,4 @@ mixin question-form-about-auth(options)
 
   .question-form-about-auth
     p.question-form-about-auth__question= questionText
-    .question-form-about-auth__button
-      +button({ type: 'outline', isLink: true, link: buttonLink, text: buttonText })
+    +button({ theme: 'outline', isLink: true, link: buttonLink, text: buttonText })

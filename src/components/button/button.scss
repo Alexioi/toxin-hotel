@@ -1,9 +1,11 @@
 @import '../../style/variables.scss';
 
 .button {
+  display: inline-block;
   border: none;
   cursor: pointer;
   position: relative;
+  text-decoration: none;
 
   &:hover,
   &.button_hovered {

@@ -37,6 +37,6 @@ mixin registration-card()
         +wrapper({marginTop: 10})
           +toggle
         +wrapper({marginTop: 21})
-          +button({ type: 'long', text: 'перейти к оплате', })
+          +button({ type: 'submit', theme: "long", text: 'перейти к оплате', })
       +wrapper({marginTop: 30})
-        +question-form-about-auth({questionText: "Уже есть аккаунт на Toxin", buttonText: "войти", buttonLink: "/"})
+        +question-form-about-auth({questionText: "Уже есть аккаунт на Toxin", buttonText: "войти", buttonLink: "/sing-in.html"})
