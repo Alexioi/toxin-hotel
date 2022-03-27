@@ -31,12 +31,12 @@ mixin dropdown-menu(options)
         each item, index in items 
           li.dropdown-menu__item.js-dropdown-menu__item
             span.dropdown-menu__item-name= item
-            button.dropdown-menu__counter-button.js-dropdown__counter-button -
-            span.dropdown-menu__counter.js-dropdown__counter= counters[index]
-            button.dropdown-menu__counter-button.js-dropdown__counter-button +
+            button.dropdown-menu__counter-button.js-dropdown-menu__counter-button -
+            span.dropdown-menu__counter.js-dropdown-menu__counter= counters[index]
+            button.dropdown-menu__counter-button.js-dropdown-menu__counter-button +
       if hasButtons
         .dropdown-menu__buttons
           .dropdown-menu__clear.js-dropdown-menu__clear
-            +button({type: 'link', text: 'очистить'})
+            +button({type: 'link', theme: 'link', text: 'очистить'})
           .dropdown-menu__apply.js-dropdown-menu__apply
-            +button({type: 'link', text: 'применить'})
+            +button({type: 'link', theme: 'link', text: 'применить'})

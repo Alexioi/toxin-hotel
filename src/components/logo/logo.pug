@@ -1,13 +1,10 @@
 mixin logo(options)
   -
     const {
-      type = 'logo'
+      type = 'default'
     } = options || {}
 
-  a(
-    class = 'logo'
-    href = "./index.html"
-  ) 
+  a.logo(href = "./index.html") 
     img(
       class = 'logo__img'
       src = require(`../../components/logo/img/${type}.svg`).default

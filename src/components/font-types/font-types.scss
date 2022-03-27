@@ -37,16 +37,15 @@ $sample-width: 37px;
 
   &__description {
     color: $color-first;
+    white-space: pre;
   }
 
   &__item_theme-h1 &__description {
     font: bold 24px/29px $font-first;
-    max-width: 369px;
   }
 
   &__item_theme-h2 &__description {
     font: bold 19px/23px $font-first;
-    max-width: 312px;
   }
 
   &__item_theme-h3 &__description {
@@ -56,7 +55,6 @@ $sample-width: 37px;
 
   &__item_theme-body &__description {
     font: 14px/24px $font-first;
-    max-width: 301px;
     color: rgba($color-first, 0.75);
   }
 }

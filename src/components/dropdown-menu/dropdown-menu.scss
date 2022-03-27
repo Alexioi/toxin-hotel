@@ -14,16 +14,16 @@
     display: none;
     width: 100%;
     background-color: white;
-    padding: 0.5833rem 0.5833rem 0.5rem 1.25rem;
-    border: 0.0833rem solid rgba($color-first, 0.5);
+    padding: 7px 7px 6px 15px;
+    border: 1px solid rgba($color-first, 0.5);
     border-top: none;
-    border-radius: 0 0 0.1667rem 0.1667rem;
+    border-radius: 0 0 4px 4px;
   }
 
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 0.5833rem;
+    gap: 7px;
   }
 
   &__item {
@@ -35,23 +35,23 @@
 
   &__item-name {
     margin-right: auto;
-    font: bold 1rem/1.25rem $font-first;
+    font: bold 12px/12px $font-first;
     text-transform: uppercase;
   }
 
   &__counter {
-    flex: 0 0 2.6667rem;
+    flex: 0 0 30px;
     text-align: center;
-    font: bold 1rem/1.25rem $font-first;
+    font: bold 12px/12px $font-first;
 
     &-button {
       flex-shrink: 0;
-      border: 0.0833rem solid rgba($color-first, 0.25);
+      border: 1px solid rgba($color-first, 0.25);
       background: white;
-      width: 2.5rem;
-      height: 2.5rem;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
-      font: 1.5rem/2.5rem $font-first;
+      font: 18px/30px $font-first;
       color: rgba($color-first, 0.5);
       cursor: pointer;
 
@@ -63,7 +63,7 @@
   }
 
   &__buttons {
-    margin: 1.5rem 0 0.5rem 0;
+    margin: 18px 0 6px 0;
     display: flex;
   }
 

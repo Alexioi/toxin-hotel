@@ -224,8 +224,8 @@ class DropdownMenuItem {
   }
 
   _findNodes() {
-    this.$counter = this.$node.find('.js-dropdown__counter');
-    this.$counterButtons = this.$node.find('.js-dropdown__counter-button');
+    this.$counter = this.$node.find('.js-dropdown-menu__counter');
+    this.$counterButtons = this.$node.find('.js-dropdown-menu__counter-button');
   }
 
   _attachEventHandlers() {

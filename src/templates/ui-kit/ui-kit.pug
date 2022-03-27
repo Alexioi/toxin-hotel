@@ -16,10 +16,11 @@ html
     title
       block title
   body(class=withThemeGray ? 't-ui-kit_with-theme-gray' : '')
-    +layout
-      +layout__header
-        +container({size: 'big'})
-          +wrapper({paddingTop: 30, paddingBottom: 62})
-            +logo({type: 'mini'})
-      +layout__main
-        block main
+    +wrapper({paddingTop: 30, paddingBottom: 140})
+      +layout
+        +layout__header
+          +container({size: 'big'})
+            +wrapper({paddingBottom: 62})
+              +logo({type: 'mini'})
+        +layout__main
+          block main
