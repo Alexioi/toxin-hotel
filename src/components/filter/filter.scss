@@ -1,6 +1,30 @@
+@import '../../style/variables.scss';
+
 .filter {
+  &__items {
+    display: block;
+
+    @include media-breakpoint-down($md) {
+      display: none;
+    }
+
+    &-opened {
+      display: block;
+    }
+  }
+
   &__range-text {
     margin-top: 14px;
     color: rgba(31, 32, 65, 0.5);
+  }
+
+  &__toggle-button {
+    margin-top: 30px;
+    justify-content: center;
+    display: none;
+
+    @include media-breakpoint-down($md) {
+      display: flex;
+    }
   }
 }

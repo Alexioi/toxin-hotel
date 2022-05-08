@@ -1,12 +1,21 @@
 class Carousel {
   constructor(component) {
     this.component = component;
-    this.imgs = this.component.querySelectorAll('.js-room-card__img');
-    this.back = this.component.querySelector('.js-room-card__back');
-    this.next = this.component.querySelector('.js-room-card__next');
-    this.buttons = this.component.querySelectorAll('.js-room-card__button');
+
+    this._init();
+  }
+
+  _init() {
+    this._findElements();
     this._attachEventHandlers();
     this._hideImgs();
+  }
+
+  _findElements() {
+    this.images = this.component.querySelectorAll('.js-room-card__image');
+    this.back = this.component.querySelector('.js-room-card__arrow-button_action-back');
+    this.next = this.component.querySelector('.js-room-card__arrow-button_action-next');
+    this.buttons = this.component.querySelectorAll('.js-room-card__button');
   }
 
   _attachEventHandlers() {
@@ -22,41 +31,39 @@ class Carousel {
   }
 
   _goToBackImg() {
-    let currentImg = this.component.dataset.currentImg;
-    let quantityImg = this.component.dataset.quantityImg;
-    currentImg--;
-    if (currentImg < 0) {
-      currentImg = quantityImg;
-    }
-    this.component.dataset.currentImg = currentImg;
+    let { currentImage, quantityImage } = this.component.dataset;
+
+    currentImage = currentImage === '0' ? quantityImage : Number(currentImage) - 1;
+
+    this.component.dataset.currentImage = currentImage;
     this._hideImgs();
   }
 
   _goToNextImg() {
-    let currentImg = this.component.dataset.currentImg;
-    let quantityImg = this.component.dataset.quantityImg;
-    currentImg++;
-    if (currentImg > quantityImg) {
-      currentImg = 0;
-    }
-    this.component.dataset.currentImg = currentImg;
+    let { currentImage, quantityImage } = this.component.dataset;
+
+    currentImage = currentImage === quantityImage ? 0 : Number(currentImage) + 1;
+
+    this.component.dataset.currentImage = currentImage;
     this._hideImgs();
   }
 
   _moveTargetImg() {
-    let targetImg = event.target.dataset.buttonNumber;
-    this.component.dataset.currentImg = targetImg;
+    const { buttonNumber } = event.target.dataset;
+    this.component.dataset.currentImage = buttonNumber;
     this._hideImgs();
   }
 
   _hideImgs() {
-    this.imgs.forEach((node) => node.classList.add('room-card__img_hide'));
+    this.images.forEach((node) => node.classList.add('room-card__image_hide'));
+    this.buttons.forEach((node) => node.classList.remove('room-card__button_target'));
     this._showCurrentImg();
   }
 
   _showCurrentImg() {
-    let currentImg = this.component.dataset.currentImg;
-    this.imgs[currentImg].classList.remove('room-card__img_hide');
+    const { currentImage } = this.component.dataset;
+    this.images[currentImage].classList.remove('room-card__image_hide');
+    this.buttons[currentImage].classList.add('room-card__button_target');
   }
 }
 

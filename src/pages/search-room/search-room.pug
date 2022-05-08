@@ -4,6 +4,8 @@ include ../../components/filter/filter
 include ../../components/container/container
 include ../../components/row/row
 include ../../components/wrapper/wrapper
+include ../../components/title/title
+include ../../components/pagination/pagination
 
 block title
   | Search room
@@ -11,8 +13,12 @@ block title
 block main
   +container
     +wrapper({paddingTop: 30})
-      +row({justifyContent: 'space-between'})
-        +wrapper({basis: 266})
+      +row({justifyContent: 'space-between', mix: 'p-search-room__content'})
+        +wrapper({basis: 266, mix: 'p-search-room__filter-wrapper'})
           +filter
         +wrapper({basis: 834})
-          +room-list
+          +title({text: 'Номера, которые мы для вас подобрали'})
+          +wrapper({paddingTop: 21, paddingBottom: 37})
+            +room-list
+          +wrapper({paddingBottom: 70, paddingLeft: 290, mix: 'p-search-room__pagination'})
+            +pagination

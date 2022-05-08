@@ -4,37 +4,44 @@ include ../rate/rate
 mixin room-card(options)
   -
     const {
-      imgs = ['room-img-1', 'room-img-2', 'room-img-3'],
-      currentImg = 0,
+      images = ['room-image-1', 'room-image-2', 'room-image-3'],
+      currentImage = 0,
       number = 888,
       link  = '/change-it',
       isLux = false,
       price = "9 990",
-      quantity =3,
+      quantity = 3,
       reviews = 65,
     } = options || {}
 
   .room-card 
     .room-card__carousel.js-room-card__carousel(
-      data-current-img=currentImg,
-      data-quantity-img=imgs.length - 1
+      data-current-image=currentImage,
+      data-quantity-image=images.length - 1
     )
-      each img, index in imgs
-        img.room-card__img.js-room-card__img(
-          src=require(`../../components/room-card/img/${img}.png`).default,
-          alt=`${img}`
+      each image in images
+        image.room-card__image.js-room-card__image(
+          src=require(`../../components/room-card/image/${image}.png`).default,
+          alt=`${image}`
         )
       .room-card__buttons
-        each img, index in imgs
+        each image, index in images
           button.room-card__button.js-room-card__button(
-            data-button-number=index
+            data-button-number= index
           )
-      button.room-card__back.js-room-card__back.material-icons arrow_back_ios
-      button.room-card__next.js-room-card__next.material-icons arrow_forward_ios
+      button(class=`room-card__arrow-button 
+        room-card__arrow-button_action-back 
+        js-room-card__arrow-button_action-back 
+        material-icons`) arrow_back_ios
+      button(class=`room-card__arrow-button 
+        room-card__arrow-button_action-next 
+        js-room-card__arrow-button_action-next
+        material-icons`) arrow_back_ios
     .room-card__about 
       +room-info({ number, isLink: true, link, isLux, price })
       .room-card__rating
-        +rate({quantity})
+        .room-card__rate
+          +rate({quantity})
         span.room-card__reviews
           span.room-card__reviews-value= reviews
           span.room-card__reviews-text= ' Отзывов'

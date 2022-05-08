@@ -1,9 +1,9 @@
-@import "../../style/variables.scss";
+@import '../../style/variables.scss';
 
 .p-search-room {
   &__content {
     @include media-breakpoint-down($lg) {
-      margin: 0 1.6667rem;
+      gap: 20px;
     }
 
     @include media-breakpoint-down($md) {
@@ -11,10 +11,21 @@
     }
   }
 
-  &__filter {
+  &__filter-wrapper {
     @include media-breakpoint-down($md) {
-      margin-right: 0;
       flex-basis: auto;
+    }
+  }
+
+  &__pagination {
+    @include media-breakpoint-down($lg) {
+      padding-left: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    @include media-breakpoint-down($md) {
+      display: none;
     }
   }
 }

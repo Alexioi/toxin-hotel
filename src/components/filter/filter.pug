@@ -6,35 +6,40 @@ include ../../components/dropdown-menu/dropdown-menu
 include ../../components/range-slider/range-slider
 include ../../components/checkbox-list/checkbox-list
 include ../../components/dropdown-list/dropdown-list
+include ../../components/toggle/toggle
+include ../../components/button/button
 
 mixin filter(options)
-  .filter
-    +calendar
-      +label({title: 'даты пребывания в отеле'})
-        +wrapper({marginTop: 5})
-          +dropdown-field
-    +wrapper({marginTop: 20})
-      +dropdown-menu({counters: [2, 1, 1]})
-        +label({title: 'гости'})
+  .filter.js-filter
+    .filter__items.js-filter__items
+      +calendar
+        +label({title: 'даты пребывания в отеле'})
           +wrapper({marginTop: 5})
             +dropdown-field
-    +wrapper({marginTop: 30})
-      +range-slider({title: 'диапазон цены'})
-      p.filter__range-text Стоимость за сутки пребывания в номере
-    +wrapper({marginTop: 30})
-      +label({title: 'правила дома'})
-      +wrapper({marginTop: 4})
-        +checkbox-list({ title: 'Rich Checkbox Buttons', items: [ {text: "Можно курить"}, {text: "Можно с питомцами", isChecked: true}, {text: "Можно пригласить гостей (до 10 человек)", isChecked: true}, ]})
-    +wrapper({marginTop: 32})
-      +label({title: 'доступность'})
-      +wrapper({marginTop: 7, width: 260})
-        +checkbox-list({ isRich: true, items: [ {text: "Широкий коридор", subText: 'Ширина коридоров в номере не менее 91 см.'}, {text: "Помощник для инвалидов", subText: 'На 1 этаже вас встретит специалист и проводит до номера.'}, ]})
-    +wrapper({marginTop: 30})
-      +dropdown-menu({counters: [2, 1, 1], type: 'rooms'})
-        +label({title: 'удобства номера'})
-          +wrapper({marginTop: 4})
-            +dropdown-field
-    +wrapper({marginTop: 30, width: 256})
-      +dropdown-list({title: 'дополнительные удобства'})
-        +wrapper({marginTop: 7})
-          +checkbox-list
+      +wrapper({marginTop: 20})
+        +dropdown-menu({counters: [2, 1, 1]})
+          +label({title: 'гости'})
+            +wrapper({marginTop: 5})
+              +dropdown-field
+      +wrapper({marginTop: 30})
+        +range-slider({title: 'диапазон цены'})
+        p.filter__range-text Стоимость за сутки пребывания в номере
+      +wrapper({marginTop: 30})
+        +label({title: 'правила дома'})
+        +wrapper({marginTop: 4})
+          +checkbox-list({ title: 'Rich Checkbox Buttons', items: [ {text: "Можно курить"}, {text: "Можно с питомцами", isChecked: true}, {text: "Можно пригласить гостей (до 10 человек)", isChecked: true}, ]})
+      +wrapper({marginTop: 32})
+        +label({title: 'доступность'})
+        +wrapper({marginTop: 7, width: 260})
+          +checkbox-list({ isRich: true, items: [ {text: "Широкий коридор", subText: 'Ширина коридоров в номере не менее 91 см.'}, {text: "Помощник для инвалидов", subText: 'На 1 этаже вас встретит специалист и проводит до номера.'}, ]})
+      +wrapper({marginTop: 30})
+        +dropdown-menu({counters: [2, 1, 1], type: 'rooms'})
+          +label({title: 'удобства номера'})
+            +wrapper({marginTop: 4})
+              +dropdown-field
+      +wrapper({marginTop: 30})
+        +dropdown-list({title: 'дополнительные удобства'})
+          +wrapper({marginTop: 7})
+            +checkbox-list
+    .filter__toggle-button.js-filter__toggle-button 
+      +button({text: 'фильтр', theme: 'outline'})

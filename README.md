@@ -19,7 +19,7 @@ cd toxin-hotel/
 3. Установить зависимости:
 
 ```bash
-npm install
+npm ci
 ```
 
 4. Запустить live-server:

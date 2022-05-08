@@ -1,4 +1,4 @@
-@import "../../style/variables.scss";
+@import '../../style/variables.scss';
 
 .room-card {
   width: 100%;
@@ -7,49 +7,39 @@
   border-radius: 4px;
 
   &:hover {
-    & .room-card__back {
+    & .room-card__arrow-button {
       display: block;
       position: absolute;
       width: 42px;
       height: 100%;
       border: none;
       color: white;
+      top: 0;
+      cursor: pointer;
       background: linear-gradient(
         90deg,
         rgba(0, 0, 0, 0.5) 0%,
         rgba(0, 0, 0, 0) 99.99%,
         rgba(255, 255, 255, 0) 100%
       );
-      left: 0;
-      top: 0;
-      cursor: pointer;
     }
 
-    & .room-card__next {
-      display: block;
-      position: absolute;
-      width: 42px;
-      height: 100%;
-      border: none;
-      color: white;
-      background: linear-gradient(
-        270deg,
-        rgba(0, 0, 0, 0.5) 0%,
-        rgba(0, 0, 0, 0) 99.99%,
-        rgba(255, 255, 255, 0) 100%
-      );
+    & .room-card__arrow-button_action-back {
+      left: 0;
+    }
+
+    & .room-card__arrow-button_action-next {
+      transform: rotate(180deg);
       right: 0;
-      top: 0;
-      cursor: pointer;
     }
   }
 
   &__carousel {
-    height: 12.5833rem;
+    height: 152px;
     position: relative;
   }
 
-  &__img {
+  &__image {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -65,40 +55,46 @@
   &__buttons {
     position: absolute;
     z-index: 5;
-    right: 15px;
-    bottom: 15px;
+    right: 11px;
+    bottom: 13px;
   }
 
   &__button {
     cursor: pointer;
     width: 8px;
     height: 8px;
-    margin-right: 4px;
+    margin-right: 3px;
     border: 1px solid #ffffff;
     border-radius: 50%;
     background-color: rgba(0, 0, 0, 0);
+
+    &_target {
+      background-color: white;
+    }
   }
 
-  &__back {
+  &__arrow-button {
     display: none;
-  }
-
-  &__next {
-    display: none;
+    font-size: 14px;
+    font-weight: bold;
   }
 
   &__about {
-    padding: 20px 16px 21px 20px;
+    padding: 19px 17px 21px 20px;
   }
 
   &__rating {
-    margin-top: 10px;
+    margin-top: 13px;
     border-top: 1px solid rgba(31, 32, 65, 0.1);
     padding-top: 8px;
     padding-right: 4px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  &__rate {
+    padding-left: 1px;
   }
 
   &__reviews {
