@@ -1,0 +1,41 @@
+@import '../../style/variables.scss';
+
+.p-landing-page {
+  &__background {
+    height: 100%;
+    background: no-repeat center center url(./img/background.png);
+    background-size: cover;
+  }
+
+  &__form {
+    padding-top: 70px;
+
+    @include media-breakpoint-down($lg) {
+      justify-content: center;
+    }
+  }
+
+  &__text-row {
+    @include media-breakpoint-down($lg) {
+      justify-content: center;
+    }
+  }
+
+  &__text {
+    margin-top: 320px;
+    padding-bottom: 18px;
+    width: 265px;
+    font-size: 14px;
+    line-height: 24px;
+    text-align: right;
+    color: rgba($color-first, 0.75);
+
+    @include media-breakpoint-down($lg) {
+      text-align: center;
+    }
+
+    @include media-breakpoint-down($md) {
+      margin-top: 50px;
+    }
+  }
+}

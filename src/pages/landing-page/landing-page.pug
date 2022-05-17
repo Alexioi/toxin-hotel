@@ -3,13 +3,16 @@ extends ../../templates/website-pages/website-pages
 include ../../components/find-room/find-room
 include ../../components/container/container
 include ../../components/row/row
+include ../../components/wrapper/wrapper
 
 block title
   | Landing page
 
 block main
-  +container
-    +row
-      +find-room
-    +row
-      p Лучшие номера для вашей работы, отдыха и просто вдохновения
+  .p-landing-page__background
+    +container
+      +row({mix: 'p-landing-page__form'})
+        +wrapper({width: 380})
+          +find-room
+      +row({justifyContent: 'end', mix: 'p-landing-page__text-row'})
+        p.p-landing-page__text Лучшие номера для вашей работы, отдыха и просто вдохновения
