@@ -2,20 +2,33 @@ class Header {
   constructor(component) {
     this.component = component;
     this.button = this.component.querySelector('.js-header__burger-button');
-    this.nav = this.component.querySelector('.js-header__nav');
-    this.login = this.component.querySelector('.js-header__login');
+    this.subNavigationLists = this.component.querySelectorAll('.js-header__sub-navigation-list');
+    this.navigationButtons = this.component.querySelectorAll('.js-header__navigation-button');
     this._attachEventHandlers();
   }
 
   _attachEventHandlers() {
     this.button.addEventListener('click', () => {
-      this._toggleNav();
+      this._toggleNavigation();
+    });
+    this.navigationButtons.forEach((navigationButton, index) => {
+      navigationButton.addEventListener('click', () => {
+        this._toggleSubNavigationList(index);
+      });
     });
   }
 
-  _toggleNav() {
-    this.nav.classList.toggle('header__nav_opened');
-    this.login.classList.toggle('header__login_opened');
+  _toggleSubNavigationList(targetIndex) {
+    this.subNavigationLists.forEach((subsNavigationList, index) => {
+      if (targetIndex !== index) {
+        subsNavigationList.classList.remove('header__sub-navigation-list_opened');
+      }
+    });
+    this.subNavigationLists[targetIndex].classList.toggle('header__sub-navigation-list_opened');
+  }
+
+  _toggleNavigation() {
+    this.component.classList.toggle('header__mobile-navigation-opened');
   }
 }
 

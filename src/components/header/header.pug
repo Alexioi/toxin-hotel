@@ -7,10 +7,22 @@ mixin header(options)
     const { 
       navItems = [
         {link: '/change-it', text: 'О нас'}, 
-        {text: 'Услуги', isButton: true},
+        {
+          text: 'Услуги', 
+          list: [
+            {link: '/change-it', text: 'sample 1'}, 
+            {link: '/change-it', text: 'sample 2'},
+          ]
+        },
         {link: '/change-it', text: 'Вакансии'},
         {link: '/change-it', text: 'Новости'},
-        {text: 'Соглашения', isButton: true}
+        {
+          text: 'Соглашения', 
+          list: [
+            {link: '/change-it', text: 'sample 1'}, 
+            {link: '/change-it', text: 'sample 2'},
+          ]
+        }
       ],
       active = null,
       username = ''
@@ -22,19 +34,26 @@ mixin header(options)
         .header__logo
           +logo
         button.header__burger-button.js-header__burger-button.material-icons menu
-        ul.header__nav.js-header__nav
+        ul.header__navigation.js-header__navigation
           each navItem, index in navItems
-            li.header__nav-item
-              if navItem.isButton
-                button.header__nav-button
-                  span.header__button-content= navItem.text
+            li.header__navigation-item
+              if navItem.list
+                .header__sub-navigation-menu
+                  button.header__navigation-button.js-header__navigation-button
+                    span.header__button-content= navItem.text
+                  ul.header__sub-navigation-list.js-header__sub-navigation-list
+                    each listItem in navItem.list
+                      li.header__sub-navigation-item 
+                        a.header__navigation-link(
+                          href=listItem.link
+                        )= listItem.text
               else
-                a.header__nav-link(
+                a.header__navigation-link(
                   href=navItem.link,
-                  class=index === active ? 'header__nav-link_active' : ''
+                  class=index === active && 'header__navigation-link_active'
                 )= navItem.text
         .header__login.js-header__login
-          if username !== ''
+          if username
             span.header__username= username
           else
             +button({ theme: 'outline', link: '/auth', text: 'войти', size: 'low' })

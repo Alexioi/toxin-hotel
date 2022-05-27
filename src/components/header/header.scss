@@ -1,14 +1,17 @@
-@import "../../style/variables.scss";
+@import '../../style/variables.scss';
 
 .header {
-  width: 100%;
-  box-shadow: 0 0.8333rem 1.6667rem rgba(31, 32, 65, 0.05);
+  box-shadow: 0px 10px 20px rgba($color-first, 0.05);
   background-color: white;
-  padding: 1.25rem 0;
+  padding: 15px 0;
 
-  &__container {
-    @include media-breakpoint-down($lg) {
-      padding: 0 1.6667rem;
+  &__mobile-navigation-opened {
+    & .header_login {
+      display: flex;
+    }
+
+    & .header__navigation {
+      display: flex;
     }
   }
 
@@ -28,73 +31,94 @@
     display: none;
     background-color: white;
     border: none;
-    font-size: 2.5rem;
+    font-size: 30px;
 
     @include media-breakpoint-down($md) {
       display: inline;
     }
   }
 
-  &__nav {
+  &__navigation {
     display: flex;
-    gap: 1.6667rem;
-    margin-right: 1.6667rem;
+    gap: 21px;
+    margin-right: 20px;
 
     @include media-breakpoint-down($md) {
       display: none;
       width: 100%;
       align-items: center;
       flex-direction: column;
-      margin: 1.6667rem 0 1.6667rem 0;
-    }
-
-    &_opened {
-      display: flex;
+      margin: 20px 0;
     }
   }
 
-  &__nav-item {
+  &__navigation-item {
     list-style: none;
   }
 
-  &__nav-button {
+  &__navigation-button {
     background-color: white;
     border: none;
     cursor: pointer;
   }
 
   &__button-content {
-    font-family: $font-first;
     display: flex;
-    font-size: 1.1667rem;
-    line-height: 1.4167rem;
-    color: $color-first-50;
+    font-size: 14px;
+    line-height: 17px;
+    color: rgba($color-first, 0.5);
 
     &::after {
-      content: "keyboard_arrow_down";
-      font-family: "Material Icons";
-      font-size: 2rem;
+      content: 'keyboard_arrow_down';
+      font-family: 'Material Icons';
+      font-size: 24px;
     }
 
     &:hover {
-      color: $color-first-75;
+      color: rgba($color-first, 0.75);
     }
   }
 
-  &__nav-link {
+  &__sub-navigation-list {
+    position: absolute;
+    display: none;
+
+    @include media-breakpoint-down($md) {
+      margin-top: 10px;
+      position: static;
+    }
+
+    &_opened {
+      display: block;
+    }
+  }
+
+  &__sub-navigation-list {
+    list-style: none;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid rgba($color-first, 0.5);
+    border-radius: 4px;
+  }
+
+  &__sub-navigation-item {
+    list-style: none;
+  }
+
+  &__navigation-link {
     text-decoration: none;
     align-items: center;
-    color: $color-first-50;
-    font-size: 1.1667rem;
-    line-height: 1.4167rem;
+    color: rgba($color-first, 0.5);
+    font-size: 14px;
+    line-height: 17px;
 
     &_active {
       font-weight: bold;
-      color: $color-first-75;
+      color: rgba($color-first, 0.75);
     }
 
     &:hover {
-      color: $color-first-75;
+      color: rgba($color-first, 0.75);
     }
   }
 
@@ -106,22 +130,18 @@
       width: 100%;
       display: none;
       padding-top: 20px;
-      border-top: 1px solid rgba(31, 32, 65, 0.1);
+      border-top: 1px solid rgba($color-first, 0.1);
       flex-direction: column;
       align-items: center;
-    }
-
-    &_opened {
-      display: flex;
     }
   }
 
   &__username {
-    border-left: 1px solid rgba(31, 32, 65, 0.1);
+    border-left: 1px solid rgba($color-first, 0.1);
     padding: 6px 0 6px 20px;
     font-size: 14px;
     line-height: 17px;
-    color: rgba(31, 32, 65, 0.5);
+    color: rgba($color-first, 0.5);
     text-align: center;
 
     @include media-breakpoint-down($md) {
