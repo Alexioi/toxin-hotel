@@ -43,7 +43,7 @@ mixin header(options)
                     span.header__button-content= navItem.text
                   ul.header__sub-navigation-list.js-header__sub-navigation-list
                     each listItem in navItem.list
-                      li.header__sub-navigation-item 
+                      li.header__navigation-item 
                         a.header__navigation-link(
                           href=listItem.link
                         )= listItem.text

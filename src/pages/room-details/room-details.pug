@@ -17,11 +17,11 @@ block title
 block main
   +row
     +gallery
-  +wrapper({marginTop: 70, marginBottom: 70})
+  +wrapper({marginTop: 70, marginBottom: 70, mix: 'p-room-details__wrapper-content-block'})
     +container
-      +row({justifyContent: 'space-between'})
+      +row({justifyContent: 'space-between', mix: 'p-room-details__content-block'})
         +wrapper({basis: 712})
-          +row({justifyContent: 'space-between'})
+          +row({justifyContent: 'space-between', mix: 'p-room-details__mini-info-about-room'})
             +wrapper({basis: 291})
               +title({text: 'Сведения о номере', type: 'h3'})
               +wrapper({marginTop: 20})
@@ -32,13 +32,13 @@ block main
                     {img: "flame", title: "Уют", text: "Номер оснащён камином"},
                   ]
                 })
-            +wrapper({basis: 351})
+            +wrapper({basis: 351, mix: 'p-room-details__pie-chart'})
               +title({text: 'Впечатления от номера', type: 'h3'})
               +wrapper({marginTop: 20})
                 +pie-chart
           +wrapper({marginTop: 17})
-            +row({justifyContent: 'space-between'})          
-              +wrapper({paddingLeft: 20})
+            +row({justifyContent: 'space-between', mix: 'p-room-details__review-title'})          
+              +wrapper({paddingLeft: 20, mix: 'p-room-details__wrapper-review-title'})
                 +title({text: 'Отзывы посетителей номера', type: 'h3'})
               span.p-room-details__review 2 отзыва
           +wrapper({marginTop: 18})
@@ -53,12 +53,12 @@ block main
               text: 'Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент',
             })
           +wrapper({marginTop: 32})
-            +row({justifyContent: 'space-between'})
+            +row({justifyContent: 'space-between', mix: 'p-room-details__rules'})
               +wrapper({width: 260})
                 +wrapper({marginBottom: 20, marginLeft: 20})
                   +title({text: 'Правила', type: 'h3'})
                 +bullet-list
-              +wrapper({width: 351, paddingRight: 9})
+              +wrapper({width: 351, paddingRight: 9, mix: 'p-room-details__wrapper-reset-text'})
                 +wrapper({marginBottom: 20})
                   +title({text: 'Отмена', type: 'h3'})
                 p.p-room-details__reset-text Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.

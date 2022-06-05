@@ -1,16 +1,75 @@
+@import '../../style/variables';
+
 .p-room-details {
+  &__wrapper-content-block {
+    @include media-breakpoint-down($xs) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__content-block {
+    @include media-breakpoint-down($lg) {
+      flex-direction: column;
+    }
+  }
+
+  &__mini-info-about-room {
+    @include media-breakpoint-down($xs) {
+      flex-direction: column;
+    }
+  }
+
+  &__pie-chart {
+    @include media-breakpoint-down($xs) {
+      flex-basis: auto;
+      margin-top: 20px;
+    }
+  }
+
+  &__review-title {
+    align-items: center;
+
+    @include media-breakpoint-down($xs) {
+      flex-direction: column;
+    }
+  }
+
+  &__wrapper-review-title {
+    @include media-breakpoint-down($xs) {
+      padding: 0;
+    }
+  }
+
   &__review {
-    font-family: Montserrat;
-    font-size: 1.1667rem;
-    line-height: 1.1667rem;
+    font-size: 14px;
+    line-height: 14px;
     white-space: nowrap;
-    color: rgba(31, 32, 65, 0.5);
+    color: rgba($color-first, 0.5);
+
+    @include media-breakpoint-down($xs) {
+      padding-top: 10px;
+      flex-direction: column;
+    }
+  }
+
+  &__rules {
+    @include media-breakpoint-down($xs) {
+      flex-direction: column;
+    }
+  }
+
+  &__wrapper-reset-text {
+    @include media-breakpoint-down($xs) {
+      max-width: none;
+      padding: 0;
+      margin-top: 10px;
+      margin-bottom: 20px;
+    }
   }
 
   &__reset-text {
-    font-family: Montserrat;
-    font-size: 1.1667rem;
-    line-height: 2rem;
-    color: rgba(31, 32, 65, 0.75);
+    font-size: 14px;
+    line-height: 24px;
+    color: rgba($color-first, 0.75);
   }
 }
