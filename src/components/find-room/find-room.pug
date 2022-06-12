@@ -6,28 +6,28 @@ include ../calendar/calendar
 include ../dropdown-field/dropdown-field
 include ../wrapper/wrapper
 include ../label/label
-include ../../components/dropdown-menu/dropdown-menu
+include ../dropdown-menu/dropdown-menu
 
 mixin find-room(options)
   .find-room
     +card
       +wrapper({marginBottom: 21})
         +title({text: 'Найдём номера под ваши пожелания'}) 
-      form(method="POST", action="/change-it")
+      form.find-room__form(method="POST", action="/change-it")
         +wrapper({marginBottom: 20})
           +calendar   
             +row
               +wrapper({paddingRight: 10})
-                +label({title: 'date Dropdown'})
+                +label({title: 'прибытие'})
                   +wrapper({marginTop: 5})
-                    +dropdown-field
+                    +dropdown-field({inputName: 'dateFrom'})
               +wrapper({paddingLeft: 10})
-                +label({title: 'date Dropdown'})
+                +label({title: 'выезд'})
                   +wrapper({marginTop: 5})
-                    +dropdown-field
-        +wrapper({marginBottom: 31})
-          +dropdown-menu({ counters: [5, 3, 1],type: 'rooms'})
-            +label({title: 'masked text field'})
+                    +dropdown-field({inputName: 'dateTo'})
+        +wrapper({marginBottom: 32})
+          +dropdown-menu({type: 'guests'})
+            +label({title: 'гости'})
               +wrapper({marginTop: 5})
-                +dropdown-field
-        +button({ theme: 'long', text: 'подобрать номер', })
+                +dropdown-field({inputName: 'guests'})
+        +button({ theme: 'long', text: 'подобрать номер', type: 'submit'})

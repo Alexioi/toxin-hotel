@@ -14,7 +14,7 @@
       justify-content: flex-end;
       font-size: 14px;
       line-height: 18px;
-      color: rgba(31, 32, 65, 0.75);
+      color: rgba($color-first, 0.75);
     }
 
     &-about {
@@ -22,7 +22,7 @@
     }
 
     &-info {
-      color: rgba(31, 32, 65, 0.25);
+      color: rgba($color-first, 0.25);
       line-height: 18px;
       flex: 0 0 20px;
     }
@@ -42,7 +42,7 @@
     font-weight: bold;
     font-size: 19px;
     line-height: 16px;
-    color: #1f2041;
+    color: $color-first;
 
     &-text {
       margin-right: 4px;
@@ -50,7 +50,7 @@
 
     &-line {
       flex-grow: 1;
-      border-bottom: 1px dotted rgba(31, 32, 65, 0.25);
+      border-bottom: 1px dotted rgba($color-first, 0.25);
     }
 
     &-value {

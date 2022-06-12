@@ -12,10 +12,10 @@ mixin text-field(options)
 
     var classes = ''
     classes += isHovered ? ' text-field_hovered' : '' 
-    classes += isMasked ? ' text-field_masked' : '' 
+    classes += isMasked ? ' text-field_masked js-text-field_masked' : '' 
 
   .text-field(class=classes)
-    input.text-field__input.js-text-field__input(
+    input.text-field__input(
       type = type,
       value = value,
       name = name,

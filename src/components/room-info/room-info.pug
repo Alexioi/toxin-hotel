@@ -16,10 +16,10 @@ mixin room-info(options)
 
   .room-info
     span.room-info__number
-      span.room-info__number-signs №&nbsp;
+      span.room-info__number-signs= '№ '
       #{tag}= number
       if isLux
-        span.room-info__lux &nbsp;&nbsp;&nbsp;люкс
+        span.room-info__lux люкс
     span.room-info__price
-      span.room-info__price-number #{price}&nbsp;₽&nbsp;
-      span.room-info__price-text в сутки
+      span.room-info__price-number= `${price}₽`
+      span.room-info__price-text &nbsp;&nbsp;в сутки

@@ -12,8 +12,7 @@ mixin registration-card()
 
   .registration-card
     +card 
-      form(
-        class="registration-card__form" 
+      form.registration-card__form(
         method="POST" 
         action="/change-it"
       ) 
@@ -21,22 +20,22 @@ mixin registration-card()
         +wrapper({marginTop: 20})
           +text-field({ placeholder: 'Имя', type: "text", name: "name" })
         +wrapper({marginTop: 10})
-          +text-field({ placeholder: 'Фамилия', type: "text" })
+          +text-field({ placeholder: 'Фамилия', type: "text", name: "surname" })
         +wrapper({marginTop: 10})
           +radio-buttons
-        +wrapper({marginTop: 20})
+        +wrapper({marginTop: 24})
           +label({title: 'дата рождения'})
             +wrapper({marginTop: 5})
-              +text-field({ hasHeader: true, isMasked: true })
+              +text-field({ hasHeader: true, isMasked: true, name: "birthday"})
         +wrapper({marginTop: 20})
           +label({title: 'данные для входа в сервис'})
             +wrapper({marginTop: 5})
-              +text-field({ hasHeader: true, placeholder: 'Email', type: "text" })
+              +text-field({ hasHeader: true, placeholder: 'Email', type: "email", name: "email"})
         +wrapper({marginTop: 10})
-          +text-field({ placeholder: 'Пароль', type: "text" })
+          +text-field({ placeholder: 'Пароль', type: "password", name: "password"})
         +wrapper({marginTop: 10})
           +toggle
-        +wrapper({marginTop: 21})
+        +wrapper({marginTop: 23})
           +button({ type: 'submit', theme: "long", text: 'перейти к оплате', })
       +wrapper({marginTop: 30})
         +question-form-about-auth({questionText: "Уже есть аккаунт на Toxin", buttonText: "войти", buttonLink: "/sing-in.html"})

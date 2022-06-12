@@ -30,7 +30,7 @@ $(() => {
     lazy: false,
   };
 
-  $('.text-field_masked .js-text-field__input').each((i, node) => {
+  $('.js-text-field_masked input').each((i, node) => {
     IMask(node, config);
   });
 });

@@ -18,30 +18,32 @@ mixin room-booking(options)
 
     } = options || {}
 
-  +card
-    +room-info({isLux: true})
-    +wrapper({marginTop: 20, marginBottom: 20})
-      +calendar   
-        +row({gap: 20})
-          +label({title: 'прибытие'})
+  .room-booking
+    +card
+      form.room-booking__form(method="POST" action="/change-it")
+        +room-info({isLux: true})
+        +wrapper({marginTop: 20, marginBottom: 20})
+          +calendar   
+            +row({gap: 20})
+              +label({title: 'прибытие'})
+                +wrapper({marginTop: 5})
+                  +dropdown-field({inputName: 'dateFrom'})
+              +label({title: 'выезд'})
+                +wrapper({marginTop: 5})
+                  +dropdown-field({inputName: 'dateTO'})
+        +dropdown-menu({ counters: [2, 1, 0],type: 'guests'})
+          +label({title: 'гости'})
             +wrapper({marginTop: 5})
-              +dropdown-field
-          +label({title: 'выезд'})
-            +wrapper({marginTop: 5})
-              +dropdown-field
-    +dropdown-menu({ counters: [2, 1, 0],type: 'guests'})
-      +label({title: 'гости'})
-        +wrapper({marginTop: 5})
-          +dropdown-field
-    ul.room-booking__expenses-list
-      each expensesItem in expensesItems
-        li.room-booking__expenses-item
-          .room-booking__expenses-about= expensesItem.about
-          if expensesItem.hasInfo
-            span.room-booking__expenses-info.material-icons info_outline
-          .room-booking__expenses-value= expensesItem.value
-    .room-booking__total 
-      span.room-booking__total-text Итого
-      span.room-booking__total-line 
-      span.room-booking__total-value 38 081₽
-    +button({ theme: 'long', text: 'забронировать' })
+              +dropdown-field({inputName: 'guests'})
+        ul.room-booking__expenses-list
+          each expensesItem in expensesItems
+            li.room-booking__expenses-item
+              .room-booking__expenses-about= expensesItem.about
+              if expensesItem.hasInfo
+                span.room-booking__expenses-info.material-icons info_outline
+              .room-booking__expenses-value= expensesItem.value
+        .room-booking__total 
+          span.room-booking__total-text Итого
+          span.room-booking__total-line 
+          span.room-booking__total-value 38 081₽
+        +button({ theme: 'long', text: 'забронировать', type: 'apply' })

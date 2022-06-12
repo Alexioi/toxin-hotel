@@ -3,7 +3,7 @@
 .room-card {
   width: 100%;
   background: #ffffff;
-  box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+  box-shadow: 0px 10px 20px rgba($color-first, 0.05);
   border-radius: 4px;
 
   &:hover {
@@ -35,7 +35,7 @@
   }
 
   &__carousel {
-    height: 152px;
+    height: 151px;
     position: relative;
   }
 
@@ -80,12 +80,12 @@
   }
 
   &__about {
-    padding: 19px 17px 21px 20px;
+    padding: 19px 17px 20px 20px;
   }
 
   &__rating {
     margin-top: 13px;
-    border-top: 1px solid rgba(31, 32, 65, 0.1);
+    border-top: 1px solid rgba($color-first, 0.1);
     padding-top: 8px;
     padding-right: 4px;
     display: flex;
@@ -100,7 +100,7 @@
   &__reviews {
     font-size: 14px;
     line-height: 18px;
-    color: rgba(31, 32, 65, 0.5);
+    color: rgba($color-first, 0.5);
 
     &-value {
       font-weight: bold;
