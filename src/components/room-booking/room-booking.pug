@@ -5,7 +5,7 @@ include ../calendar/calendar
 include ../dropdown-field/dropdown-field
 include ../wrapper/wrapper
 include ../label/label
-include ../../components/dropdown-menu/dropdown-menu
+include ../dropdown-menu/dropdown-menu
 
 mixin room-booking(options)
   -
@@ -19,14 +19,18 @@ mixin room-booking(options)
     } = options || {}
 
   +card
-    +room-info({})
-    .room-booking__date-dropdown
+    +room-info({isLux: true})
+    +wrapper({marginTop: 20, marginBottom: 20})
       +calendar   
-        +label({title: 'filter date dropdown'})
-          +wrapper({marginTop: 5})
-            +dropdown-field
-    +dropdown-menu({ counters: [5, 3, 1],type: 'rooms'})
-      +label({title: 'masked text field'})
+        +row({gap: 20})
+          +label({title: 'прибытие'})
+            +wrapper({marginTop: 5})
+              +dropdown-field
+          +label({title: 'выезд'})
+            +wrapper({marginTop: 5})
+              +dropdown-field
+    +dropdown-menu({ counters: [2, 1, 0],type: 'guests'})
+      +label({title: 'гости'})
         +wrapper({marginTop: 5})
           +dropdown-field
     ul.room-booking__expenses-list

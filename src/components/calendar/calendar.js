@@ -9,24 +9,22 @@ class Calendar {
 
   _init() {
     this._findNodes();
-    this._addValueToInputs();
+    this._addDefaultValueToInputs();
     this._initDatepicker();
     this._attachEventsHandler();
   }
 
   _findNodes() {
-    this.$inputs = this.$node.find('.js-calendar__inputs input');
-    this.$apply = this.$node.find('.js-calendar__apply');
-    this.$clear = this.$node.find('.js-calendar__clear');
-    this.$button = this.$node.find('.js-calendar__inputs button');
+    this.$inputs = this.$node.find('input');
+    this.$apply = this.$node.find('.js-calendar__button-apply');
+    this.$clear = this.$node.find('.js-calendar__button-clear');
+    this.$buttons = this.$node.find('.js-calendar__inputs button');
     this.$menu = this.$node.find('.js-calendar__menu');
     this.$nodeForDatepicker = this.$node.find('.js-calendar__datepicker');
   }
 
-  _addValueToInputs() {
-    this.$inputs.each((i) => {
-      this.$inputs[i].value = 'ДД.ММ.ГГГГ';
-    });
+  _addDefaultValueToInputs() {
+    this.$inputs.val('ДД.ММ.ГГГГ');
   }
 
   _initDatepicker() {
@@ -50,7 +48,7 @@ class Calendar {
     this.$clear.on('click', () => {
       this._clearDates();
     });
-    this.$button.on('click', () => {
+    this.$buttons.on('click', () => {
       this._toggleVisible();
     });
   }
@@ -75,7 +73,7 @@ class Calendar {
     const firstDate = this._calculateDayAndMount(dates[0]);
     const secondDate = this._calculateDayAndMount(dates[1]);
 
-    this.$inputs[0].value = `${firstDate} - ${secondDate}`;
+    this.$inputs.val(`${firstDate} - ${secondDate}`);
     this._toggleVisible();
   }
 

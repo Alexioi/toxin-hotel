@@ -5,11 +5,6 @@
   justify-content: space-between;
   align-items: flex-end;
 
-  &__number {
-    display: flex;
-    align-items: flex-end;
-  }
-
   &__number-signs {
     font: bold 14px/17px $font-first;
     color: $color-first;
