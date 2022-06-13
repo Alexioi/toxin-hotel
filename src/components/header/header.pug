@@ -52,7 +52,7 @@ mixin header(options)
                   href=navItem.link,
                   class=index === active && 'header__navigation-link_active'
                 )= navItem.text
-        .header__login.js-header__login
+        .header__login
           if username
             span.header__username= username
           else

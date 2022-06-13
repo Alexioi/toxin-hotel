@@ -4,6 +4,7 @@ class Header {
     this.button = this.component.querySelector('.js-header__burger-button');
     this.subNavigationLists = this.component.querySelectorAll('.js-header__sub-navigation-list');
     this.navigationButtons = this.component.querySelectorAll('.js-header__navigation-button');
+    this.login = this.component.querySelectorAll('.js-header__login');
     this._attachEventHandlers();
   }
 

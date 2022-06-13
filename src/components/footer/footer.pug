@@ -66,10 +66,10 @@ mixin footer(options)
                   li.footer__list-item
                     a.footer__list-link(href=item.link)= item.text
         form.footer__subscription(method="POST", action="/change-it")
-          span.footer__header= component.subscriptionHeader
+          span.footer__header.footer__header_margin-small= component.subscriptionHeader
           p.footer__text= component.subscriptionText
           .footer__input
-            +text-field({ placeholder: 'Email', type: "email", isSubscription: true })
+            +text-field({ placeholder: 'Email', type: "email", isSubscription: true, name: "email" })
     .footer__line
       +container
         .footer__sub
