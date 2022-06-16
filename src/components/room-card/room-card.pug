@@ -21,7 +21,7 @@ mixin room-card(options)
     )
       each image in images
         image.room-card__image.js-room-card__image(
-          src=require(`../../components/room-card/image/${image}.png`).default,
+          src=require(`Components/room-card/image/${image}.png`),
           alt=`${image}`
         )
       .room-card__buttons

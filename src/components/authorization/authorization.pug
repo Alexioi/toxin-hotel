@@ -1,9 +1,9 @@
+include ../card/card
 include ../wrapper/wrapper
-include ../question-form-about-auth/question-form-about-auth
+include ../title/title
 include ../text-field/text-field
 include ../button/button
-include ../title/title
-include ../card/card
+include ../question-form-about-auth/question-form-about-auth
 
 mixin authorization()
 
@@ -18,4 +18,8 @@ mixin authorization()
           +text-field({ placeholder: 'Пароль', type: "password", name: "password" })
         +wrapper({marginBottom: 28})
           +button({ theme: 'long', text: 'войти', type: 'submit' })
-      +question-form-about-auth({questionText: "Нет аккаунта на Toxin?", buttonText: "создать", buttonLink: "/registration.html"})
+      +question-form-about-auth({
+        questionText: "Нет аккаунта на Toxin?", 
+        buttonText: "создать", 
+        buttonLink: "/registration.html"
+      })

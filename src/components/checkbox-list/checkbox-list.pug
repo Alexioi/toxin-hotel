@@ -21,8 +21,7 @@ mixin checkbox-list(options)
     each item in items 
       li.checkbox-list__item
         label.checkbox-list__label
-          input(
-            class="checkbox-list__input"
+          input.checkbox-list__input(
             type="checkbox" 
             checked=item.isChecked
           )

@@ -16,11 +16,11 @@ class Calendar {
 
   _findNodes() {
     this.$inputs = this.$node.find('input');
-    this.$apply = this.$node.find('.js-calendar__button-apply');
-    this.$clear = this.$node.find('.js-calendar__button-clear');
     this.$buttons = this.$node.find('.js-calendar__inputs button');
     this.$menu = this.$node.find('.js-calendar__menu');
     this.$nodeForDatepicker = this.$node.find('.js-calendar__datepicker');
+    this.$apply = this.$node.find('.js-calendar__button-apply');
+    this.$clear = this.$node.find('.js-calendar__button-clear');
   }
 
   _addDefaultValueToInputs() {

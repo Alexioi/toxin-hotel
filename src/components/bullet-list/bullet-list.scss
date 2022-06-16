@@ -6,7 +6,8 @@
 
   &__item {
     position: relative;
-    font: 14px/24px $font-first;
+    font-size: 14px;
+    line-height: 24px;
     padding-left: 20px;
     color: rgba($color-first, 0.75);
     list-style-type: none;

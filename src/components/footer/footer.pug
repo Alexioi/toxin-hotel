@@ -78,6 +78,6 @@ mixin footer(options)
             each social in component.socials
               a.footer__social-link(href=social.link) 
                 img(
-                  src=require(`../../components/footer/img/${social.img}.svg`).default,
+                  src=require(`../../components/footer/img/${social.img}.svg`)
                   alt=social.img
                 )
