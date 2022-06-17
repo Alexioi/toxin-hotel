@@ -15,5 +15,13 @@
 
   &_size-big {
     max-width: 1380px;
+
+    @include media-breakpoint-down($lg) {
+      padding: 0 20px;
+    }
+
+    @include media-breakpoint-down($sm) {
+      padding: 0 10px;
+    }
   }
 }

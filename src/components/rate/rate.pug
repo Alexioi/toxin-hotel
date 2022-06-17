@@ -1,8 +1,8 @@
 mixin rate(options)
-  - const { quantity = 0 } = options || {};
-
-  - var i = 0;
-  - var starType = '';
+  - 
+    const { quantity = 0 } = options || {};
+    var i = 0;
+    var starType = '';
 
   .rate
     while i < 5
@@ -12,6 +12,6 @@ mixin rate(options)
 
       img(
         class = 'rate__img'
-        src= require('../../components/rate/img/' + starType + '.svg')
+        src= require('Components/rate/img/' + starType + '.svg')
         alt= starType
       )

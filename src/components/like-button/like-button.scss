@@ -40,7 +40,8 @@
   }
 
   &__counter {
-    font: 10px/20px $font-first;
+    font-size: 10px;
+    line-height: 20px;
     color: rgba($color-first, 0.25);
     position: relative;
     z-index: 2;

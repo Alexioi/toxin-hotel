@@ -25,11 +25,14 @@
   }
 
   &__author-name {
-    font: bold 14px/24px $font-first;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 24px;
   }
 
   &__date {
-    font: 14px/24px $font-first;
+    font-size: 14px;
+    line-height: 24px;
   }
 
   &__like-button {
@@ -39,7 +42,8 @@
   }
 
   &__text {
-    font: 14px/24px $font-first;
+    font-size: 14px;
+    line-height: 24px;
     grid-area: text;
   }
 }

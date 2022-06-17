@@ -55,7 +55,8 @@
   }
 
   &__text {
-    font: 19px/28px $font-first;
+    font-size: 19px;
+    line-height: 28px;
     color: $color-first;
   }
 }

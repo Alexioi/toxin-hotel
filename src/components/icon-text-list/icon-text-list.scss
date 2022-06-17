@@ -19,12 +19,14 @@
   }
 
   &__title {
-    font: bold 14px/24px $font-first;
+    font-size: 14px;
+    line-height: 24px;
   }
 
   &__content {
+    font-size: 14px;
+    line-height: 24px;
     margin-left: 10px;
-    font: 14px/24px $font-first;
     color: rgba($color-first, 0.75);
   }
 }

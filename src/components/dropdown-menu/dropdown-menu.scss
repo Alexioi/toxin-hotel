@@ -35,14 +35,16 @@
 
   &__item-name {
     margin-right: auto;
-    font: bold 12px/12px $font-first;
+    font-weight: bold;
+    line-height: 12px;
     text-transform: uppercase;
   }
 
   &__counter {
     flex: 0 0 30px;
     text-align: center;
-    font: bold 12px/12px $font-first;
+    font-weight: bold;
+    line-height: 12px;
 
     &-button {
       flex-shrink: 0;
@@ -51,7 +53,8 @@
       width: 30px;
       height: 30px;
       border-radius: 50%;
-      font: 18px/30px $font-first;
+      font-size: 18px;
+      line-height: 30px;
       color: rgba($color-first, 0.5);
       cursor: pointer;
 

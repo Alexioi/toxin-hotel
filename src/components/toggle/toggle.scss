@@ -2,7 +2,8 @@
 
 .toggle {
   &__text {
-    font: 14px/20px $font-first;
+    font-size: 14px;
+    line-height: 20px;
     position: relative;
     cursor: pointer;
     color: rgba($color-first, 0.75);

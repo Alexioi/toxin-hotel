@@ -6,7 +6,8 @@
   align-items: center;
 
   &__question {
-    font: 14px/18px $font-first;
+    font-size: 14px;
+    line-height: 18px;
     color: black;
   }
 }

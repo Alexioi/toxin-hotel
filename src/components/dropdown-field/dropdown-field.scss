@@ -5,12 +5,13 @@
   width: 100%;
 
   &__input {
-    border: 0.0833rem solid rgba($color-first, 0.25);
-    border-radius: 0.1667rem;
+    border: 1px solid rgba($color-first, 0.25);
+    border-radius: 4px;
     width: 100%;
-    font: 1.1667rem/3.5rem $font-first;
+    font-size: 14px;
+    line-height: 40px;
     color: rgba($color-first, 0.75);
-    padding: 0 3.6667rem 0 1.25rem;
+    padding: 0 44px 0 15px;
 
     &:hover,
     &:focus,
@@ -22,15 +23,15 @@
     &[data-opened='true'] {
       border-color: rgba($color-first, 0.5);
       outline: none;
-      border-bottom-left-radius: 0rem;
-      border-bottom-right-radius: 0rem;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
     }
   }
 
   &__button {
     position: absolute;
     height: 100%;
-    width: 3.6667rem;
+    width: 44px;
     top: 0px;
     right: 0px;
     cursor: pointer;

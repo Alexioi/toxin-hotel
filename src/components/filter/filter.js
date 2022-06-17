@@ -11,7 +11,6 @@ class Filter {
   }
 
   _findElements() {
-    this.$items = this.$component.find('.js-filter__items');
     this.$button = this.$component.find('.js-filter__toggle-button ');
   }
 
@@ -22,7 +21,7 @@ class Filter {
   }
 
   _toggleItems() {
-    this.$items.toggleClass('filter__items-opened');
+    this.$component.toggleClass('filter_opened');
   }
 }
 

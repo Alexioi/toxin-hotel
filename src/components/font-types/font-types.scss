@@ -20,19 +20,23 @@ $sample-width: 37px;
   }
 
   &__item_theme-h1 &__sample {
-    font: 24px/29px $font-first;
+    font-size: 24px;
+    line-height: 29px;
   }
 
   &__item_theme-h2 &__sample {
-    font: 19px/23px $font-first;
+    font-size: 19px;
+    line-height: 23px;
   }
 
   &__item_theme-h3 &__sample {
-    font: 12px/15px $font-first;
+    font-size: 12px;
+    line-height: 15px;
   }
 
   &__item_theme-body &__sample {
-    font: 14px/24px $font-first;
+    font-size: 14px;
+    line-height: 24px;
   }
 
   &__description {
@@ -41,20 +45,26 @@ $sample-width: 37px;
   }
 
   &__item_theme-h1 &__description {
-    font: bold 24px/29px $font-first;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
   }
 
   &__item_theme-h2 &__description {
-    font: bold 19px/23px $font-first;
+    font-weight: bold;
+    font-size: 19px;
+    line-height: 23px;
   }
 
   &__item_theme-h3 &__description {
-    font: bold 12px/15px $font-first;
+    font-weight: bold;
+    line-height: 15px;
     text-transform: uppercase;
   }
 
   &__item_theme-body &__description {
-    font: 14px/24px $font-first;
+    font-size: 14px;
+    line-height: 24px;
     color: rgba($color-first, 0.75);
   }
 }

@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "air-datepicker": "^2.2.3",
+    "core-js": "^3.23.1",
     "event-emitter": "^0.3.5",
     "imask": "^6.0.7",
     "ion-rangeslider": "^2.3.1",

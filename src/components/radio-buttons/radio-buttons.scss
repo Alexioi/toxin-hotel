@@ -9,7 +9,8 @@
   }
 
   &__text {
-    font: 14px/20px $font-first;
+    font-size: 14px;
+    line-height: 20px;
     color: rgba($color-first, 0.75);
     padding-left: 30px;
     position: relative;
