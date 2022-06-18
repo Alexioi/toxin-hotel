@@ -15,9 +15,7 @@ class Filter {
   }
 
   _attachEventHandlers() {
-    this.$button.on('click', () => {
-      this._toggleItems();
-    });
+    this.$button.on('click', this._toggleItems.bind(this));
   }
 
   _toggleItems() {

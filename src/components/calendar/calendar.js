@@ -42,15 +42,9 @@ class Calendar {
   }
 
   _attachEventsHandler() {
-    this.$apply.on('click', () => {
-      this._applyDates();
-    });
-    this.$clear.on('click', () => {
-      this._clearDates();
-    });
-    this.$buttons.on('click', () => {
-      this._toggleVisible();
-    });
+    this.$apply.on('click', this._applyDates.bind(this));
+    this.$clear.on('click', this._clearDates.bind(this));
+    this.$buttons.on('click', this._toggleVisible.bind(this));
   }
 
   _applyDates() {
@@ -61,8 +55,8 @@ class Calendar {
     }
 
     if (this.$inputs.length === 2) {
-      const firstDate = this._calculateFullDate(dates[0]);
-      const secondDate = this._calculateFullDate(dates[1]);
+      const firstDate = Calendar._calculateFullDate(dates[0]);
+      const secondDate = Calendar._calculateFullDate(dates[1]);
 
       this.$inputs[0].value = firstDate;
       this.$inputs[1].value = secondDate;
@@ -70,14 +64,14 @@ class Calendar {
       return;
     }
 
-    const firstDate = this._calculateDayAndMount(dates[0]);
-    const secondDate = this._calculateDayAndMount(dates[1]);
+    const firstDate = Calendar._calculateDayAndMount(dates[0]);
+    const secondDate = Calendar._calculateDayAndMount(dates[1]);
 
     this.$inputs.val(`${firstDate} - ${secondDate}`);
     this._toggleVisible();
   }
 
-  _calculateFullDate(date) {
+  static _calculateFullDate(date) {
     let day = String(date.getDate());
     let month = String(Number(date.getMonth()) + 1);
     const year = date.getFullYear();
@@ -107,7 +101,7 @@ class Calendar {
     });
   }
 
-  _calculateDayAndMount(date) {
+  static _calculateDayAndMount(date) {
     const namesOfMonth = [
       'янв',
       'фев',

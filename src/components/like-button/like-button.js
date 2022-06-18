@@ -17,11 +17,13 @@ class LikeButton {
   }
 
   _attachEventHandlers() {
-    this.$component.on('click', () => {
-      this._changeButtonStyle();
-      this._changeButtonIcon();
-      this._setCounterLikes();
-    });
+    this.$component.on('click', this._onClickButton.bind(this));
+  }
+
+  _onClickButton() {
+    this._changeButtonStyle();
+    this._changeButtonIcon();
+    this._setCounterLikes();
   }
 
   _changeButtonStyle() {

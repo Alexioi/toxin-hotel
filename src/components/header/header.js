@@ -1,21 +1,26 @@
 class Header {
   constructor(component) {
     this.component = component;
+
+    this._init();
+  }
+
+  _init() {
+    this._findsElements();
+    this._attachEventHandlers();
+  }
+
+  _findsElements() {
     this.button = this.component.querySelector('.js-header__burger-button');
     this.subNavigationLists = this.component.querySelectorAll('.js-header__sub-navigation-list');
     this.navigationButtons = this.component.querySelectorAll('.js-header__navigation-button');
     this.login = this.component.querySelectorAll('.js-header__login');
-    this._attachEventHandlers();
   }
 
   _attachEventHandlers() {
-    this.button.addEventListener('click', () => {
-      this._toggleNavigation();
-    });
+    this.button.addEventListener('click', this._toggleNavigation.bind(this));
     this.navigationButtons.forEach((navigationButton, index) => {
-      navigationButton.addEventListener('click', () => {
-        this._toggleSubNavigationList(index);
-      });
+      navigationButton.addEventListener('click', this._toggleSubNavigationList.bind(this, index));
     });
   }
 

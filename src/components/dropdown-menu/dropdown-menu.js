@@ -32,9 +32,7 @@ class DropdownMenu {
   }
 
   _attachEventHandlers() {
-    this.$toggleButton.on('click', () => {
-      this._toggleMenu();
-    });
+    this.$toggleButton.on('click', this._toggleMenu.bind(this));
   }
 
   _toggleMenu() {
@@ -66,8 +64,6 @@ class DropdownMenu {
 
     this.$input.val(value);
   }
-
-  _calculateValue() {}
 }
 
 class DropdownMenuGuests extends DropdownMenu {
@@ -80,24 +76,16 @@ class DropdownMenuGuests extends DropdownMenu {
   _attachEventHandlers() {
     super._attachEventHandlers();
 
-    this.$clearButton.on('click', () => {
-      this._resetCounters();
-    });
-    this.$applyButton.on('click', () => {
-      this._updateInput();
-      this._toggleMenu();
+    this.$clearButton.on('click', this._resetCounters.bind(this));
+    this.$applyButton.on('click', this._updateInput.bind(this));
+    this.$applyButton.on('click', this._toggleMenu.bind(this));
+
+    this.$items.each((i) => {
+      this.dropdownItems[i].on('increasedCounterValue', this._showClearButton.bind(this));
     });
 
     this.$items.each((i) => {
-      this.dropdownItems[i].on('increasedCounterValue', () => {
-        this._showClearButton();
-      });
-    });
-
-    this.$items.each((i) => {
-      this.dropdownItems[i].on('counterValueIsZero', () => {
-        this._checkDisplayOfClearButton();
-      });
+      this.dropdownItems[i].on('counterValueIsZero', this._checkDisplayOfClearButton.bind(this));
     });
   }
 
@@ -122,19 +110,22 @@ class DropdownMenuGuests extends DropdownMenu {
       ['младенец', 'младенцы'],
     ];
 
-    counterValues = [Number(counterValues[0]) + Number(counterValues[1]), Number(counterValues[2])];
+    const integerCounterValues = [
+      Number(counterValues[0]) + Number(counterValues[1]),
+      Number(counterValues[2]),
+    ];
 
-    let value = [];
+    const value = [];
 
-    counterValues.forEach((counterValue, i) => {
-      if (counterValue === 0) {
+    integerCounterValues.forEach((integerCounterValue, i) => {
+      if (integerCounterValue === 0) {
         return;
       }
-      if (counterValue === 1) {
-        value.push(`${counterValue} ${dropdownItems[i][0]}`);
+      if (integerCounterValue === 1) {
+        value.push(`${integerCounterValue} ${dropdownItems[i][0]}`);
         return;
       }
-      value.push(`${counterValue} ${dropdownItems[i][1]}`);
+      value.push(`${integerCounterValue} ${dropdownItems[i][1]}`);
     });
 
     if (value.length === 0) {
@@ -164,9 +155,7 @@ class DropdownMenuRooms extends DropdownMenu {
     super._attachEventHandlers();
 
     this.$items.each((i) => {
-      this.dropdownItems[i].on('updatedCounter', () => {
-        this._updateInput();
-      });
+      this.dropdownItems[i].on('updatedCounter', this._updateInput.bind(this));
     });
   }
 
@@ -177,19 +166,23 @@ class DropdownMenuRooms extends DropdownMenu {
       ['ванная комната', 'ванных комнат'],
     ];
 
-    counterValues = [Number(counterValues[0]), Number(counterValues[1]), Number(counterValues[2])];
+    const integerCounterValues = [
+      Number(counterValues[0]),
+      Number(counterValues[1]),
+      Number(counterValues[2]),
+    ];
 
-    let value = [];
+    const value = [];
 
-    counterValues.forEach((counterValue, i) => {
-      if (counterValue === 0) {
+    integerCounterValues.forEach((integerCounterValue, i) => {
+      if (integerCounterValue === 0) {
         return;
       }
-      if (counterValue === 1) {
-        value.push(`${counterValue} ${dropdownItems[i][0]}`);
+      if (integerCounterValues === 1) {
+        value.push(`${integerCounterValue} ${dropdownItems[i][0]}`);
         return;
       }
-      value.push(`${counterValue} ${dropdownItems[i][1]}`);
+      value.push(`${integerCounterValue} ${dropdownItems[i][1]}`);
     });
 
     if (value.length === 0) {
@@ -229,13 +222,9 @@ class DropdownMenuItem {
   }
 
   _attachEventHandlers() {
-    this.$counterButtons[0].addEventListener('click', () => {
-      this._reduceCounter();
-    });
+    this.$counterButtons[0].addEventListener('click', this._reduceCounter.bind(this));
 
-    this.$counterButtons[1].addEventListener('click', () => {
-      this._addCounter();
-    });
+    this.$counterButtons[1].addEventListener('click', this._addCounter.bind(this));
   }
 
   _addCounter() {

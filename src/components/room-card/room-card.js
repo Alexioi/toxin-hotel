@@ -19,19 +19,16 @@ class Carousel {
   }
 
   _attachEventHandlers() {
-    this.back.addEventListener('click', () => {
-      this._goToBackImg();
-    });
-    this.next.addEventListener('click', () => {
-      this._goToNextImg();
-    });
+    this.back.addEventListener('click', this._goToBackImg.bind(this));
+    this.next.addEventListener('click', this._goToNextImg.bind(this));
     this.buttons.forEach((node) => {
-      node.addEventListener('click', () => this._moveTargetImg());
+      node.addEventListener('click', this._moveTargetImg.bind(this));
     });
   }
 
   _goToBackImg() {
-    let { currentImage, quantityImage } = this.node.dataset;
+    let { currentImage } = this.node.dataset;
+    const { quantityImage } = this.node.dataset;
 
     currentImage = currentImage === '0' ? quantityImage : Number(currentImage) - 1;
 
@@ -40,7 +37,8 @@ class Carousel {
   }
 
   _goToNextImg() {
-    let { currentImage, quantityImage } = this.node.dataset;
+    let { currentImage } = this.node.dataset;
+    const { quantityImage } = this.node.dataset;
 
     currentImage = currentImage === quantityImage ? 0 : Number(currentImage) + 1;
 

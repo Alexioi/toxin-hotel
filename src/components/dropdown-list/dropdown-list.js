@@ -15,9 +15,7 @@ class DropdownList {
   }
 
   _attachEventHandlers() {
-    this.$button.on('click', () => {
-      this._toggleList();
-    });
+    this.$button.on('click', this._toggleList.bind(this));
   }
 
   _toggleList() {

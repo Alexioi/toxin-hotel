@@ -1,14 +1,16 @@
 import 'paginationjs';
 
 $(() => {
+  const dataSource = (done) => {
+    const result = [];
+    for (let i = 1; i < 181; i = i + 1) {
+      result.push(i);
+    }
+    done(result);
+  };
+
   const config = {
-    dataSource: function (done) {
-      var result = [];
-      for (var i = 1; i < 181; i++) {
-        result.push(i);
-      }
-      done(result);
-    },
+    dataSource,
     pageSize: 12,
     pageRange: 1,
     prevText: '<span class="material-icons">arrow_back</span>',
@@ -36,7 +38,7 @@ $(() => {
     _createPlugin() {
       const that = this;
 
-      config.callback = function (data) {
+      config.callback = (data) => {
         that.$startItem.text(data[0]);
         that.$endItem.text(data[data.length - 1]);
       };
