@@ -4,7 +4,7 @@
   &__expenses {
     &-list {
       display: grid;
-      margin-top: 20px;
+      margin-top: 22px;
       gap: 16px;
     }
 
@@ -42,7 +42,6 @@
     font-weight: bold;
     font-size: 19px;
     line-height: 16px;
-    color: $color-first;
 
     &-text {
       margin-right: 4px;

@@ -43,7 +43,7 @@ block main
               +label({title: 'Dropdown'})
                 +wrapper({marginTop: 5})
                   +dropdown-field
-          +wrapper({marginTop: 23})
+          +wrapper({marginTop: 25})
             +label({title: 'masked text field'})
               +wrapper({marginTop: 5})
                 +text-field({ title: 'masked text field', isMasked: true })
@@ -56,12 +56,11 @@ block main
                 +label({title: 'date Dropdown'})
                   +wrapper({marginTop: 5})
                     +dropdown-field
-          +wrapper({width: 266})
-            +wrapper({marginTop: 40, width: 266})
-              +calendar   
-                +label({title: 'filter date dropdown'})
-                  +wrapper({marginTop: 5})
-                    +dropdown-field
+          +wrapper({width: 266, marginTop: 44})
+            +calendar   
+              +label({title: 'filter date dropdown'})
+                +wrapper({marginTop: 5})
+                  +dropdown-field
             +wrapper({marginTop: 42})
               +label({title: 'subscription text field'})
                 +wrapper({marginTop: 5})
@@ -127,7 +126,7 @@ block main
             +label({title: 'dropdown', hint: 'Default'})
               +wrapper({marginTop: 5})
                 +dropdown-field
-          +wrapper({marginTop: 20})
+          +wrapper({marginTop: 22})
             +dropdown-menu({ counters: [2, 2, 0], type: 'rooms', isOpened: true})
               +label({title: 'dropdown', hint: 'expanded'})
                 +wrapper({marginTop: 5})
@@ -145,7 +144,7 @@ block main
               +wrapper({marginTop: 5})
                 +dropdown-field
 
-    +wrapper({marginTop: 172})
+    +wrapper({marginTop: 174})
       +row
         +wrapper({basis: 258})
           +dropdown-list({title: 'expandable checkbox list'})
@@ -159,7 +158,7 @@ block main
         +wrapper({marginLeft: 189, marginRight: 126, basis: 266})
           +label({title: 'rich Checkbox Buttons'})
           +wrapper({marginTop: 7, width: 260})
-            +checkbox-list({ isRich: true, items: [ {text: "Широкий коридор", subText: 'Ширина коридоров в номере не менее 91 см.'}, {text: "Помощник для инвалидов", subText: 'На 1 этаже вас встретит специалист и проводит до номера.'}, ]})
+            +checkbox-list({ isRich: true, items: [ {text: "Широкий коридор", subText: 'Ширина коридоров в номере \n не менее 91 см.'}, {text: "Помощник для инвалидов", subText: 'На 1 этаже вас встретит специалист и проводит до номера.'}, ]})
 
         +wrapper({basis: 292})
           +label({title: 'bullet list'})

@@ -2,9 +2,9 @@
 
 .label {
   &__title {
+    font-weight: 700;
     line-height: 15px;
     text-transform: uppercase;
-    color: $color-first;
   }
 
   &__hint {

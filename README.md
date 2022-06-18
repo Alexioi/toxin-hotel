@@ -42,7 +42,7 @@ npm run build
 npm run purgecss
 ```
 
-- Запустить скрипт build и после компиляции проекта отправить на gh-pages
+- Запустить скрипт build и после компиляции проекта отправить на origin/gh-pages
 
 ```bash
 npm run deploy
@@ -56,14 +56,14 @@ npm run server
 
 ### Используемые плагины
 
-[air-datepicker](https://www.npmjs.com/package/air-datepicker) - добавляет календарь
+[air-datepicker ^2.2.3](https://www.npmjs.com/package/air-datepicker) - добавляет календарь
 
-[event-emitter](https://www.npmjs.com/package/event-emitter) - реализация event emitter
+[event-emitter ^3.23.1](https://www.npmjs.com/package/event-emitter) - реализация event emitter
 
-[imask](https://www.npmjs.com/package/imask) - добавляет маску в инпуты
+[imask ^6.0.7](https://www.npmjs.com/package/imask) - добавляет маску в инпуты
 
-[ion-rangeslider](https://www.npmjs.com/package/ion-rangeslider) - плагин ползунка
+[ion-rangeslider ^2.3.1](https://www.npmjs.com/package/ion-rangeslider) - плагин ползунка
 
-[material-icons](https://www.npmjs.com/package/material-icons) - иконочный шрифт
+[material-icons ^0.6.2](https://www.npmjs.com/package/material-icons) - иконочный шрифт
 
-[paginationjs](https://www.npmjs.com/package/paginationjs) - плагин пагинации
+[paginationjs ^2.1.5](https://www.npmjs.com/package/paginationjs) - плагин пагинации

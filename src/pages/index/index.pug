@@ -1,12 +1,15 @@
+extends ../../templates/ui-kit/ui-kit
+
 include ../../components/row/row
 include ../../components/links-to-pages/links-to-pages
 
-doctype html
-html
-  head
-    meta(charset="utf-8")
-    meta(name="viewport", content="initial-scale=1.0, width=device-width")
-    title Toxin
-  body
-    +row({justifyContent: 'center', mix: 'p-index__row'})
+block title
+  | Title
+
+block var
+  -
+    var withThemeGray = true
+
+block main
+  +row({justifyContent: 'center', mix: 'p-index__row'})
       +links-to-pages

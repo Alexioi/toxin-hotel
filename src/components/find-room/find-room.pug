@@ -11,10 +11,9 @@ include ../dropdown-menu/dropdown-menu
 mixin find-room(options)
   .find-room
     +card
-      +wrapper({marginBottom: 21})
-        +title({text: 'Найдём номера под ваши пожелания'}) 
+      +title({text: 'Найдём номера под ваши пожелания'}) 
       form.find-room__form(method="POST", action="/change-it")
-        +wrapper({marginBottom: 20})
+        +wrapper({marginTop: 21})
           +calendar   
             +row
               +wrapper({paddingRight: 10})
@@ -25,9 +24,10 @@ mixin find-room(options)
                 +label({title: 'выезд'})
                   +wrapper({marginTop: 5})
                     +dropdown-field({inputName: 'dateTo'})
-        +wrapper({marginBottom: 32})
+        +wrapper({marginTop: 23})
           +dropdown-menu({type: 'guests'})
             +label({title: 'гости'})
               +wrapper({marginTop: 5})
                 +dropdown-field({inputName: 'guests'})
-        +button({ theme: 'long', text: 'подобрать номер', type: 'submit'})
+        +wrapper({marginTop: 33})
+          +button({ theme: 'long', text: 'подобрать номер', type: 'submit'})

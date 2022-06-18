@@ -44,8 +44,10 @@
   }
 
   &__text {
-    font: 14px/18px $font-first;
+    font-size: 14px;
+    line-height: 18px;
     color: rgba($color-first, 0.5);
+    white-space: pre-line;
 
     &::before {
       content: '';
@@ -65,8 +67,10 @@
   }
 
   &__sub-text {
-    margin-top: 4px;
-    font: 12px/14px $color-first;
+    margin-top: 6px;
+    font-size: 12px;
+    line-height: 14px;
+    white-space: pre-line;
     color: rgba($color-first, 0.5);
   }
 }
