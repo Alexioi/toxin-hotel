@@ -26,7 +26,7 @@ mixin filter(options)
         p.filter__range-text Стоимость за сутки пребывания в номере
       +wrapper({marginTop: 30})
         +label({title: 'правила дома'})
-        +wrapper({marginTop: 4})
+        +wrapper({marginTop: 14})
           +checkbox-list({ 
             title: 'Rich Checkbox Buttons', 
             items: [ 
@@ -35,9 +35,9 @@ mixin filter(options)
               {text: "Можно пригласить гостей \n (до 10 человек)", isChecked: true}, 
               ]
             })
-      +wrapper({marginTop: 32})
+      +wrapper({marginTop: 34})
         +label({title: 'доступность'})
-        +wrapper({marginTop: 7, width: 260})
+        +wrapper({marginTop: 16, width: 260})
           +checkbox-list({ 
             isRich: true, 
             items: [ 

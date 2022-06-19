@@ -16,8 +16,7 @@ mixin checkbox-list(options)
     var classes = ''
     classes += isRich ? ' checkbox-list_rich' : ''
 
-  .checkbox-list(class=classes)
-    ul.checkbox-list__list
+  ul.checkbox-list(class=classes)
     each item in items 
       li.checkbox-list__item
         label.checkbox-list__label
@@ -27,4 +26,4 @@ mixin checkbox-list(options)
           )
           span.checkbox-list__text= item.text
           if isRich
-            p.checkbox-list__sub-text= item.subText
+            span.checkbox-list__sub-text= item.subText

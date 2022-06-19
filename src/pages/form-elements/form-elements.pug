@@ -37,7 +37,14 @@ block main
           +wrapper({marginTop: 20})
             +label({title: 'Text Field', hint: 'Hover / Focus'})
               +wrapper({marginTop: 5})
-                +text-field({ isHovered: true, title: 'Text Field', hint: "Hover / Focus", value: "This is pretty awesome", placeholder: 'This is pretty awesome', type: "text" })
+                +text-field({ 
+                  isHovered: true, 
+                  title: 'Text Field', 
+                  hint: "Hover / Focus", 
+                  value: "This is pretty awesome", 
+                  placeholder: 'This is pretty awesome', 
+                  type: "text" 
+                })
           +wrapper({marginTop: 20})
             +dropdown-menu
               +label({title: 'Dropdown'})
@@ -68,9 +75,17 @@ block main
 
         +wrapper({basis: 260, marginRight: 132, marginLeft: 126}) 
           +label({title: 'Checkbox Buttons'})
-          +wrapper({marginTop: 7, width: 240})
-            +checkbox-list({ title: 'Rich Checkbox Buttons', items: [ {text: "Можно курить"}, {text: "Можно с питомцами", isChecked: true}, {text: "Можно пригласить гостей (до 10 человек)", isChecked: true}, ]})
-          +wrapper({marginTop: 40})
+          +wrapper({marginTop: 17, width: 240})
+            +checkbox-list({ 
+              title: 'Rich Checkbox Buttons', 
+              items: [ 
+                {text: "Можно курить"}, 
+                {text: "Можно с питомцами", isChecked: true}, 
+                {text: "Можно пригласить гостей (до 10 человек)", 
+                isChecked: true}, 
+              ]
+            })
+          +wrapper({marginTop: 42})
             +label({title: 'Radio Buttons'}) 
           +wrapper({marginTop: 14})
             +radio-buttons
@@ -152,20 +167,26 @@ block main
               +checkbox-list
           +wrapper({marginTop: 48})
             +dropdown-list({title: 'expandable checkbox list', isOpened: true})
-              +wrapper({marginTop: 7})
+              +wrapper({marginTop: 19})
                 +checkbox-list
 
         +wrapper({marginLeft: 189, marginRight: 126, basis: 266})
           +label({title: 'rich Checkbox Buttons'})
-          +wrapper({marginTop: 7, width: 260})
-            +checkbox-list({ isRich: true, items: [ {text: "Широкий коридор", subText: 'Ширина коридоров в номере \n не менее 91 см.'}, {text: "Помощник для инвалидов", subText: 'На 1 этаже вас встретит специалист и проводит до номера.'}, ]})
+          +wrapper({marginTop: 17, width: 260})
+            +checkbox-list({ 
+              isRich: true, 
+              items: [ 
+                {text: "Широкий коридор", subText: 'Ширина коридоров в номере \n не менее 91 см.'}, 
+                {text: "Помощник для инвалидов", subText: 'На 1 этаже вас встретит специалист и проводит до номера.'}, 
+              ]
+            })
 
         +wrapper({basis: 292})
           +label({title: 'bullet list'})
           +wrapper({marginTop: 14, width: 260})
             +bullet-list
 
-    +wrapper({marginTop: 101})
+    +wrapper({marginTop: 102})
       +row({justifyContent: 'space-between'})
         +wrapper({basis: 280})
           +icon-text-list

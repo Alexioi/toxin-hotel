@@ -20,7 +20,7 @@ mixin room-card(options)
       data-quantity-image=images.length - 1
     )
       each image in images
-        image.room-card__image.js-room-card__image(
+        img.room-card__image.js-room-card__image(
           src=require(`Components/room-card/image/${image}.png`),
           alt=`${image}`
         )
