@@ -8,12 +8,13 @@
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 11px;
+    // padding-top: 40px;
   }
 
   &__item {
     position: relative;
-    font: 14px/24px $font-first;
+    font: 14px/14px $font-first;
     padding-left: 15px;
     color: rgba($color-first, 0.75);
     list-style-type: none;

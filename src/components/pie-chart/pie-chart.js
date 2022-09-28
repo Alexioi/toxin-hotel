@@ -75,15 +75,15 @@
       const { ctx, centerX, centerY } = this;
 
       ctx.fillStyle = '#BC9CFF';
-      ctx.font = 'bold 24px sans-serif';
+      ctx.font = 'bold 26px sans-serif';
       ctx.textBaseline = 'bottom';
       ctx.textAlign = 'center';
-      ctx.fillText(votes, centerX, centerY);
+      ctx.fillText(votes, centerX, centerY + centerY / 9);
 
       ctx.font = 'bold 12px sans-serif';
       ctx.textBaseline = 'top';
       ctx.text;
-      ctx.fillText('ГОЛОСОВ', centerX, centerY + centerY / 10);
+      ctx.fillText('ГОЛОСОВ', centerX, centerY + centerY / 6);
     }
 
     drawDiagram(votes) {
