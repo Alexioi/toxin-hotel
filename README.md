@@ -67,3 +67,7 @@ npm run server
 [material-icons ^0.6.2](https://www.npmjs.com/package/material-icons) - иконочный шрифт
 
 [paginationjs ^2.1.5](https://www.npmjs.com/package/paginationjs) - плагин пагинации
+
+### Зависимости
+
+npm 8.15.0
