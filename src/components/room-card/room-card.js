@@ -1,3 +1,11 @@
+const cssSelectors = {
+  carousel: '.js-room-card__carousel',
+  images: '.js-room-card__image',
+  back: '.js-room-card__arrow-button_action-back',
+  next: '.js-room-card__arrow-button_action-next',
+  buttons: '.js-room-card__button',
+};
+
 class Carousel {
   constructor(node) {
     this.node = node;
@@ -12,10 +20,10 @@ class Carousel {
   }
 
   _findElements() {
-    this.images = this.node.querySelectorAll('.js-room-card__image');
-    this.back = this.node.querySelector('.js-room-card__arrow-button_action-back');
-    this.next = this.node.querySelector('.js-room-card__arrow-button_action-next');
-    this.buttons = this.node.querySelectorAll('.js-room-card__button');
+    this.images = this.node.querySelectorAll(cssSelectors.images);
+    this.back = this.node.querySelector(cssSelectors.back);
+    this.next = this.node.querySelector(cssSelectors.next);
+    this.buttons = this.node.querySelectorAll(cssSelectors.buttons);
   }
 
   _attachEventHandlers() {
@@ -66,7 +74,7 @@ class Carousel {
 }
 
 (() => {
-  document.querySelectorAll('.js-room-card__carousel').forEach((node) => {
+  document.querySelectorAll(cssSelectors.carousel).forEach((node) => {
     new Carousel(node);
   });
 })();

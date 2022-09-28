@@ -1,3 +1,8 @@
+const cssSelectors = {
+  filter: '.js-filter',
+  toggleButton: '.js-filter__toggle-button',
+};
+
 class Filter {
   constructor($component) {
     this.$component = $component;
@@ -11,7 +16,7 @@ class Filter {
   }
 
   _findElements() {
-    this.$button = this.$component.find('.js-filter__toggle-button ');
+    this.$button = this.$component.find(cssSelectors.toggleButton);
   }
 
   _attachEventHandlers() {
@@ -24,7 +29,7 @@ class Filter {
 }
 
 $(() => {
-  $('.js-filter').each((i, node) => {
+  $(cssSelectors.filter).each((i, node) => {
     new Filter($(node));
   });
 });

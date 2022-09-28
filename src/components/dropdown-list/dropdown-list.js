@@ -1,3 +1,8 @@
+const cssSelectors = {
+  dropdownlist: '.js-dropdown-list',
+  button: '.js-dropdown-list__button',
+};
+
 class DropdownList {
   constructor($node) {
     this.$node = $node;
@@ -11,7 +16,7 @@ class DropdownList {
   }
 
   _findNodes() {
-    this.$button = this.$node.find('.js-dropdown-list__button');
+    this.$button = this.$node.find(cssSelectors.button);
   }
 
   _attachEventHandlers() {
@@ -24,7 +29,7 @@ class DropdownList {
 }
 
 $(() => {
-  $('.js-dropdown-list').each((i, node) => {
+  $(cssSelectors.dropdownlist).each((i, node) => {
     new DropdownList($(node));
   });
 });

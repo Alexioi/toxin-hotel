@@ -1,6 +1,13 @@
 import 'paginationjs';
 
 $(() => {
+  const cssSelectors = {
+    plugin: '.js-pagination__plugin',
+    startItem: '.js-pagination__start-item',
+    endItem: '.js-pagination__end-item',
+    pagination: '.js-pagination',
+  };
+
   const dataSource = (done) => {
     const result = [];
     for (let i = 1; i < 181; i = i + 1) {
@@ -30,9 +37,9 @@ $(() => {
     }
 
     _findElements() {
-      this.$plugin = this.$component.find('.js-pagination__plugin');
-      this.$startItem = this.$component.find('.js-pagination__start-item');
-      this.$endItem = this.$component.find('.js-pagination__end-item');
+      this.$plugin = this.$component.find(cssSelectors.plugin);
+      this.$startItem = this.$component.find(cssSelectors.startItem);
+      this.$endItem = this.$component.find(cssSelectors.endItem);
     }
 
     _createPlugin() {
@@ -47,7 +54,7 @@ $(() => {
     }
   }
 
-  $('.js-pagination').each((i, node) => {
+  $(cssSelectors.pagination).each((i, node) => {
     new Pagination($(node));
   });
 });

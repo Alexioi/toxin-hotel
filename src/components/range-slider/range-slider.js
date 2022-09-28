@@ -1,6 +1,11 @@
 import 'ion-rangeslider';
 
-$('.js-range-slider__slider').ionRangeSlider({
+const cssSelectors = {
+  slider: '.js-range-slider__slider',
+  value: '.js-range-slider__value',
+};
+
+$(cssSelectors.slider).ionRangeSlider({
   type: 'double',
   min: 0,
   max: 15000,
@@ -9,13 +14,9 @@ $('.js-range-slider__slider').ionRangeSlider({
   hide_min_max: true,
   hide_from_to: true,
   onStart: function onStart(data) {
-    $('.js-range-slider__value').text(
-      `${data.from.toLocaleString()}₽ - ${data.to.toLocaleString()}₽`,
-    );
+    $(cssSelectors.value).text(`${data.from.toLocaleString()}₽ - ${data.to.toLocaleString()}₽`);
   },
   onChange: function onChange(data) {
-    $('.js-range-slider__value').text(
-      `${data.from.toLocaleString()}₽ - ${data.to.toLocaleString()}₽`,
-    );
+    $(cssSelectors.value).text(`${data.from.toLocaleString()}₽ - ${data.to.toLocaleString()}₽`);
   },
 });

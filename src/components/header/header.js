@@ -1,3 +1,11 @@
+const cssSelectors = {
+  header: '.js-header',
+  button: '.js-header__burger-button',
+  subNavigationLists: '.js-header__sub-navigation-list',
+  navigationButtons: '.js-header__navigation-button',
+  login: '.js-header__login',
+};
+
 class Header {
   constructor(component) {
     this.component = component;
@@ -11,10 +19,10 @@ class Header {
   }
 
   _findsElements() {
-    this.button = this.component.querySelector('.js-header__burger-button');
-    this.subNavigationLists = this.component.querySelectorAll('.js-header__sub-navigation-list');
-    this.navigationButtons = this.component.querySelectorAll('.js-header__navigation-button');
-    this.login = this.component.querySelectorAll('.js-header__login');
+    this.button = this.component.querySelector(cssSelectors.button);
+    this.subNavigationLists = this.component.querySelectorAll(cssSelectors.subNavigationLists);
+    this.navigationButtons = this.component.querySelectorAll(cssSelectors.navigationButtons);
+    this.login = this.component.querySelectorAll(cssSelectors.login);
   }
 
   _attachEventHandlers() {
@@ -39,7 +47,7 @@ class Header {
 }
 
 (() => {
-  document.querySelectorAll('.js-header').forEach((node) => {
+  document.querySelectorAll(cssSelectors.header).forEach((node) => {
     new Header(node);
   });
 })();

@@ -1,6 +1,10 @@
 import IMask from 'imask';
 
 $(() => {
+  const cssSelectors = {
+    maskedInput: '.js-text-field_masked input',
+  };
+
   const config = {
     mask: Date,
     blocks: {
@@ -30,7 +34,7 @@ $(() => {
     lazy: false,
   };
 
-  $('.js-text-field_masked input').each((i, node) => {
+  $(cssSelectors.maskedInput).each((i, node) => {
     IMask(node, config);
   });
 });

@@ -1,5 +1,17 @@
 import EventEmitter from 'event-emitter';
 
+const cssSelectors = {
+  input: '.js-dropdown-menu__input input',
+  toggleButton: '.js-dropdown-menu__input button',
+  items: '.js-dropdown-menu__item',
+  clearButton: '.js-dropdown-menu__clear-button',
+  applyButton: '.js-dropdown-menu__apply-button',
+  counter: '.js-dropdown-menu__counter',
+  counterButtons: '.js-dropdown-menu__counter-button',
+  dropdownMenuTypeGuests: '.js-dropdown-menu.dropdown-menu_type-guests',
+  dropdownMenuTypeRooms: '.js-dropdown-menu.dropdown-menu_type-rooms',
+};
+
 class DropdownMenu {
   constructor($node) {
     this.$node = $node;
@@ -16,11 +28,11 @@ class DropdownMenu {
   }
 
   _findNodes() {
-    this.$input = this.$node.find('.js-dropdown-menu__input input');
-    this.$toggleButton = this.$node.find('.js-dropdown-menu__input button');
-    this.$items = this.$node.find('.js-dropdown-menu__item');
-    this.$clearButton = this.$node.find('.js-dropdown-menu__clear');
-    this.$applyButton = this.$node.find('.js-dropdown-menu__apply');
+    this.$input = this.$node.find(cssSelectors.input);
+    this.$toggleButton = this.$node.find(cssSelectors.toggleButton);
+    this.$items = this.$node.find(cssSelectors.items);
+    this.$clearButton = this.$node.find(cssSelectors.clearButton);
+    this.$applyButton = this.$node.find(cssSelectors.applyButton);
   }
 
   _initItems() {
@@ -217,8 +229,8 @@ class DropdownMenuItem {
   }
 
   _findNodes() {
-    this.$counter = this.$node.find('.js-dropdown-menu__counter');
-    this.$counterButtons = this.$node.find('.js-dropdown-menu__counter-button');
+    this.$counter = this.$node.find(cssSelectors.counter);
+    this.$counterButtons = this.$node.find(cssSelectors.counterButtons);
   }
 
   _attachEventHandlers() {
@@ -271,13 +283,13 @@ class DropdownMenuItem {
 EventEmitter(DropdownMenuItem.prototype);
 
 $(() => {
-  $('.js-dropdown-menu.dropdown-menu_type-guests').each((i, node) => {
+  $(cssSelectors.dropdownMenuTypeGuests).each((i, node) => {
     new DropdownMenuGuests($(node));
   });
 });
 
 $(() => {
-  $('.js-dropdown-menu.dropdown-menu_type-rooms').each((i, node) => {
+  $(cssSelectors.dropdownMenuTypeRooms).each((i, node) => {
     new DropdownMenuRooms($(node));
   });
 });

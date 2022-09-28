@@ -1,4 +1,8 @@
 (() => {
+  const cssSelectors = {
+    diagram: '.js-pie-chart__diagram',
+  };
+
   class PieChartDiagram {
     constructor($component) {
       this.$component = $component;
@@ -121,7 +125,7 @@
     bad: 0,
   };
 
-  document.querySelectorAll('.js-pie-chart__diagram').forEach((node) => {
+  document.querySelectorAll(cssSelectors.diagram).forEach((node) => {
     const pieChartDiagram = new PieChartDiagram(node);
     pieChartDiagram.drawDiagram(votes);
   });

@@ -1,3 +1,9 @@
+const cssSelectors = {
+  likeButton: '.js-like-button',
+  icon: '.like-button__icon',
+  counter: '.like-button__counter',
+};
+
 class LikeButton {
   constructor($component) {
     this.$component = $component;
@@ -12,8 +18,8 @@ class LikeButton {
   }
 
   _findElements() {
-    this.$icon = this.$component.find('.like-button__icon');
-    this.$counter = this.$component.find('.like-button__counter');
+    this.$icon = this.$component.find(cssSelectors.icon);
+    this.$counter = this.$component.find(cssSelectors.counter);
   }
 
   _attachEventHandlers() {
@@ -47,7 +53,7 @@ class LikeButton {
 }
 
 $(() => {
-  $('.js-like-button').each((i, node) => {
+  $(cssSelectors.likeButton).each((i, node) => {
     new LikeButton($(node));
   });
 });

@@ -1,5 +1,15 @@
 import 'air-datepicker';
 
+const cssSelectors = {
+  calendar: '.js-calendar',
+  input: 'input',
+  inputsButton: '.js-calendar__inputs button',
+  menu: '.js-calendar__menu',
+  datepicker: '.js-calendar__datepicker',
+  applyButton: '.js-calendar__button-apply',
+  clearButton: '.js-calendar__button-clear',
+};
+
 class Calendar {
   constructor($node) {
     this.$node = $node;
@@ -15,12 +25,12 @@ class Calendar {
   }
 
   _findNodes() {
-    this.$inputs = this.$node.find('input');
-    this.$buttons = this.$node.find('.js-calendar__inputs button');
-    this.$menu = this.$node.find('.js-calendar__menu');
-    this.$nodeForDatepicker = this.$node.find('.js-calendar__datepicker');
-    this.$apply = this.$node.find('.js-calendar__button-apply');
-    this.$clear = this.$node.find('.js-calendar__button-clear');
+    this.$inputs = this.$node.find(cssSelectors.input);
+    this.$buttons = this.$node.find(cssSelectors.inputsButton);
+    this.$menu = this.$node.find(cssSelectors.menu);
+    this.$nodeForDatepicker = this.$node.find(cssSelectors.datepicker);
+    this.$apply = this.$node.find(cssSelectors.applyButton);
+    this.$clear = this.$node.find(cssSelectors.clearButton);
   }
 
   _addDefaultValueToInputs() {
@@ -127,7 +137,7 @@ class Calendar {
 }
 
 $(() => {
-  $('.js-calendar').each((i, node) => {
+  $(cssSelectors.calendar).each((i, node) => {
     new Calendar($(node));
   });
 });
