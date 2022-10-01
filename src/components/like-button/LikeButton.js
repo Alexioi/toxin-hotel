@@ -1,8 +1,4 @@
-const cssSelectors = {
-  likeButton: '.js-like-button',
-  icon: '.like-button__icon',
-  counter: '.like-button__counter',
-};
+import cssSelectors from './constants';
 
 class LikeButton {
   constructor($component) {
@@ -52,8 +48,4 @@ class LikeButton {
   }
 }
 
-$(() => {
-  $(cssSelectors.likeButton).each((i, node) => {
-    new LikeButton($(node));
-  });
-});
+export default LikeButton;

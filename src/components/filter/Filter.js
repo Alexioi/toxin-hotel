@@ -1,8 +1,3 @@
-const cssSelectors = {
-  filter: '.js-filter',
-  toggleButton: '.js-filter__toggle-button',
-};
-
 class Filter {
   constructor($component) {
     this.$component = $component;
@@ -28,8 +23,4 @@ class Filter {
   }
 }
 
-$(() => {
-  $(cssSelectors.filter).each((i, node) => {
-    new Filter($(node));
-  });
-});
+export default Filter;

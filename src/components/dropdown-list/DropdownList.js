@@ -1,7 +1,4 @@
-const cssSelectors = {
-  dropdownlist: '.js-dropdown-list',
-  button: '.js-dropdown-list__button',
-};
+import cssSelectors from './constants';
 
 class DropdownList {
   constructor($node) {
@@ -28,8 +25,4 @@ class DropdownList {
   }
 }
 
-$(() => {
-  $(cssSelectors.dropdownlist).each((i, node) => {
-    new DropdownList($(node));
-  });
-});
+export default DropdownList;

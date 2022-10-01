@@ -1,9 +1,5 @@
+import cssSelectors from './constants';
 import 'ion-rangeslider';
-
-const cssSelectors = {
-  slider: '.js-range-slider__slider',
-  value: '.js-range-slider__value',
-};
 
 $(cssSelectors.slider).ionRangeSlider({
   type: 'double',

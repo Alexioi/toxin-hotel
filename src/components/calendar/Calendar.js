@@ -1,14 +1,5 @@
 import 'air-datepicker';
-
-const cssSelectors = {
-  calendar: '.js-calendar',
-  input: 'input',
-  inputsButton: '.js-calendar__inputs button',
-  menu: '.js-calendar__menu',
-  datepicker: '.js-calendar__datepicker',
-  applyButton: '.js-calendar__button-apply',
-  clearButton: '.js-calendar__button-clear',
-};
+import cssSelectors from './constants';
 
 class Calendar {
   constructor($node) {
@@ -136,8 +127,4 @@ class Calendar {
   }
 }
 
-$(() => {
-  $(cssSelectors.calendar).each((i, node) => {
-    new Calendar($(node));
-  });
-});
+export default Calendar;
