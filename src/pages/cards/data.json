@@ -1,0 +1,24 @@
+{
+  "calendars": [{ "isOpened": true }],
+  "roomCards": [
+    {
+      "images": ["room-image-1", "room-image-2", "room-image-3", "room-image-4"],
+      "currentImg": 0,
+      "number": 888,
+      "link": "/change-it",
+      "isLux": true,
+      "price": "9 990",
+      "quantity": 5,
+      "reviews": 145
+    },
+    {
+      "images": ["room-image-2", "room-image-2", "room-image-3", "room-image-4"],
+      "currentImg": 0,
+      "number": 840,
+      "link": "/change-it",
+      "price": "9 990",
+      "quantity": 4,
+      "reviews": 65
+    }
+  ]
+}

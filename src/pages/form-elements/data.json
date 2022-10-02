@@ -1,0 +1,92 @@
+{
+  "labels": [
+    { "title": "Text Field", "hint": "Default" },
+    { "title": "Text Field", "hint": "Hover / Focus" },
+    { "title": "Dropdown" },
+    { "title": "masked text field" },
+    { "title": "date Dropdown" },
+    { "title": "filter date dropdown" },
+    { "title": "subscription text field" },
+    { "title": "Checkbox Buttons" },
+    { "title": "Radio Buttons" },
+    { "title": "Toggle" },
+    { "title": "like button" },
+    { "title": "rate button" }
+  ],
+  "textFields": [
+    { "title": "Text Field", "hint": "Default", "placeholder": "Email", "type": "email" },
+    {
+      "isHovered": true,
+      "title": "Text Field",
+      "hint": "Hover / Focus",
+      "value": "This is pretty awesome",
+      "placeholder": "This is pretty awesome",
+      "type": "text"
+    },
+    { "title": "masked text field", "isMasked": true },
+    {
+      "title": "subscription text field",
+      "placeholder": "Email",
+      "type": "email",
+      "isSubscription": true
+    }
+  ],
+  "checkboxLists": [
+    {
+      "title": "Rich Checkbox Buttons",
+      "items": [
+        { "text": "Можно курить" },
+        { "text": "Можно с питомцами", "isChecked": true },
+        { "text": "Можно пригласить гостей (до 10 человек)", "isChecked": true }
+      ]
+    },
+    {
+      "isRich": false,
+      "items": [
+        { "text": "Завтрак" },
+        { "text": "Письменный стол", "isChecked": true },
+        { "text": "Стул для кормления", "isChecked": true },
+        { "text": "Кроватка", "isChecked": true },
+        { "text": "Телевизор" },
+        { "text": "Шампунь" }
+      ]
+    },
+    {
+      "isRich": true,
+      "items": [
+        { "text": "Широкий коридор", "subText": "Ширина коридоров в номере \n не менее 91 см." },
+        {
+          "text": "Помощник для инвалидов",
+          "subText": "На 1 этаже вас встретит специалист и проводит до номера."
+        }
+      ]
+    }
+  ],
+  "comments": [
+    {
+      "authorName": "Мурад Сарафанов",
+      "image": "murad",
+      "date": "5 дней назад",
+      "counter": 12,
+      "isLiked": true,
+      "text": "Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей."
+    }
+  ],
+  "iconTextLists": [
+    {
+      "items": [
+        { "img": "smile", "title": "Комфорт", "text": "Шумопоглощающие стены" },
+        { "img": "house", "title": "Удобство", "text": "Окно в каждой из спален" }
+      ]
+    }
+  ],
+  "bulletLists": [
+    {
+      "items": [
+        "Нельзя с питомцами",
+        "Без вечеринок и мероприятий",
+        "Время прибытия — после 13:00, а выезд до 12:00"
+      ]
+    }
+  ]
+}

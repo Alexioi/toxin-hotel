@@ -18,6 +18,9 @@ block title
   | Cards
 
 block main
+  -
+    const {calendars, roomCards} = require('./data.json')
+
   +container
     +wrapper({paddingTop: 10, paddingBottom: 140})
       +row({gap: 40})
@@ -31,25 +34,8 @@ block main
           +authorization
         +wrapper({basis: 320})
           +wrapper({marginBottom: 40})
-            +calendar({isOpened: true})
+            +calendar(calendars[0])
           +wrapper({width: 270})
             +wrapper({marginBottom: 40})
-              +room-card({
-                images: ["room-image-1", "room-image-2", "room-image-3", "room-image-4"],
-                currentImg: 0,
-                number: 888,
-                link: "/change-it",
-                isLux: true,
-                price: "9 990",
-                quantity: 5,
-                reviews: 145
-              }) 
-            +room-card({
-                images: ["room-image-2", "room-image-2", "room-image-3", "room-image-4"],
-                currentImg: 0,
-                number: 840,
-                link: "/change-it",
-                price: "9 990",
-                quantity: 4,
-                reviews: 65
-              }) 
+              +room-card(roomCards[0]) 
+            +room-card(roomCards[1]) 

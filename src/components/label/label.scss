@@ -1,6 +1,8 @@
 @import '../../style/variables.scss';
 
 .label {
+  line-height: 20px;
+
   &__title {
     font-weight: 700;
     line-height: 15px;

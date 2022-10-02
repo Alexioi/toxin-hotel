@@ -22,174 +22,133 @@ include ../../components/dropdown-menu/dropdown-menu
 include ../../components/dropdown-list/dropdown-list
 include ../../components/range-slider/range-slider
 
-
 block title
   | Form elements
 
 block main
-  +container
-    +wrapper({ marginTop: 3})
-      +row
-        +wrapper({basis: 320})
-          +label({title: 'Text Field', hint: 'Default'})
-            +wrapper({marginTop: 5})
-              +text-field({ title: 'Text Field', hint: "Default", placeholder: 'Email', type: "email" })
-          +wrapper({marginTop: 20})
-            +label({title: 'Text Field', hint: 'Hover / Focus'})
-              +wrapper({marginTop: 5})
-                +text-field({ 
-                  isHovered: true, 
-                  title: 'Text Field', 
-                  hint: "Hover / Focus", 
-                  value: "This is pretty awesome", 
-                  placeholder: 'This is pretty awesome', 
-                  type: "text" 
-                })
-          +wrapper({marginTop: 20})
-            +dropdown-menu
-              +label({title: 'Dropdown'})
-                +wrapper({marginTop: 5})
-                  +dropdown-field
-          +wrapper({marginTop: 25})
-            +label({title: 'masked text field'})
-              +wrapper({marginTop: 5})
-                +text-field({ title: 'masked text field', isMasked: true })
-          +wrapper({marginTop: 40})
-            +calendar   
-              +row({gap: 20})
-                +label({title: 'date Dropdown'})
-                  +wrapper({marginTop: 5})
-                    +dropdown-field
-                +label({title: 'date Dropdown'})
-                  +wrapper({marginTop: 5})
-                    +dropdown-field
-          +wrapper({width: 266, marginTop: 44})
-            +calendar   
-              +label({title: 'filter date dropdown'})
-                +wrapper({marginTop: 5})
-                  +dropdown-field
-            +wrapper({marginTop: 42})
-              +label({title: 'subscription text field'})
-                +wrapper({marginTop: 5})
-                  +text-field({ title: 'subscription text field', placeholder: 'Email', type: "email", isSubscription: true })
+  -
+    const {labels, textFields, checkboxLists, comments, iconTextLists, bulletLists} = require('./data.json')
 
-        +wrapper({basis: 260, marginRight: 132, marginLeft: 126}) 
-          +label({title: 'Checkbox Buttons'})
-          +wrapper({marginTop: 17, width: 240})
-            +checkbox-list({ 
-              title: 'Rich Checkbox Buttons', 
-              items: [ 
-                {text: "Можно курить"}, 
-                {text: "Можно с питомцами", isChecked: true}, 
-                {text: "Можно пригласить гостей (до 10 человек)", 
-                isChecked: true}, 
-              ]
-            })
-          +wrapper({marginTop: 42})
-            +label({title: 'Radio Buttons'}) 
-          +wrapper({marginTop: 14})
-            +radio-buttons
-          +wrapper({marginTop: 42})
-            +label({title: 'Toggle'})
-          +wrapper({marginTop: 16})
-            +toggle({isChecked: true})
-          +wrapper({marginTop: 15})
-            +toggle
-          +wrapper({marginTop: 44})
-            +label({title: 'like button'})
-          +wrapper({marginTop: 16})
-            +row({gap: 11})
-              +like-button({counter: 2})
-              +like-button({counter: 12, isLiked: true})
-          +wrapper({marginTop: 40})
-          +label({title: 'rate button'})
-          +wrapper({marginTop: 18})
-            +row({gap: 25})
-              +rate({quantity: 4})
-              +rate({quantity: 5})
-
-        +wrapper({basis: 320}) 
-          +wrapper({width: 266})
-            +range-slider
-          +wrapper({marginTop: 44})
-            +label({title: 'buttons'}) 
-            +wrapper({marginTop: 16})
-              +row({gap: 19})
-                +button
-                +button({ isHovered: true})
-          +wrapper({marginTop: 30})
-            +row
-              +button({ theme: 'outline', })
-              +wrapper({marginLeft: 20})
-                +button({ theme: 'outline', isHovered: true, })
-          +wrapper({marginTop: 31}) 
-            +row
-              +button({ theme: 'link', })
-              +wrapper({marginLeft: 20})
-                +button({ theme: 'link', isHovered: true, })
-          +wrapper({marginTop: 30})
-            +button({ theme: 'long', text: 'перейти к оплате', })
-          +wrapper({marginTop: 40})
-            +label({title: 'pagination'})
-          +wrapper({marginTop: 16})
-            +pagination 
-
-    +wrapper({marginTop: 100})
-      +row
-        +wrapper({basis: 266})
-          +dropdown-menu({ counters: [2, 2, 0], type: 'rooms'})
-            +label({title: 'dropdown', hint: 'Default'})
-              +wrapper({marginTop: 5})
+  .form-elements
+    
+    .form-elements__row
+      .form-elements__text-fields-wrapper
+        +label(labels[0])
+          +text-field(textFields[0])
+        .form-elements__text-field-wrapper
+          +label(labels[1])
+            +text-field(textFields[1])
+        .form-elements__text-field-wrapper
+          +dropdown-menu
+            +label(labels[2])
+              +dropdown-field
+        .form-elements__text-field-wrapper
+          +label(labels[3])
+            +text-field(textFields[2])
+        .form-elements__text-field-wrapper
+          +calendar   
+            +row({gap: 20})
+              +label(labels[4])
                 +dropdown-field
-          +wrapper({marginTop: 22})
-            +dropdown-menu({ counters: [2, 2, 0], type: 'rooms', isOpened: true})
-              +label({title: 'dropdown', hint: 'expanded'})
-                +wrapper({marginTop: 5})
-                  +dropdown-field
-
-        +wrapper({basis: 320, marginLeft: 181, marginRight: 72})
-          +dropdown-menu({isOpened: true})
-            +label({title: 'dropdown'})
-              +wrapper({marginTop: 5})
+              +label(labels[4])
                 +dropdown-field
+        .form-elements__text-field-wrapper
+          +calendar   
+            +label(labels[5])
+              +dropdown-field    
+        .form-elements__text-field-wrapper
+          +label(labels[6])
+            +text-field(textFields[3])
 
-        +wrapper({basis: 320})
-          +dropdown-menu({ counters: [2, 1, 0], isOpened: true})
-            +label({title: 'dropdown'})
-              +wrapper({marginTop: 5})
-                +dropdown-field
+      .form-elements__middle-buttons-wrapper
+        +label(labels[7])
+        .form-elements__middle-button-wrapper
+          +checkbox-list(checkboxLists[0])
+        .form-elements__middle-button-wrapper
+          +label(labels[8]) 
+        .form-elements__middle-button-wrapper
+          +radio-buttons
+        .form-elements__middle-button-wrapper
+          +label(labels[9])
+        .form-elements__middle-button-wrapper
+          +toggle({isChecked: true})
+        .form-elements__middle-button-wrapper
+          +toggle
+        .form-elements__middle-button-wrapper
+          +label(labels[10])
+        .form-elements__middle-button-wrapper
+          +like-button({counter: 2})
+          +like-button({counter: 12, isLiked: true})
+        .form-elements__middle-button-wrapper
+          +label(labels[11])
+        .form-elements__middle-button-wrapper
+          +rate({quantity: 4})
+          +rate({quantity: 5})
 
-    +wrapper({marginTop: 174})
-      +row
-        +wrapper({basis: 258})
-          +dropdown-list({title: 'expandable checkbox list'})
-            +wrapper({marginTop: 10})
-              +checkbox-list
-          +wrapper({marginTop: 48})
-            +dropdown-list({title: 'expandable checkbox list', isOpened: true})
-              +wrapper({marginTop: 19})
-                +checkbox-list
+      .form-elements__right-buttons-wrapper
+        .form-elements__right-button-wrapper
+          +range-slider
+        .form-elements__right-button-wrapper
+          +label({title: 'buttons'}) 
+        .form-elements__right-button-wrapper
+          +button
+          +button({ isHovered: true})
+        .form-elements__right-button-wrapper
+          +button({ theme: 'outline', })
+          +button({ theme: 'outline', isHovered: true, })
+        .form-elements__right-button-wrapper
+          +button({ theme: 'link', })
+          +button({ theme: 'link', isHovered: true, })
+        .form-elements__right-button-wrapper
+          +button({ theme: 'long', text: 'перейти к оплате', })
+        .form-elements__right-button-wrapper
+          +label({title: 'pagination'})
+        .form-elements__right-button-wrapper
+          +pagination 
 
-        +wrapper({marginLeft: 189, marginRight: 126, basis: 266})
-          +label({title: 'rich Checkbox Buttons'})
-          +wrapper({marginTop: 17, width: 260})
-            +checkbox-list({ 
-              isRich: true, 
-              items: [ 
-                {text: "Широкий коридор", subText: 'Ширина коридоров в номере \n не менее 91 см.'}, 
-                {text: "Помощник для инвалидов", subText: 'На 1 этаже вас встретит специалист и проводит до номера.'}, 
-              ]
-            })
+    .form-elements__row
+      +wrapper({basis: 266})
+        +dropdown-menu({ counters: [2, 2, 0], type: 'rooms'})
+          +label({title: 'dropdown', hint: 'Default'})
+            +dropdown-field
+        +wrapper({marginTop: 22})
+          +dropdown-menu({ counters: [2, 2, 0], type: 'rooms', isOpened: true})
+            +label({title: 'dropdown', hint: 'expanded'})
+              +dropdown-field
 
-        +wrapper({basis: 292})
-          +label({title: 'bullet list'})
-          +wrapper({marginTop: 14, width: 260})
-            +bullet-list
+      +wrapper({basis: 320, marginLeft: 181, marginRight: 72})
+        +dropdown-menu({isOpened: true})
+          +label({title: 'dropdown'})
+            +dropdown-field
 
-    +wrapper({marginTop: 102})
-      +row({justifyContent: 'space-between'})
+      +wrapper({basis: 320})
+        +dropdown-menu({ counters: [2, 1, 0], isOpened: true})
+          +label({title: 'dropdown'})
+            +dropdown-field
+
+    .form-elements__row
+      +wrapper({basis: 258})
+        +dropdown-list({title: 'expandable checkbox list'})
+          +wrapper({marginTop: 10})
+            +checkbox-list(checkboxLists[1])
+        +wrapper({marginTop: 48})
+          +dropdown-list({title: 'expandable checkbox list', isOpened: true})
+            +wrapper({marginTop: 19})
+              +checkbox-list(checkboxLists[1])
+
+      +wrapper({marginLeft: 189, marginRight: 126, basis: 266})
+        +label({title: 'rich Checkbox Buttons'})
+        +wrapper({marginTop: 17, width: 260})
+          +checkbox-list(checkboxLists[2])
+
+      +wrapper({basis: 292})
+        +label({title: 'bullet list'})
+        +wrapper({marginTop: 14, width: 260})
+          +bullet-list(bulletLists[0])
+
+    .form-elements__row
         +wrapper({basis: 280})
-          +icon-text-list
+          +icon-text-list(iconTextLists[0])
 
         +wrapper({marginTop: 10, basis: 712})
-          +comment
+          +comment(comments[0])

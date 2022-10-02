@@ -1,0 +1,148 @@
+.form-elements {
+  max-width: 1160px;
+  margin: 0 auto;
+
+  &__row {
+    display: flex;
+
+    &:nth-child(1) {
+      margin-top: 2px;
+    }
+    &:nth-child(2) {
+      margin-top: 100px;
+    }
+    &:nth-child(3) {
+      margin-top: 174px;
+    }
+    &:nth-child(4) {
+      margin-top: 102px;
+      justify-content: space-between;
+    }
+  }
+
+  &__text-fields-wrapper {
+    flex-basis: 320px;
+  }
+
+  &__text-field-wrapper {
+    &:nth-child(2),
+    &:nth-child(3) {
+      margin-top: 21px;
+    }
+
+    &:nth-child(4) {
+      margin-top: 24px;
+    }
+
+    &:nth-child(5) {
+      margin-top: 41px;
+    }
+
+    &:nth-child(6) {
+      width: 266px;
+      margin-top: 41px;
+    }
+
+    &:nth-child(7) {
+      width: 266px;
+      margin-top: 42px;
+    }
+  }
+
+  &__middle-buttons-wrapper {
+    flex-basis: 260px;
+    margin-right: 132px;
+    margin-left: 126px;
+  }
+
+  &__middle-button-wrapper {
+    &:nth-child(2) {
+      margin-top: 17px;
+      width: 240px;
+    }
+
+    &:nth-child(3) {
+      margin-top: 42px;
+    }
+
+    &:nth-child(4) {
+      margin-top: 14px;
+    }
+
+    &:nth-child(5) {
+      margin-top: 42px;
+    }
+
+    &:nth-child(6) {
+      margin-top: 16px;
+    }
+
+    &:nth-child(7) {
+      margin-top: 15px;
+    }
+
+    &:nth-child(8) {
+      margin-top: 44px;
+    }
+
+    &:nth-child(9) {
+      margin-top: 16px;
+      display: flex;
+      gap: 11px;
+    }
+
+    &:nth-child(10) {
+      margin-top: 40px;
+    }
+
+    &:nth-child(11) {
+      margin-top: 18px;
+      display: flex;
+      gap: 25px;
+    }
+  }
+
+  &__right-buttons-wrapper {
+    flex-basis: 320px;
+  }
+
+  &__right-button-wrapper {
+    &:nth-child(1) {
+      width: 266px;
+    }
+
+    &:nth-child(2) {
+      margin-top: 44px;
+    }
+
+    &:nth-child(3) {
+      margin-top: 16px;
+      display: flex;
+      gap: 19px;
+    }
+
+    &:nth-child(4) {
+      margin-top: 30px;
+      display: flex;
+      gap: 20px;
+    }
+
+    &:nth-child(5) {
+      margin-top: 31px;
+      display: flex;
+      gap: 20px;
+    }
+
+    &:nth-child(6) {
+      margin-top: 30px;
+    }
+
+    &:nth-child(7) {
+      margin-top: 40px;
+    }
+
+    &:nth-child(8) {
+      margin-top: 16px;
+    }
+  }
+}
