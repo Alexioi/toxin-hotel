@@ -1,0 +1,10 @@
+.headers-and-footers {
+  display: flex;
+  flex-direction: column;
+  gap: 46px;
+
+  &__mobile-footer {
+    width: 768px;
+    margin: 0 auto;
+  }
+}

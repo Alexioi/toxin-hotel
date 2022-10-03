@@ -3,13 +3,10 @@ include ../../components/logo/logo
 include ../../components/container/container
 
 mixin footer(options)
-  if !options
-    - options = {};
-
   -
-    var component = {
-      aboutText: 'Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»',
-      navItems: [
+    const {
+      aboutText = 'Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»',
+      navItems = [
         {
           header: 'навигация',
           items: [
@@ -37,18 +34,19 @@ mixin footer(options)
           ]
         }
       ],
-      subscriptionHeader: 'Подписка',
-      subscriptionText: 'Получайте специальные предложения и новости сервиса',
-      copyrightText: 'Copyright © 2018 Toxin отель. Все права зачищены.',
-      socials: [
+      subscriptionHeader = 'Подписка',
+      subscriptionText = 'Получайте специальные предложения и новости сервиса',
+      copyrightText = 'Copyright © 2018 Toxin отель. Все права зачищены.',
+      socials = [
         {link: '/change-it', img: 'twitter'},
         {link: '/change-it', img: 'facebook'},
         {link: '/change-it', img: 'instagram'},
-      ]
-    }
+      ],
+      mobile = false
+    } = options || {}
 
     var classes = ''
-    classes += options.mobile ? 'footer_mobile' : ''
+    classes += mobile ? 'footer_mobile' : ''
 
   .footer(class=classes)
     +container
@@ -56,9 +54,9 @@ mixin footer(options)
         .footer__about
           .footer__logo 
             +logo
-          p.footer__text.footer__about-text= component.aboutText
+          p.footer__text.footer__about-text= aboutText
         .footer__nav
-          each navItem in component.navItems
+          each navItem in navItems
             .footer__nav-item
               span.footer__header= navItem.header
               ul.footer__list
@@ -66,16 +64,16 @@ mixin footer(options)
                   li.footer__list-item
                     a.footer__list-link(href=item.link)= item.text
         form.footer__subscription(method="POST", action="/change-it")
-          span.footer__header.footer__header_margin-small= component.subscriptionHeader
-          p.footer__text= component.subscriptionText
+          span.footer__header.footer__header_margin-small= subscriptionHeader
+          p.footer__text= subscriptionText
           .footer__input
             +text-field({ placeholder: 'Email', type: "email", isSubscription: true, name: "email" })
     .footer__line
       +container
         .footer__sub
-          span.footer__text.footer__text-copyright= component.copyrightText
+          span.footer__text.footer__text-copyright= copyrightText
           .footer__social
-            each social in component.socials
+            each social in socials
               a.footer__social-link(href=social.link) 
                 img(
                   src=require(`Components/footer/img/${social.img}.svg`)

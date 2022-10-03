@@ -2,23 +2,20 @@ extends ../../templates/ui-kit/ui-kit
 
 include ../../components/header/header
 include ../../components/footer/footer
-include ../../components/wrapper/wrapper
-include ../../components/row/row
 
 block var
-  -
-    var withThemeGray = true
+  - const withThemeGray = true
 
 block title
   | Headers and footers
 
 block main
-  +header({active: 0})
-  +wrapper({marginTop: 46})
-    +header({active: 0, username: 'Юлий Цезарь'})
-  +wrapper({marginTop: 46})
-    +footer
-  +wrapper({marginTop: 46, marginBottom: 140})
-    +row({justifyContent: 'center'})
-      +wrapper({width: 768})
-        +footer({mobile: true})
+  - 
+    const {headers, footers} = require('./data.json')
+
+  .headers-and-footers
+    +header(headers[0])
+    +header(headers[1])
+    +footer(footers[0])
+    .headers-and-footers__mobile-footer
+      +footer(footers[1])
