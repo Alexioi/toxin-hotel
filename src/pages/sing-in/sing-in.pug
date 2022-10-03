@@ -1,15 +1,11 @@
 extends ../../templates/website-pages/website-pages
 
 include ../../components/authorization/authorization
-include ../../components/container/container
-include ../../components/row/row
 
 block title
   | Sing in
 
 block main
-  .p-sing-in__background
-    +container
-      +row({mix:'p-registration__form'})
-        +wrapper({basis: 380})
-          +authorization
+  .sing-in
+    .sing-in__form
+      +authorization
