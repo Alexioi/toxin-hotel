@@ -1,0 +1,22 @@
+.cards {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding-top: 10px;
+  display: flex;
+  gap: 40px;
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 380px;
+    gap: 40px;
+
+    &_size-slim {
+      flex-basis: 320px;
+    }
+  }
+
+  &__room-card-wrapper {
+    width: 270px;
+  }
+}

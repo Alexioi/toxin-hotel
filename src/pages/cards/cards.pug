@@ -1,41 +1,31 @@
 extends ../../templates/ui-kit/ui-kit
 
-include ../../components/calendar/calendar
-include ../../components/room-booking/room-booking
 include ../../components/find-room/find-room
-include ../../components/room-card/room-card
 include ../../components/registration-card/registration-card
+include ../../components/room-booking/room-booking
 include ../../components/authorization/authorization
-include ../../components/container/container
-include ../../components/wrapper/wrapper
-include ../../components/row/row
+include ../../components/calendar/calendar
+include ../../components/room-card/room-card
 
 block var
-  -
-    var withThemeGray = true
+  - const withThemeGray = true
 
 block title
   | Cards
 
 block main
-  -
-    const {calendars, roomCards} = require('./data.json')
+  - const {calendars, roomCards} = require('./data.json')
 
-  +container
-    +wrapper({paddingTop: 10, paddingBottom: 140})
-      +row({gap: 40})
-        +wrapper({basis: 380})
-          +wrapper({marginBottom: 40})
-            +find-room
-          +registration-card
-        +wrapper({basis: 380})
-          +wrapper({marginBottom: 40})
-            +room-booking
-          +authorization
-        +wrapper({basis: 320})
-          +wrapper({marginBottom: 40})
-            +calendar(calendars[0])
-          +wrapper({width: 270})
-            +wrapper({marginBottom: 40})
-              +room-card(roomCards[0]) 
-            +room-card(roomCards[1]) 
+  .cards   
+    .cards__column
+      +find-room
+      +registration-card
+    .cards__column
+      +room-booking
+      +authorization
+    .cards__column.cards__column_size-slim
+      +calendar(calendars[0])
+      .cards__room-card-wrapper
+        +room-card(roomCards[0]) 
+      .cards__room-card-wrapper
+        +room-card(roomCards[1]) 
