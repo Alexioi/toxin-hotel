@@ -1,15 +1,11 @@
 extends ../../templates/website-pages/website-pages
 
 include ../../components/registration-card/registration-card
-include ../../components/container/container
-include ../../components/row/row
 
 block title
   | Registration
 
 block main
-  .p-registration__background
-    +container
-      +row({mix:'p-registration__form'})
-        +wrapper({basis: 380})
-          +registration-card
+  .registration
+    .registration__form  
+      +registration-card
