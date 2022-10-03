@@ -1,14 +1,18 @@
 @import '../../style/variables.scss';
 
-.p-landing-page {
-  &__background {
-    height: 100%;
-    background: no-repeat center center url(./img/background.png);
-    background-size: cover;
+.landing-page {
+  height: 100%;
+  background: no-repeat center center url(./img/background.png);
+  background-size: cover;
+
+  &__container {
+    max-width: 1160px;
+    margin: 0 auto;
   }
 
-  &__form {
+  &__form-wrapper {
     padding-top: 70px;
+    width: 380px;
 
     @include media-breakpoint-down($lg) {
       justify-content: center;
@@ -16,14 +20,17 @@
   }
 
   &__text-row {
+    display: flex;
+    justify-content: end;
+    padding-top: 316px;
+    padding-bottom: 22px;
+
     @include media-breakpoint-down($lg) {
       justify-content: center;
     }
   }
 
   &__text {
-    margin-top: 316px;
-    margin-bottom: 22px;
     width: 265px;
     font-size: 14px;
     line-height: 24px;
