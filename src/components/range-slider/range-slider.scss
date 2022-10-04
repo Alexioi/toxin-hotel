@@ -4,7 +4,7 @@
   &__header {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 23px;
+    margin-bottom: 18px;
   }
 
   &__value {
@@ -13,7 +13,6 @@
   }
 
   &__slider {
-    margin-top: 23px;
     display: none;
   }
 }

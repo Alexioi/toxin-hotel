@@ -6,7 +6,8 @@ mixin label(options)
     } = options || {}
 
   label.label 
-    span.label__title= title
-    if hint !== ''
-      span.label__hint= hint
+    .label__header
+      span.label__title= title
+      if hint !== ''
+        span.label__hint= hint
     block

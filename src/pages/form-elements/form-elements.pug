@@ -34,123 +34,123 @@ block main
   .form-elements
     
     .form-elements__row
-      .form-elements__text-fields-wrapper
+      .form-elements__text-fields-and-buttons-left-column
         +label(labels[0])
           +text-field(textFields[0])
-        .form-elements__text-field-wrapper
+        .form-elements__text-fields-and-buttons-left-wrapper
           +label(labels[1])
             +text-field(textFields[1])
-        .form-elements__text-field-wrapper
+        .form-elements__text-fields-and-buttons-left-wrapper
           +dropdown-menu
             +label(labels[2])
               +dropdown-field
-        .form-elements__text-field-wrapper
+        .form-elements__text-fields-and-buttons-left-wrapper
           +label(labels[3])
             +text-field(textFields[2])
-        .form-elements__text-field-wrapper
+        .form-elements__text-fields-and-buttons-left-wrapper
           +calendar   
             +row({gap: 20})
               +label(labels[4])
                 +dropdown-field
               +label(labels[4])
                 +dropdown-field
-        .form-elements__text-field-wrapper
+        .form-elements__text-fields-and-buttons-left-wrapper
           +calendar   
             +label(labels[5])
               +dropdown-field    
-        .form-elements__text-field-wrapper
+        .form-elements__text-fields-and-buttons-left-wrapper
           +label(labels[6])
             +text-field(textFields[3])
 
-      .form-elements__middle-buttons-wrapper
+      .form-elements__text-fields-and-buttons-middle-column
         +label(labels[7])
-        .form-elements__middle-button-wrapper
+        .form-elements__text-fields-and-buttons-middle-wrapper
           +checkbox-list(checkboxLists[0])
-        .form-elements__middle-button-wrapper
+        .form-elements__text-fields-and-buttons-middle-wrapper
           +label(labels[8]) 
-        .form-elements__middle-button-wrapper
+        .form-elements__text-fields-and-buttons-middle-wrapper
           +radio-buttons
-        .form-elements__middle-button-wrapper
+        .form-elements__text-fields-and-buttons-middle-wrapper
           +label(labels[9])
-        .form-elements__middle-button-wrapper
+        .form-elements__text-fields-and-buttons-middle-wrapper
           +toggle({isChecked: true})
-        .form-elements__middle-button-wrapper
+        .form-elements__text-fields-and-buttons-middle-wrapper
           +toggle
-        .form-elements__middle-button-wrapper
+        .form-elements__text-fields-and-buttons-middle-wrapper
           +label(labels[10])
-        .form-elements__middle-button-wrapper
+        .form-elements__text-fields-and-buttons-middle-wrapper
           +like-button({counter: 2})
           +like-button({counter: 12, isLiked: true})
-        .form-elements__middle-button-wrapper
+        .form-elements__text-fields-and-buttons-middle-wrapper
           +label(labels[11])
-        .form-elements__middle-button-wrapper
+        .form-elements__text-fields-and-buttons-middle-wrapper
           +rate({quantity: 4})
           +rate({quantity: 5})
 
-      .form-elements__right-buttons-wrapper
-        .form-elements__right-button-wrapper
+      .form-elements__text-fields-and-buttons-right-column
+        .form-elements__text-fields-and-buttons-right-wrapper
           +range-slider
-        .form-elements__right-button-wrapper
+        .form-elements__text-fields-and-buttons-right-wrapper
           +label({title: 'buttons'}) 
-        .form-elements__right-button-wrapper
+        .form-elements__text-fields-and-buttons-right-wrapper
           +button
           +button({ isHovered: true})
-        .form-elements__right-button-wrapper
+        .form-elements__text-fields-and-buttons-right-wrapper
           +button({ theme: 'outline', })
           +button({ theme: 'outline', isHovered: true, })
-        .form-elements__right-button-wrapper
+        .form-elements__text-fields-and-buttons-right-wrapper
           +button({ theme: 'link', })
           +button({ theme: 'link', isHovered: true, })
-        .form-elements__right-button-wrapper
+        .form-elements__text-fields-and-buttons-right-wrapper
           +button({ theme: 'long', text: 'перейти к оплате', })
-        .form-elements__right-button-wrapper
+        .form-elements__text-fields-and-buttons-right-wrapper
           +label({title: 'pagination'})
-        .form-elements__right-button-wrapper
+        .form-elements__text-fields-and-buttons-right-wrapper
           +pagination 
 
     .form-elements__row
-      +wrapper({basis: 266})
+      .form-elements__dropdowns-left-column
         +dropdown-menu({ counters: [2, 2, 0], type: 'rooms'})
           +label({title: 'dropdown', hint: 'Default'})
             +dropdown-field
-        +wrapper({marginTop: 22})
+        .form-elements__dropdowns-left-wrapper
           +dropdown-menu({ counters: [2, 2, 0], type: 'rooms', isOpened: true})
             +label({title: 'dropdown', hint: 'expanded'})
               +dropdown-field
 
-      +wrapper({basis: 320, marginLeft: 181, marginRight: 72})
+      .form-elements__dropdowns-middle-column
         +dropdown-menu({isOpened: true})
           +label({title: 'dropdown'})
             +dropdown-field
 
-      +wrapper({basis: 320})
+      .form-elements__dropdowns-right-column
         +dropdown-menu({ counters: [2, 1, 0], isOpened: true})
           +label({title: 'dropdown'})
             +dropdown-field
 
     .form-elements__row
-      +wrapper({basis: 258})
+      .form-elements__lists-left-column
         +dropdown-list({title: 'expandable checkbox list'})
           +wrapper({marginTop: 10})
             +checkbox-list(checkboxLists[1])
-        +wrapper({marginTop: 48})
+        .form-elements__list-left-wrapper
           +dropdown-list({title: 'expandable checkbox list', isOpened: true})
             +wrapper({marginTop: 19})
               +checkbox-list(checkboxLists[1])
 
-      +wrapper({marginLeft: 189, marginRight: 126, basis: 266})
+      .form-elements__lists-middle-column
         +label({title: 'rich Checkbox Buttons'})
         +wrapper({marginTop: 17, width: 260})
           +checkbox-list(checkboxLists[2])
 
-      +wrapper({basis: 292})
+      .form-elements__lists-right-column
         +label({title: 'bullet list'})
         +wrapper({marginTop: 14, width: 260})
           +bullet-list(bulletLists[0])
 
     .form-elements__row
-        +wrapper({basis: 280})
-          +icon-text-list(iconTextLists[0])
+      .form-elements__text-icon-list-column
+        +icon-text-list(iconTextLists[0])
 
-        +wrapper({marginTop: 10, basis: 712})
-          +comment(comments[0])
+      .form-elements__comment-column
+        +comment(comments[0])

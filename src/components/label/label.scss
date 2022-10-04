@@ -1,7 +1,9 @@
 @import '../../style/variables.scss';
 
 .label {
-  line-height: 20px;
+  &__header {
+    padding-bottom: 5px;
+  }
 
   &__title {
     font-weight: 700;
