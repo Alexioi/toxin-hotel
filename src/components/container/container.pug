@@ -1,12 +1,4 @@
-mixin container(options)
-  -
-    const {
-      size,
-    } = options || {}
+mixin container()
 
-  -
-    var classes = ''
-    classes += size ? ' container_size-' + size : ''
-
-  .container(class=classes)
+  .container
     block

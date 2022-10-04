@@ -1,11 +1,8 @@
-include ../../components/logo/logo
 include ../../components/layout/layout
-include ../../components/wrapper/wrapper
-include ../../components/container/container
+include ../../components/logo/logo
 
 block var
-  -
-    var withThemeGray = false
+  - const withThemeGray = false
 
 doctype html
 html(lang="RU")
@@ -15,12 +12,13 @@ html(lang="RU")
     link(rel="icon" href="./favicon/favicon.ico" type="image/icon")
     title
       block title
-  body(class=withThemeGray ? 't-ui-kit_with-theme-gray' : '')
-    +wrapper({paddingTop: 30, paddingBottom: 140})
+  body
+    .ui-kit(class=withThemeGray ? ' ui-kit_with-theme-gray' : '')
       +layout
         +layout__header
-          +container({size: 'big'})
-            +wrapper({paddingBottom: 62})
-              +logo({type: 'mini'})
+          .ui-kit__header
+            +logo({type: 'mini'})
         +layout__main
           block main
+        +layout__footer
+          .ui-kit__footer

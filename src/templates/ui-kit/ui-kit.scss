@@ -1,3 +1,16 @@
-.t-ui-kit_with-theme-gray {
-  background: #f4f4f6;
+.ui-kit {
+  &_with-theme-gray {
+    background: #f4f4f6;
+  }
+
+  &__header {
+    margin: 0 auto;
+    max-width: 1380px;
+    padding-top: 30px;
+    padding-bottom: 62px;
+  }
+
+  &__footer {
+    height: 140px;
+  }
 }
