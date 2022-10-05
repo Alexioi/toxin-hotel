@@ -1,5 +1,5 @@
-import 'air-datepicker';
 import cssSelectors from './constants';
+import AirDatepicker from '../../libs/air-datepicker';
 
 class Calendar {
   constructor($node) {
@@ -29,17 +29,7 @@ class Calendar {
   }
 
   _initDatepicker() {
-    const calendarOptions = {
-      range: true,
-      navTitles: {
-        days: 'MM yyyy',
-      },
-      prevHtml: '<span class="material-icons">arrow_back</span>',
-      nextHtml: '<span class="material-icons">arrow_forward</span>',
-      minDate: new Date(),
-    };
-
-    this.datepicker = this.$nodeForDatepicker.datepicker(calendarOptions).data().datepicker;
+    this.datepicker = new AirDatepicker(this.$nodeForDatepicker);
   }
 
   _attachEventsHandler() {
@@ -49,7 +39,7 @@ class Calendar {
   }
 
   _applyDates() {
-    const dates = this.datepicker.selectedDates;
+    const dates = this.datepicker.getSelectedDates();
 
     if (dates.length !== 2) {
       return;
@@ -89,11 +79,11 @@ class Calendar {
   }
 
   _clearDates() {
-    this.datepicker.clear();
+    this.datepicker.clearDates();
   }
 
   _toggleVisible() {
-    this.$menu.toggleClass('calendar__menu__visible');
+    this.$menu.toggleClass('calendar__menu_visible');
 
     this.$inputs.each((i) => {
       const isFocus = this.$inputs[i].dataset.focus === 'true';
