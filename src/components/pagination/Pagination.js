@@ -1,21 +1,6 @@
 import 'paginationjs';
 import cssSelectors from './constants';
-
-const dataSource = (done) => {
-  const result = [];
-  for (let i = 1; i < 181; i = i + 1) {
-    result.push(i);
-  }
-  done(result);
-};
-
-const config = {
-  dataSource,
-  pageSize: 12,
-  pageRange: 1,
-  prevText: '<span class="material-icons">arrow_back</span>',
-  nextText: '<span class="material-icons">arrow_forward</span>',
-};
+import Paginationjs from '../../libs/paginationjs';
 
 class Pagination {
   constructor($component) {
@@ -26,7 +11,7 @@ class Pagination {
 
   _init() {
     this._findElements();
-    this._createPlugin();
+    this._initPlugin();
   }
 
   _findElements() {
@@ -35,15 +20,8 @@ class Pagination {
     this.$endItem = this.$component.find(cssSelectors.endItem);
   }
 
-  _createPlugin() {
-    const that = this;
-
-    config.callback = (data) => {
-      that.$startItem.text(data[0]);
-      that.$endItem.text(data[data.length - 1]);
-    };
-
-    this.$plugin.pagination(config);
+  _initPlugin() {
+    this.paginationjs = new Paginationjs(this.$plugin, this.$startItem, this.$endItem);
   }
 }
 
