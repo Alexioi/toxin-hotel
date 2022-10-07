@@ -58,8 +58,6 @@ npm run server
 
 [air-datepicker ^2.2.3](https://www.npmjs.com/package/air-datepicker) - добавляет календарь
 
-[event-emitter ^3.23.1](https://www.npmjs.com/package/event-emitter) - реализация event emitter
-
 [imask ^6.0.7](https://www.npmjs.com/package/imask) - добавляет маску в инпуты
 
 [ion-rangeslider ^2.3.1](https://www.npmjs.com/package/ion-rangeslider) - плагин ползунка
