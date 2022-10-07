@@ -1,9 +1,6 @@
-import IMask from 'imask';
 import cssSelectors from './constants';
-import config from './TextField';
+import TextField from './TextField';
 
-$(() => {
-  $(cssSelectors.maskedInput).each((i, node) => {
-    IMask(node, config);
-  });
+document.querySelectorAll(cssSelectors.maskedInput).forEach((node) => {
+  new TextField(node);
 });
