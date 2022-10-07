@@ -3,38 +3,41 @@ include ../button/button
 mixin dropdown-menu(options)
   -
     const {
-      counters = [0, 0, 0],
+      items = [
+        {name:'спальни', counter: 0},
+        {name:'кровати', counter: 0},
+        {name:'ванные комнаты', counter: 0}, 
+      ],
       isOpened = false,
-      type = 'guests'
+      type = 'rooms',
     } = options || {}
 
-  if type === 'rooms'
-    -
-      var items = ['спальни', 'кровати', 'ванные комнаты']
-      var hasButtons = false
+    let hasButtons = false
 
-  if type === 'guests'
-    -
-      var items = ['взрослые', 'дети', 'младенцы']
-      var hasButtons = true
+    switch (type) {
+      case 'rooms':
+        hasButtons = false
+        break;
+      case 'guests':
+        hasButtons = true
+    } 
 
   -
-    var classes = ''
+    let classes = ''
     classes += isOpened ? ' dropdown-menu_opened' : ''
-    classes += ' dropdown-menu_type-' + type
 
-  .dropdown-menu.js-dropdown-menu(class=classes)
+  .dropdown-menu.js-dropdown-menu(class=classes data-type=type)
     .dropdown-menu__input.js-dropdown-menu__input
       block
     .dropdown-menu__menu
       ul.dropdown-menu__list
-        each item, index in items 
+        each item in items 
           li.dropdown-menu__item.js-dropdown-menu__item
-            span.dropdown-menu__item-name= item
+            span.dropdown-menu__item-name= item.name
             button.dropdown-menu__counter-button.js-dropdown-menu__counter-button(
               type='button'
             ) -
-            span.dropdown-menu__counter.js-dropdown-menu__counter= counters[index]
+            span.dropdown-menu__counter.js-dropdown-menu__counter= item.counter
             button.dropdown-menu__counter-button.js-dropdown-menu__counter-button(
               type='button'
             ) +

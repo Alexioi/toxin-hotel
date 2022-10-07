@@ -114,7 +114,13 @@ block main
           +label({title: 'dropdown', hint: 'Default'})
             +dropdown-field
         .form-elements__dropdowns-left-wrapper
-          +dropdown-menu({ counters: [2, 2, 0], type: 'rooms', isOpened: true})
+          +dropdown-menu({ items: [
+        {name:'спальни', counter: 4},
+        {name:'кровати', counter: 0},
+        {name:'ванные комнаты', counter: 0}, 
+      ],
+      isOpened: true,
+      type: 'guests',})
             +label({title: 'dropdown', hint: 'expanded'})
               +dropdown-field
 

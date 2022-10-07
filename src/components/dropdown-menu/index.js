@@ -1,15 +1,8 @@
-import DropdownMenuGuests from './DropdownMenuGuests';
-import DropdownMenuRooms from './DropdownMenuRooms';
+import DropdownMenu from './DropdownMenu';
 import cssSelectors from './constants';
 
-$(() => {
-  $(cssSelectors.dropdownMenuTypeGuests).each((i, node) => {
-    new DropdownMenuGuests($(node));
+(() => {
+  document.querySelectorAll('.js-dropdown-menu').forEach((node) => {
+    new DropdownMenu(node);
   });
-});
-
-$(() => {
-  $(cssSelectors.dropdownMenuTypeRooms).each((i, node) => {
-    new DropdownMenuRooms($(node));
-  });
-});
+})();
