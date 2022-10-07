@@ -3,7 +3,7 @@ include ../label/label
 mixin range-slider(options)
   - const {title = 'range slider'} = options || {}
   
-  .range-slider
+  .range-slider.js-range-slider
     .range-slider__header 
       +label({title})
       span.range-slider__value.js-range-slider__value
