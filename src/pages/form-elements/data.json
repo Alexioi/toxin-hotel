@@ -11,7 +11,15 @@
     { "title": "Radio Buttons" },
     { "title": "Toggle" },
     { "title": "like button" },
-    { "title": "rate button" }
+    { "title": "rate button" },
+    { "title": "buttons" },
+    { "title": "pagination" },
+    { "title": "dropdown", "hint": "Default" },
+    { "title": "dropdown", "hint": "expanded" },
+    { "title": "dropdown" },
+    { "title": "dropdown" },
+    { "title": "rich Checkbox Buttons" },
+    { "title": "bullet list" }
   ],
   "textFields": [
     { "title": "Text Field", "hint": "Default", "placeholder": "Email", "type": "email" },
@@ -88,5 +96,70 @@
         "Время прибытия — после 13:00, а выезд до 12:00"
       ]
     }
+  ],
+  "dropdownMenus": [
+    {
+      "items": [
+        { "name": "взрослые", "counter": 0 },
+        { "name": "дети", "counter": 0 },
+        { "name": "младенцы", "counter": 0 }
+      ],
+      "isOpened": false,
+      "type": "guests"
+    },
+    {
+      "items": [
+        { "name": "спальни", "counter": 2 },
+        { "name": "кровати", "counter": 2 },
+        { "name": "ванные комнаты", "counter": 0 }
+      ],
+      "isOpened": false,
+      "type": "rooms"
+    },
+    {
+      "items": [
+        { "name": "спальни", "counter": 2 },
+        { "name": "кровати", "counter": 2 },
+        { "name": "ванные комнаты", "counter": 0 }
+      ],
+      "isOpened": true,
+      "type": "rooms"
+    },
+    {
+      "items": [
+        { "name": "взрослые", "counter": 0 },
+        { "name": "дети", "counter": 0 },
+        { "name": "младенцы", "counter": 0 }
+      ],
+      "isOpened": true,
+      "type": "guests"
+    },
+    {
+      "items": [
+        { "name": "взрослые", "counter": 2 },
+        { "name": "дети", "counter": 1 },
+        { "name": "младенцы", "counter": 0 }
+      ],
+      "isOpened": true,
+      "type": "guests"
+    }
+  ],
+  "toggles": [{ "isChecked": true }, { "isChecked": false }],
+  "likeButtons": [
+    { "counter": 2, "isLiked": false },
+    { "counter": 12, "isLiked": true }
+  ],
+  "rates": [{ "quantity": 4 }, { "quantity": 5 }],
+  "buttons": [
+    { "isHovered": true },
+    { "theme": "outline" },
+    { "theme": "outline", "isHovered": true },
+    { "theme": "link" },
+    { "theme": "link", "isHovered": true },
+    { "theme": "long", "text": "перейти к оплате" }
+  ],
+  "dropdownLists": [
+    { "title": "expandable checkbox list" },
+    { "title": "expandable checkbox list", "isOpened": true }
   ]
 }

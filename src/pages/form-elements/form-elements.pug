@@ -12,9 +12,6 @@ include ../../components/radio-buttons/radio-buttons
 include ../../components/pagination/pagination
 include ../../components/label/label
 include ../../components/text-field/text-field
-include ../../components/container/container
-include ../../components/wrapper/wrapper
-include ../../components/row/row
 include ../../components/label/label
 include ../../components/calendar/calendar
 include ../../components/dropdown-field/dropdown-field
@@ -28,7 +25,18 @@ block title
 block main
   - 
     const {
-      labels, textFields, checkboxLists, comments, iconTextLists, bulletLists
+      labels, 
+      textFields, 
+      checkboxLists, 
+      comments, 
+      iconTextLists, 
+      bulletLists,
+      dropdownMenus,
+      toggles,
+      likeButtons,
+      rates,
+      buttons,
+      dropdownLists,
     } = require('./data.json')
 
   .form-elements
@@ -41,7 +49,7 @@ block main
           +label(labels[1])
             +text-field(textFields[1])
         .form-elements__text-fields-and-buttons-left-wrapper
-          +dropdown-menu
+          +dropdown-menu(dropdownMenus[0])
             +label(labels[2])
               +dropdown-field
         .form-elements__text-fields-and-buttons-left-wrapper
@@ -49,11 +57,10 @@ block main
             +text-field(textFields[2])
         .form-elements__text-fields-and-buttons-left-wrapper
           +calendar   
-            +row({gap: 20})
-              +label(labels[4])
-                +dropdown-field
-              +label(labels[4])
-                +dropdown-field
+            +label(labels[4])
+              +dropdown-field
+            +label(labels[4])
+              +dropdown-field
         .form-elements__text-fields-and-buttons-left-wrapper
           +calendar   
             +label(labels[5])
@@ -73,85 +80,77 @@ block main
         .form-elements__text-fields-and-buttons-middle-wrapper
           +label(labels[9])
         .form-elements__text-fields-and-buttons-middle-wrapper
-          +toggle({isChecked: true})
+          +toggle(toggles[0])
         .form-elements__text-fields-and-buttons-middle-wrapper
-          +toggle
+          +toggle(toggles[1])
         .form-elements__text-fields-and-buttons-middle-wrapper
           +label(labels[10])
         .form-elements__text-fields-and-buttons-middle-wrapper
-          +like-button({counter: 2})
-          +like-button({counter: 12, isLiked: true})
+          +like-button(likeButtons[0])
+          +like-button(likeButtons[1])
         .form-elements__text-fields-and-buttons-middle-wrapper
           +label(labels[11])
         .form-elements__text-fields-and-buttons-middle-wrapper
-          +rate({quantity: 4})
-          +rate({quantity: 5})
+          +rate(rates[0])
+          +rate(rates[1])
 
       .form-elements__text-fields-and-buttons-right-column
         .form-elements__text-fields-and-buttons-right-wrapper
           +range-slider
         .form-elements__text-fields-and-buttons-right-wrapper
-          +label({title: 'buttons'}) 
+          +label(labels[12]) 
         .form-elements__text-fields-and-buttons-right-wrapper
           +button
-          +button({ isHovered: true})
+          +button(buttons[0])
         .form-elements__text-fields-and-buttons-right-wrapper
-          +button({ theme: 'outline', })
-          +button({ theme: 'outline', isHovered: true, })
+          +button(buttons[1])
+          +button(buttons[2])
         .form-elements__text-fields-and-buttons-right-wrapper
-          +button({ theme: 'link', })
-          +button({ theme: 'link', isHovered: true, })
+          +button(buttons[3])
+          +button(buttons[4])
         .form-elements__text-fields-and-buttons-right-wrapper
-          +button({ theme: 'long', text: 'перейти к оплате', })
+          +button(buttons[5])
         .form-elements__text-fields-and-buttons-right-wrapper
-          +label({title: 'pagination'})
+          +label(labels[13])
         .form-elements__text-fields-and-buttons-right-wrapper
           +pagination 
 
     .form-elements__row
       .form-elements__dropdowns-left-column
-        +dropdown-menu({ counters: [2, 2, 0], type: 'rooms'})
-          +label({title: 'dropdown', hint: 'Default'})
+        +dropdown-menu(dropdownMenus[1])
+          +label(labels[14])
             +dropdown-field
         .form-elements__dropdowns-left-wrapper
-          +dropdown-menu({ items: [
-        {name:'спальни', counter: 4},
-        {name:'кровати', counter: 0},
-        {name:'ванные комнаты', counter: 0}, 
-      ],
-      isOpened: true,
-      type: 'guests',})
-            +label({title: 'dropdown', hint: 'expanded'})
+          +dropdown-menu(dropdownMenus[2])
+            +label(labels[15])
               +dropdown-field
 
       .form-elements__dropdowns-middle-column
-        +dropdown-menu({isOpened: true})
-          +label({title: 'dropdown'})
+        +dropdown-menu(dropdownMenus[3])
+          +label(labels[16])
             +dropdown-field
 
       .form-elements__dropdowns-right-column
-        +dropdown-menu({ counters: [2, 1, 0], isOpened: true})
-          +label({title: 'dropdown'})
+        +dropdown-menu(dropdownMenus[4])
+          +label(labels[17])
             +dropdown-field
 
     .form-elements__row
       .form-elements__lists-left-column
-        +dropdown-list({title: 'expandable checkbox list'})
-          +wrapper({marginTop: 10})
-            +checkbox-list(checkboxLists[1])
+        +dropdown-list(dropdownLists[0])
+          +checkbox-list(checkboxLists[1])
         .form-elements__list-left-wrapper
-          +dropdown-list({title: 'expandable checkbox list', isOpened: true})
-            +wrapper({marginTop: 19})
-              +checkbox-list(checkboxLists[1])
+          +dropdown-list(dropdownLists[1])
+            +checkbox-list(checkboxLists[1])
 
       .form-elements__lists-middle-column
-        +label({title: 'rich Checkbox Buttons'})
-        +wrapper({marginTop: 17, width: 260})
+        +label(labels[18])
+        .form-elements__lists-middle-wrapper
           +checkbox-list(checkboxLists[2])
 
       .form-elements__lists-right-column
-        +label({title: 'bullet list'})
-        +wrapper({marginTop: 14, width: 260})
+        +label(labels[19])
+        .form-elements__lists-right-wrapper
           +bullet-list(bulletLists[0])
 
     .form-elements__row

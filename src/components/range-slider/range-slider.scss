@@ -10,6 +10,7 @@
   &__value {
     line-height: 15px;
     color: rgba($color-first, 0.5);
+    flex-shrink: 0;
   }
 
   &__slider {

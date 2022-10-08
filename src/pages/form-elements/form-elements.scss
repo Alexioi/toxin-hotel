@@ -172,7 +172,7 @@
   }
 
   &__list-left-wrapper {
-    margin-top: 43px;
+    margin-top: 25px;
   }
 
   &__lists-middle-column {
@@ -181,8 +181,18 @@
     margin-right: 126px;
   }
 
+  &__lists-middle-wrapper {
+    margin-top: 11px;
+    width: 260px;
+  }
+
   &__lists-right-column {
     flex-basis: 292px;
+  }
+
+  &__lists-right-wrapper {
+    margin-top: 8px;
+    width: 260px;
   }
 
   &__text-icon-list-column {
