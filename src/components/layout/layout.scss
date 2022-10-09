@@ -3,6 +3,7 @@
 .layout {
   display: flex;
   flex-direction: column;
+  height: 100%;
 
   &__header {
     flex: 0 0 auto;

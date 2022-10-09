@@ -1,0 +1,17 @@
+.colors-and-type {
+  padding-top: 5px;
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__palette-wrapper {
+    flex-basis: 300px;
+    padding-left: 10px;
+  }
+
+  &__font-types-wrapper {
+    flex-basis: 455px;
+  }
+}

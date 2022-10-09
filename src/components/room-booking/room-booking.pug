@@ -24,17 +24,13 @@ mixin room-booking(options)
         +room-info({isLux: true})
         +wrapper({marginTop: 20, marginBottom: 22})
           +calendar   
-            +row({gap: 20})
-              +label({title: 'прибытие'})
-                +wrapper({marginTop: 5})
-                  +dropdown-field({inputName: 'dateFrom'})
-              +label({title: 'выезд'})
-                +wrapper({marginTop: 5})
-                  +dropdown-field({inputName: 'dateTO'})
+            +label({title: 'прибытие'})
+              +dropdown-field({inputName: 'dateFrom'})
+            +label({title: 'выезд'})
+              +dropdown-field({inputName: 'dateTO'})
         +dropdown-menu({ counters: [2, 1, 0],type: 'guests'})
           +label({title: 'гости'})
-            +wrapper({marginTop: 5})
-              +dropdown-field({inputName: 'guests'})
+            +dropdown-field({inputName: 'guests'})
         ul.room-booking__expenses-list
           each expensesItem in expensesItems
             li.room-booking__expenses-item

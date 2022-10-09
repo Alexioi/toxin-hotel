@@ -6,33 +6,25 @@ mixin header(options)
   -
     const { 
       navItems = [
-        {link: '/change-it', text: 'О нас'}, 
+        {link: '', text: ''}, 
         {
-          text: 'Услуги', 
+          text: '', 
           list: [
-            {link: '/change-it', text: 'sample 1'}, 
-            {link: '/change-it', text: 'sample 2'},
+            {link: '', text: ''}, 
           ]
         },
-        {link: '/change-it', text: 'Вакансии'},
-        {link: '/change-it', text: 'Новости'},
-        {
-          text: 'Соглашения', 
-          list: [
-            {link: '/change-it', text: 'sample 1'}, 
-            {link: '/change-it', text: 'sample 2'},
-          ]
-        }
       ],
       active = null,
       username = ''
     } = options || {}
 
+    const {buttons} = require('Components/header/data.json')
+
   .header.js-header 
     +container
       .header__wrapper
         .header__logo
-          +logo
+          +logo({type: 'default'})
         button.header__burger-button.js-header__burger-button.material-icons menu
         ul.header__navigation.js-header__navigation
           each navItem, index in navItems
@@ -56,5 +48,5 @@ mixin header(options)
           if username
             span.header__username= username
           else
-            +button({ theme: 'outline', link: './sing-in.html', text: 'войти', size: 'low', isLink: true })
-            +button({ link: './registration.html', text: 'зарегистрироваться', size: 'low', isLink: true })
+            +button(buttons[0])
+            +button(buttons[1])

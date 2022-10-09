@@ -8,67 +8,47 @@ include ../../components/title/title
 include ../../components/gallery/gallery
 include ../../components/container/container
 include ../../components/wrapper/wrapper
-include ../../components/row/row
 include ../../components/pie-chart/pie-chart
 
 block title
   | Room details
 
 block main
-  +row
-    +gallery
-  +wrapper({marginTop: 70, marginBottom: 70, mix: 'p-room-details__wrapper-content-block'})
+  - const {comments, iconTextLists, gallarys} = require('./data.json')
+
+  .room-details
+    +gallery(gallarys[0])
     +container
-      +row({justifyContent: 'space-between', mix: 'p-room-details__content-block'})
+      .room-details__content-block
         +wrapper({basis: 712})
-          +row({justifyContent: 'space-between', mix: 'p-room-details__mini-info-about-room'})
+          .room-details__mini-info-about-room
             +wrapper({basis: 291})
               +title({text: 'Сведения о номере', type: 'h3'})
               +wrapper({marginTop: 20})
-                +icon-text-list({
-                  items: [  
-                    {img: "smile", title: "Комфорт", text: "Шумопоглощающие стены"},
-                    {img: "house", title: "Удобство", text: "Окно в каждой из спален"},
-                    {img: "flame", title: "Уют", text: "Номер оснащён камином"},
-                  ]
-                })
-            +wrapper({basis: 351, mix: 'p-room-details__pie-chart'})
+                +icon-text-list(iconTextLists[0])
+            +wrapper({basis: 351, mix: 'room-details__pie-chart'})
               +title({text: 'Впечатления от номера', type: 'h3'})
               +wrapper({marginTop: 20})
                 +pie-chart
           +wrapper({marginTop: 17})
-            +row({justifyContent: 'space-between', mix: 'p-room-details__review-title'})          
-              +wrapper({paddingLeft: 20, mix: 'p-room-details__wrapper-review-title'})
+            .room-details__review-title       
+              +wrapper({paddingLeft: 20, mix: 'room-details__wrapper-review-title'})
                 +title({text: 'Отзывы посетителей номера', type: 'h3'})
               span.p-room-details__review 2 отзыва
           +wrapper({marginTop: 18})
-            +comment({
-              authorName: 'Патрисия Стёклышкова',
-              image: 'patrisia',
-              date: 'Неделю назад',
-              counter: 2,
-              isLiked: false,
-              text: 'Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент',
-            }) 
+            +comment(comments[0]) 
           +wrapper({marginTop: 23})
-            +comment({
-              authorName: 'Патрисия Стёклышкова',
-              image: 'patrisia',
-              date: 'Неделю назад',
-              counter: 2,
-              isLiked: false,
-              text: 'Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент',
-            })
+            +comment(comments[1])
           +wrapper({marginTop: 32})
-            +row({justifyContent: 'space-between', mix: 'p-room-details__rules'})
+            .room-details__rules
               +wrapper({width: 260})
                 +wrapper({marginBottom: 20, marginLeft: 20})
                   +title({text: 'Правила', type: 'h3'})
                 +bullet-list
-              +wrapper({width: 351, paddingRight: 9, mix: 'p-room-details__wrapper-reset-text'})
+              +wrapper({width: 351, paddingRight: 9, mix: 'room-details__wrapper-reset-text'})
                 +wrapper({marginBottom: 20})
                   +title({text: 'Отмена', type: 'h3'})
-                p.p-room-details__reset-text Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
+                p.room-details__reset-text Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
 
         +wrapper({basis: 380})
           +room-booking

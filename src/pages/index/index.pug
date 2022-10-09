@@ -1,15 +1,14 @@
 extends ../../templates/ui-kit/ui-kit
 
-include ../../components/row/row
 include ../../components/links-to-pages/links-to-pages
 
 block title
   | Title
 
 block var
-  -
-    var withThemeGray = true
+  - const withThemeGray = true
 
 block main
-  //- +row({justifyContent: 'center', mix: 'p-index__row'})
-  +links-to-pages
+  - const {linksToPages} = require('./data.json')
+
+  +links-to-pages(linksToPages[0])

@@ -1,17 +1,11 @@
 include ../room-card/room-card
 
-mixin room-list(options)
-  -
-    var data = require('Components/room-list/data.json')
-
-  -
-    const {
-      items = data.items
-    } = options || {}
+mixin room-list
+  - const {items} = require('Components/room-list/data.json')
 
   ul.room-list
     each item in items
+      - const {images, currentImg, number, link, isLux, price, quantity, reviews} = item
+
       li.room-list__item
-        -
-          const {images, currentImg, number, link, isLux, price, quantity, reviews} = item
         +room-card({images, currentImg, number, link, isLux, price, quantity, reviews,})

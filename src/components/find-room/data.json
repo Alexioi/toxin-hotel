@@ -1,5 +1,5 @@
 {
-  "titels": [{ "text": "Найдём номера под ваши пожелания" }],
+  "titles": [{ "text": "Найдём номера под ваши пожелания" }],
   "labels": [{ "title": "прибытие" }, { "title": "выезд" }, { "title": "гости" }],
   "dropdownFields": [
     { "inputName": "dateFrom" },

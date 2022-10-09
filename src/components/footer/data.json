@@ -1,0 +1,5 @@
+{
+  "textFields": [
+    { "placeholder": "Email", "type": "email", "isSubscription": true, "name": "email" }
+  ]
+}

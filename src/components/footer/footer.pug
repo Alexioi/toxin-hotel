@@ -5,47 +5,27 @@ include ../../components/container/container
 mixin footer(options)
   -
     const {
-      aboutText = 'Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»',
+      aboutText = '',
       navItems = [
         {
-          header: 'навигация',
+          header: '',
           items: [
-            {text: 'О нас', link: '/change-it'},
-            {text: 'Новости', link: '/change-it'},
-            {text: 'Служба поддержки', link: '/change-it'},
-            {text: 'Услуги', link: '/change-it'},
+            {text: '', link: ''},
           ]
         },
-        {
-          header: 'о нас',
-          items: [
-            {text: 'О сервисе', link: '/change-it'}, 
-            {text: 'Наша команда', link: '/change-it'},
-            {text: 'Вакансии', link: '/change-it'},
-            {text: 'Инвесторы', link: '/change-it'},
-          ]
-        },
-        {
-          header: 'Служба поддержки',
-          items: [
-            {text: 'Соглашения', link: '/change-it'},
-            {text: 'Сообщества', link: '/change-it'},
-            {text: 'Связь с нами', link: '/change-it'},
-          ]
-        }
       ],
-      subscriptionHeader = 'Подписка',
-      subscriptionText = 'Получайте специальные предложения и новости сервиса',
-      copyrightText = 'Copyright © 2018 Toxin отель. Все права зачищены.',
+      subscriptionHeader = '',
+      subscriptionText = '',
+      copyrightText = '',
       socials = [
-        {link: '/change-it', img: 'twitter'},
-        {link: '/change-it', img: 'facebook'},
-        {link: '/change-it', img: 'instagram'},
+        {link: '', img: ''},
       ],
       mobile = false
     } = options || {}
 
-    var classes = ''
+    const {textFields} = require('../../components/footer/data.json')
+
+    let classes = ''
     classes += mobile ? 'footer_mobile' : ''
 
   .footer(class=classes)
@@ -53,7 +33,7 @@ mixin footer(options)
       .footer__main
         .footer__about
           .footer__logo 
-            +logo
+            +logo({type: 'default'})
           p.footer__text.footer__about-text= aboutText
         .footer__nav
           each navItem in navItems
@@ -67,7 +47,7 @@ mixin footer(options)
           span.footer__header.footer__header_margin-small= subscriptionHeader
           p.footer__text= subscriptionText
           .footer__input
-            +text-field({ placeholder: 'Email', type: "email", isSubscription: true, name: "email" })
+            +text-field(textFields[0])
     .footer__line
       +container
         .footer__sub

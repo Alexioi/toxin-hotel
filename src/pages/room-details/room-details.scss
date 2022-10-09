@@ -1,19 +1,26 @@
 @import '../../style/variables';
 
-.p-room-details {
-  &__wrapper-content-block {
-    @include media-breakpoint-down($xs) {
-      margin-bottom: 10px;
-    }
+.room-details {
+  margin-bottom: 70px;
+
+  @include media-breakpoint-down($xs) {
+    margin-bottom: 10px;
   }
 
   &__content-block {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 70px;
+
     @include media-breakpoint-down($lg) {
       flex-direction: column;
     }
   }
 
   &__mini-info-about-room {
+    display: flex;
+    justify-content: space-between;
+
     @include media-breakpoint-down($xs) {
       flex-direction: column;
     }
@@ -27,6 +34,8 @@
   }
 
   &__review-title {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 
     @include media-breakpoint-down($xs) {
@@ -53,6 +62,9 @@
   }
 
   &__rules {
+    display: flex;
+    justify-content: space-between;
+
     @include media-breakpoint-down($xs) {
       flex-direction: column;
     }

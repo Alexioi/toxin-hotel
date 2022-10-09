@@ -2,9 +2,7 @@ mixin gallery(options)
   -
     const {
       imgs = [
-        {src: 'main', alt: 'main'}, 
-        {src: 'sub-top', alt: 'sub-top'}, 
-        {src: 'sub-bottom', alt: 'sub-bottom'}
+        {src: '', alt: ''}, 
       ]
     } = options || {}
 
@@ -12,14 +10,14 @@ mixin gallery(options)
     .gallery__main-column
       img.gallery__img(
         src=require(`Components/gallery/img/img-${imgs[0].src}.png`)
-        alt=`${imgs[0].alt}`
+        alt=imgs[0].alt
       )
     .gallery__sub-column
       img.gallery__img(
         src=require(`Components/gallery/img/img-${imgs[1].src}.png`)
-        alt=`${imgs[1].alt}`
+        alt=imgs[1].alt
       )
       img.gallery__img(
         src=require(`Components/gallery/img/img-${imgs[2].src}.png`)
-        alt=`${imgs[2].alt}`
+        alt=imgs[2].alt
       )

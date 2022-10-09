@@ -3,30 +3,14 @@ mixin font-types(options)
     const {
       items = [
         {
-          theme: 'h1', 
-          sample: 'H1', 
-          description: 'This one is the sub-section or\nwidget title'
-        },
-        {
-          theme: 'h2', 
-          sample: 'H2', 
-          description: 'Next one is the item title inside\nwidgets'
-        },
-        {
-          theme: 'h3', 
-          sample: 'H3', 
-          description: 'This is a label or CTA text'
-        },
-        {
-          theme: 'body', 
-          sample: 'Body', 
-          description: 'This is the body text which is used for most\nof the design, like paragraphs, lists, etc.'
+          theme: '', 
+          sample: '', 
+          description: ''
         },
       ] 
     } = options || {}
 
-    var classes = ''
-    
+    let classes = ''
 
   .font-types
     each item in items

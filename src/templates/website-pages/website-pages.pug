@@ -2,6 +2,8 @@ include ../../components/layout/layout
 include ../../components/header/header
 include ../../components/footer/footer
 
+- const {headers, footers} = require('../../templates/website-pages/data.json')
+
 doctype html
 html(lang="RU")
   head
@@ -14,11 +16,11 @@ html(lang="RU")
     +layout
       +layout__header
         block header
-          +header
+          +header(headers[0])
 
       +layout__main
         block main
 
       +layout__footer
         block footer
-          +footer
+          +footer(footers[0])

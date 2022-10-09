@@ -1,0 +1,12 @@
+{
+  "buttons": [
+    {
+      "theme": "outline",
+      "link": "./sing-in.html",
+      "text": "войти",
+      "size": "low",
+      "isLink": true
+    },
+    { "link": "./registration.html", "text": "зарегистрироваться", "size": "low", "isLink": true }
+  ]
+}
