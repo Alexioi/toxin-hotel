@@ -1,0 +1,15 @@
+{
+  "titles": [{ "text": "Войти" }],
+  "textFields": [
+    { "placeholder": "Email", "type": "email", "name": "email" },
+    { "placeholder": "Пароль", "type": "password", "name": "password" }
+  ],
+  "buttons": [{ "theme": "long", "text": "войти", "type": "submit" }],
+  "questionFormAboutAuths": [
+    {
+      "questionText": "Нет аккаунта на Toxin?",
+      "buttonText": "создать",
+      "buttonLink": "./registration.html"
+    }
+  ]
+}

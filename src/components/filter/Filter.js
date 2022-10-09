@@ -1,3 +1,5 @@
+import cssSelectors from './constants';
+
 class Filter {
   constructor($component) {
     this.$component = $component;

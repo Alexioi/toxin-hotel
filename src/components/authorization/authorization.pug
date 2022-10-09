@@ -1,25 +1,27 @@
 include ../card/card
-include ../wrapper/wrapper
 include ../title/title
 include ../text-field/text-field
 include ../button/button
 include ../question-form-about-auth/question-form-about-auth
 
 mixin authorization()
+  - 
+    const {
+      titles, 
+      textFields, 
+      buttons, 
+      questionFormAboutAuths
+    } = require('Components/authorization/data.json')
 
   .authorization
     +card 
       form.auth__form(method="POST", action="/change-it") 
-        +wrapper({marginBottom: 20})
-          +title({text: 'Войти'}) 
-        +wrapper({marginBottom: 10})
-          +text-field({ placeholder: 'Email', type: "email", name: "email" })
-        +wrapper({marginBottom: 20})
-          +text-field({ placeholder: 'Пароль', type: "password", name: "password" })
-        +wrapper({marginBottom: 28})
-          +button({ theme: 'long', text: 'войти', type: 'submit' })
-      +question-form-about-auth({
-        questionText: "Нет аккаунта на Toxin?", 
-        buttonText: "создать", 
-        buttonLink: "./registration.html"
-      })
+        +title(titles[0]) 
+        .authorization__login-text-field-wrapper
+          +text-field(textFields[0])
+        .authorization__password-text-field-wrapper
+          +text-field(textFields[1])
+        .authorization__button-wrapper
+          +button(buttons[0])
+      .authorization__question-form-about-auth-wrapper
+        +question-form-about-auth(questionFormAboutAuths[0])

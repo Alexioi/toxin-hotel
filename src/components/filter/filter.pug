@@ -1,6 +1,5 @@
 include ../../components/calendar/calendar
 include ../../components/label/label
-include ../../components/wrapper/wrapper
 include ../../components/dropdown-field/dropdown-field
 include ../../components/dropdown-menu/dropdown-menu
 include ../../components/range-slider/range-slider
@@ -9,50 +8,42 @@ include ../../components/dropdown-list/dropdown-list
 include ../../components/toggle/toggle
 include ../../components/button/button
 
-mixin filter(options)
+mixin filter()
+  - 
+    const {
+      labels,
+      dropdownMenus,
+      rangeSliders, 
+      checkboxLists,
+      buttons,
+      dropdownLists
+    } = require('Components/filter/data.json')
+
+
   .filter.js-filter
     .filter__items
       +calendar
-        +label({title: 'даты пребывания в отеле'})
-          +wrapper({marginTop: 5})
+        +label(labels[0])
+          +dropdown-field
+      .filter__dropdown-menu-guests-wrapper
+        +dropdown-menu()
+          +label(labels[1])
             +dropdown-field
-      +wrapper({marginTop: 22})
-        +dropdown-menu({counters: [2, 1, 1]})
-          +label({title: 'гости'})
-            +wrapper({marginTop: 5})
-              +dropdown-field
-      +wrapper({marginTop: 32})
-        +range-slider({title: 'диапазон цены'})
+      .filter__range-slider-wrapper 
+        +range-slider(rangeSliders[0])
         p.filter__range-text Стоимость за сутки пребывания в номере
-      +wrapper({marginTop: 30})
-        +label({title: 'правила дома'})
-        +wrapper({marginTop: 14})
-          +checkbox-list({ 
-            title: 'Rich Checkbox Buttons', 
-            items: [ 
-              {text: "Можно курить"}, 
-              {text: "Можно с питомцами", isChecked: true}, 
-              {text: "Можно пригласить гостей \n (до 10 человек)", isChecked: true}, 
-              ]
-            })
-      +wrapper({marginTop: 34})
-        +label({title: 'доступность'})
-        +wrapper({marginTop: 16, width: 260})
-          +checkbox-list({ 
-            isRich: true, 
-            items: [ 
-              {text: "Широкий коридор", subText: 'Ширина коридоров в номере \n не менее 91 см.'}, 
-              {text: "Помощник для инвалидов", subText: 'На 1 этаже вас встретит специалист и проводит до номера.'}, 
-              ]
-            })
-      +wrapper({marginTop: 30})
-        +dropdown-menu({counters: [2, 2, 0], type: 'rooms'})
-          +label({title: 'удобства номера'})
-            +wrapper({marginTop: 4})
-              +dropdown-field
-      +wrapper({marginTop: 32})
-        +dropdown-list({title: 'дополнительные удобства'})
-          +wrapper({marginTop: 7})
-            +checkbox-list
+      .filter__rules-wrapper
+        +label(labels[2])
+          +checkbox-list(checkboxLists[0])
+      .filter__availability-wrapper
+        +label(labels[3])
+          +checkbox-list(checkboxLists[1])
+      .filter__dropdown-menu-rooms-wrapper
+        +dropdown-menu()
+          +label(labels[4])
+            +dropdown-field
+      .filter__dropdown-list-wrapper
+        +dropdown-list(dropdownLists[0])
+          +checkbox-list
     .filter__toggle-button.js-filter__toggle-button 
-      +button({text: 'фильтр', theme: 'outline'})
+      +button(buttons[0])

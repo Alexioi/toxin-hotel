@@ -3,12 +3,11 @@ include ../label/label
 mixin dropdown-list(options)
   - 
     const {
-      title = 'title',
+      title = '',
       isOpened = false
     } = options || {}
 
-  -
-    var classes = ''
+    let classes = ''
     classes += isOpened ? ' dropdown-list_opened' : ''
 
   .dropdown-list.js-dropdown-list(class=classes)

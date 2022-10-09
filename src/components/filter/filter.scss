@@ -13,9 +13,34 @@
     }
   }
 
+  &__dropdown-menu-guests-wrapper {
+    margin-top: 22px;
+  }
+
+  &__range-slider-wrapper {
+    margin-top: 32px;
+  }
+
   &__range-text {
     margin-top: 14px;
     color: rgba($color-first, 0.5);
+  }
+
+  &__rules-wrapper {
+    margin-top: 30px;
+  }
+
+  &__availability-wrapper {
+    margin-top: 34px;
+    width: 260px;
+  }
+
+  &__dropdown-menu-guests-wrapper {
+    margin-top: 30px;
+  }
+
+  &__dropdown-list-wrapper {
+    margin-top: 32px;
   }
 
   &__toggle-button {

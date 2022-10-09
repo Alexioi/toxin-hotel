@@ -6,7 +6,8 @@ mixin calendar(options)
       isOpened = false
     } = options || {}
 
-  -
+    const {buttons} = require('Components/calendar/data.json')
+
     classes = isOpened ? 'calendar_opened' : '' 
 
   div.calendar.js-calendar(class=classes)
@@ -16,6 +17,6 @@ mixin calendar(options)
       .calendar__datepicker.js-calendar__datepicker
       .calendar__buttons
         .calendar__button-clear.js-calendar__button-clear
-          +button({theme: 'link', text: 'очистить'})
+          +button(buttons[0])
         .calendar__button-apply.js-calendar__button-apply
-          +button({theme: 'link', text: 'применить'})
+          +button(buttons[1])

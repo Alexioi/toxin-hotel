@@ -42,7 +42,14 @@ block main
                 +title({text: 'Отзывы посетителей номера', type: 'h3'})
               span.p-room-details__review 2 отзыва
           +wrapper({marginTop: 18})
-            +comment 
+            +comment({
+              authorName: 'Патрисия Стёклышкова',
+              image: 'patrisia',
+              date: 'Неделю назад',
+              counter: 2,
+              isLiked: false,
+              text: 'Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент',
+            }) 
           +wrapper({marginTop: 23})
             +comment({
               authorName: 'Патрисия Стёклышкова',

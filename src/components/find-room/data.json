@@ -1,0 +1,11 @@
+{
+  "titels": [{ "text": "Найдём номера под ваши пожелания" }],
+  "labels": [{ "title": "прибытие" }, { "title": "выезд" }, { "title": "гости" }],
+  "dropdownFields": [
+    { "inputName": "dateFrom" },
+    { "inputName": "dateTo" },
+    { "inputName": "guests" }
+  ],
+  "dropdownMenus": [{ "type": "guests" }],
+  "buttons": [{ "theme": "long", "text": "подобрать номер", "type": "submit" }]
+}

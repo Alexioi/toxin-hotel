@@ -1,0 +1,6 @@
+{
+  "buttons": [
+    { "type": "link", "theme": "link", "text": "очистить", "type": "button" },
+    { "type": "link", "theme": "link", "text": "применить", "type": "button" }
+  ]
+}

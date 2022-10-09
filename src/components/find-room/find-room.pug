@@ -1,34 +1,35 @@
-include ../wrapper/wrapper
 include ../button/button
 include ../card/card
 include ../title/title
 include ../calendar/calendar
 include ../dropdown-field/dropdown-field
-include ../wrapper/wrapper
 include ../label/label
 include ../dropdown-menu/dropdown-menu
-include ../../components/row/row
 
-mixin find-room(options)
+
+mixin find-room()
+  - 
+    const {
+      titels,
+      labels,
+      dropdownFields,
+      dropdownMenus,
+      buttons
+    } = require('Components/find-room/data.json')
+
   .find-room
     +card
-      +title({text: 'Найдём номера под ваши пожелания'}) 
+      +title(titels[0]) 
       form.find-room__form(method="POST", action="/change-it")
-        +wrapper({marginTop: 21})
+        .find-room__calendar-wrapper
           +calendar   
-            +row
-              +wrapper({paddingRight: 10})
-                +label({title: 'прибытие'})
-                  +wrapper({marginTop: 5})
-                    +dropdown-field({inputName: 'dateFrom'})
-              +wrapper({paddingLeft: 10})
-                +label({title: 'выезд'})
-                  +wrapper({marginTop: 5})
-                    +dropdown-field({inputName: 'dateTo'})
-        +wrapper({marginTop: 23})
-          +dropdown-menu({type: 'guests'})
-            +label({title: 'гости'})
-              +wrapper({marginTop: 5})
-                +dropdown-field({inputName: 'guests'})
-        +wrapper({marginTop: 33})
-          +button({ theme: 'long', text: 'подобрать номер', type: 'submit'})
+            +label(labels[0])
+              +dropdown-field(dropdownFields[0])
+            +label(labels[1])
+              +dropdown-field(dropdownFields[1])
+        .find-room__dropdown-wrapper
+          +dropdown-menu(dropdownMenus[0])
+            +label(labels[2])
+              +dropdown-field(dropdownFields[2])
+        .find-room__button-wrapper
+          +button(buttons[0])

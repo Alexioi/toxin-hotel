@@ -20,7 +20,8 @@ mixin dropdown-menu(options)
         hasButtons = true
     } 
 
-  -
+    const {buttons} = require('Components/calendar/data.json')
+
     let classes = ''
     classes += isOpened ? ' dropdown-menu_opened' : ''
 
@@ -42,6 +43,6 @@ mixin dropdown-menu(options)
       if hasButtons
         .dropdown-menu__buttons
           .dropdown-menu__clear-button.js-dropdown-menu__clear-button
-            +button({type: 'link', theme: 'link', text: 'очистить', type:'button'})
+            +button(buttons[0])
           .dropdown-menu__apply-button.js-dropdown-menu__apply-button
-            +button({type: 'link', theme: 'link', text: 'применить', type:'button'})
+            +button(buttons[1])
