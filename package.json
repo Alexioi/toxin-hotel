@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack && npm run purgecss",
-    "purgecss": "purgecss --config ./purgecss.config.js --output ./dist/*.css",
+    "build": "cross-env NODE_ENV=production webpack",
     "deploy": "npm run build && gh-pages -d dist",
     "server": "cross-env NODE_ENV=development webpack serve"
   },
@@ -25,7 +24,6 @@
     "mini-css-extract-plugin": "^2.3.0",
     "pug": "^2.0.0",
     "pug-loader": "^2.4.0",
-    "purgecss": "^4.0.3",
     "sass": "^1.32.8",
     "sass-loader": "^11.0.1",
     "webpack": "^5.24.2",
