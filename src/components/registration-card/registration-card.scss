@@ -1,0 +1,37 @@
+.registration-card {
+  &__name-wrapper {
+    margin-top: 20px;
+  }
+
+  &__surname-wrapper {
+    margin-top: 10px;
+  }
+
+  &__radio-buttons-wrapper {
+    margin-top: 10px;
+  }
+
+  &__birthday-wrapper {
+    margin-top: 24px;
+  }
+
+  &__email-wrapper {
+    margin-top: 10px;
+  }
+
+  &__password-wrapper {
+    margin-top: 10px;
+  }
+
+  &__toggle-wrapper {
+    margin-top: 10px;
+  }
+
+  &__button-wrapper {
+    margin-top: 10px;
+  }
+
+  &__question-form-about-auth-wrapper {
+    margin-top: 30px;
+  }
+}

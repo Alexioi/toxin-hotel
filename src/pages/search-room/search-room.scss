@@ -25,7 +25,18 @@
     }
   }
 
+  &__column {
+    flex-basis: 834px;
+  }
+
+  &__room-list-wrapper {
+    padding-top: 21px;
+    padding-bottom: 45px;
+  }
+
   &__pagination {
+    padding-left: 290px;
+
     @include media-breakpoint-down($lg) {
       padding-left: 0;
       display: flex;

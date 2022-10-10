@@ -3,7 +3,6 @@ include ../card/card
 include ../button/button
 include ../calendar/calendar
 include ../dropdown-field/dropdown-field
-include ../wrapper/wrapper
 include ../label/label
 include ../dropdown-menu/dropdown-menu
 
@@ -22,7 +21,7 @@ mixin room-booking(options)
     +card
       form.room-booking__form(method="POST" action="/change-it")
         +room-info({isLux: true})
-        +wrapper({marginTop: 20, marginBottom: 22})
+        .room-booking__calendar-wrapper
           +calendar   
             +label({title: 'прибытие'})
               +dropdown-field({inputName: 'dateFrom'})

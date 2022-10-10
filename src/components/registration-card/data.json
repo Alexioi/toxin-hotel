@@ -1,0 +1,19 @@
+{
+  "titles": [{ "text": "Регистрация аккаунта" }],
+  "textFields": [
+    { "placeholder": "Имя", "type": "text", "name": "name" },
+    { "placeholder": "Фамилия", "type": "text", "name": "surname" },
+    { "hasHeader": true, "isMasked": true, "name": "birthday" },
+    { "hasHeader": true, "placeholder": "Email", "type": "email", "name": "email" },
+    { "placeholder": "Пароль", "type": "password", "name": "password" }
+  ],
+  "labels": [{ "title": "дата рождения" }, { "title": "данные для входа в сервис" }],
+  "buttons": [{ "type": "submit", "theme": "long", "text": "перейти к оплате" }],
+  "questionFormAboutAuth": [
+    {
+      "questionText": "Уже есть аккаунт на Toxin",
+      "buttonText": "войти",
+      "buttonLink": "./sing-in.html"
+    }
+  ]
+}

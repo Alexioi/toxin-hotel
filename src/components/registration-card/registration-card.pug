@@ -1,4 +1,3 @@
-include ../wrapper/wrapper
 include ../question-form-about-auth/question-form-about-auth
 include ../text-field/text-field
 include ../radio-buttons/radio-buttons
@@ -9,6 +8,14 @@ include ../card/card
 include ../label/label
 
 mixin registration-card() 
+  - 
+    const {
+      titles,
+      textFields,
+      labels,
+      buttons,
+      questionFormAboutAuth
+    } = require('Components/registration-card/data.json')
 
   .registration-card
     +card 
@@ -16,24 +23,24 @@ mixin registration-card()
         method="POST" 
         action="/change-it"
       ) 
-        +title({text: 'Регистрация аккаунта'}) 
-        +wrapper({marginTop: 20})
-          +text-field({ placeholder: 'Имя', type: "text", name: "name" })
-        +wrapper({marginTop: 10})
-          +text-field({ placeholder: 'Фамилия', type: "text", name: "surname" })
-        +wrapper({marginTop: 10})
+        +title(titles[0]) 
+        .registration-card__name-wrapper
+          +text-field(textFields[0])
+        .registration-card__surname-wrapper
+          +text-field(textFields[1])
+        .registration-card__radio-buttons-wrapper
           +radio-buttons
-        +wrapper({marginTop: 24})
-          +label({title: 'дата рождения'})
-            +text-field({ hasHeader: true, isMasked: true, name: "birthday"})
-        +wrapper({marginTop: 20})
-          +label({title: 'данные для входа в сервис'})
-            +text-field({ hasHeader: true, placeholder: 'Email', type: "email", name: "email"})
-        +wrapper({marginTop: 10})
-          +text-field({ placeholder: 'Пароль', type: "password", name: "password"})
-        +wrapper({marginTop: 10})
+        .registration-card__birthday-wrapper
+          +label(labels[0])
+            +text-field(textFields[2])
+        .registration-card__email-wrapper
+          +label(labels[1])
+            +text-field(textFields[3])
+        .registration-card__password-wrapper
+          +text-field(textFields[4])
+        .registration-card__toggle-wrapper
           +toggle
-        +wrapper({marginTop: 23})
-          +button({ type: 'submit', theme: "long", text: 'перейти к оплате', })
-      +wrapper({marginTop: 30})
-        +question-form-about-auth({questionText: "Уже есть аккаунт на Toxin", buttonText: "войти", buttonLink: "./sing-in.html"})
+        .registration-card__button-wrapper
+          +button(buttons[0])
+      .registration-card__question-form-about-auth-wrapper
+        +question-form-about-auth(questionFormAboutAuth[0])

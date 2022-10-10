@@ -2,7 +2,6 @@ extends ../../templates/website-pages/website-pages
 include ../../components/room-list/room-list
 include ../../components/filter/filter
 include ../../components/container/container
-include ../../components/wrapper/wrapper
 include ../../components/title/title
 include ../../components/pagination/pagination
 
@@ -15,9 +14,9 @@ block main
       .search-room__content
         .search-room__filter-wrapper
           +filter
-        +wrapper({basis: 834})
+        .search-room__column
           +title({text: 'Номера, которые мы для вас подобрали'})
-          +wrapper({paddingTop: 21, paddingBottom: 45})
+          .search-room__room-list-wrapper
             +room-list
-          +wrapper({paddingLeft: 290, mix: 'search-room__pagination'})
+          .search-room__pagination
             +pagination

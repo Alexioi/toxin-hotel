@@ -17,6 +17,14 @@
     }
   }
 
+  &__column {
+    flex-basis: 712px;
+  }
+
+  &__room-booking-wrapper {
+    flex-basis: 380px;
+  }
+
   &__mini-info-about-room {
     display: flex;
     justify-content: space-between;
@@ -26,7 +34,17 @@
     }
   }
 
+  &__icon-text-list {
+    flex-basis: 291px;
+    display: flex;
+    gap: 20px;
+  }
+
   &__pie-chart {
+    flex-basis: 351px;
+    display: flex;
+    gap: 20px;
+
     @include media-breakpoint-down($xs) {
       flex-basis: auto;
       margin-top: 20px;
@@ -37,13 +55,24 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 17px;
 
     @include media-breakpoint-down($xs) {
       flex-direction: column;
     }
   }
 
+  &__first-comment-wrapper {
+    margin-top: 18px;
+  }
+
+  &__second-comment-wrapper {
+    margin-top: 18px;
+  }
+
   &__wrapper-review-title {
+    padding-left: 20px;
+
     @include media-breakpoint-down($xs) {
       padding: 0;
     }
@@ -63,14 +92,24 @@
 
   &__rules {
     display: flex;
+    width: 260px;
     justify-content: space-between;
+    margin-top: 32px;
 
     @include media-breakpoint-down($xs) {
       flex-direction: column;
     }
   }
 
+  &__bullet-list-title-wrapper {
+    margin-bottom: 20px;
+    margin-left: 20px;
+  }
+
   &__wrapper-reset-text {
+    width: 351px;
+    padding-right: 9px;
+
     @include media-breakpoint-down($xs) {
       max-width: none;
       padding: 0;
@@ -83,5 +122,6 @@
     font-size: 14px;
     line-height: 24px;
     color: rgba($color-first, 0.75);
+    margin-top: 20px;
   }
 }
