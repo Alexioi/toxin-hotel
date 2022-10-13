@@ -13,35 +13,34 @@ block title
   | Room details
 
 block main
-  - const {comments, iconTextLists, gallarys} = require('./data.json')
+  - const {comments, iconTextLists, gallarys, titles, bulletLists} = require('./data.json')
 
   .room-details
     +gallery(gallarys[0])
     +container
       .room-details__content-block
-        .room-details__column
-          .room-details__mini-info-about-room
-            .room-details__icon-text-list
-              +title({text: 'Сведения о номере', type: 'h3'})
-                +icon-text-list(iconTextLists[0])
-            .room-details__pie-chart
-              +title({text: 'Впечатления от номера', type: 'h3'})
-                +pie-chart
-          .room-details__review-title       
-            .room-details__wrapper-review-title
-              +title({text: 'Отзывы посетителей номера', type: 'h3'})
-            span.p-room-details__review 2 отзыва
-          .room-details__first-comment-wrapper
+        .room-details__content-column
+          .room-details__room-statistic-wrapper
+            .room-details__icon-text-list-wrapper
+              +title(titles[0])
+              +icon-text-list(iconTextLists[0])
+            .room-details__pie-chart-wrapper
+              +title(titles[1])
+              +pie-chart
+          .room-details__comments-title-wrapper       
+            +title(titles[2])
+            span.room-details__text 2 отзыва
+          .room-details__comments-wrapper
             +comment(comments[0]) 
-          .room-details__second-comment-wrapper
             +comment(comments[1])
-          .room-details__rules
-            .room-details__bullet-list-title-wrapper
-              +title({text: 'Правила', type: 'h3'})
-            +bullet-list
-            .room-details__wrapper-reset-text
-              +title({text: 'Отмена', type: 'h3'})
-              p.room-details__reset-text Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
+          .room-details__rules-wrapper
+            .room-details__bullet-list-wrapper
+              .room-details__bullet-list-title-wrapper
+                +title(titles[3])
+              +bullet-list(bulletLists[0])
+            .room-details__reset-wrapper
+              +title(titles[4])
+              p.room-details__text Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
 
         .room-details__room-booking-wrapper
           +room-booking
