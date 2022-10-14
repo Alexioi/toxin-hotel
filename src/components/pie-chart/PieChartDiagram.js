@@ -79,7 +79,7 @@ class PieChartDiagram {
     ctx.textAlign = 'center';
     ctx.fillText(votes, centerX, centerY + centerY / 9);
 
-    ctx.font = 'bold 12px sans-serif';
+    ctx.font = 'bold 12px Montserrat sans-serif';
     ctx.textBaseline = 'top';
     ctx.text;
     ctx.fillText('ГОЛОСОВ', centerX, centerY + centerY / 6);
