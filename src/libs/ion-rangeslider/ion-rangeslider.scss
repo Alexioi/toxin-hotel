@@ -1,0 +1,39 @@
+@import '../../style/variables.scss';
+
+.irs {
+  position: relative;
+  display: block;
+
+  &-line {
+    display: block;
+    height: 6px;
+    background: #ffffff;
+    border: 1px solid rgba($color-first, 0.25);
+    box-sizing: border-box;
+    border-radius: 3px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &-bar {
+    display: block;
+    position: absolute;
+    height: 6px;
+    top: 0;
+    background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+  }
+
+  &-handle {
+    top: -5px;
+    position: absolute;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+    border: 2px solid #ffffff;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+}
