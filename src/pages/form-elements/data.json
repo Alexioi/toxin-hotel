@@ -151,15 +151,17 @@
   ],
   "rates": [{ "quantity": 4 }, { "quantity": 5 }],
   "buttons": [
-    { "isHovered": true },
-    { "theme": "outline" },
-    { "theme": "outline", "isHovered": true },
-    { "theme": "link" },
-    { "theme": "link", "isHovered": true },
+    { "text": "click me", "theme": "default" },
+    { "isHovered": true, "text": "click me", "theme": "default" },
+    { "theme": "outline", "text": "click me" },
+    { "theme": "outline", "isHovered": true, "text": "click me" },
+    { "theme": "link", "text": "click me" },
+    { "theme": "link", "isHovered": true, "text": "click me" },
     { "theme": "long", "text": "перейти к оплате" }
   ],
   "dropdownLists": [
     { "title": "expandable checkbox list" },
     { "title": "expandable checkbox list", "isOpened": true }
-  ]
+  ],
+  "rangeSliders": [{ "title": "range slider" }]
 }

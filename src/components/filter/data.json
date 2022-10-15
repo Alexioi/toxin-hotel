@@ -6,7 +6,6 @@
     { "title": "доступность" },
     { "title": "удобства номера" }
   ],
-  "dropdownMenus": [],
   "rangeSliders": [{ "title": "диапазон цены" }],
   "checkboxLists": [
     {
@@ -26,8 +25,39 @@
           "subText": "На 1 этаже вас встретит специалист и проводит до номера."
         }
       ]
+    },
+    {
+      "isRich": false,
+      "items": [
+        { "text": "Завтрак" },
+        { "text": "Письменный стол", "isChecked": true },
+        { "text": "Стул для кормления", "isChecked": true },
+        { "text": "Кроватка", "isChecked": true },
+        { "text": "Телевизор" },
+        { "text": "Шампунь" }
+      ]
     }
   ],
   "buttons": [{ "text": "фильтр", "theme": "outline" }],
-  "dropdownLists": [{ "title": "дополнительные удобства" }]
+  "dropdownLists": [{ "title": "дополнительные удобства" }],
+  "dropdownMenus": [
+    {
+      "items": [
+        { "name": "взрослые", "counter": 3 },
+        { "name": "дети", "counter": 0 },
+        { "name": "младенцы", "counter": 1 }
+      ],
+      "isOpened": false,
+      "type": "guests"
+    },
+    {
+      "items": [
+        { "name": "спальни", "counter": 2 },
+        { "name": "кровати", "counter": 2 },
+        { "name": "ванные комнаты", "counter": 0 }
+      ],
+      "isOpened": false,
+      "type": "rooms"
+    }
+  ]
 }

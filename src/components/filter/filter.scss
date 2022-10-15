@@ -14,11 +14,11 @@
   }
 
   &__dropdown-menu-guests-wrapper {
-    margin-top: 22px;
+    margin-top: 21px;
   }
 
   &__range-slider-wrapper {
-    margin-top: 32px;
+    margin-top: 30px;
   }
 
   &__range-text {
@@ -26,21 +26,30 @@
     color: rgba($color-first, 0.5);
   }
 
+  &__rules-title-wrapper {
+    margin-top: 28px;
+  }
+
   &__rules-wrapper {
-    margin-top: 30px;
+    margin-top: 12px;
+  }
+
+  &__availability-title-wrapper {
+    margin-top: 32px;
   }
 
   &__availability-wrapper {
-    margin-top: 34px;
+    margin-top: 12px;
     width: 260px;
   }
 
-  &__dropdown-menu-guests-wrapper {
+  &__dropdown-menu-rooms-wrapper {
     margin-top: 30px;
   }
 
   &__dropdown-list-wrapper {
-    margin-top: 32px;
+    margin-top: 31px;
+    width: 255px;
   }
 
   &__toggle-button {

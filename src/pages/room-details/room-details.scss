@@ -7,6 +7,7 @@
     justify-content: space-between;
 
     @include media-breakpoint-down($lg) {
+      gap: 20px;
       flex-direction: column;
     }
   }
@@ -18,6 +19,11 @@
   &__room-statistic-wrapper {
     display: flex;
     gap: 80px;
+
+    @include media-breakpoint-down($sm) {
+      gap: 20px;
+      flex-direction: column;
+    }
   }
 
   &__icon-text-list-wrapper {
@@ -38,6 +44,11 @@
     padding-left: 21px;
     display: flex;
     justify-content: space-between;
+
+    @include media-breakpoint-down($sm) {
+      gap: 10px;
+      flex-direction: column;
+    }
   }
 
   &__text {
@@ -57,6 +68,11 @@
     display: flex;
     margin-top: 35px;
     gap: 101px;
+
+    @include media-breakpoint-down($lg) {
+      gap: 20px;
+      flex-direction: column;
+    }
   }
 
   &__bullet-list-wrapper {
@@ -64,6 +80,10 @@
     flex-direction: column;
     gap: 20px;
     flex-basis: 260px;
+
+    @include media-breakpoint-down($lg) {
+      flex-basis: auto;
+    }
   }
 
   &__bullet-list-title-wrapper {
@@ -75,6 +95,10 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    @include media-breakpoint-down($lg) {
+      flex-basis: auto;
+    }
   }
 
   &__room-booking-wrapper {

@@ -37,6 +37,7 @@ block main
       rates,
       buttons,
       dropdownLists,
+      rangeSliders,
     } = require('./data.json')
 
   .form-elements
@@ -96,20 +97,20 @@ block main
 
       .form-elements__text-fields-and-buttons-right-column
         .form-elements__text-fields-and-buttons-right-wrapper
-          +range-slider
+          +range-slider(rangeSliders[0])
         .form-elements__text-fields-and-buttons-right-wrapper
           +label(labels[12]) 
         .form-elements__text-fields-and-buttons-right-wrapper
-          +button
           +button(buttons[0])
-        .form-elements__text-fields-and-buttons-right-wrapper
           +button(buttons[1])
+        .form-elements__text-fields-and-buttons-right-wrapper
           +button(buttons[2])
-        .form-elements__text-fields-and-buttons-right-wrapper
           +button(buttons[3])
-          +button(buttons[4])
         .form-elements__text-fields-and-buttons-right-wrapper
+          +button(buttons[4])
           +button(buttons[5])
+        .form-elements__text-fields-and-buttons-right-wrapper
+          +button(buttons[6])
         .form-elements__text-fields-and-buttons-right-wrapper
           +label(labels[13])
         .form-elements__text-fields-and-buttons-right-wrapper

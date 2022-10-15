@@ -5,18 +5,17 @@
   background: no-repeat center center url(./img/background.png);
   background-size: cover;
 
-  &__container {
-    max-width: 1160px;
-    margin: 0 auto;
-  }
-
-  &__form-wrapper {
+  &__form-row {
     padding-top: 70px;
-    width: 380px;
+    display: flex;
 
     @include media-breakpoint-down($lg) {
       justify-content: center;
     }
+  }
+
+  &__form-wrapper {
+    width: 380px;
   }
 
   &__text-row {

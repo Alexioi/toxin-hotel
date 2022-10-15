@@ -1,0 +1,26 @@
+{
+  "expensesItems": [
+    { "about": "9 990₽ х 4 суток", "hasInfo": false, "value": "39 960₽" },
+    { "about": "Сбор за услуги: скидка 2 179₽", "hasInfo": true, "value": "0₽" },
+    { "about": "Сбор за дополнительные услуги", "hasInfo": true, "value": "300₽" }
+  ],
+  "dropdownMenus": [
+    {
+      "items": [
+        { "name": "взрослые", "counter": 0 },
+        { "name": "дети", "counter": 0 },
+        { "name": "младенцы", "counter": 0 }
+      ],
+      "isOpened": false,
+      "type": "guests"
+    }
+  ],
+  "labels": [{ "title": "прибытие" }, { "title": "выезд" }, { "title": "гости" }],
+  "buttons": [{ "theme": "long", "text": "забронировать", "type": "submit" }],
+  "roomInfos": [{ "isLux": true }],
+  "dropdownFields": [
+    { "inputName": "dateFrom" },
+    { "inputName": "dateTO" },
+    { "inputName": "guests" }
+  ]
+}

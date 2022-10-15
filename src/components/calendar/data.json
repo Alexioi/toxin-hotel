@@ -1,6 +1,6 @@
 {
   "buttons": [
-    { "theme": "link", "text": "очистить" },
-    { "theme": "link", "text": "применить" }
+    { "theme": "link", "text": "очистить", "type": "button" },
+    { "theme": "link", "text": "применить", "type": "button" }
   ]
 }

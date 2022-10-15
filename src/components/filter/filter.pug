@@ -16,7 +16,7 @@ mixin filter()
       rangeSliders, 
       checkboxLists,
       buttons,
-      dropdownLists
+      dropdownLists,
     } = require('Components/filter/data.json')
 
 
@@ -26,24 +26,26 @@ mixin filter()
         +label(labels[0])
           +dropdown-field
       .filter__dropdown-menu-guests-wrapper
-        +dropdown-menu()
+        +dropdown-menu(dropdownMenus[0])
           +label(labels[1])
             +dropdown-field
       .filter__range-slider-wrapper 
         +range-slider(rangeSliders[0])
         p.filter__range-text Стоимость за сутки пребывания в номере
-      .filter__rules-wrapper
+      .filter__rules-title-wrapper
         +label(labels[2])
-          +checkbox-list(checkboxLists[0])
-      .filter__availability-wrapper
+      .filter__rules-wrapper
+        +checkbox-list(checkboxLists[0])
+      .filter__availability-title-wrapper
         +label(labels[3])
-          +checkbox-list(checkboxLists[1])
+      .filter__availability-wrapper
+        +checkbox-list(checkboxLists[1])
       .filter__dropdown-menu-rooms-wrapper
-        +dropdown-menu()
+        +dropdown-menu(dropdownMenus[1])
           +label(labels[4])
             +dropdown-field
       .filter__dropdown-list-wrapper
         +dropdown-list(dropdownLists[0])
-          +checkbox-list
+          +checkbox-list(checkboxLists[2])
     .filter__toggle-button.js-filter__toggle-button 
       +button(buttons[0])
