@@ -8,6 +8,7 @@ const cssSelectors = {
   counterButtons: '.js-dropdown-menu__counter-button',
   dropdownMenuTypeGuests: '.js-dropdown-menu.dropdown-menu_type-guests',
   dropdownMenuTypeRooms: '.js-dropdown-menu.dropdown-menu_type-rooms',
+  menu: '.js-dropdown-menu__menu',
 };
 
 export default cssSelectors;

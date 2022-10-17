@@ -15,5 +15,6 @@ module.exports = {
     'class-methods-use-this': 'off',
     'arrow-body-style': 'off',
     'operator-assignment': 'off',
+    'no-param-reassign': 'off',
   },
 };

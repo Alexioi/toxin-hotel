@@ -36,6 +36,16 @@ class Calendar {
     this.$apply.on('click', this._applyDates.bind(this));
     this.$clear.on('click', this._clearDates.bind(this));
     this.$buttons.on('click', this._toggleVisible.bind(this));
+    $(document).on('click', this._onClickEventHandler.bind(this));
+  }
+
+  _onClickEventHandler(event) {
+    const isCurrentMenuTarget = event.target.closest(cssSelectors.menu) === this.$menu[0];
+    const isCurrentButton = event.target === this.$buttons[0] || event.target === this.$buttons[1];
+
+    if (!isCurrentMenuTarget && !isCurrentButton) {
+      this.$menu.removeClass('calendar__menu_visible');
+    }
   }
 
   _applyDates() {
@@ -84,11 +94,10 @@ class Calendar {
 
   _toggleVisible() {
     this.$menu.toggleClass('calendar__menu_visible');
+    const isOpened = this.$menu.hasClass('calendar__menu_visible');
 
     this.$inputs.each((i) => {
-      const isFocus = this.$inputs[i].dataset.focus === 'true';
-
-      this.$inputs[i].dataset.focus = isFocus ? 'false' : 'true';
+      this.$inputs[i].dataset.focus = isOpened ? 'true' : 'false';
     });
   }
 

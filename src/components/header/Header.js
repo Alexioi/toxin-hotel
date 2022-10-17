@@ -23,26 +23,26 @@ class Header {
   _attachEventHandlers() {
     this.button.addEventListener('click', this._toggleNavigation.bind(this));
     this.navigationButtons.forEach((navigationButton, index) => {
-      navigationButton.addEventListener('click', this._openSubNavigationList.bind(this, index));
+      navigationButton.addEventListener('click', this._toggleSubNavigationList.bind(this, index));
     });
+    document.addEventListener('click', this._onClickEventHandler.bind(this));
+  }
+
+  _onClickEventHandler(event) {
+    const isCurrentMenuTarget = event.target.closest(cssSelectors.menu) === this.menu;
+    const isCurrentToggleButton = event.target !== this.toggleButton;
+
+    if (!isCurrentMenuTarget && isCurrentToggleButton) {
+      this._closeSubNavigationList();
+    }
+  }
+
+  _toggleSubNavigationList(targetIndex) {
+    this.subNavigationLists[targetIndex].classList.toggle('header__sub-navigation-list_opened');
   }
 
   _closeSubNavigationList(targetIndex) {
-    event.stopImmediatePropagation();
-    if (!event.path.includes(this.subNavigationLists[targetIndex])) {
-      console.log(targetIndex, event);
-      this.subNavigationLists[targetIndex].classList.remove('header__sub-navigation-list_opened');
-      document.removeEventListener('click', this._closeSubNavigationList);
-    }
-  }
-
-  _openSubNavigationList(targetIndex) {
-    if (
-      !this.subNavigationLists[targetIndex].classList.contains('header__sub-navigation-list_opened')
-    ) {
-      this.subNavigationLists[targetIndex].classList.add('header__sub-navigation-list_opened');
-      document.addEventListener('click', this._closeSubNavigationList.bind(this, targetIndex));
-    }
+    this.subNavigationLists[targetIndex].classList.remove('header__sub-navigation-list_opened');
   }
 
   _toggleNavigation() {

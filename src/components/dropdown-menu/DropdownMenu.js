@@ -22,6 +22,7 @@ class DropdownMenu {
     this.items = this.node.querySelectorAll(cssSelectors.items);
     this.clearButton = this.node.querySelector(cssSelectors.clearButton);
     this.applyButton = this.node.querySelector(cssSelectors.applyButton);
+    this.menu = this.node.querySelector(cssSelectors.menu);
   }
 
   _getType() {
@@ -59,6 +60,22 @@ class DropdownMenu {
         this._increaseCounterValue.bind(this, index, counter),
       );
     });
+    document.addEventListener('click', this._onClickEventHandler.bind(this));
+  }
+
+  _onClickEventHandler(event) {
+    const isCurrentMenuTarget = event.target.closest(cssSelectors.menu) === this.menu;
+    const isCurrentToggleButton = event.target !== this.toggleButton;
+
+    if (!isCurrentMenuTarget && isCurrentToggleButton) {
+      this._closeMenu();
+    }
+  }
+
+  _closeMenu() {
+    this.node.classList.remove('dropdown-menu_opened');
+
+    this._toggleInputFocus();
   }
 
   _increaseCounterValue(index, counter) {
@@ -148,11 +165,11 @@ class DropdownMenu {
   }
 
   _calculateValueArray(items, emptyString) {
-    let value = [];
+    const value = [];
 
     items.forEach(({ variants, count }) => {
       if (count > 0) {
-        value.push(count + ' ' + this._getPlural(variants, count));
+        value.push(`${count} ${this._getPlural(variants, count)}`);
       }
     });
 
@@ -164,10 +181,13 @@ class DropdownMenu {
   }
 
   _getPlural(forms, count) {
+    const isUnit = count % 10 === 1 && count % 100 !== 11;
+    const isPair = count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 10 || count % 100 >= 20);
     let idx;
-    if (count % 10 === 1 && count % 100 !== 11) {
+
+    if (isUnit) {
       idx = 0;
-    } else if (count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 10 || count % 100 >= 20)) {
+    } else if (isPair) {
       idx = 1;
     } else {
       idx = 2;
