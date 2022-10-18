@@ -25,24 +25,23 @@ class Header {
     this.navigationButtons.forEach((navigationButton, index) => {
       navigationButton.addEventListener('click', this._toggleSubNavigationList.bind(this, index));
     });
-    document.addEventListener('click', this._onClickEventHandler.bind(this));
+    document.addEventListener('click', this._onClickDocument.bind(this));
   }
 
-  _onClickEventHandler(event) {
-    const isCurrentMenuTarget = event.target.closest(cssSelectors.menu) === this.menu;
-    const isCurrentToggleButton = event.target !== this.toggleButton;
-
-    if (!isCurrentMenuTarget && isCurrentToggleButton) {
-      this._closeSubNavigationList();
-    }
+  _onClickDocument({ path }) {
+    this.subNavigationLists.forEach((list, index) => {
+      if (!path.includes(list) && !path.includes(this.navigationButtons[index])) {
+        this._closeSubNavigationList(list);
+      }
+    });
   }
 
   _toggleSubNavigationList(targetIndex) {
     this.subNavigationLists[targetIndex].classList.toggle('header__sub-navigation-list_opened');
   }
 
-  _closeSubNavigationList(targetIndex) {
-    this.subNavigationLists[targetIndex].classList.remove('header__sub-navigation-list_opened');
+  _closeSubNavigationList(node) {
+    node.classList.remove('header__sub-navigation-list_opened');
   }
 
   _toggleNavigation() {

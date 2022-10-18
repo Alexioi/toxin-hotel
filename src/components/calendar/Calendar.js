@@ -36,11 +36,11 @@ class Calendar {
     this.$apply.on('click', this._applyDates.bind(this));
     this.$clear.on('click', this._clearDates.bind(this));
     this.$buttons.on('click', this._toggleVisible.bind(this));
-    $(document).on('click', this._onClickEventHandler.bind(this));
+    document.addEventListener('click', this._onClickDocument.bind(this));
   }
 
-  _onClickEventHandler(event) {
-    const isCurrentMenuTarget = event.target.closest(cssSelectors.menu) === this.$menu[0];
+  _onClickDocument(event) {
+    const isCurrentMenuTarget = event.path.includes(this.$menu[0]);
     const isCurrentButton = event.target === this.$buttons[0] || event.target === this.$buttons[1];
 
     if (!isCurrentMenuTarget && !isCurrentButton) {
