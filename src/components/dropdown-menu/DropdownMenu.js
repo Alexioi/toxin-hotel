@@ -14,6 +14,8 @@ class DropdownMenu {
     this._attachEventHandlers();
     this._updateInput();
     this._toggleInputFocus();
+    this._toggleCounterButtons();
+    this._toggleClearButton();
   }
 
   _findNodes() {
@@ -86,6 +88,9 @@ class DropdownMenu {
     if (!this.applyButton) {
       this._updateInput();
     }
+
+    this._toggleCounterButtons();
+    this._toggleClearButton();
   }
 
   _decreaseCounterValue(index, counter) {
@@ -99,6 +104,9 @@ class DropdownMenu {
     if (!this.applyButton) {
       this._updateInput();
     }
+
+    this._toggleCounterButtons();
+    this._toggleClearButton();
   }
 
   _onApplyButton() {
@@ -124,6 +132,9 @@ class DropdownMenu {
     });
 
     this.counters = [0, 0, 0];
+
+    this._toggleCounterButtons();
+    this._toggleClearButton();
   }
 
   _updateInput() {
@@ -193,6 +204,31 @@ class DropdownMenu {
       idx = 2;
     }
     return forms[idx] || '';
+  }
+
+  _toggleCounterButtons() {
+    this.counters.forEach((counter, index) => {
+      const counterButton = this.items[index].querySelector('.js-dropdown-menu__counter-button');
+
+      if (counter === 0) {
+        counterButton.classList.add('dropdown-menu__counter-button_disabled');
+      } else {
+        counterButton.classList.remove('dropdown-menu__counter-button_disabled');
+      }
+    });
+  }
+
+  _toggleClearButton() {
+    if (!this.clearButton) {
+      return;
+    }
+
+    const countersSum = this.counters.reduce((partialSum, counter) => partialSum + counter, 0);
+    if (countersSum === 0) {
+      this.clearButton.style.display = 'none';
+    } else {
+      this.clearButton.style.display = '';
+    }
   }
 }
 
