@@ -40,7 +40,7 @@ class Calendar {
   }
 
   _onClickDocument(event) {
-    const isCurrentMenuTarget = event.path.includes(this.$menu[0]);
+    const isCurrentMenuTarget = event.composedPath().includes(this.$menu[0]);
     const isCurrentButton = event.target === this.$buttons[0] || event.target === this.$buttons[1];
 
     if (!isCurrentMenuTarget && !isCurrentButton) {

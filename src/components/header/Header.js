@@ -28,9 +28,12 @@ class Header {
     document.addEventListener('click', this._onClickDocument.bind(this));
   }
 
-  _onClickDocument({ path }) {
+  _onClickDocument(event) {
     this.subNavigationLists.forEach((list, index) => {
-      if (!path.includes(list) && !path.includes(this.navigationButtons[index])) {
+      const hasList = event.composedPath().includes(list);
+      const hasNavigationButton = event.composedPath().includes(this.navigationButtons[index]);
+
+      if (!hasList && !hasNavigationButton) {
         this._closeSubNavigationList(list);
       }
     });

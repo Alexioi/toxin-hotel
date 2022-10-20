@@ -62,10 +62,10 @@ class DropdownMenu {
         this._increaseCounterValue.bind(this, index, counter),
       );
     });
-    document.addEventListener('click', this._onClickEventHandler.bind(this));
+    document.addEventListener('click', this._onClickDocument.bind(this));
   }
 
-  _onClickEventHandler(event) {
+  _onClickDocument(event) {
     const isCurrentMenuTarget = event.target.closest(cssSelectors.menu) === this.menu;
     const isCurrentToggleButton = event.target !== this.toggleButton;
 
