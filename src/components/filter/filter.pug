@@ -1,5 +1,5 @@
 include ../../components/calendar/calendar
-include ../../components/label/label
+include ../../components/title/title
 include ../../components/dropdown-field/dropdown-field
 include ../../components/dropdown-menu/dropdown-menu
 include ../../components/range-slider/range-slider
@@ -11,7 +11,7 @@ include ../../components/button/button
 mixin filter()
   - 
     const {
-      labels,
+      titles,
       dropdownMenus,
       rangeSliders, 
       checkboxLists,
@@ -23,27 +23,27 @@ mixin filter()
   .filter.js-filter
     .filter__items
       +calendar
-        +label(labels[0])
-          +dropdown-field
+        +title(titles[0])
+        +dropdown-field
       .filter__dropdown-menu-guests-wrapper
         +dropdown-menu(dropdownMenus[0])
-          +label(labels[1])
-            +dropdown-field
+          +title(titles[1])
+          +dropdown-field
       .filter__range-slider-wrapper 
         +range-slider(rangeSliders[0])
         p.filter__range-text Стоимость за сутки пребывания в номере
       .filter__rules-title-wrapper
-        +label(labels[2])
+        +title(titles[2])
       .filter__rules-wrapper
         +checkbox-list(checkboxLists[0])
       .filter__availability-title-wrapper
-        +label(labels[3])
+        +title(titles[3])
       .filter__availability-wrapper
         +checkbox-list(checkboxLists[1])
       .filter__dropdown-menu-rooms-wrapper
         +dropdown-menu(dropdownMenus[1])
-          +label(labels[4])
-            +dropdown-field
+          +title(titles[4])
+          +dropdown-field
       .filter__dropdown-list-wrapper
         +dropdown-list(dropdownLists[0])
           +checkbox-list(checkboxLists[2])

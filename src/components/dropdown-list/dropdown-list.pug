@@ -1,4 +1,4 @@
-include ../label/label
+include ../title/title
 
 mixin dropdown-list(options)
   - 
@@ -12,7 +12,7 @@ mixin dropdown-list(options)
 
   .dropdown-list.js-dropdown-list(class=classes)
     .dropdown-list__header 
-      +label({title})
+      +title({title})
       button.dropdown-list__button.js-dropdown-list__button.material-icons expand_more
     .dropdown-list__menu
       block

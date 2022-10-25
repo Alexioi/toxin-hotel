@@ -3,7 +3,7 @@ include ../card/card
 include ../button/button
 include ../calendar/calendar
 include ../dropdown-field/dropdown-field
-include ../label/label
+include ../title/title
 include ../dropdown-menu/dropdown-menu
 
 mixin room-booking()
@@ -11,7 +11,7 @@ mixin room-booking()
     const {
       expensesItems, 
       dropdownMenus, 
-      labels,
+      titles,
       buttons,
       roomInfos,
       dropdownFields
@@ -22,14 +22,16 @@ mixin room-booking()
       form.room-booking__form(method="POST" action="/change-it")
         +room-info(roomInfos[0])
         .room-booking__calendar-wrapper
-          +calendar   
-            +label(labels[0])
+          +calendar  
+            div 
+              +title(titles[0])
               +dropdown-field(dropdownFields[0])
-            +label(labels[1])
+            div
+              +title(titles[1])
               +dropdown-field(dropdownFields[1])
         +dropdown-menu(dropdownMenus[0])
-          +label(labels[2])
-            +dropdown-field(dropdownFields[2])
+          +title(titles[2])
+          +dropdown-field(dropdownFields[2])
         ul.room-booking__expenses-list
           each expensesItem in expensesItems
             li.room-booking__expenses-item

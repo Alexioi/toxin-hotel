@@ -1,15 +1,16 @@
 mixin title(options)
   -
     const {
-      text = 'title',
-      type = 'h2',
+      text = '',
+      type = '',
+      hint = '',
     } = options || {}
 
-  -
-    var tag = type
+    let tag = type
+    let classes = ''
+    classes = 'title__heading title__heading_type-' + tag
 
-  -
-    var classes = ''
-    classes = 'title title_type-' + tag
-
-  #{tag}(class=classes)= text
+  .title
+    #{tag}(class=classes)= text
+    if hint !== ''
+      span.title__hint= hint

@@ -3,7 +3,6 @@ include ../card/card
 include ../title/title
 include ../calendar/calendar
 include ../dropdown-field/dropdown-field
-include ../label/label
 include ../dropdown-menu/dropdown-menu
 
 
@@ -11,7 +10,6 @@ mixin find-room()
   - 
     const {
       titles,
-      labels,
       dropdownFields,
       dropdownMenus,
       buttons
@@ -22,14 +20,16 @@ mixin find-room()
       +title(titles[0]) 
       form.find-room__form(method="POST", action="/change-it")
         .find-room__calendar-wrapper
-          +calendar   
-            +label(labels[0])
+          +calendar 
+            div  
+              +title(titles[1])
               +dropdown-field(dropdownFields[0])
-            +label(labels[1])
+            div
+              +title(titles[2])
               +dropdown-field(dropdownFields[1])
         .find-room__dropdown-wrapper
           +dropdown-menu(dropdownMenus[0])
-            +label(labels[2])
-              +dropdown-field(dropdownFields[2])
+            +title(titles[3])
+            +dropdown-field(dropdownFields[2])
         .find-room__button-wrapper
           +button(buttons[0])

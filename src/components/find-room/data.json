@@ -1,6 +1,10 @@
 {
-  "titles": [{ "text": "Найдём номера под ваши пожелания" }],
-  "labels": [{ "title": "прибытие" }, { "title": "выезд" }, { "title": "гости" }],
+  "titles": [
+    { "text": "Найдём номера под ваши пожелания", "type": "h2" },
+    { "text": "прибытие", "type": "h4" },
+    { "text": "выезд", "type": "h4" },
+    { "text": "гости", "type": "h4" }
+  ],
   "dropdownFields": [
     { "inputName": "dateFrom" },
     { "inputName": "dateTo" },

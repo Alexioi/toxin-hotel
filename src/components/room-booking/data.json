@@ -15,7 +15,11 @@
       "type": "guests"
     }
   ],
-  "labels": [{ "title": "прибытие" }, { "title": "выезд" }, { "title": "гости" }],
+  "titles": [
+    { "title": "прибытие", "type": "h4" },
+    { "title": "выезд", "type": "h4" },
+    { "title": "гости", "type": "h4" }
+  ],
   "buttons": [{ "theme": "long", "text": "забронировать", "type": "submit" }],
   "roomInfos": [{ "isLux": true }],
   "dropdownFields": [

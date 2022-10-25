@@ -5,14 +5,12 @@ include ../button/button
 include ../toggle/toggle
 include ../title/title
 include ../card/card
-include ../label/label
 
 mixin registration-card() 
   - 
     const {
       titles,
       textFields,
-      labels,
       buttons,
       questionFormAboutAuth
     } = require('Components/registration-card/data.json')
@@ -31,11 +29,11 @@ mixin registration-card()
         .registration-card__radio-buttons-wrapper
           +radio-buttons
         .registration-card__birthday-wrapper
-          +label(labels[0])
-            +text-field(textFields[2])
+          +title(titles[1])
+          +text-field(textFields[2])
         .registration-card__email-wrapper
-          +label(labels[1])
-            +text-field(textFields[3])
+          +title(titles[2])
+          +text-field(textFields[3])
         .registration-card__password-wrapper
           +text-field(textFields[4])
         .registration-card__toggle-wrapper
