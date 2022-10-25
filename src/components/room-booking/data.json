@@ -16,9 +16,9 @@
     }
   ],
   "titles": [
-    { "title": "прибытие", "type": "h4" },
-    { "title": "выезд", "type": "h4" },
-    { "title": "гости", "type": "h4" }
+    { "text": "прибытие", "type": "h4" },
+    { "text": "выезд", "type": "h4" },
+    { "text": "гости", "type": "h4" }
   ],
   "buttons": [{ "theme": "long", "text": "забронировать", "type": "submit" }],
   "roomInfos": [{ "isLux": true }],

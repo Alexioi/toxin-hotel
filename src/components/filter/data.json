@@ -38,7 +38,7 @@
       ]
     }
   ],
-  "buttons": [{ "text": "фильтр", "theme": "outline" }],
+  "buttons": [{ "text": "фильтр", "theme": "outline", "type": "button" }],
   "dropdownLists": [{ "title": "дополнительные удобства" }],
   "dropdownMenus": [
     {

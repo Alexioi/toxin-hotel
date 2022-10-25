@@ -22,21 +22,29 @@
     { "text": "bullet list", "type": "h4" }
   ],
   "textFields": [
-    { "title": "Text Field", "hint": "Default", "placeholder": "Email", "type": "email" },
+    {
+      "title": "Text Field",
+      "hint": "Default",
+      "placeholder": "Email",
+      "type": "email",
+      "name": "example1"
+    },
     {
       "isHovered": true,
       "title": "Text Field",
       "hint": "Hover / Focus",
       "value": "This is pretty awesome",
       "placeholder": "This is pretty awesome",
-      "type": "text"
+      "type": "text",
+      "name": "example2"
     },
     { "title": "masked text field", "isMasked": true },
     {
       "title": "subscription text field",
       "placeholder": "Email",
       "type": "email",
-      "isSubscription": true
+      "isSubscription": true,
+      "name": "example3"
     }
   ],
   "checkboxLists": [
@@ -151,13 +159,13 @@
   ],
   "rates": [{ "quantity": 4 }, { "quantity": 5 }],
   "buttons": [
-    { "text": "click me", "theme": "default" },
-    { "isHovered": true, "text": "click me", "theme": "default" },
-    { "theme": "outline", "text": "click me" },
-    { "theme": "outline", "isHovered": true, "text": "click me" },
-    { "theme": "link", "text": "click me" },
-    { "theme": "link", "isHovered": true, "text": "click me" },
-    { "theme": "long", "text": "перейти к оплате" }
+    { "text": "click me", "theme": "default", "type": "button" },
+    { "isHovered": true, "text": "click me", "theme": "default", "type": "button" },
+    { "theme": "outline", "text": "click me", "type": "button" },
+    { "theme": "outline", "isHovered": true, "text": "click me", "type": "button" },
+    { "theme": "link", "text": "click me", "type": "button" },
+    { "theme": "link", "isHovered": true, "text": "click me", "type": "button" },
+    { "theme": "long", "text": "перейти к оплате", "type": "button" }
   ],
   "dropdownLists": [
     { "title": "expandable checkbox list" },
