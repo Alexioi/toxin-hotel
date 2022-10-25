@@ -23,8 +23,9 @@ mixin filter()
   .filter.js-filter
     .filter__items
       +calendar
-        +title(titles[0])
-        +dropdown-field
+        div
+          +title(titles[0])
+          +dropdown-field
       .filter__dropdown-menu-guests-wrapper
         +dropdown-menu(dropdownMenus[0])
           +title(titles[1])

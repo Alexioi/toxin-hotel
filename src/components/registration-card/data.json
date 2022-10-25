@@ -1,8 +1,8 @@
 {
   "titles": [
     { "text": "Регистрация аккаунта", "type": "h2" },
-    { "title": "дата рождения", "type": "h4" },
-    { "title": "данные для входа в сервис", "type": "h4" }
+    { "text": "дата рождения", "type": "h4" },
+    { "text": "данные для входа в сервис", "type": "h4" }
   ],
   "textFields": [
     { "placeholder": "Имя", "type": "text", "name": "name" },

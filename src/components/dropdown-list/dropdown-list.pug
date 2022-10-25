@@ -12,7 +12,7 @@ mixin dropdown-list(options)
 
   .dropdown-list.js-dropdown-list(class=classes)
     .dropdown-list__header 
-      +title({title})
+      +title({text: title, type: 'h4'})
       button.dropdown-list__button.js-dropdown-list__button.material-icons expand_more
     .dropdown-list__menu
       block

@@ -1,5 +1,5 @@
 {
-  "titles": [{ "text": "Войти" }],
+  "titles": [{ "text": "Войти", "type": "h2" }],
   "textFields": [
     { "placeholder": "Email", "type": "email", "name": "email" },
     { "placeholder": "Пароль", "type": "password", "name": "password" }
