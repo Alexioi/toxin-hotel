@@ -48,7 +48,7 @@ class Carousel {
     this._hideImages();
   }
 
-  _moveTargetImg() {
+  _moveTargetImg(event) {
     const { buttonNumber } = event.target.dataset;
     this.node.dataset.currentImage = buttonNumber;
     this._hideImages();

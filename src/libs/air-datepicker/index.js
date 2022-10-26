@@ -22,9 +22,7 @@ class AirDatepicker {
   _initAirDatepicker() {
     const airDatepickerOptions = {
       range: true,
-      navTitles: {
-        days: 'MM yyyy',
-      },
+      navTitles: { days: 'MM yyyy' },
       prevHtml: '<span class="material-icons">arrow_back</span>',
       nextHtml: '<span class="material-icons">arrow_forward</span>',
       minDate: new Date(),

@@ -6,9 +6,8 @@ const cssSelectors = {
   applyButton: '.js-dropdown-menu__apply-button',
   counter: '.js-dropdown-menu__counter',
   counterButtons: '.js-dropdown-menu__counter-button',
-  dropdownMenuTypeGuests: '.js-dropdown-menu.dropdown-menu_type-guests',
-  dropdownMenuTypeRooms: '.js-dropdown-menu.dropdown-menu_type-rooms',
   menu: '.js-dropdown-menu__menu',
+  dropdownMenu: '.js-dropdown-menu',
 };
 
 export default cssSelectors;

@@ -1,20 +1,22 @@
 module.exports = {
   plugins: ['fsd'],
   extends: ['airbnb-base', 'plugin:fsd/all'],
+  settings: {
+    'import/resolver': {
+      alias: {
+        map: [['Libs', './src/libs']],
+      },
+    },
+  },
+  env: {
+    browser: true,
+    node: true,
+    jquery: true,
+  },
   rules: {
     'no-underscore-dangle': 'off',
     'linebreak-style': 'off',
-    'no-undef': 'off',
     'no-new': 'off',
-    'no-useless-catch': 'off',
-    'no-async-promise-executor': 'off',
-    'no-misleading-character-class': 'off',
-    'no-restricted-globals': 'off',
-    'max-classes-per-file': 'off',
-    'no-use-before-define': 'off',
-    'class-methods-use-this': 'off',
-    'arrow-body-style': 'off',
-    'operator-assignment': 'off',
-    'no-param-reassign': 'off',
+    'object-curly-newline': ['error', { multiline: true }],
   },
 };

@@ -2,7 +2,7 @@ import DropdownMenu from './DropdownMenu';
 import cssSelectors from './constants';
 
 (() => {
-  document.querySelectorAll('.js-dropdown-menu').forEach((node) => {
+  document.querySelectorAll(cssSelectors.dropdownMenu).forEach((node) => {
     new DropdownMenu(node);
   });
 })();

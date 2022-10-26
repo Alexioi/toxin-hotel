@@ -1,5 +1,5 @@
-import cssSelectors from './constants';
 import AirDatepicker from 'Libs/air-datepicker';
+import cssSelectors from './constants';
 
 class Calendar {
   constructor($node) {

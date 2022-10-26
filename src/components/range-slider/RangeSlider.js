@@ -1,5 +1,5 @@
-import cssSelectors from './constants';
 import IonRangeSlider from 'Libs/ion-rangeslider';
+import cssSelectors from './constants';
 
 class RangeSlider {
   constructor($node) {

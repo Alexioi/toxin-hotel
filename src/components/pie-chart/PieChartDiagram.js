@@ -27,14 +27,14 @@ class PieChartDiagram {
     this.grades = ['good', 'perfectly', 'satisfactory', 'bad'];
   }
 
-  _getRadian(degree) {
+  static _getRadian(degree) {
     return (Math.PI * degree) / 180;
   }
 
   _getCirclePoint(degree) {
     const { centerX, centerY, outerRadius } = this;
-    const x = centerX + outerRadius * Math.cos(this._getRadian(degree));
-    const y = centerY + outerRadius * Math.sin(this._getRadian(degree));
+    const x = centerX + outerRadius * Math.cos(this.constructor._getRadian(degree));
+    const y = centerY + outerRadius * Math.sin(this.constructor._getRadian(degree));
 
     return [x, y];
   }
@@ -47,8 +47,8 @@ class PieChartDiagram {
       centerX,
       centerY,
       outerRadius,
-      this._getRadian(startDegree),
-      this._getRadian(endDegree),
+      this.constructor._getRadian(startDegree),
+      this.constructor._getRadian(endDegree),
     );
     let [circleX, circleY] = this._getCirclePoint(startDegree);
     ctx.moveTo(circleX, circleY);
@@ -56,8 +56,8 @@ class PieChartDiagram {
       centerX,
       centerY,
       innerRadius,
-      this._getRadian(startDegree),
-      this._getRadian(endDegree),
+      this.constructor._getRadian(startDegree),
+      this.constructor._getRadian(endDegree),
     );
     [circleX, circleY] = this._getCirclePoint(endDegree);
     ctx.lineTo(circleX, circleY);
@@ -81,7 +81,6 @@ class PieChartDiagram {
 
     ctx.font = 'bold 12px Montserrat sans-serif';
     ctx.textBaseline = 'top';
-    ctx.text;
     ctx.fillText('ГОЛОСОВ', centerX, centerY + centerY / 6);
   }
 
@@ -92,7 +91,7 @@ class PieChartDiagram {
     let endDegree = 0;
 
     this.grades.forEach((item) => {
-      allVotes = allVotes + votes[item];
+      allVotes += votes[item];
     });
 
     grades.forEach((item) => {

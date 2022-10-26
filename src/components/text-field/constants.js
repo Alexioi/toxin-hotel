@@ -1,5 +1,3 @@
-const cssSelectors = {
-  maskedInput: '.js-text-field_masked input',
-};
+const cssSelectors = { maskedInput: '.js-text-field_masked input' };
 
 export default cssSelectors;

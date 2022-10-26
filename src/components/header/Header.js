@@ -43,7 +43,7 @@ class Header {
     this.subNavigationLists[targetIndex].classList.toggle('header__sub-navigation-list_opened');
   }
 
-  _closeSubNavigationList(node) {
+  static _closeSubNavigationList(node) {
     node.classList.remove('header__sub-navigation-list_opened');
   }
 
