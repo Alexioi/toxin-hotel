@@ -1,4 +1,4 @@
-import IMaskPlugin from '../../libs/imask';
+import IMaskPlugin from 'Libs/imask';
 
 class TextField {
   constructor(node) {

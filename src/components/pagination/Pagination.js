@@ -1,6 +1,6 @@
 import 'paginationjs';
 import cssSelectors from './constants';
-import Paginationjs from '../../libs/paginationjs';
+import Paginationjs from 'Libs/paginationjs';
 
 class Pagination {
   constructor($component) {

@@ -38,6 +38,9 @@ const commonConfig = merge([
       alias: {
         Components: path.resolve(__dirname, 'src/components/'),
         Images: path.resolve(__dirname, 'src/images/'),
+        Style: path.resolve(__dirname, 'src/style'),
+        Libs: path.resolve(__dirname, 'src/libs'),
+        Templates: path.resolve(__dirname, 'src/templates'),
       },
     },
   },

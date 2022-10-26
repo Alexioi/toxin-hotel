@@ -1,12 +1,12 @@
-include ../../components/calendar/calendar
-include ../../components/title/title
-include ../../components/dropdown-field/dropdown-field
-include ../../components/dropdown-menu/dropdown-menu
-include ../../components/range-slider/range-slider
-include ../../components/checkbox-list/checkbox-list
-include ../../components/dropdown-list/dropdown-list
-include ../../components/toggle/toggle
-include ../../components/button/button
+include ../calendar/calendar
+include ../title/title
+include ../dropdown-field/dropdown-field
+include ../dropdown-menu/dropdown-menu
+include ../range-slider/range-slider
+include ../checkbox-list/checkbox-list
+include ../dropdown-list/dropdown-list
+include ../toggle/toggle
+include ../button/button
 
 mixin filter()
   - 
@@ -23,9 +23,9 @@ mixin filter()
   .filter.js-filter
     .filter__items
       +calendar
-        div
-          +title(titles[0])
-          +dropdown-field
+      div
+        +title(titles[0])
+        +dropdown-field
       .filter__dropdown-menu-guests-wrapper
         +dropdown-menu(dropdownMenus[0])
           +title(titles[1])
