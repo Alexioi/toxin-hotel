@@ -4,7 +4,7 @@ module.exports = () => {
   return {
     plugins: [
       new CopyPlugin({
-        patterns: [{ from: './favicon', to: './favicon' }],
+        patterns: [{ from: './favicons', to: './assets/favicons' }],
       }),
     ],
   };
