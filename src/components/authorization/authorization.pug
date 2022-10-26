@@ -15,7 +15,7 @@ mixin authorization()
 
   .authorization
     +card 
-      form.auth__form(method="POST", action="/change-it") 
+      form.authorization__form(method="POST", action="/change-it") 
         +title(titles[0]) 
         .authorization__login-text-field-wrapper
           +text-field(textFields[0])
