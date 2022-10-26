@@ -41,6 +41,7 @@ const commonConfig = merge([
         Style: path.resolve(__dirname, 'src/style'),
         Libs: path.resolve(__dirname, 'src/libs'),
         Templates: path.resolve(__dirname, 'src/templates'),
+        Fonts: path.resolve(__dirname, 'src/fonts'),
       },
     },
   },

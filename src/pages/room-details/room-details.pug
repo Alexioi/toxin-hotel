@@ -13,10 +13,10 @@ block title
   | Room details
 
 block main
-  - const {comments, iconTextLists, gallarys, titles, bulletLists} = require('./data.json')
+  - const {comments, iconTextLists, gallery, titles, bulletLists} = require('./data.json')
 
   .room-details
-    +gallery(gallarys[0])
+    +gallery(gallery)
     +container
       .room-details__content-block
         .room-details__content-column

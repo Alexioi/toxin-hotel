@@ -26,15 +26,13 @@
       ]
     }
   ],
-  "gallarys": [
-    {
-      "imgs": [
-        { "src": "main", "alt": "main" },
-        { "src": "sub-top", "alt": "sub-top" },
-        { "src": "sub-bottom", "alt": "sub-bottom" }
-      ]
-    }
-  ],
+  "gallery": {
+    "images": [
+      { "src": "gallery-main", "alt": "gallery-main" },
+      { "src": "gallery-sub-top", "alt": "gallery-sub-top" },
+      { "src": "gallery-sub-bottom", "alt": "gallery-sub-bottom" }
+    ]
+  },
   "titles": [
     { "text": "Сведения о номере", "type": "h3" },
     { "text": "Впечатления от номера", "type": "h3" },

@@ -24,7 +24,7 @@ mixin header(options)
     +container
       .header__wrapper
         .header__logo
-          +logo({type: 'default'})
+          +logo({type: 'full-logo'})
         button.header__burger-button.js-header__burger-button.material-icons menu
         ul.header__navigation.js-header__navigation
           each navItem, index in navItems
