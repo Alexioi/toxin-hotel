@@ -62,8 +62,6 @@ npm run server
 
 [ion-rangeslider ^2.3.1](https://www.npmjs.com/package/ion-rangeslider) - плагин ползунка
 
-[material-icons ^0.6.2](https://www.npmjs.com/package/material-icons) - иконочный шрифт
-
 [paginationjs ^2.1.5](https://www.npmjs.com/package/paginationjs) - плагин пагинации
 
 ### Зависимости

@@ -25,7 +25,8 @@ mixin header(options)
       .header__wrapper
         .header__logo
           +logo(logo)
-        button.header__burger-button.js-header__burger-button.material-icons menu
+        button.header__burger-button.js-header__burger-button
+          include ../../images/decorative/expand-more.svg
         ul.header__navigation.js-header__navigation
           each navItem, index in navItems
             li.header__navigation-item

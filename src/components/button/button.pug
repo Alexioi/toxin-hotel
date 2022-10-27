@@ -12,13 +12,13 @@ mixin button(options)
 
     const tag = isLink ? 'a' : 'button'
 
-    var classes = ''
+    let classes = ''
     classes += ' button_theme-' + theme 
     classes += size ? ' button_size-' + size : ''
     classes += isHovered ? ' button_hovered' : ''
 
-
   #{tag}.button(class=classes href=link type=isLink ? null : type)
     span.button__text= text
     if theme === 'long'
-      span.button__arrow.material-icons arrow_forward
+      span.button__arrow
+        include ../../images/decorative/arrow-forward.svg

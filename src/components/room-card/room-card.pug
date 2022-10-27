@@ -31,12 +31,12 @@ mixin room-card(options)
           )
       button(class=`room-card__arrow-button 
         room-card__arrow-button_action-back 
-        js-room-card__arrow-button_action-back 
-        material-icons`) arrow_back_ios
+        js-room-card__arrow-button_action-back`)
+        include ../../images/decorative/arrow-back.svg
       button(class=`room-card__arrow-button 
         room-card__arrow-button_action-next 
-        js-room-card__arrow-button_action-next
-        material-icons`) arrow_back_ios
+        js-room-card__arrow-button_action-next`)
+        include ../../images/decorative/arrow-back.svg
     .room-card__about 
       +room-info({ number, isLink: true, link, isLux, price })
       .room-card__rating

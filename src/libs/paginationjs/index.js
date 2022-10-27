@@ -1,4 +1,5 @@
 import 'paginationjs';
+import arrows from './arrows.json';
 
 const dataSource = (done) => {
   const result = [...Array(180)].map((e, i) => i + 1);
@@ -10,8 +11,8 @@ const config = {
   dataSource,
   pageSize: 12,
   pageRange: 1,
-  prevText: '<span class="material-icons">arrow_back</span>',
-  nextText: '<span class="material-icons">arrow_forward</span>',
+  prevText: arrows.arrowBack,
+  nextText: arrows.arrowNext,
 };
 
 class Paginationjs {

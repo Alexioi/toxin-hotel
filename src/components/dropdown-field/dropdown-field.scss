@@ -32,10 +32,10 @@
     position: absolute;
     height: 100%;
     width: 44px;
-    top: 0px;
-    right: 0px;
+    top: 0;
+    right: 0;
     cursor: pointer;
-    background: no-repeat url(Images/decorative/toggle-button.svg) center center;
+    background: no-repeat url('Images/decorative/toggle-button.svg') center center;
     border: none;
   }
 }

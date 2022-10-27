@@ -5,9 +5,8 @@ mixin like-button(options)
       counter = 0
     } = options || {}
 
-  -
-    var classes = ''
-    classes += isLiked ? ' like-button_liked': ''
+    let classes = ''
+    classes += isLiked && ' like-button_liked'
 
   button.like-button.js-like-button(class=classes)
     span.like-button__icon.material-icons 
