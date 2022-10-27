@@ -5,7 +5,5 @@ mixin room-list
 
   ul.room-list
     each item in items
-      - const {images, currentImg, number, link, isLux, price, quantity, reviews} = item
-
       li.room-list__item
-        +room-card({images, currentImg, number, link, isLux, price, quantity, reviews,})
+        +room-card(item)

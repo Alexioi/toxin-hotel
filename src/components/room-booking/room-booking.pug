@@ -10,28 +10,28 @@ mixin room-booking()
   - 
     const {
       expensesItems, 
-      dropdownMenus, 
+      dropdownMenu, 
       titles,
-      buttons,
-      roomInfos,
+      button,
+      roomInfo,
       dropdownFields
     } = require('Components/room-booking/data.json')
 
   .room-booking
     +card
       form.room-booking__form(method="POST" action="/change-it")
-        +room-info(roomInfos[0])
-        .room-booking__calendar-wrapper
+        +room-info(roomInfo)
+        .room-booking__calendar
           +calendar  
             div 
-              +title(titles[0])
-              +dropdown-field(dropdownFields[0])
+              +title(titles.to)
+              +dropdown-field(dropdownFields.from)
             div
-              +title(titles[1])
-              +dropdown-field(dropdownFields[1])
-        +dropdown-menu(dropdownMenus[0])
-          +title(titles[2])
-          +dropdown-field(dropdownFields[2])
+              +title(titles.from)
+              +dropdown-field(dropdownFields.to)
+        +dropdown-menu(dropdownMenu)
+          +title(titles.guests)
+          +dropdown-field(dropdownFields.guests)
         ul.room-booking__expenses-list
           each expensesItem in expensesItems
             li.room-booking__expenses-item
@@ -43,4 +43,4 @@ mixin room-booking()
           span.room-booking__total-text Итого
           span.room-booking__total-line 
           span.room-booking__total-value 38 081₽
-        +button(buttons[0])
+        +button(button)

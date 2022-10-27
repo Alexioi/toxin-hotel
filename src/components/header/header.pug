@@ -18,13 +18,13 @@ mixin header(options)
       username = ''
     } = options || {}
 
-    const {buttons} = require('Components/header/data.json')
+    const {buttons, logo} = require('Components/header/data.json')
 
   .header.js-header 
     +container
       .header__wrapper
         .header__logo
-          +logo({type: 'full-logo'})
+          +logo(logo)
         button.header__burger-button.js-header__burger-button.material-icons menu
         ul.header__navigation.js-header__navigation
           each navItem, index in navItems
@@ -48,5 +48,5 @@ mixin header(options)
           if username
             span.header__username= username
           else
-            +button(buttons[0])
-            +button(buttons[1])
+            +button(buttons.login)
+            +button(buttons.registration)

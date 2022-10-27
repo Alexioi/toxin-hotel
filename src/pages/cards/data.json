@@ -1,5 +1,5 @@
 {
-  "calendars": [{ "isOpened": true }],
+  "calendar": { "isOpened": true },
   "roomCards": [
     {
       "images": ["room-image-1", "room-image-2", "room-image-3", "room-image-4"],

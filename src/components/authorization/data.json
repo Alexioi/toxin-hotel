@@ -1,15 +1,13 @@
 {
-  "titles": [{ "text": "Войти", "type": "h2" }],
-  "textFields": [
-    { "placeholder": "Email", "type": "email", "name": "email" },
-    { "placeholder": "Пароль", "type": "password", "name": "password" }
-  ],
-  "buttons": [{ "theme": "long", "text": "войти", "type": "submit" }],
-  "questionFormAboutAuths": [
-    {
-      "questionText": "Нет аккаунта на Toxin?",
-      "buttonText": "создать",
-      "buttonLink": "./registration.html"
-    }
-  ]
+  "title": { "text": "Войти", "type": "h2" },
+  "textFields": {
+    "email": { "placeholder": "Email", "type": "email", "name": "email" },
+    "password": { "placeholder": "Пароль", "type": "password", "name": "password" }
+  },
+  "button": { "theme": "long", "text": "войти", "type": "submit" },
+  "questionAboutAuthorization": {
+    "questionText": "Нет аккаунта на Toxin?",
+    "buttonText": "создать",
+    "buttonLink": "./registration.html"
+  }
 }

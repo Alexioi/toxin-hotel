@@ -1,37 +1,37 @@
 .registration-card {
-  &__name-wrapper {
+  &__name {
     margin-top: 20px;
   }
 
-  &__surname-wrapper {
+  &__surname {
     margin-top: 10px;
   }
 
-  &__radio-buttons-wrapper {
+  &__radio-buttons {
     margin-top: 10px;
   }
 
-  &__birthday-wrapper {
+  &__birthday {
     margin-top: 24px;
   }
 
-  &__email-wrapper {
+  &__email {
     margin-top: 20px;
   }
 
-  &__password-wrapper {
+  &__password {
     margin-top: 10px;
   }
 
-  &__toggle-wrapper {
+  &__toggle {
     margin-top: 10px;
   }
 
-  &__button-wrapper {
+  &__submit-button {
     margin-top: 22px;
   }
 
-  &__question-form-about-auth-wrapper {
+  &__question-about-authentication {
     margin-top: 30px;
   }
 }

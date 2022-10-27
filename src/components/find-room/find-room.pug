@@ -11,25 +11,25 @@ mixin find-room()
     const {
       titles,
       dropdownFields,
-      dropdownMenus,
-      buttons
+      dropdownMenu,
+      button
     } = require('Components/find-room/data.json')
 
   .find-room
     +card
-      +title(titles[0]) 
+      +title(titles.findRoom) 
       form.find-room__form(method="POST", action="/change-it")
-        .find-room__calendar-wrapper
+        .find-room__calendar
           +calendar 
             div  
-              +title(titles[1])
-              +dropdown-field(dropdownFields[0])
+              +title(titles.from)
+              +dropdown-field(dropdownFields.from)
             div
-              +title(titles[2])
-              +dropdown-field(dropdownFields[1])
-        .find-room__dropdown-wrapper
-          +dropdown-menu(dropdownMenus[0])
-            +title(titles[3])
-            +dropdown-field(dropdownFields[2])
-        .find-room__button-wrapper
-          +button(buttons[0])
+              +title(titles.to)
+              +dropdown-field(dropdownFields.to)
+        .find-room__dropdown
+          +dropdown-menu(dropdownMenus)
+            +title(titles.guests)
+            +dropdown-field(dropdownFields.guests)
+        .find-room__submit-button
+          +button(button)

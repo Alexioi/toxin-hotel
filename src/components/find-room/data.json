@@ -1,15 +1,15 @@
 {
-  "titles": [
-    { "text": "Найдём номера под ваши пожелания", "type": "h2" },
-    { "text": "прибытие", "type": "h4" },
-    { "text": "выезд", "type": "h4" },
-    { "text": "гости", "type": "h4" }
-  ],
-  "dropdownFields": [
-    { "inputName": "dateFrom" },
-    { "inputName": "dateTo" },
-    { "inputName": "guests" }
-  ],
-  "dropdownMenus": [{ "type": "guests" }],
-  "buttons": [{ "theme": "long", "text": "подобрать номер", "type": "submit" }]
+  "titles": {
+    "findRoom": { "text": "Найдём номера под ваши пожелания", "type": "h2" },
+    "from": { "text": "прибытие", "type": "h4" },
+    "to": { "text": "выезд", "type": "h4" },
+    "guests": { "text": "гости", "type": "h4" }
+  },
+  "dropdownFields": {
+    "from": { "inputName": "dateFrom" },
+    "to": { "inputName": "dateTo" },
+    "guests": { "inputName": "guests" }
+  },
+  "dropdownMenu": { "type": "guests" },
+  "button": { "theme": "long", "text": "подобрать номер", "type": "submit" }
 }

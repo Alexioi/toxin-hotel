@@ -1,18 +1,19 @@
 {
-  "buttons": [
-    {
+  "logo": { "type": "full-logo" },
+  "buttons": {
+    "login": {
       "theme": "outline",
       "link": "./sing-in.html",
       "text": "войти",
       "size": "low",
       "isLink": true
     },
-    {
+    "registration": {
       "link": "./registration.html",
       "text": "зарегистрироваться",
       "size": "low",
       "isLink": true,
       "theme": "default"
     }
-  ]
+  }
 }

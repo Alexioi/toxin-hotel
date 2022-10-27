@@ -43,6 +43,6 @@ mixin dropdown-menu(options)
       if hasButtons
         .dropdown-menu__buttons
           .dropdown-menu__clear-button.js-dropdown-menu__clear-button
-            +button(buttons[0])
+            +button(buttons.clear)
           .dropdown-menu__apply-button.js-dropdown-menu__apply-button
-            +button(buttons[1])
+            +button(buttons.apply)

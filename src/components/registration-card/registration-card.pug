@@ -11,8 +11,8 @@ mixin registration-card()
     const {
       titles,
       textFields,
-      buttons,
-      questionFormAboutAuth
+      button,
+      questionAboutAuthentication
     } = require('Components/registration-card/data.json')
 
   .registration-card
@@ -21,24 +21,24 @@ mixin registration-card()
         method="POST" 
         action="/change-it"
       ) 
-        +title(titles[0]) 
-        .registration-card__name-wrapper
-          +text-field(textFields[0])
-        .registration-card__surname-wrapper
-          +text-field(textFields[1])
-        .registration-card__radio-buttons-wrapper
+        +title(titles.registration) 
+        .registration-card__name
+          +text-field(textFields.name)
+        .registration-card__surname
+          +text-field(textFields.surname)
+        .registration-card__radio-buttons
           +radio-buttons
-        .registration-card__birthday-wrapper
-          +title(titles[1])
-          +text-field(textFields[2])
-        .registration-card__email-wrapper
-          +title(titles[2])
-          +text-field(textFields[3])
-        .registration-card__password-wrapper
-          +text-field(textFields[4])
-        .registration-card__toggle-wrapper
+        .registration-card__birthday
+          +title(titles.birthday)
+          +text-field(textFields.birthday)
+        .registration-card__email
+          +title(titles.loginData)
+          +text-field(textFields.email)
+        .registration-card__password
+          +text-field(textFields.password)
+        .registration-card__toggle
           +toggle
-        .registration-card__button-wrapper
-          +button(buttons[0])
-      .registration-card__question-form-about-auth-wrapper
-        +question-form-about-auth(questionFormAboutAuth[0])
+        .registration-card__submit-button
+          +button(button)
+      .registration-card__question-about-authentication
+        +question-form-about-auth(questionAboutAuthentication)

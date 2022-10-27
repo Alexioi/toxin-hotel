@@ -1,5 +1,4 @@
 {
-  "textFields": [
-    { "placeholder": "Email", "type": "email", "isSubscription": true, "name": "email" }
-  ]
+  "logo": { "type": "full-logo" },
+  "textField": { "placeholder": "Email", "type": "email", "isSubscription": true, "name": "email" }
 }

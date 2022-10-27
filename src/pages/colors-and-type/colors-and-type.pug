@@ -8,12 +8,12 @@ block title
   | Colors and type
 
 block main
-  - const {palletes, fontTypes} = require('./data.json')
+  - const {pallet, fontType} = require('./data.json')
 
   .colors-and-type
     +container
       .colors-and-type__row
-        .colors-and-type__palette-wrapper
-          +palette(palletes[0])
-        .colors-and-type__font-types-wrapper
-          +font-types(fontTypes[0])
+        .colors-and-type__palette
+          +palette(pallet)
+        .colors-and-type__font-types
+          +font-types(fontTypes)

@@ -4,27 +4,25 @@
     { "about": "Сбор за услуги: скидка 2 179₽", "hasInfo": true, "value": "0₽" },
     { "about": "Сбор за дополнительные услуги", "hasInfo": true, "value": "300₽" }
   ],
-  "dropdownMenus": [
-    {
-      "items": [
-        { "name": "взрослые", "counter": 0 },
-        { "name": "дети", "counter": 0 },
-        { "name": "младенцы", "counter": 0 }
-      ],
-      "isOpened": false,
-      "type": "guests"
-    }
-  ],
-  "titles": [
-    { "text": "прибытие", "type": "h4" },
-    { "text": "выезд", "type": "h4" },
-    { "text": "гости", "type": "h4" }
-  ],
-  "buttons": [{ "theme": "long", "text": "забронировать", "type": "submit" }],
-  "roomInfos": [{ "isLux": true }],
-  "dropdownFields": [
-    { "inputName": "dateFrom" },
-    { "inputName": "dateTO" },
-    { "inputName": "guests" }
-  ]
+  "dropdownMenu": {
+    "items": [
+      { "name": "взрослые", "counter": 0 },
+      { "name": "дети", "counter": 0 },
+      { "name": "младенцы", "counter": 0 }
+    ],
+    "isOpened": false,
+    "type": "guests"
+  },
+  "titles": {
+    "to": { "text": "прибытие", "type": "h4" },
+    "from": { "text": "выезд", "type": "h4" },
+    "guests": { "text": "гости", "type": "h4" }
+  },
+  "button": { "theme": "long", "text": "забронировать", "type": "submit" },
+  "roomInfo": { "isLux": true },
+  "dropdownFields": {
+    "from": { "inputName": "dateFrom" },
+    "to": { "inputName": "dateTo" },
+    "guests": { "inputName": "guests" }
+  }
 }

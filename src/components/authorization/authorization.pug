@@ -7,21 +7,21 @@ include ../question-form-about-auth/question-form-about-auth
 mixin authorization()
   - 
     const {
-      titles, 
+      title, 
       textFields, 
-      buttons, 
-      questionFormAboutAuths
+      button, 
+      questionAboutAuthorization
     } = require('Components/authorization/data.json')
 
   .authorization
     +card 
       form.authorization__form(method="POST", action="/change-it") 
-        +title(titles[0]) 
-        .authorization__login-text-field-wrapper
-          +text-field(textFields[0])
-        .authorization__password-text-field-wrapper
-          +text-field(textFields[1])
-        .authorization__button-wrapper
-          +button(buttons[0])
-      .authorization__question-form-about-auth-wrapper
-        +question-form-about-auth(questionFormAboutAuths[0])
+        +title(title) 
+        .authorization__login-input
+          +text-field(textFields.email)
+        .authorization__password-input
+          +text-field(textFields.password)
+        .authorization__submit-button
+          +button(button)
+      .authorization__question-about-authorization
+        +question-form-about-auth(questionAboutAuthorization)

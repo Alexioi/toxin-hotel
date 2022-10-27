@@ -27,9 +27,9 @@ block main
       titles,
       textFields, 
       checkboxLists, 
-      comments, 
-      iconTextLists, 
-      bulletLists,
+      comment, 
+      iconTextList, 
+      bulletList,
       dropdownMenus,
       toggles,
       likeButtons,
@@ -45,17 +45,17 @@ block main
       .form-elements__text-fields-and-buttons-left-column
         +title(titles[0])
         +text-field(textFields[0])
-        .form-elements__text-fields-and-buttons-left-wrapper
+        .form-elements__text-fields-and-buttons-left
           +title(titles[1])
           +text-field(textFields[1])
-        .form-elements__text-fields-and-buttons-left-wrapper
-          +dropdown-menu(dropdownMenus[0])
+        .form-elements__text-fields-and-buttons-left
+          +dropdown-menu(dropdownMenus.guestsClose)
             +title(titles[2])
             +dropdown-field
-        .form-elements__text-fields-and-buttons-left-wrapper
+        .form-elements__text-fields-and-buttons-left
           +title(titles[3])
           +text-field(textFields[2])
-        .form-elements__text-fields-and-buttons-left-wrapper
+        .form-elements__text-fields-and-buttons-left
           +calendar  
             div
               +title(titles[4])
@@ -63,102 +63,102 @@ block main
             div
               +title(titles[4])
               +dropdown-field
-        .form-elements__text-fields-and-buttons-left-wrapper
+        .form-elements__text-fields-and-buttons-left
           +calendar   
             div
               +title(titles[5])
               +dropdown-field    
-        .form-elements__text-fields-and-buttons-left-wrapper
+        .form-elements__text-fields-and-buttons-left
           +title(titles[6])
           +text-field(textFields[3])
 
       .form-elements__text-fields-and-buttons-middle-column
         +title(titles[7])
-        .form-elements__text-fields-and-buttons-middle-wrapper
+        .form-elements__text-fields-and-buttons-middle
           +checkbox-list(checkboxLists[0])
-        .form-elements__text-fields-and-buttons-middle-wrapper
+        .form-elements__text-fields-and-buttons-middle
           +title(titles[8])
-        .form-elements__text-fields-and-buttons-middle-wrapper
+        .form-elements__text-fields-and-buttons-middle
           +radio-buttons
-        .form-elements__text-fields-and-buttons-middle-wrapper
+        .form-elements__text-fields-and-buttons-middle
           +title(titles[9])
-        .form-elements__text-fields-and-buttons-middle-wrapper
+        .form-elements__text-fields-and-buttons-middle
           +toggle(toggles[0])
-        .form-elements__text-fields-and-buttons-middle-wrapper
+        .form-elements__text-fields-and-buttons-middle
           +toggle(toggles[1])
-        .form-elements__text-fields-and-buttons-middle-wrapper
+        .form-elements__text-fields-and-buttons-middle
           +title(titles[10])
-        .form-elements__text-fields-and-buttons-middle-wrapper
+        .form-elements__text-fields-and-buttons-middle
           +like-button(likeButtons[0])
           +like-button(likeButtons[1])
-        .form-elements__text-fields-and-buttons-middle-wrapper
+        .form-elements__text-fields-and-buttons-middle
           +title(titles[11])
-        .form-elements__text-fields-and-buttons-middle-wrapper
+        .form-elements__text-fields-and-buttons-middle
           +rate(rates[0])
           +rate(rates[1])
 
       .form-elements__text-fields-and-buttons-right-column
-        .form-elements__text-fields-and-buttons-right-wrapper
+        .form-elements__text-fields-and-buttons-right
           +range-slider(rangeSliders[0])
-        .form-elements__text-fields-and-buttons-right-wrapper
+        .form-elements__text-fields-and-buttons-right
           +title(titles[12]) 
-        .form-elements__text-fields-and-buttons-right-wrapper
-          +button(buttons[0])
-          +button(buttons[1])
-        .form-elements__text-fields-and-buttons-right-wrapper
-          +button(buttons[2])
-          +button(buttons[3])
-        .form-elements__text-fields-and-buttons-right-wrapper
-          +button(buttons[4])
-          +button(buttons[5])
-        .form-elements__text-fields-and-buttons-right-wrapper
-          +button(buttons[6])
-        .form-elements__text-fields-and-buttons-right-wrapper
+        .form-elements__text-fields-and-buttons-right
+          +button(buttons.defaultButton)
+          +button(buttons.defaultButtonDisable)
+        .form-elements__text-fields-and-buttons-right
+          +button(buttons.outlineButton)
+          +button(buttons.outlineButtonDisable)
+        .form-elements__text-fields-and-buttons-right
+          +button(buttons.linkButton)
+          +button(buttons.linkDisable)
+        .form-elements__text-fields-and-buttons-right
+          +button(buttons.longButton)
+        .form-elements__text-fields-and-buttons-right
           +title(titles[13])
-        .form-elements__text-fields-and-buttons-right-wrapper
+        .form-elements__text-fields-and-buttons-right
           +pagination 
 
     .form-elements__row
       .form-elements__dropdowns-left-column
-        +dropdown-menu(dropdownMenus[1])
+        +dropdown-menu(dropdownMenus.roomsClose)
           +title(titles[14])
           +dropdown-field
-        .form-elements__dropdowns-left-wrapper
-          +dropdown-menu(dropdownMenus[2])
+        .form-elements__dropdowns-left
+          +dropdown-menu(dropdownMenus.rooms)
             +title(titles[15])
             +dropdown-field
 
       .form-elements__dropdowns-middle-column
-        +dropdown-menu(dropdownMenus[3])
+        +dropdown-menu(dropdownMenus.guestsEmpty)
           +title(titles[16])
           +dropdown-field
 
       .form-elements__dropdowns-right-column
-        +dropdown-menu(dropdownMenus[4])
+        +dropdown-menu(dropdownMenus.guests)
           +title(titles[17])
           +dropdown-field
 
     .form-elements__row
       .form-elements__lists-left-column
-        +dropdown-list(dropdownLists[0])
+        +dropdown-list(dropdownLists.close)
           +checkbox-list(checkboxLists[1])
-        .form-elements__list-left-wrapper
-          +dropdown-list(dropdownLists[1])
+        .form-elements__list-left
+          +dropdown-list(dropdownLists.opened)
             +checkbox-list(checkboxLists[1])
 
       .form-elements__lists-middle-column
         +title(titles[18])
-        .form-elements__lists-middle-wrapper
+        .form-elements__lists-middle
           +checkbox-list(checkboxLists[2])
 
       .form-elements__lists-right-column
         +title(titles[19])
-        .form-elements__lists-right-wrapper
-          +bullet-list(bulletLists[0])
+        .form-elements__lists-right
+          +bullet-list(bulletList)
 
     .form-elements__row
       .form-elements__text-icon-list-column
-        +icon-text-list(iconTextLists[0])
+        +icon-text-list(iconTextList)
 
       .form-elements__comment-column
-        +comment(comments[0])
+        +comment(comment)

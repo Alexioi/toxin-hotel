@@ -1,17 +1,17 @@
 .authorization {
-  &__login-text-field-wrapper {
+  &__login-input {
     margin-top: 18px;
   }
 
-  &__password-text-field-wrapper {
+  &__password-input {
     margin-top: 10px;
   }
 
-  &__button-wrapper {
+  &__submit-button {
     margin-top: 20px;
   }
 
-  &__question-form-about-auth-wrapper {
+  &__question-about-authorization {
     margin-top: 32px;
   }
 }

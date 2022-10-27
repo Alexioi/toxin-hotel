@@ -1,7 +1,7 @@
 {
   "fontTypes": [
     {
-      "items": [
+      "item": [
         {
           "theme": "h1",
           "sample": "H1",
@@ -25,7 +25,7 @@
       ]
     }
   ],
-  "palletes": [
+  "pallet": [
     {
       "items": [
         { "color": "dark-shade-100", "colorName": "Dark Shade 100%", "colorHash": "#1F2041" },
