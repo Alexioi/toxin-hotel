@@ -1,4 +1,6 @@
-@import 'Style/variables';
+@use 'Style/constants/colors';
+@use 'Style/constants/mixins';
+@use 'Style/constants/display-sizes';
 
 .filter {
   &_opened &__items {
@@ -8,7 +10,7 @@
   &__items {
     display: block;
 
-    @include media-breakpoint-down($md) {
+    @include mixins.media-breakpoint-down(display-sizes.$md) {
       display: none;
     }
   }
@@ -23,7 +25,7 @@
 
   &__range-text {
     margin-top: 14px;
-    color: rgba($color-first, 0.5);
+    color: rgba(colors.$first, 0.5);
   }
 
   &__rules-title {
@@ -57,7 +59,7 @@
     justify-content: center;
     display: none;
 
-    @include media-breakpoint-down($md) {
+    @include mixins.media-breakpoint-down(display-sizes.$md) {
       display: flex;
     }
   }

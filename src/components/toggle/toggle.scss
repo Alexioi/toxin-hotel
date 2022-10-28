@@ -1,4 +1,4 @@
-@import 'Style/variables';
+@use 'Style/constants/colors';
 
 .toggle {
   &__text {
@@ -6,14 +6,14 @@
     line-height: 20px;
     position: relative;
     cursor: pointer;
-    color: rgba($color-first, 0.75);
+    color: rgba(colors.$first, 0.75);
     padding-left: 50px;
 
     &::before {
       content: '';
       display: block;
       position: absolute;
-      border: 1px solid rgba($color-first, 0.25);
+      border: 1px solid rgba(colors.$first, 0.25);
       border-radius: 10px;
       width: 38px;
       height: 18px;
@@ -26,7 +26,7 @@
       display: block;
       width: 12px;
       height: 12px;
-      background: rgba($color-first, 0.25);
+      background: rgba(colors.$first, 0.25);
       border-radius: 10px;
       left: 4px;
       top: 3px;

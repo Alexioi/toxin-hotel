@@ -1,4 +1,4 @@
-@import 'Style/variables';
+@use 'Style/constants/colors';
 
 .irs {
   position: relative;
@@ -8,7 +8,7 @@
     display: block;
     height: 6px;
     background: #ffffff;
-    border: 1px solid rgba($color-first, 0.25);
+    border: 1px solid rgba(colors.$first, 0.25);
     box-sizing: border-box;
     border-radius: 3px;
 

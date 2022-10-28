@@ -1,4 +1,4 @@
-@import 'Style/variables';
+@use 'Style/constants/colors';
 
 .calendar {
   position: relative;
@@ -24,8 +24,8 @@
     z-index: 100;
     padding: 20px 20px 19px 20px;
     background: white;
-    border: 1px solid rgba($color-first, 0.25);
-    box-shadow: 0px 10px 20px rgba($color-first, 0.05);
+    border: 1px solid rgba(colors.$first, 0.25);
+    box-shadow: 0px 10px 20px rgba(colors.$first, 0.05);
     border-radius: 4px;
     margin-top: 5px;
 

@@ -1,9 +1,9 @@
-@import 'Style/variables';
+@use 'Style/constants/colors';
 
 .room-card {
   width: 100%;
   background: #ffffff;
-  box-shadow: 0px 10px 20px rgba($color-first, 0.05);
+  box-shadow: 0px 10px 20px rgba(colors.$first, 0.05);
   border-radius: 4px;
 
   &:hover {
@@ -85,7 +85,7 @@
 
   &__rating {
     margin-top: 13px;
-    border-top: 1px solid rgba($color-first, 0.1);
+    border-top: 1px solid rgba(colors.$first, 0.1);
     padding-top: 8px;
     padding-right: 4px;
     display: flex;
@@ -100,7 +100,7 @@
   &__reviews {
     font-size: 14px;
     line-height: 18px;
-    color: rgba($color-first, 0.5);
+    color: rgba(colors.$first, 0.5);
 
     &-value {
       font-weight: bold;

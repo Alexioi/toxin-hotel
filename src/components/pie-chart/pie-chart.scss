@@ -1,4 +1,4 @@
-@import 'Style/variables';
+@use 'Style/constants/colors';
 
 .pie-chart {
   display: flex;
@@ -13,9 +13,10 @@
 
   &__item {
     position: relative;
-    font: 14px/14px $font-first;
+    font-size: 14px;
+    line-height: 14px;
     padding-left: 15px;
-    color: rgba($color-first, 0.75);
+    color: rgba(colors.$first, 0.75);
     list-style-type: none;
 
     &::before {

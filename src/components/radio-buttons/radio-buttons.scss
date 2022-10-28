@@ -1,4 +1,4 @@
-@import 'Style/variables';
+@use 'Style/constants/colors';
 
 .radio-buttons {
   display: flex;
@@ -11,7 +11,7 @@
   &__text {
     font-size: 14px;
     line-height: 20px;
-    color: rgba($color-first, 0.75);
+    color: rgba(colors.$first, 0.75);
     padding-left: 30px;
     position: relative;
 
@@ -21,7 +21,7 @@
       display: block;
       width: 18px;
       height: 18px;
-      border: 1px solid rgba($color-first, 0.25);
+      border: 1px solid rgba(colors.$first, 0.25);
       border-radius: 10px;
       top: 0px;
     }

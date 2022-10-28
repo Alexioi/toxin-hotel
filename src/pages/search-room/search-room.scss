@@ -1,4 +1,5 @@
-@import 'Style/variables';
+@use 'Style/constants/display-sizes';
+@use 'Style/constants/mixins';
 
 .search-room {
   padding-top: 30px;
@@ -8,11 +9,11 @@
     display: flex;
     justify-content: space-between;
 
-    @include media-breakpoint-down($lg) {
+    @include mixins.media-breakpoint-down(display-sizes.$lg) {
       gap: 20px;
     }
 
-    @include media-breakpoint-down($md) {
+    @include mixins.media-breakpoint-down(display-sizes.$md) {
       flex-direction: column;
     }
   }
@@ -20,7 +21,7 @@
   &__filter-wrapper {
     flex-basis: 266px;
 
-    @include media-breakpoint-down($md) {
+    @include mixins.media-breakpoint-down(display-sizes.$md) {
       flex-basis: auto;
     }
   }
@@ -37,13 +38,13 @@
   &__pagination {
     padding-left: 290px;
 
-    @include media-breakpoint-down($lg) {
+    @include mixins.media-breakpoint-down(display-sizes.$lg) {
       padding-left: 0;
       display: flex;
       justify-content: center;
     }
 
-    @include media-breakpoint-down($md) {
+    @include mixins.media-breakpoint-down(display-sizes.$md) {
       display: none;
     }
   }

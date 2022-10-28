@@ -1,5 +1,5 @@
-@import './fonts';
-@import './variables';
+@use './constants/font';
+@use './constants/colors';
 
 * {
   box-sizing: border-box;
@@ -10,17 +10,9 @@
 html,
 body {
   height: 100%;
-  font-family: $font-first;
-  font-size: $font-size + px;
-  color: #1f2041;
-
-  @include media-breakpoint-down($md) {
-    font-size: $font-size + 2 + px;
-  }
-
-  @include media-breakpoint-down($xs) {
-    font-size: $font-size + 4 + px;
-  }
+  font-family: font.$first;
+  font-size: font.$size;
+  color: colors.$first;
 }
 
 input,

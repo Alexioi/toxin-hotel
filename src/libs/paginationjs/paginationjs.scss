@@ -1,4 +1,4 @@
-@import 'Style/variables';
+@use 'Style/constants/colors';
 
 .paginationjs {
   &-pages {
@@ -37,7 +37,7 @@
 
     & > a {
       line-height: 15px;
-      color: rgba($color-first, 0.5);
+      color: rgba(colors.$first, 0.5);
       text-decoration: none;
     }
 

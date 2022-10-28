@@ -1,4 +1,4 @@
-@import 'Style/variables';
+@use 'Style/constants/colors';
 
 .room-info {
   display: flex;
@@ -9,14 +9,14 @@
     font-weight: 700;
     font-size: 14px;
     line-height: 17px;
-    color: $color-first;
+    color: colors.$first;
   }
 
   &__number-value {
     font-weight: 700;
     font-size: 24px;
     line-height: 30px;
-    color: $color-first;
+    color: colors.$first;
 
     &_type-link {
       font-size: 19px;
@@ -31,19 +31,19 @@
     font-size: 12px;
     line-height: 15px;
     text-transform: uppercase;
-    color: $color-second;
+    color: colors.$second;
   }
 
   &__price-number {
     font-weight: 700;
     font-size: 14px;
     line-height: 18px;
-    color: rgba($color-first, 0.5);
+    color: rgba(colors.$first, 0.5);
   }
 
   &__price-text {
     font-size: 12px;
     line-height: 18px;
-    color: rgba($color-first, 0.5);
+    color: rgba(colors.$first, 0.5);
   }
 }

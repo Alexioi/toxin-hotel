@@ -1,4 +1,4 @@
-@import 'Style/variables';
+@use 'Style/constants/colors';
 
 .bullet-list {
   display: grid;
@@ -9,7 +9,7 @@
     font-size: 14px;
     line-height: 24px;
     padding-left: 20px;
-    color: rgba($color-first, 0.75);
+    color: rgba(colors.$first, 0.75);
     list-style-type: none;
 
     &::before {
@@ -18,7 +18,7 @@
       display: block;
       width: 10px;
       height: 10px;
-      background: rgba($color-first, 0.25);
+      background: rgba(colors.$first, 0.25);
       border-radius: 50%;
       left: 0;
       top: 6px;

@@ -1,4 +1,4 @@
-@import 'Style/variables';
+@use 'Style/constants/colors';
 
 .text-field {
   position: relative;
@@ -6,27 +6,27 @@
   &__input {
     font-size: 14px;
     line-height: 42px;
-    border: 1px solid rgba($color-first, 0.25);
+    border: 1px solid rgba(colors.$first, 0.25);
     border-radius: 4px;
     width: 100%;
     outline: none;
     padding: 0 44px 0 15px;
-    color: rgba($color-first, 0.25);
+    color: rgba(colors.$first, 0.25);
 
     &::placeholder {
-      color: rgba($color-first, 0.25);
+      color: rgba(colors.$first, 0.25);
     }
 
     &:hover,
     &:focus {
-      border: 1px solid rgba($color-first, 0.5);
-      color: rgba($color-first, 0.75);
+      border: 1px solid rgba(colors.$first, 0.5);
+      color: rgba(colors.$first, 0.75);
     }
   }
 
   &__input &_hovered {
-    border: 1px solid rgba($color-first, 0.5);
-    color: rgba($color-first, 0.75);
+    border: 1px solid rgba(colors.$first, 0.5);
+    color: rgba(colors.$first, 0.75);
   }
 
   &__subscription-button {

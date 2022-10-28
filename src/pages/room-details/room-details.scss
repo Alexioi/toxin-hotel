@@ -1,4 +1,6 @@
-@import 'Style/variables';
+@use 'Style/constants/colors';
+@use 'Style/constants/mixins';
+@use 'Style/constants/display-sizes';
 
 .room-details {
   &__content-block {
@@ -6,7 +8,7 @@
     display: flex;
     justify-content: space-between;
 
-    @include media-breakpoint-down($lg) {
+    @include mixins.media-breakpoint-down(display-sizes.$lg) {
       gap: 20px;
       flex-direction: column;
     }
@@ -20,7 +22,7 @@
     display: flex;
     gap: 80px;
 
-    @include media-breakpoint-down($sm) {
+    @include mixins.media-breakpoint-down(display-sizes.$sm) {
       gap: 20px;
       flex-direction: column;
     }
@@ -45,7 +47,7 @@
     display: flex;
     justify-content: space-between;
 
-    @include media-breakpoint-down($sm) {
+    @include mixins.media-breakpoint-down(display-sizes.$sm) {
       gap: 10px;
       flex-direction: column;
     }
@@ -54,7 +56,7 @@
   &__text {
     font-size: 14px;
     line-height: 24px;
-    color: rgba($color-first, 0.75);
+    color: rgba(colors.$first, 0.75);
   }
 
   &__comments-wrapper {
@@ -69,7 +71,7 @@
     margin-top: 35px;
     gap: 101px;
 
-    @include media-breakpoint-down($lg) {
+    @include mixins.media-breakpoint-down(display-sizes.$lg) {
       gap: 20px;
       flex-direction: column;
     }
@@ -81,7 +83,7 @@
     gap: 20px;
     flex-basis: 260px;
 
-    @include media-breakpoint-down($lg) {
+    @include mixins.media-breakpoint-down(display-sizes.$lg) {
       flex-basis: auto;
     }
   }
@@ -96,7 +98,7 @@
     flex-direction: column;
     gap: 20px;
 
-    @include media-breakpoint-down($lg) {
+    @include mixins.media-breakpoint-down(display-sizes.$lg) {
       flex-basis: auto;
     }
   }

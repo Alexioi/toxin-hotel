@@ -1,4 +1,6 @@
-@import 'Style/variables';
+@use 'Style/constants/colors';
+@use 'Style/constants/mixins';
+@use 'Style/constants/display-sizes';
 
 .landing-page {
   height: 100%;
@@ -9,7 +11,7 @@
     padding-top: 70px;
     display: flex;
 
-    @include media-breakpoint-down($lg) {
+    @include mixins.media-breakpoint-down(display-sizes.$lg) {
       justify-content: center;
     }
   }
@@ -24,7 +26,7 @@
     padding-top: 316px;
     padding-bottom: 22px;
 
-    @include media-breakpoint-down($lg) {
+    @include mixins.media-breakpoint-down(display-sizes.$lg) {
       justify-content: center;
     }
   }
@@ -34,13 +36,13 @@
     font-size: 14px;
     line-height: 24px;
     text-align: right;
-    color: rgba($color-first, 0.75);
+    color: rgba(colors.$first, 0.75);
 
-    @include media-breakpoint-down($lg) {
+    @include mixins.media-breakpoint-down(display-sizes.$lg) {
       text-align: center;
     }
 
-    @include media-breakpoint-down($md) {
+    @include mixins.media-breakpoint-down(display-sizes.$md) {
       margin-top: 50px;
     }
   }

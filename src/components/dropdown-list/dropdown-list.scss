@@ -1,4 +1,4 @@
-@import 'Style/variables';
+@use 'Style/constants/colors';
 
 .dropdown-list {
   &_opened &__menu {
@@ -16,7 +16,7 @@
     border: none;
     cursor: pointer;
     line-height: 15px;
-    color: rgba($color-first, 0.5);
+    color: rgba(colors.$first, 0.5);
   }
 
   &_opened &__button {

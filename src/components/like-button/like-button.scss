@@ -1,7 +1,7 @@
-@import 'Style/variables';
+@use 'Style/constants/colors';
 
 .like-button {
-  background: rgba($color-first, 0.25);
+  background: rgba(colors.$first, 0.25);
   border: none;
   border-radius: 10px;
   min-width: 40px;
@@ -35,7 +35,7 @@
     // line-height: 10px;
     top: 6px;
     left: 5px;
-    // color: rgba($color-first, 0.25);
+    // color: rgba(colors.$first, 0.25);
   }
 
   &_liked &__icon {
@@ -45,7 +45,7 @@
   &__counter {
     font-size: 10px;
     line-height: 20px;
-    color: rgba($color-first, 0.25);
+    color: rgba(colors.$first, 0.25);
     position: relative;
     z-index: 2;
     margin-left: 22px;
@@ -53,6 +53,6 @@
   }
 
   &_liked &__counter {
-    color: $color-second;
+    color: colors.$second;
   }
 }

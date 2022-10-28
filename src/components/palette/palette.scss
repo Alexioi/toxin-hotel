@@ -1,4 +1,4 @@
-@import 'Style/variables';
+@use 'Style/constants/colors';
 
 .palette {
   display: flex;
@@ -25,31 +25,31 @@
 
     &_color {
       &-dark-shade-100::before {
-        background: $color-first;
+        background: colors.$first;
       }
 
       &-dark-shade-75::before {
-        background: rgba($color-first, 0.75);
+        background: rgba(colors.$first, 0.75);
       }
 
       &-dark-shade-50::before {
-        background: rgba($color-first, 0.5);
+        background: rgba(colors.$first, 0.5);
       }
 
       &-dark-shade-25::before {
-        background: rgba($color-first, 0.25);
+        background: rgba(colors.$first, 0.25);
       }
 
       &-dark-shade-5::before {
-        background: rgba($color-first, 0.05);
+        background: rgba(colors.$first, 0.05);
       }
 
       &-purple::before {
-        background: $color-second;
+        background: colors.$second;
       }
 
       &-green::before {
-        background: $color-third;
+        background: colors.$third;
       }
     }
   }
@@ -57,6 +57,6 @@
   &__text {
     font-size: 19px;
     line-height: 28px;
-    color: $color-first;
+    color: colors.$first;
   }
 }

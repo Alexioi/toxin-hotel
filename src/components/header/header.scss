@@ -1,7 +1,9 @@
-@import 'Style/variables';
+@use 'Style/constants/colors';
+@use 'Style/constants/mixins';
+@use 'Style/constants/display-sizes';
 
 .header {
-  box-shadow: 0px 10px 20px rgba($color-first, 0.05);
+  box-shadow: 0px 10px 20px rgba(colors.$first, 0.05);
   background-color: white;
   padding: 15px 0;
 
@@ -33,7 +35,7 @@
     border: none;
     font-size: 30px;
 
-    @include media-breakpoint-down($md) {
+    @include mixins.media-breakpoint-down(display-sizes.$md) {
       display: inline;
     }
   }
@@ -43,7 +45,7 @@
     gap: 21px;
     margin-right: 20px;
 
-    @include media-breakpoint-down($md) {
+    @include mixins.media-breakpoint-down(display-sizes.$md) {
       display: none;
       width: 100%;
       align-items: center;
@@ -63,19 +65,12 @@
   }
 
   &__button-content {
-    display: flex;
     font-size: 14px;
     line-height: 17px;
-    color: rgba($color-first, 0.5);
-
-    &::after {
-      content: 'keyboard_arrow_down';
-      font-family: 'Material Icons';
-      font-size: 24px;
-    }
+    color: rgba(colors.$first, 0.5);
 
     &:hover {
-      color: rgba($color-first, 0.75);
+      color: rgba(colors.$first, 0.75);
     }
   }
 
@@ -83,7 +78,7 @@
     position: absolute;
     display: none;
 
-    @include media-breakpoint-down($md) {
+    @include mixins.media-breakpoint-down(display-sizes.$md) {
       margin-top: 10px;
       position: static;
     }
@@ -97,24 +92,24 @@
     list-style: none;
     padding: 10px;
     background-color: white;
-    border: 1px solid rgba($color-first, 0.5);
+    border: 1px solid rgba(colors.$first, 0.5);
     border-radius: 4px;
   }
 
   &__navigation-link {
     text-decoration: none;
     align-items: center;
-    color: rgba($color-first, 0.5);
+    color: rgba(colors.$first, 0.5);
     font-size: 14px;
     line-height: 17px;
 
     &_active {
       font-weight: bold;
-      color: rgba($color-first, 0.75);
+      color: rgba(colors.$first, 0.75);
     }
 
     &:hover {
-      color: rgba($color-first, 0.75);
+      color: rgba(colors.$first, 0.75);
     }
   }
 
@@ -122,25 +117,25 @@
     display: flex;
     gap: 20px;
 
-    @include media-breakpoint-down($md) {
+    @include mixins.media-breakpoint-down(display-sizes.$md) {
       width: 100%;
       display: none;
       padding-top: 20px;
-      border-top: 1px solid rgba($color-first, 0.1);
+      border-top: 1px solid rgba(colors.$first, 0.1);
       flex-direction: column;
       align-items: center;
     }
   }
 
   &__username {
-    border-left: 1px solid rgba($color-first, 0.1);
+    border-left: 1px solid rgba(colors.$first, 0.1);
     padding: 6px 0 6px 20px;
     font-size: 14px;
     line-height: 17px;
-    color: rgba($color-first, 0.5);
+    color: rgba(colors.$first, 0.5);
     text-align: center;
 
-    @include media-breakpoint-down($md) {
+    @include mixins.media-breakpoint-down(display-sizes.$md) {
       width: 100%;
       border: none;
       padding: 0;

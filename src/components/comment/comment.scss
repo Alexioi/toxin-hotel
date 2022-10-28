@@ -1,4 +1,4 @@
-@import 'Style/variables';
+@use 'Style/constants/colors';
 
 .comment {
   display: grid;
@@ -7,14 +7,14 @@
     'like-button text';
   align-self: start;
   gap: 10px;
-  color: rgba($color-first, 0.75);
+  color: rgba(colors.$first, 0.75);
 
   &__img {
     grid-area: img;
     width: 48px;
     height: 48px;
     border: 2px solid white;
-    filter: drop-shadow(0px 10px 20px rgba($color-first, 0.1));
+    filter: drop-shadow(0px 10px 20px rgba(colors.$first, 0.1));
     border-radius: 32px;
   }
 

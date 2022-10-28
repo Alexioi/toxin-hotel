@@ -1,4 +1,4 @@
-@import 'Style/variables';
+@use 'Style/constants/colors';
 
 .range-slider {
   &__header {
@@ -9,7 +9,7 @@
 
   &__value {
     line-height: 15px;
-    color: rgba($color-first, 0.5);
+    color: rgba(colors.$first, 0.5);
     flex-shrink: 0;
   }
 

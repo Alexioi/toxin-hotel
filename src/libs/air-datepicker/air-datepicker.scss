@@ -1,4 +1,4 @@
-@import 'Style/variables';
+@use 'Style/constants/colors';
 
 .datepicker {
   &--nav {
@@ -16,7 +16,7 @@
       font-weight: bold;
       font-size: 19px;
       line-height: 23px;
-      color: $color-first;
+      color: colors.$first;
       cursor: pointer;
     }
   }
@@ -38,7 +38,7 @@
     font-weight: bold;
     font-size: 12px;
     line-height: 15px;
-    color: $color-second;
+    color: colors.$second;
     text-align: center;
   }
 
@@ -57,15 +57,15 @@
       font-weight: bold;
       font-size: 12px;
       line-height: 40px;
-      color: rgba($color-first, 0.5);
+      color: rgba(colors.$first, 0.5);
       position: relative;
 
       &.-other-month- {
-        color: rgba($color-first, 0.25);
+        color: rgba(colors.$first, 0.25);
       }
 
       &.-in-range- {
-        background: rgba($color-second, 0.25);
+        background: rgba(colors.$second, 0.25);
       }
 
       &.-current- {
@@ -91,7 +91,7 @@
         border-radius: 50% 0 0 50%;
         background: linear-gradient(
           180deg,
-          rgba($color-second, 0.25) 0%,
+          rgba(colors.$second, 0.25) 0%,
           rgba(139, 164, 249, 0.25) 100%
         );
       }
@@ -104,7 +104,7 @@
         position: absolute;
         background: linear-gradient(
           180deg,
-          rgba($color-second, 0.25) 0%,
+          rgba(colors.$second, 0.25) 0%,
           rgba(139, 164, 249, 0.25) 100%
         );
         border-radius: 0 22px 22px 0;
@@ -125,7 +125,7 @@
       text-align: center;
       font-size: 12px;
       line-height: 40px;
-      color: rgba($color-first, 0.5);
+      color: rgba(colors.$first, 0.5);
     }
 
     &-year {
@@ -133,7 +133,7 @@
       text-align: center;
       font-size: 12px;
       line-height: 40px;
-      color: rgba($color-first, 0.5);
+      color: rgba(colors.$first, 0.5);
     }
   }
 }

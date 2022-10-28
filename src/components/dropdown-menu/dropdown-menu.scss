@@ -1,4 +1,4 @@
-@import 'Style/variables';
+@use 'Style/constants/colors';
 
 .dropdown-menu {
   width: 100%;
@@ -15,7 +15,7 @@
     width: 100%;
     background-color: white;
     padding: 7px 7px 6px 15px;
-    border: 1px solid rgba($color-first, 0.5);
+    border: 1px solid rgba(colors.$first, 0.5);
     border-top: none;
     border-radius: 0 0 4px 4px;
   }
@@ -48,14 +48,14 @@
 
     &-button {
       flex-shrink: 0;
-      border: 1px solid rgba($color-first, 0.25);
+      border: 1px solid rgba(colors.$first, 0.25);
       background: white;
       width: 30px;
       height: 30px;
       border-radius: 50%;
       font-size: 18px;
       line-height: 30px;
-      color: rgba($color-first, 0.5);
+      color: rgba(colors.$first, 0.5);
       cursor: pointer;
 
       &_disabled {

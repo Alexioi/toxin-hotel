@@ -1,11 +1,11 @@
-@import 'Style/variables';
+@use 'Style/constants/colors';
 
 .title {
   display: flex;
   justify-content: space-between;
 
   &__heading {
-    color: $color-first;
+    color: colors.$first;
     font-weight: bold;
 
     &_type {
@@ -29,7 +29,7 @@
   &__hint {
     line-height: 15px;
     text-transform: uppercase;
-    color: rgba($color-first, 0.5);
+    color: rgba(colors.$first, 0.5);
     float: right;
   }
 }

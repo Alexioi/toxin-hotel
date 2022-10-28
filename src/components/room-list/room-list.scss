@@ -1,4 +1,5 @@
-@import 'Style/variables';
+@use 'Style/constants/mixins';
+@use 'Style/constants/display-sizes';
 
 .room-list {
   display: flex;
@@ -10,11 +11,11 @@
     list-style-type: none;
     width: calc(100% / 3 - 8px);
 
-    @include media-breakpoint-down($lg) {
+    @include mixins.media-breakpoint-down(display-sizes.$lg) {
       width: calc(100% / 2 - 6px);
     }
 
-    @include media-breakpoint-down($xs) {
+    @include mixins.media-breakpoint-down(display-sizes.$xs) {
       width: 100%;
     }
   }
