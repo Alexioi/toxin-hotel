@@ -41,7 +41,6 @@
     "imask": "^6.0.7",
     "ion-rangeslider": "^2.3.1",
     "jquery": "^3.6.0",
-    "material-icons": "^0.6.2",
     "paginationjs": "^2.1.5"
   }
 }

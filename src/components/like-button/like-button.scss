@@ -28,15 +28,18 @@
   &__icon {
     position: absolute;
     z-index: 2;
-    font-size: 10px;
-    line-height: 10px;
-    top: 5px;
+    background-image: url('Images/decorative/favorite-border.svg');
+    height: 8px;
+    width: 10px;
+    // font-size: 10px;
+    // line-height: 10px;
+    top: 6px;
     left: 5px;
-    color: rgba($color-first, 0.25);
+    // color: rgba($color-first, 0.25);
   }
 
   &_liked &__icon {
-    color: $color-second;
+    background-image: url('Images/decorative/favorite.svg');
   }
 
   &__counter {

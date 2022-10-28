@@ -10,11 +10,9 @@ class LikeButton {
   _init() {
     this._findElements();
     this._attachEventHandlers();
-    this._changeButtonIcon();
   }
 
   _findElements() {
-    this.$icon = this.$component.find(cssSelectors.icon);
     this.$counter = this.$component.find(cssSelectors.counter);
   }
 
@@ -24,19 +22,11 @@ class LikeButton {
 
   _onClickButton() {
     this._changeButtonStyle();
-    this._changeButtonIcon();
     this._setCounterLikes();
   }
 
   _changeButtonStyle() {
     this.$component.toggleClass('like-button_liked');
-  }
-
-  _changeButtonIcon() {
-    const isLiked = this.$component.hasClass('like-button_liked');
-    const icon = isLiked ? 'favorite' : 'favorite_border';
-
-    this.$icon.text(icon);
   }
 
   _setCounterLikes() {
