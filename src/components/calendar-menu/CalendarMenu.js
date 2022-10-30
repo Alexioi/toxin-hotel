@@ -1,7 +1,7 @@
 import AirDatepicker from 'Libs/air-datepicker';
 import cssSelectors from './constants';
 
-class Calendar {
+class CalendarMenu {
   constructor($node) {
     this.$node = $node;
 
@@ -44,7 +44,7 @@ class Calendar {
     const isCurrentButton = event.target === this.$buttons[0] || event.target === this.$buttons[1];
 
     if (!isCurrentMenuTarget && !isCurrentButton) {
-      this.$menu.removeClass('calendar__menu_visible');
+      this.$menu.removeClass('calendar-menu__menu_visible');
     }
   }
 
@@ -56,8 +56,8 @@ class Calendar {
     }
 
     if (this.$inputs.length === 2) {
-      const firstDate = Calendar._calculateFullDate(dates[0]);
-      const secondDate = Calendar._calculateFullDate(dates[1]);
+      const firstDate = CalendarMenu._calculateFullDate(dates[0]);
+      const secondDate = CalendarMenu._calculateFullDate(dates[1]);
 
       this.$inputs[0].value = firstDate;
       this.$inputs[1].value = secondDate;
@@ -65,8 +65,8 @@ class Calendar {
       return;
     }
 
-    const firstDate = Calendar._calculateDayAndMount(dates[0]);
-    const secondDate = Calendar._calculateDayAndMount(dates[1]);
+    const firstDate = CalendarMenu._calculateDayAndMount(dates[0]);
+    const secondDate = CalendarMenu._calculateDayAndMount(dates[1]);
 
     this.$inputs.val(`${firstDate} - ${secondDate}`);
     this._toggleVisible();
@@ -93,8 +93,8 @@ class Calendar {
   }
 
   _toggleVisible() {
-    this.$menu.toggleClass('calendar__menu_visible');
-    const isOpened = this.$menu.hasClass('calendar__menu_visible');
+    this.$menu.toggleClass('calendar-menu__menu_visible');
+    const isOpened = this.$menu.hasClass('calendar-menu__menu_visible');
 
     this.$inputs.each((i) => {
       this.$inputs[i].dataset.focus = isOpened ? 'true' : 'false';
@@ -126,4 +126,4 @@ class Calendar {
   }
 }
 
-export default Calendar;
+export default CalendarMenu;

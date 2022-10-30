@@ -1,22 +1,22 @@
-include ../button/button
+include ../calendar-menu/calendar-menu
+include ../dropdown-field/dropdown-field
+include ../title/title
 
 mixin calendar(options)
-  -
+  - 
     const {
-      isOpened = false
+      textFrom = '',
+      textTo = '',
+      hasTwoInputs = false
     } = options || {}
 
-    const {buttons} = require('Components/calendar/data.json')
-
-    classes = isOpened ? 'calendar_opened' : '' 
-
-  div.calendar.js-calendar(class=classes)
-    .calendar__inputs.js-calendar__inputs
-      block
-    .calendar__menu.js-calendar__menu
-      .calendar__datepicker.js-calendar__datepicker
-      .calendar__buttons
-        .calendar__button-clear.js-calendar__button-clear
-          +button(buttons.clear)
-        .calendar__button-apply.js-calendar__button-apply
-          +button(buttons.apply)
+  .calendar
+    +calendar-menu
+      .calendar__input
+        +title({ "text": textFrom, "type": "h4" })
+        +dropdown-field
+      if hasTwoInputs
+        .calendar__input
+          +title({ "text": textTo, "type": "h4" })
+          +dropdown-field
+          

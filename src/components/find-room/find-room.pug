@@ -21,12 +21,12 @@ mixin find-room()
       form.find-room__form(method="POST", action="/change-it")
         .find-room__calendar
           +calendar 
-            div  
-              +title(titles.from)
-              +dropdown-field(dropdownFields.from)
-            div
-              +title(titles.to)
-              +dropdown-field(dropdownFields.to)
+            //- div  
+            //-   +title(titles.from)
+            //-   +dropdown-field(dropdownFields.from)
+            //- div
+            //-   +title(titles.to)
+            //-   +dropdown-field(dropdownFields.to)
         .find-room__dropdown
           +dropdown-menu(dropdownMenus)
             +title(titles.guests)

@@ -23,12 +23,6 @@ mixin room-booking()
         +room-info(roomInfo)
         .room-booking__calendar
           +calendar  
-            div 
-              +title(titles.to)
-              +dropdown-field(dropdownFields.from)
-            div
-              +title(titles.from)
-              +dropdown-field(dropdownFields.to)
         +dropdown-menu(dropdownMenu)
           +title(titles.guests)
           +dropdown-field(dropdownFields.guests)

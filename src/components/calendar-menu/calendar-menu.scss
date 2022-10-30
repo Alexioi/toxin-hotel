@@ -1,6 +1,6 @@
 @use 'Style/constants/colors';
 
-.calendar {
+.calendar-menu {
   position: relative;
 
   &_opened {
@@ -25,7 +25,7 @@
     padding: 20px 20px 19px 20px;
     background: white;
     border: 1px solid rgba(colors.$first, 0.25);
-    box-shadow: 0px 10px 20px rgba(colors.$first, 0.05);
+    box-shadow: 0 10px 20px rgba(colors.$first, 0.05);
     border-radius: 4px;
     margin-top: 5px;
 
