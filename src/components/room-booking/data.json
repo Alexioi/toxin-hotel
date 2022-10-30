@@ -9,20 +9,12 @@
       { "name": "взрослые", "counter": 0 },
       { "name": "дети", "counter": 0 },
       { "name": "младенцы", "counter": 0 }
-    ],
-    "isOpened": false,
-    "type": "guests"
+    ]
   },
-  "titles": {
-    "to": { "text": "прибытие", "type": "h4" },
-    "from": { "text": "выезд", "type": "h4" },
-    "guests": { "text": "гости", "type": "h4" }
-  },
-  "button": { "theme": "long", "text": "забронировать", "type": "submit" },
+  "title": { "text": "гости" },
+  "button": { "text": "забронировать" },
   "roomInfo": { "isLux": true },
   "dropdownFields": {
-    "from": { "inputName": "dateFrom" },
-    "to": { "inputName": "dateTo" },
-    "guests": { "inputName": "guests" }
+    "guest": { "inputName": "guests" }
   }
 }

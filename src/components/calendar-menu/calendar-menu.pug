@@ -17,6 +17,6 @@ mixin calendar-menu(options)
       .calendar-menu__datepicker.js-calendar-menu__datepicker
       .calendar-menu__buttons
         .calendar-menu__button-clear.js-calendar-menu__button-clear
-          +button(buttons.clear)
+          +button(Object.assign({"theme": "link", "type": "button"}, buttons.clear ))
         .calendar-menu__button-apply.js-calendar-menu__button-apply
-          +button(buttons.apply)
+          +button(Object.assign({"theme": "link", "type": "button"}, buttons.apply ))

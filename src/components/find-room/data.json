@@ -1,15 +1,11 @@
 {
   "titles": {
-    "findRoom": { "text": "Найдём номера под ваши пожелания", "type": "h2" },
-    "from": { "text": "прибытие", "type": "h4" },
-    "to": { "text": "выезд", "type": "h4" },
-    "guests": { "text": "гости", "type": "h4" }
+    "findRoom": { "text": "Найдём номера под ваши пожелания" },
+    "guests": { "text": "гости" }
   },
   "dropdownFields": {
-    "from": { "inputName": "dateFrom" },
-    "to": { "inputName": "dateTo" },
     "guests": { "inputName": "guests" }
   },
   "dropdownMenu": { "type": "guests" },
-  "button": { "theme": "long", "text": "подобрать номер", "type": "submit" }
+  "button": { "text": "подобрать номер" }
 }

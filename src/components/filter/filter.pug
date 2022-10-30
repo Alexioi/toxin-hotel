@@ -25,26 +25,26 @@ mixin filter()
     .filter__items
       +calendar
       .filter__guests-dropdown-menu
-        +dropdown-menu(dropdownMenus.guests)
-          +title(titles.guests)
+        +dropdown-menu(Object.assign({"isOpened": false, "type": "guests"},dropdownMenus.guests))
+          +title(Object.assign({"type": "h4"}, titles.guests))
           +dropdown-field
       .filter__range-slider
         +range-slider(rangeSlider)
         p.filter__range-text= rangeText
       .filter__rules-title
-        +title(titles.rules)
+        +title(Object.assign({"type": "h4"}, titles.rules))
       .filter__rules
         +checkbox-list(checkboxLists.rules)
       .filter__availability-title
-        +title(titles.availability)
+        +title(Object.assign({"type": "h4"}, titles.availability))
       .filter__availability
-        +checkbox-list(checkboxLists.availability)
+        +checkbox-list(Object.assign({"isRich": true},checkboxLists.availability))
       .filter__rooms-dropdown-menu
-        +dropdown-menu(dropdownMenus.rooms)
-          +title(titles.conveniences)
+        +dropdown-menu(Object.assign({"isOpened": false, "type": "rooms"},dropdownMenus.rooms))
+          +title(Object.assign({"type": "h4"}, titles.conveniences))
           +dropdown-field
       .filter__dropdown-list
         +dropdown-list(dropdownList)
-          +checkbox-list(checkboxLists.additions)
+          +checkbox-list(Object.assign({"isRich": false},checkboxLists.additions))
     .filter__toggle-button.js-filter__toggle-button 
-      +button(button)
+      +button(Object.assign({"theme": "outline", "type": "button"},button))

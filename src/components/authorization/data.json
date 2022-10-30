@@ -1,10 +1,10 @@
 {
-  "title": { "text": "Войти", "type": "h2" },
+  "title": { "text": "Войти" },
   "textFields": {
-    "email": { "placeholder": "Email", "type": "email", "name": "email" },
-    "password": { "placeholder": "Пароль", "type": "password", "name": "password" }
+    "email": { "placeholder": "Email", "name": "email" },
+    "password": { "placeholder": "Пароль", "name": "password" }
   },
-  "button": { "theme": "long", "text": "войти", "type": "submit" },
+  "button": { "text": "войти" },
   "questionAboutAuthorization": {
     "questionText": "Нет аккаунта на Toxin?",
     "buttonText": "создать",

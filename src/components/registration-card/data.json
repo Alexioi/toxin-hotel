@@ -1,17 +1,17 @@
 {
   "titles": {
-    "registration": { "text": "Регистрация аккаунта", "type": "h2" },
-    "birthday": { "text": "дата рождения", "type": "h4" },
-    "loginData": { "text": "данные для входа в сервис", "type": "h4" }
+    "registration": { "text": "Регистрация аккаунта" },
+    "birthday": { "text": "дата рождения" },
+    "loginData": { "text": "данные для входа в сервис" }
   },
   "textFields": {
-    "name": { "placeholder": "Имя", "type": "text", "name": "name" },
+    "name": { "placeholder": "Имя", "name": "name" },
     "surname": { "placeholder": "Фамилия", "type": "text", "name": "surname" },
-    "birthday": { "hasHeader": true, "isMasked": true, "name": "birthday" },
-    "email": { "hasHeader": true, "placeholder": "Email", "type": "email", "name": "email" },
-    "password": { "placeholder": "Пароль", "type": "password", "name": "password" }
+    "birthday": { "name": "birthday" },
+    "email": { "placeholder": "Email", "type": "email", "name": "email" },
+    "password": { "placeholder": "Пароль", "name": "password" }
   },
-  "button": { "type": "submit", "theme": "long", "text": "перейти к оплате" },
+  "button": { "text": "перейти к оплате" },
   "questionAboutAuthentication": {
     "questionText": "Уже есть аккаунт на Toxin",
     "buttonText": "войти",

@@ -1,10 +1,10 @@
 {
   "titles": {
     "arrivalDates": { "text": "даты пребывания в отеле", "type": "h4" },
-    "guests": { "text": "гости", "type": "h4" },
-    "rules": { "text": "правила дома", "type": "h4" },
-    "availability": { "text": "доступность", "type": "h4" },
-    "conveniences": { "text": "удобства номера", "type": "h4" }
+    "guests": { "text": "гости" },
+    "rules": { "text": "правила дома" },
+    "availability": { "text": "доступность" },
+    "conveniences": { "text": "удобства номера" }
   },
   "rangeSlider": { "title": "диапазон цены" },
   "checkboxLists": {
@@ -17,7 +17,6 @@
       ]
     },
     "availability": {
-      "isRich": true,
       "items": [
         { "text": "Широкий коридор", "subText": "Ширина коридоров в номере \n не менее 91 см." },
         {
@@ -27,7 +26,6 @@
       ]
     },
     "additions": {
-      "isRich": false,
       "items": [
         { "text": "Завтрак" },
         { "text": "Письменный стол", "isChecked": true },
@@ -38,7 +36,7 @@
       ]
     }
   },
-  "button": { "text": "фильтр", "theme": "outline", "type": "button" },
+  "button": { "text": "фильтр" },
   "dropdownList": { "title": "дополнительные удобства" },
   "dropdownMenus": {
     "guests": {
@@ -46,18 +44,14 @@
         { "name": "взрослые", "counter": 3 },
         { "name": "дети", "counter": 0 },
         { "name": "младенцы", "counter": 1 }
-      ],
-      "isOpened": false,
-      "type": "guests"
+      ]
     },
     "rooms": {
       "items": [
         { "name": "спальни", "counter": 2 },
         { "name": "кровати", "counter": 2 },
         { "name": "ванные комнаты", "counter": 0 }
-      ],
-      "isOpened": false,
-      "type": "rooms"
+      ]
     }
   },
   "rangeText": "Стоимость за сутки пребывания в номере"

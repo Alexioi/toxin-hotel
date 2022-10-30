@@ -23,7 +23,7 @@ mixin footer(options)
       mobile = false
     } = options || {}
 
-    const {textField, logo} = require('Components/footer/data.json')
+    const {textField} = require('Components/footer/data.json')
 
     let classes = ''
     classes += mobile ? 'footer_mobile' : ''
@@ -33,7 +33,7 @@ mixin footer(options)
       .footer__main
         .footer__about
           .footer__logo 
-            +logo(logo)
+            +logo({ "type": "full-logo" })
           p.footer__text.footer__about-text= aboutText
         .footer__nav
           each navItem in navItems
@@ -47,7 +47,7 @@ mixin footer(options)
           span.footer__header.footer__header_margin-small= subscriptionHeader
           p.footer__text= subscriptionText
           .footer__input
-            +text-field(textField)
+            +text-field(Object.assign({"isSubscription": true, "type": "email"}, textField))
     .footer__line
       +container
         .footer__sub

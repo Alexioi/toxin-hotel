@@ -17,19 +17,13 @@ mixin find-room()
 
   .find-room
     +card
-      +title(titles.findRoom) 
+      +title(Object.assign({"type": "h2"}, titles.findRoom)) 
       form.find-room__form(method="POST", action="/change-it")
         .find-room__calendar
           +calendar 
-            //- div  
-            //-   +title(titles.from)
-            //-   +dropdown-field(dropdownFields.from)
-            //- div
-            //-   +title(titles.to)
-            //-   +dropdown-field(dropdownFields.to)
         .find-room__dropdown
           +dropdown-menu(dropdownMenus)
-            +title(titles.guests)
+            +title(Object.assign({"type": "h4"}, titles.guests))
             +dropdown-field(dropdownFields.guests)
         .find-room__submit-button
-          +button(button)
+          +button(Object.assign({"theme": "long", "type": "submit"}, button))

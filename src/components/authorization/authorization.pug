@@ -16,12 +16,12 @@ mixin authorization()
   .authorization
     +card 
       form.authorization__form(method="POST", action="/change-it") 
-        +title(title) 
+        +title(Object.assign({"type": "h2"}, title )) 
         .authorization__login-input
-          +text-field(textFields.email)
+          +text-field(Object.assign({ "type": "email"}, textFields.email))
         .authorization__password-input
-          +text-field(textFields.password)
+          +text-field(Object.assign({ "type": "password"}, textFields.password))
         .authorization__submit-button
-          +button(button)
+          +button(Object.assign({ "theme": "long", "type": "submit" }, button))
       .authorization__question-about-authorization
         +question-form-about-auth(questionAboutAuthorization)

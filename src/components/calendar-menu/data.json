@@ -1,6 +1,6 @@
 {
   "buttons": {
-    "clear": { "theme": "link", "text": "очистить", "type": "button" },
-    "apply": { "theme": "link", "text": "применить", "type": "button" }
+    "clear": { "text": "очистить" },
+    "apply": { "text": "применить" }
   }
 }
