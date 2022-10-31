@@ -1,35 +1,31 @@
 {
-  "titles": [
-    { "text": "Text Field", "hint": "Default", "type": "h4" },
-    { "text": "Text Field", "hint": "Hover / Focus", "type": "h4" },
-    { "text": "Dropdown", "type": "h4" },
-    { "text": "masked text field", "type": "h4" },
-    { "text": "date Dropdown", "type": "h4" },
-    { "text": "filter date dropdown", "type": "h4" },
-    { "text": "subscription text field", "type": "h4" },
-    { "text": "Checkbox Buttons", "type": "h4" },
-    { "text": "Radio Buttons", "type": "h4" },
-    { "text": "Toggle", "type": "h4" },
-    { "text": "like button", "type": "h4" },
-    { "text": "rate button", "type": "h4" },
-    { "text": "buttons", "type": "h4" },
-    { "text": "pagination", "type": "h4" },
-    { "text": "dropdown", "hint": "Default", "type": "h4" },
-    { "text": "dropdown", "hint": "expanded", "type": "h4" },
-    { "text": "dropdown", "type": "h4" },
-    { "text": "dropdown", "type": "h4" },
-    { "text": "rich Checkbox Buttons", "type": "h4" },
-    { "text": "bullet list", "type": "h4" }
-  ],
-  "textFields": [
-    {
+  "titles": {
+    "defaultTextField": { "text": "Text Field", "hint": "Default" },
+    "hoverTextField": { "text": "Text Field", "hint": "Hover / Focus" },
+    "maskedTextField": { "text": "masked text field" },
+    "subscriptionTextField": { "text": "subscription text field" },
+    "checkbox": { "text": "Checkbox Buttons" },
+    "radioButton": { "text": "Radio Buttons" },
+    "toggle": { "text": "Toggle" },
+    "likeButton": { "text": "like button" },
+    "rateButton": { "text": "rate button" },
+    "buttons": { "text": "buttons" },
+    "pagination": { "text": "pagination" },
+    "richCheckboxButtons": { "text": "rich Checkbox Buttons" },
+    "bulletList": { "text": "bullet list", "type": "h4" },
+    "dropdown": { "text": "dropdown", "type": "h4" },
+    "dropdownDefault": { "text": "dropdown", "hint": "default" },
+    "dropdownExpanded": { "text": "dropdown", "hint": "expanded" }
+  },
+  "textFields": {
+    "default": {
       "title": "Text Field",
       "hint": "Default",
       "placeholder": "Email",
       "type": "email",
       "name": "example1"
     },
-    {
+    "hover": {
       "isHovered": true,
       "title": "Text Field",
       "hint": "Hover / Focus",
@@ -38,26 +34,25 @@
       "type": "text",
       "name": "example2"
     },
-    { "title": "masked text field", "isMasked": true },
-    {
+    "masked": { "title": "masked text field", "isMasked": true },
+    "email": {
       "title": "subscription text field",
       "placeholder": "Email",
       "type": "email",
       "isSubscription": true,
       "name": "example3"
     }
-  ],
-  "checkboxLists": [
-    {
+  },
+  "checkboxLists": {
+    "short": {
       "isRich": false,
-      "title": "Rich Checkbox Buttons",
       "items": [
         { "text": "Можно курить" },
         { "text": "Можно с питомцами", "isChecked": true },
         { "text": "Можно пригласить гостей (до 10 человек)", "isChecked": true }
       ]
     },
-    {
+    "long": {
       "isRich": false,
       "items": [
         { "text": "Завтрак" },
@@ -68,7 +63,7 @@
         { "text": "Шампунь" }
       ]
     },
-    {
+    "rich": {
       "isRich": true,
       "items": [
         { "text": "Широкий коридор", "subText": "Ширина коридоров в номере \n не менее 91 см." },
@@ -78,7 +73,7 @@
         }
       ]
     }
-  ],
+  },
   "comment": {
     "authorName": "Мурад Сарафанов",
     "image": "murad",
@@ -147,34 +142,36 @@
       "type": "guests"
     }
   },
-  "toggles": [{ "isChecked": true }, { "isChecked": false }],
-  "likeButtons": [
-    { "counter": 2, "isLiked": false },
-    { "counter": 12, "isLiked": true }
-  ],
-  "rates": [{ "quantity": 4 }, { "quantity": 5 }],
+  "toggles": {
+    "checked": { "isChecked": true },
+    "default": { "isChecked": false }
+  },
+  "likeButtons": {
+    "default": { "counter": 2, "isLiked": false },
+    "liked": { "counter": 12, "isLiked": true }
+  },
+  "rates": {
+    "four": { "quantity": 4 },
+    "five": { "quantity": 5 }
+  },
   "buttons": {
-    "defaultButton": { "text": "click me", "theme": "default", "type": "button" },
+    "defaultButton": { "text": "click me" },
     "defaultButtonDisable": {
       "isHovered": true,
-      "text": "click me",
-      "theme": "default",
-      "type": "button"
+      "text": "click me"
     },
-    "outlineButton": { "theme": "outline", "text": "click me", "type": "button" },
+    "outlineButton": { "text": "click me" },
     "outlineButtonDisable": {
-      "theme": "outline",
       "isHovered": true,
-      "text": "click me",
-      "type": "button"
+      "text": "click me"
     },
-    "linkButton": { "theme": "link", "text": "click me", "type": "button" },
-    "linkDisable": { "theme": "link", "isHovered": true, "text": "click me", "type": "button" },
-    "longButton": { "theme": "long", "text": "перейти к оплате", "type": "button" }
+    "linkButton": { "text": "click me" },
+    "linkDisable": { "isHovered": true, "text": "click me" },
+    "longButton": { "text": "перейти к оплате" }
   },
   "dropdownLists": {
     "close": { "title": "expandable checkbox list" },
     "opened": { "title": "expandable checkbox list", "isOpened": true }
   },
-  "rangeSliders": [{ "title": "range slider" }]
+  "rangeSlider": { "title": "range slider" }
 }

@@ -13,34 +13,42 @@ block title
   | Room details
 
 block main
-  - const {comments, iconTextLists, gallery, titles, bulletLists} = require('./data.json')
+  -
+    const {
+      comments, 
+      iconTextList, 
+      gallery, 
+      titles, 
+      bulletList,
+      resetText
+    } = require('./data.json')
 
   .room-details
     +gallery(gallery)
     +container
       .room-details__content-block
         .room-details__content-column
-          .room-details__room-statistic-wrapper
-            .room-details__icon-text-list-wrapper
-              +title(titles[0])
-              +icon-text-list(iconTextLists[0])
-            .room-details__pie-chart-wrapper
-              +title(titles[1])
+          .room-details__room-statistic
+            .room-details__icon-text-list
+              +title(titles.aboutNumber)
+              +icon-text-list(iconTextList)
+            .room-details__pie-chart
+              +title(titles.roomImpression)
               +pie-chart
-          .room-details__comments-title-wrapper       
-            +title(titles[2])
+          .room-details__comments-title
+            +title(titles.reviewNumber)
             span.room-details__text 2 отзыва
-          .room-details__comments-wrapper
-            +comment(comments[0]) 
-            +comment(comments[1])
-          .room-details__rules-wrapper
-            .room-details__bullet-list-wrapper
-              .room-details__bullet-list-title-wrapper
-                +title(titles[3])
-              +bullet-list(bulletLists[0])
-            .room-details__reset-wrapper
-              +title(titles[4])
-              p.room-details__text Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
+          .room-details__comments
+            each comment in comments
+              +comment(comment) 
+          .room-details__rules
+            .room-details__bullet-list
+              .room-details__bullet-list-title
+                +title(titles.rules)
+              +bullet-list(bulletList)
+            .room-details__reset
+              +title(titles.reset)
+              p.room-details__text= resetText
 
-        .room-details__room-booking-wrapper
+        .room-details__room-booking
           +room-booking

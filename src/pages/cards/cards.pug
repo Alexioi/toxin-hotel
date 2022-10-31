@@ -4,19 +4,23 @@ include ../../components/find-room/find-room
 include ../../components/registration-card/registration-card
 include ../../components/room-booking/room-booking
 include ../../components/authorization/authorization
-include ../../components/calendar/calendar
+include ../../components/calendar-menu/calendar-menu
 include ../../components/room-card/room-card
 
 block var
-  - const withThemeGray = true
+  - const withThemeGray = true;
 
 block title
   | Cards
 
 block main
-  - const {calendar, roomCards} = require('./data.json')
+  -
+    const {
+      calendarMenu, 
+      roomCards
+    } = require('./data.json')
 
-  .cards   
+  .cards
     .cards__column
       +find-room
       +registration-card
@@ -24,7 +28,7 @@ block main
       +room-booking
       +authorization
     .cards__column.cards__column_size-slim
-      +calendar(calendar)
+      +calendar-menu(calendarMenu)
       each roomCard in roomCards
         .cards__room-card
           +room-card(roomCard) 

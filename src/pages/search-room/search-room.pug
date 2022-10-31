@@ -9,13 +9,18 @@ block title
   | Search room
 
 block main
+  -
+    const {
+      title
+    } = require('./data.json')
+
   .search-room
     +container
       .search-room__content
         .search-room__filter-wrapper
           +filter
         .search-room__column
-          +title({text: 'Номера, которые мы для вас подобрали', type: 'h2'})
+          +title(Object.assign({type: 'h2'}, title))
           .search-room__room-list-wrapper
             +room-list
           .search-room__pagination

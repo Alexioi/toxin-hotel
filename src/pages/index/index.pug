@@ -6,9 +6,12 @@ block title
   | Title
 
 block var
-  - const withThemeGray = true
+  - const withThemeGray = true;
 
 block main
-  - const {linksToPages} = require('./data.json')
+  -
+    const {
+      linksToPages
+    } = require('./data.json')
 
-  +links-to-pages(linksToPages[0])
+  +links-to-pages(linksToPages)

@@ -22,7 +22,7 @@ block title
   | Form elements
 
 block main
-  - 
+  -
     const { 
       titles,
       textFields, 
@@ -36,114 +36,113 @@ block main
       rates,
       buttons,
       dropdownLists,
-      rangeSliders,
+      rangeSlider,
     } = require('./data.json')
 
   .form-elements
-    
     .form-elements__row
       .form-elements__text-fields-and-buttons-left-column
-        +title(titles[0])
-        +text-field(textFields[0])
+        +title(Object.assign({type: 'h4'}, titles.defaultTextField))
+        +text-field(textFields.default)
         .form-elements__text-fields-and-buttons-left
-          +title(titles[1])
-          +text-field(textFields[1])
+          +title(Object.assign({type: 'h4'}, titles.hoverTextField))
+          +text-field(textFields.hover)
         .form-elements__text-fields-and-buttons-left
           +dropdown-menu(dropdownMenus.guestsClose)
-            +title(titles[2])
+            +title(Object.assign({type: 'h4'}, titles.dropdown))
             +dropdown-field
         .form-elements__text-fields-and-buttons-left
-          +title(titles[3])
-          +text-field(textFields[2])
+          +title(Object.assign({type: 'h4'}, titles.maskedTextField))
+          +text-field(textFields.masked)
         .form-elements__text-fields-and-buttons-left
-          +calendar  
+          +calendar 
         .form-elements__text-fields-and-buttons-left
-          +calendar     
+          +calendar 
         .form-elements__text-fields-and-buttons-left
-          +title(titles[6])
-          +text-field(textFields[3])
+          +title(Object.assign({type: 'h4'}, titles.subscriptionTextField))
+          +text-field(textFields.email)
 
       .form-elements__text-fields-and-buttons-middle-column
-        +title(titles[7])
+        +title(Object.assign({type: 'h4'}, titles.checkbox))
         .form-elements__text-fields-and-buttons-middle
-          +checkbox-list(checkboxLists[0])
+          +checkbox-list(checkboxLists.short)
         .form-elements__text-fields-and-buttons-middle
-          +title(titles[8])
+          +title(Object.assign({type: 'h4'}, titles.radioButton))
         .form-elements__text-fields-and-buttons-middle
           +radio-buttons
         .form-elements__text-fields-and-buttons-middle
-          +title(titles[9])
+          +title(Object.assign({type: 'h4'}, titles.toggle))
         .form-elements__text-fields-and-buttons-middle
-          +toggle(toggles[0])
+          +toggle(toggles.checked)
         .form-elements__text-fields-and-buttons-middle
-          +toggle(toggles[1])
+          +toggle(toggles.default)
         .form-elements__text-fields-and-buttons-middle
-          +title(titles[10])
+          +title(Object.assign({type: 'h4'}, titles.likeButton))
         .form-elements__text-fields-and-buttons-middle
-          +like-button(likeButtons[0])
-          +like-button(likeButtons[1])
+          +like-button(likeButtons.default)
+          +like-button(likeButtons.liked)
         .form-elements__text-fields-and-buttons-middle
-          +title(titles[11])
+          +title(Object.assign({type: 'h4'}, titles.rateButton))
         .form-elements__text-fields-and-buttons-middle
-          +rate(rates[0])
-          +rate(rates[1])
+          +rate(rates.four)
+          +rate(rates.five)
 
       .form-elements__text-fields-and-buttons-right-column
         .form-elements__text-fields-and-buttons-right
-          +range-slider(rangeSliders[0])
+          +range-slider(rangeSlider)
         .form-elements__text-fields-and-buttons-right
-          +title(titles[12]) 
+          +title(Object.assign({type: 'h4'}, titles.buttons))
         .form-elements__text-fields-and-buttons-right
-          +button(buttons.defaultButton)
-          +button(buttons.defaultButtonDisable)
+          +button(Object.assign({theme: 'default', type: 'button'}, buttons.defaultButton))
+          +button(Object.assign({theme: 'default', type: 'button'}, buttons.defaultButtonDisable))
         .form-elements__text-fields-and-buttons-right
-          +button(buttons.outlineButton)
-          +button(buttons.outlineButtonDisable)
+          +button(Object.assign({theme: 'outline', type: 'button'}, buttons.outlineButton))
+          +button(Object.assign({theme: 'outline', type: 'button'}, buttons.outlineButtonDisable))
         .form-elements__text-fields-and-buttons-right
-          +button(buttons.linkButton)
-          +button(buttons.linkDisable)
+          +button(Object.assign({theme: 'link', type: 'button'}, buttons.linkButton))
+          +button(Object.assign({theme: 'link', type: 'button'}, buttons.linkDisable))
         .form-elements__text-fields-and-buttons-right
-          +button(buttons.longButton)
+          +button(Object.assign({theme: 'long', type: 'button'}, buttons.longButton))
         .form-elements__text-fields-and-buttons-right
-          +title(titles[13])
+          +title(Object.assign({type: 'h4'}, titles.pagination))
         .form-elements__text-fields-and-buttons-right
           +pagination 
 
     .form-elements__row
       .form-elements__dropdowns-left-column
         +dropdown-menu(dropdownMenus.roomsClose)
-          +title(titles[14])
+          +title(Object.assign({type: 'h4'}, titles.dropdownDefault))
           +dropdown-field
         .form-elements__dropdowns-left
           +dropdown-menu(dropdownMenus.rooms)
-            +title(titles[15])
+            +title(Object.assign({type: 'h4'}, titles.dropdownExpanded))
             +dropdown-field
 
       .form-elements__dropdowns-middle-column
         +dropdown-menu(dropdownMenus.guestsEmpty)
-          +title(titles[16])
+          +title(Object.assign({type: 'h4'}, titles.dropdown))
           +dropdown-field
 
       .form-elements__dropdowns-right-column
         +dropdown-menu(dropdownMenus.guests)
-          +title(titles[17])
+          +title(Object.assign({type: 'h4'}, titles.dropdown))
           +dropdown-field
 
     .form-elements__row
       .form-elements__lists-left-column
         +dropdown-list(dropdownLists.close)
-          +checkbox-list(checkboxLists[1])
+          +checkbox-list(checkboxLists.long)
         .form-elements__list-left
           +dropdown-list(dropdownLists.opened)
-            +checkbox-list(checkboxLists[1])
+            +checkbox-list(checkboxLists.long)
 
       .form-elements__lists-middle-column
-        +title(titles[18])
+        +title(Object.assign({type: 'h4'}, titles.richCheckboxButtons))
         .form-elements__lists-middle
-          +checkbox-list(checkboxLists[2])
+          +checkbox-list(checkboxLists.rich)
 
       .form-elements__lists-right-column
-        +title(titles[19])
+        +title(Object.assign({type: 'h4'}, titles.bulletList))
         .form-elements__lists-right
           +bullet-list(bulletList)
 

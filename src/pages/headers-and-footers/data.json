@@ -1,6 +1,6 @@
 {
-  "headers": [
-    {
+  "headers": {
+    "hasButtons": {
       "navItems": [
         { "link": "/change-it", "text": "О нас" },
         {
@@ -23,7 +23,7 @@
       "active": 0,
       "username": ""
     },
-    {
+    "hasNames": {
       "navItems": [
         { "link": "/change-it", "text": "О нас" },
         {
@@ -46,9 +46,9 @@
       "active": 0,
       "username": "Юлий Цезарь"
     }
-  ],
-  "footers": [
-    {
+  },
+  "footers": {
+    "default": {
       "aboutText": "Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»",
       "navItems": [
         {
@@ -88,7 +88,7 @@
       ],
       "mobile": false
     },
-    {
+    "mobile": {
       "aboutText": "Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»",
       "navItems": [
         {
@@ -128,5 +128,5 @@
       ],
       "mobile": true
     }
-  ]
+  }
 }

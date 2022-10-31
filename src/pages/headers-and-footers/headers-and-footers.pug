@@ -4,17 +4,21 @@ include ../../components/header/header
 include ../../components/footer/footer
 
 block var
-  - const withThemeGray = true
+  - const withThemeGray = true;
 
 block title
   | Headers and footers
 
 block main
-  - const {headers, footers} = require('./data.json')
+  -
+    const {
+      headers, 
+      footers
+    } = require('./data.json')
 
   .headers-and-footers
-    +header(headers[0])
-    +header(headers[1])
-    +footer(footers[0])
+    +header(headers.hasButtons)
+    +header(headers.hasNames)
+    +footer(footers.default)
     .headers-and-footers__mobile-footer
-      +footer(footers[1])
+      +footer(footers.mobile)

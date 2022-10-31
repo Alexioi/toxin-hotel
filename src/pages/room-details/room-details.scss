@@ -18,7 +18,7 @@
     flex-basis: 712px;
   }
 
-  &__room-statistic-wrapper {
+  &__room-statistic {
     display: flex;
     gap: 80px;
 
@@ -28,20 +28,20 @@
     }
   }
 
-  &__icon-text-list-wrapper {
+  &__icon-text-list {
     flex-basis: 280px;
     display: flex;
     flex-direction: column;
     gap: 21px;
   }
 
-  &__pie-chart-wrapper {
+  &__pie-chart {
     display: flex;
     flex-direction: column;
     gap: 21px;
   }
 
-  &__comments-title-wrapper {
+  &__comments-title {
     margin-top: 16px;
     padding-left: 21px;
     display: flex;
@@ -59,14 +59,14 @@
     color: rgba(colors.$first, 0.75);
   }
 
-  &__comments-wrapper {
+  &__comments {
     margin-top: 15px;
     display: flex;
     flex-direction: column;
     gap: 22px;
   }
 
-  &__rules-wrapper {
+  &__rules {
     display: flex;
     margin-top: 35px;
     gap: 101px;
@@ -77,7 +77,7 @@
     }
   }
 
-  &__bullet-list-wrapper {
+  &__bullet-list {
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -88,11 +88,11 @@
     }
   }
 
-  &__bullet-list-title-wrapper {
+  &__bullet-list-title {
     padding-left: 20px;
   }
 
-  &__reset-wrapper {
+  &__reset {
     flex-basis: 341px;
     display: flex;
     flex-direction: column;
@@ -103,7 +103,7 @@
     }
   }
 
-  &__room-booking-wrapper {
+  &__room-booking {
     flex-basis: 380px;
   }
 }
