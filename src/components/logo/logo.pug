@@ -4,9 +4,5 @@ mixin logo(options)
       type = ''
     } = options || {}
 
-  a.logo(href = "./index.html") 
-    img(
-      class = 'logo__img'
-      src = require(`Images/content/${type}.svg`)
-      alt = "Toxin"
-    )
+  a.logo(href="./index.html")
+    img.logo__img(src=require(`Images/content/${type}.svg`), alt="Toxin")

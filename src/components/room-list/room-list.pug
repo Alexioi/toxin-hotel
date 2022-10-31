@@ -1,7 +1,10 @@
 include ../room-card/room-card
 
 mixin room-list
-  - const {items} = require('Components/room-list/data.json')
+  -
+    const {
+      items
+    } = require('Components/room-list/data.json')
 
   ul.room-list
     each item in items

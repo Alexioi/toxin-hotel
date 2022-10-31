@@ -11,12 +11,9 @@ mixin comment(options)
       text = '',
     } = options || {}
 
-  .comment 
-    img.comment__img(
-      src=require(`Images/content/${image}.png`)
-      alt=`Фото автора ${authorName}`
-    )
-    .comment__header 
+  .comment
+    img.comment__img(src=require(`Images/content/${image}.png`), alt=`Фото автора ${authorName}`)
+    .comment__header
       span.comment__author-name= authorName
       span.comment__date= date
     .comment__like-button

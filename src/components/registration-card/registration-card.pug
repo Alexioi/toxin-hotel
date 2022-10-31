@@ -6,8 +6,8 @@ include ../toggle/toggle
 include ../title/title
 include ../card/card
 
-mixin registration-card() 
-  - 
+mixin registration-card
+  -
     const {
       titles,
       textFields,
@@ -16,29 +16,26 @@ mixin registration-card()
     } = require('Components/registration-card/data.json')
 
   .registration-card
-    +card 
-      form.registration-card__form(
-        method="POST" 
-        action="/change-it"
-      ) 
-        +title(Object.assign({"type": "h2"}, titles.registration))
+    +card
+      form.registration-card__form(method="POST", action="/change-it")
+        +title(Object.assign({type: "h2"}, titles.registration))
         .registration-card__name
-          +text-field(Object.assign({"type": "text"}, textFields.name))
+          +text-field(Object.assign({type: "text"}, textFields.name))
         .registration-card__surname
-          +text-field(Object.assign({"type": "text"}, textFields.surname))
+          +text-field(Object.assign({type: "text"}, textFields.surname))
         .registration-card__radio-buttons
           +radio-buttons
         .registration-card__birthday
-          +title(Object.assign({"type": "h4"}, titles.birthday))
-          +text-field(Object.assign({"isMasked": true}, textFields.birthday))
+          +title(Object.assign({type: "h4"}, titles.birthday))
+          +text-field(Object.assign({isMasked: true}, textFields.birthday))
         .registration-card__email
-          +title(Object.assign({"type": "h4"}, titles.loginData))
-          +text-field(Object.assign({"type": "email"}, textFields.email))
+          +title(Object.assign({type: "h4"}, titles.loginData))
+          +text-field(Object.assign({type: "email"}, textFields.email))
         .registration-card__password
-          +text-field(Object.assign({"type": "password"}, textFields.password))
+          +text-field(Object.assign({type: "password"}, textFields.password))
         .registration-card__toggle
           +toggle
         .registration-card__submit-button
-          +button(Object.assign({"type": "submit", "theme": "long"}, button))
+          +button(Object.assign({type: "submit", theme: "long"}, button))
       .registration-card__question-about-authentication
         +question-form-about-auth(questionAboutAuthentication)

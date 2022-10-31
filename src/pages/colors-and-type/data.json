@@ -1,41 +1,37 @@
 {
-  "fontTypes": [
-    {
-      "item": [
-        {
-          "theme": "h1",
-          "sample": "H1",
-          "description": "This one is the sub-section or\nwidget title"
-        },
-        {
-          "theme": "h2",
-          "sample": "H2",
-          "description": "Next one is the item title inside\nwidgets"
-        },
-        {
-          "theme": "h3",
-          "sample": "H3",
-          "description": "This is a label or CTA text"
-        },
-        {
-          "theme": "body",
-          "sample": "Body",
-          "description": "This is the body text which is used for most\nof the design, like paragraphs, lists, etc."
-        }
-      ]
-    }
-  ],
-  "pallet": [
-    {
-      "items": [
-        { "color": "dark-shade-100", "colorName": "Dark Shade 100%", "colorHash": "#1F2041" },
-        { "color": "dark-shade-75", "colorName": "Dark Shade 75%", "colorHash": "#1F2041" },
-        { "color": "dark-shade-50", "colorName": "Dark Shade 50%", "colorHash": "#1F2041" },
-        { "color": "dark-shade-25", "colorName": "Dark Shade 25%", "colorHash": "#1F2041" },
-        { "color": "dark-shade-5", "colorName": "Dark Shade 5%", "colorHash": "#1F2041" },
-        { "color": "purple", "colorName": "Purple", "colorHash": "#BC9CFF" },
-        { "color": "green", "colorName": "Green", "colorHash": "#6FCF97" }
-      ]
-    }
-  ]
+  "fontType": {
+    "items": [
+      {
+        "theme": "h1",
+        "sample": "H1",
+        "description": "This one is the sub-section or\nwidget title"
+      },
+      {
+        "theme": "h2",
+        "sample": "H2",
+        "description": "Next one is the item title inside\nwidgets"
+      },
+      {
+        "theme": "h3",
+        "sample": "H3",
+        "description": "This is a label or CTA text"
+      },
+      {
+        "theme": "body",
+        "sample": "Body",
+        "description": "This is the body text which is used for most\nof the design, like paragraphs, lists, etc."
+      }
+    ]
+  },
+  "pallet": {
+    "items": [
+      { "color": "dark-shade-100", "colorName": "Dark Shade 100%", "colorHash": "#1F2041" },
+      { "color": "dark-shade-75", "colorName": "Dark Shade 75%", "colorHash": "#1F2041" },
+      { "color": "dark-shade-50", "colorName": "Dark Shade 50%", "colorHash": "#1F2041" },
+      { "color": "dark-shade-25", "colorName": "Dark Shade 25%", "colorHash": "#1F2041" },
+      { "color": "dark-shade-5", "colorName": "Dark Shade 5%", "colorHash": "#1F2041" },
+      { "color": "purple", "colorName": "Purple", "colorHash": "#BC9CFF" },
+      { "color": "green", "colorName": "Green", "colorHash": "#6FCF97" }
+    ]
+  }
 }

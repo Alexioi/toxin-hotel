@@ -25,7 +25,7 @@ mixin dropdown-menu(options)
     let classes = ''
     classes += isOpened ? ' dropdown-menu_opened' : ''
 
-  .dropdown-menu.js-dropdown-menu(class=classes data-type=type)
+  .dropdown-menu.js-dropdown-menu(class=classes, data-type=type)
     .dropdown-menu__input.js-dropdown-menu__input
       block
     .dropdown-menu__menu.js-dropdown-menu__menu
@@ -33,16 +33,12 @@ mixin dropdown-menu(options)
         each item in items 
           li.dropdown-menu__item.js-dropdown-menu__item
             span.dropdown-menu__item-name= item.name
-            button.dropdown-menu__counter-button.js-dropdown-menu__counter-button(
-              type='button'
-            ) -
+            button.dropdown-menu__counter-button.js-dropdown-menu__counter-button(type="button") -
             span.dropdown-menu__counter.js-dropdown-menu__counter= item.counter
-            button.dropdown-menu__counter-button.js-dropdown-menu__counter-button(
-              type='button'
-            ) +
+            button.dropdown-menu__counter-button.js-dropdown-menu__counter-button(type="button") +
       if hasButtons
         .dropdown-menu__buttons
           .dropdown-menu__clear-button.js-dropdown-menu__clear-button
-            +button(Object.assign({"theme": "link", "type": "button"}, buttons.clear ))
+            +button(Object.assign({theme: 'link', type: 'button'}, buttons.clear ))
           .dropdown-menu__apply-button.js-dropdown-menu__apply-button
-            +button(Object.assign({"theme": "link", "type": "button"}, buttons.clear ))
+            +button(Object.assign({theme: 'link', type: 'button'}, buttons.clear ))

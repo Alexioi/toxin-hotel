@@ -5,9 +5,8 @@ include ../calendar/calendar
 include ../dropdown-field/dropdown-field
 include ../dropdown-menu/dropdown-menu
 
-
-mixin find-room()
-  - 
+mixin find-room
+  -
     const {
       titles,
       dropdownFields,
@@ -17,13 +16,13 @@ mixin find-room()
 
   .find-room
     +card
-      +title(Object.assign({"type": "h2"}, titles.findRoom)) 
+      +title(Object.assign({type: 'h2'}, titles.findRoom)) 
       form.find-room__form(method="POST", action="/change-it")
         .find-room__calendar
           +calendar 
         .find-room__dropdown
           +dropdown-menu(dropdownMenus)
-            +title(Object.assign({"type": "h4"}, titles.guests))
+            +title(Object.assign({type: 'h4'}, titles.guests))
             +dropdown-field(dropdownFields.guests)
         .find-room__submit-button
-          +button(Object.assign({"theme": "long", "type": "submit"}, button))
+          +button(Object.assign({theme: 'long', type: 'submit'}, button))

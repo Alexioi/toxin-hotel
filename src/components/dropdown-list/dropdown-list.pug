@@ -1,17 +1,17 @@
 include ../title/title
 
 mixin dropdown-list(options)
-  - 
+  -
     const {
       title = '',
       isOpened = false
     } = options || {}
 
     let classes = ''
-    classes += isOpened ? ' dropdown-list_opened' : ''
+    classes += isOpened ? ' dropdown-list_opened' : '' 
 
   .dropdown-list.js-dropdown-list(class=classes)
-    .dropdown-list__header 
+    .dropdown-list__header
       +title({text: title, type: 'h4'})
       button.dropdown-list__button.js-dropdown-list__button
         include ../../images/decorative/expand-more.svg

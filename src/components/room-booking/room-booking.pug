@@ -6,8 +6,8 @@ include ../dropdown-field/dropdown-field
 include ../title/title
 include ../dropdown-menu/dropdown-menu
 
-mixin room-booking()
-  - 
+mixin room-booking
+  -
     const {
       expensesItems, 
       dropdownMenu, 
@@ -19,22 +19,22 @@ mixin room-booking()
 
   .room-booking
     +card
-      form.room-booking__form(method="POST" action="/change-it")
+      form.room-booking__form(method="POST", action="/change-it")
         +room-info(roomInfo)
         .room-booking__calendar
-          +calendar  
-        +dropdown-menu(Object.assign({"isOpened": false, "type": "guests"}, dropdownMenu))
-          +title(Object.assign({"type": "h4"}, title))
+          +calendar 
+        +dropdown-menu(Object.assign({isOpened: false, type: "guests"}, dropdownMenu))
+          +title(Object.assign({type: "h4"}, title))
           +dropdown-field(dropdownFields.guests)
         ul.room-booking__expenses-list
           each expensesItem in expensesItems
             li.room-booking__expenses-item
               .room-booking__expenses-about= expensesItem.about
               if expensesItem.hasInfo
-                div.room-booking__expenses-info
+                .room-booking__expenses-info
               .room-booking__expenses-value= expensesItem.value
-        .room-booking__total 
+        .room-booking__total
           span.room-booking__total-text Итого
           span.room-booking__total-line 
           span.room-booking__total-value 38 081₽
-        +button(Object.assign({"theme": "long", "type": "submit"}, button))
+        +button(Object.assign({theme: "long", type: "submit"}, button))

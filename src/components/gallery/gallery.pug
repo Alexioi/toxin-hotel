@@ -8,16 +8,7 @@ mixin gallery(options)
 
   .gallery
     .gallery__main-column
-      img.gallery__img(
-        src=require(`Images/content/${images[0].src}.png`)
-        alt=images[0].alt
-      )
+      img.gallery__img(src=require(`Images/content/${images[0].src}.png`), alt=images[0].alt)
     .gallery__sub-column
-      img.gallery__img(
-        src=require(`Images/content/${images[1].src}.png`)
-        alt=images[1].alt
-      )
-      img.gallery__img(
-        src=require(`Images/content/${images[2].src}.png`)
-        alt=images[2].alt
-      )
+      img.gallery__img(src=require(`Images/content/${images[1].src}.png`), alt=images[1].alt)
+      img.gallery__img(src=require(`Images/content/${images[2].src}.png`), alt=images[2].alt)

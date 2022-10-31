@@ -10,13 +10,13 @@ mixin calendar-menu(options)
 
     classes = isOpened ? 'calendar_opened' : '' 
 
-  div.calendar-menu.js-calendar-menu(class=classes)
+  .calendar-menu.js-calendar-menu(class=classes)
     .calendar-menu__inputs.js-calendar-menu__inputs
       block
     .calendar-menu__menu.js-calendar-menu__menu
       .calendar-menu__datepicker.js-calendar-menu__datepicker
       .calendar-menu__buttons
         .calendar-menu__button-clear.js-calendar-menu__button-clear
-          +button(Object.assign({"theme": "link", "type": "button"}, buttons.clear ))
+          +button(Object.assign({theme: 'link', type: 'button'}, buttons.clear ))
         .calendar-menu__button-apply.js-calendar-menu__button-apply
-          +button(Object.assign({"theme": "link", "type": "button"}, buttons.apply ))
+          +button(Object.assign({theme: 'link', type: 'button'}, buttons.apply ))

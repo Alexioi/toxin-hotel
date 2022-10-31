@@ -5,7 +5,7 @@ mixin room-info(options)
       isLink = false,
       link = '/change-it',
       isLux = false, 
-      price = "9 990"
+      price = '9 990'
     } = options || {}
 
   -
@@ -16,8 +16,8 @@ mixin room-info(options)
 
   .room-info
     span.room-info__number
-      span.room-info__number-signs= '№ '
-      #{tag} #{number}
+      span.room-info__number-signs= "№ "
+      #{tag}= number
       if isLux
         span.room-info__lux люкс
     span.room-info__price

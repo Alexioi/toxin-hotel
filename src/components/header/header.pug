@@ -20,11 +20,11 @@ mixin header(options)
 
     const {buttons} = require('Components/header/data.json')
 
-  .header.js-header 
+  .header.js-header
     +container
       .header__wrapper
         .header__logo
-          +logo({ "type": "full-logo" } )
+          +logo({type: 'full-logo'})
         button.header__burger-button.js-header__burger-button
           include ../../images/decorative/expand-more.svg
         ul.header__navigation.js-header__navigation
@@ -37,18 +37,16 @@ mixin header(options)
                     include ../../images/decorative/expand-more.svg
                   ul.header__sub-navigation-list.js-header__sub-navigation-list
                     each listItem in navItem.list
-                      li.header__navigation-item 
-                        a.header__navigation-link(
-                          href=listItem.link
-                        )= listItem.text
+                      li.header__navigation-item
+                        a.header__navigation-link(href=listItem.link)= listItem.text
               else
                 a.header__navigation-link(
                   href=navItem.link,
-                  class=index === active && 'header__navigation-link_active'
+                  class=index === active && "header__navigation-link_active"
                 )= navItem.text
         .header__login
           if username
             span.header__username= username
           else
-            +button(Object.assign({"theme": "outline", "size": "low", "isLink": true}, buttons.login))
-            +button(Object.assign({"size": "low", "isLink": true, "theme": "default"}, buttons.registration))
+            +button(Object.assign({theme: 'outline', size: 'low', isLink: true}, buttons.login))
+            +button(Object.assign({size: 'low', isLink: true, theme: 'default'}, buttons.registration))

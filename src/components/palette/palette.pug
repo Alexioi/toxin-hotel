@@ -8,7 +8,8 @@ mixin palette(options)
 
   .palette
     each item in items
-      .palette__item(class='palette__item_color-' + item.color)
-        p.palette__text 
-          strong #{item.colorName}<br>
-          | #{item.colorHash}
+      .palette__item(class=`palette__item_color-${item.color}`)
+        p.palette__text
+          strong= item.colorName
+          <br>
+          = item.colorHash

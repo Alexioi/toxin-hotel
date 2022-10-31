@@ -8,7 +8,11 @@ block title
   | Colors and type
 
 block main
-  - const {pallet, fontType} = require('./data.json')
+  -
+    const {
+      pallet, 
+      fontType
+    } = require('./data.json')
 
   .colors-and-type
     +container
@@ -16,4 +20,4 @@ block main
         .colors-and-type__palette
           +palette(pallet)
         .colors-and-type__font-types
-          +font-types(fontTypes)
+          +font-types(fontType)

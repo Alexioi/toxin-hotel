@@ -3,22 +3,18 @@ mixin checkbox-list(options)
     const {  
       isRich = false,
       items = [
-        {text: "", isChecked: false},
+        {text: '', isChecked: false},
       ],
     } = options || {}
 
-  -
-    var classes = ''
+    let classes = ''
     classes += isRich ? ' checkbox-list_rich' : ''
 
   ul.checkbox-list(class=classes)
     each item in items 
       li.checkbox-list__item
         label.checkbox-list__label
-          input.checkbox-list__input(
-            type="checkbox" 
-            checked=item.isChecked
-          )
+          input.checkbox-list__input(type="checkbox", checked=item.isChecked)
           span.checkbox-list__text= item.text
           if isRich
             span.checkbox-list__sub-text= item.subText

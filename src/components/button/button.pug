@@ -14,10 +14,10 @@ mixin button(options)
 
     let classes = ''
     classes += ' button_theme-' + theme 
-    classes += size ? ' button_size-' + size : ''
-    classes += isHovered ? ' button_hovered' : ''
+    classes += size ? ' button_size-' + size : '' 
+    classes += isHovered ? ' button_hovered' : '' 
 
-  #{tag}.button(class=classes href=link type=isLink ? null : type)
+  #{tag}.button(class=classes, href=link, type=isLink ? null : type)
     span.button__text= text
     if theme === 'long'
       span.button__arrow

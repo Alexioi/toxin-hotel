@@ -4,8 +4,8 @@ include ../text-field/text-field
 include ../button/button
 include ../question-form-about-auth/question-form-about-auth
 
-mixin authorization()
-  - 
+mixin authorization
+  -
     const {
       title, 
       textFields, 
@@ -14,14 +14,14 @@ mixin authorization()
     } = require('Components/authorization/data.json')
 
   .authorization
-    +card 
-      form.authorization__form(method="POST", action="/change-it") 
-        +title(Object.assign({"type": "h2"}, title )) 
+    +card
+      form.authorization__form(method="POST", action="/change-it")
+        +title(Object.assign({type: 'h2'}, title )) 
         .authorization__login-input
-          +text-field(Object.assign({ "type": "email"}, textFields.email))
+          +text-field(Object.assign({type: 'email'}, textFields.email))
         .authorization__password-input
-          +text-field(Object.assign({ "type": "password"}, textFields.password))
+          +text-field(Object.assign({type: 'password'}, textFields.password))
         .authorization__submit-button
-          +button(Object.assign({ "theme": "long", "type": "submit" }, button))
+          +button(Object.assign({theme: 'long', type: 'submit'}, button))
       .authorization__question-about-authorization
         +question-form-about-auth(questionAboutAuthorization)

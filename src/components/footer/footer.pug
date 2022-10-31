@@ -32,8 +32,8 @@ mixin footer(options)
     +container
       .footer__main
         .footer__about
-          .footer__logo 
-            +logo({ "type": "full-logo" })
+          .footer__logo
+            +logo({ 'type': 'full-logo' })
           p.footer__text.footer__about-text= aboutText
         .footer__nav
           each navItem in navItems
@@ -47,15 +47,12 @@ mixin footer(options)
           span.footer__header.footer__header_margin-small= subscriptionHeader
           p.footer__text= subscriptionText
           .footer__input
-            +text-field(Object.assign({"isSubscription": true, "type": "email"}, textField))
+            +text-field(Object.assign({'isSubscription': true, 'type': 'email'}, textField))
     .footer__line
       +container
         .footer__sub
           span.footer__text.footer__text-copyright= copyrightText
           .footer__social
             each social in socials
-              a.footer__social-link(href=social.link) 
-                img(
-                  src=require(`Images/decorative/${social.img}.svg`)
-                  alt=social.img
-                )
+              a.footer__social-link(href=social.link)
+                img(src=require(`Images/decorative/${social.img}.svg`), alt=social.img)

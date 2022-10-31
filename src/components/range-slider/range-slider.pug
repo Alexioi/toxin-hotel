@@ -1,10 +1,13 @@
 include ../title/title
 
 mixin range-slider(options)
-  - const {title = ''} = options || {}
-  
+  -
+    const { 
+      title = '' 
+    } = options || {};
+
   .range-slider.js-range-slider
-    .range-slider__header 
+    .range-slider__header
       +title({text: title, type: 'h4'})
       span.range-slider__value.js-range-slider__value
     input.range-slider__slider.js-range-slider__slider

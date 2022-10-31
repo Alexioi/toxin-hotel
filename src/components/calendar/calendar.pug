@@ -3,7 +3,7 @@ include ../dropdown-field/dropdown-field
 include ../title/title
 
 mixin calendar(options)
-  - 
+  -
     const {
       textFrom = '',
       textTo = '',
@@ -13,10 +13,9 @@ mixin calendar(options)
   .calendar
     +calendar-menu
       .calendar__input
-        +title({ "text": textFrom, "type": "h4" })
+        +title({text: textFrom, type: 'h4'})
         +dropdown-field
       if hasTwoInputs
         .calendar__input
-          +title({ "text": textTo, "type": "h4" })
+          +title({text: textTo, type: 'h4'})
           +dropdown-field
-          
