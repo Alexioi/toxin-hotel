@@ -1,6 +1,9 @@
 @use 'Style/constants/colors';
+@use 'Style/constants/font';
 
 .button {
+  $root: &;
+
   display: inline-block;
   border: none;
   cursor: pointer;
@@ -8,7 +11,7 @@
   text-decoration: none;
 
   &:hover,
-  &.button_hovered {
+  &#{$root}_hovered {
     opacity: 0.5;
   }
 
@@ -16,6 +19,10 @@
     padding: 14px 20px;
     background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
     border-radius: 22px;
+
+    #{$root}__text {
+      color: white;
+    }
   }
 
   &_theme-outline {
@@ -34,10 +41,18 @@
       margin: 2px;
       border-radius: inherit;
     }
+
+    #{$root}__text {
+      color: colors.$second;
+    }
   }
 
   &_theme-link {
     background: none;
+
+    #{$root}__text {
+      color: #bc9cff;
+    }
   }
 
   &_theme-long {
@@ -45,6 +60,10 @@
     padding: 14px 0;
     background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
     border-radius: 22px;
+
+    #{$root}__text {
+      color: white;
+    }
   }
 
   &_size-low {
@@ -53,6 +72,7 @@
   }
 
   &__text {
+    font-family: font.$first;
     font-weight: bold;
     font-size: 12px;
     line-height: 15px;
@@ -61,22 +81,6 @@
     position: relative;
     text-decoration-line: none;
     z-index: 2;
-  }
-
-  &_theme-default &__text {
-    color: white;
-  }
-
-  &_theme-outline &__text {
-    color: colors.$second;
-  }
-
-  &_theme-link &__text {
-    color: #bc9cff;
-  }
-
-  &_theme-long &__text {
-    color: white;
   }
 
   &__arrow {

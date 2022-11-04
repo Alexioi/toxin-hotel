@@ -1,11 +1,20 @@
 @use 'Style/constants/colors';
 
 .checkbox-list {
+  $root: &;
+
   display: grid;
   gap: 12px;
+  padding: 0;
+  margin: 0;
 
   &_rich {
     gap: 10px;
+
+    & #{$root}__text {
+      font-weight: bold;
+      color: rgba(colors.$first, 0.75);
+    }
   }
 
   &__item {
@@ -22,24 +31,24 @@
   &__input {
     position: absolute;
     opacity: 0;
-  }
 
-  &__input:checked + &__text {
-    &::before {
-      border-color: colors.$second;
-    }
+    &:checked + #{$root}__text {
+      &::before {
+        border-color: colors.$second;
+      }
 
-    &::after {
-      content: '';
-      display: block;
-      border-bottom: 2px solid colors.$second;
-      border-right: 2px solid colors.$second;
-      transform: rotate(45deg);
-      width: 5px;
-      height: 6px;
-      position: absolute;
-      top: 5px;
-      left: 6px;
+      &::after {
+        content: '';
+        display: block;
+        border-bottom: 2px solid colors.$second;
+        border-right: 2px solid colors.$second;
+        transform: rotate(45deg);
+        width: 5px;
+        height: 6px;
+        position: absolute;
+        top: 5px;
+        left: 6px;
+      }
     }
   }
 
@@ -59,11 +68,6 @@
       border-radius: 4px;
       left: 0;
     }
-  }
-
-  &_rich &__text {
-    font-weight: bold;
-    color: rgba(colors.$first, 0.75);
   }
 
   &__sub-text {

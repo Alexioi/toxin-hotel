@@ -3,11 +3,15 @@
 @use 'Style/constants/display-sizes';
 
 .filter {
-  &_opened &__items {
-    display: block;
+  $root: &;
+
+  &_opened {
+    & #{$root}__form {
+      display: block;
+    }
   }
 
-  &__items {
+  &__form {
     display: block;
 
     @include mixins.media-breakpoint-down(display-sizes.$md) {
@@ -25,6 +29,7 @@
 
   &__range-text {
     margin-top: 14px;
+    margin-bottom: 0;
     color: rgba(colors.$first, 0.5);
   }
 

@@ -22,7 +22,7 @@ mixin filter
 
 
   .filter.js-filter
-    .filter__items
+    form.filter__form
       +calendar
       .filter__guests-dropdown-menu
         +dropdown-menu(Object.assign({isOpened: false, type: 'guests'},dropdownMenus.guests))

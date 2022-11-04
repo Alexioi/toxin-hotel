@@ -3,12 +3,66 @@
 $sample-width: 37px;
 
 .font-types {
+  $root: &;
+
   display: grid;
   align-self: start;
   gap: 51px;
 
   &__item {
     display: flex;
+
+    &_theme-h1 {
+      #{$root}__sample {
+        font-size: 24px;
+        line-height: 29px;
+      }
+
+      #{$root}__description {
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 29px;
+      }
+    }
+
+    &_theme-h2 {
+      #{$root}__sample {
+        font-size: 19px;
+        line-height: 23px;
+      }
+
+      #{$root}__description {
+        font-weight: bold;
+        font-size: 19px;
+        line-height: 23px;
+      }
+    }
+
+    &_theme-h3 {
+      #{$root}__sample {
+        font-size: 12px;
+        line-height: 15px;
+      }
+
+      #{$root}__description {
+        font-weight: bold;
+        line-height: 15px;
+        text-transform: uppercase;
+      }
+    }
+
+    &_theme-body {
+      #{$root}__sample {
+        font-size: 14px;
+        line-height: 24px;
+      }
+
+      #{$root}__description {
+        font-size: 14px;
+        line-height: 24px;
+        color: rgba(colors.$first, 0.75);
+      }
+    }
   }
 
   &__sample {
@@ -19,52 +73,8 @@ $sample-width: 37px;
     color: rgba(colors.$first, 0.25);
   }
 
-  &__item_theme-h1 &__sample {
-    font-size: 24px;
-    line-height: 29px;
-  }
-
-  &__item_theme-h2 &__sample {
-    font-size: 19px;
-    line-height: 23px;
-  }
-
-  &__item_theme-h3 &__sample {
-    font-size: 12px;
-    line-height: 15px;
-  }
-
-  &__item_theme-body &__sample {
-    font-size: 14px;
-    line-height: 24px;
-  }
-
   &__description {
     color: colors.$first;
     white-space: pre;
-  }
-
-  &__item_theme-h1 &__description {
-    font-weight: bold;
-    font-size: 24px;
-    line-height: 29px;
-  }
-
-  &__item_theme-h2 &__description {
-    font-weight: bold;
-    font-size: 19px;
-    line-height: 23px;
-  }
-
-  &__item_theme-h3 &__description {
-    font-weight: bold;
-    line-height: 15px;
-    text-transform: uppercase;
-  }
-
-  &__item_theme-body &__description {
-    font-size: 14px;
-    line-height: 24px;
-    color: rgba(colors.$first, 0.75);
   }
 }
