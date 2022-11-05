@@ -1,7 +1,8 @@
 import './style/main.scss';
 
 const requireAll = (requireContext) => {
-  return requireContext.keys().map(requireContext);
+  const allContext = requireContext.keys().map(requireContext);
+  return allContext;
 };
 
 requireAll(require.context('Components', true, /(index.js|.scss)$/));

@@ -10,6 +10,7 @@ class Pagination {
 
   _init() {
     this._findElements();
+    this._getCount();
     this._initPlugin();
   }
 
@@ -19,8 +20,12 @@ class Pagination {
     this.$endItem = this.$component.find(cssSelectors.endItem);
   }
 
+  _getCount() {
+    this.count = this.$component.data().count;
+  }
+
   _initPlugin() {
-    this.paginationjs = new Paginationjs(this.$plugin, this.$startItem, this.$endItem);
+    new Paginationjs(this.$plugin, this.$startItem, this.$endItem, this.count);
   }
 }
 

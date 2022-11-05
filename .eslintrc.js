@@ -4,8 +4,10 @@ module.exports = {
   settings: {
     'import/resolver': {
       alias: {
-        map: [['Libs', './src/libs']],
-        map: [['Images', './src/images']],
+        map: [
+          ['Libs', './src/libs'],
+          ['Images', './src/images'],
+        ],
       },
     },
   },
