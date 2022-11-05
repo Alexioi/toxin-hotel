@@ -34,7 +34,7 @@ class Header {
       const hasNavigationButton = event.composedPath().includes(this.navigationButtons[index]);
 
       if (!hasList && !hasNavigationButton) {
-        this._closeSubNavigationList(list);
+        this.constructor._closeSubNavigationList(list);
       }
     });
   }

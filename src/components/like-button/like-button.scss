@@ -1,6 +1,8 @@
 @use 'Style/constants/colors';
 
 .like-button {
+  $root: &;
+
   background: rgba(colors.$first, 0.25);
   border: none;
   border-radius: 10px;
@@ -23,6 +25,14 @@
 
   &_liked {
     background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+
+    #{$root}__icon {
+      background-image: url('Images/decorative/favorite.svg');
+    }
+
+    #{$root}__counter {
+      color: colors.$second;
+    }
   }
 
   &__icon {
@@ -35,10 +45,6 @@
     left: 5px;
   }
 
-  &_liked &__icon {
-    background-image: url('Images/decorative/favorite.svg');
-  }
-
   &__counter {
     font-size: 10px;
     line-height: 20px;
@@ -47,9 +53,5 @@
     z-index: 2;
     margin-left: 22px;
     margin-right: 5px;
-  }
-
-  &_liked &__counter {
-    color: colors.$second;
   }
 }

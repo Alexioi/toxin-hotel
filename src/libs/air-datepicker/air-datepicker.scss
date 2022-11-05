@@ -1,3 +1,4 @@
+/* stylelint-disable selector-class-pattern */
 @use 'Style/constants/colors';
 
 .datepicker {
@@ -69,7 +70,7 @@
       }
 
       &.-current- {
-        color: #ffffff;
+        color: white;
         font-weight: bold;
         background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
         border-radius: 50%;
@@ -77,7 +78,7 @@
 
       &.-selected- {
         font-weight: bold;
-        color: #ffffff;
+        color: white;
         background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
         border-radius: 50%;
       }
@@ -91,8 +92,8 @@
         border-radius: 50% 0 0 50%;
         background: linear-gradient(
           180deg,
-          rgba(colors.$second, 0.25) 0%,
-          rgba(139, 164, 249, 0.25) 100%
+          rgba(colors.$second, 25%) 0%,
+          rgba(139, 164, 249, 25%) 100%
         );
       }
 
@@ -104,8 +105,8 @@
         position: absolute;
         background: linear-gradient(
           180deg,
-          rgba(colors.$second, 0.25) 0%,
-          rgba(139, 164, 249, 0.25) 100%
+          rgba(colors.$second, 25%) 0%,
+          rgba(139, 164, 249, 25%) 100%
         );
         border-radius: 0 22px 22px 0;
       }

@@ -3,16 +3,18 @@
 @use 'Style/constants/display-sizes';
 
 .header {
-  box-shadow: 0px 10px 20px rgba(colors.$first, 0.05);
+  $root: &;
+
+  box-shadow: 0 10px 20px rgba(colors.$first, 0.05);
   background-color: white;
   padding: 15px 0;
 
   &__mobile-navigation-opened {
-    & .header__login {
+    #{$root}__login {
       display: flex;
     }
 
-    & .header__navigation {
+    #{$root}__navigation {
       display: flex;
     }
   }
@@ -77,6 +79,11 @@
   &__sub-navigation-list {
     position: absolute;
     display: none;
+    list-style: none;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid rgba(colors.$first, 0.5);
+    border-radius: 4px;
 
     @include mixins.media-breakpoint-down(display-sizes.$md) {
       margin-top: 10px;
@@ -86,14 +93,6 @@
     &_opened {
       display: block;
     }
-  }
-
-  &__sub-navigation-list {
-    list-style: none;
-    padding: 10px;
-    background-color: white;
-    border: 1px solid rgba(colors.$first, 0.5);
-    border-radius: 4px;
   }
 
   &__navigation-link {

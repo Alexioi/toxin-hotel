@@ -34,7 +34,7 @@ mixin footer(options)
         .footer__about
           .footer__logo
             +logo({ 'type': 'full-logo' })
-          p.footer__text.footer__about-text= aboutText
+          p.footer__about-text= aboutText
         .footer__nav
           each navItem in navItems
             .footer__nav-item
@@ -51,7 +51,7 @@ mixin footer(options)
     .footer__line
       +container
         .footer__sub
-          span.footer__text.footer__text-copyright= copyrightText
+          span.footer__text-copyright= copyrightText
           .footer__social
             each social in socials
               a.footer__social-link(href=social.link)

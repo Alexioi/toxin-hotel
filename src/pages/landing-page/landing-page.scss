@@ -37,6 +37,7 @@
     line-height: 24px;
     text-align: right;
     color: rgba(colors.$first, 0.75);
+    margin: 0;
 
     @include mixins.media-breakpoint-down(display-sizes.$lg) {
       text-align: center;

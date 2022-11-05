@@ -1,6 +1,8 @@
 @use 'Style/constants/colors';
 
 .toggle {
+  $root: &;
+
   &__text {
     font-size: 14px;
     line-height: 20px;
@@ -17,7 +19,7 @@
       border-radius: 10px;
       width: 38px;
       height: 18px;
-      top: 0px;
+      top: 0;
     }
 
     &::after {
@@ -36,16 +38,16 @@
   &__checkbox {
     position: absolute;
     opacity: 0;
-  }
 
-  &__checkbox:checked + &__text {
-    &:before {
-      border-color: #bc9cff;
-    }
+    &:checked + #{$root}__text {
+      &::before {
+        border-color: #bc9cff;
+      }
 
-    &:after {
-      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-      left: 24px;
+      &::after {
+        background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+        left: 24px;
+      }
     }
   }
 }

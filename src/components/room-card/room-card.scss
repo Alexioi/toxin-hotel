@@ -1,13 +1,15 @@
 @use 'Style/constants/colors';
 
 .room-card {
+  $root: &;
+
   width: 100%;
-  background: #ffffff;
-  box-shadow: 0px 10px 20px rgba(colors.$first, 0.05);
+  background: white;
+  box-shadow: 0 10px 20px rgba(colors.$first, 0.05);
   border-radius: 4px;
 
   &:hover {
-    & .room-card__arrow-button {
+    & #{$root}__arrow-button {
       display: block;
       position: absolute;
       width: 42px;
@@ -18,17 +20,17 @@
       cursor: pointer;
       background: linear-gradient(
         90deg,
-        rgba(0, 0, 0, 0.5) 0%,
-        rgba(0, 0, 0, 0) 99.99%,
-        rgba(255, 255, 255, 0) 100%
+        rgba(0, 0, 0, 50%) 0%,
+        rgba(0, 0, 0, 0%) 99.99%,
+        rgba(255, 255, 255, 0%) 100%
       );
     }
 
-    & .room-card__arrow-button_action-back {
+    & #{$root}__arrow-button_action-back {
       left: 0;
     }
 
-    & .room-card__arrow-button_action-next {
+    & #{$root}__arrow-button_action-next {
       transform: rotate(180deg);
       right: 0;
     }
@@ -64,9 +66,9 @@
     width: 8px;
     height: 8px;
     margin-right: 3px;
-    border: 1px solid #ffffff;
+    border: 1px solid white;
     border-radius: 50%;
-    background-color: rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0%);
 
     &_target {
       background-color: white;

@@ -4,7 +4,8 @@
   &__expenses {
     &-list {
       display: grid;
-      margin-top: 20px;
+      margin: 20px 0 0;
+      padding: 0;
       gap: 16px;
     }
 

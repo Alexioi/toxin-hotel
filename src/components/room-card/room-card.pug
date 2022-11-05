@@ -4,14 +4,14 @@ include ../rate/rate
 mixin room-card(options)
   -
     const {
-      images = ['room-image-1', 'room-image-2', 'room-image-3'],
+      images = [''],
       currentImage = 0,
-      number = 888,
-      link  = '/change-it',
+      number = 0,
+      link  = '',
       isLux = false,
-      price = '9 990',
-      quantity = 3,
-      reviews = 65,
+      price = '',
+      quantity = 0,
+      reviews = 0,
     } = options || {}
 
   .room-card
