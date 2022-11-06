@@ -1,3 +1,8 @@
 {
-  "textField": { "placeholder": "Email", "name": "email" }
+  "textField": { "placeholder": "Email", "name": "email" },
+  "socials": [
+    { "link": "https://twitter.com/", "img": "twitter" },
+    { "link": "https://www.facebook.com/", "img": "facebook" },
+    { "link": "https://www.instagram.com/", "img": "instagram" }
+  ]
 }

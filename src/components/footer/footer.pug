@@ -17,13 +17,10 @@ mixin footer(options)
       subscriptionHeader = '',
       subscriptionText = '',
       copyrightText = '',
-      socials = [
-        {link: '', img: ''},
-      ],
       mobile = false
     } = options || {}
 
-    const {textField} = require('Components/footer/data.json')
+    const {textField, socials} = require('Components/footer/data.json')
 
     let classes = ''
     classes += mobile ? 'footer_mobile' : ''
@@ -55,4 +52,9 @@ mixin footer(options)
           .footer__social
             each social in socials
               a.footer__social-link(href=social.link)
-                img(src=require(`Images/decorative/${social.img}.svg`), alt=social.img)
+                img(
+                  src=require(`Images/decorative/${social.img}.svg`),
+                  alt=social.img,
+                  target="_blank",
+                  rel="noopener noreferrer"
+                )
