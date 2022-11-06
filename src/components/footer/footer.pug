@@ -51,10 +51,5 @@ mixin footer(options)
           span.footer__text-copyright= copyrightText
           .footer__social
             each social in socials
-              a.footer__social-link(href=social.link)
-                img(
-                  src=require(`Images/decorative/${social.img}.svg`),
-                  alt=social.img,
-                  target="_blank",
-                  rel="noopener noreferrer"
-                )
+              a.footer__social-link(href=social.link, target="_blank", rel="noopener noreferrer")
+                img(src=require(`Images/decorative/${social.img}.svg`), alt=social.img)
