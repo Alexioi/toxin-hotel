@@ -1,6 +1,6 @@
 include ../button/button
 
-mixin question-form-about-auth(options)
+mixin question-about-authorization(options)
   -
     const {
       questionText,
@@ -8,6 +8,6 @@ mixin question-form-about-auth(options)
       buttonText
     } = options || {}
 
-  .question-form-about-auth
-    p.question-form-about-auth__question= questionText
+  .question-about-authorization
+    p.question-about-authorization= questionText
     +button({theme: 'outline', isLink: true, link: buttonLink, text: buttonText})

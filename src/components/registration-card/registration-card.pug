@@ -1,10 +1,10 @@
-include ../question-form-about-auth/question-form-about-auth
 include ../text-field/text-field
 include ../radio-buttons/radio-buttons
 include ../button/button
 include ../toggle/toggle
 include ../title/title
 include ../card/card
+include ../question-about-authorization/question-about-authorization
 
 mixin registration-card
   -
@@ -38,4 +38,4 @@ mixin registration-card
         .registration-card__submit-button
           +button(Object.assign({type: "submit", theme: "long"}, button))
       .registration-card__question-about-authentication
-        +question-form-about-auth(questionAboutAuthentication)
+        +question-about-authorization(questionAboutAuthentication)

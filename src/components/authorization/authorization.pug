@@ -2,7 +2,7 @@ include ../card/card
 include ../title/title
 include ../text-field/text-field
 include ../button/button
-include ../question-form-about-auth/question-form-about-auth
+include ../question-about-authorization/question-about-authorization
 
 mixin authorization
   -
@@ -24,4 +24,4 @@ mixin authorization
         .authorization__submit-button
           +button(Object.assign({theme: 'long', type: 'submit'}, button))
       .authorization__question-about-authorization
-        +question-form-about-auth(questionAboutAuthorization)
+        +question-about-authorization(questionAboutAuthorization)
