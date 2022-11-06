@@ -1,3 +1,4 @@
+import './style/fonts.scss';
 import './style/main.scss';
 
 const requireAll = (requireContext) => {

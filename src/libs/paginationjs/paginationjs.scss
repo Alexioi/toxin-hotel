@@ -1,19 +1,20 @@
 @use 'Style/constants/colors';
 
 .paginationjs {
+  height: 40px;
+
   &-pages {
     & > ul {
-      display: flex;
       margin: 0;
       padding: 0;
 
       & > li {
         list-style-type: none;
-        display: flex;
-        height: 40px;
-        flex: 0 0 40px;
-        justify-content: center;
-        align-items: center;
+        float: left;
+        line-height: 40px;
+        width: 40px;
+        text-align: center;
+        cursor: pointer;
       }
     }
   }
@@ -22,15 +23,31 @@
   &-next {
     background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
     border-radius: 22px;
-    cursor: pointer;
 
     & > a {
-      color: white;
+      width: 40px;
+      height: 40px;
+      display: block;
     }
 
     &.disabled {
       display: none;
     }
+  }
+
+  &__prev-text {
+    display: block;
+    height: 100%;
+    background: no-repeat 50% 50%;
+    background-image: url('Images/decorative/arrow-forward.svg');
+    transform: rotate(180deg);
+  }
+
+  &__next-text {
+    display: block;
+    height: 100%;
+    background: no-repeat 50% 50%;
+    background-image: url('Images/decorative/arrow-forward.svg');
   }
 
   &-page {

@@ -1,5 +1,4 @@
 import 'paginationjs';
-import arrows from './arrows.json';
 
 class Paginationjs {
   constructor($node, $startItem, $endItem, count) {
@@ -27,8 +26,8 @@ class Paginationjs {
       dataSource,
       pageSize: 12,
       pageRange: 1,
-      prevText: arrows.arrowBack,
-      nextText: arrows.arrowNext,
+      prevText: '<span class="paginationjs__prev-text"></span>',
+      nextText: '<span class="paginationjs__next-text"></span>',
       callback,
     };
 
