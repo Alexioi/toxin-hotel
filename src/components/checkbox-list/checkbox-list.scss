@@ -40,8 +40,10 @@
       &::after {
         content: '';
         display: block;
-        border-bottom: 2px solid colors.$second;
-        border-right: 2px solid colors.$second;
+        border-image: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+        border-image-slice: 1;
+        border-style: solid;
+        border-width: 0 2px 2px 0;
         transform: rotate(45deg);
         width: 5px;
         height: 6px;
