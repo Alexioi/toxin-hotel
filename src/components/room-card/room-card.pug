@@ -39,8 +39,9 @@ mixin room-card(options)
         js-room-card__arrow-button_action-next`
       )
         include ../../images/decorative/arrow-back.svg
-    .room-card__about
+    .room-card__info
       +room-info({ number, isLink: true, link, isLux, price })
+    .room-card__rating-wrapper
       .room-card__rating
         .room-card__rate
           +rate({quantity})

@@ -37,7 +37,7 @@
   }
 
   &__carousel {
-    height: 151px;
+    height: 152px;
     position: relative;
   }
 
@@ -82,27 +82,28 @@
     font-weight: bold;
   }
 
-  &__about {
-    padding: 19px 17px 20px 20px;
+  &__info {
+    padding: 20px 17px 10px 20px;
+  }
+
+  &__rating-wrapper {
+    padding: 0 20px;
   }
 
   &__rating {
-    margin-top: 13px;
     border-top: 1px solid rgba(colors.$first, 0.1);
-    padding-top: 8px;
-    padding-right: 4px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    padding: 10px 0 19px;
   }
 
   &__rate {
-    padding-left: 1px;
+    padding-left: 2px;
   }
 
   &__reviews {
     font-size: 14px;
-    line-height: 18px;
+    line-height: 24px;
     color: rgba(colors.$first, 0.5);
 
     &-value {
