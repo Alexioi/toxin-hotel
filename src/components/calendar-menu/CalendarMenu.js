@@ -36,7 +36,83 @@ class CalendarMenu {
     this.$apply.on('click', this._applyDates.bind(this));
     this.$clear.on('click', this._clearDates.bind(this));
     this.$buttons.on('click', this._toggleVisible.bind(this));
+    this.$inputs.each((i, input) => {
+      input.addEventListener('blur', this._onBlur.bind(this));
+    });
     document.addEventListener('click', this._onClickDocument.bind(this));
+  }
+
+  _onBlur() {
+    const firstValue = this._removeDateLessThanToday(this.$inputs[0].value);
+    const secondValue = this._removeDateLessThanToday(this.$inputs[1].value);
+
+    if (!this._validDate(firstValue) && !this._validDate(secondValue)) {
+      this._clearDates();
+      this.$inputs[0].value = '';
+      this.$inputs[1].value = '';
+      return;
+    }
+
+    if (!this._validDate(firstValue)) {
+      this._changeValues([secondValue]);
+      return;
+    }
+
+    if (!this._validDate(secondValue)) {
+      this._changeValues([firstValue]);
+      return;
+    }
+
+    if (firstValue === secondValue) {
+      this._changeValues([firstValue]);
+      return;
+    }
+
+    const reverseFirstValue = this._reverseDate(firstValue);
+    const reverseSecondValue = this._reverseDate(secondValue);
+
+    if (new Date(reverseFirstValue) < new Date(reverseSecondValue)) {
+      this._changeValues([firstValue, secondValue]);
+    } else {
+      this._changeValues([secondValue, firstValue]);
+    }
+  }
+
+  _removeDateLessThanToday(date) {
+    if (new Date(this._reverseDate(date)) < new Date()) {
+      return '';
+    }
+
+    return date;
+  }
+
+  _validDate(checkedDate) {
+    const [day, month, year] = checkedDate.split('.').map((value, index) => {
+      if (index === 1) {
+        return Number(value) - 1;
+      }
+      return Number(value);
+    });
+    const date = new Date(year, month, day);
+
+    return date.getFullYear() === year && date.getMonth() === month && date.getDate() === day;
+  }
+
+  _changeValues(values) {
+    this._clearDates();
+
+    if (values.length === 1) {
+      this.$inputs[1].value = '';
+    }
+
+    values.forEach((value, index) => {
+      this.$inputs[index].value = value;
+      this.datepicker.changeDate(this._reverseDate(value));
+    });
+  }
+
+  _reverseDate(date) {
+    return date.split('.').reverse().join('.');
   }
 
   _onClickDocument(event) {

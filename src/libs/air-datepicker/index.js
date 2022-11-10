@@ -12,6 +12,10 @@ class AirDatepicker {
     return this.datepickerData.selectedDates;
   }
 
+  changeDate(date) {
+    this.datepickerData.selectDate(new Date(date));
+  }
+
   clearDates() {
     this.datepickerData.clear();
   }
