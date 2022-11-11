@@ -7,7 +7,8 @@ mixin text-field(options)
       value = '', 
       name = '', 
       placeholder = '', 
-      isSubscription = false
+      isSubscription = false,
+      maskedType = ''
     } = options || {}
 
     var classes = ''
@@ -15,6 +16,12 @@ mixin text-field(options)
     classes += isMasked ? ' text-field_masked js-text-field_masked' : '' 
 
   .text-field(class=classes)
-    input.text-field__input(type=type, value=value, name=name, placeholder=placeholder)
+    input.text-field__input(
+      type=type,
+      value=value,
+      name=name,
+      placeholder=placeholder,
+      data-masked-type=maskedType
+    )
     if isSubscription
       button.text-field__subscription-button(type="submit") 

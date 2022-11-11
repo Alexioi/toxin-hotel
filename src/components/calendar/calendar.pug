@@ -12,10 +12,14 @@ mixin calendar(options)
 
   .calendar
     +calendar-menu
-      .calendar__input
-        +title({text: textFrom, type: 'h4'})
-        +text-field({isMasked: true})
       if hasTwoInputs
         .calendar__input
           +title({text: textTo, type: 'h4'})
-          +text-field({isMasked: true})
+          +text-field({isMasked: true, maskedType:'single'})
+        .calendar__input
+          +title({text: textFrom, type: 'h4'})
+          +text-field({isMasked: true, maskedType:'single'})
+      else
+        .calendar__input
+          +title({text: textFrom, type: 'h4'})
+          +text-field({isMasked: true, maskedType:'double'})

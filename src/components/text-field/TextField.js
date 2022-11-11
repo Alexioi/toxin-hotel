@@ -6,82 +6,97 @@ class TextField {
   }
 
   _init() {
-    this.node.addEventListener('focus', (event) => {
-      if (this.node.value === '') {
-        this.date = {
-          day: [],
-          month: [],
-          year: [],
-        };
-        return;
-      }
-
-      const [day, month, year] = this.node.value.split('.');
-
-      this.date = {
-        day: day.split(''),
-        month: month.split(''),
-        year: year.split(''),
-      };
-    });
-
-    this.node.addEventListener('keydown', (event) => {
-      event.preventDefault();
-
-      this._removeDate(event.key);
-
-      if (!/^\d$/.test(event.key)) {
-        return;
-      }
-
-      const key = Number(event.key);
-
-      this._calculateDay(key);
-    });
+    this._attachEventsHandler();
   }
 
-  _calculateDay(key) {
-    const { day } = this.date;
+  _attachEventsHandler() {
+    this.node.addEventListener('focus', this._onFocus.bind(this));
+    this.node.addEventListener('keydown', this._onKeyDown.bind(this));
+  }
+
+  _onFocus() {
+    if (this.node.value === '') {
+      this.date = {
+        day: [],
+        month: [],
+        year: [],
+      };
+      return;
+    }
+
+    const [day, month, year] = this.node.value.split('.');
+
+    this.date = {
+      day: day.split(''),
+      month: month.split(''),
+      year: year.split(''),
+    };
+  }
+
+  _onKeyDown(event) {
+    if (event.key === 'Tab') {
+      return;
+    }
+
+    event.preventDefault();
+
+    if (event.key === 'Backspace') {
+      this.constructor._removeDate(this.date, event.key);
+      this._displayDate();
+      return;
+    }
+
+    if (!this.constructor._isNumber(event.key)) {
+      return;
+    }
+
+    const key = Number(event.key);
+
+    this._calculateDay(this.date, key);
+    this._displayDate();
+  }
+
+  static _isNumber(key) {
+    return /^\d$/.test(key);
+  }
+
+  _calculateDay(date, key) {
+    const { day } = date;
 
     if (day.length === 2) {
-      this._calculateMonth(key);
+      this._calculateMonth(date, key);
       return;
     }
 
     if (day.length === 1) {
       if (day[0] === 0 && key === 0) {
         day.push(1);
-        this._displayDate();
         return;
       }
 
       if (day[0] === 3 && key > 0) {
         day.push(1);
-        this._displayDate();
         return;
       }
 
       day.push(key);
-      this._displayDate();
       return;
     }
 
     if (key > 3) {
       day.push(0);
       day.push(key);
-      this._displayDate();
       return;
     }
 
     day.push(key);
-    this._displayDate();
   }
 
-  _calculateMonth(key) {
-    const { day, month } = this.date;
+  _calculateMonth(date, key) {
+    const { day, month } = date;
 
     if (month.length === 2) {
-      this._calculateYear(key);
+      this._calculateYear(date, key);
       return;
     }
 
@@ -92,18 +107,15 @@ class TextField {
 
       if (month[0] === 0 && key === 0) {
         month.push(1);
-        this._displayDate();
         return;
       }
 
       if (month[0] === 1 && key > 2) {
         month.push(2);
-        this._displayDate();
         return;
       }
 
       month.push(key);
-      this._displayDate();
       return;
     }
 
@@ -114,17 +126,14 @@ class TextField {
     if (key > 1) {
       month.push(0);
       month.push(key);
-      this._displayDate();
       return;
     }
 
     month.push(key);
-    this._displayDate();
-    return;
   }
 
-  _calculateYear(key) {
-    const { year } = this.date;
+  _calculateYear(date, key) {
+    const { year } = date;
 
     if (year.length === 4) {
       return;
@@ -133,15 +142,12 @@ class TextField {
     if (year.length === 3) {
       if (this._isValidDate(key)) {
         year.push(key);
-        this._displayDate();
         return;
       }
       return;
     }
 
     year.push(key);
-    this._displayDate();
-    return;
   }
 
   _isValidDate(key) {
@@ -154,42 +160,35 @@ class TextField {
     return date.getFullYear() === year && date.getMonth() === month && date.getDate() === day;
   }
 
-  _removeDate(key) {
-    const { day, month, year } = this.date;
+  static _removeDate(date) {
+    const { day, month, year } = date;
 
-    if (key === 'Backspace') {
-      if (year.length > 0) {
-        year.pop();
-        this._displayDate();
-        return;
-      }
+    if (year.length > 0) {
+      year.pop();
+      return;
+    }
 
-      if (month.length > 0) {
-        month.pop();
-        this._displayDate();
-        return;
-      }
+    if (month.length > 0) {
+      month.pop();
+      return;
+    }
 
-      if (day.length > 0) {
-        day.pop();
-        this._displayDate();
-      }
+    if (day.length > 0) {
+      day.pop();
     }
   }
 
   _displayDate() {
-    const day = this._getPlaceholder(this.date.day, 2);
-    const month = this._getPlaceholder(this.date.month, 2);
-    const year = this._getPlaceholder(this.date.year, 4);
+    const day = this.constructor._getPlaceholder(this.date.day, 2);
+    const month = this.constructor._getPlaceholder(this.date.month, 2);
+    const year = this.constructor._getPlaceholder(this.date.year, 4);
 
     this.node.value = `${day}.${month}.${year}`;
   }
 
-  _getPlaceholder(date, length) {
+  static _getPlaceholder(date, length) {
     return [...date, '_', '_', '_', '_'].join('').slice(0, length);
   }
-
-  _attachEventsHandler() {}
 }
 
 export default TextField;
