@@ -17,7 +17,6 @@ class CalendarMenu {
 
   _findNodes() {
     this.$inputs = this.$node.find(cssSelectors.input);
-    this.$buttons = this.$node.find(cssSelectors.inputsButton);
     this.$menu = this.$node.find(cssSelectors.menu);
     this.$nodeForDatepicker = this.$node.find(cssSelectors.datepicker);
     this.$apply = this.$node.find(cssSelectors.applyButton);
@@ -35,7 +34,7 @@ class CalendarMenu {
   _attachEventsHandler() {
     this.$apply.on('click', this._applyDates.bind(this));
     this.$clear.on('click', this._clearDates.bind(this));
-    this.$buttons.on('click', this._toggleVisible.bind(this));
+    this.$inputs.on('click', this._toggleVisible.bind(this));
     this.$inputs.each((i, input) => {
       input.addEventListener('blur', this._onBlur.bind(this));
     });
@@ -117,9 +116,9 @@ class CalendarMenu {
 
   _onClickDocument(event) {
     const isCurrentMenuTarget = event.composedPath().includes(this.$menu[0]);
-    const isCurrentButton = event.target === this.$buttons[0] || event.target === this.$buttons[1];
+    const isCurrentInput = event.target === this.$inputs[0] || event.target === this.$inputs[1];
 
-    if (!isCurrentMenuTarget && !isCurrentButton) {
+    if (!isCurrentMenuTarget && !isCurrentInput) {
       this.$menu.removeClass('calendar-menu__menu_visible');
     }
   }

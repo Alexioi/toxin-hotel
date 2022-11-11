@@ -1,5 +1,5 @@
 include ../calendar-menu/calendar-menu
-include ../dropdown-field/dropdown-field
+include ../text-field/text-field
 include ../title/title
 
 mixin calendar(options)
@@ -14,8 +14,8 @@ mixin calendar(options)
     +calendar-menu
       .calendar__input
         +title({text: textFrom, type: 'h4'})
-        +dropdown-field
+        +text-field({isMasked: true})
       if hasTwoInputs
         .calendar__input
           +title({text: textTo, type: 'h4'})
-          +dropdown-field
+          +text-field({isMasked: true})

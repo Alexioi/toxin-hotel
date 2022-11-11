@@ -1,16 +1,30 @@
 class TextField {
   constructor(node) {
     this.node = node;
-    this.date = {
-      day: [],
-      month: [],
-      year: [],
-    };
 
     this._init();
   }
 
   _init() {
+    this.node.addEventListener('focus', (event) => {
+      if (this.node.value === '') {
+        this.date = {
+          day: [],
+          month: [],
+          year: [],
+        };
+        return;
+      }
+
+      const [day, month, year] = this.node.value.split('.');
+
+      this.date = {
+        day: day.split(''),
+        month: month.split(''),
+        year: year.split(''),
+      };
+    });
+
     this.node.addEventListener('keydown', (event) => {
       event.preventDefault();
 
