@@ -40,7 +40,6 @@
     "air-datepicker": "^2.2.3",
     "core-js": "^3.23.1",
     "eslint-config-airbnb-base": "^14.2.1",
-    "imask": "^6.0.7",
     "ion-rangeslider": "^2.3.1",
     "jquery": "^3.6.0",
     "paginationjs": "^2.1.5"

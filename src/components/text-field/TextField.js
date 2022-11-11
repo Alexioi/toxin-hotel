@@ -136,7 +136,6 @@ class TextField {
     const year = Number(this.date.year.join('') + String(key));
 
     const date = new Date(year, month, day);
-    console.log(date);
 
     return date.getFullYear() === year && date.getMonth() === month && date.getDate() === day;
   }
