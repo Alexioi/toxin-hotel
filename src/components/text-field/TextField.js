@@ -15,22 +15,8 @@ class TextField {
   }
 
   _onFocus() {
-    if (this.node.value === '') {
-      this.date = {
-        day: [],
-        month: [],
-        year: [],
-      };
-      return;
-    }
-
-    const [day, month, year] = this.node.value.split('.');
-
-    this.date = {
-      day: day.split(''),
-      month: month.split(''),
-      year: year.split(''),
-    };
+    this.date = '';
+    this._displayDate(this.date);
   }
 
   _onKeyDown(event) {
@@ -41,8 +27,8 @@ class TextField {
     event.preventDefault();
 
     if (event.key === 'Backspace') {
-      this.constructor._removeDate(this.date, event.key);
-      this._displayDate();
+      this.date = this.constructor._removeDate(this.date, event.key);
+      this._displayDate(this.date);
       return;
     }
 
@@ -52,8 +38,8 @@ class TextField {
 
     const key = Number(event.key);
 
-    this._calculateDay(this.date, key);
-    this._displayDate();
+    this.date = this._calculateDay(this.date, key);
+    this._displayDate(this.date);
   }
 
   static _isNumber(key) {
@@ -61,133 +47,111 @@ class TextField {
   }
 
   _calculateDay(date, key) {
-    const { day } = date;
+    const [day] = date.split('.');
 
     if (day.length === 2) {
-      this._calculateMonth(date, key);
-      return;
+      return this._calculateMonth(date, key);
     }
 
     if (day.length === 1) {
-      if (day[0] === 0 && key === 0) {
-        day.push(1);
-        return;
+      if (day[0] === '0' && key === 0) {
+        return date + '1';
       }
 
-      if (day[0] === 3 && key > 0) {
-        day.push(1);
-        return;
+      if (day[0] === '3' && key > 0) {
+        return date + '1';
       }
 
-      day.push(key);
-      return;
+      return date + String(key);
     }
 
     if (key > 3) {
-      day.push(0);
-      day.push(key);
-      return;
+      return date + '0' + String(key);
     }
 
-    day.push(key);
+    return date + String(key);
   }
 
   _calculateMonth(date, key) {
-    const { day, month } = date;
+    const [day, month] = date.split('.');
+
+    if (typeof month === 'undefined') {
+      if (Number(day) > 29 && key === 2) {
+        return day + '.' + month;
+      }
+
+      if (key > 1) {
+        return day + '.' + '0' + String(key);
+      }
+
+      return day + '.' + String(key);
+    }
 
     if (month.length === 2) {
-      this._calculateYear(date, key);
-      return;
+      return this._calculateYear(date, key);
     }
 
-    if (month.length === 1) {
-      if (Number(day.join('')) > 29 && key === 2) {
-        return;
-      }
-
-      if (month[0] === 0 && key === 0) {
-        month.push(1);
-        return;
-      }
-
-      if (month[0] === 1 && key > 2) {
-        month.push(2);
-        return;
-      }
-
-      month.push(key);
-      return;
+    if (Number(day) > 29 && key === 2) {
+      return day + '.' + month;
     }
 
-    if (Number(day.join('')) > 29 && key === 2) {
-      return;
+    if (month[0] === '0' && key === 0) {
+      return day + '.' + month + '1';
     }
 
-    if (key > 1) {
-      month.push(0);
-      month.push(key);
-      return;
+    if (month[0] === '1' && key > 2) {
+      return day + '.' + month + '2';
     }
 
-    month.push(key);
+    return day + '.' + month + String(key);
   }
 
   _calculateYear(date, key) {
-    const { year } = date;
+    const [day, month, year] = date.split('.');
+
+    if (typeof year === 'undefined') {
+      return day + '.' + month + '.' + String(key);
+    }
 
     if (year.length === 4) {
-      return;
+      return date;
     }
 
     if (year.length === 3) {
-      if (this._isValidDate(key)) {
-        year.push(key);
-        return;
+      if (this.constructor._isValidDate(date + String(key))) {
+        return date + String(key);
       }
-      return;
+
+      return date;
     }
 
-    year.push(key);
+    return day + '.' + month + '.' + year + String(key);
   }
 
-  _isValidDate(key) {
-    const day = Number(this.date.day.join(''));
-    const month = Number(this.date.month.join('')) - 1;
-    const year = Number(this.date.year.join('') + String(key));
-
+  static _isValidDate(checkedDate) {
+    const [day, month, year] = checkedDate.split('.').map((value, index) => {
+      if (index === 1) {
+        return Number(value) - 1;
+      }
+      return Number(value);
+    });
     const date = new Date(year, month, day);
 
     return date.getFullYear() === year && date.getMonth() === month && date.getDate() === day;
   }
 
   static _removeDate(date) {
-    const { day, month, year } = date;
-
-    if (year.length > 0) {
-      year.pop();
-      return;
+    if (date[date.length - 1] === '.') {
+      return date.slice(0, -2);
     }
 
-    if (month.length > 0) {
-      month.pop();
-      return;
-    }
-
-    if (day.length > 0) {
-      day.pop();
-    }
+    return date.slice(0, -1);
   }
 
-  _displayDate() {
-    const day = this.constructor._getPlaceholder(this.date.day, 2);
-    const month = this.constructor._getPlaceholder(this.date.month, 2);
-    const year = this.constructor._getPlaceholder(this.date.year, 4);
+  _displayDate(date) {
+    const mask = '__.__.____';
 
-    this.node.value = `${day}.${month}.${year}`;
-  }
-
-  static _getPlaceholder(date, length) {
-    return [...date, '_', '_', '_', '_'].join('').slice(0, length);
+    this.node.value = date + mask.slice(date.length);
   }
 }
 
