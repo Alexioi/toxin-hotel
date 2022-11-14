@@ -6,6 +6,7 @@ class TextField {
   }
 
   _init() {
+    this.type = this.node.dataset.maskedType;
     this._attachEventsHandler();
   }
 
@@ -15,8 +16,8 @@ class TextField {
   }
 
   _onFocus() {
-    this.date = '';
-    this._displayDate(this.date);
+    this.dates = this.type === 'double' ? ['', ''] : [''];
+    this._displayDate(this.dates);
   }
 
   _onKeyDown(event) {
@@ -27,8 +28,9 @@ class TextField {
     event.preventDefault();
 
     if (event.key === 'Backspace') {
-      this.date = this.constructor._removeDate(this.date, event.key);
-      this._displayDate(this.date);
+      this.dates = this._removeDate(this.dates);
+
+      this._displayDate(this.dates);
       return;
     }
 
@@ -38,8 +40,24 @@ class TextField {
 
     const key = Number(event.key);
 
-    this.date = this._calculateDay(this.date, key);
-    this._displayDate(this.date);
+    if (this.type === 'double') {
+      let [firstDate, secondDate] = this.dates;
+
+      if (firstDate.length < 10) {
+        firstDate = this._calculateDay(firstDate, key);
+      } else {
+        secondDate = this._calculateDay(secondDate, key);
+      }
+
+      this.dates = [firstDate, secondDate];
+
+      this._displayDate(this.dates);
+      return;
+    }
+
+    const date = this._calculateDay(this.dates[0], key);
+    this.dates = [date];
+    this._displayDate(this.dates);
   }
 
   static _isNumber(key) {
@@ -140,18 +158,35 @@ class TextField {
     return date.getFullYear() === year && date.getMonth() === month && date.getDate() === day;
   }
 
-  static _removeDate(date) {
-    if (date[date.length - 1] === '.') {
-      return date.slice(0, -2);
+  _removeDate(dates) {
+    const newDates = dates
+      .join('-')
+      .replace(/-$/, '')
+      .slice(0, -1)
+      .replace(/-\.$|-$|\.$/, '')
+      .split('-');
+
+    if (this.type === 'double' && newDates.length === 1) {
+      return [...newDates, ''];
     }
 
-    return date.slice(0, -1);
+    return newDates;
   }
 
-  _displayDate(date) {
+  _displayDate(dates) {
     const mask = '__.__.____';
 
-    this.node.value = date + mask.slice(date.length);
+    const values = [];
+    dates.forEach((date) => {
+      if (typeof date === 'undefined') {
+        values.push(mask);
+        return;
+      }
+
+      values.push(date + mask.slice(date.length));
+    });
+
+    this.node.value = values.join(' - ');
   }
 }
 
