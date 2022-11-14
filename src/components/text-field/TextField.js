@@ -6,17 +6,73 @@ class TextField {
   }
 
   _init() {
-    this.type = this.node.dataset.maskedType;
+    const { maskedType } = this.node.dataset;
+
+    this.type = maskedType;
     this._attachEventsHandler();
+    this.node.dataset.date = maskedType === 'double' ? ',' : '';
   }
 
   _attachEventsHandler() {
     this.node.addEventListener('focus', this._onFocus.bind(this));
     this.node.addEventListener('keydown', this._onKeyDown.bind(this));
+    this.node.addEventListener('blur', this._onBlur.bind(this));
+  }
+
+  _onBlur() {
+    this.dates = this.node.dataset.date.split(',');
+
+    if (this.type === 'single') {
+      this._displayDate(this.dates);
+    }
+
+    if (this.type === 'double') {
+      let [firstDate, secondDate] = this.dates;
+      firstDate = this.constructor._calculateDayAndMount(firstDate);
+      secondDate = this.constructor._calculateDayAndMount(secondDate);
+
+      this.node.value = `${firstDate} - ${secondDate}`;
+    }
+  }
+
+  static _calculateDayAndMount(checkedDate) {
+    const [day, month, year] = checkedDate.split('.').map((value, index) => {
+      if (index === 1) {
+        return Number(value) - 1;
+      }
+      return Number(value);
+    });
+
+    const monthNames = [
+      'янв',
+      'фев',
+      'мар',
+      'апр',
+      'май',
+      'июн',
+      'июл',
+      'авг',
+      'сен',
+      'окт',
+      'ноя',
+      'дек',
+    ];
+
+    const date = new Date(year, month, day);
+
+    const monthNumber = date.getMonth();
+
+    const monthName = monthNames[monthNumber];
+
+    return `${day} ${monthName}`;
+  }
+
+  _setDates() {
+    this.node.dataset.date = this.dates.join(',');
   }
 
   _onFocus() {
-    this.dates = this.type === 'double' ? ['', ''] : [''];
+    this.dates = this.node.dataset.date.split(',');
     this._displayDate(this.dates);
   }
 
@@ -187,6 +243,8 @@ class TextField {
     });
 
     this.node.value = values.join(' - ');
+
+    this._setDates();
   }
 }
 
