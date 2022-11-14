@@ -22,6 +22,13 @@ class TextField {
   _onBlur() {
     this.dates = this.node.dataset.date.split(',');
 
+    if (!TextField._isFullDate(this.dates)) {
+      this.dates = this.type === 'double' ? ',' : '';
+      this.node.value = '';
+      this.node.dataset.date = this.dates;
+      return;
+    }
+
     if (this.type === 'single') {
       this._displayDate(this.dates);
     }
@@ -33,6 +40,10 @@ class TextField {
 
       this.node.value = `${firstDate} - ${secondDate}`;
     }
+  }
+
+  static _isFullDate(dates) {
+    return dates.reduce((sum, current) => current.length === 10 && sum, true);
   }
 
   static _calculateDayAndMount(checkedDate) {

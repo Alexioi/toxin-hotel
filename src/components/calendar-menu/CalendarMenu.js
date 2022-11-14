@@ -42,22 +42,28 @@ class CalendarMenu {
   }
 
   _onBlur() {
-    const firstValue = this._removeDateLessThanToday(this.$inputs[0].value);
-    const secondValue = this._removeDateLessThanToday(this.$inputs[1].value);
+    const values =
+      this.$inputs.length === 2
+        ? [this.$inputs[0].dataset.date, this.$inputs[1].dataset.date]
+        : this.$inputs[0].dataset.date.split(',');
+    const firstValue = this._removeDateLessThanToday(values[0]);
+    const secondValue = this._removeDateLessThanToday(values[1]);
 
-    if (!this._validDate(firstValue) && !this._validDate(secondValue)) {
+    console.log(firstValue, secondValue);
+
+    if (!firstValue && !secondValue) {
       this._clearDates();
-      this.$inputs[0].value = '';
-      this.$inputs[1].value = '';
+      // this.$inputs[0].value = '';
+      // this.$inputs[1].value = '';
       return;
     }
 
-    if (!this._validDate(firstValue)) {
+    if (!firstValue) {
       this._changeValues([secondValue]);
       return;
     }
 
-    if (!this._validDate(secondValue)) {
+    if (!secondValue) {
       this._changeValues([firstValue]);
       return;
     }
@@ -83,18 +89,6 @@ class CalendarMenu {
     }
 
     return date;
-  }
-
-  _validDate(checkedDate) {
-    const [day, month, year] = checkedDate.split('.').map((value, index) => {
-      if (index === 1) {
-        return Number(value) - 1;
-      }
-      return Number(value);
-    });
-    const date = new Date(year, month, day);
-
-    return date.getFullYear() === year && date.getMonth() === month && date.getDate() === day;
   }
 
   _changeValues(values) {
@@ -130,21 +124,24 @@ class CalendarMenu {
       return;
     }
 
-    if (this.$inputs.length === 2) {
-      const firstDate = CalendarMenu._calculateFullDate(dates[0]);
-      const secondDate = CalendarMenu._calculateFullDate(dates[1]);
+    this._toggleVisible();
 
-      this.$inputs[0].value = firstDate;
-      this.$inputs[1].value = secondDate;
-      this._toggleVisible();
-      return;
+    const firstDate = CalendarMenu._calculateFullDate(dates[0]);
+    const secondDate = CalendarMenu._calculateFullDate(dates[1]);
+
+    if (this.$inputs.length === 2) {
+      this.$inputs[0].dataset.date = firstDate;
+      this.$inputs[1].dataset.date = secondDate;
     }
 
-    const firstDate = CalendarMenu._calculateDayAndMount(dates[0]);
-    const secondDate = CalendarMenu._calculateDayAndMount(dates[1]);
+    if (this.$inputs.length === 1) {
+      this.$inputs[0].dataset.date = `${firstDate},${secondDate}`;
+    }
 
-    this.$inputs.val(`${firstDate} - ${secondDate}`);
-    this._toggleVisible();
+    this.$inputs.each((i, input) => {
+      const event = new Event('blur');
+      input.dispatchEvent(event);
+    });
   }
 
   static _calculateFullDate(date) {
@@ -164,6 +161,17 @@ class CalendarMenu {
   }
 
   _clearDates() {
+    this.$inputs.each((index, input) => {
+      // const event = new Event('blur');
+
+      if (this.$inputs.length === 2) {
+        this.$inputs[index].dataset.date = '';
+        // input.dispatchEvent(event);
+        return;
+      }
+      this.$inputs[index].dataset.date = ',';
+      // input.dispatchEvent(event);
+    });
     this.datepicker.clearDates();
   }
 
@@ -174,30 +182,6 @@ class CalendarMenu {
     this.$inputs.each((i) => {
       this.$inputs[i].dataset.focus = isOpened ? 'true' : 'false';
     });
-  }
-
-  static _calculateDayAndMount(date) {
-    const namesOfMonth = [
-      'янв',
-      'фев',
-      'мар',
-      'апр',
-      'май',
-      'июн',
-      'июл',
-      'авг',
-      'сен',
-      'окт',
-      'ноя',
-      'дек',
-    ];
-
-    const day = date.getDate();
-    const monthNumber = date.getMonth();
-
-    const month = namesOfMonth[monthNumber];
-
-    return `${day} ${month}`;
   }
 }
 
