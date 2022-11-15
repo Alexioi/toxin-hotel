@@ -17,15 +17,14 @@ class TextField {
     this.node.addEventListener('focus', this._onFocus.bind(this));
     this.node.addEventListener('keydown', this._onKeyDown.bind(this));
     this.node.addEventListener('blur', this._onBlur.bind(this));
+    this.node.addEventListener('update', this._update.bind(this));
   }
 
-  _onBlur() {
+  _update() {
     this.dates = this.node.dataset.date.split(',');
 
-    if (!TextField._isFullDate(this.dates)) {
-      this.dates = this.type === 'double' ? ',' : '';
+    if (this.dates[0] === '') {
       this.node.value = '';
-      this.node.dataset.date = this.dates;
       return;
     }
 
@@ -35,11 +34,23 @@ class TextField {
 
     if (this.type === 'double') {
       let [firstDate, secondDate] = this.dates;
+
       firstDate = this.constructor._calculateDayAndMount(firstDate);
       secondDate = this.constructor._calculateDayAndMount(secondDate);
 
       this.node.value = `${firstDate} - ${secondDate}`;
     }
+  }
+
+  _onBlur() {
+    if (TextField._isFullDate(this.dates)) {
+      this._update();
+      return;
+    }
+
+    this.dates = this.type === 'double' ? ',' : '';
+    this.node.value = '';
+    this.node.dataset.date = this.dates;
   }
 
   static _isFullDate(dates) {
@@ -233,8 +244,8 @@ class TextField {
       .replace(/-\.$|-$|\.$/, '')
       .split('-');
 
-    if (this.type === 'double' && newDates.length === 1) {
-      return [...newDates, ''];
+    if (this.type === 'double') {
+      return [...newDates, ''].slice(0, 2);
     }
 
     return newDates;

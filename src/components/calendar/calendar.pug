@@ -15,7 +15,7 @@ mixin calendar(options)
       if hasTwoInputs
         .calendar__input
           +title({text: textTo, type: 'h4'})
-          +text-field({isMasked: true, maskedType:'single'})
+          +text-field({isMasked: true, maskedType:'single', placeholder: 'test'})
         .calendar__input
           +title({text: textFrom, type: 'h4'})
           +text-field({isMasked: true, maskedType:'single'})
