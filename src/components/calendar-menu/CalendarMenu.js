@@ -44,8 +44,6 @@ class CalendarMenu {
     const firstValue = this._removeDateLessThanToday(values[0]);
     const secondValue = this._removeDateLessThanToday(values[1]);
 
-    console.log(firstValue, secondValue);
-
     if (!firstValue && !secondValue) {
       this._clearDates();
       return;
@@ -79,30 +77,18 @@ class CalendarMenu {
   _changeValues(values) {
     this._clearDates();
 
-    console.log(values);
-
     if (this.$inputs.length === 2) {
       values.forEach((value, index) => {
         this.$inputs[index].dataset.date = value;
-        this.datepicker.changeDate(this._reverseDate(value));
+        if (value !== '') {
+          this.datepicker.changeDate(this._reverseDate(value));
+        }
       });
     }
 
     if (this.$inputs.length === 1) {
       this.$inputs[0].dataset.date = values.join(',');
     }
-
-    // if (this.$inputs.length === 1) {
-    //   this.$inputs[0].dataset.date = values.join(' - ');
-    // } else {
-    //   if (values.length === 1) {
-    //     this.$inputs[1].dataset.date = '';
-    //   }
-    //   values.forEach((value, index) => {
-    //     this.$inputs[index].dataset.date = value;
-    //     this.datepicker.changeDate(this._reverseDate(value));
-    //   });
-    // }
 
     this._updateInputs(values);
   }
@@ -183,10 +169,18 @@ class CalendarMenu {
 
   _updateInputs(dates) {
     const event = new Event('update');
-    dates.forEach((date, index) => {
-      this.$inputs[index].dataset.date = date;
-      this.$inputs[index].dispatchEvent(event);
-    });
+
+    if (this.$inputs.length === 2) {
+      dates.forEach((date, index) => {
+        this.$inputs[index].dataset.date = date;
+        this.$inputs[index].dispatchEvent(event);
+      });
+    }
+
+    if (this.$inputs.length === 1) {
+      this.$inputs[0].dataset.date = dates.join(',');
+      this.$inputs[0].dispatchEvent(event);
+    }
   }
 
   _toggleVisible() {

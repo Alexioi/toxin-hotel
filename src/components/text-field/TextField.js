@@ -173,7 +173,7 @@ class TextField {
 
     if (typeof month === 'undefined') {
       if (Number(day) > 29 && key === 2) {
-        return day + '.' + month;
+        return day;
       }
 
       if (key > 1) {
