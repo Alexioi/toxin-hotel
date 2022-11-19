@@ -20,7 +20,6 @@ class DropdownMenu {
 
   _findNodes() {
     this.input = this.node.querySelector(cssSelectors.input);
-    this.toggleButton = this.node.querySelector(cssSelectors.toggleButton);
     this.items = this.node.querySelectorAll(cssSelectors.items);
     this.clearButton = this.node.querySelector(cssSelectors.clearButton);
     this.applyButton = this.node.querySelector(cssSelectors.applyButton);
@@ -40,7 +39,7 @@ class DropdownMenu {
   }
 
   _attachEventHandlers() {
-    this.toggleButton.addEventListener('click', this._toggleMenu.bind(this));
+    this.input.addEventListener('click', this._toggleMenu.bind(this));
     if (this.clearButton) {
       this.clearButton.addEventListener('click', this._resetCounters.bind(this));
     }
@@ -67,9 +66,9 @@ class DropdownMenu {
 
   _onClickDocument(event) {
     const isCurrentMenuTarget = event.target.closest(cssSelectors.menu) === this.menu;
-    const isCurrentToggleButton = event.target !== this.toggleButton;
+    const isCurrentInput = event.target !== this.input;
 
-    if (!isCurrentMenuTarget && isCurrentToggleButton) {
+    if (!isCurrentMenuTarget && isCurrentInput) {
       this._closeMenu();
     }
   }

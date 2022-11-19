@@ -112,7 +112,7 @@ block main
       .form-elements__dropdowns-left-column
         +dropdown-menu(dropdownMenus.roomsClose)
           +title(Object.assign({type: 'h4'}, titles.dropdownDefault))
-          +dropdown-field
+          +text-field({isDropdown: true, isReadonly: true})
         .form-elements__dropdowns-left
           +dropdown-menu(dropdownMenus.rooms)
             +title(Object.assign({type: 'h4'}, titles.dropdownExpanded))

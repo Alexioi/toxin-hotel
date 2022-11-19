@@ -1,6 +1,8 @@
 @use 'Style/constants/colors';
 
 .text-field {
+  $root: &;
+
   position: relative;
 
   &__input {
@@ -18,15 +20,23 @@
     }
 
     &:hover,
-    &:focus {
+    &:focus,
+    &[data-focus='true'] {
       border: 1px solid rgba(colors.$first, 0.5);
       color: rgba(colors.$first, 0.75);
     }
-  }
 
-  &__input &_hovered {
-    border: 1px solid rgba(colors.$first, 0.5);
-    color: rgba(colors.$first, 0.75);
+    &[data-opened='true'] {
+      border-color: rgba(colors.$first, 0.5);
+      outline: none;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    #{$root}_hovered & {
+      border: 1px solid rgba(colors.$first, 0.5);
+      color: rgba(colors.$first, 0.75);
+    }
   }
 
   &__subscription-button {
@@ -38,5 +48,16 @@
     background: no-repeat center center;
     background-image: url('Images/decorative/color-arrow-forward.svg');
     cursor: pointer;
+  }
+
+  &__dropdown-button {
+    position: absolute;
+    height: 100%;
+    width: 44px;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    background: no-repeat url('Images/decorative/toggle-button.svg') center center;
+    border: none;
   }
 }
