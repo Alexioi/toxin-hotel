@@ -1,0 +1,19 @@
+include ../dropdown-menu/dropdown-menu
+include ../title/title
+include ../text-field/text-field
+
+mixin dropdown(options)
+  -
+    const {
+      hint = '',
+      titleText = '',
+      items = [], 
+      isOpened = false, 
+      type = '',
+      inputName = '', 
+    } = options || {}
+
+  .dropdown
+    +dropdown-menu({items, isOpened, type})
+      +title({type: 'h4', text: titleText, hint})
+      +text-field({isReadonly: true, type: 'text', isDropdown: true, name: inputName})

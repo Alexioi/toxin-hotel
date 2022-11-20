@@ -13,8 +13,7 @@ include ../../components/pagination/pagination
 include ../../components/title/title
 include ../../components/text-field/text-field
 include ../../components/calendar/calendar
-include ../../components/dropdown-field/dropdown-field
-include ../../components/dropdown-menu/dropdown-menu
+include ../../components/dropdown/dropdown
 include ../../components/dropdown-list/dropdown-list
 include ../../components/range-slider/range-slider
 
@@ -30,7 +29,7 @@ block main
       comment, 
       iconTextList, 
       bulletList,
-      dropdownMenus,
+      dropdowns,
       toggles,
       likeButtons,
       rates,
@@ -48,9 +47,7 @@ block main
           +title(Object.assign({type: 'h4'}, titles.hoverTextField))
           +text-field(textFields.hover)
         .form-elements__text-fields-and-buttons-left
-          +dropdown-menu(dropdownMenus.guestsClose)
-            +title(Object.assign({type: 'h4'}, titles.dropdown))
-            +dropdown-field
+          +dropdown(dropdowns.guestsClose)
         .form-elements__text-fields-and-buttons-left
           +title(Object.assign({type: 'h4'}, titles.maskedTextField))
           +text-field(textFields.masked)
@@ -110,23 +107,15 @@ block main
 
     .form-elements__row
       .form-elements__dropdowns-left-column
-        +dropdown-menu(dropdownMenus.roomsClose)
-          +title(Object.assign({type: 'h4'}, titles.dropdownDefault))
-          +text-field({isDropdown: true, isReadonly: true})
+        +dropdown(dropdowns.roomsClose)
         .form-elements__dropdowns-left
-          +dropdown-menu(dropdownMenus.rooms)
-            +title(Object.assign({type: 'h4'}, titles.dropdownExpanded))
-            +dropdown-field
+          +dropdown(dropdowns.rooms)
 
       .form-elements__dropdowns-middle-column
-        +dropdown-menu(dropdownMenus.guestsEmpty)
-          +title(Object.assign({type: 'h4'}, titles.dropdown))
-          +dropdown-field
+        +dropdown(dropdowns.guestsEmpty)
 
       .form-elements__dropdowns-right-column
-        +dropdown-menu(dropdownMenus.guests)
-          +title(Object.assign({type: 'h4'}, titles.dropdown))
-          +dropdown-field
+        +dropdown(dropdowns.guests)
 
     .form-elements__row
       .form-elements__lists-left-column

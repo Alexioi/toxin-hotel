@@ -12,10 +12,7 @@
     "buttons": { "text": "buttons" },
     "pagination": { "text": "pagination" },
     "richCheckboxButtons": { "text": "rich Checkbox Buttons" },
-    "bulletList": { "text": "bullet list", "type": "h4" },
-    "dropdown": { "text": "dropdown", "type": "h4" },
-    "dropdownDefault": { "text": "dropdown", "hint": "default" },
-    "dropdownExpanded": { "text": "dropdown", "hint": "expanded" }
+    "bulletList": { "text": "bullet list", "type": "h4" }
   },
   "textFields": {
     "default": {
@@ -95,7 +92,7 @@
       "Время прибытия — после 13:00, а выезд до 12:00"
     ]
   },
-  "dropdownMenus": {
+  "dropdowns": {
     "guestsClose": {
       "items": [
         { "name": "взрослые", "counter": 0 },
@@ -103,7 +100,8 @@
         { "name": "младенцы", "counter": 0 }
       ],
       "isOpened": false,
-      "type": "guests"
+      "type": "guests",
+      "titleText": "dropdown"
     },
     "roomsClose": {
       "items": [
@@ -112,7 +110,9 @@
         { "name": "ванные комнаты", "counter": 0 }
       ],
       "isOpened": false,
-      "type": "rooms"
+      "type": "rooms",
+      "hint": "default",
+      "titleText": "dropdown"
     },
     "rooms": {
       "items": [
@@ -121,7 +121,9 @@
         { "name": "ванные комнаты", "counter": 0 }
       ],
       "isOpened": true,
-      "type": "rooms"
+      "type": "rooms",
+      "hint": "expanded",
+      "titleText": "dropdown"
     },
     "guestsEmpty": {
       "items": [
@@ -130,7 +132,8 @@
         { "name": "младенцы", "counter": 0 }
       ],
       "isOpened": true,
-      "type": "guests"
+      "type": "guests",
+      "titleText": "dropdown"
     },
     "guests": {
       "items": [
@@ -139,7 +142,8 @@
         { "name": "младенцы", "counter": 0 }
       ],
       "isOpened": true,
-      "type": "guests"
+      "type": "guests",
+      "titleText": "dropdown"
     }
   },
   "toggles": {
