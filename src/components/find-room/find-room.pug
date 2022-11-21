@@ -2,27 +2,24 @@ include ../button/button
 include ../card/card
 include ../title/title
 include ../calendar/calendar
-include ../dropdown-field/dropdown-field
-include ../dropdown-menu/dropdown-menu
+include ../dropdown/dropdown
 
 mixin find-room
   -
     const {
-      titles,
+      title,
       dropdownFields,
-      dropdownMenu,
+      dropdown,
       button
     } = require('Components/find-room/data.json')
 
   .find-room
     +card
-      +title(Object.assign({type: 'h2'}, titles.findRoom)) 
+      +title(Object.assign({type: 'h2'}, title)) 
       form.find-room__form(method="POST", action="/change-it")
         .find-room__calendar
           +calendar 
         .find-room__dropdown
-          +dropdown-menu(dropdownMenus)
-            +title(Object.assign({type: 'h4'}, titles.guests))
-            +dropdown-field(dropdownFields.guests)
+          +dropdown(Object.assign({isOpened: false,}, dropdown))
         .find-room__submit-button
           +button(Object.assign({theme: 'long', type: 'submit'}, button))

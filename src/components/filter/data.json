@@ -1,10 +1,8 @@
 {
   "titles": {
     "arrivalDates": { "text": "даты пребывания в отеле", "type": "h4" },
-    "guests": { "text": "гости" },
     "rules": { "text": "правила дома" },
-    "availability": { "text": "доступность" },
-    "conveniences": { "text": "удобства номера" }
+    "availability": { "text": "доступность" }
   },
   "rangeSlider": { "title": "диапазон цены" },
   "checkboxLists": {
@@ -38,20 +36,22 @@
   },
   "button": { "text": "фильтр" },
   "dropdownList": { "title": "дополнительные удобства" },
-  "dropdownMenus": {
+  "dropdowns": {
     "guests": {
       "items": [
         { "name": "взрослые", "counter": 3 },
         { "name": "дети", "counter": 0 },
         { "name": "младенцы", "counter": 1 }
-      ]
+      ],
+      "titleText": "гости"
     },
     "rooms": {
       "items": [
         { "name": "спальни", "counter": 2 },
         { "name": "кровати", "counter": 2 },
         { "name": "ванные комнаты", "counter": 0 }
-      ]
+      ],
+      "titleText": "удобства номера"
     }
   },
   "rangeText": "Стоимость за сутки пребывания в номере"

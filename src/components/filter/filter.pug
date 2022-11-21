@@ -1,7 +1,6 @@
 include ../calendar/calendar
 include ../title/title
-include ../dropdown-field/dropdown-field
-include ../dropdown-menu/dropdown-menu
+include ../dropdown/dropdown
 include ../range-slider/range-slider
 include ../checkbox-list/checkbox-list
 include ../dropdown-list/dropdown-list
@@ -12,7 +11,7 @@ mixin filter
   -
     const {
       titles,
-      dropdownMenus,
+      dropdowns,
       rangeSlider, 
       checkboxLists,
       button,
@@ -24,10 +23,8 @@ mixin filter
   .filter.js-filter
     form.filter__form
       +calendar
-      .filter__guests-dropdown-menu
-        +dropdown-menu(Object.assign({isOpened: false, type: 'guests'},dropdownMenus.guests))
-          +title(Object.assign({type: 'h4'}, titles.guests))
-          +dropdown-field
+      .filter__guests-dropdown
+        +dropdown(Object.assign({isOpened: false, type: 'guests'}, dropdowns.guests))
       .filter__range-slider
         +range-slider(rangeSlider)
         p.filter__range-text= rangeText
@@ -39,10 +36,8 @@ mixin filter
         +title(Object.assign({type: 'h4'}, titles.availability))
       .filter__availability
         +checkbox-list(Object.assign({isRich: true},checkboxLists.availability))
-      .filter__rooms-dropdown-menu
-        +dropdown-menu(Object.assign({isOpened: false, type: 'rooms'},dropdownMenus.rooms))
-          +title(Object.assign({type: 'h4'}, titles.conveniences))
-          +dropdown-field
+      .filter__rooms-dropdown
+        +dropdown(Object.assign({isOpened: false, type: 'rooms'}, dropdowns.rooms))
       .filter__dropdown-list
         +dropdown-list(dropdownList)
           +checkbox-list(Object.assign({isRich: false},checkboxLists.additions))

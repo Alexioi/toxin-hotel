@@ -2,19 +2,16 @@ include ../room-info/room-info
 include ../card/card
 include ../button/button
 include ../calendar/calendar
-include ../dropdown-field/dropdown-field
+include ../dropdown/dropdown
 include ../title/title
-include ../dropdown-menu/dropdown-menu
 
 mixin room-booking
   -
     const {
       expensesItems, 
-      dropdownMenu, 
-      title,
+      dropdown, 
       button,
       roomInfo,
-      dropdownFields
     } = require('Components/room-booking/data.json')
 
   .room-booking
@@ -23,9 +20,7 @@ mixin room-booking
         +room-info(roomInfo)
         .room-booking__calendar
           +calendar 
-        +dropdown-menu(Object.assign({isOpened: false, type: "guests"}, dropdownMenu))
-          +title(Object.assign({type: "h4"}, title))
-          +dropdown-field(dropdownFields.guests)
+        +dropdown(Object.assign({isOpened: false, type: "guests"}, dropdown))
         ul.room-booking__expenses-list
           each expensesItem in expensesItems
             li.room-booking__expenses-item

@@ -4,17 +4,14 @@
     { "about": "Сбор за услуги: скидка 2 179₽", "hasInfo": true, "value": "0₽" },
     { "about": "Сбор за дополнительные услуги", "hasInfo": true, "value": "300₽" }
   ],
-  "dropdownMenu": {
+  "dropdown": {
     "items": [
       { "name": "взрослые", "counter": 0 },
       { "name": "дети", "counter": 0 },
       { "name": "младенцы", "counter": 0 }
-    ]
+    ],
+    "titleText": "гости"
   },
-  "title": { "text": "гости" },
   "button": { "text": "забронировать" },
-  "roomInfo": { "isLux": true },
-  "dropdownFields": {
-    "guest": { "inputName": "guests" }
-  }
+  "roomInfo": { "isLux": true }
 }

@@ -1,11 +1,15 @@
 {
-  "titles": {
-    "findRoom": { "text": "Найдём номера под ваши пожелания" },
-    "guests": { "text": "гости" }
+  "title": {
+    "text": "Найдём номера под ваши пожелания"
   },
-  "dropdownFields": {
-    "guests": { "inputName": "guests" }
+  "dropdown": {
+    "items": [
+      { "name": "взрослые", "counter": 0 },
+      { "name": "дети", "counter": 0 },
+      { "name": "младенцы", "counter": 0 }
+    ],
+    "type": "guests",
+    "titleText": "гости"
   },
-  "dropdownMenu": { "type": "guests" },
   "button": { "text": "подобрать номер" }
 }
