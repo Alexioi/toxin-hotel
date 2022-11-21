@@ -1,6 +1,11 @@
-mixin pie-chart
+mixin pie-chart(options)
+  -
+    const {
+      votes
+    } = options || {}
+
   .pie-chart
-    canvas.pie-chart__diagram.js-pie-chart__diagram
+    canvas.pie-chart__diagram.js-pie-chart__diagram(data-votes=votes)
     ul.pie-chart__list
       li.pie-chart__item.pie-chart__item_type-perfectly Великолепно
       li.pie-chart__item.pie-chart__item_type-good Хорошо

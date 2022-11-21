@@ -28,11 +28,13 @@
     font-weight: bold;
     font-size: 14px;
     line-height: 24px;
+    word-break: break-all;
   }
 
   &__date {
     font-size: 14px;
     line-height: 24px;
+    word-break: break-all;
   }
 
   &__like-button {
@@ -46,5 +48,6 @@
     font-size: 14px;
     line-height: 24px;
     grid-area: text;
+    word-break: break-all;
   }
 }

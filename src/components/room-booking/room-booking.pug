@@ -12,6 +12,8 @@ mixin room-booking
       dropdown, 
       button,
       roomInfo,
+      total,
+      totalValue,
     } = require('Components/room-booking/data.json')
 
   .room-booking
@@ -25,11 +27,11 @@ mixin room-booking
           each expensesItem in expensesItems
             li.room-booking__expenses-item
               .room-booking__expenses-about= expensesItem.about
-              if expensesItem.hasInfo
-                .room-booking__expenses-info
+              if expensesItem.info
+                .room-booking__expenses-info(data-info=expensesItem.info)
               .room-booking__expenses-value= expensesItem.value
         .room-booking__total
-          span.room-booking__total-text Итого
+          span.room-booking__total-text= total
           span.room-booking__total-line 
-          span.room-booking__total-value 38 081₽
+          span.room-booking__total-value= totalValue
         +button(Object.assign({theme: "long", type: "submit"}, button))

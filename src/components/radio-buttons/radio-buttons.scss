@@ -33,6 +33,12 @@
     position: absolute;
     opacity: 0;
 
+    &:focus + #{$root}__text {
+      &::before {
+        box-shadow: 0 0 10px rgba(colors.$first, 30%);
+      }
+    }
+
     &:checked + #{$root}__text {
       &::before {
         border-color: #bc9cff;

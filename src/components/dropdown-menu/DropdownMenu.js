@@ -217,8 +217,10 @@ class DropdownMenu {
 
       if (counter === 0) {
         counterButton.classList.add('dropdown-menu__counter-button_disabled');
+        counterButton.setAttribute('disabled', 'disabled');
       } else {
         counterButton.classList.remove('dropdown-menu__counter-button_disabled');
+        counterButton.removeAttribute('disabled');
       }
     });
   }

@@ -1,6 +1,9 @@
 @use 'Style/constants/colors';
 
 .icon-text-list {
+  margin: 0;
+  padding: 0;
+
   &__item {
     display: flex;
     padding: 20px 0;
@@ -22,6 +25,7 @@
     font-size: 14px;
     line-height: 24px;
     margin: 0;
+    word-break: break-all;
   }
 
   &__content {
@@ -29,5 +33,6 @@
     line-height: 24px;
     margin-left: 10px;
     color: rgba(colors.$first, 0.75);
+    word-break: break-all;
   }
 }

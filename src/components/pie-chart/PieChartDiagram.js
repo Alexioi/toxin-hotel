@@ -25,6 +25,36 @@ class PieChartDiagram {
     };
 
     this.grades = ['good', 'perfectly', 'satisfactory', 'bad'];
+
+    this.votes = JSON.parse(this.$component.dataset.votes);
+    this._drawDiagram(this.votes);
+  }
+
+  _drawDiagram(votes) {
+    const { grades, diagramColors } = this;
+    let allVotes = 0;
+    let startDegree = 0;
+    let endDegree = 0;
+
+    this.grades.forEach((item) => {
+      allVotes += votes[item];
+    });
+
+    grades.forEach((item) => {
+      const [colorFrom, colorTo] = diagramColors[item];
+      endDegree = (votes[item] / allVotes) * 360 + startDegree;
+
+      const start = startDegree + 1;
+      const end = endDegree - 1;
+
+      if (start < end) {
+        this._drawArc({ startDegree: start, endDegree: end, colorFrom, colorTo });
+      }
+
+      startDegree = endDegree;
+    });
+
+    this._drawText(allVotes);
   }
 
   static _getRadian(degree) {
@@ -82,33 +112,6 @@ class PieChartDiagram {
     ctx.font = 'bold 12px Montserrat sans-serif';
     ctx.textBaseline = 'top';
     ctx.fillText('ГОЛОСОВ', centerX, centerY + centerY / 6);
-  }
-
-  drawDiagram(votes) {
-    const { grades, diagramColors } = this;
-    let allVotes = 0;
-    let startDegree = 0;
-    let endDegree = 0;
-
-    this.grades.forEach((item) => {
-      allVotes += votes[item];
-    });
-
-    grades.forEach((item) => {
-      const [colorFrom, colorTo] = diagramColors[item];
-      endDegree = (votes[item] / allVotes) * 360 + startDegree;
-
-      const start = startDegree + 1;
-      const end = endDegree - 1;
-
-      if (start < end) {
-        this._drawArc({ startDegree: start, endDegree: end, colorFrom, colorTo });
-      }
-
-      startDegree = endDegree;
-    });
-
-    this._drawText(allVotes);
   }
 }
 

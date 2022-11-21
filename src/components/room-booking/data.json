@@ -1,8 +1,16 @@
 {
   "expensesItems": [
-    { "about": "9 990₽ х 4 суток", "hasInfo": false, "value": "39 960₽" },
-    { "about": "Сбор за услуги: скидка 2 179₽", "hasInfo": true, "value": "0₽" },
-    { "about": "Сбор за дополнительные услуги", "hasInfo": true, "value": "300₽" }
+    { "about": "9 990₽ х 4 суток", "value": "39 960₽" },
+    {
+      "about": "Сбор за услуги: скидка 2 179₽",
+      "value": "0₽",
+      "info": "Текст подсказки 1"
+    },
+    {
+      "about": "Сбор за дополнительные услуги",
+      "value": "300₽",
+      "info": "Текст подсказки 2"
+    }
   ],
   "dropdown": {
     "items": [
@@ -13,5 +21,7 @@
     "titleText": "гости"
   },
   "button": { "text": "забронировать" },
-  "roomInfo": { "isLux": true }
+  "roomInfo": { "isLux": true },
+  "total": "Итого",
+  "totalValue": "38 081₽"
 }

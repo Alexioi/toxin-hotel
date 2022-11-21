@@ -20,16 +20,20 @@
 
     &-about {
       margin-right: auto;
+      word-break: break-all;
     }
 
     &-info {
       width: 20px;
+      flex-shrink: 0;
       height: 20px;
       border: 1px solid rgba(colors.$first, 0.25);
       border-radius: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
+      cursor: pointer;
 
       &::before {
         content: 'i';
@@ -39,11 +43,30 @@
         line-height: 14px;
         color: rgba(colors.$first, 0.25);
       }
+
+      &::after {
+        visibility: hidden;
+        content: attr(data-info);
+        position: absolute;
+        width: 150px;
+        background: #f4f4f6;
+        word-break: break-all;
+        padding: 5px;
+        top: 21px;
+        z-index: 2;
+        border: 1px solid rgba(colors.$first, 0.25);
+        border-radius: 4px;
+      }
+
+      &:hover::after {
+        visibility: visible;
+      }
     }
 
     &-value {
       flex: 0 0 77px;
       text-align: right;
+      word-break: break-all;
     }
   }
 

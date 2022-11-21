@@ -15,7 +15,7 @@ mixin comment(options)
     img.comment__img(src=require(`Images/content/${image}.png`), alt=`Фото автора ${authorName}`)
     .comment__header
       span.comment__author-name= authorName
-      span.comment__date= date
+      time.comment__date= date
     .comment__like-button
       +like-button({counter, isLiked})
     p.comment__text= text

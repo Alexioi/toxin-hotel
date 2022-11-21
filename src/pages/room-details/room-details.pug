@@ -20,7 +20,8 @@ block main
       gallery, 
       titles, 
       bulletList,
-      resetText
+      resetText,
+      pieChart
     } = require('./data.json')
 
   .room-details
@@ -34,7 +35,7 @@ block main
               +icon-text-list(iconTextList)
             .room-details__pie-chart
               +title(titles.roomImpression)
-              +pie-chart
+              +pie-chart(pieChart)
           .room-details__comments-title
             +title(titles.reviewNumber)
             span.room-details__text 2 отзыва
@@ -43,8 +44,7 @@ block main
               +comment(comment) 
           .room-details__rules
             .room-details__bullet-list
-              .room-details__bullet-list-title
-                +title(titles.rules)
+              +title(titles.rules)
               +bullet-list(bulletList)
             .room-details__reset
               +title(titles.reset)
