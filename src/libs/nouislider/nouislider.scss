@@ -1,34 +1,29 @@
+/* stylelint-disable selector-class-pattern */
 @use 'Style/constants/colors';
 
-.irs {
-  position: relative;
-  display: block;
-
-  &-line {
-    display: block;
+.noUi {
+  &-base {
     height: 6px;
     background: white;
     border: 1px solid rgba(colors.$first, 0.25);
-    box-sizing: border-box;
     border-radius: 3px;
-
-    &:focus {
-      outline: none;
-    }
+    position: relative;
   }
 
-  &-bar {
-    display: block;
+  &-connect {
     position: absolute;
-    height: 6px;
+    height: 100%;
+    width: 100%;
     top: 0;
+    left: 0;
+    transform-origin: 0 0;
     background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
   }
 
-  &-handle {
+  &-horizontal &-handle {
     top: -5px;
+    right: -8px;
     position: absolute;
-    display: block;
     width: 16px;
     height: 16px;
     background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);

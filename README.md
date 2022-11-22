@@ -58,7 +58,7 @@ npm run server
 
 [air-datepicker ^2.2.3](https://www.npmjs.com/package/air-datepicker) - добавляет календарь
 
-[ion-rangeslider ^2.3.1](https://www.npmjs.com/package/ion-rangeslider) - плагин ползунка
+[nouislider ^15.6.1](https://refreshless.com/nouislider) - плагин ползунка
 
 [paginationjs ^2.1.5](https://www.npmjs.com/package/paginationjs) - плагин пагинации
 

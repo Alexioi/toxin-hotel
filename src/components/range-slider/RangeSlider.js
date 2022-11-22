@@ -1,4 +1,4 @@
-import IonRangeSlider from 'Libs/ion-rangeslider';
+import NoUISlider from 'Libs/nouislider';
 import cssSelectors from './constants';
 
 class RangeSlider {
@@ -14,7 +14,7 @@ class RangeSlider {
     const $sliderNode = this.$node.find(cssSelectors.sliderNode);
     const $valueNode = this.$node.find(cssSelectors.value);
 
-    new IonRangeSlider($sliderNode, $valueNode, parameters);
+    new NoUISlider($sliderNode, $valueNode, parameters);
   }
 }
 
