@@ -10,7 +10,8 @@ mixin text-field(options)
       isSubscription = false,
       isDropdown = false,
       isReadonly = false,
-      maskedType = ''
+      maskedType = '',
+      inputmode = ''
     } = options || {}
 
     var classes = ''
@@ -25,7 +26,8 @@ mixin text-field(options)
       placeholder=placeholder,
       data-masked-type=maskedType,
       readonly=isReadonly ? "readonly" : false,
-      tabindex=isReadonly ? "1" : "0"
+      tabindex=isReadonly ? "1" : "0",
+      inputmode=inputmode
     )
     if isSubscription
       button.text-field__subscription-button(type="submit") 

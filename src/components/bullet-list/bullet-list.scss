@@ -13,6 +13,7 @@
     padding-left: 20px;
     color: rgba(colors.$first, 0.75);
     list-style-type: none;
+    word-break: break-all;
 
     &::before {
       position: absolute;
@@ -23,7 +24,7 @@
       background: rgba(colors.$first, 0.25);
       border-radius: 50%;
       left: 0;
-      top: 6px;
+      top: 7px;
     }
   }
 }

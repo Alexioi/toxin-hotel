@@ -18,7 +18,7 @@ mixin authorization
       form.authorization__form(method="POST", action="/change-it")
         +title(Object.assign({type: 'h2'}, title )) 
         .authorization__login-input
-          +text-field(Object.assign({type: 'email'}, textFields.email))
+          +text-field(Object.assign({type: 'email', inputmode: 'email'}, textFields.email))
         .authorization__password-input
           +text-field(Object.assign({type: 'password'}, textFields.password))
         .authorization__submit-button

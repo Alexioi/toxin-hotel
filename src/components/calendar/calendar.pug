@@ -15,11 +15,11 @@ mixin calendar(options)
       if hasTwoInputs
         .calendar__input
           +title({text: textTo, type: 'h4'})
-          +text-field({isMasked: true, maskedType:'single', placeholder: 'test', isDropdown: true})
+          +text-field({isMasked: true, maskedType:'single', placeholder: 'ДД.ММ.ГГГГ', isDropdown: true})
         .calendar__input
           +title({text: textFrom, type: 'h4'})
-          +text-field({isMasked: true, maskedType:'single', isDropdown: true})
+          +text-field({isMasked: true, maskedType:'single', placeholder: 'ДД.ММ.ГГГГ', isDropdown: true})
       else
         .calendar__input
           +title({text: textFrom, type: 'h4'})
-          +text-field({isMasked: true, maskedType:'double', isDropdown: true})
+          +text-field({isMasked: true, maskedType:'double', placeholder: 'ДД.ММ.ГГГГ - ДД.ММ.ГГГГ', isDropdown: true})

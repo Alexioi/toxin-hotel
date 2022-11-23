@@ -1,13 +1,14 @@
 @use 'Style/constants/colors';
 @use 'Style/constants/mixins';
 @use 'Style/constants/display-sizes';
+@use 'Style/constants/font';
 
 .header {
   $root: &;
 
   box-shadow: 0 10px 20px rgba(colors.$first, 0.05);
   background-color: white;
-  padding: 15px 0;
+  padding: 14px 0;
 
   &__mobile-navigation-opened {
     #{$root}__login {
@@ -64,9 +65,25 @@
     background-color: white;
     border: none;
     cursor: pointer;
+    position: relative;
+    padding: 0;
+    padding-right: 24px;
+
+    &::after {
+      display: block;
+      position: absolute;
+      content: '';
+      width: 24px;
+      height: 18px;
+      background: no-repeat 50% 50%;
+      background-image: url('Images/decorative/expand-more.svg');
+      top: 0;
+      right: 0;
+    }
   }
 
   &__button-content {
+    font-family: font.$first;
     font-size: 14px;
     line-height: 17px;
     color: rgba(colors.$first, 0.5);
