@@ -11,5 +11,6 @@
     "type": "guests",
     "titleText": "гости"
   },
-  "button": { "text": "подобрать номер" }
+  "button": { "text": "подобрать номер" },
+  "calendar": { "textFrom": "прибытие", "textTo": "выезд" }
 }

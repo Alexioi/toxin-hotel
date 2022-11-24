@@ -1,4 +1,8 @@
 {
+  "calendar": {
+    "single": { "textFrom": "date Dropdown", "textTo": "date Dropdown" },
+    "double": { "textFrom": "filter date dropdown" }
+  },
   "titles": {
     "defaultTextField": { "text": "Text Field", "hint": "Default" },
     "hoverTextField": { "text": "Text Field", "hint": "Hover / Focus" },
@@ -31,7 +35,7 @@
       "type": "text",
       "name": "example2"
     },
-    "masked": { "title": "masked text field", "isMasked": true },
+    "masked": { "title": "masked text field", "isMasked": true, "placeholder": "ДД.ММ.ГГГГ" },
     "email": {
       "title": "subscription text field",
       "placeholder": "Email",

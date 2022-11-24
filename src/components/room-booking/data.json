@@ -1,17 +1,4 @@
 {
-  "expensesItems": [
-    { "about": "9 990₽ х 4 суток", "value": "39 960₽" },
-    {
-      "about": "Сбор за услуги: скидка 2 179₽",
-      "value": "0₽",
-      "info": "Текст подсказки 1"
-    },
-    {
-      "about": "Сбор за дополнительные услуги",
-      "value": "300₽",
-      "info": "Текст подсказки 2"
-    }
-  ],
   "dropdown": {
     "items": [
       { "name": "взрослые", "counter": 0 },
@@ -21,7 +8,6 @@
     "titleText": "гости"
   },
   "button": { "text": "забронировать" },
-  "roomInfo": { "isLux": true },
   "total": "Итого",
-  "totalValue": "38 081₽"
+  "calendar": { "textFrom": "прибытие", "textTo": "выезд" }
 }

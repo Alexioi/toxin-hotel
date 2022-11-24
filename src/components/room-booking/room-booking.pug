@@ -5,23 +5,29 @@ include ../calendar/calendar
 include ../dropdown/dropdown
 include ../title/title
 
-mixin room-booking
+mixin room-booking(options)
   -
     const {
-      expensesItems, 
+      number = 1, 
+      isLux = false, 
+      price = 0,
+      expensesItems = [],
+      totalValue = 0,
+    } = options || {}
+
+    const {
       dropdown, 
       button,
-      roomInfo,
       total,
-      totalValue,
+      calendar,
     } = require('Components/room-booking/data.json')
 
   .room-booking
     +card
       form.room-booking__form(method="POST", action="/change-it")
-        +room-info(roomInfo)
+        +room-info({number, isLux, price})
         .room-booking__calendar
-          +calendar 
+          +calendar(Object.assign({hasTwoInputs: true}, calendar))
         +dropdown(Object.assign({isOpened: false, type: "guests"}, dropdown))
         ul.room-booking__expenses-list
           each expensesItem in expensesItems

@@ -4,31 +4,33 @@ mixin text-field(options)
       isHovered = false, 
       isMasked = false, 
       type = 'text', 
-      value = '', 
-      name = '', 
-      placeholder = '', 
+      value, 
+      name, 
+      placeholder, 
       isSubscription = false,
       isDropdown = false,
       isReadonly = false,
-      maskedType = '',
-      inputmode = ''
+      maskedType,
+      inputmode
     } = options || {}
 
-    var classes = ''
+    let classes = ''
     classes += isHovered ? ' text-field_hovered' : '' 
     classes += isMasked ? ' text-field_masked js-text-field_masked' : '' 
 
+    const inputAttributes = {
+      type,
+      value,
+      name,
+      placeholder,
+      'data-masked-type': maskedType,
+      readonly: isReadonly,
+      tabindex: isReadonly ? '1' : '0',
+      inputmode
+    }
+
   .text-field(class=classes)
-    input.text-field__input(
-      type=type,
-      value=value,
-      name=name,
-      placeholder=placeholder,
-      data-masked-type=maskedType,
-      readonly=isReadonly ? "readonly" : false,
-      tabindex=isReadonly ? "1" : "0",
-      inputmode=inputmode
-    )
+    input.text-field__input&attributes(inputAttributes)
     if isSubscription
       button.text-field__subscription-button(type="submit") 
     if isDropdown

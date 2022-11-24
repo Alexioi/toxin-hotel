@@ -63,15 +63,15 @@
   }
 
   &__comments {
-    margin-top: 15px;
+    margin-top: 16px;
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 25px;
   }
 
   &__rules {
     display: flex;
-    margin-top: 35px;
+    margin-top: 31px;
     gap: 101px;
 
     @include mixins.media-breakpoint-down(display-sizes.$lg) {

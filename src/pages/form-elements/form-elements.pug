@@ -36,6 +36,7 @@ block main
       buttons,
       dropdownLists,
       rangeSlider,
+      calendar,
     } = require('./data.json')
 
   .form-elements
@@ -52,9 +53,9 @@ block main
           +title(Object.assign({type: 'h4'}, titles.maskedTextField))
           +text-field(textFields.masked)
         .form-elements__text-fields-and-buttons-left
-          +calendar({hasTwoInputs: true})
+          +calendar(Object.assign({hasTwoInputs: true}, calendar.single))
         .form-elements__text-fields-and-buttons-left
-          +calendar 
+          +calendar(Object.assign({hasTwoInputs: false}, calendar.double))
         .form-elements__text-fields-and-buttons-left
           +title(Object.assign({type: 'h4'}, titles.subscriptionTextField))
           +text-field(textFields.email)

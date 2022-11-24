@@ -21,7 +21,8 @@ block main
       titles, 
       bulletList,
       resetText,
-      pieChart
+      pieChart,
+      roomBooking,
     } = require('./data.json')
 
   .room-details
@@ -51,4 +52,4 @@ block main
               p.room-details__text= resetText
 
         .room-details__room-booking
-          +room-booking
+          +room-booking(roomBooking)

@@ -1,4 +1,5 @@
 @use 'Style/constants/colors';
+@use 'Style/constants/font';
 
 .text-field {
   $root: &;
@@ -6,6 +7,7 @@
   position: relative;
 
   &__input {
+    font-family: font.$first;
     font-size: 14px;
     line-height: 42px;
     border: 1px solid rgba(colors.$first, 0.25);

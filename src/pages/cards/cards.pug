@@ -17,7 +17,8 @@ block main
   -
     const {
       calendarMenu, 
-      roomCards
+      roomCards,
+      roomBooking,
     } = require('./data.json')
 
   .cards
@@ -25,7 +26,7 @@ block main
       +find-room
       +registration-card
     .cards__column
-      +room-booking
+      +room-booking(roomBooking)
       +authorization
     .cards__column.cards__column_size-slim
       +calendar-menu(calendarMenu)

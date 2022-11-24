@@ -6,7 +6,7 @@
       display: grid;
       margin: 20px 0 0;
       padding: 0;
-      gap: 16px;
+      gap: 15px;
     }
 
     &-item {
@@ -20,7 +20,7 @@
 
     &-about {
       margin-right: auto;
-      word-break: break-all;
+      word-break: break-word;
     }
 
     &-info {

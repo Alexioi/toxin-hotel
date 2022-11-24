@@ -10,7 +10,8 @@ mixin find-room
       title,
       dropdownFields,
       dropdown,
-      button
+      button,
+      calendar,
     } = require('Components/find-room/data.json')
 
   .find-room
@@ -18,7 +19,7 @@ mixin find-room
       +title(Object.assign({type: 'h2'}, title)) 
       form.find-room__form(method="POST", action="/change-it")
         .find-room__calendar
-          +calendar 
+          +calendar(Object.assign({hasTwoInputs: true}, calendar))
         .find-room__dropdown
           +dropdown(Object.assign({isOpened: false,}, dropdown))
         .find-room__submit-button

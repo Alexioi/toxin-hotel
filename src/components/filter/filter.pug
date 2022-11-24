@@ -17,12 +17,13 @@ mixin filter
       button,
       dropdownList,
       rangeText,
+      calendar,
     } = require('Components/filter/data.json')
 
 
   .filter.js-filter
     form.filter__form
-      +calendar
+      +calendar(Object.assign({hasTwoInputs: false}, calendar))
       .filter__guests-dropdown
         +dropdown(Object.assign({isOpened: false, type: 'guests'}, dropdowns.guests))
       .filter__range-slider
