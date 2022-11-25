@@ -47,5 +47,5 @@ mixin header(options)
           if username
             span.header__username= username
           else
-            +button(Object.assign({theme: 'outline', size: 'low', isLink: true}, buttons.login))
+            +button(Object.assign({theme: 'outlined', size: 'low', isLink: true}, buttons.login))
             +button(Object.assign({size: 'low', isLink: true, theme: 'default'}, buttons.registration))
