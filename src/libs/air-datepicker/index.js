@@ -33,7 +33,9 @@ class AirDatepicker {
       minDate: new Date(),
     };
 
-    this.datepickerData = this.$node.datepicker(airDatepickerOptions).data().datepicker;
+    this.datepickerData = this.$node
+      .datepicker(airDatepickerOptions)
+      .data().datepicker;
   }
 }
 

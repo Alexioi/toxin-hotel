@@ -151,18 +151,18 @@ class TextField {
 
     if (day.length === 1) {
       if (day[0] === '0' && key === 0) {
-        return date + '1';
+        return `${date}1`;
       }
 
       if (day[0] === '3' && key > 0) {
-        return date + '1';
+        return `${date}1`;
       }
 
       return date + String(key);
     }
 
     if (key > 3) {
-      return date + '0' + String(key);
+      return `${date}0${key}`;
     }
 
     return date + String(key);
@@ -177,10 +177,10 @@ class TextField {
       }
 
       if (key > 1) {
-        return day + '.' + '0' + String(key);
+        return `${day}.0${key}`;
       }
 
-      return day + '.' + String(key);
+      return `${day}.${key}`;
     }
 
     if (month.length === 2) {
@@ -188,25 +188,25 @@ class TextField {
     }
 
     if (Number(day) > 29 && key === 2) {
-      return day + '.' + month;
+      return `${day}.${month}`;
     }
 
     if (month[0] === '0' && key === 0) {
-      return day + '.' + month + '1';
+      return `${day}.${month}1`;
     }
 
     if (month[0] === '1' && key > 2) {
-      return day + '.' + month + '2';
+      return `${day}.${month}2`;
     }
 
-    return day + '.' + month + String(key);
+    return `${day}.${month}${key}`;
   }
 
   _calculateYear(date, key) {
     const [day, month, year] = date.split('.');
 
     if (typeof year === 'undefined') {
-      return day + '.' + month + '.' + String(key);
+      return `${day}.${month}.${key}`;
     }
 
     if (year.length === 4) {
@@ -221,7 +221,7 @@ class TextField {
       return date;
     }
 
-    return day + '.' + month + '.' + year + String(key);
+    return `${day}.${month}.${year}${key}`;
   }
 
   static _isValidDate(checkedDate) {
@@ -233,7 +233,11 @@ class TextField {
     });
     const date = new Date(year, month, day);
 
-    return date.getFullYear() === year && date.getMonth() === month && date.getDate() === day;
+    const dateYear = date.getFullYear();
+    const dateMonth = date.getMonth();
+    const dateDay = date.getDate();
+
+    return dateYear === year && dateMonth === month && dateDay === day;
   }
 
   _removeDate(dates) {

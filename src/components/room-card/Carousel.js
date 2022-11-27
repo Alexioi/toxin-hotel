@@ -29,20 +29,20 @@ class Carousel {
   }
 
   _goToBackImg() {
-    let { currentImage } = this.node.dataset;
+    let currentImage = Number(this.node.dataset.currentImage);
     const { quantityImage } = this.node.dataset;
 
-    currentImage = currentImage === '0' ? quantityImage : Number(currentImage) - 1;
+    currentImage = currentImage === 0 ? quantityImage : currentImage - 1;
 
     this.node.dataset.currentImage = currentImage;
     this._hideImages();
   }
 
   _goToNextImg() {
-    let { currentImage } = this.node.dataset;
-    const { quantityImage } = this.node.dataset;
+    let currentImage = Number(this.node.dataset.currentImage);
+    const quantityImage = Number(this.node.dataset.quantityImage);
 
-    currentImage = currentImage === quantityImage ? 0 : Number(currentImage) + 1;
+    currentImage = currentImage === quantityImage ? 0 : currentImage + 1;
 
     this.node.dataset.currentImage = currentImage;
     this._hideImages();
@@ -56,7 +56,9 @@ class Carousel {
 
   _hideImages() {
     this.images.forEach((node) => node.classList.add('room-card__image_hide'));
-    this.buttons.forEach((node) => node.classList.remove('room-card__button_target'));
+    this.buttons.forEach((node) => {
+      node.classList.remove('room-card__button_target');
+    });
     this._showCurrentImg();
   }
 

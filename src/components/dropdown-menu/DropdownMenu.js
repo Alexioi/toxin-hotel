@@ -33,7 +33,9 @@ class DropdownMenu {
 
   _getCounters() {
     this.counters = [...this.items].map((item) => {
-      const counter = item.querySelector('.js-dropdown-menu__counter').innerHTML;
+      const counter = item.querySelector(
+        '.js-dropdown-menu__counter',
+      ).innerHTML;
 
       return Number(counter);
     });
@@ -43,11 +45,17 @@ class DropdownMenu {
     this.textField.addEventListener('click', this._toggleMenu.bind(this));
 
     if (this.clearButton) {
-      this.clearButton.addEventListener('click', this._resetCounters.bind(this));
+      this.clearButton.addEventListener(
+        'click',
+        this._resetCounters.bind(this),
+      );
     }
 
     if (this.applyButton) {
-      this.applyButton.addEventListener('click', this._onApplyButton.bind(this));
+      this.applyButton.addEventListener(
+        'click',
+        this._onApplyButton.bind(this),
+      );
     }
 
     this.items.forEach((item, index) => {
@@ -67,10 +75,10 @@ class DropdownMenu {
   }
 
   _onClickDocument(event) {
-    const isCurrentMenuTarget = event.target.closest(cssSelectors.menu) === this.menu;
+    const isCurrentMenu = event.target.closest(cssSelectors.menu) === this.menu;
     const hasInput = event.composedPath().includes(this.textField);
 
-    if (!isCurrentMenuTarget && !hasInput) {
+    if (!isCurrentMenu && !hasInput) {
       this._closeMenu();
     }
   }
@@ -152,7 +160,10 @@ class DropdownMenu {
     if (this.type === 'rooms') {
       const items = [
         { variants: ['спальня', 'спальни', 'спален'], count: this.counters[0] },
-        { variants: ['кровать', 'кровати', 'кроватей'], count: this.counters[1] },
+        {
+          variants: ['кровать', 'кровати', 'кроватей'],
+          count: this.counters[1],
+        },
         {
           variants: ['ванная комната', 'ванные комнаты', 'ванных комнат'],
           count: this.counters[2],
@@ -197,8 +208,11 @@ class DropdownMenu {
   }
 
   static _getPlural(forms, count) {
-    const isUnit = count % 10 === 1 && count % 100 !== 11;
-    const isPair = count % 10 >= 2 && count % 10 <= 4 && (count % 100 < 10 || count % 100 >= 20);
+    const c10 = count % 10;
+    const c100 = count % 100;
+    const isUnit = c10 === 1 && c100 !== 11;
+    const isPair = c10 >= 2 && c10 <= 4 && (c100 < 10 || c100 >= 20);
+
     let idx;
 
     if (isUnit) {
@@ -213,13 +227,17 @@ class DropdownMenu {
 
   _toggleCounterButtons() {
     this.counters.forEach((counter, index) => {
-      const counterButton = this.items[index].querySelector('.js-dropdown-menu__counter-button');
+      const counterButton = this.items[index].querySelector(
+        '.js-dropdown-menu__counter-button',
+      );
 
       if (counter === 0) {
         counterButton.classList.add('dropdown-menu__counter-button_disabled');
         counterButton.setAttribute('disabled', 'disabled');
       } else {
-        counterButton.classList.remove('dropdown-menu__counter-button_disabled');
+        counterButton.classList.remove(
+          'dropdown-menu__counter-button_disabled',
+        );
         counterButton.removeAttribute('disabled');
       }
     });
@@ -230,7 +248,10 @@ class DropdownMenu {
       return;
     }
 
-    const countersSum = this.counters.reduce((partialSum, counter) => partialSum + counter, 0);
+    const countersSum = this.counters.reduce(
+      (partialSum, counter) => partialSum + counter,
+      0,
+    );
     if (countersSum === 0) {
       this.clearButton.style.display = 'none';
     } else {

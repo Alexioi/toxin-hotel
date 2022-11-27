@@ -48,7 +48,12 @@ class PieChartDiagram {
       const end = endDegree - 1;
 
       if (start < end) {
-        this._drawArc({ startDegree: start, endDegree: end, colorFrom, colorTo });
+        this._drawArc({
+          startDegree: start,
+          endDegree: end,
+          colorFrom,
+          colorTo,
+        });
       }
 
       startDegree = endDegree;
@@ -63,8 +68,9 @@ class PieChartDiagram {
 
   _getCirclePoint(degree) {
     const { centerX, centerY, outerRadius } = this;
-    const x = centerX + outerRadius * Math.cos(this.constructor._getRadian(degree));
-    const y = centerY + outerRadius * Math.sin(this.constructor._getRadian(degree));
+    const radian = PieChartDiagram._getRadian(degree);
+    const x = centerX + outerRadius * Math.cos(radian);
+    const y = centerY + outerRadius * Math.sin(radian);
 
     return [x, y];
   }
@@ -77,8 +83,8 @@ class PieChartDiagram {
       centerX,
       centerY,
       outerRadius,
-      this.constructor._getRadian(startDegree),
-      this.constructor._getRadian(endDegree),
+      PieChartDiagram._getRadian(startDegree),
+      PieChartDiagram._getRadian(endDegree),
     );
     let [circleX, circleY] = this._getCirclePoint(startDegree);
     ctx.moveTo(circleX, circleY);
@@ -86,8 +92,8 @@ class PieChartDiagram {
       centerX,
       centerY,
       innerRadius,
-      this.constructor._getRadian(startDegree),
-      this.constructor._getRadian(endDegree),
+      PieChartDiagram._getRadian(startDegree),
+      PieChartDiagram._getRadian(endDegree),
     );
     [circleX, circleY] = this._getCirclePoint(endDegree);
     ctx.lineTo(circleX, circleY);

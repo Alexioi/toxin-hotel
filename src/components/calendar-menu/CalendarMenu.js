@@ -38,12 +38,12 @@ class CalendarMenu {
   }
 
   _onBlur() {
-    const values =
-      this.$inputs.length === 2
-        ? [this.$inputs[0].dataset.date, this.$inputs[1].dataset.date]
-        : this.$inputs[0].dataset.date.split(',');
-    const firstValue = this._removeDateLessThanToday(values[0]);
-    const secondValue = this._removeDateLessThanToday(values[1]);
+    const inputsLength = this.$inputs.length === 2;
+    const values = inputsLength
+      ? [this.$inputs[0].dataset.date, this.$inputs[1].dataset.date]
+      : this.$inputs[0].dataset.date.split(',');
+    const firstValue = CalendarMenu._removeDateLessThanToday(values[0]);
+    const secondValue = CalendarMenu._removeDateLessThanToday(values[1]);
 
     if (!firstValue && !secondValue) {
       this._clearDates();
@@ -65,8 +65,8 @@ class CalendarMenu {
       return;
     }
 
-    const reverseFirstValue = this._reverseDate(firstValue);
-    const reverseSecondValue = this._reverseDate(secondValue);
+    const reverseFirstValue = CalendarMenu._reverseDate(firstValue);
+    const reverseSecondValue = CalendarMenu._reverseDate(secondValue);
 
     if (new Date(reverseFirstValue) < new Date(reverseSecondValue)) {
       this._changeValues([firstValue, secondValue]);
@@ -82,7 +82,7 @@ class CalendarMenu {
       values.forEach((value, index) => {
         this.$inputs[index].dataset.date = value;
         if (value !== '') {
-          this.datepicker.changeDate(this._reverseDate(value));
+          this.datepicker.changeDate(CalendarMenu._reverseDate(value));
         }
       });
     }
@@ -94,24 +94,25 @@ class CalendarMenu {
     this._updateInputs(values);
   }
 
-  _removeDateLessThanToday(date) {
-    if (new Date(this._reverseDate(date)) < new Date()) {
+  static _removeDateLessThanToday(date) {
+    if (new Date(CalendarMenu._reverseDate(date)) < new Date()) {
       return '';
     }
 
     return date;
   }
 
-  _reverseDate(date) {
+  static _reverseDate(date) {
     return date.split('.').reverse().join('.');
   }
 
   _onClickDocument(event) {
+    const { target } = event;
+    const [firstButton, secondButton] = this.$toggleButtons;
     const isCurrentMenuTarget = event.composedPath().includes(this.$menu[0]);
-    const isCurrentInput =
-      event.target === this.$toggleButtons[0] || event.target === this.$toggleButtons[1];
+    const isCurrentButton = target === firstButton || target === secondButton;
 
-    if (!isCurrentMenuTarget && !isCurrentInput) {
+    if (!isCurrentMenuTarget && !isCurrentButton) {
       this.$menu.removeClass('calendar-menu__menu_visible');
     }
   }

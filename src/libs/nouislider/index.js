@@ -28,7 +28,9 @@ class NoUISlider {
   }
 
   _updateValue([from, to]) {
-    this.$valueNode.text(`${Number(from).toLocaleString()}₽ - ${Number(to).toLocaleString()}₽`);
+    this.$valueNode.text(
+      `${Number(from).toLocaleString()}₽ - ${Number(to).toLocaleString()}₽`,
+    );
   }
 }
 
