@@ -26,7 +26,9 @@ mixin room-card(options)
         )
       .room-card__buttons
         each image, index in images
-          button.room-card__button.js-room-card__button(data-button-number=index)
+          button.room-card__button.js-room-card__button(
+            data-button-number=index
+          )
       button(
         class=`room-card__arrow-button 
         room-card__arrow-button_action-back 

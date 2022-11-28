@@ -35,7 +35,11 @@
       "type": "text",
       "name": "example2"
     },
-    "masked": { "title": "masked text field", "isMasked": true, "placeholder": "ДД.ММ.ГГГГ" },
+    "masked": {
+      "title": "masked text field",
+      "isMasked": true,
+      "placeholder": "ДД.ММ.ГГГГ"
+    },
     "email": {
       "title": "subscription text field",
       "placeholder": "Email",
@@ -67,7 +71,10 @@
     "rich": {
       "isRich": true,
       "items": [
-        { "text": "Широкий коридор", "subText": "Ширина коридоров в номере \n не менее 91 см." },
+        {
+          "text": "Широкий коридор",
+          "subText": "Ширина коридоров в номере \n не менее 91 см."
+        },
         {
           "text": "Помощник для инвалидов",
           "subText": "На 1 этаже вас встретит специалист и проводит до номера."

@@ -2,7 +2,12 @@
   "calendarMenu": { "isOpened": true },
   "roomCards": [
     {
-      "images": ["room-image-1", "room-image-2", "room-image-3", "room-image-4"],
+      "images": [
+        "room-image-1",
+        "room-image-2",
+        "room-image-3",
+        "room-image-4"
+      ],
       "currentImg": 0,
       "number": 888,
       "link": "/change-it",
@@ -12,7 +17,12 @@
       "reviews": 145
     },
     {
-      "images": ["room-image-2", "room-image-2", "room-image-3", "room-image-4"],
+      "images": [
+        "room-image-2",
+        "room-image-2",
+        "room-image-3",
+        "room-image-4"
+      ],
       "currentImg": 0,
       "number": 840,
       "link": "/change-it",

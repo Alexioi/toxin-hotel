@@ -25,11 +25,31 @@
   },
   "pallet": {
     "items": [
-      { "color": "dark-shade-100", "colorName": "Dark Shade 100%", "colorHash": "#1F2041" },
-      { "color": "dark-shade-75", "colorName": "Dark Shade 75%", "colorHash": "#1F2041" },
-      { "color": "dark-shade-50", "colorName": "Dark Shade 50%", "colorHash": "#1F2041" },
-      { "color": "dark-shade-25", "colorName": "Dark Shade 25%", "colorHash": "#1F2041" },
-      { "color": "dark-shade-5", "colorName": "Dark Shade 5%", "colorHash": "#1F2041" },
+      {
+        "color": "dark-shade-100",
+        "colorName": "Dark Shade 100%",
+        "colorHash": "#1F2041"
+      },
+      {
+        "color": "dark-shade-75",
+        "colorName": "Dark Shade 75%",
+        "colorHash": "#1F2041"
+      },
+      {
+        "color": "dark-shade-50",
+        "colorName": "Dark Shade 50%",
+        "colorHash": "#1F2041"
+      },
+      {
+        "color": "dark-shade-25",
+        "colorName": "Dark Shade 25%",
+        "colorHash": "#1F2041"
+      },
+      {
+        "color": "dark-shade-5",
+        "colorName": "Dark Shade 5%",
+        "colorHash": "#1F2041"
+      },
       { "color": "purple", "colorName": "Purple", "colorHash": "#BC9CFF" },
       { "color": "green", "colorName": "Green", "colorHash": "#6FCF97" }
     ]

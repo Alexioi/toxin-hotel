@@ -33,9 +33,13 @@ mixin dropdown-menu(options)
         each item in items 
           li.dropdown-menu__item.js-dropdown-menu__item
             span.dropdown-menu__item-name= item.name
-            button.dropdown-menu__counter-button.js-dropdown-menu__counter-button(type="button") -
+            button.dropdown-menu__counter-button.js-dropdown-menu__counter-button(
+              type="button"
+            ) -
             span.dropdown-menu__counter.js-dropdown-menu__counter= item.counter
-            button.dropdown-menu__counter-button.js-dropdown-menu__counter-button(type="button") +
+            button.dropdown-menu__counter-button.js-dropdown-menu__counter-button(
+              type="button"
+            ) +
       if hasButtons
         .dropdown-menu__buttons
           .dropdown-menu__clear-button.js-dropdown-menu__clear-button

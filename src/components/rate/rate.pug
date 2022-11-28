@@ -10,4 +10,7 @@ mixin rate(options)
         starType = quantity > i ? 'star' : 'outline-star'
         i += 1
 
-      img.rate__img(src=require("Images/content/" + starType + ".svg"), alt=starType)
+      img.rate__img(
+        src=require("Images/content/" + starType + ".svg"),
+        alt=starType
+      )

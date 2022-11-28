@@ -9,7 +9,10 @@ mixin icon-text-list(options)
   ul.icon-text-list
     each item in items
       li.icon-text-list__item
-        img.icon-text-list__img(src=require(`Images/content/${item.img}.svg`), alt=item.img)
+        img.icon-text-list__img(
+          src=require(`Images/content/${item.img}.svg`),
+          alt=item.img
+        )
         .icon-text-list__content
           h3.icon-text-list__title= item.title
           span.icon-text-list__text= item.text

@@ -34,4 +34,7 @@ mixin text-field(options)
     if isSubscription
       button.text-field__subscription-button(type="submit") 
     if isDropdown
-      button.text-field__dropdown-button(type="button", tabindex=isReadonly ? "0" : "1")
+      button.text-field__dropdown-button(
+        type="button",
+        tabindex=isReadonly ? "0" : "1"
+      )
