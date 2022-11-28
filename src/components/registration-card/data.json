@@ -11,7 +11,7 @@
     "email": { "placeholder": "Email", "type": "email", "name": "email" },
     "password": { "placeholder": "Пароль", "name": "password" }
   },
-  "button": { "text": "перейти к оплате" },
+  "button": { "text": "зарегистрироваться" },
   "questionAboutAuthentication": {
     "questionText": "Уже есть аккаунт на Toxin",
     "buttonText": "войти",
