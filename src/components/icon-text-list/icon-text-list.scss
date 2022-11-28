@@ -21,18 +21,17 @@
     object-fit: none;
   }
 
-  &__title {
-    font-size: 14px;
-    line-height: 24px;
-    margin: 0;
-    word-break: break-all;
-  }
-
   &__content {
     font-size: 14px;
     line-height: 24px;
     margin-left: 10px;
     color: rgba(colors.$first, 0.75);
-    word-break: break-all;
+    word-break: break-word;
+  }
+
+  &__title {
+    font-size: 14px;
+    line-height: 24px;
+    margin: 0;
   }
 }

@@ -14,6 +14,10 @@ mixin room-card(options)
       reviews = 0,
     } = options || {}
 
+    if (reviews > 999) {
+      reviews = '999+'
+    }
+
   .room-card
     .room-card__carousel.js-room-card__carousel(
       data-current-image=currentImage,

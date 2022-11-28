@@ -105,6 +105,8 @@
     font-size: 14px;
     line-height: 24px;
     color: rgba(colors.$first, 0.5);
+    padding-left: 10px;
+    word-break: break-word;
 
     &-value {
       font-weight: bold;

@@ -13,7 +13,7 @@
     padding-left: 20px;
     color: rgba(colors.$first, 0.75);
     list-style-type: none;
-    word-break: break-all;
+    word-break: break-word;
 
     &::before {
       position: absolute;

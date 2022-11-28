@@ -5,6 +5,11 @@
   justify-content: space-between;
   align-items: flex-end;
 
+  &__number {
+    max-width: 45%;
+    word-break: break-word;
+  }
+
   &__number-signs {
     font-weight: 700;
     font-size: 14px;
@@ -33,6 +38,11 @@
     line-height: 15px;
     text-transform: uppercase;
     color: colors.$second;
+  }
+
+  &__price {
+    max-width: 45%;
+    word-break: break-word;
   }
 
   &__price-number {

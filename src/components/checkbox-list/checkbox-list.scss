@@ -64,7 +64,7 @@
     font-size: 14px;
     line-height: 18px;
     color: rgba(colors.$first, 0.5);
-    white-space: pre-line;
+    word-break: break-word;
 
     &::before {
       content: '';
@@ -82,7 +82,7 @@
     margin-top: 6px;
     font-size: 12px;
     line-height: 14px;
-    white-space: pre-line;
+    word-break: break-word;
     color: rgba(colors.$first, 0.5);
     display: block;
   }

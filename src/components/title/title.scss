@@ -3,6 +3,7 @@
 .title {
   display: flex;
   justify-content: space-between;
+  word-break: break-word;
 
   &__heading {
     color: colors.$first;
