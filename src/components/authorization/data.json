@@ -1,8 +1,8 @@
 {
   "title": { "text": "Войти" },
   "textFields": {
-    "email": { "placeholder": "Email", "name": "email" },
-    "password": { "placeholder": "Пароль", "name": "password" }
+    "email": { "placeholder": "Email" },
+    "password": { "placeholder": "Пароль" }
   },
   "button": { "text": "войти" },
   "questionAboutAuthorization": {

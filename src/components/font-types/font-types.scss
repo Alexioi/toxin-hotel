@@ -67,14 +67,16 @@ $sample-width: 37px;
 
   &__sample {
     display: flex;
-    width: $sample-width;
+    min-width: $sample-width;
+    max-width: $sample-width;
     justify-content: flex-end;
     margin-right: 30px;
     color: rgba(colors.$first, 0.25);
+    word-break: break-word;
   }
 
   &__description {
     color: colors.$first;
-    white-space: pre;
+    word-break: break-word;
   }
 }

@@ -7,10 +7,15 @@ block title
   | Landing page
 
 block main
+  -
+    const {
+      text,
+    } = require('./data.json')
+
   .landing-page
     +container
       .landing-page__form-row
         .landing-page__form-wrapper
           +find-room
       .landing-page__text-row
-        p.landing-page__text Лучшие номера для вашей работы, отдыха и просто вдохновения
+        p.landing-page__text= text

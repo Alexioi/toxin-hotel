@@ -1,4 +1,10 @@
 mixin radio-buttons
+  -
+    const {
+      man,
+      woman,
+    } = require('Components/radio-buttons/data.json')
+
   .radio-buttons
     label.radio-buttons__item
       input.radio-buttons__input(
@@ -7,7 +13,7 @@ mixin radio-buttons
         value="man",
         checked
       )
-      span.radio-buttons__text Мужчина
+      span.radio-buttons__text= man
     label.radio-buttons__item
       input.radio-buttons__input(name="sex", type="radio", value="woman") 
-      span.radio-buttons__text Женщина
+      span.radio-buttons__text= woman

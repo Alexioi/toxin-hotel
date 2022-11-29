@@ -87,6 +87,7 @@
 
     &-text {
       margin-right: 4px;
+      word-break: break-word;
     }
 
     &-line {
@@ -96,6 +97,7 @@
 
     &-value {
       margin-left: 5px;
+      word-break: break-word;
     }
   }
 }

@@ -18,6 +18,10 @@ mixin room-card(options)
       reviews = '999+'
     }
 
+    const {
+      reviewsText,
+    } = require('Components/room-card/data.json')
+
   .room-card
     .room-card__carousel.js-room-card__carousel(
       data-current-image=currentImage,
@@ -53,4 +57,4 @@ mixin room-card(options)
           +rate({quantity})
         span.room-card__reviews
           span.room-card__reviews-value= reviews
-          span.room-card__reviews-text= " Отзывов"
+          span.room-card__reviews-text= reviewsText

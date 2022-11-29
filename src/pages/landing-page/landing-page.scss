@@ -38,6 +38,7 @@
     text-align: right;
     color: rgba(colors.$first, 0.75);
     margin: 0;
+    word-break: break-word;
 
     @include mixins.media-breakpoint-down(display-sizes.$lg) {
       text-align: center;

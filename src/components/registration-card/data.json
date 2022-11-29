@@ -5,11 +5,11 @@
     "loginData": { "text": "данные для входа в сервис" }
   },
   "textFields": {
-    "name": { "placeholder": "Имя", "name": "name" },
-    "surname": { "placeholder": "Фамилия", "type": "text", "name": "surname" },
-    "birthday": { "name": "birthday" },
-    "email": { "placeholder": "Email", "type": "email", "name": "email" },
-    "password": { "placeholder": "Пароль", "name": "password" }
+    "name": { "placeholder": "Имя" },
+    "surname": { "placeholder": "Фамилия" },
+    "birthday": {},
+    "email": { "placeholder": "Email" },
+    "password": { "placeholder": "Пароль" }
   },
   "button": { "text": "зарегистрироваться" },
   "questionAboutAuthentication": {

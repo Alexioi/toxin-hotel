@@ -60,6 +60,7 @@
     line-height: 24px;
     color: rgba(colors.$first, 0.75);
     margin: 0;
+    word-break: break-word;
   }
 
   &__comments {

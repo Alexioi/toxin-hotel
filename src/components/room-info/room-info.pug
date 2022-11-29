@@ -8,7 +8,12 @@ mixin room-info(options)
       price = ''
     } = options || {}
 
-  -
+    const {
+      numberSymbol,
+      lux,
+      perDay,
+    } = require('Components/room-info/data.json')
+
     const linkTag = `a href=${link} class = "room-info__number-value room-info__number-value_type-link"` 
     const spanTag = `span class="room-info__number-value"`
 
@@ -16,10 +21,10 @@ mixin room-info(options)
 
   .room-info
     span.room-info__number
-      span.room-info__number-signs= "№ "
+      span.room-info__number-signs= numberSymbol
       #{tag}= number
       if isLux
-        span.room-info__lux люкс
+        span.room-info__lux= lux
     span.room-info__price
       span.room-info__price-number= `${price}₽`
-      span.room-info__price-text= " в сутки"
+      span.room-info__price-text= perDay

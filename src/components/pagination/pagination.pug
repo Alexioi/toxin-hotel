@@ -1,8 +1,14 @@
 mixin pagination
+  -
+    const {
+      dash,
+      numberOfOptions,
+    } = require('Components/pagination/data.json')
+
   .pagination.js-pagination(data-count="180")
     .pagination__plugin.js-pagination__plugin
     .pagination__text
       span.pagination__start-item.js-pagination__start-item 
-      = " – "
+      = dash
       span.pagination__end-item.js-pagination__end-item 
-      = " из 100+ вариантов аренды"
+      = numberOfOptions

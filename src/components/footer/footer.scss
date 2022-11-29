@@ -86,6 +86,7 @@
     line-height: 24px;
     color: rgba(colors.$first, 0.75);
     margin: 0;
+    word-break: break-word;
   }
 
   &__about-text {
@@ -93,6 +94,7 @@
     line-height: 24px;
     color: rgba(colors.$first, 0.75);
     margin: 0;
+    word-break: break-word;
 
     @include mixins.media-breakpoint-down(display-sizes.$sm) {
       display: none;
@@ -135,6 +137,7 @@
     color: colors.$first;
     margin-bottom: 20px;
     padding-top: 3px;
+    word-break: break-word;
 
     &_margin-small {
       margin-bottom: 16px;
@@ -146,6 +149,7 @@
     line-height: 18px;
     color: rgba(colors.$first, 0.5);
     text-decoration: none;
+    word-break: break-word;
   }
 
   &__subscription {
@@ -187,6 +191,7 @@
     line-height: 24px;
     color: rgba(colors.$first, 0.75);
     text-align: center;
+    word-break: break-word;
   }
 
   &__social {

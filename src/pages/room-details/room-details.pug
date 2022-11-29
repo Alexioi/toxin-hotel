@@ -23,6 +23,7 @@ block main
       resetText,
       pieChart,
       roomBooking,
+      reviews,
     } = require('./data.json')
 
   .room-details
@@ -39,7 +40,7 @@ block main
               +pie-chart(pieChart)
           .room-details__comments-title
             +title(titles.reviewNumber)
-            span.room-details__text 2 отзыва
+            span.room-details__text= `${comments.length} ${reviews}`
           .room-details__comments
             each comment in comments
               +comment(comment) 

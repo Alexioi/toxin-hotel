@@ -11,6 +11,7 @@
     flex-direction: column;
     position: relative;
     padding-left: 110px;
+    word-break: break-word;
 
     &::before {
       display: block;

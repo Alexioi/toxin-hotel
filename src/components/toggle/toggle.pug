@@ -4,6 +4,10 @@ mixin toggle(options)
       isChecked = false
     } = options || {}
 
+    const {
+      text,
+    } = require('Components/toggle/data.json')
+
   label.toggle
     input.toggle__checkbox(type="checkbox", checked=isChecked) 
-    span.toggle__text Получать спецпредложения
+    span.toggle__text= text
