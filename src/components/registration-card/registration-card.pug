@@ -27,10 +27,10 @@ mixin registration-card
           +radio-buttons
         .registration-card__birthday
           +title(Object.assign({type: "h4"}, titles.birthday))
-          +text-field(Object.assign({isMasked: true, name: 'birthday'}, textFields.birthday))
+          +text-field(Object.assign({isMasked: true, name: 'birthday', inputmode: 'numeric'}, textFields.birthday))
         .registration-card__email
           +title(Object.assign({type: "h4"}, titles.loginData))
-          +text-field(Object.assign({type: 'email', name: 'email'}, textFields.email))
+          +text-field(Object.assign({type: 'email', name: 'email', inputmode: 'email'}, textFields.email))
         .registration-card__password
           +text-field(Object.assign({type: 'password', name: 'password'}, textFields.password))
         .registration-card__toggle

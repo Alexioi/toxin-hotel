@@ -6,6 +6,7 @@ mixin comment(options)
       authorName = '',
       image = '',
       date = '',
+      datetime = '',
       counter = 0,
       isLiked = false,
       text = '',
@@ -18,7 +19,7 @@ mixin comment(options)
     )
     .comment__header
       span.comment__author-name= authorName
-      time.comment__date= date
+      time.comment__date(datetime=datetime)= date
     .comment__like-button
       +like-button({counter, isLiked})
     blockquote.comment__text= text

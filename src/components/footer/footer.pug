@@ -44,7 +44,7 @@ mixin footer(options)
           span.footer__header.footer__header_margin-small= subscriptionHeader
           p.footer__text= subscriptionText
           .footer__input
-            +text-field(Object.assign({'isSubscription': true, type: 'email', name: 'email'}, textField))
+            +text-field(Object.assign({'isSubscription': true, type: 'email', name: 'email', inputmode: 'email'}, textField))
     .footer__line
       +container
         .footer__sub
