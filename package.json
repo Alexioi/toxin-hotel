@@ -10,7 +10,8 @@
     "prettier": "npx prettier --write --ignore-unknown 'src/**/*'"
   },
   "pre-commit": [
-    "prettier"
+    "prettier",
+    "deploy"
   ],
   "keywords": [],
   "author": "",

@@ -1,5 +1,4 @@
 import 'air-datepicker';
-import arrows from './arrows.json';
 
 class AirDatepicker {
   constructor($node) {
@@ -28,8 +27,8 @@ class AirDatepicker {
     const airDatepickerOptions = {
       range: true,
       navTitles: { days: 'MM yyyy' },
-      prevHtml: arrows.arrowBack,
-      nextHtml: arrows.arrowNext,
+      prevHtml: '<div class="datepicker--nav-action-icon-back"></div>',
+      nextHtml: '<div class="datepicker--nav-action-icon-forward"></div>',
       minDate: new Date(),
     };
 

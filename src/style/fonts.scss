@@ -3,6 +3,7 @@
   font-style: normal;
   font-weight: 400;
   src: url('Fonts/montserrat-regular.ttf') format('truetype'),
+    url('Fonts/montserrat-regular.woff2') format('woff2'),
     url('Fonts/montserrat-regular.woff') format('woff'),
     url('Fonts/montserrat-regular.svg#montserrat-regular') format('svg');
 }
@@ -12,6 +13,7 @@
   font-style: normal;
   font-weight: 700;
   src: url('Fonts/montserrat-bold.ttf') format('truetype'),
+    url('Fonts/montserrat-bold.woff2') format('woff2'),
     url('Fonts/montserrat-bold.woff') format('woff'),
     url('Fonts/montserrat-bold.svg#montserrat-bold') format('svg');
 }

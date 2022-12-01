@@ -6,7 +6,7 @@
   align-items: center;
   height: 100%;
   min-height: 684px;
-  background: no-repeat 0 -69px url('Images/content/registration-background.png');
+  background: url('Images/content/registration-background.png') no-repeat;
   background-size: cover;
 
   &__form {
