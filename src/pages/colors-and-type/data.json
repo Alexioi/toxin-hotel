@@ -19,7 +19,7 @@
       {
         "theme": "body",
         "sample": "Body",
-        "description": "This is the body text which is used for most\nof the design, like paragraphs, lists, etc."
+        "description": "This is the body text which is used for most<br>of the design, like paragraphs, lists, etc."
       }
     ]
   },

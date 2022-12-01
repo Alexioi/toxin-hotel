@@ -53,7 +53,7 @@
   },
   "resetText": "Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.",
   "pieChart": {
-    "votes": "{ \"perfectly\": 130, \"good\": 65, \"satisfactory\": 65, \"bad\": 0 }"
+    "votes": { "perfectly": 130, "good": 65, "satisfactory": 65, "bad": 0 }
   },
   "roomBooking": {
     "expensesItems": [
