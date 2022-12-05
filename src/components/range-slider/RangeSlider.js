@@ -1,4 +1,4 @@
-import NoUISlider from 'Libs/nouislider';
+import NoUISlider from '@libs/nouislider';
 import cssSelectors from './constants';
 
 class RangeSlider {

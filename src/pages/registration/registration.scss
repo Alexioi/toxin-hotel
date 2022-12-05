@@ -1,4 +1,4 @@
-@use 'Style/constants/colors';
+@use '@style/constants/colors';
 
 .registration {
   display: flex;
@@ -6,7 +6,7 @@
   align-items: center;
   height: 100%;
   min-height: 684px;
-  background: url('Images/content/registration-background.png') no-repeat;
+  background: url('@images/content/registration-background.png') no-repeat;
   background-size: cover;
 
   &__form {

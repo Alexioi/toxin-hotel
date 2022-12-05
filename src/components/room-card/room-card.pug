@@ -20,7 +20,7 @@ mixin room-card(options)
 
     const {
       reviewsText,
-    } = require('Components/room-card/data.json')
+    } = require('@components/room-card/data.json')
 
   .room-card
     .room-card__carousel.js-room-card__carousel(
@@ -29,7 +29,7 @@ mixin room-card(options)
     )
       each image in images
         img.room-card__image.js-room-card__image(
-          src=require(`Images/content/${image}.png`),
+          src=require(`@images/content/${image}.png`),
           alt=`${image}`
         )
       .room-card__buttons

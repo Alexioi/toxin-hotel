@@ -1,4 +1,4 @@
-import AirDatepicker from 'Libs/air-datepicker';
+import AirDatepicker from '@libs/air-datepicker';
 import cssSelectors from './constants';
 
 class CalendarMenu {

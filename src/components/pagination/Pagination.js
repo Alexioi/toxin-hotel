@@ -1,4 +1,4 @@
-import Paginationjs from 'Libs/paginationjs';
+import Paginationjs from '@libs/paginationjs';
 import cssSelectors from './constants';
 
 class Pagination {

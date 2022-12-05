@@ -20,7 +20,7 @@ mixin footer(options)
       mobile = false
     } = options || {}
 
-    const {textField, socials} = require('Components/footer/data.json')
+    const {textField, socials} = require('@components/footer/data.json')
 
     let classes = ''
     classes += mobile ? 'footer_mobile' : ''
@@ -57,6 +57,6 @@ mixin footer(options)
                 rel="noopener noreferrer"
               )
                 img(
-                  src=require(`Images/decorative/${social.img}.svg`),
+                  src=require(`@images/decorative/${social.img}.svg`),
                   alt=social.img
                 )

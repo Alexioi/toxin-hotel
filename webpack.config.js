@@ -36,12 +36,12 @@ const commonConfig = merge([
   {
     resolve: {
       alias: {
-        Components: path.resolve(__dirname, 'src/components/'),
-        Images: path.resolve(__dirname, 'src/images/'),
-        Style: path.resolve(__dirname, 'src/style'),
-        Libs: path.resolve(__dirname, 'src/libs'),
-        Templates: path.resolve(__dirname, 'src/templates'),
-        Fonts: path.resolve(__dirname, 'src/fonts'),
+        '@components': path.resolve(__dirname, 'src/components/'),
+        '@images': path.resolve(__dirname, 'src/images/'),
+        '@style': path.resolve(__dirname, 'src/style'),
+        '@libs': path.resolve(__dirname, 'src/libs'),
+        '@templates': path.resolve(__dirname, 'src/templates'),
+        '@fonts': path.resolve(__dirname, 'src/fonts'),
       },
     },
   },
@@ -59,5 +59,7 @@ const commonConfig = merge([
 const productionConfig = merge([cleanWebpackPlugin()]);
 
 module.exports = () => {
-  return isDevelopment ? merge([commonConfig]) : merge([commonConfig, productionConfig]);
+  return isDevelopment
+    ? merge([commonConfig])
+    : merge([commonConfig, productionConfig]);
 };

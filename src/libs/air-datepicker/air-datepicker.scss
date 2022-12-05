@@ -1,5 +1,5 @@
 /* stylelint-disable selector-class-pattern */
-@use 'Style/constants/colors';
+@use '@style/constants/colors';
 
 .datepicker {
   &--nav {
@@ -14,12 +14,12 @@
 
       &-icon-back {
         height: 100%;
-        background: url('Images/decorative/color-arrow-back.svg') no-repeat;
+        background: url('@images/decorative/color-arrow-back.svg') no-repeat;
       }
 
       &-icon-forward {
         height: 100%;
-        background: url('Images/decorative/color-arrow-forward.svg') no-repeat;
+        background: url('@images/decorative/color-arrow-forward.svg') no-repeat;
       }
     }
 

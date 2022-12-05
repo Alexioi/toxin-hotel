@@ -1,5 +1,5 @@
-@use 'Style/constants/colors';
-@use 'Style/constants/font';
+@use '@style/constants/colors';
+@use '@style/constants/font';
 
 .text-field {
   $root: &;
@@ -48,7 +48,7 @@
     width: 44px;
     border: none;
     background: no-repeat center center;
-    background-image: url('Images/decorative/color-arrow-forward.svg');
+    background-image: url('@images/decorative/color-arrow-forward.svg');
     cursor: pointer;
   }
 
@@ -59,7 +59,7 @@
     top: 0;
     right: 0;
     cursor: pointer;
-    background: no-repeat url('Images/decorative/toggle-button.svg') center
+    background: no-repeat url('@images/decorative/toggle-button.svg') center
       center;
     border: none;
   }

@@ -1,4 +1,4 @@
-@use 'Style/constants/colors';
+@use '@style/constants/colors';
 
 .paginationjs {
   height: 40px;
@@ -39,7 +39,7 @@
     display: block;
     height: 100%;
     background: no-repeat 50% 50%;
-    background-image: url('Images/decorative/arrow-forward.svg');
+    background-image: url('@images/decorative/arrow-forward.svg');
     transform: rotate(180deg);
   }
 
@@ -47,7 +47,7 @@
     display: block;
     height: 100%;
     background: no-repeat 50% 50%;
-    background-image: url('Images/decorative/arrow-forward.svg');
+    background-image: url('@images/decorative/arrow-forward.svg');
   }
 
   &-page {

@@ -1,4 +1,4 @@
-@use 'Style/constants/colors';
+@use '@style/constants/colors';
 
 .like-button {
   $root: &;
@@ -28,7 +28,7 @@
     background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
 
     #{$root}__icon {
-      background-image: url('Images/decorative/favorite.svg');
+      background-image: url('@images/decorative/favorite.svg');
     }
 
     #{$root}__counter {
@@ -39,7 +39,7 @@
   &__icon {
     position: absolute;
     z-index: 2;
-    background-image: url('Images/decorative/favorite-border.svg');
+    background-image: url('@images/decorative/favorite-border.svg');
     height: 8px;
     width: 10px;
     top: 6px;

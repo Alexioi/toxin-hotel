@@ -1,6 +1,6 @@
-@use 'Style/constants/colors';
-@use 'Style/constants/mixins';
-@use 'Style/constants/display-sizes';
+@use '@style/constants/colors';
+@use '@style/constants/mixins';
+@use '@style/constants/display-sizes';
 
 .footer {
   $root: &;

@@ -1,7 +1,7 @@
-@use 'Style/constants/colors';
-@use 'Style/constants/mixins';
-@use 'Style/constants/display-sizes';
-@use 'Style/constants/font';
+@use '@style/constants/colors';
+@use '@style/constants/mixins';
+@use '@style/constants/display-sizes';
+@use '@style/constants/font';
 
 .header {
   $root: &;
@@ -76,7 +76,7 @@
       width: 24px;
       height: 18px;
       background: no-repeat 50% 50%;
-      background-image: url('Images/decorative/expand-more.svg');
+      background-image: url('@images/decorative/expand-more.svg');
       top: 0;
       right: 0;
     }

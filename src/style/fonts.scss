@@ -2,18 +2,18 @@
   font-family: Montserrat;
   font-style: normal;
   font-weight: 400;
-  src: url('Fonts/montserrat-regular.ttf') format('truetype'),
-    url('Fonts/montserrat-regular.woff2') format('woff2'),
-    url('Fonts/montserrat-regular.woff') format('woff'),
-    url('Fonts/montserrat-regular.svg#montserrat-regular') format('svg');
+  src: url('@fonts/montserrat-regular.ttf') format('truetype'),
+    url('@fonts/montserrat-regular.woff2') format('woff2'),
+    url('@fonts/montserrat-regular.woff') format('woff'),
+    url('@fonts/montserrat-regular.svg#montserrat-regular') format('svg');
 }
 
 @font-face {
   font-family: Montserrat;
   font-style: normal;
   font-weight: 700;
-  src: url('Fonts/montserrat-bold.ttf') format('truetype'),
-    url('Fonts/montserrat-bold.woff2') format('woff2'),
-    url('Fonts/montserrat-bold.woff') format('woff'),
-    url('Fonts/montserrat-bold.svg#montserrat-bold') format('svg');
+  src: url('@fonts/montserrat-bold.ttf') format('truetype'),
+    url('@fonts/montserrat-bold.woff2') format('woff2'),
+    url('@fonts/montserrat-bold.woff') format('woff'),
+    url('@fonts/montserrat-bold.svg#montserrat-bold') format('svg');
 }

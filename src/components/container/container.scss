@@ -1,5 +1,5 @@
-@use 'Style/constants/mixins';
-@use 'Style/constants/display-sizes';
+@use '@style/constants/mixins';
+@use '@style/constants/display-sizes';
 
 .container {
   max-width: 1160px;

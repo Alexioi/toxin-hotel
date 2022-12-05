@@ -1,5 +1,5 @@
-@use 'Style/constants/colors';
-@use 'Style/constants/font';
+@use '@style/constants/colors';
+@use '@style/constants/font';
 
 .button {
   $root: &;
