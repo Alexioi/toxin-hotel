@@ -23,12 +23,12 @@ class Paginationjs {
     };
 
     const config = {
-      dataSource,
       pageSize: 12,
       pageRange: 1,
       prevText: '<span class="paginationjs__prev-text"></span>',
       nextText: '<span class="paginationjs__next-text"></span>',
       callback,
+      dataSource,
     };
 
     this.$node.pagination(config);
