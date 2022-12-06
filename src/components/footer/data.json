@@ -1,8 +1,3 @@
 {
-  "textField": { "placeholder": "Email" },
-  "socials": [
-    { "link": "https://twitter.com/", "img": "twitter" },
-    { "link": "https://www.facebook.com/", "img": "facebook" },
-    { "link": "https://www.instagram.com/", "img": "instagram" }
-  ]
+  "textField": { "placeholder": "Email" }
 }

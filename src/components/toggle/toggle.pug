@@ -1,12 +1,9 @@
 mixin toggle(options)
   -
     const {
+      text,
       isChecked = false
     } = options || {}
-
-    const {
-      text,
-    } = require('@components/toggle/data.json')
 
   label.toggle
     input.toggle__checkbox(type="checkbox", checked=isChecked) 

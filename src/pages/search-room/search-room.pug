@@ -13,6 +13,7 @@ block main
     const {
       title,
       pagination,
+      roomList,
     } = require('./data.json')
 
   .search-room
@@ -23,6 +24,6 @@ block main
         .search-room__column
           +title(Object.assign({type: 'h2'}, title))
           .search-room__room-list-wrapper
-            +room-list
+            +room-list(roomList)
           .search-room__pagination
             +pagination(pagination)

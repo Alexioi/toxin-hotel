@@ -159,8 +159,8 @@
     }
   },
   "toggles": {
-    "checked": { "isChecked": true },
-    "default": { "isChecked": false }
+    "checked": { "isChecked": true, "text": "Получать спецпредложения" },
+    "default": { "isChecked": false, "text": "Получать спецпредложения" }
   },
   "likeButtons": {
     "default": { "counter": 2, "isLiked": false },
@@ -190,5 +190,12 @@
     "opened": { "title": "expandable checkbox list", "isOpened": true }
   },
   "rangeSlider": { "title": "range slider" },
-  "pagination": { "count": 180 }
+  "pagination": { "count": 180 },
+  "radioButtons": {
+    "items": [
+      { "value": "man", "text": "Мужчина" },
+      { "value": "woman", "text": "Женщина" }
+    ],
+    "name": "sex"
+  }
 }

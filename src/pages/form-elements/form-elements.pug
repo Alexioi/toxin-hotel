@@ -37,7 +37,8 @@ block main
       dropdownLists,
       rangeSlider,
       calendar,
-      pagination
+      pagination,
+      radioButtons,
     } = require('./data.json')
 
   .form-elements
@@ -68,7 +69,7 @@ block main
         .form-elements__text-fields-and-buttons-middle
           +title(Object.assign({type: 'h4'}, titles.radioButton))
         .form-elements__text-fields-and-buttons-middle
-          +radio-buttons
+          +radio-buttons(radioButtons)
         .form-elements__text-fields-and-buttons-middle
           +title(Object.assign({type: 'h4'}, titles.toggle))
         .form-elements__text-fields-and-buttons-middle

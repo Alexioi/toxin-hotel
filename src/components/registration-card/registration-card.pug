@@ -12,7 +12,9 @@ mixin registration-card
       titles,
       textFields,
       button,
-      questionAboutAuthentication
+      questionAboutAuthentication,
+      radioButtons,
+      toggle,
     } = require('@components/registration-card/data.json')
 
   .registration-card
@@ -24,7 +26,7 @@ mixin registration-card
         .registration-card__surname
           +text-field(Object.assign({type: 'text', name: 'surname'}, textFields.surname))
         .registration-card__radio-buttons
-          +radio-buttons
+          +radio-buttons(radioButtons)
         .registration-card__birthday
           +title(Object.assign({type: "h4"}, titles.birthday))
           +text-field(Object.assign({isMasked: true, name: 'birthday', inputmode: 'numeric'}, textFields.birthday))
@@ -34,7 +36,7 @@ mixin registration-card
         .registration-card__password
           +text-field(Object.assign({type: 'password', name: 'password'}, textFields.password))
         .registration-card__toggle
-          +toggle
+          +toggle(toggle)
         .registration-card__submit-button
           +button(Object.assign({type: "submit", theme: "long"}, button))
       .registration-card__question-about-authentication

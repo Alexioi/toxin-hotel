@@ -1,4 +1,188 @@
 {
   "title": { "text": "Номера, которые мы для вас подобрали" },
-  "pagination": { "count": 180 }
+  "pagination": { "count": 180 },
+  "roomList": {
+    "items": [
+      {
+        "images": [
+          "room-image-1",
+          "room-image-2",
+          "room-image-3",
+          "room-image-4"
+        ],
+        "currentImg": 0,
+        "number": 888,
+        "link": "/change-it",
+        "isLux": true,
+        "price": "9 990",
+        "quantity": 5,
+        "reviews": 145
+      },
+      {
+        "images": [
+          "room-image-2",
+          "room-image-2",
+          "room-image-3",
+          "room-image-4"
+        ],
+        "currentImg": 0,
+        "number": 840,
+        "link": "/change-it",
+        "isLux": false,
+        "price": "9 990",
+        "quantity": 4,
+        "reviews": 65
+      },
+      {
+        "images": [
+          "room-image-3",
+          "room-image-2",
+          "room-image-3",
+          "room-image-4"
+        ],
+        "currentImg": 0,
+        "number": 980,
+        "link": "/change-it",
+        "isLux": true,
+        "price": "8 500",
+        "quantity": 3,
+        "reviews": 35
+      },
+      {
+        "images": [
+          "room-image-4",
+          "room-image-2",
+          "room-image-3",
+          "room-image-4"
+        ],
+        "currentImg": 0,
+        "number": 856,
+        "link": "/change-it",
+        "isLux": false,
+        "price": "7 300",
+        "quantity": 5,
+        "reviews": 19
+      },
+      {
+        "images": [
+          "room-image-5",
+          "room-image-2",
+          "room-image-3",
+          "room-image-4"
+        ],
+        "currentImg": 0,
+        "number": 740,
+        "link": "/change-it",
+        "isLux": false,
+        "price": "6 000",
+        "quantity": 4,
+        "reviews": 44
+      },
+      {
+        "images": [
+          "room-image-6",
+          "room-image-2",
+          "room-image-3",
+          "room-image-4"
+        ],
+        "currentImg": 0,
+        "number": 982,
+        "link": "/change-it",
+        "isLux": false,
+        "price": "5 800",
+        "quantity": 3,
+        "reviews": 56
+      },
+      {
+        "images": [
+          "room-image-7",
+          "room-image-2",
+          "room-image-3",
+          "room-image-4"
+        ],
+        "currentImg": 0,
+        "number": 678,
+        "link": "/change-it",
+        "isLux": false,
+        "price": "5 500",
+        "quantity": 5,
+        "reviews": 45
+      },
+      {
+        "images": [
+          "room-image-8",
+          "room-image-2",
+          "room-image-3",
+          "room-image-4"
+        ],
+        "currentImg": 0,
+        "number": 450,
+        "link": "/change-it",
+        "isLux": false,
+        "price": "5 300",
+        "quantity": 4,
+        "reviews": 39
+      },
+      {
+        "images": [
+          "room-image-9",
+          "room-image-2",
+          "room-image-3",
+          "room-image-4"
+        ],
+        "currentImg": 0,
+        "number": 350,
+        "link": "/change-it",
+        "isLux": false,
+        "price": "5 000",
+        "quantity": 3,
+        "reviews": 77
+      },
+      {
+        "images": [
+          "room-image-10",
+          "room-image-2",
+          "room-image-3",
+          "room-image-4"
+        ],
+        "currentImg": 0,
+        "number": 666,
+        "link": "/change-it",
+        "isLux": false,
+        "price": "5 000",
+        "quantity": 5,
+        "reviews": 25
+      },
+      {
+        "images": [
+          "room-image-11",
+          "room-image-2",
+          "room-image-3",
+          "room-image-4"
+        ],
+        "currentImg": 0,
+        "number": 444,
+        "link": "/change-it",
+        "isLux": false,
+        "price": "5 000",
+        "quantity": 3,
+        "reviews": 15
+      },
+      {
+        "images": [
+          "room-image-12",
+          "room-image-2",
+          "room-image-3",
+          "room-image-4"
+        ],
+        "currentImg": 0,
+        "number": 352,
+        "link": "/change-it",
+        "isLux": false,
+        "price": "5 000",
+        "quantity": 3,
+        "reviews": 55
+      }
+    ]
+  }
 }

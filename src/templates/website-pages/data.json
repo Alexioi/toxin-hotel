@@ -55,6 +55,11 @@
     "subscriptionHeader": "Подписка",
     "subscriptionText": "Получайте специальные предложения и новости сервиса",
     "copyrightText": "Copyright © 2018 Toxin отель. Все права защищены.",
-    "mobile": false
+    "mobile": false,
+    "socials": [
+      { "link": "https://twitter.com/", "img": "twitter" },
+      { "link": "https://www.facebook.com/", "img": "facebook" },
+      { "link": "https://www.instagram.com/", "img": "instagram" }
+    ]
   }
 }

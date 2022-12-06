@@ -23,10 +23,10 @@ mixin text-field(options)
       value,
       name,
       placeholder,
+      inputmode,
       'data-masked-type': maskedType,
       readonly: isReadonly,
       tabindex: isReadonly ? '1' : '0',
-      inputmode
     }
 
   .text-field(class=classes)

@@ -16,5 +16,13 @@
     "questionText": "Уже есть аккаунт на Toxin",
     "buttonText": "войти",
     "buttonLink": "./sing-in.html"
-  }
+  },
+  "radioButtons": {
+    "items": [
+      { "value": "man", "text": "Мужчина" },
+      { "value": "woman", "text": "Женщина" }
+    ],
+    "name": "sex"
+  },
+  "toggle": { "text": "Получать спецпредложения" }
 }

@@ -1,19 +1,22 @@
-mixin radio-buttons
+mixin radio-buttons(options)
   -
     const {
-      man,
-      woman,
-    } = require('@components/radio-buttons/data.json')
+      name = '',
+      items = [
+        {value: '', text: '',}
+      ]
+    } = options || {}
 
   .radio-buttons
-    label.radio-buttons__item
-      input.radio-buttons__input(
-        name="sex",
-        type="radio",
-        value="man",
-        checked
-      )
-      span.radio-buttons__text= man
-    label.radio-buttons__item
-      input.radio-buttons__input(name="sex", type="radio", value="woman") 
-      span.radio-buttons__text= woman
+    each item, index in items
+      label.radio-buttons__item
+        -
+          const inputAttributes = {
+            name,
+            type: "radio",
+            value: item.value,
+            checked: index === 0
+          }
+
+        input.radio-buttons__input&attributes(inputAttributes)
+        span.radio-buttons__text= item.text

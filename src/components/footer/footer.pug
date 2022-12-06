@@ -17,10 +17,13 @@ mixin footer(options)
       subscriptionHeader = '',
       subscriptionText = '',
       copyrightText = '',
-      mobile = false
+      mobile = false,
+      socials = [
+        { link: '', img: '' },
+      ],
     } = options || {}
 
-    const {textField, socials} = require('@components/footer/data.json')
+    const {textField, } = require('@components/footer/data.json')
 
     let classes = ''
     classes += mobile ? 'footer_mobile' : ''
@@ -30,7 +33,7 @@ mixin footer(options)
       .footer__main
         .footer__about
           .footer__logo
-            +logo({ 'type': 'full-logo' })
+            +logo({ type: 'full-logo' })
           p.footer__about-text= aboutText
         .footer__nav
           each navItem in navItems
@@ -44,7 +47,7 @@ mixin footer(options)
           span.footer__header.footer__header_margin-small= subscriptionHeader
           p.footer__text= subscriptionText
           .footer__input
-            +text-field(Object.assign({'isSubscription': true, type: 'email', name: 'email', inputmode: 'email'}, textField))
+            +text-field(Object.assign({isSubscription: true, type: 'email', name: 'email', inputmode: 'email'}, textField))
     .footer__line
       +container
         .footer__sub
