@@ -4,8 +4,8 @@ const cssSelectors = {
   toggleButtons: '.js-calendar-menu__inputs button',
   menu: '.js-calendar-menu__menu',
   datepicker: '.js-calendar-menu__datepicker',
-  applyButton: '.js-calendar-menu__button-apply',
-  clearButton: '.js-calendar-menu__button-clear',
+  applyButton: '.js-calendar-menu__apply-button',
+  clearButton: '.js-calendar-menu__clear-button',
 };
 
 export default cssSelectors;
