@@ -1,64 +1,60 @@
 {
-  "headers": [
-    {
-      "navItems": [
-        { "link": "/change-it", "text": "О нас" },
-        {
-          "text": "Услуги",
-          "list": [
-            { "link": "/change-it", "text": "sample 1" },
-            { "link": "/change-it", "text": "sample 2" }
-          ]
-        },
-        { "link": "/change-it", "text": "Вакансии" },
-        { "link": "/change-it", "text": "Новости" },
-        {
-          "text": "Соглашения",
-          "list": [
-            { "link": "/change-it", "text": "sample 1" },
-            { "link": "/change-it", "text": "sample 2" }
-          ]
-        }
-      ],
-      "active": null,
-      "username": ""
-    }
-  ],
-  "footers": [
-    {
-      "aboutText": "Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»",
-      "navItems": [
-        {
-          "header": "навигация",
-          "items": [
-            { "text": "О нас", "link": "/change-it" },
-            { "text": "Новости", "link": "/change-it" },
-            { "text": "Служба поддержки", "link": "/change-it" },
-            { "text": "Услуги", "link": "/change-it" }
-          ]
-        },
-        {
-          "header": "о нас",
-          "items": [
-            { "text": "О сервисе", "link": "/change-it" },
-            { "text": "Наша команда", "link": "/change-it" },
-            { "text": "Вакансии", "link": "/change-it" },
-            { "text": "Инвесторы", "link": "/change-it" }
-          ]
-        },
-        {
-          "header": "Служба поддержки",
-          "items": [
-            { "text": "Соглашения", "link": "/change-it" },
-            { "text": "Сообщества", "link": "/change-it" },
-            { "text": "Связь с нами", "link": "/change-it" }
-          ]
-        }
-      ],
-      "subscriptionHeader": "Подписка",
-      "subscriptionText": "Получайте специальные предложения и новости сервиса",
-      "copyrightText": "Copyright © 2018 Toxin отель. Все права защищены.",
-      "mobile": false
-    }
-  ]
+  "header": {
+    "navItems": [
+      { "link": "/change-it", "text": "О нас" },
+      {
+        "text": "Услуги",
+        "list": [
+          { "link": "/change-it", "text": "sample 1" },
+          { "link": "/change-it", "text": "sample 2" }
+        ]
+      },
+      { "link": "/change-it", "text": "Вакансии" },
+      { "link": "/change-it", "text": "Новости" },
+      {
+        "text": "Соглашения",
+        "list": [
+          { "link": "/change-it", "text": "sample 1" },
+          { "link": "/change-it", "text": "sample 2" }
+        ]
+      }
+    ],
+    "active": null,
+    "username": ""
+  },
+  "footer": {
+    "aboutText": "Бронирование номеров в лучшем отеле 2019 года по версии ассоциации «Отельные взгляды»",
+    "navItems": [
+      {
+        "header": "навигация",
+        "items": [
+          { "text": "О нас", "link": "/change-it" },
+          { "text": "Новости", "link": "/change-it" },
+          { "text": "Служба поддержки", "link": "/change-it" },
+          { "text": "Услуги", "link": "/change-it" }
+        ]
+      },
+      {
+        "header": "о нас",
+        "items": [
+          { "text": "О сервисе", "link": "/change-it" },
+          { "text": "Наша команда", "link": "/change-it" },
+          { "text": "Вакансии", "link": "/change-it" },
+          { "text": "Инвесторы", "link": "/change-it" }
+        ]
+      },
+      {
+        "header": "Служба поддержки",
+        "items": [
+          { "text": "Соглашения", "link": "/change-it" },
+          { "text": "Сообщества", "link": "/change-it" },
+          { "text": "Связь с нами", "link": "/change-it" }
+        ]
+      }
+    ],
+    "subscriptionHeader": "Подписка",
+    "subscriptionText": "Получайте специальные предложения и новости сервиса",
+    "copyrightText": "Copyright © 2018 Toxin отель. Все права защищены.",
+    "mobile": false
+  }
 }

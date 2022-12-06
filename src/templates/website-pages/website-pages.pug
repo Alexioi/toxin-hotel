@@ -2,49 +2,37 @@ include ../../components/layout/layout
 include ../../components/header/header
 include ../../components/footer/footer
 
-- const { headers, footers } = require("@templates/website-pages/data.json");
+-
+  const { 
+    header, 
+    footer,
+  } = require('@templates/website-pages/data.json');
 
 doctype html
 html(lang="RU")
   head
     meta(charset="utf-8")
     meta(name="viewport", content="initial-scale=1.0, width=device-width")
-    link(
-      rel="apple-touch-icon",
-      sizes="152x152",
-      href="./assets/favicons/apple-touch-icon.png"
-    )
-    link(
-      rel="icon",
-      type="image/png",
-      sizes="32x32",
-      href="./assets/favicons/favicon-32x32.png"
-    )
-    link(
-      rel="icon",
-      type="image/png",
-      sizes="16x16",
-      href="./assets/favicons/favicon-16x16.png"
-    )
-    link(rel="manifest", href="./assets/favicons/site.webmanifest")
-    link(
-      rel="mask-icon",
-      href="./assets/favicons/safari-pinned-tab.svg",
-      color="#5bbad5"
-    )
-    meta(name="msapplication-TileColor", content="#da532c")
-    meta(name="theme-color", content="#ffffff")
+    <link rel="apple-touch-icon" sizes="180x180" href="/toxin-hotel/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/toxin-hotel/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/toxin-hotel/favicon-16x16.png">
+    <link rel="manifest" href="/toxin-hotel/site.webmanifest">
+    <link rel="mask-icon" href="/toxin-hotel/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/toxin-hotel/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/toxin-hotel/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
     title
       block title
   body
     +layout
       +layout__header
         block header
-          +header(headers[0])
+          +header(header)
 
       +layout__main
         block main
 
       +layout__footer
         block footer
-          +footer(footers[0])
+          +footer(footer)
