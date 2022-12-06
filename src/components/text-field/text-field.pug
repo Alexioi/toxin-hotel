@@ -14,9 +14,9 @@ mixin text-field(options)
       inputmode
     } = options || {}
 
-    let classes = ''
-    classes += isHovered ? ' text-field_hovered' : '' 
-    classes += isMasked ? ' text-field_masked js-text-field_masked' : '' 
+    const hoverClass = isHovered && 'text-field_hovered'
+    const maskClass = isMasked && 'text-field_masked js-text-field_masked' 
+    const classes = [hoverClass, maskClass]
 
     const inputAttributes = {
       type,

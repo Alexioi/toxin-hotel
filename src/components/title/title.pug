@@ -6,9 +6,9 @@ mixin title(options)
       hint = '',
     } = options || {}
 
-    let tag = type
-    let classes = ''
-    classes = 'title__heading title__heading_type-' + tag
+    const tag = type
+    const tagClass = tag && 'title__heading title__heading_type-' + tag
+    const classes = [tagClass]
 
   .title
     #{tag}(class=classes)= text

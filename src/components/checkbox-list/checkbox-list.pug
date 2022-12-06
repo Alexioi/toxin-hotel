@@ -7,8 +7,8 @@ mixin checkbox-list(options)
       ],
     } = options || {}
 
-    let classes = ''
-    classes += isRich ? ' checkbox-list_rich' : ''
+    const richClass = isRich && 'checkbox-list_rich'
+    const classes = [richClass]
 
   ul.checkbox-list(class=classes)
     each item in items 

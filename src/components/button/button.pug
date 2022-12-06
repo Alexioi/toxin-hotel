@@ -11,11 +11,10 @@ mixin button(options)
     } = options || {}
 
     const tag = isLink ? 'a' : 'button'
-
-    let classes = ''
-    classes += ' button_theme-' + theme 
-    classes += size ? ' button_size-' + size : '' 
-    classes += isHovered ? ' button_hovered' : '' 
+    const themeClass = theme && 'button_theme-' + theme 
+    const sizeClass = size &&  'button_size-' + size 
+    const hoverClass = isHovered && 'button_hovered'
+    const classes = [themeClass, sizeClass, hoverClass]
 
   #{tag}.button(class=classes, href=link, type=isLink ? null : type)
     span.button__text= text

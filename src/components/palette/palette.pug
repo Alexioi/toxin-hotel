@@ -8,7 +8,11 @@ mixin palette(options)
 
   .palette
     each item in items
-      .palette__item(class=`palette__item_color-${item.color}`)
+      -
+        const colorClass = item.color && `palette__item_color-${item.color}`
+        const classes = [colorClass]
+
+      .palette__item(class=classes)
         p.palette__text
           strong= item.colorName
           <br>

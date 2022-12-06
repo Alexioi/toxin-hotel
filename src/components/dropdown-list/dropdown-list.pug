@@ -7,8 +7,8 @@ mixin dropdown-list(options)
       isOpened = false
     } = options || {}
 
-    let classes = ''
-    classes += isOpened ? ' dropdown-list_opened' : '' 
+    const openedClass = isOpened && 'dropdown-list_opened'
+    const classes = [openedClass]
 
   .dropdown-list.js-dropdown-list(class=classes)
     .dropdown-list__header

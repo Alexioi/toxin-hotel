@@ -25,8 +25,8 @@ mixin footer(options)
 
     const {textField, } = require('@components/footer/data.json')
 
-    let classes = ''
-    classes += mobile ? 'footer_mobile' : ''
+    const mobileClass = mobile && 'footer_mobile'
+    const classes = [mobileClass]
 
   .footer(class=classes)
     +container

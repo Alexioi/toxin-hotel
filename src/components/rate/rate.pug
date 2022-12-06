@@ -2,12 +2,11 @@ mixin rate(options)
   -
     const { quantity = 0 } = options || {};
     let i = 0;
-    let starType = '';
 
   .rate
     while i < 5
       -
-        starType = quantity > i ? 'star' : 'outline-star'
+        const starType = quantity > i ? 'star' : 'outline-star'
         i += 1
 
       img.rate__img(

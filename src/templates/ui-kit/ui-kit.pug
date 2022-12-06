@@ -21,7 +21,10 @@ html(lang="RU")
     title
       block title
   body
-    .ui-kit(class=withThemeGray ? " ui-kit_with-theme-gray" : "")
+    -
+      const themeGrayThemeClass = withThemeGray && 'ui-kit_with-theme-gray'
+      const classes = [themeGrayThemeClass]
+    .ui-kit(class=classes)
       +layout
         +layout__header
           .ui-kit__header
