@@ -50,7 +50,7 @@
         position: absolute;
         width: 150px;
         background: #f4f4f6;
-        word-break: break-all;
+        word-break: break-word;
         padding: 5px;
         top: 21px;
         z-index: 2;
@@ -66,7 +66,7 @@
     &-value {
       flex: 0 0 77px;
       text-align: right;
-      word-break: break-all;
+      word-break: break-word;
     }
   }
 
