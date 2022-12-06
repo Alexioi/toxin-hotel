@@ -7,17 +7,15 @@ mixin gallery(options)
     } = options || {}
 
   .gallery
-    .gallery__main-column
-      img.gallery__img(
-        src=require(`@images/content/${images[0].src}.png`),
-        alt=images[0].alt
-      )
-    .gallery__sub-column
-      img.gallery__img(
-        src=require(`@images/content/${images[1].src}.png`),
-        alt=images[1].alt
-      )
-      img.gallery__img(
-        src=require(`@images/content/${images[2].src}.png`),
-        alt=images[2].alt
-      )
+    each image, index in images 
+      -
+        const imageClass = 'gallery__img'
+        const imageMainClass = index === 0 && 'gallery__img_main'
+        const classes = [imageClass, imageMainClass]
+
+      if index < 3
+        img(
+          class=classes,
+          src=require(`@images/content/${image.src}.png`),
+          alt=image.alt
+        )

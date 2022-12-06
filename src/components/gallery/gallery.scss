@@ -3,10 +3,14 @@
 .gallery {
   display: grid;
   grid-template-columns: (981 / 1440 * 100%) (459 / 1440 * 100%);
-  width: 100%;
 
   &__img {
     display: flex;
     width: 100%;
+
+    &_main {
+      grid-column: span 1;
+      grid-row: span 2;
+    }
   }
 }
