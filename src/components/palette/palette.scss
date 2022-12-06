@@ -25,31 +25,31 @@
     }
 
     &_color {
-      &-dark-shade-100::before {
+      &_dark-shade-100::before {
         background: colors.$first;
       }
 
-      &-dark-shade-75::before {
+      &_dark-shade-75::before {
         background: rgba(colors.$first, 0.75);
       }
 
-      &-dark-shade-50::before {
+      &_dark-shade-50::before {
         background: rgba(colors.$first, 0.5);
       }
 
-      &-dark-shade-25::before {
+      &_dark-shade-25::before {
         background: rgba(colors.$first, 0.25);
       }
 
-      &-dark-shade-5::before {
+      &_dark-shade-5::before {
         background: rgba(colors.$first, 0.05);
       }
 
-      &-purple::before {
+      &_purple::before {
         background: colors.$second;
       }
 
-      &-green::before {
+      &_green::before {
         background: colors.$third;
       }
     }

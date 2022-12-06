@@ -34,19 +34,19 @@
     }
 
     &_type {
-      &-perfectly::before {
+      &_perfectly::before {
         background: linear-gradient(180deg, #ffe39c 0%, #ffba9c 100%);
       }
 
-      &-good::before {
+      &_good::before {
         background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
       }
 
-      &-satisfactory::before {
+      &_satisfactory::before {
         background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
       }
 
-      &-disappointment::before {
+      &_disappointment::before {
         background: linear-gradient(180deg, #919191 0%, #3d4975 100%);
       }
     }

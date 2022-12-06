@@ -12,7 +12,7 @@ $sample-width: 37px;
   &__item {
     display: flex;
 
-    &_theme-h1 {
+    &_theme_h1 {
       #{$root}__sample {
         font-size: 24px;
         line-height: 29px;
@@ -25,7 +25,7 @@ $sample-width: 37px;
       }
     }
 
-    &_theme-h2 {
+    &_theme_h2 {
       #{$root}__sample {
         font-size: 19px;
         line-height: 23px;
@@ -38,7 +38,7 @@ $sample-width: 37px;
       }
     }
 
-    &_theme-h3 {
+    &_theme_h3 {
       #{$root}__sample {
         font-size: 12px;
         line-height: 15px;
@@ -51,7 +51,7 @@ $sample-width: 37px;
       }
     }
 
-    &_theme-body {
+    &_theme_body {
       #{$root}__sample {
         font-size: 14px;
         line-height: 24px;

@@ -11,8 +11,8 @@ mixin button(options)
     } = options || {}
 
     const tag = isLink ? 'a' : 'button'
-    const themeClass = theme && 'button_theme-' + theme 
-    const sizeClass = size &&  'button_size-' + size 
+    const themeClass = theme && `button_theme_${theme}` 
+    const sizeClass = size &&  `button_size_${size}` 
     const hoverClass = isHovered && 'button_hovered'
     const classes = [themeClass, sizeClass, hoverClass]
 

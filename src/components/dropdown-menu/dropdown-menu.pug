@@ -23,7 +23,7 @@ mixin dropdown-menu(options)
     const {buttons} = require('@components/dropdown-menu/data.json')
 
     const openedClass = isOpened && 'dropdown-menu_opened'
-    const classes = openedClass
+    const classes = [openedClass]
 
   .dropdown-menu.js-dropdown-menu(class=classes, data-type=type)
     .dropdown-menu__input.js-dropdown-menu__input

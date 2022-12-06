@@ -7,7 +7,7 @@ mixin title(options)
     } = options || {}
 
     const tag = type
-    const tagClass = tag && 'title__heading title__heading_type-' + tag
+    const tagClass = tag && `title__heading title__heading_type_${tag}`
     const classes = [tagClass]
 
   .title

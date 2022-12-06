@@ -9,7 +9,7 @@ mixin palette(options)
   .palette
     each item in items
       -
-        const colorClass = item.color && `palette__item_color-${item.color}`
+        const colorClass = item.color && `palette__item_color_${item.color}`
         const classes = [colorClass]
 
       .palette__item(class=classes)
