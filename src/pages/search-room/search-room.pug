@@ -11,7 +11,8 @@ block title
 block main
   -
     const {
-      title
+      title,
+      pagination,
     } = require('./data.json')
 
   .search-room
@@ -24,4 +25,4 @@ block main
           .search-room__room-list-wrapper
             +room-list
           .search-room__pagination
-            +pagination
+            +pagination(pagination)

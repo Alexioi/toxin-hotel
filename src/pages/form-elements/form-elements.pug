@@ -37,6 +37,7 @@ block main
       dropdownLists,
       rangeSlider,
       calendar,
+      pagination
     } = require('./data.json')
 
   .form-elements
@@ -104,7 +105,7 @@ block main
         .form-elements__text-fields-and-buttons-right
           +title(Object.assign({type: 'h4'}, titles.pagination))
         .form-elements__text-fields-and-buttons-right
-          +pagination 
+          +pagination(pagination)
 
     .form-elements__row
       .form-elements__dropdowns-left-column

@@ -1,11 +1,15 @@
-mixin pagination
+mixin pagination(options)
   -
+    const {
+      count = 0,
+    } = options || {}
+
     const {
       dash,
       numberOfOptions,
     } = require('@components/pagination/data.json')
 
-  .pagination.js-pagination(data-count="180")
+  .pagination.js-pagination(data-count=count)
     .pagination__plugin.js-pagination__plugin
     .pagination__text
       span.pagination__start-item.js-pagination__start-item 

@@ -189,5 +189,6 @@
     "close": { "title": "expandable checkbox list" },
     "opened": { "title": "expandable checkbox list", "isOpened": true }
   },
-  "rangeSlider": { "title": "range slider" }
+  "rangeSlider": { "title": "range slider" },
+  "pagination": { "count": 180 }
 }
