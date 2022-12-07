@@ -92,6 +92,14 @@
     }
   }
 
+  &__rules-title {
+    padding-left: 20px;
+
+    @include mixins.media-breakpoint-down(display-sizes.$lg) {
+      padding: 0;
+    }
+  }
+
   &__reset {
     flex-basis: 341px;
     display: flex;
