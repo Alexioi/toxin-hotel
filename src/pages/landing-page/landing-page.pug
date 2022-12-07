@@ -1,7 +1,6 @@
 extends ../../templates/website-pages/website-pages
 
 include ../../components/find-room/find-room
-include ../../components/container/container
 
 block title
   | Landing page
@@ -13,7 +12,7 @@ block main
     } = require('./data.json')
 
   .landing-page
-    +container
+    .landing-page__container
       .landing-page__form-row
         .landing-page__form-wrapper
           +find-room

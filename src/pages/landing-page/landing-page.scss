@@ -7,6 +7,20 @@
   background: url('@images/content/landing-page-background.png') no-repeat;
   background-size: cover;
 
+  &__container {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding-left: 5px;
+
+    @include mixins.media-breakpoint-down(display-sizes.$lg) {
+      padding: 0 20px;
+    }
+
+    @include mixins.media-breakpoint-down(display-sizes.$sm) {
+      padding: 0 10px;
+    }
+  }
+
   &__form-row {
     padding-top: 70px;
     display: flex;
