@@ -7,7 +7,7 @@
   "textFields": {
     "name": { "placeholder": "Имя" },
     "surname": { "placeholder": "Фамилия" },
-    "birthday": { "inputmode": "ДД.ММ.ГГГГ" },
+    "birthday": { "placeholder": "ДД.ММ.ГГГГ" },
     "email": { "placeholder": "Email" },
     "password": { "placeholder": "Пароль" }
   },
