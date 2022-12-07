@@ -10,4 +10,5 @@ mixin question-about-authorization(options)
 
   .question-about-authorization
     p.question-about-authorization__text= questionText
-    +button({theme: 'outlined', isLink: true, link: buttonLink, text: buttonText})
+    .question-about-authorization__button
+      +button({theme: 'outlined', isLink: true, link: buttonLink, text: buttonText})

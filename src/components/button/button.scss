@@ -4,12 +4,13 @@
 .button {
   $root: &;
 
-  display: inline-block;
+  display: block;
   border: none;
   cursor: pointer;
   position: relative;
   text-decoration: none;
   padding: 0;
+  text-align: center;
 
   &:hover,
   &#{$root}_hovered {
