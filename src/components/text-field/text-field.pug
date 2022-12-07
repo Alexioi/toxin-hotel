@@ -26,7 +26,7 @@ mixin text-field(options)
       inputmode,
       'data-masked-type': maskedType,
       readonly: isReadonly,
-      tabindex: isReadonly ? '1' : '0',
+      tabindex: isReadonly ? '-1' : '0',
     }
 
   .text-field(class=classes)
@@ -36,5 +36,5 @@ mixin text-field(options)
     if isDropdown
       button.text-field__dropdown-button(
         type="button",
-        tabindex=isReadonly ? "0" : "1"
+        tabindex=isReadonly ? "0" : "-1"
       )
