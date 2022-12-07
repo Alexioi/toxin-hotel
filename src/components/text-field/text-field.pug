@@ -29,12 +29,14 @@ mixin text-field(options)
       tabindex: isReadonly ? '-1' : '0',
     }
 
+    const buttonAttributes = {
+      type: 'button',
+      tabindex: isReadonly ? '0' : '-1'
+    }
+
   .text-field(class=classes)
     input.text-field__input&attributes(inputAttributes)
     if isSubscription
       button.text-field__subscription-button(type="submit") 
     if isDropdown
-      button.text-field__dropdown-button(
-        type="button",
-        tabindex=isReadonly ? "0" : "-1"
-      )
+      button.text-field__dropdown-button&attributes(buttonAttributes)

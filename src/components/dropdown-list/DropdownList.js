@@ -13,10 +13,12 @@ class DropdownList {
   }
 
   _findNodes() {
+    this.$title = this.$node.find(cssSelectors.title);
     this.$button = this.$node.find(cssSelectors.button);
   }
 
   _attachEventHandlers() {
+    this.$title.on('click', this._toggleList.bind(this));
     this.$button.on('click', this._toggleList.bind(this));
   }
 

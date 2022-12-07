@@ -16,14 +16,20 @@
   &__header {
     display: flex;
     justify-content: space-between;
+    align-items: baseline;
     padding-bottom: 16px;
   }
 
+  &__title {
+    cursor: pointer;
+    user-select: none;
+  }
+
   &__button {
+    padding: 0;
     background-color: white;
     border: none;
     cursor: pointer;
-    line-height: 15px;
     color: rgba(colors.$first, 0.5);
   }
 
