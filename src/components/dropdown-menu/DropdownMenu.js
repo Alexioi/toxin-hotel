@@ -20,6 +20,7 @@ class DropdownMenu {
 
   _findNodes() {
     this.input = this.node.querySelector(cssSelectors.input);
+    this.inputButton = this.node.querySelector(cssSelectors.inputButton);
     this.textField = this.node.querySelector(cssSelectors.textField);
     this.items = this.node.querySelectorAll(cssSelectors.items);
     this.clearButton = this.node.querySelector(cssSelectors.clearButton);
@@ -76,9 +77,10 @@ class DropdownMenu {
 
   _onClickDocument(event) {
     const isCurrentMenu = event.target.closest(cssSelectors.menu) === this.menu;
-    const hasInput = event.composedPath().includes(this.textField);
+    const hasInput = event.composedPath().includes(this.input);
+    const hasInputButton = event.composedPath().includes(this.inputButton);
 
-    if (!isCurrentMenu && !hasInput) {
+    if (!isCurrentMenu && !hasInput && !hasInputButton) {
       this._closeMenu();
     }
   }
