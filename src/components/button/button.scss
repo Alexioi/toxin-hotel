@@ -89,5 +89,9 @@
     position: absolute;
     top: 13px;
     right: 12px;
+
+    & svg {
+      fill: white;
+    }
   }
 }

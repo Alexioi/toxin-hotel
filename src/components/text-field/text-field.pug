@@ -38,6 +38,7 @@ mixin text-field(options)
   .text-field(class=classes)
     input.text-field__input&attributes(inputAttributes)
     if isSubscription
-      button.text-field__subscription-button(type="submit") 
+      button.text-field__subscription-button(type="submit")
+        include ../../images/decorative/arrow-forward.svg
     if isDropdown
       button.text-field__dropdown-button&attributes(buttonAttributes)

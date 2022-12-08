@@ -5,6 +5,8 @@
 
   &-pages {
     & > ul {
+      display: flex;
+      flex-wrap: nowrap;
       margin: 0;
       padding: 0;
 
@@ -35,19 +37,20 @@
     }
   }
 
-  &__prev-text {
-    display: block;
+  &__arrow {
+    display: flex;
     height: 100%;
-    background: no-repeat 50% 50%;
-    background-image: url('@images/decorative/arrow-forward.svg');
-    transform: rotate(180deg);
+
+    justify-content: center;
+    align-items: center;
+
+    & svg {
+      fill: white;
+    }
   }
 
   &__next-text {
-    display: block;
-    height: 100%;
-    background: no-repeat 50% 50%;
-    background-image: url('@images/decorative/arrow-forward.svg');
+    fill: white;
   }
 
   &-page {

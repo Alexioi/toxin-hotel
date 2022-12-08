@@ -1,4 +1,6 @@
 import 'air-datepicker';
+import arrowBack from '!raw-loader!@images/decorative/arrow-back.svg';
+import arrowForward from '!raw-loader!@images/decorative/arrow-forward.svg';
 
 class AirDatepicker {
   constructor($node) {
@@ -27,8 +29,8 @@ class AirDatepicker {
     const airDatepickerOptions = {
       range: true,
       navTitles: { days: 'MM yyyy' },
-      prevHtml: '<div class="datepicker--nav-action-icon-back"></div>',
-      nextHtml: '<div class="datepicker--nav-action-icon-forward"></div>',
+      prevHtml: arrowBack,
+      nextHtml: arrowForward,
       minDate: new Date(),
     };
 

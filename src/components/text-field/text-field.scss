@@ -54,9 +54,12 @@
     height: 100%;
     width: 44px;
     border: none;
-    background: no-repeat center center;
-    background-image: url('@images/decorative/color-arrow-forward.svg');
+    background-color: transparent;
     cursor: pointer;
+
+    & svg {
+      fill: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+    }
   }
 
   &__dropdown-button {

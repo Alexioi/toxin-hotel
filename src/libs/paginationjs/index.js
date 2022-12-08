@@ -1,4 +1,6 @@
 import 'paginationjs';
+import arrowBack from '!raw-loader!@images/decorative/arrow-back.svg';
+import arrowForward from '!raw-loader!@images/decorative/arrow-forward.svg';
 
 class Paginationjs {
   constructor($node, $startItem, $endItem, count) {
@@ -25,8 +27,8 @@ class Paginationjs {
     const config = {
       pageSize: 12,
       pageRange: 1,
-      prevText: '<span class="paginationjs__prev-text"></span>',
-      nextText: '<span class="paginationjs__next-text"></span>',
+      prevText: `<span class="paginationjs__arrow">${arrowBack}</span>`,
+      nextText: `<span class="paginationjs__arrow">${arrowForward}</span>`,
       callback,
       dataSource,
     };
