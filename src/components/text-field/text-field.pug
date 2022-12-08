@@ -1,22 +1,23 @@
 mixin text-field(options)
   -
     const {
-      isHovered = false, 
-      isMasked = false, 
-      type = 'text', 
       value, 
       name, 
       placeholder, 
+      maskedType,
+      inputmode,
+      isHovered = false, 
+      isMasked = false, 
+      type = 'text', 
       isSubscription = false,
       isDropdown = false,
       isReadonly = false,
-      maskedType,
-      inputmode
     } = options || {}
 
     const hoverClass = isHovered && 'text-field_hovered'
-    const maskClass = isMasked && 'text-field_masked js-text-field_masked' 
-    const classes = [hoverClass, maskClass]
+    const maskClass = isMasked && 'text-field_masked js-text-field_masked'
+    const textDarkClass = isDropdown && 'text-field_text_dark'
+    const classes = [hoverClass, maskClass, textDarkClass]
 
     const inputAttributes = {
       type,

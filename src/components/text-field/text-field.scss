@@ -21,6 +21,13 @@
       color: rgba(colors.$first, 0.25);
     }
 
+    #{$root}_text_dark & {
+      &,
+      &::placeholder {
+        color: rgba(colors.$first, 0.75);
+      }
+    }
+
     &:hover,
     &:focus,
     &[data-focus='true'] {
