@@ -58,7 +58,7 @@
     cursor: pointer;
 
     & svg {
-      fill: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+      fill: url(#subscription-button);
     }
   }
 
@@ -69,8 +69,7 @@
     top: 0;
     right: 0;
     cursor: pointer;
-    background: no-repeat url('@images/decorative/toggle-button.svg') center
-      center;
+    background-color: transparent;
     border: none;
   }
 }

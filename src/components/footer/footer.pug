@@ -1,6 +1,7 @@
 include ../text-field/text-field
 include ../logo/logo
 include ../container/container
+include ../svg-gradient/svg-gradient
 
 mixin footer(options)
   -
@@ -23,7 +24,9 @@ mixin footer(options)
       ],
     } = options || {}
 
-    const {textField, } = require('@components/footer/data.json')
+    const {
+      textField, 
+    } = require('@components/footer/data.json')
 
     const mobileClass = mobile && 'footer_mobile'
     const classes = [mobileClass]
@@ -53,13 +56,12 @@ mixin footer(options)
         .footer__sub
           span.footer__text-copyright= copyrightText
           .footer__social
+            +svg-gradient({id: 'social-icon', startColor: '#BC9CFF', endColor: '#8BA4F9'})
             each social in socials
               a.footer__social-link(
                 href=social.link,
                 target="_blank",
                 rel="noopener noreferrer"
               )
-                img(
-                  src=require(`@images/decorative/${social.img}.svg`),
-                  alt=social.img
-                )
+                - const svg = require(`!raw-loader!@images/decorative/${social.img}.svg`).default;
+                != svg

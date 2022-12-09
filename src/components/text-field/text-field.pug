@@ -1,3 +1,5 @@
+include ../svg-gradient/svg-gradient
+
 mixin text-field(options)
   -
     const {
@@ -39,6 +41,8 @@ mixin text-field(options)
     input.text-field__input&attributes(inputAttributes)
     if isSubscription
       button.text-field__subscription-button(type="submit")
+        +svg-gradient({id: 'subscription-button', startColor: '#BC9CFF', endColor: '#8BA4F9'})
         include ../../images/decorative/arrow-forward.svg
     if isDropdown
       button.text-field__dropdown-button&attributes(buttonAttributes)
+        include ../../images/decorative/toggle-button.svg

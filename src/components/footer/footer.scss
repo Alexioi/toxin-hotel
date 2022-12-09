@@ -199,4 +199,10 @@
     align-items: center;
     gap: 22px;
   }
+
+  &__social-link {
+    & svg {
+      fill: url(#social-icon);
+    }
+  }
 }

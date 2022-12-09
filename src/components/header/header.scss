@@ -67,19 +67,7 @@
     cursor: pointer;
     position: relative;
     padding: 0;
-    padding-right: 24px;
-
-    &::after {
-      display: block;
-      position: absolute;
-      content: '';
-      width: 24px;
-      height: 18px;
-      background: no-repeat 50% 50%;
-      background-image: url('@images/decorative/expand-more.svg');
-      top: 0;
-      right: 0;
-    }
+    padding-right: 5px;
   }
 
   &__button-content {
@@ -87,6 +75,7 @@
     font-size: 14px;
     line-height: 17px;
     color: rgba(colors.$first, 0.5);
+    margin-right: 7px;
 
     &:hover {
       color: rgba(colors.$first, 0.75);

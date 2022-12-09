@@ -8,8 +8,6 @@ mixin rate(options)
       -
         const starType = quantity > i ? 'star' : 'outline-star'
         i += 1
+        const svg = require(`!raw-loader!@images/content/${starType}.svg`).default;
 
-      img.rate__img(
-        src=require(`@images/content/${starType}.svg`),
-        alt=starType
-      )
+      != svg

@@ -17,8 +17,9 @@
   &__img {
     width: 48px;
     height: 48px;
-    object-position: 50% 50%;
-    object-fit: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   &__content {
