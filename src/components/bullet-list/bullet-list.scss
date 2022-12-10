@@ -7,24 +7,23 @@
   padding: 0;
 
   &__item {
-    position: relative;
     font-size: 14px;
     line-height: 24px;
-    padding-left: 20px;
     color: rgba(colors.$first, 0.75);
     list-style-type: none;
     word-break: break-word;
+    display: flex;
+    align-items: baseline;
 
     &::before {
-      position: absolute;
       content: '';
       display: block;
       width: 10px;
       height: 10px;
       background: rgba(colors.$first, 0.25);
       border-radius: 50%;
-      left: 0;
-      top: 7px;
+      margin-right: 10px;
+      flex-shrink: 0;
     }
   }
 }

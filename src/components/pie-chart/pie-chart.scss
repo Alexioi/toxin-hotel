@@ -8,7 +8,6 @@
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 11px;
     margin: 0;
     padding: 0;
   }
@@ -16,21 +15,21 @@
   &__item {
     position: relative;
     font-size: 14px;
-    line-height: 14px;
-    padding-left: 15px;
+    line-height: 24px;
     color: rgba(colors.$first, 0.75);
     list-style-type: none;
     word-break: break-word;
+    display: flex;
+    align-items: baseline;
 
     &::before {
-      position: absolute;
       content: '';
       display: block;
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      left: 0;
-      top: 2px;
+      flex-shrink: 0;
+      margin-right: 5px;
     }
 
     &_type {
