@@ -4,13 +4,11 @@
   $root: &;
 
   display: grid;
-  gap: 12px;
+  gap: 10px;
   padding: 0;
   margin: 0;
 
   &_rich {
-    gap: 10px;
-
     & #{$root}__text {
       font-weight: bold;
       color: rgba(colors.$first, 0.75);
@@ -22,42 +20,52 @@
   }
 
   &__label {
-    padding-left: 30px;
-    position: relative;
-    display: block;
-    cursor: pointer;
+    display: flex;
   }
 
   &__input {
-    position: absolute;
     opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
 
-    &:focus + #{$root}__text {
-      &::before {
+    &:focus {
+      & ~ #{$root}__icon {
         box-shadow: 0 0 10px rgba(colors.$first, 30%);
       }
     }
 
-    &:checked + #{$root}__text {
-      &::before {
+    &:checked {
+      & ~ #{$root}__icon {
         border-color: colors.$second;
-      }
 
-      &::after {
-        content: '';
-        display: block;
-        border-image: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-        border-image-slice: 1;
-        border-style: solid;
-        border-width: 0 2px 2px 0;
-        transform: rotate(45deg);
-        width: 5px;
-        height: 6px;
-        position: absolute;
-        top: 5px;
-        left: 6px;
+        &::after {
+          content: '';
+          display: block;
+          border-image: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+          border-image-slice: 1;
+          border-style: solid;
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+          width: 5px;
+          height: 6px;
+          margin-top: 3px;
+        }
       }
     }
+  }
+
+  &__icon {
+    content: '';
+    border: 1px solid rgba(colors.$first, 0.25);
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    display: inline-flex;
+    justify-content: center;
+    border-radius: 4px;
+    margin-right: 10px;
+    cursor: pointer;
   }
 
   &__text {
@@ -65,25 +73,19 @@
     line-height: 18px;
     color: rgba(colors.$first, 0.5);
     word-break: break-word;
-
-    &::before {
-      content: '';
-      border: 1px solid rgba(colors.$first, 0.25);
-      width: 18px;
-      height: 18px;
-      position: absolute;
-      display: block;
-      border-radius: 4px;
-      left: 0;
-    }
+    cursor: pointer;
+    display: inline-block;
+    padding-top: 1px;
   }
 
   &__sub-text {
-    margin-top: 6px;
+    font-weight: normal;
     font-size: 12px;
     line-height: 14px;
     word-break: break-word;
     color: rgba(colors.$first, 0.5);
-    display: block;
+    display: inline-block;
+    padding-top: 4px;
+    padding-left: 30px;
   }
 }

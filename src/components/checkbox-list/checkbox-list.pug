@@ -15,6 +15,7 @@ mixin checkbox-list(options)
       li.checkbox-list__item
         label.checkbox-list__label
           input.checkbox-list__input(type="checkbox", checked=item.isChecked)
+          span.checkbox-list__icon
           span.checkbox-list__text!= item.text
-          if isRich
-            span.checkbox-list__sub-text!= item.subText
+        if isRich
+          span.checkbox-list__sub-text!= item.subText
