@@ -5,4 +5,5 @@ mixin logo(options)
     } = options || {}
 
   a.logo(href="./index.html")
-    img.logo__img(src=require(`@images/content/${type}.svg`), alt="Toxin")
+    - const svg = require(`!raw-loader!@images/content/${type}.svg`).default;
+    != svg
