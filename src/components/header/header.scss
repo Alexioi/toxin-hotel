@@ -38,10 +38,17 @@
     display: none;
     background-color: white;
     border: none;
-    font-size: 30px;
 
     @include mixins.media-breakpoint-down(display-sizes.$md) {
-      display: inline;
+      display: flex;
+    }
+  }
+
+  &__navigation {
+    display: block;
+
+    @include mixins.media-breakpoint-down(display-sizes.$md) {
+      width: 100%;
     }
   }
 
@@ -49,6 +56,7 @@
     display: flex;
     gap: 21px;
     margin-right: 20px;
+    padding: 0;
 
     @include mixins.media-breakpoint-down(display-sizes.$md) {
       display: none;
