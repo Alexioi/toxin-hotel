@@ -32,24 +32,25 @@ block main
       .room-details__content-block
         .room-details__content-column
           .room-details__room-statistic
-            .room-details__icon-text-list
+            section.room-details__icon-text-list
               +title(titles.aboutNumber)
               +icon-text-list(iconTextList)
-            .room-details__pie-chart
+            section.room-details__pie-chart
               +title(titles.roomImpression)
               +pie-chart(pieChart)
-          .room-details__comments-title
-            +title(titles.reviewNumber)
-            span.room-details__text= `${comments.length} ${reviews}`
-          .room-details__comments
-            each comment in comments
-              +comment(comment) 
+          section.room-details__comments-section
+            .room-details__comments-title
+              +title(titles.reviewNumber)
+              span.room-details__text= `${comments.length} ${reviews}`
+            .room-details__comments
+              each comment in comments
+                +comment(comment) 
           .room-details__rules
-            .room-details__bullet-list
+            section.room-details__bullet-list
               .room-details__rules-title
                 +title(titles.rules)
               +bullet-list(bulletList)
-            .room-details__reset
+            section.room-details__reset
               +title(titles.reset)
               p.room-details__text= resetText
 
