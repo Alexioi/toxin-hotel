@@ -1,3 +1,5 @@
+include ../svg-gradient/svg-gradient
+
 mixin like-button(options)
   -
     const {
@@ -9,5 +11,10 @@ mixin like-button(options)
     const classes = [likeClass]
 
   button.like-button.js-like-button(class=classes, type="button")
-    span.like-button__icon 
-    span.like-button__counter.js-like-button__counter= counter
+    span.like-button__background
+      +svg-gradient({id: 'liked-button', startColor: '#BC9CFF', endColor: '#8BA4F9'})
+      span.like-button__icon
+        include ../../images/decorative/favorite-border.svg
+      span.like-button__icon.like-button__icon_liked
+        include ../../images/decorative/favorite.svg
+      span.like-button__counter.js-like-button__counter= counter

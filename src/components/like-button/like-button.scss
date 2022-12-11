@@ -1,4 +1,5 @@
 @use '@style/constants/colors';
+@use '@style/constants/font';
 
 .like-button {
   $root: &;
@@ -7,52 +8,57 @@
   border: none;
   border-radius: 10px;
   min-width: 40px;
+  height: 20px;
   position: relative;
-  text-align: start;
+  padding: 1px;
   cursor: pointer;
-  padding: 0;
-
-  &::before {
-    content: '';
-    position: absolute;
-    background: white;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: 1px;
-    border-radius: inherit;
-  }
 
   &_liked {
     background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
 
-    #{$root}__icon {
-      background-image: url('@images/decorative/favorite.svg');
-    }
+    #{$root} {
+      &__icon {
+        display: none;
 
-    #{$root}__counter {
-      color: colors.$second;
+        &_liked {
+          display: flex;
+        }
+      }
+
+      &__counter {
+        color: colors.$second;
+      }
     }
+  }
+
+  &__background {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgba(0, 0, 0, 0%);
+    border-radius: inherit;
+    background: white;
   }
 
   &__icon {
-    position: absolute;
-    z-index: 2;
-    background-image: url('@images/decorative/favorite-border.svg');
-    height: 8px;
-    width: 10px;
-    top: 6px;
-    left: 5px;
+    display: flex;
+    margin-left: 4px;
+
+    &_liked {
+      display: none;
+
+      & svg {
+        fill: url('#liked-button');
+      }
+    }
   }
 
   &__counter {
+    font-family: font.$first;
     font-size: 10px;
-    line-height: 20px;
+    line-height: 12px;
     color: rgba(colors.$first, 0.25);
-    position: relative;
-    z-index: 2;
-    margin-left: 22px;
-    margin-right: 5px;
+    margin-left: 6px;
   }
 }
