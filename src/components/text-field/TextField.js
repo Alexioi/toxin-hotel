@@ -15,9 +15,20 @@ class TextField {
 
   _attachEventsHandler() {
     this.node.addEventListener('focus', this._onFocus.bind(this));
-    this.node.addEventListener('keydown', this._onKeyDown.bind(this));
+    this.node.addEventListener('input', this._onInput.bind(this));
+    this.node.addEventListener('paste', this._onPaste.bind(this));
     this.node.addEventListener('blur', this._onBlur.bind(this));
     this.node.addEventListener('update', this._update.bind(this));
+  }
+
+  _onPaste(event) {
+    event.preventDefault();
+
+    const inputDate = event.clipboardData.getData('text');
+
+    inputDate.split('').forEach((value) => {
+      this._changeDate(value);
+    });
   }
 
   _update() {
@@ -98,33 +109,33 @@ class TextField {
     this._displayDate(this.dates);
   }
 
-  _onKeyDown(event) {
-    if (event.key === 'Tab') {
-      return;
-    }
-
+  _onInput(event) {
     event.preventDefault();
 
-    if (event.key === 'Backspace') {
+    if (event.inputType === 'deleteContentBackward') {
       this.dates = this._removeDate(this.dates);
 
       this._displayDate(this.dates);
       return;
     }
 
-    if (!this.constructor._isNumber(event.key)) {
+    this._changeDate(event.data);
+  }
+
+  _changeDate(data) {
+    if (!TextField._isNumber(data)) {
       return;
     }
 
-    const key = Number(event.key);
+    const numberData = Number(data);
 
     if (this.type === 'double') {
       let [firstDate, secondDate] = this.dates;
 
       if (firstDate.length < 10) {
-        firstDate = this._calculateDay(firstDate, key);
+        firstDate = this._calculateDay(firstDate, numberData);
       } else {
-        secondDate = this._calculateDay(secondDate, key);
+        secondDate = this._calculateDay(secondDate, numberData);
       }
 
       this.dates = [firstDate, secondDate];
@@ -133,7 +144,7 @@ class TextField {
       return;
     }
 
-    const date = this._calculateDay(this.dates[0], key);
+    const date = this._calculateDay(this.dates[0], numberData);
     this.dates = [date];
     this._displayDate(this.dates);
   }
@@ -214,7 +225,7 @@ class TextField {
     }
 
     if (year.length === 3) {
-      if (this.constructor._isValidDate(date + String(key))) {
+      if (TextField._isValidDate(date + String(key))) {
         return date + String(key);
       }
 
