@@ -38,7 +38,7 @@ mixin footer(options)
           .footer__logo
             +logo({ type: 'full-logo' })
           p.footer__about-text= aboutText
-        .footer__nav
+        nav.footer__nav
           each navItem in navItems
             .footer__nav-item
               span.footer__header= navItem.header

@@ -11,12 +11,14 @@
   padding: 14px 0;
 
   &__mobile-navigation-opened {
-    #{$root}__login {
-      display: flex;
-    }
+    #{$root} {
+      &__login {
+        display: flex;
+      }
 
-    #{$root}__navigation {
-      display: flex;
+      &__list {
+        display: flex;
+      }
     }
   }
 
@@ -43,7 +45,7 @@
     }
   }
 
-  &__navigation {
+  &__list {
     display: flex;
     gap: 21px;
     margin-right: 20px;

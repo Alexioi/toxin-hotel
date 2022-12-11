@@ -27,23 +27,24 @@ mixin header(options)
           +logo({type: 'full-logo'})
         button.header__burger-button.js-header__burger-button
           include ../../images/decorative/menu.svg
-        ul.header__navigation.js-header__navigation
-          each navItem, index in navItems
-            li.header__navigation-item
-              if navItem.list
-                .header__sub-navigation-menu
-                  button.header__navigation-button.js-header__navigation-button
-                    span.header__button-content= navItem.text
-                    include ../../images/decorative/toggle-button.svg
-                  ul.header__sub-navigation-list.js-header__sub-navigation-list
-                    each listItem in navItem.list
-                      li.header__navigation-item
-                        a.header__navigation-link(href=listItem.link)= listItem.text
-              else
-                a.header__navigation-link(
-                  href=navItem.link,
-                  class=index === active && "header__navigation-link_active"
-                )= navItem.text
+        nav.header__navigation
+          ul.header__list
+            each navItem, index in navItems
+              li.header__navigation-item
+                if navItem.list
+                  .header__sub-navigation-menu
+                    button.header__navigation-button.js-header__navigation-button
+                      span.header__button-content= navItem.text
+                      include ../../images/decorative/toggle-button.svg
+                    ul.header__sub-navigation-list.js-header__sub-navigation-list
+                      each listItem in navItem.list
+                        li.header__navigation-item
+                          a.header__navigation-link(href=listItem.link)= listItem.text
+                else
+                  a.header__navigation-link(
+                    href=navItem.link,
+                    class=index === active && "header__navigation-link_active"
+                  )= navItem.text
         .header__login
           if username
             span.header__username= username
