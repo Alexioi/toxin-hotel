@@ -1,10 +1,11 @@
 module.exports = (path) => {
   return {
     devServer: {
-      contentBase: path,
+      static: {
+        directory: path,
+      },
       compress: true,
       port: 3000,
-      host: '0.0.0.0',
     },
   };
 };

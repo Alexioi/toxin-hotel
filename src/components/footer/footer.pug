@@ -63,5 +63,8 @@ mixin footer(options)
                 target="_blank",
                 rel="noopener noreferrer"
               )
-                - const svg = require(`!raw-loader!@images/decorative/${social.img}.svg`).default;
+                -
+                  const svg = require(`!raw-loader!@images/decorative/${social.img}.svg`).default;
+                  const {nanoid} = require('nanoid/non-secure')
+                  const SVGgradientID = `id-${nanoid()}`
                 != svg
