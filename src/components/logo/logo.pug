@@ -1,3 +1,6 @@
+include ../svg/icons/logotype
+include ../svg-gradient/svg-gradient
+
 mixin logo(options)
   -
     const {
@@ -5,5 +8,21 @@ mixin logo(options)
     } = options || {}
 
   a.logo(href="./index.html")
-    - const svg = require(`!raw-loader!@images/content/${type}.svg`).default;
-    != svg
+    if type === 'full'
+      -
+        const svg = require("!raw-loader!@images/decorative/logo-text.svg").default;
+
+        const {nanoid} = require('nanoid/non-secure')
+        const firstSVGgradientID = `id-${nanoid()}`
+        const secondSVGgradientID = `id-${nanoid()}`
+
+      +svg-gradient({id: firstSVGgradientID, startColor: '#BC9CFF', endColor: '#8BA4F9'})
+      +svg-gradient({id: secondSVGgradientID, startColor: '#6FCF97', endColor: '#66D2EA'})
+      svg.logo__icon.logo__icon_type_full
+        != svg
+        +logotype({firstSVGgradientID, secondSVGgradientID})
+    else
+      - const svg = require("!raw-loader!@images/decorative/logo.svg").default;
+
+      svg.logo__icon
+        != svg
