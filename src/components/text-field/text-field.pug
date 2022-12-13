@@ -1,4 +1,4 @@
-include ../svg-gradient/svg-gradient
+include ../svg/theme/gradient/gradient
 
 mixin text-field(options)
   -
@@ -44,7 +44,7 @@ mixin text-field(options)
         -
           const {nanoid} = require('nanoid/non-secure')
           const SVGgradientID = `id-${nanoid()}`
-        +svg-gradient({id: SVGgradientID, startColor: '#BC9CFF', endColor: '#8BA4F9'})
+        +gradient({id: SVGgradientID, startColor: '#BC9CFF', endColor: '#8BA4F9'})
         svg.text-field__subscription-icon(fill=`url(#${SVGgradientID})`)
           include ../../images/decorative/arrow-forward.svg
     if isDropdown

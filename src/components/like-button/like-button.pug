@@ -1,4 +1,4 @@
-include ../svg-gradient/svg-gradient
+include ../svg/theme/gradient/gradient
 
 mixin like-button(options)
   -
@@ -12,7 +12,7 @@ mixin like-button(options)
 
   button.like-button.js-like-button(class=classes, type="button")
     span.like-button__background
-      +svg-gradient({id: 'liked-button', startColor: '#BC9CFF', endColor: '#8BA4F9'})
+      +gradient({id: 'liked-button', startColor: '#BC9CFF', endColor: '#8BA4F9'})
       span.like-button__icon
         include ../../images/decorative/favorite-border.svg
       span.like-button__icon.like-button__icon_liked

@@ -1,7 +1,7 @@
 include ../text-field/text-field
 include ../logo/logo
 include ../container/container
-include ../svg-gradient/svg-gradient
+include ../svg/theme/gradient/gradient
 
 mixin footer(options)
   -
@@ -66,6 +66,6 @@ mixin footer(options)
                   const svg = require(`!raw-loader!@images/decorative/${social.img}.svg`).default;
                   const {nanoid} = require('nanoid/non-secure')
                   const SVGgradientID = `id-${nanoid()}`
-                +svg-gradient({id: SVGgradientID, startColor: '#BC9CFF', endColor: '#8BA4F9'})
+                +gradient({id: SVGgradientID, startColor: '#BC9CFF', endColor: '#8BA4F9'})
                 svg.footer__social-icon(fill=`url(#${SVGgradientID})`)
                   != svg

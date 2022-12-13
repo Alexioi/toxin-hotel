@@ -1,5 +1,5 @@
-include ../svg/icons/logotype
-include ../svg-gradient/svg-gradient
+include ../svg/icons/logotype/logotype
+include ../svg/theme/gradient/gradient
 
 mixin logo(options)
   -
@@ -16,8 +16,8 @@ mixin logo(options)
         const firstSVGgradientID = `id-${nanoid()}`
         const secondSVGgradientID = `id-${nanoid()}`
 
-      +svg-gradient({id: firstSVGgradientID, startColor: '#BC9CFF', endColor: '#8BA4F9'})
-      +svg-gradient({id: secondSVGgradientID, startColor: '#6FCF97', endColor: '#66D2EA'})
+      +gradient({id: firstSVGgradientID, startColor: '#BC9CFF', endColor: '#8BA4F9'})
+      +gradient({id: secondSVGgradientID, startColor: '#6FCF97', endColor: '#66D2EA'})
       svg.logo__icon.logo__icon_type_full
         != svg
         +logotype({firstSVGgradientID, secondSVGgradientID})
