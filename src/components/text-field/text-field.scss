@@ -48,17 +48,21 @@
     }
   }
 
-  &__subscription-button {
-    position: absolute;
-    right: 0;
-    height: 100%;
-    width: 44px;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
+  &__subscription {
+    &-button {
+      position: absolute;
+      right: 0;
+      height: 100%;
+      width: 44px;
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      padding: 0;
+    }
 
-    & svg {
-      fill: url('#subscription-button');
+    &-icon {
+      width: 17px;
+      height: 16px;
     }
   }
 

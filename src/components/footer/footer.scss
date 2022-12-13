@@ -39,7 +39,7 @@
     }
 
     #{$root}__sub {
-      padding: 15px 0 0;
+      padding: 18px 0 0;
       justify-content: center;
       flex-direction: column;
       gap: 19px;
@@ -198,11 +198,14 @@
     display: flex;
     align-items: center;
     gap: 22px;
-  }
 
-  &__social-link {
-    & svg {
-      fill: url('#social-icon');
+    &-link {
+      display: flex;
+    }
+
+    &-icon {
+      width: 22px;
+      height: 22px;
     }
   }
 }

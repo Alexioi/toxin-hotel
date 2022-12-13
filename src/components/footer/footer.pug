@@ -56,7 +56,6 @@ mixin footer(options)
         .footer__sub
           span.footer__text-copyright= copyrightText
           .footer__social
-            +svg-gradient({id: 'social-icon', startColor: '#BC9CFF', endColor: '#8BA4F9'})
             each social in socials
               a.footer__social-link(
                 href=social.link,
@@ -67,4 +66,6 @@ mixin footer(options)
                   const svg = require(`!raw-loader!@images/decorative/${social.img}.svg`).default;
                   const {nanoid} = require('nanoid/non-secure')
                   const SVGgradientID = `id-${nanoid()}`
-                != svg
+                +svg-gradient({id: SVGgradientID, startColor: '#BC9CFF', endColor: '#8BA4F9'})
+                svg.footer__social-icon(fill=`url(#${SVGgradientID})`)
+                  != svg

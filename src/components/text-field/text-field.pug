@@ -41,8 +41,12 @@ mixin text-field(options)
     input.text-field__input&attributes(inputAttributes)
     if isSubscription
       button.text-field__subscription-button(type="submit")
-        +svg-gradient({id: 'subscription-button', startColor: '#BC9CFF', endColor: '#8BA4F9'})
-        include ../../images/decorative/arrow-forward.svg
+        -
+          const {nanoid} = require('nanoid/non-secure')
+          const SVGgradientID = `id-${nanoid()}`
+        +svg-gradient({id: SVGgradientID, startColor: '#BC9CFF', endColor: '#8BA4F9'})
+        svg.text-field__subscription-icon(fill=`url(#${SVGgradientID})`)
+          include ../../images/decorative/arrow-forward.svg
     if isDropdown
       button.text-field__dropdown-button&attributes(buttonAttributes)
         include ../../images/decorative/toggle-button.svg
