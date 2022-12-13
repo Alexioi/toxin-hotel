@@ -21,7 +21,7 @@
         display: none;
 
         &_liked {
-          display: flex;
+          display: inline;
         }
       }
 
@@ -42,15 +42,12 @@
   }
 
   &__icon {
-    display: flex;
     margin-left: 4px;
+    width: 10px;
+    height: 8px;
 
     &_liked {
       display: none;
-
-      & svg {
-        fill: url('#liked-button');
-      }
     }
   }
 

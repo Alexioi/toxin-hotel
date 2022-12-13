@@ -12,9 +12,14 @@ mixin like-button(options)
 
   button.like-button.js-like-button(class=classes, type="button")
     span.like-button__background
-      +gradient({id: 'liked-button', startColor: '#BC9CFF', endColor: '#8BA4F9'})
-      span.like-button__icon
+      -
+        const {nanoid} = require('nanoid/non-secure')
+        const SVGgradientID = `id-${nanoid()}`
+      +gradient({id: SVGgradientID, startColor: '#BC9CFF', endColor: '#8BA4F9'})
+      svg.like-button__icon
         include ../../images/decorative/favorite-border.svg
-      span.like-button__icon.like-button__icon_liked
+      svg.like-button__icon.like-button__icon_liked(
+        fill=`url(#${SVGgradientID})`
+      )
         include ../../images/decorative/favorite.svg
       span.like-button__counter.js-like-button__counter= counter

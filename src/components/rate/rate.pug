@@ -1,13 +1,24 @@
+include ../svg/theme/gradient/gradient
+
 mixin rate(options)
   -
     const { quantity = 0 } = options || {};
     let i = 0;
 
   .rate
-    while i < 5
+    span.rate__gradient
       -
-        const starType = quantity > i ? 'star' : 'outline-star'
-        i += 1
-        const svg = require(`!raw-loader!@images/content/${starType}.svg`).default;
+        const {nanoid} = require('nanoid/non-secure')
+        const SVGgradientID = `id-${nanoid()}`
 
-      != svg
+      +gradient({id: SVGgradientID, startColor: '#BC9CFF', endColor: '#8BA4F9'})
+
+    .rate__stars
+      while i < 5
+        -
+          const starType = quantity > i ? 'star' : 'outline-star'
+          i += 1
+          const svg = require(`!raw-loader!@images/decorative/${starType}.svg`).default;
+
+        svg.rate__icon(fill=`url(#${SVGgradientID})`)
+          != svg

@@ -20,4 +20,5 @@ mixin button(options)
     span.button__text= text
     if theme === 'long'
       span.button__arrow
-        include ../../images/decorative/arrow-forward.svg
+        svg.button__icon
+          include ../../images/decorative/arrow-forward.svg

@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/no-webpack-loader-syntax */
 import 'air-datepicker';
 import arrowBack from '!raw-loader!@images/decorative/arrow-back.svg';
 import arrowForward from '!raw-loader!@images/decorative/arrow-forward.svg';
@@ -29,8 +31,8 @@ class AirDatepicker {
     const airDatepickerOptions = {
       range: true,
       navTitles: { days: 'MM yyyy' },
-      prevHtml: arrowBack,
-      nextHtml: arrowForward,
+      prevHtml: `<svg>${arrowBack}</svg>`,
+      nextHtml: `<svg>${arrowForward}</svg>`,
       minDate: new Date(),
     };
 

@@ -1,6 +1,13 @@
 @use '@style/constants/colors';
 
 .rate {
-  display: inline-flex;
-  gap: 4px;
+  &__stars {
+    display: inline-flex;
+    gap: 4px;
+  }
+
+  &__icon {
+    height: 19px;
+    width: 20px;
+  }
 }

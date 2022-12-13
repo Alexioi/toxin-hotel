@@ -1,3 +1,5 @@
+/* eslint-disable import/no-webpack-loader-syntax */
+/* eslint-disable import/no-unresolved */
 import 'paginationjs';
 import arrowBack from '!raw-loader!@images/decorative/arrow-back.svg';
 import arrowForward from '!raw-loader!@images/decorative/arrow-forward.svg';
@@ -27,8 +29,8 @@ class Paginationjs {
     const config = {
       pageSize: 12,
       pageRange: 1,
-      prevText: `<span class="paginationjs__arrow">${arrowBack}</span>`,
-      nextText: `<span class="paginationjs__arrow">${arrowForward}</span>`,
+      prevText: `<span class="paginationjs__arrow"><svg>${arrowBack}</svg></span>`,
+      nextText: `<span class="paginationjs__arrow"><svg>${arrowForward}</svg></span>`,
       callback,
       dataSource,
     };

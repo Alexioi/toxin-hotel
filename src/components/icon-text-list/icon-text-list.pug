@@ -1,3 +1,5 @@
+include ../svg/theme/gradient/gradient
+
 mixin icon-text-list(options)
   -
     const {
@@ -6,12 +8,17 @@ mixin icon-text-list(options)
       ]
     } = options || {}
 
-  ul.icon-text-list
-    each item in items
-      li.icon-text-list__item
-        .icon-text-list__img
-          - const svg = require(`!raw-loader!@images/content/${item.img}.svg`).default;
-          != svg
-        .icon-text-list__content
-          h3.icon-text-list__title= item.title
-          span.icon-text-list__text= item.text
+    const {nanoid} = require('nanoid/non-secure')
+    const SVGgradientID = `id-${nanoid()}`
+  .icon-text-list
+    .icon-text-list__gradient
+      +gradient({id: SVGgradientID, startColor: '#BC9CFF', endColor: '#8BA4F9'})
+    ul.icon-text-list__list
+      each item in items
+        li.icon-text-list__item
+          svg.icon-text-list__icon(fill=`url(#${SVGgradientID})`)
+            - const svg = require(`!raw-loader!@images/decorative/${item.img}.svg`).default;
+            != svg
+          .icon-text-list__content
+            h3.icon-text-list__title= item.title
+            span.icon-text-list__text= item.text
