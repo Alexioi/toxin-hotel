@@ -10,6 +10,8 @@ class LikeButton {
   _init() {
     this._findElements();
     this._attachEventHandlers();
+    this.counterValue = this._getCounterValue();
+    this._changeCounterValue();
   }
 
   _findElements() {
@@ -22,19 +24,41 @@ class LikeButton {
 
   _onClickButton() {
     this._changeButtonStyle();
-    this._setCounterLikes();
+    this._changeCounterValue();
+  }
+
+  _getCounterValue() {
+    const isLiked = this.$component.hasClass('like-button_liked');
+
+    if (isLiked) {
+      return Number(this.$counter.text()) - 1;
+    }
+
+    return Number(this.$counter.text());
   }
 
   _changeButtonStyle() {
     this.$component.toggleClass('like-button_liked');
   }
 
-  _setCounterLikes() {
-    const currentCounter = Number(this.$counter.text());
+  _changeCounterValue() {
     const isLiked = this.$component.hasClass('like-button_liked');
-    const newCounter = isLiked ? currentCounter + 1 : currentCounter - 1;
+    const newCounter = LikeButton._calculateCounterValue(
+      this.counterValue,
+      isLiked,
+    );
 
     this.$counter.text(newCounter);
+  }
+
+  static _calculateCounterValue(value, isLiked) {
+    const newValue = isLiked ? value + 1 : value;
+
+    if (newValue >= 999) {
+      return '999+';
+    }
+
+    return newValue;
   }
 }
 

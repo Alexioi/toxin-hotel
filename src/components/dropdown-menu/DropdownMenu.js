@@ -34,9 +34,7 @@ class DropdownMenu {
 
   _getCounters() {
     this.counters = [...this.items].map((item) => {
-      const counter = item.querySelector(
-        '.js-dropdown-menu__counter',
-      ).innerHTML;
+      const counter = item.querySelector(cssSelectors.counter).innerHTML;
 
       return Number(counter);
     });
@@ -143,7 +141,7 @@ class DropdownMenu {
   _resetCounters() {
     [...this.items].forEach((item) => {
       const counter = item;
-      counter.querySelector('.js-dropdown-menu__counter').innerHTML = 0;
+      counter.querySelector(cssSelectors.counter).innerHTML = 0;
     });
 
     this.counters = [0, 0, 0];
