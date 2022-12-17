@@ -19,10 +19,10 @@ mixin calendar(options)
       if hasTwoInputs
         .calendar__input
           +title({text: textFrom, type: 'h4'})
-          +text-field(Object.assign({name: 'dateFrom', isMasked: true, maskedType:'single', isDropdown: true, inputmode: 'numeric'}, textFields.single))
+          +text-field(Object.assign({name: 'date-from', isMasked: true, maskedType:'single', isDropdown: true, inputmode: 'numeric'}, textFields.single))
         .calendar__input
           +title({text: textTo, type: 'h4'})
-          +text-field(Object.assign({name: 'dateTo', isMasked: true, maskedType:'single', isDropdown: true, inputmode: 'numeric'}, textFields.single))
+          +text-field(Object.assign({name: 'date-to', isMasked: true, maskedType:'single', isDropdown: true, inputmode: 'numeric'}, textFields.single))
       else
         .calendar__input
           +title({text: textFrom, type: 'h4'})
