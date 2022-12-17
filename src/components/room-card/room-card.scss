@@ -26,11 +26,11 @@
       );
     }
 
-    & #{$root}__arrow-button_action-back {
+    & #{$root}__arrow-button_back {
       left: 0;
     }
 
-    & #{$root}__arrow-button_action-next {
+    & #{$root}__arrow-button_next {
       transform: rotate(180deg);
       right: 0;
     }
@@ -80,6 +80,19 @@
     display: none;
     font-size: 14px;
     font-weight: bold;
+    color: white;
+
+    &_back {
+      & svg {
+        transform: rotate(90deg);
+      }
+    }
+
+    &_next {
+      & svg {
+        transform: rotate(90deg);
+      }
+    }
   }
 
   &__info {

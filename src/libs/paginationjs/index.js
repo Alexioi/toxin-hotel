@@ -1,8 +1,7 @@
 /* eslint-disable import/no-webpack-loader-syntax */
 /* eslint-disable import/no-unresolved */
 import 'paginationjs';
-import arrowBack from '!raw-loader!@images/decorative/arrow-back.svg';
-import arrowForward from '!raw-loader!@images/decorative/arrow-forward.svg';
+import arrow from '!raw-loader!@images/decorative/arrow.svg';
 
 class Paginationjs {
   constructor($node, $startItem, $endItem, count) {
@@ -26,11 +25,14 @@ class Paginationjs {
       done(result);
     };
 
+    const iconBack = `<svg class="paginationjs__icon paginationjs__icon_back">${arrow}</svg>`;
+    const iconNext = `<svg class="paginationjs__icon">${arrow}</svg>`;
+
     const config = {
       pageSize: 12,
       pageRange: 1,
-      prevText: `<span class="paginationjs__arrow"><svg>${arrowBack}</svg></span>`,
-      nextText: `<span class="paginationjs__arrow"><svg>${arrowForward}</svg></span>`,
+      prevText: `<span class="paginationjs__arrow">${iconBack}</span>`,
+      nextText: `<span class="paginationjs__arrow">${iconNext}</span>`,
       callback,
       dataSource,
     };

@@ -46,7 +46,7 @@ mixin text-field(options)
           const SVGgradientID = `id-${nanoid()}`
         +gradient({id: SVGgradientID, startColor: '#BC9CFF', endColor: '#8BA4F9'})
         svg.text-field__subscription-icon(fill=`url(#${SVGgradientID})`)
-          include ../../images/decorative/arrow-forward.svg
+          include ../../images/decorative/arrow.svg
     if isDropdown
       button.text-field__dropdown-button&attributes(buttonAttributes)
-        include ../../images/decorative/toggle-button.svg
+        include ../../images/decorative/expand-more.svg

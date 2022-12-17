@@ -14,12 +14,6 @@
       height: 24px;
       width: 24px;
       cursor: pointer;
-
-      & svg {
-        fill: colors.$second;
-        width: 17px;
-        height: 18px;
-      }
     }
 
     &-title {
@@ -28,6 +22,16 @@
       line-height: 23px;
       color: colors.$first;
       cursor: pointer;
+    }
+  }
+
+  &__icon {
+    fill: colors.$second;
+    width: 17px;
+    height: 18px;
+
+    &_back {
+      transform: rotate(180deg);
     }
   }
 
