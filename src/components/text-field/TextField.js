@@ -124,6 +124,7 @@ class TextField {
 
   _changeDate(data) {
     if (!TextField._isNumber(data)) {
+      this._displayDate(this.dates);
       return;
     }
 
