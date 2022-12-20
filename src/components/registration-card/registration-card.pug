@@ -2,7 +2,7 @@ include ../text-field/text-field
 include ../radio-buttons/radio-buttons
 include ../button/button
 include ../toggle/toggle
-include ../title/title
+include ../typography/typography
 include ../card/card
 include ../question-about-authorization/question-about-authorization
 
@@ -20,7 +20,7 @@ mixin registration-card
   .registration-card
     +card
       form.registration-card__form(method="POST", action="/change-it")
-        +title(Object.assign({type: "h2"}, titles.registration))
+        +typography(Object.assign({tag: "h2"}, titles.registration))
         .registration-card__name
           +text-field(Object.assign({type: 'text', name: 'name'}, textFields.name))
         .registration-card__surname
@@ -28,10 +28,10 @@ mixin registration-card
         .registration-card__radio-buttons
           +radio-buttons(radioButtons)
         .registration-card__birthday
-          +title(Object.assign({type: "h4"}, titles.birthday))
+          +typography(Object.assign({tag: "h4"}, titles.birthday))
           +text-field(Object.assign({isMasked: true, name: 'birthday', inputmode: 'numeric'}, textFields.birthday))
         .registration-card__email
-          +title(Object.assign({type: "h4"}, titles.loginData))
+          +typography(Object.assign({tag: "h4"}, titles.loginData))
           +text-field(Object.assign({type: 'email', name: 'email', inputmode: 'email'}, textFields.email))
         .registration-card__password
           +text-field(Object.assign({type: 'password', name: 'password'}, textFields.password))

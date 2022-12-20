@@ -1,5 +1,5 @@
 include ../dropdown-menu/dropdown-menu
-include ../title/title
+include ../typography/typography
 include ../text-field/text-field
 
 mixin dropdown(options)
@@ -14,5 +14,5 @@ mixin dropdown(options)
 
   .dropdown
     +dropdown-menu({items, isOpened, type})
-      +title({type: 'h4', text: titleText, hint})
+      +typography({tag: 'h4', text: titleText, hint})
       +text-field({isReadonly: true, type: 'text', isDropdown: true, name: type})

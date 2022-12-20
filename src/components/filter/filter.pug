@@ -1,5 +1,5 @@
 include ../calendar/calendar
-include ../title/title
+include ../typography/typography
 include ../dropdown/dropdown
 include ../range-slider/range-slider
 include ../checkbox-list/checkbox-list
@@ -30,11 +30,11 @@ mixin filter
         +range-slider(rangeSlider)
         p.filter__range-text= rangeText
       .filter__rules-title
-        +title(Object.assign({type: 'h4'}, titles.rules))
+        +typography(Object.assign({tag: 'h4'}, titles.rules))
       .filter__rules
         +checkbox-list(checkboxLists.rules)
       .filter__availability-title
-        +title(Object.assign({type: 'h4'}, titles.availability))
+        +typography(Object.assign({tag: 'h4'}, titles.availability))
       .filter__availability
         +checkbox-list(Object.assign({isRich: true},checkboxLists.availability))
       .filter__rooms-dropdown

@@ -38,11 +38,11 @@
     ]
   },
   "titles": {
-    "aboutNumber": { "text": "Сведения о номере", "type": "h3" },
-    "roomImpression": { "text": "Впечатления от номера", "type": "h3" },
-    "reviewNumber": { "text": "Отзывы посетителей номера", "type": "h3" },
-    "rules": { "text": "Правила", "type": "h3" },
-    "reset": { "text": "Отмена", "type": "h3" }
+    "aboutNumber": { "text": "Сведения о номере" },
+    "roomImpression": { "text": "Впечатления от номера" },
+    "reviewNumber": { "text": "Отзывы посетителей номера" },
+    "rules": { "text": "Правила" },
+    "reset": { "text": "Отмена" }
   },
   "bulletList": {
     "items": [

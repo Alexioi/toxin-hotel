@@ -1,0 +1,15 @@
+mixin typography(options)
+  -
+    const {
+      text = '',
+      tag = '',
+      hint = '',
+    } = options || {}
+
+    const tagClass = tag && `typography__heading typography__heading_type_${tag}`
+    const classes = [tagClass]
+
+  .typography
+    #{tag}(class=classes)= text
+    if hint !== ''
+      span.typography__hint= hint

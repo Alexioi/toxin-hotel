@@ -1,4 +1,4 @@
-include ../title/title
+include ../typography/typography
 
 mixin dropdown-list(options)
   -
@@ -13,7 +13,7 @@ mixin dropdown-list(options)
   .dropdown-list.js-dropdown-list(class=classes)
     .dropdown-list__header
       .dropdown-list__title.js-dropdown-list__title
-        +title({text: title, type: 'h4'})
+        +typography({text: title, tag: 'h4'})
       button.dropdown-list__button.js-dropdown-list__button(type="button")
         include ../../images/decorative/expand-more.svg
     .dropdown-list__menu

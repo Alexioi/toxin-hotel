@@ -2,7 +2,7 @@ extends ../../templates/website-pages/website-pages
 include ../../components/room-list/room-list
 include ../../components/filter/filter
 include ../../components/container/container
-include ../../components/title/title
+include ../../components/typography/typography
 include ../../components/pagination/pagination
 
 block var
@@ -27,7 +27,7 @@ block main
         .search-room__filter-wrapper
           +filter
         .search-room__column
-          +title(Object.assign({type: 'h2'}, title))
+          +typography(Object.assign({tag: 'h2'}, title))
           .search-room__room-list-wrapper
             +room-list(roomList)
           .search-room__pagination

@@ -1,6 +1,6 @@
 include ../calendar-menu/calendar-menu
 include ../text-field/text-field
-include ../title/title
+include ../typography/typography
 
 mixin calendar(options)
   -
@@ -18,12 +18,12 @@ mixin calendar(options)
     +calendar-menu
       if hasTwoInputs
         .calendar__input
-          +title({text: textFrom, type: 'h4'})
+          +typography({text: textFrom, tag: 'h4'})
           +text-field(Object.assign({name: 'date-from', isMasked: true, maskedType:'single', isDropdown: true, inputmode: 'numeric'}, textFields.single))
         .calendar__input
-          +title({text: textTo, type: 'h4'})
+          +typography({text: textTo, tag: 'h4'})
           +text-field(Object.assign({name: 'date-to', isMasked: true, maskedType:'single', isDropdown: true, inputmode: 'numeric'}, textFields.single))
       else
         .calendar__input
-          +title({text: textFrom, type: 'h4'})
+          +typography({text: textFrom, tag: 'h4'})
           +text-field(Object.assign({name: 'date', isMasked: true, maskedType:'double', isDropdown: true, inputmode: 'numeric'}, textFields.double))
