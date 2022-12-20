@@ -19,6 +19,11 @@ class TextField {
     this.node.addEventListener('paste', this._onPaste.bind(this));
     this.node.addEventListener('blur', this._onBlur.bind(this));
     this.node.addEventListener('update', this._update.bind(this));
+    this.node.addEventListener('click', this._onClick.bind(this));
+  }
+
+  _onClick() {
+    this._displayDate(this.dates);
   }
 
   _onPaste(event) {
@@ -282,7 +287,16 @@ class TextField {
 
     this.node.value = values.join(' - ');
 
+    this._setCaretPosition(values);
     this._setDates();
+  }
+
+  _setCaretPosition(values) {
+    console.log(values);
+    const valuesString = values.join(' - ');
+    const cursorPosition = valuesString.indexOf('_');
+
+    this.node.setSelectionRange(cursorPosition, cursorPosition);
   }
 }
 
