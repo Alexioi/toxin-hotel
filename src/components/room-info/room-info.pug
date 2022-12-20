@@ -20,7 +20,7 @@ mixin room-info(options)
 
   .room-info
     span.room-info__number
-      span.room-info__number-signs= numberSymbol
+      span.room-info__number-signs!= numberSymbol
       #{tag}= number
       if isLux
         span.room-info__lux= lux

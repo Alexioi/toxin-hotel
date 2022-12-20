@@ -292,7 +292,6 @@ class TextField {
   }
 
   _setCaretPosition(values) {
-    console.log(values);
     const valuesString = values.join(' - ');
     const cursorPosition = valuesString.indexOf('_');
 
