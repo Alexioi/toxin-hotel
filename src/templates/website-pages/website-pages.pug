@@ -8,6 +8,11 @@ include ../../components/footer/footer
     footer,
   } = require('@templates/website-pages/data.json');
 
+block var
+  -
+    const description = '';
+    const keywords = '';
+
 doctype html
 html(lang="RU")
   head
@@ -22,6 +27,8 @@ html(lang="RU")
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-config" content="/toxin-hotel/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
+    meta(name="description", content=description)
+    meta(name="keywords", content=keywords)
     title
       block title
   body
