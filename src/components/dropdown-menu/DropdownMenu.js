@@ -1,5 +1,7 @@
 import cssSelectors from './constants';
 
+import helpers from '../../helpers';
+
 class DropdownMenu {
   constructor(node) {
     this.node = node;
@@ -74,11 +76,8 @@ class DropdownMenu {
   }
 
   _onClickDocument(event) {
-    const isCurrentMenu = event.target.closest(cssSelectors.menu) === this.menu;
-    const hasInput = event.composedPath().includes(this.input);
-    const hasInputButton = event.composedPath().includes(this.inputButton);
-
-    if (!isCurrentMenu && !hasInput && !hasInputButton) {
+    const elements = [this.menu, this.input, this.inputButton];
+    if (!helpers.isElementsIncludeNode(event, elements)) {
       this._closeMenu();
     }
   }

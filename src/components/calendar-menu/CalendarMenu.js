@@ -1,6 +1,8 @@
 import AirDatepicker from '@libs/air-datepicker';
 import cssSelectors from './constants';
 
+import helpers from '../../helpers';
+
 class CalendarMenu {
   constructor($node) {
     this.$node = $node;
@@ -107,12 +109,10 @@ class CalendarMenu {
   }
 
   _onClickDocument(event) {
-    const { target } = event;
     const [firstButton, secondButton] = this.$toggleButtons;
-    const isCurrentMenuTarget = event.composedPath().includes(this.$menu[0]);
-    const isCurrentButton = target === firstButton || target === secondButton;
+    const elements = [this.$menu[0], firstButton, secondButton];
 
-    if (!isCurrentMenuTarget && !isCurrentButton) {
+    if (!helpers.isElementsIncludeNode(event, elements)) {
       this.$menu.removeClass('calendar-menu__menu_visible');
     }
   }

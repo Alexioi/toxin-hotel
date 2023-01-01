@@ -1,5 +1,7 @@
 import cssSelectors from './constants';
 
+import helpers from '../../helpers';
+
 class Header {
   constructor(component) {
     this.component = component;
@@ -37,12 +39,9 @@ class Header {
 
   _onClickDocument(event) {
     this.subNavigationLists.forEach((list, index) => {
-      const hasList = event.composedPath().includes(list);
-      const hasNavigationButton = event
-        .composedPath()
-        .includes(this.navigationButtons[index]);
+      const elements = [list, this.navigationButtons[index]];
 
-      if (!hasList && !hasNavigationButton) {
+      if (!helpers.isElementsIncludeNode(event, elements)) {
         this.constructor._closeSubNavigationList(list);
       }
     });
