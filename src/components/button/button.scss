@@ -4,13 +4,14 @@
 .button {
   $root: &;
 
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   cursor: pointer;
   position: relative;
   text-decoration: none;
   padding: 0;
-  text-align: center;
 
   &:hover,
   &#{$root}_hovered {
@@ -18,7 +19,7 @@
   }
 
   &_theme_default {
-    padding: 14px 20px 15px;
+    padding: 14px 20px 12px;
     background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
     border-radius: 22px;
 
@@ -28,7 +29,7 @@
   }
 
   &_theme_outlined {
-    padding: 14px 20px 15px;
+    padding: 14px 20px 12px;
     border-radius: 22px;
     background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
 
@@ -59,11 +60,12 @@
 
   &_theme_long {
     width: 100%;
-    padding: 14px 0 15px;
+    padding: 14px 11px 12px 29px;
     background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
     border-radius: 22px;
 
     #{$root}__text {
+      width: 100%;
       color: white;
     }
   }
@@ -77,7 +79,7 @@
     font-family: font.$first;
     font-weight: bold;
     font-size: 12px;
-    line-height: 15px;
+    line-height: 18px;
     text-transform: uppercase;
     white-space: nowrap;
     text-decoration-line: none;
@@ -86,9 +88,8 @@
   }
 
   &__arrow {
-    position: absolute;
-    top: 13px;
-    right: 12px;
+    display: flex;
+    margin-left: auto;
   }
 
   &__icon {
