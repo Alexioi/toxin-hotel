@@ -38,18 +38,10 @@
     display: none;
     background-color: white;
     border: none;
-
-    @include mixins.media-breakpoint-down(display-sizes.$md) {
-      display: flex;
-    }
   }
 
   &__navigation {
     display: block;
-
-    @include mixins.media-breakpoint-down(display-sizes.$md) {
-      width: 100%;
-    }
   }
 
   &__list {
@@ -57,14 +49,6 @@
     gap: 21px;
     margin-right: 20px;
     padding: 0;
-
-    @include mixins.media-breakpoint-down(display-sizes.$md) {
-      display: none;
-      width: 100%;
-      align-items: center;
-      flex-direction: column;
-      margin: 20px 0;
-    }
   }
 
   &__navigation-item {
@@ -102,11 +86,6 @@
     border: 1px solid rgba(colors.$first, 0.5);
     border-radius: 4px;
 
-    @include mixins.media-breakpoint-down(display-sizes.$md) {
-      margin-top: 10px;
-      position: static;
-    }
-
     &_opened {
       display: block;
     }
@@ -132,15 +111,6 @@
   &__login {
     display: flex;
     gap: 20px;
-
-    @include mixins.media-breakpoint-down(display-sizes.$md) {
-      width: 100%;
-      display: none;
-      padding-top: 20px;
-      border-top: 1px solid rgba(colors.$first, 0.1);
-      flex-direction: column;
-      align-items: center;
-    }
   }
 
   &__username {
@@ -150,8 +120,42 @@
     line-height: 17px;
     color: rgba(colors.$first, 0.5);
     text-align: center;
+  }
+}
 
-    @include mixins.media-breakpoint-down(display-sizes.$md) {
+@include mixins.media-breakpoint-down(display-sizes.$md) {
+  .header {
+    &__burger-button {
+      display: flex;
+    }
+
+    &__navigation {
+      width: 100%;
+    }
+
+    &__list {
+      display: none;
+      width: 100%;
+      align-items: center;
+      flex-direction: column;
+      margin: 20px 0;
+    }
+
+    &__sub-navigation-list {
+      margin-top: 10px;
+      position: static;
+    }
+
+    &__login {
+      width: 100%;
+      display: none;
+      padding-top: 20px;
+      border-top: 1px solid rgba(colors.$first, 0.1);
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__username {
       width: 100%;
       border: none;
       padding: 0;

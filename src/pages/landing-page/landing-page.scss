@@ -11,23 +11,11 @@
     max-width: 1170px;
     margin: 0 auto;
     padding-left: 5px;
-
-    @include mixins.media-breakpoint-down(display-sizes.$lg) {
-      padding: 0 20px;
-    }
-
-    @include mixins.media-breakpoint-down(display-sizes.$sm) {
-      padding: 0 10px;
-    }
   }
 
   &__form-row {
     padding-top: 70px;
     display: flex;
-
-    @include mixins.media-breakpoint-down(display-sizes.$lg) {
-      justify-content: center;
-    }
   }
 
   &__form-wrapper {
@@ -39,10 +27,6 @@
     justify-content: end;
     padding-top: 316px;
     padding-bottom: 22px;
-
-    @include mixins.media-breakpoint-down(display-sizes.$lg) {
-      justify-content: center;
-    }
   }
 
   &__text {
@@ -53,13 +37,41 @@
     color: rgba(colors.$first, 0.75);
     margin: 0;
     word-break: break-word;
+  }
+}
 
-    @include mixins.media-breakpoint-down(display-sizes.$lg) {
-      text-align: center;
+@include mixins.media-breakpoint-down(display-sizes.$lg) {
+  .landing-page {
+    &__container {
+      padding: 0 20px;
     }
 
-    @include mixins.media-breakpoint-down(display-sizes.$md) {
+    &__form-row {
+      justify-content: center;
+    }
+
+    &__text-row {
+      justify-content: center;
+    }
+
+    &__text {
+      text-align: center;
+    }
+  }
+}
+
+@include mixins.media-breakpoint-down(display-sizes.$md) {
+  .landing-page {
+    &__text {
       margin-top: 50px;
+    }
+  }
+}
+
+@include mixins.media-breakpoint-down(display-sizes.$sm) {
+  .landing-page {
+    &__container {
+      padding: 0 10px;
     }
   }
 }

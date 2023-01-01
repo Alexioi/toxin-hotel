@@ -52,20 +52,6 @@
     grid-template-areas: 'about nav subscription';
     gap: 40px;
     padding: 102px 0;
-
-    @include mixins.media-breakpoint-down(display-sizes.$lg) {
-      grid-template-columns: 1fr 1fr;
-      grid-template-areas:
-        'about subscription'
-        'nav nav';
-    }
-
-    @include mixins.media-breakpoint-down(display-sizes.$sm) {
-      grid-template-columns: auto;
-      grid-template-areas: 'about';
-      justify-content: center;
-      padding: 121px 0 0;
-    }
   }
 
   &__about {
@@ -75,10 +61,6 @@
   &__logo {
     display: inline-block;
     margin-bottom: 16px;
-
-    @include mixins.media-breakpoint-down(display-sizes.$sm) {
-      margin: 0;
-    }
   }
 
   &__text {
@@ -95,10 +77,6 @@
     color: rgba(colors.$first, 0.75);
     margin: 0;
     word-break: break-word;
-
-    @include mixins.media-breakpoint-down(display-sizes.$sm) {
-      display: none;
-    }
   }
 
   &__nav {
@@ -106,15 +84,6 @@
     grid-area: nav;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
-
-    @include mixins.media-breakpoint-down(display-sizes.$lg) {
-      grid-template-columns: repeat(3, auto);
-      justify-content: space-between;
-    }
-
-    @include mixins.media-breakpoint-down(display-sizes.$sm) {
-      display: none;
-    }
   }
 
   &__list {
@@ -154,10 +123,6 @@
 
   &__subscription {
     grid-area: subscription;
-
-    @include mixins.media-breakpoint-down(display-sizes.$sm) {
-      display: none;
-    }
   }
 
   &__input {
@@ -166,11 +131,6 @@
 
   &__line {
     border-top: 1px solid #f4f4f6;
-
-    @include mixins.media-breakpoint-down(display-sizes.$sm) {
-      border: none;
-      padding-bottom: 120px;
-    }
   }
 
   &__sub {
@@ -178,12 +138,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    @include mixins.media-breakpoint-down(display-sizes.$sm) {
-      justify-content: center;
-      flex-direction: column;
-      gap: 19px;
-    }
   }
 
   &__text-copyright {
@@ -206,6 +160,60 @@
     &-icon {
       width: 22px;
       height: 22px;
+    }
+  }
+}
+
+@include mixins.media-breakpoint-down(display-sizes.$lg) {
+  .footer {
+    &__main {
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        'about subscription'
+        'nav nav';
+    }
+
+    &__nav {
+      grid-template-columns: repeat(3, auto);
+      justify-content: space-between;
+    }
+  }
+}
+
+@include mixins.media-breakpoint-down(display-sizes.$sm) {
+  .footer {
+    &__main {
+      grid-template-columns: auto;
+      grid-template-areas: 'about';
+      justify-content: center;
+      padding: 121px 0 0;
+    }
+
+    &__logo {
+      margin: 0;
+    }
+
+    &__about-text {
+      display: none;
+    }
+
+    &__nav {
+      display: none;
+    }
+
+    &__subscription {
+      display: none;
+    }
+
+    &__line {
+      border: none;
+      padding-bottom: 120px;
+    }
+
+    &__sub {
+      justify-content: center;
+      flex-direction: column;
+      gap: 19px;
     }
   }
 }

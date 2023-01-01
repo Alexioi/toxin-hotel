@@ -13,10 +13,6 @@
 
   &__form {
     display: block;
-
-    @include mixins.media-breakpoint-down(display-sizes.$md) {
-      display: none;
-    }
   }
 
   &__guests-dropdown {
@@ -34,7 +30,7 @@
   }
 
   &__rules-title {
-    margin-top: 30px;
+    margin-top: 29px;
   }
 
   &__rules {
@@ -42,12 +38,12 @@
   }
 
   &__availability-title {
-    margin-top: 32px;
+    margin-top: 31px;
   }
 
   &__availability {
     margin-top: 12px;
-    width: 260px;
+    margin-right: 6px;
   }
 
   &__rooms-dropdown {
@@ -56,15 +52,23 @@
 
   &__dropdown-list {
     margin-top: 30px;
-    width: 250px;
+    margin-right: 16px;
   }
 
   &__toggle-button {
     margin-top: 30px;
     justify-content: center;
     display: none;
+  }
+}
 
-    @include mixins.media-breakpoint-down(display-sizes.$md) {
+@include mixins.media-breakpoint-down(display-sizes.$md) {
+  .filter {
+    &__form {
+      display: none;
+    }
+
+    &__toggle-button {
       display: flex;
     }
   }

@@ -9,12 +9,6 @@
     margin: 70px 0;
     display: flex;
     justify-content: space-between;
-
-    @include mixins.media-breakpoint-down(display-sizes.$lg) {
-      gap: 20px;
-      flex-direction: column;
-      align-items: center;
-    }
   }
 
   &__content-column {
@@ -24,11 +18,6 @@
   &__room-statistic {
     display: flex;
     gap: 80px;
-
-    @include mixins.media-breakpoint-down(display-sizes.$sm) {
-      gap: 20px;
-      flex-direction: column;
-    }
   }
 
   &__icon-text-list {
@@ -48,11 +37,6 @@
     margin-top: 16px;
     display: flex;
     justify-content: space-between;
-
-    @include mixins.media-breakpoint-down(display-sizes.$sm) {
-      gap: 10px;
-      flex-direction: column;
-    }
   }
 
   &__text {
@@ -74,11 +58,6 @@
     display: flex;
     margin-top: 31px;
     gap: 101px;
-
-    @include mixins.media-breakpoint-down(display-sizes.$lg) {
-      gap: 20px;
-      flex-direction: column;
-    }
   }
 
   &__bullet-list {
@@ -86,18 +65,10 @@
     flex-direction: column;
     gap: 20px;
     flex-basis: 260px;
-
-    @include mixins.media-breakpoint-down(display-sizes.$lg) {
-      flex-basis: auto;
-    }
   }
 
   &__rules-title {
     padding-left: 20px;
-
-    @include mixins.media-breakpoint-down(display-sizes.$lg) {
-      padding: 0;
-    }
   }
 
   &__reset {
@@ -105,14 +76,51 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-
-    @include mixins.media-breakpoint-down(display-sizes.$lg) {
-      flex-basis: auto;
-    }
   }
 
   &__room-booking {
     max-width: 380px;
     width: 100%;
+  }
+}
+
+@include mixins.media-breakpoint-down(display-sizes.$lg) {
+  .room-details {
+    &__content-block {
+      gap: 20px;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__rules {
+      gap: 20px;
+      flex-direction: column;
+    }
+
+    &__bullet-list {
+      flex-basis: auto;
+    }
+
+    &__rules-title {
+      padding: 0;
+    }
+
+    &__reset {
+      flex-basis: auto;
+    }
+  }
+}
+
+@include mixins.media-breakpoint-down(display-sizes.$sm) {
+  .room-details {
+    &__room-statistic {
+      gap: 20px;
+      flex-direction: column;
+    }
+
+    &__comments-title {
+      gap: 10px;
+      flex-direction: column;
+    }
   }
 }

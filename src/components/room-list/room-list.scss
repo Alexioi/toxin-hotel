@@ -12,12 +12,20 @@
   &__item {
     list-style-type: none;
     width: calc(100% / 3 - 8px);
+  }
+}
 
-    @include mixins.media-breakpoint-down(display-sizes.$lg) {
+@include mixins.media-breakpoint-down(display-sizes.$lg) {
+  .room-list {
+    &__item {
       width: calc(100% / 2 - 6px);
     }
+  }
+}
 
-    @include mixins.media-breakpoint-down(display-sizes.$xs) {
+@include mixins.media-breakpoint-down(display-sizes.$xs) {
+  .room-list {
+    &__item {
       width: 100%;
     }
   }

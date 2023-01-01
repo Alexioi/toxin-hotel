@@ -9,22 +9,10 @@
   &__content {
     display: flex;
     justify-content: space-between;
-
-    @include mixins.media-breakpoint-down(display-sizes.$lg) {
-      gap: 20px;
-    }
-
-    @include mixins.media-breakpoint-down(display-sizes.$md) {
-      flex-direction: column;
-    }
   }
 
   &__filter-wrapper {
     flex-basis: 266px;
-
-    @include mixins.media-breakpoint-down(display-sizes.$md) {
-      flex-basis: auto;
-    }
   }
 
   &__column {
@@ -40,11 +28,31 @@
     padding-right: 14px;
     display: flex;
     justify-content: center;
+  }
+}
 
-    @include mixins.media-breakpoint-down(display-sizes.$lg) {
+@include mixins.media-breakpoint-down(display-sizes.$lg) {
+  .search-room {
+    &__content {
+      gap: 20px;
+    }
+
+    &__pagination {
       padding-left: 0;
       display: flex;
       justify-content: center;
+    }
+  }
+}
+
+@include mixins.media-breakpoint-down(display-sizes.$md) {
+  .search-room {
+    &__content {
+      flex-direction: column;
+    }
+
+    &__filter-wrapper {
+      flex-basis: auto;
     }
   }
 }

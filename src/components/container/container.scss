@@ -4,12 +4,16 @@
 .container {
   max-width: 1160px;
   margin: 0 auto;
+}
 
-  @include mixins.media-breakpoint-down(display-sizes.$lg) {
+@include mixins.media-breakpoint-down(display-sizes.$lg) {
+  .container {
     padding: 0 20px;
   }
+}
 
-  @include mixins.media-breakpoint-down(display-sizes.$sm) {
+@include mixins.media-breakpoint-down(display-sizes.$sm) {
+  .container {
     padding: 0 10px;
   }
 }
