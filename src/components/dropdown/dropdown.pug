@@ -9,10 +9,12 @@ mixin dropdown(options)
       titleText = '',
       items = [], 
       isOpened = false, 
-      type = '',
+      variants,
+      hasButtons,
+      placeholder
     } = options || {}
 
   .dropdown
-    +dropdown-menu({items, isOpened, type})
+    +dropdown-menu({items, isOpened, variants, hasButtons, placeholder})
       +typography({tag: 'h4', text: titleText, hint})
       +text-field({isReadonly: true, type: 'text', isDropdown: true, name: type})

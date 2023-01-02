@@ -7,25 +7,27 @@ mixin dropdown-menu(options)
         {name:'', counter: 0}, 
       ],
       isOpened = false,
-      type = '',
+      variants = [['']],
+      hasButtons = false,
+      placeholder = '',
+      groups = [[0,1,2]]
     } = options || {}
 
-    let hasButtons = false
-
-    switch (type) {
-      case 'rooms':
-        hasButtons = false
-        break;
-      case 'guests':
-        hasButtons = true
-    } 
+    const variantsString = variants.join('-')
+    const groupsString = groups.join('-')
 
     const {buttons} = require('@components/dropdown-menu/data.json')
 
     const openedClass = isOpened && 'dropdown-menu_opened'
     const classes = [openedClass]
 
-  .dropdown-menu.js-dropdown-menu(class=classes, data-type=type)
+  .dropdown-menu.js-dropdown-menu(
+    class=classes,
+    data-has-buttons=hasButtons,
+    data-placeholder=placeholder,
+    data-variants=variantsString,
+    data-groups=groupsString
+  )
     .dropdown-menu__input.js-dropdown-menu__input
       block
     .dropdown-menu__menu.js-dropdown-menu__menu

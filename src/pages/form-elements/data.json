@@ -111,9 +111,14 @@
         { "name": "дети", "counter": 0 },
         { "name": "младенцы", "counter": 0 }
       ],
+      "variants": [
+        ["гость", "гостя", "гостей"],
+        ["младенец", "младенца", "младенцев"]
+      ],
       "isOpened": false,
-      "type": "guests",
-      "titleText": "dropdown"
+      "placeholder": "Сколько гостей",
+      "titleText": "dropdown",
+      "hasButtons": true
     },
     "roomsClose": {
       "items": [
@@ -121,10 +126,16 @@
         { "name": "кровати", "counter": 2 },
         { "name": "ванные комнаты", "counter": 0 }
       ],
+      "variants": [
+        ["спальня", "спальни", "спален"],
+        ["кровать", "кровати", "кроватей"],
+        ["ванная комната", "ванные комнаты", "ванных комнат"]
+      ],
       "isOpened": false,
-      "type": "rooms",
+      "placeholder": "Сколько комнат",
       "hint": "default",
-      "titleText": "dropdown"
+      "titleText": "dropdown",
+      "hasButtons": false
     },
     "rooms": {
       "items": [
@@ -132,10 +143,16 @@
         { "name": "кровати", "counter": 2 },
         { "name": "ванные комнаты", "counter": 0 }
       ],
+      "variants": [
+        ["спальня", "спальни", "спален"],
+        ["кровать", "кровати", "кроватей"],
+        ["ванная комната", "ванные комнаты", "ванных комнат"]
+      ],
       "isOpened": true,
-      "type": "rooms",
+      "placeholder": "Сколько комнат",
       "hint": "expanded",
-      "titleText": "dropdown"
+      "titleText": "dropdown",
+      "hasButtons": false
     },
     "guestsEmpty": {
       "items": [
@@ -143,9 +160,14 @@
         { "name": "дети", "counter": 0 },
         { "name": "младенцы", "counter": 0 }
       ],
+      "variants": [
+        ["гость", "гостя", "гостей"],
+        ["младенец", "младенца", "младенцев"]
+      ],
       "isOpened": true,
-      "type": "guests",
-      "titleText": "dropdown"
+      "placeholder": "Сколько гостей",
+      "titleText": "dropdown",
+      "hasButtons": true
     },
     "guests": {
       "items": [
@@ -153,9 +175,14 @@
         { "name": "дети", "counter": 1 },
         { "name": "младенцы", "counter": 0 }
       ],
+      "variants": [
+        ["гость", "гостя", "гостей"],
+        ["младенец", "младенца", "младенцев"]
+      ],
       "isOpened": true,
-      "type": "guests",
-      "titleText": "dropdown"
+      "placeholder": "Сколько гостей",
+      "titleText": "dropdown",
+      "hasButtons": true
     }
   },
   "toggles": {

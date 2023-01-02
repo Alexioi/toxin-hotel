@@ -1,6 +1,43 @@
 import cssSelectors from './constants';
 
 import helpers from '../../helpers';
+import Counter from './Counter';
+
+const getPlural = (forms, count) => {
+  const c10 = count % 10;
+  const c100 = count % 100;
+  const isUnit = c10 === 1 && c100 !== 11;
+  const isPair = c10 >= 2 && c10 <= 4 && (c100 < 10 || c100 >= 20);
+
+  let idx;
+
+  if (isUnit) {
+    idx = 0;
+  } else if (isPair) {
+    idx = 1;
+  } else {
+    idx = 2;
+  }
+  return forms[idx] || '';
+};
+
+const calculateValues = (variants, counters, emptyString) => {
+  const value = [];
+
+  variants.forEach((variant, index) => {
+    const count = counters[index];
+
+    if (count > 0) {
+      value.push(`${count} ${getPlural(variant, count)}`);
+    }
+  });
+
+  if (value.length === 0) {
+    value.push(emptyString);
+  }
+
+  return value;
+};
 
 class DropdownMenu {
   constructor(node) {
@@ -16,8 +53,8 @@ class DropdownMenu {
     this._attachEventHandlers();
     this._updateInput();
     this._toggleInputFocus();
-    this._toggleCounterButtons();
     this._toggleClearButton();
+    this._initCounters();
   }
 
   _findNodes() {
@@ -30,8 +67,22 @@ class DropdownMenu {
     this.menu = this.node.querySelector(cssSelectors.menu);
   }
 
+  _initCounters() {
+    this.countersC = this.counters.map((counter, index) => {
+      const { node, items } = this;
+
+      return new Counter(node, items[index], counter, index);
+    });
+  }
+
   _getType() {
-    this.type = this.node.dataset.type;
+    this.variants = this.node.dataset.variants
+      .split('-')
+      .map((item) => item.split(','));
+    this.groups = this.node.dataset.groups
+      .split('-')
+      .map((item) => item.split(','));
+    this.placeholder = this.node.dataset.placeholder;
   }
 
   _getCounters() {
@@ -59,20 +110,25 @@ class DropdownMenu {
       );
     }
 
-    this.items.forEach((item, index) => {
-      const counterButtons = item.querySelectorAll(cssSelectors.counterButtons);
-      const counter = item.querySelector(cssSelectors.counter);
+    //////////////////////////
+    this.node.addEventListener(
+      'counterUpdated',
+      this._updateCounters.bind(this),
+    );
+    ////////////////////////////
 
-      counterButtons[0].addEventListener(
-        'click',
-        this._decreaseCounterValue.bind(this, index, counter),
-      );
-      counterButtons[1].addEventListener(
-        'click',
-        this._increaseCounterValue.bind(this, index, counter),
-      );
-    });
     document.addEventListener('click', this._onClickDocument.bind(this));
+  }
+
+  _updateCounters(event) {
+    const { index, counter } = event.detail;
+    this.counters[index] = counter;
+
+    this._toggleClearButton();
+
+    if (!this.applyButton) {
+      this._updateInput();
+    }
   }
 
   _onClickDocument(event) {
@@ -86,39 +142,6 @@ class DropdownMenu {
     this.node.classList.remove('dropdown-menu_opened');
 
     this._toggleInputFocus();
-  }
-
-  _increaseCounterValue(index, counterNode) {
-    this.counters[index] += 1;
-
-    const counter = counterNode;
-
-    counter.innerHTML = this.counters[index];
-
-    if (!this.applyButton) {
-      this._updateInput();
-    }
-
-    this._toggleCounterButtons();
-    this._toggleClearButton();
-  }
-
-  _decreaseCounterValue(index, counterNode) {
-    const currentCounter = this.counters[index];
-    const counter = counterNode;
-
-    if (currentCounter !== 0) {
-      this.counters[index] -= 1;
-
-      counter.innerHTML = this.counters[index];
-    }
-
-    if (!this.applyButton) {
-      this._updateInput();
-    }
-
-    this._toggleCounterButtons();
-    this._toggleClearButton();
   }
 
   _onApplyButton() {
@@ -138,15 +161,9 @@ class DropdownMenu {
   }
 
   _resetCounters() {
-    [...this.items].forEach((item) => {
-      const counter = item;
-      counter.querySelector(cssSelectors.counter).innerHTML = 0;
+    this.countersC.forEach((counter) => {
+      counter.resetCounter();
     });
-
-    this.counters = [0, 0, 0];
-
-    this._toggleCounterButtons();
-    this._toggleClearButton();
   }
 
   _updateInput() {
@@ -156,90 +173,19 @@ class DropdownMenu {
   _calculateValue() {
     let value = [];
 
-    if (this.type === 'rooms') {
-      const items = [
-        { variants: ['спальня', 'спальни', 'спален'], count: this.counters[0] },
-        {
-          variants: ['кровать', 'кровати', 'кроватей'],
-          count: this.counters[1],
-        },
-        {
-          variants: ['ванная комната', 'ванные комнаты', 'ванных комнат'],
-          count: this.counters[2],
-        },
-      ];
+    const counters = this.groups.map((group) => {
+      let sum = 0;
 
-      value = this._calculateValueArray(items, 'Сколько комнат');
-    }
+      group.forEach((index) => {
+        sum += this.counters[index];
+      });
 
-    if (this.type === 'guests') {
-      const items = [
-        {
-          variants: ['гость', 'гостя', 'гостей'],
-          count: Number(this.counters[0]) + Number(this.counters[1]),
-        },
-        {
-          variants: ['младенец', 'младенца', 'младенцев'],
-          count: this.counters[2],
-        },
-      ];
+      return sum;
+    });
 
-      value = this._calculateValueArray(items, 'Сколько гостей');
-    }
+    value = calculateValues(this.variants, counters, this.placeholder);
 
     return value.join(', ');
-  }
-
-  _calculateValueArray(items, emptyString) {
-    const value = [];
-
-    items.forEach(({ variants, count }) => {
-      if (count > 0) {
-        value.push(`${count} ${this.constructor._getPlural(variants, count)}`);
-      }
-    });
-
-    if (value.length === 0) {
-      value.push(emptyString);
-    }
-
-    return value;
-  }
-
-  static _getPlural(forms, count) {
-    const c10 = count % 10;
-    const c100 = count % 100;
-    const isUnit = c10 === 1 && c100 !== 11;
-    const isPair = c10 >= 2 && c10 <= 4 && (c100 < 10 || c100 >= 20);
-
-    let idx;
-
-    if (isUnit) {
-      idx = 0;
-    } else if (isPair) {
-      idx = 1;
-    } else {
-      idx = 2;
-    }
-    return forms[idx] || '';
-  }
-
-  _toggleCounterButtons() {
-    this.counters.forEach((counter, index) => {
-      const counterButton = this.items[index].querySelector(
-        '.js-dropdown-menu__counter-button',
-      );
-
-      if (counter === 0) {
-        counterButton.classList.add('dropdown-menu__counter-button_disabled');
-        counterButton.setAttribute('disabled', 'disabled');
-      } else {
-        counterButton.classList.remove(
-          'dropdown-menu__counter-button_disabled',
-        );
-        counterButton.removeAttribute('disabled');
-      }
-    });
   }
 
   _toggleClearButton() {
