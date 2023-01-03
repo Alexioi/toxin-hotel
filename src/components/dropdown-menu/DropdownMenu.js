@@ -3,21 +3,25 @@ import cssSelectors from './constants';
 import helpers from '../../helpers';
 import Counter from './Counter';
 
+const getIndex = (isUnit, isPair) => {
+  if (isUnit) {
+    return 0;
+  }
+
+  if (isPair) {
+    return 1;
+  }
+
+  return 2;
+};
+
 const getPlural = (forms, count) => {
   const c10 = count % 10;
   const c100 = count % 100;
   const isUnit = c10 === 1 && c100 !== 11;
   const isPair = c10 >= 2 && c10 <= 4 && (c100 < 10 || c100 >= 20);
+  const idx = getIndex(isUnit, isPair);
 
-  let idx;
-
-  if (isUnit) {
-    idx = 0;
-  } else if (isPair) {
-    idx = 1;
-  } else {
-    idx = 2;
-  }
   return forms[idx] || '';
 };
 
@@ -39,6 +43,38 @@ const calculateValues = (variants, counters, emptyString) => {
   return value;
 };
 
+const calculateValue = (groups, countersValue, variants, placeholder) => {
+  const counters = groups.map((group) => {
+    const initialValue = 0;
+
+    return group.reduce(
+      (sum, index) => sum + countersValue[index],
+      initialValue,
+    );
+  });
+
+  const value = calculateValues(variants, counters, placeholder);
+
+  return value.join(', ');
+};
+
+const toggleClearButton = (clearButton, countersValue) => {
+  if (clearButton === null) {
+    return;
+  }
+
+  const countersSum = countersValue.reduce(
+    (partialSum, counter) => partialSum + counter,
+    0,
+  );
+
+  if (countersSum === 0) {
+    clearButton.classList.add('dropdown-menu__clear-button_hidden');
+  } else {
+    clearButton.classList.remove('dropdown-menu__clear-button_hidden');
+  }
+};
+
 class DropdownMenu {
   constructor(node) {
     this.node = node;
@@ -48,12 +84,11 @@ class DropdownMenu {
 
   _init() {
     this._findNodes();
-    this._getType();
-    this._getCounters();
+    this._initDates();
     this._attachEventHandlers();
     this._updateInput();
     this._toggleInputFocus();
-    this._toggleClearButton();
+    toggleClearButton(this.clearButton, this.countersValue);
     this._initCounters();
   }
 
@@ -68,14 +103,14 @@ class DropdownMenu {
   }
 
   _initCounters() {
-    this.countersC = this.counters.map((counter, index) => {
+    this.counters = this.countersValue.map((counter, index) => {
       const { node, items } = this;
 
       return new Counter(node, items[index], counter, index);
     });
   }
 
-  _getType() {
+  _initDates() {
     this.variants = this.node.dataset.variants
       .split('-')
       .map((item) => item.split(','));
@@ -83,10 +118,7 @@ class DropdownMenu {
       .split('-')
       .map((item) => item.split(','));
     this.placeholder = this.node.dataset.placeholder;
-  }
-
-  _getCounters() {
-    this.counters = [...this.items].map((item) => {
+    this.countersValue = [...this.items].map((item) => {
       const counter = item.querySelector(cssSelectors.counter).innerHTML;
 
       return Number(counter);
@@ -96,37 +128,35 @@ class DropdownMenu {
   _attachEventHandlers() {
     this.textField.addEventListener('click', this._toggleMenu.bind(this));
 
-    if (this.clearButton) {
+    if (this.clearButton !== null) {
       this.clearButton.addEventListener(
         'click',
         this._resetCounters.bind(this),
       );
     }
 
-    if (this.applyButton) {
+    if (this.applyButton !== null) {
       this.applyButton.addEventListener(
         'click',
         this._onApplyButton.bind(this),
       );
     }
 
-    //////////////////////////
     this.node.addEventListener(
       'counterUpdated',
       this._updateCounters.bind(this),
     );
-    ////////////////////////////
 
     document.addEventListener('click', this._onClickDocument.bind(this));
   }
 
   _updateCounters(event) {
     const { index, counter } = event.detail;
-    this.counters[index] = counter;
+    this.countersValue[index] = counter;
 
-    this._toggleClearButton();
+    toggleClearButton(this.clearButton, this.countersValue);
 
-    if (!this.applyButton) {
+    if (this.applyButton === null) {
       this._updateInput();
     }
   }
@@ -138,15 +168,15 @@ class DropdownMenu {
     }
   }
 
+  _onApplyButton() {
+    this._updateInput();
+    this._toggleMenu();
+  }
+
   _closeMenu() {
     this.node.classList.remove('dropdown-menu_opened');
 
     this._toggleInputFocus();
-  }
-
-  _onApplyButton() {
-    this._updateInput();
-    this._toggleMenu();
   }
 
   _toggleMenu() {
@@ -161,47 +191,20 @@ class DropdownMenu {
   }
 
   _resetCounters() {
-    this.countersC.forEach((counter) => {
+    this.counters.forEach((counter) => {
       counter.resetCounter();
     });
   }
 
   _updateInput() {
-    this.input.value = this._calculateValue();
-  }
+    const { groups, countersValue, variants, placeholder } = this;
 
-  _calculateValue() {
-    let value = [];
-
-    const counters = this.groups.map((group) => {
-      let sum = 0;
-
-      group.forEach((index) => {
-        sum += this.counters[index];
-      });
-
-      return sum;
-    });
-
-    value = calculateValues(this.variants, counters, this.placeholder);
-
-    return value.join(', ');
-  }
-
-  _toggleClearButton() {
-    if (!this.clearButton) {
-      return;
-    }
-
-    const countersSum = this.counters.reduce(
-      (partialSum, counter) => partialSum + counter,
-      0,
+    this.input.value = calculateValue(
+      groups,
+      countersValue,
+      variants,
+      placeholder,
     );
-    if (countersSum === 0) {
-      this.clearButton.style.display = 'none';
-    } else {
-      this.clearButton.style.display = '';
-    }
   }
 }
 
