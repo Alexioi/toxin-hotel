@@ -6,6 +6,7 @@ const pugLoader = require('./webpack/pugLoader');
 const fileLoader = require('./webpack/fileLoader');
 const fontLoader = require('./webpack/fontLoader');
 const styleLoader = require('./webpack/styleLoader');
+const tsLoader = require('./webpack/tsLoader');
 const devServer = require('./webpack/devServer');
 const webpackProvidePlugin = require('./webpack/webpackProvidePlugin');
 const miniCssExtractPlugin = require('./webpack/miniCssExtractPlugin');
@@ -35,6 +36,7 @@ const commonConfig = merge([
   },
   {
     resolve: {
+      extensions: ['.tsx', '.ts', '.js'],
       alias: {
         '@components': path.resolve(__dirname, 'src/components/'),
         '@images': path.resolve(__dirname, 'src/images/'),
@@ -47,6 +49,7 @@ const commonConfig = merge([
   },
   fileLoader(),
   styleLoader(),
+  tsLoader(),
   fontLoader(),
   pugLoader(),
   webpackProvidePlugin(),

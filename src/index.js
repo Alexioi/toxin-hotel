@@ -6,6 +6,6 @@ const requireAll = (requireContext) => {
   return allContext;
 };
 
-requireAll(require.context('@components', true, /(index.js|.scss)$/));
+requireAll(require.context('@components', true, /(.ts|.js|.scss)$/));
 requireAll(require.context('./pages', true, /\.(js|scss)$/));
 requireAll(require.context('./templates', true, /\.(js|scss)$/));
