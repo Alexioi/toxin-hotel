@@ -9,7 +9,7 @@ mixin text-field(options)
       maskedType,
       inputmode,
       isHovered = false, 
-      isMasked = false, 
+      //- isMasked = false, 
       type = 'text', 
       isSubscription = false,
       isDropdown = false,
@@ -17,9 +17,9 @@ mixin text-field(options)
     } = options || {}
 
     const hoverClass = isHovered && 'text-field_hovered'
-    const maskClass = isMasked && 'text-field_masked js-text-field_masked'
+    //- const maskClass = isMasked && 'text-field_masked js-text-field_masked'
     const textDarkClass = isDropdown && 'text-field_text_dark'
-    const classes = [hoverClass, maskClass, textDarkClass]
+    const classes = [hoverClass, textDarkClass]
 
     const inputAttributes = {
       type,
@@ -38,7 +38,7 @@ mixin text-field(options)
     }
 
   .text-field(class=classes)
-    input.text-field__input&attributes(inputAttributes)
+    input.text-field__input.js-text-field__input&attributes(inputAttributes)
     if isSubscription
       button.text-field__subscription-button(type="submit")
         -
