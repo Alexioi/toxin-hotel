@@ -30,16 +30,21 @@ class Model {
 
     const [from, to] = this.data.dates;
 
-    // if (typeof to !== 'undefined' && from.year.length === 4) {
-    //   const newTo = this._calculateDay(to, numberData);
+    if (typeof to !== 'undefined') {
+      if (from.year.length !== 4) {
+        const newFrom = this._calculateDay(from, numberData);
 
-    //   this.data.dates = [from, newTo];
-    //   return;
-    // }
+        this.data.dates = [newFrom, to];
+      } else {
+        const newTo = this._calculateDay(to, numberData);
 
-    const newFrom = this._calculateDay(from, numberData);
+        this.data.dates = [from, newTo];
+      }
+    } else {
+      const newFrom = this._calculateDay(from, numberData);
 
-    this.data.dates = [newFrom];
+      this.data.dates = [newFrom];
+    }
 
     this.eventEmitter.emit({
       eventName: 'UpdatedDates',
@@ -184,9 +189,9 @@ class Model {
     }
 
     if (year.length === 3) {
-      if (Model._isValidDate(date, key)) {
-        return { day, month, year: `${year}${key}` };
-      }
+      //   if (Model._isValidDate(date, key)) {
+      return { day, month, year: `${year}${key}` };
+      //   }
 
       return date;
     }
