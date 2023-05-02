@@ -90,7 +90,7 @@ class View {
 
   _onBlur() {
     this.isFocus = false;
-    console.log('blur', this.isFocus);
+
     this.eventEmitter.emit({
       eventName: 'TouchInput',
       eventArguments: null,
@@ -125,8 +125,6 @@ class View {
     event.preventDefault();
 
     const data = event.data;
-
-    console.log(event.inputType);
 
     if (event.inputType === 'deleteContentBackward') {
       this.eventEmitter.emit({

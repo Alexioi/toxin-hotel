@@ -1,3 +1,0 @@
-// static _isFullDate(dates) {
-//   return dates.reduce((sum, current) => current.length === 10 && sum, true);
-// }

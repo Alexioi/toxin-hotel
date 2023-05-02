@@ -1,6 +1,6 @@
 {
   "textFields": {
-    "single": { "placeholder": "ДД.ММ.ГГГГ" },
-    "double": { "placeholder": "ДД.ММ.ГГГГ - ДД.ММ.ГГГГ" }
+    "single": { "placeholder": "ДД.ММ.ГГГГ", "manageable": "true" },
+    "double": { "placeholder": "ДД.ММ.ГГГГ - ДД.ММ.ГГГГ", "manageable": "true" }
   }
 }

@@ -38,7 +38,9 @@
     "masked": {
       "title": "masked text field",
       "isMasked": true,
-      "placeholder": "ДД.ММ.ГГГГ"
+      "placeholder": "ДД.ММ.ГГГГ",
+      "manageable": "true",
+      "maskedType": "single"
     },
     "email": {
       "title": "subscription text field",

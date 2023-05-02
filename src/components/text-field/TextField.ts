@@ -13,25 +13,28 @@ interface HTMLInputElementWithPlugin extends HTMLInputElement {
 class TextField {
   private node: HTMLInputElementWithPlugin;
 
-  private eventEmitter: EventEmitter;
+  private eventEmitter!: EventEmitter;
 
-  private presenter: Presenter;
+  private model!: Model;
 
-  private model: Model;
-
-  private view: View;
+  private view!: View;
 
   constructor(node: HTMLInputElement) {
     this.node = node;
-    this.node.plugin = this;
 
-    this.eventEmitter = new EventEmitter();
+    const manageable = <string>node.dataset.manageable;
 
-    const type = <maskedType>node.dataset.maskedType;
+    if (manageable === 'true') {
+      this.node.plugin = this;
 
-    this.model = new Model(this.eventEmitter, type);
-    this.view = new View(node, this.eventEmitter);
-    this.presenter = new Presenter(this.view, this.model, this.eventEmitter);
+      this.eventEmitter = new EventEmitter();
+
+      const type = <maskedType>node.dataset.maskedType;
+
+      this.model = new Model(this.eventEmitter, type);
+      this.view = new View(node, this.eventEmitter);
+      new Presenter(this.view, this.model, this.eventEmitter);
+    }
   }
 }
 
