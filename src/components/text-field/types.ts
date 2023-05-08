@@ -1,4 +1,4 @@
-type maskedType = 'none' | 'single' | 'double';
+type maskedType = 'text' | 'date' | 'dates';
 
 type date = {
   day: string;
@@ -8,4 +8,9 @@ type date = {
 
 type dates = date[];
 
-export { date, maskedType, dates };
+type data = {
+  dates: dates;
+  text: string;
+};
+
+export { date, maskedType, dates, data };

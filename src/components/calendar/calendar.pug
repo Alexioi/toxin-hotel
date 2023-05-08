@@ -19,11 +19,11 @@ mixin calendar(options)
       if hasTwoInputs
         .calendar__input
           +typography({text: textFrom, tag: 'h4'})
-          +text-field(Object.assign({name: 'date-from', isMasked: true, maskedType:'single', isDropdown: true, inputmode: 'numeric'}, textFields.single))
+          +text-field(Object.assign({name: 'date-from', isMasked: true, maskedType:'date', isDropdown: true, inputmode: 'numeric'}, textFields.single))
         .calendar__input
           +typography({text: textTo, tag: 'h4'})
-          +text-field(Object.assign({name: 'date-to', isMasked: true, maskedType:'single', isDropdown: true, inputmode: 'numeric'}, textFields.single))
+          +text-field(Object.assign({name: 'date-to', isMasked: true, maskedType:'date', isDropdown: true, inputmode: 'numeric'}, textFields.single))
       else
         .calendar__input
           +typography({text: textFrom, tag: 'h4'})
-          +text-field(Object.assign({name: 'date', isMasked: true, maskedType:'double', isDropdown: true, inputmode: 'numeric'}, textFields.double))
+          +text-field(Object.assign({name: 'date', isMasked: true, maskedType:'dates', isDropdown: true, inputmode: 'numeric'}, textFields.double))

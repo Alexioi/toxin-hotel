@@ -22,19 +22,18 @@ class TextField {
   constructor(node: HTMLInputElement) {
     this.node = node;
 
-    const manageable = <string>node.dataset.manageable;
+    // const content = String(node.dataset.content);
 
-    if (manageable === 'true') {
-      this.node.plugin = this;
+    this.node.plugin = this;
 
-      this.eventEmitter = new EventEmitter();
+    this.eventEmitter = new EventEmitter();
 
-      const type = <maskedType>node.dataset.maskedType;
+    const type = <maskedType>node.dataset.maskedType;
+    // console.log(type);
 
-      this.model = new Model(this.eventEmitter, type);
-      this.view = new View(node, this.eventEmitter);
-      new Presenter(this.view, this.model, this.eventEmitter);
-    }
+    this.model = new Model(this.eventEmitter, type);
+    this.view = new View(node, this.eventEmitter, type);
+    new Presenter(this.view, this.model, this.eventEmitter);
   }
 }
 

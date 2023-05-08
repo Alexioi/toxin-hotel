@@ -6,15 +6,40 @@ import { calculateDay } from './methods';
 
 type data = {
   dates: dates;
+  text: string;
+};
+
+const removeLastSymbol = (date: date): date => {
+  const { day, month, year } = date;
+
+  if (year.length > 0) {
+    const newYear = year.slice(0, -1);
+
+    return { day, month, year: newYear };
+  }
+
+  if (month.length > 0) {
+    const newMonth = month.slice(0, -1);
+
+    return { day, month: newMonth, year };
+  }
+
+  const newDay = day.slice(0, -1);
+
+  return { day: newDay, month, year };
 };
 
 class Model {
   private eventEmitter: EventEmitter;
 
-  private data: data = { dates: [] };
+  private data: data = { dates: [], text: '' };
+
+  private type: maskedType;
 
   constructor(eventEmitter: EventEmitter, type: maskedType) {
     this.eventEmitter = eventEmitter;
+
+    this.type = type;
 
     this.init(type);
   }
@@ -23,16 +48,28 @@ class Model {
     if (data === null) {
       this.eventEmitter.emit({
         eventName: 'UpdatedDates',
-        eventArguments: { dates: this.data.dates },
+        eventArguments: { data: this.data },
       });
       return;
     }
 
+    if (this.type === 'text') {
+      this.data.text = this.data.text + data;
+    }
+
     const numberData = Number(data);
 
-    const [from, to] = this.data.dates;
+    if (this.type === 'date') {
+      const [date] = this.data.dates;
 
-    if (typeof to !== 'undefined') {
+      const newFrom = calculateDay(date, numberData);
+
+      this.data.dates = [newFrom];
+    }
+
+    if (this.type === 'dates') {
+      const [from, to] = this.data.dates;
+
       if (from.year.length !== 4) {
         const newFrom = calculateDay(from, numberData);
 
@@ -42,69 +79,57 @@ class Model {
 
         this.data.dates = [from, newTo];
       }
-    } else {
-      const newFrom = calculateDay(from, numberData);
-
-      this.data.dates = [newFrom];
     }
 
     this.eventEmitter.emit({
       eventName: 'UpdatedDates',
-      eventArguments: { dates: this.data.dates },
+      eventArguments: { data: this.data },
     });
   }
 
   public removeDate() {
-    const [from, to] = this.data.dates;
+    if (this.type === 'text') {
+      this.data.text = this.data.text.slice(0, -1);
+    }
 
-    if (this.data.dates.length === 2) {
+    if (this.type === 'date') {
+      const [date] = this.data.dates;
+
+      const newDate = removeLastSymbol(date);
+
+      this.data.dates = [newDate];
+    }
+
+    if (this.type === 'dates') {
+      const [from, to] = this.data.dates;
+
       if (to.day.length !== 0) {
-        const newTo = this.removeLastSymbolInDate(to);
+        const newTo = removeLastSymbol(to);
 
         this.data.dates = [from, newTo];
       } else {
-        const newFrom = this.removeLastSymbolInDate(from);
+        const newFrom = removeLastSymbol(from);
 
         this.data.dates = [newFrom, to];
       }
-    } else {
-      const newFrom = this.removeLastSymbolInDate(from);
-
-      this.data.dates = [newFrom];
     }
 
     this.eventEmitter.emit({
       eventName: 'UpdatedDates',
-      eventArguments: { dates: this.data.dates },
+      eventArguments: { data: this.data },
     });
   }
 
-  private removeLastSymbolInDate(date: date): date {
-    const { day, month, year } = date;
-
-    if (year.length > 0) {
-      const newYear = year.slice(0, -1);
-
-      return { day, month, year: newYear };
-    }
-
-    if (month.length > 0) {
-      const newMonth = month.slice(0, -1);
-
-      return { day, month: newMonth, year };
-    }
-
-    const newDay = day.slice(0, -1);
-
-    return { day: newDay, month, year };
-  }
-
   private init(type: maskedType) {
-    if (type === 'single') {
+    if (type === 'text') {
+      this.data.text = '';
+    }
+
+    if (type === 'date') {
       this.data.dates.push({ day: '', month: '', year: '' });
     }
 
-    if (type === 'double') {
+    if (type === 'dates') {
       this.data.dates.push({ day: '', month: '', year: '' });
       this.data.dates.push({ day: '', month: '', year: '' });
     }

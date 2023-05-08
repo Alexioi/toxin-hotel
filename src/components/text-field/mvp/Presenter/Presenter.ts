@@ -1,5 +1,5 @@
 import EventEmitter from '../../../../helpers/EventEmitter';
-import { dates } from '../../types';
+import { data } from '../../types';
 
 import Model from '../Model/Model';
 import View from '../View/View';
@@ -26,7 +26,6 @@ class Presenter {
     };
 
     const notifyModelDelete = () => {
-      console.log('2');
       this.model.removeDate();
     };
 
@@ -38,9 +37,9 @@ class Presenter {
   }
 
   private attachEventEmittersToView(): void {
-    const notifyViewUpdatedModelOptions = (dates: dates): void => {
-      // @ts-ignore
-      this.view.displayDate(dates);
+    const notifyViewUpdatedModelOptions = ({ data }: { data: data }): void => {
+      console.log(data);
+      this.view.displayDate(data);
     };
 
     this.eventEmitter.subscribe('UpdatedDates', notifyViewUpdatedModelOptions);

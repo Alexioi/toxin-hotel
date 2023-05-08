@@ -40,7 +40,7 @@
       "isMasked": true,
       "placeholder": "ДД.ММ.ГГГГ",
       "manageable": "true",
-      "maskedType": "single"
+      "maskedType": "date"
     },
     "email": {
       "title": "subscription text field",

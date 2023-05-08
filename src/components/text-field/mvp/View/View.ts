@@ -1,6 +1,6 @@
 import EventEmitter from '../../../../helpers/EventEmitter';
 
-import { date, dates } from '../../types';
+import { date, maskedType, data } from '../../types';
 
 class View {
   private node: HTMLInputElement;
@@ -9,38 +9,50 @@ class View {
 
   private isFocus = false;
 
-  constructor(node: HTMLInputElement, eventEmitter: EventEmitter) {
+  private type: maskedType;
+
+  constructor(
+    node: HTMLInputElement,
+    eventEmitter: EventEmitter,
+    type: maskedType,
+  ) {
     this.node = node;
     this.eventEmitter = eventEmitter;
+    this.type = type;
 
     this.init();
   }
 
-  public displayDate({ dates }: { dates: dates }): void {
-    if (dates.length === 2 && !this.isFocus) {
-      const [from, to] = dates;
-      const maskedFrom = this.calculateDayAndMount(from);
-      const maskedTo = this.calculateDayAndMount(to);
+  public displayDate({ dates, text }: data): void {
+    console.log(text);
+    if (this.type === 'text') {
+      this.node.value = text;
+    } else {
+      if (dates.length === 2 && !this.isFocus) {
+        const [from, to] = dates;
+        const maskedFrom = this.calculateDayAndMount(from);
+        const maskedTo = this.calculateDayAndMount(to);
 
-      this.node.value = `${maskedFrom} - ${maskedTo}`;
-      return;
+        this.node.value = `${maskedFrom} - ${maskedTo}`;
+        return;
+      }
+
+      const maskedDates = dates.map((date): string => {
+        const { day, month, year } = date;
+
+        const maskedDay = `${day}__`.slice(0, 2);
+        const maskedMonth = `${month}__`.slice(0, 2);
+        const maskedYear = `${year}____`.slice(0, 4);
+
+        return `${maskedDay}.${maskedMonth}.${maskedYear}`;
+      });
+
+      const maskedDate = maskedDates.join('-');
+
+      this.node.value = maskedDate;
+
+      this.changeCaretPosition(maskedDate);
     }
-
-    const maskedDates = dates.map((date): string => {
-      const { day, month, year } = date;
-
-      const maskedDay = `${day}__`.slice(0, 2);
-      const maskedMonth = `${month}__`.slice(0, 2);
-      const maskedYear = `${year}____`.slice(0, 4);
-
-      return `${maskedDay}.${maskedMonth}.${maskedYear}`;
-    });
-
-    const maskedDate = maskedDates.join('-');
-
-    this.node.value = maskedDate;
-
-    this.changeCaretPosition(maskedDate);
   }
 
   calculateDayAndMount(checkedDate: date) {
