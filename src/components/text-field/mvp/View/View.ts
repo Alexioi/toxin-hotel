@@ -30,6 +30,12 @@ class View {
     } else {
       if (dates.length === 2 && !this.isFocus) {
         const [from, to] = dates;
+
+        if (from.day === '') {
+          this.node.value = '';
+          return;
+        }
+
         const maskedFrom = this.calculateDayAndMount(from);
         const maskedTo = this.calculateDayAndMount(to);
 
@@ -111,18 +117,26 @@ class View {
 
   private onPaste = (event: ClipboardEvent) => {
     event.preventDefault();
+    const inputData = event.clipboardData?.getData('text');
 
-    const inputDate = event.clipboardData?.getData('text');
-    if (typeof inputDate !== 'undefined') {
-      inputDate.split('').forEach((value) => {
-        if (this.isNumber(value)) {
-          this.eventEmitter.emit({
-            eventName: 'InputData',
-            eventArguments: Number(value),
-          });
-        }
+    if (typeof inputData !== 'undefined') {
+      this.eventEmitter.emit({
+        eventName: 'InputData',
+        eventArguments: inputData,
       });
     }
+
+    // const inputDate = event.clipboardData?.getData('text');
+    // if (typeof inputDate !== 'undefined') {
+    //   inputDate.split('').forEach((value) => {
+    //     if (this.isNumber(value)) {
+    //       this.eventEmitter.emit({
+    //         eventName: 'InputData',
+    //         eventArguments: Number(value),
+    //       });
+    //     }
+    //   });
+    // }
   };
 
   private onClick() {
@@ -146,18 +160,20 @@ class View {
       return;
     }
 
-    if (!this.isNumber(data)) {
-      this.eventEmitter.emit({
-        eventName: 'TouchInput',
-        eventArguments: null,
-      });
-      return;
-    }
+    // if (!this.isNumber(data)) {
+    //   this.eventEmitter.emit({
+    //     eventName: 'TouchInput',
+    //     eventArguments: null,
+    //   });
+    //   return;
+    // }
 
-    this.eventEmitter.emit({
-      eventName: 'InputData',
-      eventArguments: Number(data),
-    });
+    if (data !== null) {
+      this.eventEmitter.emit({
+        eventName: 'InputData',
+        eventArguments: data,
+      });
+    }
   };
 
   private isNumber(key: string | null): boolean {

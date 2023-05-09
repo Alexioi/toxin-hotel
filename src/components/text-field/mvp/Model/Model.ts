@@ -44,7 +44,25 @@ class Model {
     this.init(type);
   }
 
-  public updateDates(data?: number) {
+  public updateData(data: string) {
+    if (this.type === 'text') {
+      this.data.text = this.data.text + data;
+      this.eventEmitter.emit({
+        eventName: 'UpdatedDates',
+        eventArguments: { data: this.data },
+      });
+    } else {
+      if (typeof data !== 'undefined') {
+        data.split('').forEach((value) => {
+          if (this.isNumber(value)) {
+            this.updateDates(Number(value));
+          }
+        });
+      }
+    }
+  }
+
+  private updateDates(data?: number) {
     if (data === null) {
       this.eventEmitter.emit({
         eventName: 'UpdatedDates',
@@ -133,6 +151,14 @@ class Model {
       this.data.dates.push({ day: '', month: '', year: '' });
       this.data.dates.push({ day: '', month: '', year: '' });
     }
+  }
+
+  private isNumber(key: string | null): boolean {
+    if (key === null) {
+      return false;
+    }
+
+    return /^\d$/.test(key);
   }
 }
 

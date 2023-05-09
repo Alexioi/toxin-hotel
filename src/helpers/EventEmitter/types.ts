@@ -16,7 +16,7 @@ type EventObject =
     }
   | {
       eventName: 'InputData';
-      eventArguments: number;
+      eventArguments: string;
     }
   | {
       eventName: 'TouchInput';

@@ -1,21 +1,27 @@
 include ../calendar-menu/calendar-menu
 include ../text-field/text-field
 include ../typography/typography
+include ../button/button
 
 mixin calendar(options)
   -
     const {
       textFrom = '',
       textTo = '',
-      hasTwoInputs = false
+      hasTwoInputs = false, 
+      isOpened = false
     } = options || {}
 
     const {
       textFields,
+      buttons
     } = require('@components/calendar/data.json')
 
-  .calendar
-    +calendar-menu
+    const openedClass = isOpened && 'calendar_menu_opened' 
+    const classes = [openedClass]
+
+  .calendar.js-calendar
+    .calendar__inputs.js-calendar__inputs
       if hasTwoInputs
         .calendar__input
           +typography({text: textFrom, tag: 'h4'})
@@ -27,3 +33,10 @@ mixin calendar(options)
         .calendar__input
           +typography({text: textFrom, tag: 'h4'})
           +text-field(Object.assign({name: 'date', isMasked: true, maskedType:'dates', isDropdown: true, inputmode: 'numeric'}, textFields.double))
+    .calendar__menu.js-calendar__menu(class=classes)
+      .calendar__datepicker.js-calendar__datepicker
+      .calendar__buttons
+        .calendar__clear-button.js-calendar__clear-button
+          +button(Object.assign({theme: 'link', type: 'button'}, buttons.clear ))
+        .calendar__apply-button.js-calendar__apply-button
+          +button(Object.assign({theme: 'link', type: 'button'}, buttons.apply ))

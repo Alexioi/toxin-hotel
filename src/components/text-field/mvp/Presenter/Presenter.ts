@@ -20,9 +20,14 @@ class Presenter {
     this.attachEventEmittersToView();
   }
 
+  public setData(data: string) {
+    // @ts-ignore
+    this.model.updateDates(data);
+  }
+
   private attachEventEmittersToModel(): void {
-    const notifyModel = (data: number) => {
-      this.model.updateDates(data);
+    const notifyModel = (data: string) => {
+      this.model.updateData(data);
     };
 
     const notifyModelDelete = () => {
