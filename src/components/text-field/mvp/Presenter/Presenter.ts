@@ -22,7 +22,7 @@ class Presenter {
 
   public setDates(dates: dates) {
     // @ts-ignore
-    this.model.updateData(dates);
+    this.model.setDates(dates);
   }
 
   public getDates() {
@@ -51,7 +51,6 @@ class Presenter {
     }: {
       dates: date[];
     }): void => {
-      console.log(dates);
       this.view.displayDate(dates);
     };
 

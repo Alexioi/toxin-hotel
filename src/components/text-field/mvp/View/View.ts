@@ -24,8 +24,6 @@ class View {
   }
 
   public displayDate(dates: date[]): void {
-    console.log(dates);
-
     if (dates.length === 2 && !this.isFocus) {
       const [from, to] = dates;
 

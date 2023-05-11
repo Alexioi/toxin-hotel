@@ -1,5 +1,5 @@
 const cssSelectors = {
-  calendarMenu: '.js-calendar',
+  calendar: '.js-calendar',
   input: '.js-text-field__input',
   toggleButtons: '.text-field__dropdown-button',
   menu: '.js-calendar__menu',

@@ -40,13 +40,24 @@ class Model {
   }
 
   public getDates() {
+    if (this.dates.length === 1) {
+      const [date] = this.dates;
+
+      return date;
+    }
     return this.dates;
   }
 
+  public setDates(dates: dates) {
+    this.dates = dates;
+    this.eventEmitter.emit({
+      eventName: 'UpdatedDates',
+      eventArguments: { dates: this.dates },
+    });
+  }
+
   public updateData(data: string) {
-    console.log('update', data);
     data.split('').forEach((value) => {
-      console.log('value', value);
       if (this.isNumber(value)) {
         if (this.isNumber(value)) {
           this.updateDates(Number(value));

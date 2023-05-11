@@ -1,6 +1,6 @@
-import CalendarMenu from './CalendarMenu';
+import Calendar from './Calendar';
 import cssSelectors from './constants';
 
-$(cssSelectors.calendarMenu).each((i, node) => {
-  new CalendarMenu($(node));
+$(cssSelectors.calendar).each((i, node) => {
+  new Calendar($(node));
 });
