@@ -4,7 +4,7 @@ include ../../components/find-room/find-room
 include ../../components/registration-card/registration-card
 include ../../components/room-booking/room-booking
 include ../../components/authorization/authorization
-include ../../components/calendar-menu/calendar-menu
+include ../../components/calendar/calendar
 include ../../components/room-card/room-card
 
 block var
@@ -29,7 +29,7 @@ block main
       +room-booking(roomBooking)
       +authorization
     .cards__column.cards__column_size_slim
-      +calendar-menu(calendarMenu)
+      +calendar(calendarMenu)
       each roomCard in roomCards
         .cards__room-card
           +room-card(roomCard) 
