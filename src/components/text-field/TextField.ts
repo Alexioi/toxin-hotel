@@ -1,6 +1,6 @@
 import EventEmitter from '../../helpers/EventEmitter';
 
-import { maskedType } from './types';
+import { dates, maskedType } from './types';
 
 import Model from './mvp/Model/Model';
 import View from './mvp/View/View';
@@ -35,12 +35,12 @@ class TextField {
     this.presenter = new Presenter(this.view, this.model, this.eventEmitter);
   }
 
-  public getData() {
-    return '10.10.2010';
+  public getDates() {
+    return this.presenter.getDates();
   }
 
-  public setData(data: string) {
-    this.presenter.setData(data);
+  public setDates(dates: dates) {
+    this.presenter.setDates(dates);
   }
 }
 

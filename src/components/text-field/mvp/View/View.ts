@@ -1,6 +1,6 @@
 import EventEmitter from '../../../../helpers/EventEmitter';
 
-import { date, maskedType, data } from '../../types';
+import { date, maskedType } from '../../types';
 
 class View {
   private node: HTMLInputElement;
@@ -23,42 +23,39 @@ class View {
     this.init();
   }
 
-  public displayDate({ dates, text }: data): void {
-    console.log(text);
-    if (this.type === 'text') {
-      this.node.value = text;
-    } else {
-      if (dates.length === 2 && !this.isFocus) {
-        const [from, to] = dates;
+  public displayDate(dates: date[]): void {
+    console.log(dates);
 
-        if (from.day === '') {
-          this.node.value = '';
-          return;
-        }
+    if (dates.length === 2 && !this.isFocus) {
+      const [from, to] = dates;
 
-        const maskedFrom = this.calculateDayAndMount(from);
-        const maskedTo = this.calculateDayAndMount(to);
-
-        this.node.value = `${maskedFrom} - ${maskedTo}`;
+      if (from.day === '') {
+        this.node.value = '';
         return;
       }
 
-      const maskedDates = dates.map((date): string => {
-        const { day, month, year } = date;
+      const maskedFrom = this.calculateDayAndMount(from);
+      const maskedTo = this.calculateDayAndMount(to);
 
-        const maskedDay = `${day}__`.slice(0, 2);
-        const maskedMonth = `${month}__`.slice(0, 2);
-        const maskedYear = `${year}____`.slice(0, 4);
-
-        return `${maskedDay}.${maskedMonth}.${maskedYear}`;
-      });
-
-      const maskedDate = maskedDates.join('-');
-
-      this.node.value = maskedDate;
-
-      this.changeCaretPosition(maskedDate);
+      this.node.value = `${maskedFrom} - ${maskedTo}`;
+      return;
     }
+
+    const maskedDates = dates.map((date): string => {
+      const { day, month, year } = date;
+
+      const maskedDay = `${day}__`.slice(0, 2);
+      const maskedMonth = `${month}__`.slice(0, 2);
+      const maskedYear = `${year}____`.slice(0, 4);
+
+      return `${maskedDay}.${maskedMonth}.${maskedYear}`;
+    });
+
+    const maskedDate = maskedDates.join('-');
+
+    this.node.value = maskedDate;
+
+    this.changeCaretPosition(maskedDate);
   }
 
   calculateDayAndMount(checkedDate: date) {
@@ -160,20 +157,25 @@ class View {
       return;
     }
 
-    // if (!this.isNumber(data)) {
-    //   this.eventEmitter.emit({
-    //     eventName: 'TouchInput',
-    //     eventArguments: null,
-    //   });
-    //   return;
-    // }
-
-    if (data !== null) {
+    if (!this.isNumber(data)) {
       this.eventEmitter.emit({
-        eventName: 'InputData',
-        eventArguments: data,
+        eventName: 'TouchInput',
+        eventArguments: null,
       });
+      return;
     }
+
+    this.eventEmitter.emit({
+      eventName: 'InputData',
+      eventArguments: String(data),
+    });
+
+    // if (data !== null) {
+    //   this.eventEmitter.emit({
+    //     eventName: 'InputData',
+    //     eventArguments: data,
+    //   });
+    // }
   };
 
   private isNumber(key: string | null): boolean {

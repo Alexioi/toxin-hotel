@@ -33,59 +33,59 @@ class CalendarMenu {
     this.$apply.on('click', this._applyDates.bind(this));
     this.$clear.on('click', this._clearDates.bind(this));
     this.$toggleButtons.on('click', this._toggleVisible.bind(this));
-    this.$inputs.each((i, input) => {
-      input.addEventListener('blur', this._onBlur.bind(this));
-    });
+    // this.$inputs.each((i, input) => {
+    //   input.addEventListener('blur', this._onBlur.bind(this));
+    // });
     document.addEventListener('click', this._onClickDocument.bind(this));
   }
 
-  _onBlur() {
-    const inputsLength = this.$inputs.length === 2;
-    const values = inputsLength
-      ? [this.$inputs[0].dataset.date, this.$inputs[1].dataset.date]
-      : this.$inputs[0].dataset.date.split(',');
-    const firstValue = CalendarMenu._removeDateLessThanToday(values[0]);
-    const secondValue = CalendarMenu._removeDateLessThanToday(values[1]);
-    if (!firstValue && !secondValue) {
-      this._clearDates();
-      return;
-    }
-    if (!firstValue) {
-      this._changeValues([secondValue, '']);
-      return;
-    }
-    if (!secondValue) {
-      this._changeValues([firstValue, '']);
-      return;
-    }
-    if (firstValue === secondValue) {
-      this._changeValues([firstValue, '']);
-      return;
-    }
-    const reverseFirstValue = CalendarMenu._reverseDate(firstValue);
-    const reverseSecondValue = CalendarMenu._reverseDate(secondValue);
-    if (new Date(reverseFirstValue) < new Date(reverseSecondValue)) {
-      this._changeValues([firstValue, secondValue]);
-    } else {
-      this._changeValues([secondValue, firstValue]);
-    }
-  }
+  // _onBlur() {
+  //   const inputsLength = this.$inputs.length === 2;
+  //   const values = inputsLength
+  //     ? [this.$inputs[0].dataset.date, this.$inputs[1].dataset.date]
+  //     : this.$inputs[0].dataset.date.split(',');
+  //   const firstValue = CalendarMenu._removeDateLessThanToday(values[0]);
+  //   const secondValue = CalendarMenu._removeDateLessThanToday(values[1]);
+  //   if (!firstValue && !secondValue) {
+  //     this._clearDates();
+  //     return;
+  //   }
+  //   if (!firstValue) {
+  //     this._changeValues([secondValue, '']);
+  //     return;
+  //   }
+  //   if (!secondValue) {
+  //     this._changeValues([firstValue, '']);
+  //     return;
+  //   }
+  //   if (firstValue === secondValue) {
+  //     this._changeValues([firstValue, '']);
+  //     return;
+  //   }
+  //   const reverseFirstValue = CalendarMenu._reverseDate(firstValue);
+  //   const reverseSecondValue = CalendarMenu._reverseDate(secondValue);
+  //   if (new Date(reverseFirstValue) < new Date(reverseSecondValue)) {
+  //     this._changeValues([firstValue, secondValue]);
+  //   } else {
+  //     this._changeValues([secondValue, firstValue]);
+  //   }
+  // }
 
-  _changeValues(values) {
-    this._clearDates();
-    if (this.$inputs.length === 2) {
-      values.forEach((value, index) => {
-        this.$inputs[index].dataset.date = value;
-        if (value !== '') {
-          this.datepicker.changeDate(CalendarMenu._reverseDate(value));
-        }
-      });
-    }
-    if (this.$inputs.length === 1) {
-      this.$inputs[0].dataset.date = values.join(',');
-    }
-    this._updateInputs(values);
-  }
+  // _changeValues(values) {
+  //   this._clearDates();
+  //   if (this.$inputs.length === 2) {
+  //     values.forEach((value, index) => {
+  //       this.$inputs[index].dataset.date = value;
+  //       if (value !== '') {
+  //         this.datepicker.changeDate(CalendarMenu._reverseDate(value));
+  //       }
+  //     });
+  //   }
+  //   // if (this.$inputs.length === 1) {
+  //   //   this.$inputs[0].dataset.date = values.join(',');
+  //   // }
+  //   // this._updateInputs(values);
+  // }
 
   static _removeDateLessThanToday(date) {
     if (new Date(CalendarMenu._reverseDate(date)) < new Date()) {
@@ -107,26 +107,26 @@ class CalendarMenu {
   }
 
   _applyDates() {
-    console.log('up');
-    this.$inputs[0].plugin.setData('10.10.1010');
-    // const dates = this.datepicker.getSelectedDates();
-    // if (dates.length !== 2) {
-    //   return;
-    // }
-    // this._toggleVisible();
-    // const firstDate = CalendarMenu._calculateFullDate(dates[0]);
-    // const secondDate = CalendarMenu._calculateFullDate(dates[1]);
-    // if (this.$inputs.length === 2) {
-    //   this.$inputs[0].dataset.date = firstDate;
-    //   this.$inputs[1].dataset.date = secondDate;
-    // }
-    // if (this.$inputs.length === 1) {
-    //   this.$inputs[0].dataset.date = `${firstDate},${secondDate}`;
-    // }
-    // this.$inputs.each((i, input) => {
-    //   const event = new Event('update');
-    //   input.dispatchEvent(event);
-    // });
+    const dates = this.datepicker.getSelectedDates();
+
+    if (dates.length !== 2) {
+      return;
+    }
+
+    const firstDate = CalendarMenu._calculateFullDate(dates[0]);
+    const secondDate = CalendarMenu._calculateFullDate(dates[1]);
+    console.log(firstDate, secondDate);
+
+    if (this.$inputs.length === 2) {
+      this.$inputs[0].plugin.setDates(firstDate);
+      this.$inputs[1].plugin.setDates(secondDate);
+    }
+
+    if (this.$inputs.length === 1) {
+      this.$inputs[0].plugin.setDates(`${firstDate},${secondDate}`);
+    }
+
+    this._toggleVisible();
   }
 
   static _calculateFullDate(date) {
@@ -143,33 +143,32 @@ class CalendarMenu {
   }
 
   _clearDates() {
-    if (this.$inputs.length === 2) {
-      this._updateInputs(['', '']);
-    } else {
-      this._updateInputs([',']);
-    }
+    // if (this.$inputs.length === 2) {
+    //   this._updateInputs(['', '']);
+    // } else {
+    //   this._updateInputs([',']);
+    // }
     this.datepicker.clearDates();
   }
 
-  _updateInputs(dates) {
-    // console.log();
-    console.log('up');
-    this.$inputs[0].plugin.setData('10.10.1010');
-
-    // const event = new Event('update');
-    // if (this.$inputs.length === 2) {
-    //   dates.forEach((date, index) => {
-    //     this.$inputs[index].plugin.setData(date);
-    //     // this.$inputs[index].dataset.date = date;
-    //     // this.$inputs[index].dispatchEvent(event);
-    //   });
-    // }
-    // if (this.$inputs.length === 1) {
-    //   this.$inputs[0].plugin.setData(dates.join(','));
-    //   // this.$inputs[0].dataset.date = dates.join(',');
-    //   // this.$inputs[0].dispatchEvent(event);
-    // }
-  }
+  // _updateInputs(dates) {
+  //   // console.log();
+  //   // console.log('up');
+  //   // this.$inputs[0].plugin.setDates({ day: '10' });
+  //   // const event = new Event('update');
+  //   // if (this.$inputs.length === 2) {
+  //   //   dates.forEach((date, index) => {
+  //   //     this.$inputs[index].plugin.setData(date);
+  //   //     // this.$inputs[index].dataset.date = date;
+  //   //     // this.$inputs[index].dispatchEvent(event);
+  //   //   });
+  //   // }
+  //   // if (this.$inputs.length === 1) {
+  //   //   this.$inputs[0].plugin.setData(dates.join(','));
+  //   //   // this.$inputs[0].dataset.date = dates.join(',');
+  //   //   // this.$inputs[0].dispatchEvent(event);
+  //   // }
+  // }
 
   _toggleVisible() {
     this.$menu.toggleClass('calendar__menu_visible');

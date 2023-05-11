@@ -4,11 +4,6 @@ import { date, dates, maskedType } from '../../types';
 
 import { calculateDay } from './methods';
 
-type data = {
-  dates: dates;
-  text: string;
-};
-
 const removeLastSymbol = (date: date): date => {
   const { day, month, year } = date;
 
@@ -32,7 +27,7 @@ const removeLastSymbol = (date: date): date => {
 class Model {
   private eventEmitter: EventEmitter;
 
-  private data: data = { dates: [], text: '' };
+  private dates: dates = [{ day: '', month: '', year: '' }];
 
   private type: maskedType;
 
@@ -44,112 +39,98 @@ class Model {
     this.init(type);
   }
 
+  public getDates() {
+    return this.dates;
+  }
+
   public updateData(data: string) {
-    if (this.type === 'text') {
-      this.data.text = this.data.text + data;
-      this.eventEmitter.emit({
-        eventName: 'UpdatedDates',
-        eventArguments: { data: this.data },
-      });
-    } else {
-      if (typeof data !== 'undefined') {
-        data.split('').forEach((value) => {
-          if (this.isNumber(value)) {
-            this.updateDates(Number(value));
-          }
+    console.log('update', data);
+    data.split('').forEach((value) => {
+      console.log('value', value);
+      if (this.isNumber(value)) {
+        if (this.isNumber(value)) {
+          this.updateDates(Number(value));
+        }
+      } else {
+        this.eventEmitter.emit({
+          eventName: 'UpdatedDates',
+          eventArguments: { dates: this.dates },
         });
       }
-    }
+    });
   }
 
   private updateDates(data?: number) {
     if (data === null) {
       this.eventEmitter.emit({
         eventName: 'UpdatedDates',
-        eventArguments: { data: this.data },
+        eventArguments: { dates: this.dates },
       });
       return;
-    }
-
-    if (this.type === 'text') {
-      this.data.text = this.data.text + data;
     }
 
     const numberData = Number(data);
 
     if (this.type === 'date') {
-      const [date] = this.data.dates;
+      const [date] = this.dates;
 
       const newFrom = calculateDay(date, numberData);
 
-      this.data.dates = [newFrom];
+      this.dates = [newFrom];
     }
 
     if (this.type === 'dates') {
-      const [from, to] = this.data.dates;
+      const [from, to] = this.dates;
 
       if (from.year.length !== 4) {
         const newFrom = calculateDay(from, numberData);
 
-        this.data.dates = [newFrom, to];
+        this.dates = [newFrom, to];
       } else {
         const newTo = calculateDay(to, numberData);
 
-        this.data.dates = [from, newTo];
+        this.dates = [from, newTo];
       }
     }
 
     this.eventEmitter.emit({
       eventName: 'UpdatedDates',
-      eventArguments: { data: this.data },
+      eventArguments: { dates: this.dates },
     });
   }
 
   public removeDate() {
-    if (this.type === 'text') {
-      this.data.text = this.data.text.slice(0, -1);
-    }
-
     if (this.type === 'date') {
-      const [date] = this.data.dates;
+      const [date] = this.dates;
 
       const newDate = removeLastSymbol(date);
 
-      this.data.dates = [newDate];
+      this.dates = [newDate];
     }
 
     if (this.type === 'dates') {
-      const [from, to] = this.data.dates;
+      const [from, to] = this.dates;
 
       if (to.day.length !== 0) {
         const newTo = removeLastSymbol(to);
 
-        this.data.dates = [from, newTo];
+        this.dates = [from, newTo];
       } else {
         const newFrom = removeLastSymbol(from);
 
-        this.data.dates = [newFrom, to];
+        this.dates = [newFrom, to];
       }
     }
 
     this.eventEmitter.emit({
       eventName: 'UpdatedDates',
-      eventArguments: { data: this.data },
+      eventArguments: { dates: this.dates },
     });
   }
 
   private init(type: maskedType) {
-    if (type === 'text') {
-      this.data.text = '';
-    }
-
-    if (type === 'date') {
-      this.data.dates.push({ day: '', month: '', year: '' });
-    }
-
     if (type === 'dates') {
-      this.data.dates.push({ day: '', month: '', year: '' });
-      this.data.dates.push({ day: '', month: '', year: '' });
+      this.dates.push({ day: '', month: '', year: '' });
     }
   }
 

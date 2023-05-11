@@ -1,17 +1,10 @@
 type date = { day: string; month: string; year: string };
 
-type dates = date[];
-
-type data = {
-  dates: dates;
-  text: string;
-};
-
 type EventObject =
   | {
       eventName: 'UpdatedDates';
       eventArguments: {
-        data: { dates: date[]; text: string };
+        dates: date[];
       };
     }
   | {
@@ -29,4 +22,4 @@ type EventObject =
 
 type EventNames = 'UpdatedDates' | 'InputData' | 'TouchInput' | 'DeleteData';
 
-export { EventObject, EventNames, data };
+export { EventObject, EventNames };

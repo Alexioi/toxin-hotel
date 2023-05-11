@@ -1,4 +1,4 @@
-type maskedType = 'text' | 'date' | 'dates';
+type maskedType = 'none' | 'date' | 'dates';
 
 type date = {
   day: string;
