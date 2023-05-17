@@ -16,10 +16,19 @@ type EventObject =
       eventArguments: null;
     }
   | {
+      eventName: 'BlurInput';
+      eventArguments: null;
+    }
+  | {
       eventName: 'DeleteData';
       eventArguments: null;
     };
 
-type EventNames = 'UpdatedDates' | 'InputData' | 'TouchInput' | 'DeleteData';
+type EventNames =
+  | 'UpdatedDates'
+  | 'InputData'
+  | 'TouchInput'
+  | 'DeleteData'
+  | 'BlurInput';
 
 export { EventObject, EventNames };

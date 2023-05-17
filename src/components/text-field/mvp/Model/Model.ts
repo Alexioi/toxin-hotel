@@ -40,12 +40,32 @@ class Model {
   }
 
   public getDates() {
-    if (this.dates.length === 1) {
-      const [date] = this.dates;
-
-      return date;
-    }
     return this.dates;
+  }
+
+  public fixData() {
+    if (this.type === 'date') {
+      const [date] = this.dates;
+      if (date.year.length !== 4) {
+        this.dates = [{ day: '', month: '', year: '' }];
+      }
+    }
+
+    if (this.type === 'dates') {
+      const [from, to] = this.dates;
+
+      if (to.year.length !== 4) {
+        this.dates = [
+          { day: '', month: '', year: '' },
+          { day: '', month: '', year: '' },
+        ];
+      }
+    }
+
+    this.eventEmitter.emit({
+      eventName: 'UpdatedDates',
+      eventArguments: { dates: this.dates },
+    });
   }
 
   public setDates(dates: dates) {
@@ -59,9 +79,7 @@ class Model {
   public updateData(data: string) {
     data.split('').forEach((value) => {
       if (this.isNumber(value)) {
-        if (this.isNumber(value)) {
-          this.updateDates(Number(value));
-        }
+        this.updateDates(Number(value));
       } else {
         this.eventEmitter.emit({
           eventName: 'UpdatedDates',

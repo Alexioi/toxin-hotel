@@ -9,16 +9,9 @@ class View {
 
   private isFocus = false;
 
-  private type: maskedType;
-
-  constructor(
-    node: HTMLInputElement,
-    eventEmitter: EventEmitter,
-    type: maskedType,
-  ) {
+  constructor(node: HTMLInputElement, eventEmitter: EventEmitter) {
     this.node = node;
     this.eventEmitter = eventEmitter;
-    this.type = type;
 
     this.init();
   }
@@ -36,6 +29,13 @@ class View {
       const maskedTo = this.calculateDayAndMount(to);
 
       this.node.value = `${maskedFrom} - ${maskedTo}`;
+      return;
+    }
+
+    const [date] = dates;
+
+    if (!this.isFocus && date.day === '') {
+      this.node.value = '';
       return;
     }
 
@@ -105,7 +105,7 @@ class View {
     this.isFocus = false;
 
     this.eventEmitter.emit({
-      eventName: 'TouchInput',
+      eventName: 'BlurInput',
       eventArguments: null,
     });
   }
@@ -120,18 +120,6 @@ class View {
         eventArguments: inputData,
       });
     }
-
-    // const inputDate = event.clipboardData?.getData('text');
-    // if (typeof inputDate !== 'undefined') {
-    //   inputDate.split('').forEach((value) => {
-    //     if (this.isNumber(value)) {
-    //       this.eventEmitter.emit({
-    //         eventName: 'InputData',
-    //         eventArguments: Number(value),
-    //       });
-    //     }
-    //   });
-    // }
   };
 
   private onClick() {
@@ -167,13 +155,6 @@ class View {
       eventName: 'InputData',
       eventArguments: String(data),
     });
-
-    // if (data !== null) {
-    //   this.eventEmitter.emit({
-    //     eventName: 'InputData',
-    //     eventArguments: data,
-    //   });
-    // }
   };
 
   private isNumber(key: string | null): boolean {

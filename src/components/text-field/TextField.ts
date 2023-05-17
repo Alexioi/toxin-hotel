@@ -31,7 +31,7 @@ class TextField {
     const type = <maskedType>node.dataset.maskedType;
 
     this.model = new Model(this.eventEmitter, type);
-    this.view = new View(node, this.eventEmitter, type);
+    this.view = new View(node, this.eventEmitter);
     this.presenter = new Presenter(this.view, this.model, this.eventEmitter);
   }
 

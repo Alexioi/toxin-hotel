@@ -152,17 +152,19 @@ class Calendar {
   _toggleVisible() {
     this.$menu.toggleClass('calendar__menu_visible');
 
-    this._clearDates();
+    this.datepicker.clearDates();
 
     if (this.$inputs.length === 2) {
-      const firstDate = this.$inputs[0].plugin.getDates();
-      const secondDate = this.$inputs[1].plugin.getDates();
+      const [firstDate] = this.$inputs[0].plugin.getDates();
+      const [secondDate] = this.$inputs[1].plugin.getDates();
 
       if (firstDate.year !== '') {
         this.datepicker.changeDate(
           `${firstDate.year}.${firstDate.month}.${firstDate.day}`,
         );
+      }
 
+      if (secondDate.year !== '') {
         this.datepicker.changeDate(
           `${secondDate.year}.${secondDate.month}.${secondDate.day}`,
         );
