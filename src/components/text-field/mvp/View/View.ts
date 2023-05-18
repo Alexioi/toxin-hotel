@@ -1,6 +1,6 @@
 import EventEmitter from '../../../../helpers/EventEmitter';
 
-import { date, maskedType } from '../../types';
+import { date } from '../../types';
 
 class View {
   private node: HTMLInputElement;
