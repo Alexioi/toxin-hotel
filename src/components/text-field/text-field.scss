@@ -30,12 +30,12 @@
 
     &:hover,
     &:focus,
-    &[data-focus='true'] {
+    &_focused {
       border: 1px solid rgba(colors.$first, 0.5);
       color: rgba(colors.$first, 0.75);
     }
 
-    &[data-opened='true'] {
+    &_opened {
       border-color: rgba(colors.$first, 0.5);
       outline: none;
       border-bottom-left-radius: 0;

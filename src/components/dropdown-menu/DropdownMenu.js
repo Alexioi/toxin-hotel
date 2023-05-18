@@ -187,7 +187,11 @@ class DropdownMenu {
   _toggleInputFocus() {
     const isOpened = this.node.classList.contains('dropdown-menu_opened');
 
-    this.input.dataset.opened = isOpened ? 'true' : 'false';
+    if (isOpened) {
+      this.input.classList.add('text-field__input_opened');
+    } else {
+      this.input.classList.remove('text-field__input_opened');
+    }
   }
 
   _resetCounters() {

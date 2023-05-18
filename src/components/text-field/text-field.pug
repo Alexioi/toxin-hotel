@@ -9,9 +9,6 @@ mixin text-field(options)
       maskedType = 'none',
       inputmode,
       isHovered = false, 
-      //- content = 'text',
-      //- isMasked = false, 
-      //- manageable = 'false',
       type = 'text', 
       isSubscription = false,
       isDropdown = false,
@@ -19,7 +16,6 @@ mixin text-field(options)
     } = options || {}
 
     const hoverClass = isHovered && 'text-field_hovered'
-    //- const maskClass = isMasked && 'text-field_masked js-text-field_masked'
     const textDarkClass = isDropdown && 'text-field_text_dark'
     const classes = [hoverClass, textDarkClass]
 
@@ -29,8 +25,6 @@ mixin text-field(options)
       name,
       placeholder,
       inputmode,
-      //- 'data-content': content,
-      //- 'data-manageable': manageable,
       'data-masked-type': maskedType,
       readonly: isReadonly,
       tabindex: isReadonly ? '-1' : '0',
