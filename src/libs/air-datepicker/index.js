@@ -4,8 +4,8 @@ import 'air-datepicker';
 import arrow from '!raw-loader!@images/decorative/arrow.svg';
 
 class AirDatepicker {
-  constructor($node) {
-    this.$node = $node;
+  constructor(node) {
+    this.$node = $(node);
 
     this._init();
   }
