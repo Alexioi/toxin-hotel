@@ -1,4 +1,4 @@
-const isElementsIncludeNode = (event, elements) => {
+const isElementsIncludeNode = (event: Event, elements: HTMLElement[]) => {
   const initialValue = false;
 
   return elements.reduce(

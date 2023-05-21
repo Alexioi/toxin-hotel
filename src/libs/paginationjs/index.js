@@ -28,6 +28,18 @@ class Paginationjs {
     const iconBack = `<svg class="paginationjs__icon paginationjs__icon_back">${arrow}</svg>`;
     const iconNext = `<svg class="paginationjs__icon">${arrow}</svg>`;
 
+    const afterPageOnClick = () => {
+      this.$node.find('.active').next().find('a').focus();
+    };
+
+    const afterNextOnClick = () => {
+      this.$node.find('.paginationjs-next').find('a').focus();
+    };
+
+    const afterPreviousOnClick = () => {
+      this.$node.find('.paginationjs-prev').find('a').focus();
+    };
+
     const config = {
       pageSize: 12,
       pageRange: 1,
@@ -35,6 +47,9 @@ class Paginationjs {
       nextText: `<span class="paginationjs__arrow">${iconNext}</span>`,
       callback,
       dataSource,
+      afterPageOnClick,
+      afterNextOnClick,
+      afterPreviousOnClick,
     };
 
     this.$node.pagination(config);

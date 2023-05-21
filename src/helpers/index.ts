@@ -1,6 +1,7 @@
 import isElementsIncludeNode from './isElementsIncludeNode';
+
 import dispatchEvent from './dispatchEvent';
 
-const helpers = { isElementsIncludeNode, dispatchEvent };
+const helpers = { dispatchEvent, isElementsIncludeNode };
 
 export default helpers;

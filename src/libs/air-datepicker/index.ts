@@ -1,32 +1,41 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/no-webpack-loader-syntax */
 import 'air-datepicker';
+// @ts-ignore
 import arrow from '!raw-loader!@images/decorative/arrow.svg';
 
+interface JQueryWithAirDatepicker extends JQuery {
+  datepicker: (airDatepickerOptions: any) => any;
+}
+
 class AirDatepicker {
-  constructor(node) {
-    this.$node = $(node);
+  private $node: JQueryWithAirDatepicker;
+
+  private datepickerData: any;
+
+  constructor(node: HTMLElement) {
+    this.$node = <JQueryWithAirDatepicker>$(node);
 
     this._init();
   }
 
-  getSelectedDates() {
+  public getSelectedDates() {
     return this.datepickerData.selectedDates;
   }
 
-  changeDate(date) {
+  public changeDate(date: string) {
     this.datepickerData.selectDate(new Date(date));
   }
 
-  clearDates() {
+  public clearDates() {
     this.datepickerData.clear();
   }
 
-  _init() {
+  private _init() {
     this._initAirDatepicker();
   }
 
-  _initAirDatepicker() {
+  private _initAirDatepicker() {
     const airDatepickerOptions = {
       range: true,
       navTitles: { days: 'MM yyyy' },

@@ -2,7 +2,6 @@
 import AirDatepicker from '@libs/air-datepicker';
 import cssSelectors from './constants';
 
-//@ts-ignore
 import helpers from '../../helpers';
 
 const calculateFullDate = (date: Date) => {
@@ -58,7 +57,9 @@ class Calendar {
   }
 
   _initDatepicker() {
-    const datepickerNode = this.node.querySelector(cssSelectors.datepicker);
+    const datepickerNode = <HTMLElement>(
+      this.node.querySelector(cssSelectors.datepicker)
+    );
 
     this.datepicker = new AirDatepicker(datepickerNode);
   }
