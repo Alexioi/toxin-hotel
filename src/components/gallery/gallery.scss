@@ -1,8 +1,14 @@
 @use '@style/constants/colors';
 
+$left-column-width: 981;
+$right-column-width: 459;
+$container-width: 1440;
+$left-column-percent-width: $left-column-width / $container-width * 100%;
+$right-column-percent-width: $right-column-width / $container-width * 100%;
+
 .gallery {
   display: grid;
-  grid-template-columns: (981 / 1440 * 100%) (459 / 1440 * 100%);
+  grid-template-columns: $left-column-percent-width $right-column-percent-width;
 
   &__img {
     display: flex;
