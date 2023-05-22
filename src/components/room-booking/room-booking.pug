@@ -34,7 +34,10 @@ mixin room-booking(options)
             li.room-booking__expenses-item
               .room-booking__expenses-about= expensesItem.about
               if expensesItem.info
-                .room-booking__expenses-info(data-info=expensesItem.info)
+                .room-booking__expenses-info(
+                  data-info=expensesItem.info,
+                  tabindex=0
+                )
               .room-booking__expenses-value= expensesItem.value
         .room-booking__total
           span.room-booking__total-text= total
