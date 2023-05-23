@@ -1,13 +1,14 @@
-//@ts-ignore
 import AirDatepicker from '@libs/air-datepicker';
 import cssSelectors from './constants';
+import TextField from '../text-field/TextField';
 
 import helpers from '../../helpers';
+import { date } from '../text-field/types';
 
-const calculateFullDate = (date: Date) => {
+const calculateFullDate = (date: Date): date => {
   let day = String(date.getDate());
   let month = String(Number(date.getMonth()) + 1);
-  const year = date.getFullYear();
+  const year = String(date.getFullYear());
   if (day.length !== 2) {
     day = `0${day}`;
   }
@@ -17,10 +18,14 @@ const calculateFullDate = (date: Date) => {
   return { day, month, year };
 };
 
+interface HTMLInputElementWithPlugin extends HTMLInputElement {
+  plugin: TextField;
+}
+
 class Calendar {
   private node: HTMLDivElement;
 
-  private inputs!: NodeListOf<HTMLInputElement>;
+  private inputs!: NodeListOf<HTMLInputElementWithPlugin>;
 
   private toggleButtons!: NodeListOf<HTMLButtonElement>;
 
@@ -30,21 +35,21 @@ class Calendar {
 
   private clear!: HTMLButtonElement;
 
-  private datepicker!: any;
+  private datepicker!: AirDatepicker;
 
   constructor(node: HTMLDivElement) {
     this.node = node;
 
-    this._init();
+    this.init();
   }
 
-  _init() {
-    this._findNodes();
-    this._initDatepicker();
-    this._attachEventsHandler();
+  private init() {
+    this.findNodes();
+    this.initDatepicker();
+    this.attachEventsHandler();
   }
 
-  _findNodes() {
+  private findNodes() {
     this.inputs = this.node.querySelectorAll(cssSelectors.input);
     this.toggleButtons = this.node.querySelectorAll(cssSelectors.toggleButtons);
     this.menu = <HTMLDivElement>this.node.querySelector(cssSelectors.menu);
@@ -56,7 +61,7 @@ class Calendar {
     );
   }
 
-  _initDatepicker() {
+  private initDatepicker() {
     const datepickerNode = <HTMLElement>(
       this.node.querySelector(cssSelectors.datepicker)
     );
@@ -64,25 +69,24 @@ class Calendar {
     this.datepicker = new AirDatepicker(datepickerNode);
   }
 
-  _attachEventsHandler() {
-    this.apply.addEventListener('click', this._applyDates.bind(this));
-    this.clear.addEventListener('click', this._clearDates.bind(this));
+  private attachEventsHandler() {
+    this.apply.addEventListener('click', this.applyDates.bind(this));
+    this.clear.addEventListener('click', this.clearDates.bind(this));
     this.toggleButtons.forEach((node) => {
-      node.addEventListener('click', this._toggleVisible.bind(this));
+      node.addEventListener('click', this.toggleVisible.bind(this));
     });
     this.inputs.forEach((node) => {
-      node.addEventListener('blur', this._onblur.bind(this));
+      node.addEventListener('blur', this.onblur.bind(this));
     });
-    document.addEventListener('click', this._onClickDocument.bind(this));
+    document.addEventListener('click', this.onClickDocument.bind(this));
   }
 
-  _onblur() {
+  private onblur() {
     if (this.inputs.length === 2) {
       const [inputFrom, inputTo] = this.inputs;
 
-      //@ts-ignore
       const [from] = inputFrom.plugin.getDates();
-      //@ts-ignore
+
       const [to] = inputTo.plugin.getDates();
 
       if (from.year.length === 4 && to.year.length === 4) {
@@ -90,15 +94,14 @@ class Calendar {
         const toDate = `${to.year}.${to.month}.${to.day}`;
 
         if (new Date(fromDate) > new Date(toDate)) {
-          //@ts-ignore
           inputFrom.plugin.setDates([to]);
-          //@ts-ignore
+
           inputTo.plugin.setDates([from]);
         }
       }
     } else {
       const [input] = this.inputs;
-      //@ts-ignore
+
       const [from, to] = input.plugin.getDates();
 
       if (to.year.length === 4) {
@@ -106,14 +109,13 @@ class Calendar {
         const toDate = `${to.year}.${to.month}.${to.day}`;
 
         if (new Date(fromDate) > new Date(toDate)) {
-          //@ts-ignore
           input.plugin.setDates([to, from]);
         }
       }
     }
   }
 
-  _onClickDocument(event: Event) {
+  private onClickDocument(event: Event) {
     const [firstButton, secondButton] = this.toggleButtons;
     const elements = [this.menu, firstButton, secondButton];
     if (!helpers.isElementsIncludeNode(event, elements)) {
@@ -125,7 +127,7 @@ class Calendar {
     }
   }
 
-  _applyDates() {
+  private applyDates() {
     const [datepickerFrom, datepickerTo] = this.datepicker.getSelectedDates();
 
     if (typeof datepickerTo === 'undefined') {
@@ -138,21 +140,19 @@ class Calendar {
     if (this.inputs.length === 2) {
       const [inputFrom, inputTo] = this.inputs;
 
-      //@ts-ignore
       inputFrom.plugin.setDates([from]);
-      //@ts-ignore
+
       inputTo.plugin.setDates([to]);
     }
 
     if (this.inputs.length === 1) {
       const [input] = this.inputs;
 
-      //@ts-ignore
       input.plugin.setDates([from, to]);
     }
   }
 
-  _clearDates() {
+  private clearDates() {
     const emptyDate = {
       day: '',
       month: '',
@@ -162,22 +162,20 @@ class Calendar {
     if (this.inputs.length === 2) {
       const [inputFrom, inputTo] = this.inputs;
 
-      //@ts-ignore
       inputFrom.plugin.setDates([{ ...emptyDate }]);
-      //@ts-ignore
+
       inputTo.plugin.setDates([{ ...emptyDate }]);
     }
 
     if (this.inputs.length === 1) {
       const [input] = this.inputs;
 
-      //@ts-ignore
       input.plugin.setDates([{ ...emptyDate }, { ...emptyDate }]);
     }
     this.datepicker.clearDates();
   }
 
-  _toggleVisible() {
+  private toggleVisible() {
     this.menu.classList.toggle('calendar__menu_visible');
 
     const isOpened = this.menu.classList.contains('calendar__menu_visible');
@@ -195,9 +193,8 @@ class Calendar {
     if (this.inputs.length === 2) {
       const [inputFrom, inputTo] = this.inputs;
 
-      //@ts-ignore
       const [from] = inputFrom.plugin.getDates();
-      //@ts-ignore
+
       const [to] = inputTo.plugin.getDates();
 
       if (from.year !== '') {
@@ -213,7 +210,7 @@ class Calendar {
       }
     } else {
       const [input] = this.inputs;
-      //@ts-ignore
+
       const [from, to] = input.plugin.getDates();
 
       if (from.year !== '') {

@@ -3,7 +3,7 @@ import cssSelectors from './constants';
 import helpers from '../../helpers';
 import Counter from './Counter';
 
-const getIndex = (isUnit, isPair) => {
+const getIndex = (isUnit: boolean, isPair: boolean): 0 | 1 | 2 => {
   if (isUnit) {
     return 0;
   }
@@ -48,7 +48,7 @@ const calculateValue = (groups, countersValue, variants, placeholder) => {
     const initialValue = 0;
 
     return group.reduce(
-      (sum, index) => sum + countersValue[index],
+      (sum: number, index: number) => sum + countersValue[index],
       initialValue,
     );
   });
@@ -76,7 +76,23 @@ const toggleClearButton = (clearButton, countersValue) => {
 };
 
 class DropdownMenu {
-  constructor(node) {
+  private node: HTMLDivElement;
+
+  private input!: HTMLInputElement;
+
+  private inputButton!: HTMLButtonElement;
+
+  private textField!: HTMLInputElement;
+
+  private items!: NodeListOf<HTMLDivElement>;
+
+  private clearButton!: HTMLButtonElement;
+
+  private applyButton!: HTMLButtonElement;
+
+  private menu!: HTMLDivElement;
+
+  constructor(node: HTMLDivElement) {
     this.node = node;
 
     this._init();
@@ -93,13 +109,13 @@ class DropdownMenu {
   }
 
   _findNodes() {
-    this.input = this.node.querySelector(cssSelectors.input);
-    this.inputButton = this.node.querySelector(cssSelectors.inputButton);
-    this.textField = this.node.querySelector(cssSelectors.textField);
+    this.input = this.node.querySelector(cssSelectors.input)!;
+    this.inputButton = this.node.querySelector(cssSelectors.inputButton)!;
+    this.textField = this.node.querySelector(cssSelectors.textField)!;
     this.items = this.node.querySelectorAll(cssSelectors.items);
-    this.clearButton = this.node.querySelector(cssSelectors.clearButton);
-    this.applyButton = this.node.querySelector(cssSelectors.applyButton);
-    this.menu = this.node.querySelector(cssSelectors.menu);
+    this.clearButton = this.node.querySelector(cssSelectors.clearButton)!;
+    this.applyButton = this.node.querySelector(cssSelectors.applyButton)!;
+    this.menu = this.node.querySelector(cssSelectors.menu)!;
   }
 
   _initCounters() {

@@ -7,7 +7,7 @@ import View from './mvp/View/View';
 import Presenter from './mvp/Presenter/Presenter';
 
 interface HTMLInputElementWithPlugin extends HTMLInputElement {
-  plugin?: TextField;
+  plugin: TextField;
 }
 
 class TextField {
@@ -22,6 +22,7 @@ class TextField {
   private presenter: Presenter;
 
   constructor(node: HTMLInputElement) {
+    // @ts-ignore
     this.node = node;
 
     this.node.plugin = this;

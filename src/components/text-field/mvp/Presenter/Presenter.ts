@@ -21,7 +21,6 @@ class Presenter {
   }
 
   public setDates(dates: dates) {
-    // @ts-ignore
     this.model.setDates(dates);
   }
 
