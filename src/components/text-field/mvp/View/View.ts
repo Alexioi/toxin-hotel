@@ -94,7 +94,6 @@ class View {
   }
 
   private attachEventsHandler() {
-    // @ts-ignore
     this.node.addEventListener('input', this.onInput);
     this.node.addEventListener('paste', this.onPaste);
     this.node.addEventListener('blur', this._onBlur.bind(this));
@@ -130,31 +129,33 @@ class View {
     });
   }
 
-  private onInput = (event: InputEvent) => {
-    event.preventDefault();
+  private onInput = (event: Event) => {
+    if (event instanceof InputEvent) {
+      event.preventDefault();
 
-    const data = event.data;
+      const data = event.data;
 
-    if (event.inputType === 'deleteContentBackward') {
+      if (event.inputType === 'deleteContentBackward') {
+        this.eventEmitter.emit({
+          eventName: 'DeleteData',
+          eventArguments: null,
+        });
+        return;
+      }
+
+      if (!this.isNumber(data)) {
+        this.eventEmitter.emit({
+          eventName: 'TouchInput',
+          eventArguments: null,
+        });
+        return;
+      }
+
       this.eventEmitter.emit({
-        eventName: 'DeleteData',
-        eventArguments: null,
+        eventName: 'InputData',
+        eventArguments: String(data),
       });
-      return;
     }
-
-    if (!this.isNumber(data)) {
-      this.eventEmitter.emit({
-        eventName: 'TouchInput',
-        eventArguments: null,
-      });
-      return;
-    }
-
-    this.eventEmitter.emit({
-      eventName: 'InputData',
-      eventArguments: String(data),
-    });
   };
 
   private isNumber(key: string | null): boolean {

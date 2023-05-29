@@ -1,19 +1,38 @@
 import cssSelectors from './constants';
 import helpers from '../../helpers';
 
-const disableCounterButton = (node, counter) => {
+const disableCounterButton = (node: Element | null, counter: number) => {
   if (counter === 0) {
-    node.classList.add('dropdown-menu__counter-button_disabled');
-    node.setAttribute('disabled', 'disabled');
+    node?.classList.add('dropdown-menu__counter-button_disabled');
+    node?.setAttribute('disabled', 'disabled');
   } else {
-    node.classList.remove('dropdown-menu__counter-button_disabled');
-    node.removeAttribute('disabled');
+    node?.classList.remove('dropdown-menu__counter-button_disabled');
+    node?.removeAttribute('disabled');
   }
 };
 
 class Counter {
-  constructor(root, node, counter, index) {
-    this.root = root;
+  private dropdownMenu: HTMLElement;
+
+  private node: HTMLElement;
+
+  private decrementCounterButton: Element | null = null;
+
+  private incrementCounterButton: Element | null = null;
+
+  private counterNode: Element | null = null;
+
+  private counter: number;
+
+  private index: number;
+
+  constructor(
+    dropdownMenu: HTMLElement,
+    node: HTMLElement,
+    counter: number,
+    index: number,
+  ) {
+    this.dropdownMenu = dropdownMenu;
     this.node = node;
     this.counter = counter;
     this.index = index;
@@ -24,9 +43,12 @@ class Counter {
   resetCounter() {
     this.counter = 0;
 
-    const { root, node, counter, index } = this;
+    const { dropdownMenu, node, counter, index } = this;
 
-    helpers.dispatchEvent('counterUpdated', { counter, index }, [root, node]);
+    helpers.dispatchEvent('counterUpdated', { counter, index }, [
+      dropdownMenu,
+      node,
+    ]);
   }
 
   _init() {
@@ -35,28 +57,28 @@ class Counter {
   }
 
   _findNodes() {
-    const counterButtons = this.node.querySelectorAll(
-      cssSelectors.counterButtons,
-    );
-    const [decrementCounterButton, incrementCounterButton] = counterButtons;
+    const [decrementCounterButton, incrementCounterButton] =
+      this.node.querySelectorAll(cssSelectors.counterButtons);
 
-    if (typeof decrementCounterButton !== 'undefined') {
-      this.decrementCounterButton = decrementCounterButton;
-    }
+    this.decrementCounterButton =
+      typeof decrementCounterButton === 'undefined'
+        ? null
+        : decrementCounterButton;
 
-    if (typeof incrementCounterButton !== 'undefined') {
-      this.incrementCounterButton = incrementCounterButton;
-    }
+    this.incrementCounterButton =
+      typeof incrementCounterButton === 'undefined'
+        ? null
+        : incrementCounterButton;
 
     this.counterNode = this.node.querySelector(cssSelectors.counter);
   }
 
   _attachEventHandlers() {
-    this.decrementCounterButton.addEventListener(
+    this.decrementCounterButton?.addEventListener(
       'click',
       this._handleCounterClick.bind(this, -1),
     );
-    this.incrementCounterButton.addEventListener(
+    this.incrementCounterButton?.addEventListener(
       'click',
       this._handleCounterClick.bind(this, 1),
     );
@@ -66,23 +88,29 @@ class Counter {
     );
   }
 
-  _handleCounterClick(number) {
+  _handleCounterClick(number: number) {
     this._updateCounter(number);
 
-    const { root, node, counter, index } = this;
+    const { dropdownMenu, node, counter, index } = this;
 
-    helpers.dispatchEvent('counterUpdated', { counter, index }, [root, node]);
+    helpers.dispatchEvent('counterUpdated', { counter, index }, [
+      dropdownMenu,
+      node,
+    ]);
   }
 
-  _handleCounterUpdated(event) {
+  _handleCounterUpdated(event: Event) {
+    // @ts-ignore
     const { counter } = event.detail;
 
-    this.counterNode.innerHTML = counter;
+    if (this.counterNode !== null) {
+      this.counterNode.innerHTML = counter;
+    }
 
     disableCounterButton(this.decrementCounterButton, counter);
   }
 
-  _updateCounter(number) {
+  _updateCounter(number: number) {
     this.counter += number;
   }
 }
