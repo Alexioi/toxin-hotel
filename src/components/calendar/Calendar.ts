@@ -23,62 +23,63 @@ interface HTMLInputElementWithPlugin extends HTMLInputElement {
 }
 
 class Calendar {
-  private node: HTMLDivElement;
+  private node: Element;
 
-  private inputs!: NodeListOf<HTMLInputElementWithPlugin>;
+  private inputs: NodeListOf<HTMLInputElementWithPlugin> | never[] = [];
 
-  private toggleButtons!: NodeListOf<HTMLButtonElement>;
+  private toggleButtons: NodeListOf<Element> | never[] = [];
 
-  private menu!: HTMLDivElement;
+  private menu: Element | null = null;
 
-  private apply!: HTMLButtonElement;
+  private apply: Element | null = null;
 
-  private clear!: HTMLButtonElement;
+  private clear: Element | null = null;
 
-  private datepicker!: AirDatepicker;
+  private datepicker: AirDatepicker | null = null;
 
-  constructor(node: HTMLDivElement) {
+  constructor(node: Element) {
     this.node = node;
+
+    this.applyDates = this.applyDates.bind(this);
+    this.clearDates = this.clearDates.bind(this);
+    this.toggleVisible = this.toggleVisible.bind(this);
+    this.onblur = this.onblur.bind(this);
+    this.onClickDocument = this.onClickDocument.bind(this);
 
     this.init();
   }
 
   private init() {
-    this.findNodes();
+    this.findAndAssignElements();
     this.initDatepicker();
     this.attachEventsHandler();
   }
 
-  private findNodes() {
+  private findAndAssignElements() {
     this.inputs = this.node.querySelectorAll(cssSelectors.input);
     this.toggleButtons = this.node.querySelectorAll(cssSelectors.toggleButtons);
-    this.menu = <HTMLDivElement>this.node.querySelector(cssSelectors.menu);
-    this.apply = <HTMLButtonElement>(
-      this.node.querySelector(cssSelectors.applyButton)
-    );
-    this.clear = <HTMLButtonElement>(
-      this.node.querySelector(cssSelectors.clearButton)
-    );
+    this.menu = this.node.querySelector(cssSelectors.menu);
+    this.apply = this.node.querySelector(cssSelectors.applyButton);
+    this.clear = this.node.querySelector(cssSelectors.clearButton);
   }
 
   private initDatepicker() {
-    const datepickerNode = <HTMLElement>(
-      this.node.querySelector(cssSelectors.datepicker)
-    );
+    const datepickerNode = this.node.querySelector(cssSelectors.datepicker);
 
+    // @ts-ignore
     this.datepicker = new AirDatepicker(datepickerNode);
   }
 
   private attachEventsHandler() {
-    this.apply.addEventListener('click', this.applyDates.bind(this));
-    this.clear.addEventListener('click', this.clearDates.bind(this));
+    this.apply?.addEventListener('click', this.applyDates);
+    this.clear?.addEventListener('click', this.clearDates);
     this.toggleButtons.forEach((node) => {
-      node.addEventListener('click', this.toggleVisible.bind(this));
+      node.addEventListener('click', this.toggleVisible);
     });
     this.inputs.forEach((node) => {
-      node.addEventListener('blur', this.onblur.bind(this));
+      node.addEventListener('blur', this.onblur);
     });
-    document.addEventListener('click', this.onClickDocument.bind(this));
+    document.addEventListener('click', this.onClickDocument);
   }
 
   private onblur() {
@@ -119,7 +120,7 @@ class Calendar {
     const [firstButton, secondButton] = this.toggleButtons;
     const elements = [this.menu, firstButton, secondButton];
     if (!helpers.isElementsIncludeNode(event, elements)) {
-      this.menu.classList.remove('calendar__menu_visible');
+      this.menu?.classList.remove('calendar__menu_visible');
 
       this.inputs.forEach((node, i) => {
         this.inputs[i].classList.remove('text-field__input_focused');
@@ -127,8 +128,8 @@ class Calendar {
     }
   }
 
-  private applyDates() {
-    const [datepickerFrom, datepickerTo] = this.datepicker.getSelectedDates();
+  applyDates() {
+    const [datepickerFrom, datepickerTo] = this.datepicker?.getSelectedDates();
 
     if (typeof datepickerTo === 'undefined') {
       return;
@@ -172,13 +173,13 @@ class Calendar {
 
       input.plugin.setDates([{ ...emptyDate }, { ...emptyDate }]);
     }
-    this.datepicker.clearDates();
+    this.datepicker?.clearDates();
   }
 
-  private toggleVisible() {
-    this.menu.classList.toggle('calendar__menu_visible');
+  toggleVisible() {
+    this.menu?.classList.toggle('calendar__menu_visible');
 
-    const isOpened = this.menu.classList.contains('calendar__menu_visible');
+    const isOpened = this.menu?.classList.contains('calendar__menu_visible');
 
     this.inputs.forEach((node, i) => {
       if (isOpened) {
@@ -188,7 +189,7 @@ class Calendar {
       }
     });
 
-    this.datepicker.clearDates();
+    this.datepicker?.clearDates();
 
     if (this.inputs.length === 2) {
       const [inputFrom, inputTo] = this.inputs;
@@ -200,13 +201,13 @@ class Calendar {
       if (from.year !== '') {
         const { day, month, year } = from;
 
-        this.datepicker.changeDate(`${year}.${month}.${day}`);
+        this.datepicker?.changeDate(`${year}.${month}.${day}`);
       }
 
       if (to.year !== '') {
         const { day, month, year } = to;
 
-        this.datepicker.changeDate(`${year}.${month}.${day}`);
+        this.datepicker?.changeDate(`${year}.${month}.${day}`);
       }
     } else {
       const [input] = this.inputs;
@@ -214,9 +215,9 @@ class Calendar {
       const [from, to] = input.plugin.getDates();
 
       if (from.year !== '') {
-        this.datepicker.changeDate(`${from.year}.${from.month}.${from.day}`);
+        this.datepicker?.changeDate(`${from.year}.${from.month}.${from.day}`);
 
-        this.datepicker.changeDate(`${to.year}.${to.month}.${to.day}`);
+        this.datepicker?.changeDate(`${to.year}.${to.month}.${to.day}`);
       }
     }
   }

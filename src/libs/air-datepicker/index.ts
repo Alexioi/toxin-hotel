@@ -13,7 +13,7 @@ class AirDatepicker {
 
   private datepickerData: any;
 
-  constructor(node: HTMLElement) {
+  constructor(node: Element) {
     this.$node = <JQueryWithAirDatepicker>$(node);
 
     this._init();
