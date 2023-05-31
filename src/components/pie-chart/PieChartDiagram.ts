@@ -1,21 +1,7 @@
-interface votes {
-  [key: string]: number;
-  perfectly: number;
-  good: number;
-  satisfactory: number;
-  bad: number;
-}
+import { votes, diagramColors } from './scripts/types';
+import { drawText, drawArc } from './scripts/methods';
 
-interface diagramColors {
-  [key: string]: string[];
-}
-
-interface arcParameters {
-  startDegree: number;
-  endDegree: number;
-  colorFrom: string;
-  colorTo: string;
-}
+import helpers from '../../helpers';
 
 class PieChartDiagram {
   private root: Element | null = null;
@@ -73,10 +59,9 @@ class PieChartDiagram {
       if (typeof datasetVotes === 'string') {
         const votes = JSON.parse(datasetVotes);
 
-        // console.log(votes instanceof votes);
-        // if (votes instanceof votes) {
-        this.votes = votes;
-        // }
+        if (helpers.isObjectEqual(this.votes, votes)) {
+          this.votes = votes;
+        }
       }
     }
 
@@ -84,102 +69,47 @@ class PieChartDiagram {
   }
 
   private drawDiagram(votes: votes) {
-    const { grades, diagramColors } = this;
-    let totalVotes = 0;
+    const {
+      canvas,
+      grades,
+      diagramColors,
+      centerX,
+      centerY,
+      outerRadius,
+      innerRadius,
+    } = this;
+
     let startDegree = 0;
     let endDegree = 0;
 
-    this.grades.forEach((item) => {
-      totalVotes += votes[item];
-    });
+    const voteValues = Object.values(votes);
+    const totalVotes = voteValues.reduce((acc, curr) => acc + curr, 0);
 
     grades.forEach((item) => {
       const [colorFrom, colorTo] = diagramColors[item];
       endDegree = (votes[item] / totalVotes) * 360 + startDegree;
 
-      const start = startDegree + 1;
-      const end = endDegree - 1;
-
-      if (start < end) {
-        this.drawArc({
-          startDegree: start,
-          endDegree: end,
-          colorFrom,
-          colorTo,
-        });
+      if (startDegree < endDegree) {
+        if (canvas !== null) {
+          drawArc({
+            canvas,
+            startDegree,
+            endDegree,
+            colorFrom,
+            colorTo,
+            centerX,
+            centerY,
+            outerRadius,
+            innerRadius,
+          });
+        }
       }
 
       startDegree = endDegree;
     });
 
-    this.drawText(totalVotes);
-  }
-
-  static _getRadian(degree: number) {
-    return (Math.PI * degree) / 180;
-  }
-
-  private getCirclePoint(degree: number) {
-    const { centerX, centerY, outerRadius } = this;
-    const radian = PieChartDiagram._getRadian(degree);
-    const x = centerX + outerRadius * Math.cos(radian);
-    const y = centerY + outerRadius * Math.sin(radian);
-
-    return [x, y];
-  }
-
-  private drawArc({
-    startDegree,
-    endDegree,
-    colorFrom,
-    colorTo,
-  }: arcParameters) {
-    const { canvas, centerX, centerY, outerRadius, innerRadius } = this;
     if (canvas !== null) {
-      canvas.beginPath();
-      canvas.arc(
-        centerX,
-        centerY,
-        outerRadius,
-        PieChartDiagram._getRadian(startDegree),
-        PieChartDiagram._getRadian(endDegree),
-      );
-      let [circleX, circleY] = this.getCirclePoint(startDegree);
-      canvas.moveTo(circleX, circleY);
-      canvas.arc(
-        centerX,
-        centerY,
-        innerRadius,
-        PieChartDiagram._getRadian(startDegree),
-        PieChartDiagram._getRadian(endDegree),
-      );
-      [circleX, circleY] = this.getCirclePoint(endDegree);
-      canvas.lineTo(circleX, circleY);
-
-      const gradient = canvas.createLinearGradient(50, 30, 50, 150);
-
-      gradient.addColorStop(0, colorFrom);
-      gradient.addColorStop(1, colorTo);
-
-      canvas.fillStyle = gradient;
-
-      canvas.fill('evenodd');
-    }
-  }
-
-  private drawText(totalVotes: number) {
-    const { canvas, centerX, centerY } = this;
-
-    if (canvas !== null) {
-      canvas.fillStyle = '#BC9CFF';
-      canvas.font = 'bold 26px sans-serif';
-      canvas.textBaseline = 'bottom';
-      canvas.textAlign = 'center';
-      canvas.fillText(String(totalVotes), centerX, centerY + centerY / 9);
-
-      canvas.font = 'bold 12px Montserrat sans-serif';
-      canvas.textBaseline = 'top';
-      canvas.fillText('ГОЛОСОВ', centerX, centerY + centerY / 6);
+      drawText(canvas, totalVotes, centerX, centerY);
     }
   }
 }
