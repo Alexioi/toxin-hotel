@@ -1,5 +1,5 @@
 import { votes, diagramColors } from './types';
-import { drawText, drawArc } from './methods';
+import { drawDiagram } from './methods';
 import { diagramParameters } from './constants';
 
 import helpers from '../../../helpers';
@@ -13,12 +13,7 @@ class PieChartDiagram {
 
   private diagramColors: diagramColors = diagramParameters.colors;
 
-  private votes: votes = {
-    perfectly: 0,
-    good: 0,
-    satisfactory: 0,
-    bad: 0,
-  };
+  private votes: votes = diagramParameters.votes;
 
   private innerRadius: number = 0;
 
@@ -61,51 +56,17 @@ class PieChartDiagram {
       }
     }
 
-    this.drawDiagram(this.votes);
-  }
-
-  private drawDiagram(votes: votes) {
-    const {
-      canvas,
-      grades,
-      diagramColors,
-      centerX,
-      centerY,
-      outerRadius,
-      innerRadius,
-    } = this;
-
-    let startDegree = 0;
-    let endDegree = 0;
-
-    const voteValues = Object.values(votes);
-    const totalVotes = voteValues.reduce((acc, curr) => acc + curr, 0);
-
-    grades.forEach((item) => {
-      const [colorFrom, colorTo] = diagramColors[item];
-      endDegree = (votes[item] / totalVotes) * 360 + startDegree;
-
-      if (startDegree < endDegree) {
-        if (canvas !== null) {
-          drawArc({
-            canvas,
-            startDegree,
-            endDegree,
-            colorFrom,
-            colorTo,
-            centerX,
-            centerY,
-            outerRadius,
-            innerRadius,
-          });
-        }
-      }
-
-      startDegree = endDegree;
-    });
-
-    if (canvas !== null) {
-      drawText(canvas, totalVotes, centerX, centerY);
+    if (this.canvas !== null) {
+      drawDiagram(
+        this.votes,
+        this.canvas,
+        this.grades,
+        this.diagramColors,
+        this.centerX,
+        this.centerY,
+        this.outerRadius,
+        this.innerRadius,
+      );
     }
   }
 }

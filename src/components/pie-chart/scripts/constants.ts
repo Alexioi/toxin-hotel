@@ -19,6 +19,12 @@ const diagramParameters = {
   numberDisplacementCoefficient: 9,
   textDisplacementCoefficient: 6,
   text: 'ГОЛОСОВ',
+  votes: {
+    perfectly: 0,
+    good: 0,
+    satisfactory: 0,
+    bad: 0,
+  },
 };
 
 export { cssSelectors, diagramParameters };

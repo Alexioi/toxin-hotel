@@ -1,5 +1,5 @@
 import { diagramParameters } from './constants';
-import { arcParameters } from './types';
+import { arcParameters, votes, diagramColors } from './types';
 
 const calculateRadian = (degree: number): number => {
   return (Math.PI * degree) / 180;
@@ -123,4 +123,46 @@ const drawArc = ({
   }
 };
 
-export { drawText, drawArc };
+const drawDiagram = (
+  votes: votes,
+  canvas: CanvasRenderingContext2D,
+  grades: string[],
+  diagramColors: diagramColors,
+  centerX: number,
+  centerY: number,
+  outerRadius: number,
+  innerRadius: number,
+) => {
+  let startDegree = 0;
+  let endDegree = 0;
+
+  const voteValues = Object.values(votes);
+  const totalVotes = voteValues.reduce((acc, curr) => acc + curr, 0);
+
+  grades.forEach((item) => {
+    const [colorFrom, colorTo] = diagramColors[item];
+    endDegree = (votes[item] / totalVotes) * 360 + startDegree;
+
+    if (startDegree < endDegree) {
+      if (canvas !== null) {
+        drawArc({
+          canvas,
+          startDegree,
+          endDegree,
+          colorFrom,
+          colorTo,
+          centerX,
+          centerY,
+          outerRadius,
+          innerRadius,
+        });
+      }
+    }
+
+    startDegree = endDegree;
+  });
+
+  drawText(canvas, totalVotes, centerX, centerY);
+};
+
+export { drawDiagram };
