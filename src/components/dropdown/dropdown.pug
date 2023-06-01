@@ -1,20 +1,56 @@
-include ../dropdown-menu/dropdown-menu
 include ../typography/typography
 include ../text-field/text-field
+include ../button/button
 
 mixin dropdown(options)
   -
     const {
       hint = '',
       titleText = '',
-      items = [], 
+      items = [ 
+        {name:'', counter: 0}, 
+      ], 
       isOpened = false, 
-      variants,
+      variants = [['']],
       hasButtons,
-      placeholder
+      placeholder,
+      groups = [[0,1,2]]
     } = options || {}
 
-  .dropdown
-    +dropdown-menu({items, isOpened, variants, hasButtons, placeholder})
+
+    const variantsString = variants.join('-')
+    const groupsString = groups.join('-')
+
+    const {buttons} = require('@components/dropdown/data.json')
+
+    const openedClass = isOpened && 'dropdown_opened'
+    const classes = [openedClass]
+
+  .dropdown.js-dropdown(
+    class=classes,
+    data-has-buttons=hasButtons,
+    data-placeholder=placeholder,
+    data-variants=variantsString,
+    data-groups=groupsString
+  )
+    .dropdown__input.js-dropdown__input
       +typography({tag: 'h4', text: titleText, hint})
       +text-field({isReadonly: true, type: 'text', isDropdown: true, name: type})
+    .dropdown__menu.js-dropdown__menu
+      ul.dropdown__list
+        each item in items 
+          li.dropdown__item.js-dropdown__item
+            span.dropdown__item-name= item.name
+            button.dropdown__counter-button.js-dropdown__counter-button(
+              type="button"
+            ) -
+            span.dropdown__counter.js-dropdown__counter= item.counter
+            button.dropdown__counter-button.js-dropdown__counter-button(
+              type="button"
+            ) +
+      if hasButtons
+        .dropdown__buttons
+          .dropdown__clear-button.js-dropdown__clear-button
+            +button(Object.assign({theme: 'link', type: 'button'}, buttons.clear))
+          .dropdown__apply-button.js-dropdown__apply-button
+            +button(Object.assign({theme: 'link', type: 'button'}, buttons.apply))

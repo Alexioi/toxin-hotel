@@ -3,10 +3,10 @@ import helpers from '../../helpers';
 
 const disableCounterButton = (node: Element | null, counter: number) => {
   if (counter === 0) {
-    node?.classList.add('dropdown-menu__counter-button_disabled');
+    node?.classList.add('dropdown__counter-button_disabled');
     node?.setAttribute('disabled', 'disabled');
   } else {
-    node?.classList.remove('dropdown-menu__counter-button_disabled');
+    node?.classList.remove('dropdown__counter-button_disabled');
     node?.removeAttribute('disabled');
   }
 };
