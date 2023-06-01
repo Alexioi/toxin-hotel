@@ -1,3 +1,4 @@
+import { diagramParameters } from './constants';
 import { arcParameters } from './types';
 
 const calculateRadian = (degree: number): number => {
@@ -45,15 +46,46 @@ const drawText = (
   centerX: number,
   centerY: number,
 ) => {
-  canvas.fillStyle = '#BC9CFF';
-  canvas.font = 'bold 26px sans-serif';
-  canvas.textBaseline = 'bottom';
-  canvas.textAlign = 'center';
-  canvas.fillText(String(totalVotes), centerX, centerY + centerY / 9);
+  canvas.fillStyle = diagramParameters.textColor;
 
-  canvas.font = 'bold 12px Montserrat sans-serif';
-  canvas.textBaseline = 'top';
-  canvas.fillText('ГОЛОСОВ', centerX, centerY + centerY / 6);
+  drawString(
+    canvas,
+    String(totalVotes),
+    'bottom',
+    diagramParameters.numberStyle,
+    centerX,
+    centerY,
+    diagramParameters.numberDisplacementCoefficient,
+  );
+
+  drawString(
+    canvas,
+    diagramParameters.text,
+    'top',
+    diagramParameters.textStyle,
+    centerX,
+    centerY,
+    diagramParameters.textDisplacementCoefficient,
+  );
+};
+
+const drawString = (
+  canvas: CanvasRenderingContext2D,
+  text: string,
+  textBaseline: 'top' | 'bottom',
+  style: string,
+  centerX: number,
+  centerY: number,
+  displacementCoefficient: number,
+) => {
+  canvas.fillStyle = diagramParameters.textColor;
+  canvas.font = style;
+  canvas.textBaseline = textBaseline;
+  canvas.textAlign = 'center';
+
+  const y = centerY + centerY / displacementCoefficient;
+
+  canvas.fillText(text, centerX, y);
 };
 
 const drawArc = ({
@@ -68,8 +100,8 @@ const drawArc = ({
   innerRadius,
 }: arcParameters) => {
   if (canvas !== null) {
-    const start = startDegree + 1;
-    const end = endDegree - 1;
+    const start = startDegree + diagramParameters.arcPadding;
+    const end = endDegree - diagramParameters.arcPadding;
     const startRadian = calculateRadian(start);
     const endRadian = calculateRadian(end);
 
@@ -79,7 +111,8 @@ const drawArc = ({
     canvas.arc(centerX, centerY, innerRadius, startRadian, endRadian);
     drawLine(canvas, end, centerX, centerY, outerRadius);
 
-    const gradient = canvas.createLinearGradient(50, 30, 50, 150);
+    const { x1, y1, x2, y2 } = diagramParameters.arcLinearGradient;
+    const gradient = canvas.createLinearGradient(x1, y1, x2, y2);
 
     gradient.addColorStop(0, colorFrom);
     gradient.addColorStop(1, colorTo);

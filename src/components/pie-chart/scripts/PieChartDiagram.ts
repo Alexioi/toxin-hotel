@@ -1,21 +1,17 @@
-import { votes, diagramColors } from './scripts/types';
-import { drawText, drawArc } from './scripts/methods';
+import { votes, diagramColors } from './types';
+import { drawText, drawArc } from './methods';
+import { diagramParameters } from './constants';
 
-import helpers from '../../helpers';
+import helpers from '../../../helpers';
 
 class PieChartDiagram {
   private root: Element | null = null;
 
   private canvas: CanvasRenderingContext2D | null = null;
 
-  private grades = ['good', 'perfectly', 'satisfactory', 'bad'];
+  private grades = diagramParameters.grades;
 
-  private diagramColors: diagramColors = {
-    perfectly: ['#FFE39C', '#FFBA9C'],
-    good: ['#6FCF97', '#66D2EA'],
-    satisfactory: ['#BC9CFF', '#8BA4F9'],
-    bad: ['black', 'black'],
-  };
+  private diagramColors: diagramColors = diagramParameters.colors;
 
   private votes: votes = {
     perfectly: 0,
@@ -39,9 +35,9 @@ class PieChartDiagram {
   }
 
   private init() {
-    const height = 120;
-    const width = 120;
-    this.innerRadius = width / 2 - 4;
+    const height = diagramParameters.height;
+    const width = diagramParameters.width;
+    this.innerRadius = width / 2 - diagramParameters.arcWidth;
     this.outerRadius = width / 2;
     this.centerX = width / 2;
     this.centerY = height / 2;
