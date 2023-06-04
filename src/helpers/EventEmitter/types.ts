@@ -22,6 +22,18 @@ type EventObject =
   | {
       eventName: 'DeleteData';
       eventArguments: null;
+    }
+  | {
+      eventName: 'IncrementCounter';
+      eventArguments: { index: number };
+    }
+  | {
+      eventName: 'DecrementCounter';
+      eventArguments: { index: number };
+    }
+  | {
+      eventName: 'UpdateCounters';
+      eventArguments: { counters: number[]; value: string };
     };
 
 type EventNames =
@@ -29,6 +41,9 @@ type EventNames =
   | 'InputData'
   | 'TouchInput'
   | 'DeleteData'
-  | 'BlurInput';
+  | 'BlurInput'
+  | 'UpdateCounters'
+  | 'IncrementCounter'
+  | 'DecrementCounter';
 
 export { EventObject, EventNames };

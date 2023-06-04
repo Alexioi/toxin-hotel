@@ -1,0 +1,103 @@
+import EventEmitter from 'src/helpers/EventEmitter';
+import cssSelectors from '../../../constants';
+
+const disableCounterButton = (node: Element | null, counter: number) => {
+  if (counter === 0) {
+    node?.classList.add('dropdown__counter-button_disabled');
+    node?.setAttribute('disabled', 'disabled');
+  } else {
+    node?.classList.remove('dropdown__counter-button_disabled');
+    node?.removeAttribute('disabled');
+  }
+};
+
+class Counter {
+  private root: Element;
+
+  private eventEmitter: EventEmitter;
+
+  private index: number;
+
+  private decrementButton: Element | null = null;
+
+  private incrementButton: Element | null = null;
+
+  private counterNode: Element | null = null;
+
+  constructor(node: Element, eventEmitter: EventEmitter, index: number) {
+    this.root = node;
+    this.eventEmitter = eventEmitter;
+    this.index = index;
+
+    this.handleDecrementButtonClick =
+      this.handleDecrementButtonClick.bind(this);
+
+    this.handleIncrementButtonClick =
+      this.handleIncrementButtonClick.bind(this);
+
+    this.init();
+  }
+
+  public update(counter: number) {
+    disableCounterButton(this.decrementButton, counter);
+
+    if (this.counterNode !== null) {
+      this.counterNode.innerHTML = String(counter);
+    }
+  }
+
+  private init() {
+    this.findAndInitNodes().attachEventHandlers();
+
+    const counter = this.counterNode?.innerHTML;
+
+    if (counter === '0') {
+      disableCounterButton(this.decrementButton, Number(counter));
+    }
+  }
+
+  private findAndInitNodes() {
+    const [decrementButton, incrementButton] = this.root.querySelectorAll(
+      cssSelectors.counterButtons,
+    );
+
+    this.decrementButton =
+      typeof decrementButton === 'undefined' ? null : decrementButton;
+
+    this.incrementButton =
+      typeof incrementButton === 'undefined' ? null : incrementButton;
+
+    this.counterNode = this.root.querySelector(cssSelectors.counter);
+
+    return this;
+  }
+
+  private attachEventHandlers() {
+    this.decrementButton?.addEventListener(
+      'click',
+      this.handleDecrementButtonClick,
+    );
+    this.incrementButton?.addEventListener(
+      'click',
+      this.handleIncrementButtonClick,
+    );
+
+    return this;
+  }
+
+  private handleDecrementButtonClick() {
+    this.eventEmitter.emit({
+      eventName: 'DecrementCounter',
+      eventArguments: { index: this.index },
+    });
+  }
+
+  private handleIncrementButtonClick() {
+    this.eventEmitter.emit({
+      eventName: 'IncrementCounter',
+      eventArguments: { index: this.index },
+    });
+  }
+}
+
+export default Counter;

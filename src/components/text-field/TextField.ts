@@ -22,8 +22,7 @@ class TextField {
   private presenter: Presenter;
 
   constructor(node: HTMLInputElement) {
-    // @ts-ignore
-    this.node = node;
+    this.node = node as HTMLInputElement & { plugin: TextField };
 
     this.node.plugin = this;
 

@@ -1,4 +1,4 @@
-import cssSelectors from './constants';
+import cssSelectors from './scripts/constants';
 
 import helpers from '../../helpers';
 import Counter from './Counter';

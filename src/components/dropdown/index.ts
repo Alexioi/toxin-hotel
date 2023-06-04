@@ -1,6 +1,6 @@
-import DropdownMenu from './DropdownMenu';
-import cssSelectors from './constants';
+import Dropdown from './scripts/Dropdown';
+import cssSelectors from './scripts/constants';
 
 document.querySelectorAll(cssSelectors.dropdownMenu).forEach((node) => {
-  new DropdownMenu(<HTMLDivElement>node);
+  new Dropdown(node);
 });

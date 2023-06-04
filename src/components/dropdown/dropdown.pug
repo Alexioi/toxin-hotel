@@ -14,24 +14,23 @@ mixin dropdown(options)
       variants = [['']],
       hasButtons,
       placeholder,
-      groups = [[0,1,2]]
+      groups = [[0],[1,2]]
     } = options || {}
-
-
-    const variantsString = variants.join('-')
-    const groupsString = groups.join('-')
 
     const {buttons} = require('@components/dropdown/data.json')
 
     const openedClass = isOpened && 'dropdown_opened'
     const classes = [openedClass]
 
+    const counters = items.map((obj) => obj.counter);
+
   .dropdown.js-dropdown(
     class=classes,
     data-has-buttons=hasButtons,
     data-placeholder=placeholder,
-    data-variants=variantsString,
-    data-groups=groupsString
+    data-variants=variants,
+    data-groups=groups,
+    data-counters=counters
   )
     .dropdown__input.js-dropdown__input
       +typography({tag: 'h4', text: titleText, hint})
