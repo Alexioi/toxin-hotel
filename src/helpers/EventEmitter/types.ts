@@ -34,6 +34,18 @@ type EventObject =
   | {
       eventName: 'UpdateCounters';
       eventArguments: { counters: number[]; value: string };
+    }
+  | {
+      eventName: 'ApplyDropdownData';
+      eventArguments: null;
+    }
+  | {
+      eventName: 'UpdateValue';
+      eventArguments: { value: string };
+    }
+  | {
+      eventName: 'ClearCounters';
+      eventArguments: null;
     };
 
 type EventNames =
@@ -44,6 +56,9 @@ type EventNames =
   | 'BlurInput'
   | 'UpdateCounters'
   | 'IncrementCounter'
-  | 'DecrementCounter';
+  | 'DecrementCounter'
+  | 'ApplyDropdownData'
+  | 'UpdateValue'
+  | 'ClearCounters';
 
 export { EventObject, EventNames };

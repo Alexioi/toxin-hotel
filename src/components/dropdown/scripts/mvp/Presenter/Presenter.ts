@@ -15,7 +15,12 @@ class Presenter {
     this.view = view;
     this.model = model;
 
-    this.attachEventEmittersToModel().attachEventEmittersToView();
+    this.attachEventEmittersToModel().attachEventEmittersToView().init();
+  }
+
+  private init() {
+    this.model.getValue();
+    return this;
   }
 
   private attachEventEmittersToModel() {
@@ -27,6 +32,14 @@ class Presenter {
       this.model.incrementCounter(index);
     };
 
+    const getValue = () => {
+      this.model.getValue();
+    };
+
+    const notifyModelAboutClearCounters = () => {
+      this.model.resetCounters();
+    };
+
     this.eventEmitter.subscribe(
       'IncrementCounter',
       notifyModelAboutIncrementCounter,
@@ -35,6 +48,8 @@ class Presenter {
       'DecrementCounter',
       notifyModelAboutDecrementCounter,
     );
+    this.eventEmitter.subscribe('ApplyDropdownData', getValue);
+    this.eventEmitter.subscribe('ClearCounters', notifyModelAboutClearCounters);
 
     return this;
   }
@@ -50,7 +65,17 @@ class Presenter {
       this.view.update(counters, value);
     };
 
+    const notifyViewUpdatedValue = ({
+      value,
+    }: {
+      counters: number[];
+      value: string;
+    }): void => {
+      this.view.updateInputValue(value);
+    };
+
     this.eventEmitter.subscribe('UpdateCounters', notifyViewUpdatedCounters);
+    this.eventEmitter.subscribe('UpdateValue', notifyViewUpdatedValue);
 
     return this;
   }

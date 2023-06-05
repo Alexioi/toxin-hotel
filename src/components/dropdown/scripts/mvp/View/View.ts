@@ -1,6 +1,24 @@
 import EventEmitter from 'src/helpers/EventEmitter';
 import cssSelectors from '../../constants';
 import Counter from './subViews/Counter';
+import helpers from '../../../../../../src/helpers';
+
+const toggleClearButton = (clearButton: Element, countersValue: number[]) => {
+  if (clearButton === null) {
+    return;
+  }
+
+  const countersSum = countersValue.reduce(
+    (partialSum, counter) => partialSum + counter,
+    0,
+  );
+
+  if (countersSum === 0) {
+    clearButton.classList.add('dropdown__clear-button_hidden');
+  } else {
+    clearButton.classList.remove('dropdown__clear-button_hidden');
+  }
+};
 
 class View {
   private root: Element;
@@ -21,9 +39,14 @@ class View {
 
   private menu: Element | null = null;
 
+  private isAutoUpdateInput = true;
+
   constructor(node: Element, eventEmitter: EventEmitter) {
     this.root = node;
     this.eventEmitter = eventEmitter;
+
+    this.handleApplyButtonClick = this.handleApplyButtonClick.bind(this);
+    this.handleClearButtonClick = this.handleClearButtonClick.bind(this);
 
     this.init();
   }
@@ -33,13 +56,34 @@ class View {
       counter.update(counters[index]);
     });
 
+    if (this.clearButton !== null) {
+      toggleClearButton(this.clearButton, counters);
+    }
+
+    if (this.isAutoUpdateInput) {
+      this.updateInputValue(value);
+    }
+  }
+
+  public updateInputValue(value: string) {
     if (this.input instanceof HTMLInputElement) {
       this.input.value = value;
     }
   }
 
   private init() {
-    this.findAndInitNodes().initCounters();
+    this.findAndInitNodes()
+      .attachEventHandlers()
+      .initCounters()
+      .defineAutomaticInputDataModification();
+  }
+
+  private defineAutomaticInputDataModification() {
+    if (this.applyButton !== null) {
+      this.isAutoUpdateInput = false;
+    }
+
+    return this;
   }
 
   private findAndInitNodes() {
@@ -54,7 +98,26 @@ class View {
   }
 
   private attachEventHandlers() {
+    this.applyButton?.addEventListener('click', this.handleApplyButtonClick);
+    this.clearButton?.addEventListener('click', this.handleClearButtonClick);
+    this.textField?.addEventListener('click', this._toggleMenu.bind(this));
+    document.addEventListener('click', this._onClickDocument.bind(this));
+
     return this;
+  }
+
+  private handleClearButtonClick() {
+    this.eventEmitter.emit({
+      eventName: 'ClearCounters',
+      eventArguments: null,
+    });
+  }
+
+  private handleApplyButtonClick() {
+    this.eventEmitter.emit({
+      eventName: 'ApplyDropdownData',
+      eventArguments: null,
+    });
   }
 
   private initCounters() {
@@ -65,6 +128,36 @@ class View {
 
       this.counters.push(counter);
     });
+
+    return this;
+  }
+
+  _onClickDocument(event: Event) {
+    const elements = [this.menu, this.input, this.inputButton];
+    if (!helpers.isElementsIncludeNode(event, elements)) {
+      this._closeMenu();
+    }
+  }
+
+  _closeMenu() {
+    this.root.classList.remove('dropdown_opened');
+
+    this._toggleInputFocus();
+  }
+
+  _toggleMenu() {
+    this.root.classList.toggle('dropdown_opened');
+    this._toggleInputFocus();
+  }
+
+  _toggleInputFocus() {
+    const isOpened = this.root.classList.contains('dropdown_opened');
+
+    if (isOpened) {
+      this.input?.classList.add('text-field__input_opened');
+    } else {
+      this.input?.classList.remove('text-field__input_opened');
+    }
   }
 }
 
