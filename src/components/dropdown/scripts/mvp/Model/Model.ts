@@ -30,14 +30,14 @@ class Model {
   }
 
   public incrementCounter(index: number) {
-    this.counters[index] = this.counters[index] + 1;
+    this.counters[index] += 1;
 
     this.calculateValueAndNotify();
   }
 
   public decrementCounter(index: number) {
     if (this.counters[index] > 0) {
-      this.counters[index] = this.counters[index] - 1;
+      this.counters[index] -= 1;
     }
 
     this.calculateValueAndNotify();

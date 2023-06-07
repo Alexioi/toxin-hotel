@@ -1,7 +1,7 @@
 import EventEmitter from 'src/helpers/EventEmitter';
 import cssSelectors from '../../constants';
 import Counter from './subViews/Counter';
-import helpers from '../../../../../../src/helpers';
+import helpers from '../../../../../helpers';
 
 const toggleClearButton = (clearButton: Element, countersValue: number[]) => {
   if (clearButton === null) {

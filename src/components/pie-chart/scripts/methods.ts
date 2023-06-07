@@ -1,8 +1,21 @@
 import { diagramParameters } from './constants';
-import { arcParameters, votes, diagramColors } from './types';
+import { ArcParameters, Votes, DiagramColors } from './types';
 
 const calculateRadian = (degree: number): number => {
   return (Math.PI * degree) / 180;
+};
+
+const calculateCirclePoint = (
+  degree: number,
+  centerX: number,
+  centerY: number,
+  outerRadius: number,
+) => {
+  const radian = calculateRadian(degree);
+  const x = centerX + outerRadius * Math.cos(radian);
+  const y = centerY + outerRadius * Math.sin(radian);
+
+  return { x, y };
 };
 
 const moveCursor = (
@@ -27,17 +40,27 @@ const drawLine = (
   canvas.lineTo(x, y);
 };
 
-const calculateCirclePoint = (
-  degree: number,
+const drawString = (
+  canvas: CanvasRenderingContext2D,
+  text: string,
+  textBaseline: 'top' | 'bottom',
+  style: string,
   centerX: number,
   centerY: number,
-  outerRadius: number,
+  displacementCoefficient: number,
 ) => {
-  const radian = calculateRadian(degree);
-  const x = centerX + outerRadius * Math.cos(radian);
-  const y = centerY + outerRadius * Math.sin(radian);
+  /* eslint-disable-next-line no-param-reassign */
+  canvas.fillStyle = diagramParameters.textColor;
+  /* eslint-disable-next-line no-param-reassign */
+  canvas.font = style;
+  /* eslint-disable-next-line no-param-reassign */
+  canvas.textBaseline = textBaseline;
+  /* eslint-disable-next-line no-param-reassign */
+  canvas.textAlign = 'center';
 
-  return { x, y };
+  const y = centerY + centerY / displacementCoefficient;
+
+  canvas.fillText(text, centerX, y);
 };
 
 const drawText = (
@@ -46,6 +69,7 @@ const drawText = (
   centerX: number,
   centerY: number,
 ) => {
+  /* eslint-disable-next-line no-param-reassign */
   canvas.fillStyle = diagramParameters.textColor;
 
   drawString(
@@ -69,25 +93,6 @@ const drawText = (
   );
 };
 
-const drawString = (
-  canvas: CanvasRenderingContext2D,
-  text: string,
-  textBaseline: 'top' | 'bottom',
-  style: string,
-  centerX: number,
-  centerY: number,
-  displacementCoefficient: number,
-) => {
-  canvas.fillStyle = diagramParameters.textColor;
-  canvas.font = style;
-  canvas.textBaseline = textBaseline;
-  canvas.textAlign = 'center';
-
-  const y = centerY + centerY / displacementCoefficient;
-
-  canvas.fillText(text, centerX, y);
-};
-
 const drawArc = ({
   canvas,
   startDegree,
@@ -98,7 +103,7 @@ const drawArc = ({
   centerY,
   outerRadius,
   innerRadius,
-}: arcParameters) => {
+}: ArcParameters) => {
   if (canvas !== null) {
     const start = startDegree + diagramParameters.arcPadding;
     const end = endDegree - diagramParameters.arcPadding;
@@ -117,6 +122,7 @@ const drawArc = ({
     gradient.addColorStop(0, colorFrom);
     gradient.addColorStop(1, colorTo);
 
+    /* eslint-disable-next-line no-param-reassign */
     canvas.fillStyle = gradient;
 
     canvas.fill('evenodd');
@@ -124,10 +130,10 @@ const drawArc = ({
 };
 
 const drawDiagram = (
-  votes: votes,
+  votes: Votes,
   canvas: CanvasRenderingContext2D,
   grades: string[],
-  diagramColors: diagramColors,
+  diagramColors: DiagramColors,
   centerX: number,
   centerY: number,
   outerRadius: number,
@@ -165,4 +171,4 @@ const drawDiagram = (
   drawText(canvas, totalVotes, centerX, centerY);
 };
 
-export { drawDiagram };
+export default drawDiagram;

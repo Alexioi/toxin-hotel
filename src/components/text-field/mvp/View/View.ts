@@ -1,6 +1,41 @@
 import EventEmitter from '../../../../helpers/EventEmitter';
 
-import { date } from '../../types';
+import { Date } from '../../types';
+
+const isNumber = (key: string | null): boolean => {
+  if (key === null) {
+    return false;
+  }
+
+  return /^\d$/.test(key);
+};
+
+const calculateDayAndMount = (checkedDate: Date) => {
+  const { day, month, year } = checkedDate;
+
+  const monthNames = [
+    'янв',
+    'фев',
+    'мар',
+    'апр',
+    'май',
+    'июн',
+    'июл',
+    'авг',
+    'сен',
+    'окт',
+    'ноя',
+    'дек',
+  ];
+
+  const date = new Date(Number(year), Number(month) - 1, Number(day));
+
+  const monthNumber = date.getMonth();
+
+  const monthName = monthNames[monthNumber];
+
+  return `${day} ${monthName}`;
+};
 
 class View {
   private node: HTMLInputElement;
@@ -16,7 +51,7 @@ class View {
     this.init();
   }
 
-  public displayDate(dates: date[]): void {
+  public displayDate(dates: Date[]): void {
     if (dates.length === 2 && !this.isFocus) {
       const [from, to] = dates;
 
@@ -25,8 +60,8 @@ class View {
         return;
       }
 
-      const maskedFrom = this.calculateDayAndMount(from);
-      const maskedTo = this.calculateDayAndMount(to);
+      const maskedFrom = calculateDayAndMount(from);
+      const maskedTo = calculateDayAndMount(to);
 
       this.node.value = `${maskedFrom} - ${maskedTo}`;
       return;
@@ -39,6 +74,7 @@ class View {
       return;
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-shadow
     const maskedDates = dates.map((date): string => {
       const { day, month, year } = date;
 
@@ -54,33 +90,6 @@ class View {
     this.node.value = maskedDate;
 
     this.changeCaretPosition(maskedDate);
-  }
-
-  calculateDayAndMount(checkedDate: date) {
-    const { day, month, year } = checkedDate;
-
-    const monthNames = [
-      'янв',
-      'фев',
-      'мар',
-      'апр',
-      'май',
-      'июн',
-      'июл',
-      'авг',
-      'сен',
-      'окт',
-      'ноя',
-      'дек',
-    ];
-
-    const date = new Date(Number(year), Number(month) - 1, Number(day));
-
-    const monthNumber = date.getMonth();
-
-    const monthName = monthNames[monthNumber];
-
-    return `${day} ${monthName}`;
   }
 
   private changeCaretPosition(value: string): void {
@@ -133,7 +142,7 @@ class View {
     if (event instanceof InputEvent) {
       event.preventDefault();
 
-      const data = event.data;
+      const { data } = event;
 
       if (event.inputType === 'deleteContentBackward') {
         this.eventEmitter.emit({
@@ -143,7 +152,7 @@ class View {
         return;
       }
 
-      if (!this.isNumber(data)) {
+      if (!isNumber(data)) {
         this.eventEmitter.emit({
           eventName: 'TouchInput',
           eventArguments: null,
@@ -157,14 +166,6 @@ class View {
       });
     }
   };
-
-  private isNumber(key: string | null): boolean {
-    if (key === null) {
-      return false;
-    }
-
-    return /^\d$/.test(key);
-  }
 }
 
 export default View;

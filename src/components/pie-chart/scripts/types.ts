@@ -1,4 +1,4 @@
-interface votes {
+interface Votes {
   [key: string]: number;
   perfectly: number;
   good: number;
@@ -6,11 +6,11 @@ interface votes {
   bad: number;
 }
 
-interface diagramColors {
+interface DiagramColors {
   [key: string]: string[];
 }
 
-interface arcParameters {
+interface ArcParameters {
   startDegree: number;
   endDegree: number;
   colorFrom: string;
@@ -22,4 +22,4 @@ interface arcParameters {
   innerRadius: number;
 }
 
-export { votes, diagramColors, arcParameters };
+export { Votes, DiagramColors, ArcParameters };

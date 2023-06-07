@@ -1,6 +1,6 @@
 import noUiSlider from 'nouislider';
 
-type parameters = {
+type Parameters = {
   min: number;
   max: number;
   from: number;
@@ -8,22 +8,22 @@ type parameters = {
 };
 
 class NoUISlider {
-  private node: HTMLElement;
+  private root: Element | null;
 
-  private valueNode: HTMLElement;
+  private valueNode: Element | null;
 
   constructor(
-    node: HTMLElement,
-    valueNode: HTMLElement,
-    parameters: parameters,
+    node: Element | null,
+    valueNode: Element | null,
+    parameters: Parameters,
   ) {
-    this.node = node;
+    this.root = node;
     this.valueNode = valueNode;
 
     this.init(parameters);
   }
 
-  private init(parameters: parameters) {
+  private init(parameters: Parameters) {
     const { min, max, from, to } = parameters;
 
     const config = {
@@ -36,16 +36,20 @@ class NoUISlider {
       },
     };
 
-    noUiSlider.create(this.node, config);
+    if (this.root instanceof HTMLElement) {
+      noUiSlider.create(this.root, config);
+    }
 
     // @ts-ignore
-    this.node.noUiSlider.on('update', this.updateValue.bind(this));
+    this.root.noUiSlider.on('update', this.updateValue.bind(this));
   }
 
   private updateValue([from, to]: number[]) {
-    this.valueNode.innerHTML = `${Number(from).toLocaleString()}₽ - ${Number(
-      to,
-    ).toLocaleString()}₽`;
+    if (this.valueNode !== null) {
+      this.valueNode.innerHTML = `${Number(from).toLocaleString()}₽ - ${Number(
+        to,
+      ).toLocaleString()}₽`;
+    }
   }
 }
 

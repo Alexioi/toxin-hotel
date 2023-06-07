@@ -14,4 +14,4 @@ const calculateFullDate = (date: Date) => {
   return { day, month, year };
 };
 
-export { calculateFullDate };
+export default calculateFullDate;

@@ -1,6 +1,6 @@
-import { date } from '../../types';
+import { Date } from '../../types';
 
-const isValidDate = (checkedDate: date, key: number): boolean => {
+const isValidDate = (checkedDate: Date, key: number): boolean => {
   const { day, month, year } = checkedDate;
 
   const newDay = Number(day);
@@ -16,41 +16,33 @@ const isValidDate = (checkedDate: date, key: number): boolean => {
   return dateYear === newYear && dateMonth === newMonth && dateDay === newDay;
 };
 
-const calculateDay = (date: date, key: number): date => {
+const calculateYear = (date: Date, key: number): Date => {
   const { day, month, year } = date;
 
-  if (day.length === 2) {
-    return calculateMonth(date, key);
+  if (year === '') {
+    const newYear = `${key}`;
+
+    return { day, month, year: newYear };
   }
 
-  if (day.length === 1) {
-    if (day[0] === '0' && key === 0) {
-      const newDay = `${day}1`;
+  if (year.length === 4) {
+    return date;
+  }
 
-      return { day: newDay, month, year };
+  if (year.length === 3) {
+    if (isValidDate(date, key)) {
+      return { day, month, year: `${year}${key}` };
     }
 
-    if (day[0] === '3' && key > 0) {
-      const newDay = `${day}1`;
-
-      return { day: newDay, month, year };
-    }
-
-    const newDay = day + String(key);
-    return { day: newDay, month, year };
+    return date;
   }
 
-  if (key > 3) {
-    const newDay = `${day}0${key}`;
+  const newYear = `${year}${key}`;
 
-    return { day: newDay, month, year };
-  }
-
-  const newDay = day + String(key);
-  return { day: newDay, month, year };
+  return { day, month, year: newYear };
 };
 
-const calculateMonth = (date: date, key: number): date => {
+const calculateMonth = (date: Date, key: number): Date => {
   const { day, month, year } = date;
 
   if (month === '') {
@@ -94,30 +86,38 @@ const calculateMonth = (date: date, key: number): date => {
   return { day, month: newMonth, year };
 };
 
-const calculateYear = (date: date, key: number): date => {
+const calculateDay = (date: Date, key: number): Date => {
   const { day, month, year } = date;
 
-  if (year === '') {
-    const newYear = `${key}`;
-
-    return { day, month, year: newYear };
+  if (day.length === 2) {
+    return calculateMonth(date, key);
   }
 
-  if (year.length === 4) {
-    return date;
-  }
+  if (day.length === 1) {
+    if (day[0] === '0' && key === 0) {
+      const newDay = `${day}1`;
 
-  if (year.length === 3) {
-    if (isValidDate(date, key)) {
-      return { day, month, year: `${year}${key}` };
+      return { day: newDay, month, year };
     }
 
-    return date;
+    if (day[0] === '3' && key > 0) {
+      const newDay = `${day}1`;
+
+      return { day: newDay, month, year };
+    }
+
+    const newDay = day + String(key);
+    return { day: newDay, month, year };
   }
 
-  const newYear = `${year}${key}`;
+  if (key > 3) {
+    const newDay = `${day}0${key}`;
 
-  return { day, month, year: newYear };
+    return { day: newDay, month, year };
+  }
+
+  const newDay = day + String(key);
+  return { day: newDay, month, year };
 };
 
-export { calculateDay };
+export default calculateDay;

@@ -5,16 +5,14 @@ const isObjectEqual = (
   if (Object.keys(obj1).length !== Object.keys(obj2).length) {
     return false;
   }
-
+  /* eslint-disable no-restricted-syntax, guard-for-in */
   for (const key in obj1) {
-    if (obj1.hasOwnProperty(key)) {
-      if (!obj2.hasOwnProperty(key)) {
-        return false;
-      }
+    if (!Object.prototype.hasOwnProperty.call(obj2, key)) {
+      return false;
+    }
 
-      if (typeof obj1[key] !== typeof obj2[key]) {
-        return false;
-      }
+    if (typeof obj1[key] !== typeof obj2[key]) {
+      return false;
     }
   }
 

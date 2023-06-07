@@ -1,5 +1,5 @@
-import { votes, diagramColors } from './types';
-import { drawDiagram } from './methods';
+import { Votes, DiagramColors } from './types';
+import drawDiagram from './methods';
 import { diagramParameters } from './constants';
 
 import helpers from '../../../helpers';
@@ -11,9 +11,9 @@ class PieChartDiagram {
 
   private grades = diagramParameters.grades;
 
-  private diagramColors: diagramColors = diagramParameters.colors;
+  private diagramColors: DiagramColors = diagramParameters.colors;
 
-  private votes: votes = diagramParameters.votes;
+  private votes: Votes = diagramParameters.votes;
 
   private innerRadius: number = 0;
 
@@ -30,8 +30,7 @@ class PieChartDiagram {
   }
 
   private init() {
-    const height = diagramParameters.height;
-    const width = diagramParameters.width;
+    const { height, width } = diagramParameters;
     this.innerRadius = width / 2 - diagramParameters.arcWidth;
     this.outerRadius = width / 2;
     this.centerX = width / 2;

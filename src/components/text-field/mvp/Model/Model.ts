@@ -1,10 +1,10 @@
 import EventEmitter from '../../../../helpers/EventEmitter';
 
-import { date, dates, maskedType } from '../../types';
+import { Date, Dates, MaskedType } from '../../types';
 
-import { calculateDay } from './methods';
+import calculateDay from './methods';
 
-const removeLastSymbol = (date: date): date => {
+const removeLastSymbol = (date: Date): Date => {
   const { day, month, year } = date;
 
   if (year.length > 0) {
@@ -24,14 +24,22 @@ const removeLastSymbol = (date: date): date => {
   return { day: newDay, month, year };
 };
 
+const isNumber = (key: string | null): boolean => {
+  if (key === null) {
+    return false;
+  }
+
+  return /^\d$/.test(key);
+};
+
 class Model {
   private eventEmitter: EventEmitter;
 
-  private dates: dates = [{ day: '', month: '', year: '' }];
+  private dates: Dates = [{ day: '', month: '', year: '' }];
 
-  private type: maskedType;
+  private type: MaskedType;
 
-  constructor(eventEmitter: EventEmitter, type: maskedType) {
+  constructor(eventEmitter: EventEmitter, type: MaskedType) {
     this.eventEmitter = eventEmitter;
 
     this.type = type;
@@ -52,7 +60,7 @@ class Model {
     }
 
     if (this.type === 'dates') {
-      const [from, to] = this.dates;
+      const [, to] = this.dates;
 
       if (to.year.length !== 4) {
         this.dates = [
@@ -68,7 +76,7 @@ class Model {
     });
   }
 
-  public setDates(dates: dates) {
+  public setDates(dates: Dates) {
     this.dates = dates;
     this.eventEmitter.emit({
       eventName: 'UpdatedDates',
@@ -78,7 +86,7 @@ class Model {
 
   public updateData(data: string) {
     data.split('').forEach((value) => {
-      if (this.isNumber(value)) {
+      if (isNumber(value)) {
         this.updateDates(Number(value));
       } else {
         this.eventEmitter.emit({
@@ -157,18 +165,10 @@ class Model {
     });
   }
 
-  private init(type: maskedType) {
+  private init(type: MaskedType) {
     if (type === 'dates') {
       this.dates.push({ day: '', month: '', year: '' });
     }
-  }
-
-  private isNumber(key: string | null): boolean {
-    if (key === null) {
-      return false;
-    }
-
-    return /^\d$/.test(key);
   }
 }
 

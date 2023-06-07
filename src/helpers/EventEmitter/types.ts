@@ -1,10 +1,11 @@
-type date = { day: string; month: string; year: string };
+type Date = { day: string; month: string; year: string };
 
+/* eslint-disable @typescript-eslint/indent */
 type EventObject =
   | {
       eventName: 'UpdatedDates';
       eventArguments: {
-        dates: date[];
+        dates: Date[];
       };
     }
   | {

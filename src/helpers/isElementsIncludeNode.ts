@@ -4,9 +4,9 @@ const isElementsIncludeNode = (event: Event, elements: (Element | null)[]) => {
   return elements.reduce((sum, currentValue) => {
     if (currentValue !== null) {
       return sum || event.composedPath().includes(currentValue);
-    } else {
-      return sum;
     }
+
+    return sum;
   }, initialValue);
 };
 

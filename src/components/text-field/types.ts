@@ -1,16 +1,16 @@
-type maskedType = 'none' | 'date' | 'dates';
+type MaskedType = 'none' | 'date' | 'dates';
 
-type date = {
+type Date = {
   day: string;
   month: string;
   year: string;
 };
 
-type dates = date[];
+type Dates = Date[];
 
-type data = {
-  dates: dates;
+type Data = {
+  dates: Dates;
   text: string;
 };
 
-export { date, maskedType, dates, data };
+export { Date, MaskedType, Dates, Data };

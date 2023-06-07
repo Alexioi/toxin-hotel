@@ -7,8 +7,10 @@ const isArrayWithNumbers = (value: any[]): value is number[] => {
 const isArrayOfStringArrays = (value: any): value is string[][] => {
   if (!Array.isArray(value)) return false;
 
+  // eslint-disable-next-line no-restricted-syntax
   for (const arr of value) {
     if (!Array.isArray(arr)) return false;
+    // eslint-disable-next-line no-restricted-syntax
     for (const item of arr) {
       if (typeof item !== 'string') return false;
     }

@@ -1,5 +1,5 @@
 import EventEmitter from '../../../../helpers/EventEmitter';
-import { date, dates } from '../../types';
+import { Date, Dates } from '../../types';
 
 import Model from '../Model/Model';
 import View from '../View/View';
@@ -20,7 +20,7 @@ class Presenter {
     this.attachEventEmittersToView();
   }
 
-  public setDates(dates: dates) {
+  public setDates(dates: Dates) {
     this.model.setDates(dates);
   }
 
@@ -60,7 +60,7 @@ class Presenter {
     const notifyViewUpdatedModelOptions = ({
       dates,
     }: {
-      dates: date[];
+      dates: Date[];
     }): void => {
       this.view.displayDate(dates);
     };

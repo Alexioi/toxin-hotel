@@ -1,6 +1,6 @@
 import EventEmitter from '../../helpers/EventEmitter';
 
-import { dates, maskedType } from './types';
+import { Dates, MaskedType } from './types';
 
 import Model from './mvp/Model/Model';
 import View from './mvp/View/View';
@@ -28,7 +28,7 @@ class TextField {
 
     this.eventEmitter = new EventEmitter();
 
-    const type = <maskedType>node.dataset.maskedType;
+    const type = <MaskedType>node.dataset.maskedType;
 
     this.model = new Model(this.eventEmitter, type);
     this.view = new View(node, this.eventEmitter);
@@ -39,7 +39,7 @@ class TextField {
     return this.presenter.getDates();
   }
 
-  public setDates(dates: dates) {
+  public setDates(dates: Dates) {
     this.presenter.setDates(dates);
   }
 }

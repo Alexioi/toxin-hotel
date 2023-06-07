@@ -3,9 +3,9 @@ import cssSelectors from './constants';
 import TextField from '../text-field/TextField';
 
 import helpers from '../../helpers';
-import { date } from '../text-field/types';
+import { Date as customDate } from '../text-field/types';
 
-const calculateFullDate = (date: Date): date => {
+const calculateFullDate = (date: Date): customDate => {
   let day = String(date.getDate());
   let month = String(Number(date.getMonth()) + 1);
   const year = String(date.getFullYear());
@@ -40,10 +40,11 @@ class Calendar {
   constructor(node: Element) {
     this.node = node;
 
+    // eslint-disable-next-line fsd/no-heavy-constructor
+    this.onblur = this.onblur.bind(this);
     this.applyDates = this.applyDates.bind(this);
     this.clearDates = this.clearDates.bind(this);
     this.toggleVisible = this.toggleVisible.bind(this);
-    this.onblur = this.onblur.bind(this);
     this.onClickDocument = this.onClickDocument.bind(this);
 
     this.init();
