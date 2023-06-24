@@ -1,3 +1,4 @@
+// eslint-disable-next-line arrow-body-style
 const isArrayWithNumbers = (value: any[]): value is number[] => {
   return (
     Array.isArray(value) && value.every((item) => typeof item === 'number')

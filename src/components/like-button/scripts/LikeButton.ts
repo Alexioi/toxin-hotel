@@ -1,5 +1,5 @@
 import cssSelectors from './constants';
-import { calculateCounterValue } from './methods';
+import calculateCounterValue from './methods';
 
 class LikeButton {
   private root: Element;
@@ -67,7 +67,7 @@ class LikeButton {
 
   private changeButtonStyle() {
     this.root.classList.toggle('like-button_liked');
-    this.isLiked = this.isLiked ? false : true;
+    this.isLiked = !this.isLiked;
   }
 
   private changeCounterValue() {

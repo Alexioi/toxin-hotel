@@ -10,7 +10,6 @@ type Dates = Date[];
 
 type Data = {
   dates: Dates;
-  text: string;
 };
 
 export { Date, MaskedType, Dates, Data };

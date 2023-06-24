@@ -4,4 +4,4 @@ const calculateCounterValue = (value: number, isLiked: boolean): number => {
   return newValue;
 };
 
-export { calculateCounterValue };
+export default calculateCounterValue;

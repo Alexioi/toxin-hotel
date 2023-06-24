@@ -29,9 +29,11 @@ class Counter {
     this.eventEmitter = eventEmitter;
     this.index = index;
 
+    // eslint-disable-next-line operator-linebreak
     this.handleDecrementButtonClick =
       this.handleDecrementButtonClick.bind(this);
 
+    // eslint-disable-next-line operator-linebreak
     this.handleIncrementButtonClick =
       this.handleIncrementButtonClick.bind(this);
 
@@ -61,9 +63,11 @@ class Counter {
       cssSelectors.counterButtons,
     );
 
+    // eslint-disable-next-line operator-linebreak
     this.decrementButton =
       typeof decrementButton === 'undefined' ? null : decrementButton;
 
+    // eslint-disable-next-line operator-linebreak
     this.incrementButton =
       typeof incrementButton === 'undefined' ? null : incrementButton;
 
@@ -88,14 +92,14 @@ class Counter {
   private handleDecrementButtonClick() {
     this.eventEmitter.emit({
       eventName: 'DecrementCounter',
-      eventArguments: { index: this.index },
+      eventArguments: this.index,
     });
   }
 
   private handleIncrementButtonClick() {
     this.eventEmitter.emit({
       eventName: 'IncrementCounter',
-      eventArguments: { index: this.index },
+      eventArguments: this.index,
     });
   }
 }

@@ -1,9 +1,7 @@
 import { diagramParameters } from './constants';
 import { ArcParameters, Votes, DiagramColors } from './types';
 
-const calculateRadian = (degree: number): number => {
-  return (Math.PI * degree) / 180;
-};
+const calculateRadian = (degree: number): number => (Math.PI * degree) / 180;
 
 const calculateCirclePoint = (
   degree: number,

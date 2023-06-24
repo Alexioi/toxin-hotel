@@ -26,11 +26,11 @@ type EventObject =
     }
   | {
       eventName: 'IncrementCounter';
-      eventArguments: { index: number };
+      eventArguments: number;
     }
   | {
       eventName: 'DecrementCounter';
-      eventArguments: { index: number };
+      eventArguments: number;
     }
   | {
       eventName: 'UpdateCounters';
@@ -42,7 +42,7 @@ type EventObject =
     }
   | {
       eventName: 'UpdateValue';
-      eventArguments: { value: string };
+      eventArguments: string;
     }
   | {
       eventName: 'ClearCounters';

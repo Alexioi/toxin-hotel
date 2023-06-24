@@ -44,9 +44,7 @@ class Model {
   }
 
   public resetCounters() {
-    this.counters = this.counters.map(() => {
-      return 0;
-    });
+    this.counters = this.counters.map(() => 0);
 
     this.calculateValueAndNotify();
   }
@@ -58,7 +56,7 @@ class Model {
 
     this.eventEmitter.emit({
       eventName: 'UpdateValue',
-      eventArguments: { value },
+      eventArguments: value,
     });
   }
 
