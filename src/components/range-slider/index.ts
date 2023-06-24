@@ -1,5 +1,5 @@
-import cssSelectors from './constants';
-import RangeSlider from './RangeSlider';
+import cssSelectors from './scripts/constants';
+import RangeSlider from './scripts/RangeSlider';
 import '@libs/nouislider/nouislider.scss';
 
 document.querySelectorAll(cssSelectors.slider).forEach((node) => {

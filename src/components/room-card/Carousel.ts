@@ -1,8 +1,10 @@
 import cssSelectors from './constants';
 
 class Carousel {
-  constructor(node) {
-    this.node = node;
+  private root: Element;
+
+  constructor(root: Element) {
+    this.root = root;
 
     this._init();
   }
@@ -14,10 +16,10 @@ class Carousel {
   }
 
   _findElements() {
-    this.images = this.node.querySelectorAll(cssSelectors.images);
-    this.back = this.node.querySelector(cssSelectors.back);
-    this.next = this.node.querySelector(cssSelectors.next);
-    this.buttons = this.node.querySelectorAll(cssSelectors.buttons);
+    this.images = this.root.querySelectorAll(cssSelectors.images);
+    this.back = this.root.querySelector(cssSelectors.back);
+    this.next = this.root.querySelector(cssSelectors.next);
+    this.buttons = this.root.querySelectorAll(cssSelectors.buttons);
   }
 
   _attachEventHandlers() {
@@ -29,28 +31,28 @@ class Carousel {
   }
 
   _goToBackImg() {
-    let currentImage = Number(this.node.dataset.currentImage);
-    const { quantityImage } = this.node.dataset;
+    let currentImage = Number(this.root.dataset.currentImage);
+    const { quantityImage } = this.root.dataset;
 
     currentImage = currentImage === 0 ? quantityImage : currentImage - 1;
 
-    this.node.dataset.currentImage = currentImage;
+    this.root.dataset.currentImage = currentImage;
     this._hideImages();
   }
 
   _goToNextImg() {
-    let currentImage = Number(this.node.dataset.currentImage);
-    const quantityImage = Number(this.node.dataset.quantityImage);
+    let currentImage = Number(this.root.dataset.currentImage);
+    const quantityImage = Number(this.root.dataset.quantityImage);
 
     currentImage = currentImage === quantityImage ? 0 : currentImage + 1;
 
-    this.node.dataset.currentImage = currentImage;
+    this.root.dataset.currentImage = currentImage;
     this._hideImages();
   }
 
   _moveTargetImg(event) {
     const { buttonNumber } = event.target.dataset;
-    this.node.dataset.currentImage = buttonNumber;
+    this.root.dataset.currentImage = buttonNumber;
     this._hideImages();
   }
 
@@ -63,7 +65,7 @@ class Carousel {
   }
 
   _showCurrentImg() {
-    const { currentImage } = this.node.dataset;
+    const { currentImage } = this.root.dataset;
     this.images[currentImage].classList.remove('room-card__image_hide');
     this.buttons[currentImage].classList.add('room-card__button_target');
   }
