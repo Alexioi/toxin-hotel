@@ -9,6 +9,10 @@ const isValidDate = (checkedDate: Date, key: number): boolean => {
 
   const currentDate = new Date(newYear, newMonth, newDay);
 
+  if (currentDate < new Date()) {
+    return false;
+  }
+
   const dateYear = currentDate.getFullYear();
   const dateMonth = currentDate.getMonth();
   const dateDay = currentDate.getDate();
@@ -120,4 +124,32 @@ const calculateDay = (date: Date, key: number): Date => {
   return { day: newDay, month, year };
 };
 
-export default calculateDay;
+const removeLastSymbol = (date: Date): Date => {
+  const { day, month, year } = date;
+
+  if (year.length > 0) {
+    const newYear = year.slice(0, -1);
+
+    return { day, month, year: newYear };
+  }
+
+  if (month.length > 0) {
+    const newMonth = month.slice(0, -1);
+
+    return { day, month: newMonth, year };
+  }
+
+  const newDay = day.slice(0, -1);
+
+  return { day: newDay, month, year };
+};
+
+const isNumber = (key: string | null): boolean => {
+  if (key === null) {
+    return false;
+  }
+
+  return /^\d$/.test(key);
+};
+
+export { calculateDay, isNumber, removeLastSymbol };

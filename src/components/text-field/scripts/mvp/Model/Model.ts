@@ -1,35 +1,7 @@
 import EventEmitter from '@helpers/EventEmitter';
 
-import { Date, Dates, MaskedType } from '../../types';
-import calculateDay from './methods';
-
-const removeLastSymbol = (date: Date): Date => {
-  const { day, month, year } = date;
-
-  if (year.length > 0) {
-    const newYear = year.slice(0, -1);
-
-    return { day, month, year: newYear };
-  }
-
-  if (month.length > 0) {
-    const newMonth = month.slice(0, -1);
-
-    return { day, month: newMonth, year };
-  }
-
-  const newDay = day.slice(0, -1);
-
-  return { day: newDay, month, year };
-};
-
-const isNumber = (key: string | null): boolean => {
-  if (key === null) {
-    return false;
-  }
-
-  return /^\d$/.test(key);
-};
+import { Dates, MaskedType } from '../../types';
+import { calculateDay, isNumber, removeLastSymbol } from './methods';
 
 class Model {
   private eventEmitter: EventEmitter;
