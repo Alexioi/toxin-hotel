@@ -75,7 +75,8 @@ class View {
     this.findAndInitNodes()
       .attachEventHandlers()
       .initCounters()
-      .defineAutomaticInputDataModification();
+      .defineAutomaticInputDataModification()
+      .toggleInputFocus();
   }
 
   private defineAutomaticInputDataModification() {
@@ -100,8 +101,8 @@ class View {
   private attachEventHandlers() {
     this.applyButton?.addEventListener('click', this.handleApplyButtonClick);
     this.clearButton?.addEventListener('click', this.handleClearButtonClick);
-    this.textField?.addEventListener('click', this._toggleMenu.bind(this));
-    document.addEventListener('click', this._onClickDocument.bind(this));
+    this.textField?.addEventListener('click', this.toggleMenu.bind(this));
+    document.addEventListener('click', this.onClickDocument.bind(this));
 
     return this;
   }
@@ -132,25 +133,25 @@ class View {
     return this;
   }
 
-  _onClickDocument(event: Event) {
+  private onClickDocument(event: Event) {
     const elements = [this.menu, this.input, this.inputButton];
     if (!helpers.isElementsIncludeNode(event, elements)) {
-      this._closeMenu();
+      this.closeMenu();
     }
   }
 
-  _closeMenu() {
+  private closeMenu() {
     this.root.classList.remove('dropdown_opened');
 
-    this._toggleInputFocus();
+    this.toggleInputFocus();
   }
 
-  _toggleMenu() {
+  private toggleMenu() {
     this.root.classList.toggle('dropdown_opened');
-    this._toggleInputFocus();
+    this.toggleInputFocus();
   }
 
-  _toggleInputFocus() {
+  private toggleInputFocus() {
     const isOpened = this.root.classList.contains('dropdown_opened');
 
     if (isOpened) {
@@ -158,6 +159,8 @@ class View {
     } else {
       this.input?.classList.remove('text-field__input_opened');
     }
+
+    return this;
   }
 }
 

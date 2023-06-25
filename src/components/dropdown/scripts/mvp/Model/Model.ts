@@ -78,9 +78,7 @@ class Model {
       this.placeholder = placeholder;
     }
 
-    // if (isArrayWithNumbers(groups)) {
     this.groups = groups;
-    // }
 
     if (isArrayOfStringArrays(variants)) {
       this.variants = variants;
