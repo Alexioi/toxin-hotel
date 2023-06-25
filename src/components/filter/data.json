@@ -45,10 +45,18 @@
   "dropdowns": {
     "guests": {
       "items": [
-        { "name": "взрослые", "counter": 3 },
-        { "name": "дети", "counter": 0 },
-        { "name": "младенцы", "counter": 1 }
+        { "name": "взрослые", "counter": 2 },
+        { "name": "дети", "counter": 1 },
+        { "name": "младенцы", "counter": 0 }
       ],
+      "variants": [
+        ["гость", "гостя", "гостей"],
+        ["младенец", "младенца", "младенцев"]
+      ],
+      "isOpened": false,
+      "placeholder": "Сколько гостей",
+      "hasButtons": true,
+      "groups": [[0, 1], [2]],
       "titleText": "гости"
     },
     "rooms": {
@@ -57,6 +65,16 @@
         { "name": "кровати", "counter": 2 },
         { "name": "ванные комнаты", "counter": 0 }
       ],
+      "variants": [
+        ["спальня", "спальни", "спален"],
+        ["кровать", "кровати", "кроватей"],
+        ["ванная комната", "ванные комнаты", "ванных комнат"]
+      ],
+      "isOpened": false,
+      "placeholder": "Сколько комнат",
+      "hint": "expanded",
+      "hasButtons": false,
+      "groups": [[0], [1], [2]],
       "titleText": "удобства номера"
     }
   },

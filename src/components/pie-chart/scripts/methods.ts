@@ -1,7 +1,9 @@
 import { diagramParameters } from './constants';
 import { ArcParameters, Votes, DiagramColors } from './types';
 
-const calculateRadian = (degree: number): number => (Math.PI * degree) / 180;
+const calculateRadian = (degree: number): number => {
+  return (Math.PI * degree) / 180;
+};
 
 const calculateCirclePoint = (
   degree: number,
@@ -141,7 +143,9 @@ const drawDiagram = (
   let endDegree = 0;
 
   const voteValues = Object.values(votes);
-  const totalVotes = voteValues.reduce((acc, curr) => acc + curr, 0);
+  const totalVotes = voteValues.reduce((acc, curr) => {
+    return acc + curr;
+  }, 0);
 
   grades.forEach((item) => {
     const [colorFrom, colorTo] = diagramColors[item];

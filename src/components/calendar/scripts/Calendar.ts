@@ -106,8 +106,8 @@ class Calendar {
     if (!helpers.isElementsIncludeNode(event, elements)) {
       this.menu?.classList.remove('calendar__menu_visible');
 
-      this.inputs.forEach((node, i) => {
-        this.inputs[i].classList.remove('text-field__input_focused');
+      this.inputs.forEach((node) => {
+        node.classList.remove('text-field__input_focused');
       });
     }
   }
@@ -165,11 +165,11 @@ class Calendar {
 
     const isOpened = this.menu?.classList.contains('calendar__menu_visible');
 
-    this.inputs.forEach((node, i) => {
+    this.inputs.forEach((node) => {
       if (isOpened) {
-        this.inputs[i].classList.add('text-field__input_focused');
+        node.classList.add('text-field__input_focused');
       } else {
-        this.inputs[i].classList.remove('text-field__input_focused');
+        node.classList.remove('text-field__input_focused');
       }
     });
 
