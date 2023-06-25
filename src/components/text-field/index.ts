@@ -1,7 +1,6 @@
-import cssSelectors from './constants';
-import TextField from './TextField';
-
-import { MaskedType } from './types';
+import cssSelectors from './scripts/constants';
+import TextField from './scripts/TextField';
+import { MaskedType } from './scripts/types';
 
 document.querySelectorAll(cssSelectors.input).forEach((node) => {
   // @ts-ignore

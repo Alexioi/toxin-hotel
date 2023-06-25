@@ -10,6 +10,8 @@ module.exports = {
         map: [
           ['@libs', './src/libs'],
           ['@images', './src/images'],
+          ['@components', './src/components'],
+          ['@helpers', './src/helpers'],
         ],
       },
     },
@@ -24,5 +26,6 @@ module.exports = {
     'linebreak-style': 'off',
     'no-new': 'off',
     'object-curly-newline': ['error', { multiline: true }],
+    'arrow-body-style': ['error', 'always'],
   },
 };

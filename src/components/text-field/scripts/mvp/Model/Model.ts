@@ -1,7 +1,6 @@
-import EventEmitter from '../../../../helpers/EventEmitter';
+import EventEmitter from '@helpers/EventEmitter';
 
 import { Date, Dates, MaskedType } from '../../types';
-
 import calculateDay from './methods';
 
 const removeLastSymbol = (date: Date): Date => {

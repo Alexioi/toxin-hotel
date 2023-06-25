@@ -1,6 +1,6 @@
-import cssSelectors from './constants';
+import helpers from '@helpers/index';
 
-import helpers from '../../../helpers';
+import cssSelectors from './constants';
 
 const closeSubNavigationList = (node: Element | null) => {
   node?.classList.remove('header__sub-navigation-list_opened');

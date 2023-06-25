@@ -21,16 +21,18 @@ class EventEmitter {
     eventName: EventNames,
     callback: (args: any) => void,
   ): void {
-    this.events[eventName] = this.events[eventName].filter(
-      (eventCallback) => callback !== eventCallback,
-    );
+    this.events[eventName] = this.events[eventName].filter((eventCallback) => {
+      return callback !== eventCallback;
+    });
   }
 
   public emit({ eventName, eventArguments }: EventObject): void {
     const event = this.events[eventName];
 
     if (event) {
-      event.forEach((callback) => callback.call(null, eventArguments));
+      event.forEach((callback) => {
+        return callback.call(null, eventArguments);
+      });
     }
   }
 }

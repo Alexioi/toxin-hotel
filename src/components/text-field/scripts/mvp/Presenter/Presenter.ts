@@ -1,6 +1,6 @@
-import EventEmitter from '../../../../helpers/EventEmitter';
-import { Dates, Data } from '../../types';
+import EventEmitter from '@helpers/EventEmitter';
 
+import { Dates, Data } from '../../types';
 import Model from '../Model/Model';
 import View from '../View/View';
 

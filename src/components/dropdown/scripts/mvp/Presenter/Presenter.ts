@@ -1,4 +1,5 @@
-import EventEmitter from 'src/helpers/EventEmitter';
+import EventEmitter from '@helpers/EventEmitter';
+
 import View from '../View/View';
 import Model from '../Model/Model';
 

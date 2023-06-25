@@ -20,7 +20,9 @@ class Paginationjs {
     };
 
     const dataSource = (done) => {
-      const result = [...Array(this.count)].map((e, i) => i + 1);
+      const result = [...Array(this.count)].map((e, i) => {
+        return i + 1;
+      });
 
       done(result);
     };

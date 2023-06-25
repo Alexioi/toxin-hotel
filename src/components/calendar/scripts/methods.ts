@@ -1,4 +1,4 @@
-import { Date as customDate } from '../../text-field/types';
+import { Date as customDate } from '@components/text-field/scripts/types';
 
 const calculateFullDate = (date: Date): customDate => {
   let day = String(date.getDate());

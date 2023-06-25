@@ -1,8 +1,8 @@
+import helpers from '@helpers/index';
+
 import { Votes, DiagramColors } from './types';
 import drawDiagram from './methods';
 import { diagramParameters } from './constants';
-
-import helpers from '../../../helpers';
 
 class PieChartDiagram {
   private root: Element | null = null;

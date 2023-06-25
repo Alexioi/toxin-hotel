@@ -1,4 +1,5 @@
-import EventEmitter from 'src/helpers/EventEmitter';
+import EventEmitter from '@helpers/EventEmitter';
+
 import cssSelectors from '../../../constants';
 
 const disableCounterButton = (node: Element | null, counter: number) => {

@@ -1,9 +1,9 @@
 import AirDatepicker from '@libs/air-datepicker';
+import helpers from '@helpers/index';
+
 import cssSelectors from './constants';
 import HTMLInputElementWithPlugin from './types';
 import calculateFullDate from './methods';
-
-import helpers from '../../../helpers';
 
 class Calendar {
   private node: Element;

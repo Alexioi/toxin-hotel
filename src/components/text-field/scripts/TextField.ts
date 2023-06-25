@@ -1,10 +1,9 @@
-import EventEmitter from '../../helpers/EventEmitter';
-
-import { Dates, MaskedType } from './types';
+import EventEmitter from '@helpers/EventEmitter';
 
 import Model from './mvp/Model/Model';
 import View from './mvp/View/View';
 import Presenter from './mvp/Presenter/Presenter';
+import { Dates, MaskedType } from './types';
 
 interface HTMLInputElementWithPlugin extends HTMLInputElement {
   plugin: TextField;

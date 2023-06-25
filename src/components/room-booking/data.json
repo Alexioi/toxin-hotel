@@ -5,6 +5,14 @@
       { "name": "дети", "counter": 0 },
       { "name": "младенцы", "counter": 0 }
     ],
+    "variants": [
+      ["гость", "гостя", "гостей"],
+      ["младенец", "младенца", "младенцев"]
+    ],
+    "isOpened": false,
+    "placeholder": "Сколько гостей",
+    "hasButtons": true,
+    "groups": [[0, 1], [2]],
     "titleText": "гости"
   },
   "button": { "text": "забронировать" },

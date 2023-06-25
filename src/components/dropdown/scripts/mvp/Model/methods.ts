@@ -1,7 +1,10 @@
-// eslint-disable-next-line arrow-body-style
 const isArrayWithNumbers = (value: any[]): value is number[] => {
   return (
-    Array.isArray(value) && value.every((item) => typeof item === 'number')
+    // eslint-disable-next-line operator-linebreak
+    Array.isArray(value) &&
+    value.every((item) => {
+      return typeof item === 'number';
+    })
   );
 };
 
@@ -73,10 +76,9 @@ const calculateValue = (
   const counters = groups.map((group) => {
     const initialValue = 0;
 
-    return group.reduce(
-      (sum: number, index: number) => sum + countersValue[index],
-      initialValue,
-    );
+    return group.reduce((sum: number, index: number) => {
+      return sum + countersValue[index];
+    }, initialValue);
   });
 
   const value = calculateValues(variants, counters, placeholder);

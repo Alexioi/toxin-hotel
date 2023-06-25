@@ -1,5 +1,6 @@
 // @ts-ignore
 import Paginationjs from '@libs/paginationjs';
+
 import cssSelectors from './constants';
 
 class Pagination {
@@ -33,7 +34,7 @@ class Pagination {
 
   private getCount() {
     if (this.root instanceof HTMLElement) {
-      const count = this.root.dataset.count;
+      const { count } = this.root.dataset;
       if (typeof count !== 'undefined') {
         this.count = Number(count);
       }

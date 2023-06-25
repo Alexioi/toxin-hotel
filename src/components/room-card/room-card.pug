@@ -33,10 +33,8 @@ mixin room-card(options)
           alt=`${image}`
         )
       .room-card__buttons
-        each image, index in images
-          button.room-card__button.js-room-card__button(
-            data-button-number=index
-          )
+        each image in images
+          button.room-card__button.js-room-card__button
       button(
         class=`room-card__arrow-button 
         room-card__arrow-button_back 

@@ -1,4 +1,4 @@
-import EventEmitter from '../../../helpers/EventEmitter';
+import EventEmitter from '@helpers/EventEmitter';
 
 import Model from './mvp/Model/Model';
 import View from './mvp/View/View';

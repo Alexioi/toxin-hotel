@@ -120,7 +120,8 @@
       "isOpened": false,
       "placeholder": "Сколько гостей",
       "titleText": "dropdown",
-      "hasButtons": true
+      "hasButtons": true,
+      "groups": [[0, 1], [2]]
     },
     "roomsClose": {
       "items": [
@@ -137,7 +138,8 @@
       "placeholder": "Сколько комнат",
       "hint": "default",
       "titleText": "dropdown",
-      "hasButtons": false
+      "hasButtons": false,
+      "groups": [[0], [1], [2]]
     },
     "rooms": {
       "items": [
@@ -154,7 +156,8 @@
       "placeholder": "Сколько комнат",
       "hint": "expanded",
       "titleText": "dropdown",
-      "hasButtons": false
+      "hasButtons": false,
+      "groups": [[0], [1], [2]]
     },
     "guestsEmpty": {
       "items": [
@@ -169,7 +172,8 @@
       "isOpened": true,
       "placeholder": "Сколько гостей",
       "titleText": "dropdown",
-      "hasButtons": true
+      "hasButtons": true,
+      "groups": [[0, 1], [2]]
     },
     "guests": {
       "items": [
@@ -184,7 +188,8 @@
       "isOpened": true,
       "placeholder": "Сколько гостей",
       "titleText": "dropdown",
-      "hasButtons": true
+      "hasButtons": true,
+      "groups": [[0, 1], [2]]
     }
   },
   "toggles": {

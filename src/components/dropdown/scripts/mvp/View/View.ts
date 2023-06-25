@@ -1,17 +1,17 @@
-import EventEmitter from 'src/helpers/EventEmitter';
+import helpers from '@helpers/index';
+import EventEmitter from '@helpers/EventEmitter';
+
 import cssSelectors from '../../constants';
 import Counter from './subViews/Counter';
-import helpers from '../../../../../helpers';
 
 const toggleClearButton = (clearButton: Element, countersValue: number[]) => {
   if (clearButton === null) {
     return;
   }
 
-  const countersSum = countersValue.reduce(
-    (partialSum, counter) => partialSum + counter,
-    0,
-  );
+  const countersSum = countersValue.reduce((partialSum, counter) => {
+    return partialSum + counter;
+  }, 0);
 
   if (countersSum === 0) {
     clearButton.classList.add('dropdown__clear-button_hidden');
