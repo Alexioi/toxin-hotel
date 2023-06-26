@@ -43,7 +43,7 @@ block main
             section.room-details__pie-chart
               +typography(Object.assign({tag: 'h3'}, titles.roomImpression))
               +pie-chart(pieChart)
-          article.room-details__comments-section
+          section.room-details__comments-section
             .room-details__comments-title
               +typography(Object.assign({tag: 'h3'}, titles.reviewNumber))
               span.room-details__text= `${comments.length} ${reviews}`
