@@ -20,6 +20,7 @@ class Header {
 
     this.toggleNavigation = this.toggleNavigation.bind(this);
     this.onClickDocument = this.onClickDocument.bind(this);
+    this.toggleSubNavigationList = this.toggleSubNavigationList.bind(this);
 
     this.init();
   }
@@ -42,11 +43,8 @@ class Header {
 
   private attachEventHandlers() {
     this.button?.addEventListener('click', this.toggleNavigation);
-    this.navigationButtons.forEach((navigationButton, index) => {
-      navigationButton.addEventListener(
-        'click',
-        this.toggleSubNavigationList.bind(this, index),
-      );
+    this.navigationButtons.forEach((navigationButton) => {
+      navigationButton.addEventListener('click', this.toggleSubNavigationList);
     });
     document.addEventListener('click', this.onClickDocument);
   }
@@ -61,10 +59,16 @@ class Header {
     });
   }
 
-  private toggleSubNavigationList(targetIndex: number) {
-    this.subNavigationLists[targetIndex].classList.toggle(
-      'header__sub-navigation-list_opened',
-    );
+  private toggleSubNavigationList(event: Event) {
+    if (event.currentTarget instanceof Element) {
+      const targetIndex = [...this.navigationButtons].indexOf(
+        event.currentTarget,
+      );
+
+      this.subNavigationLists[targetIndex].classList.toggle(
+        'header__sub-navigation-list_opened',
+      );
+    }
   }
 
   private toggleNavigation() {

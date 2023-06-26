@@ -48,6 +48,11 @@ class View {
     this.node = node;
     this.eventEmitter = eventEmitter;
 
+    this.onInput = this.onInput.bind(this);
+    this.onPaste = this.onPaste.bind(this);
+    this.onBlur = this.onBlur.bind(this);
+    this.onClick = this.onClick.bind(this);
+
     this.init();
   }
 
@@ -105,11 +110,11 @@ class View {
   private attachEventsHandler() {
     this.node.addEventListener('input', this.onInput);
     this.node.addEventListener('paste', this.onPaste);
-    this.node.addEventListener('blur', this._onBlur.bind(this));
-    this.node.addEventListener('click', this.onClick.bind(this));
+    this.node.addEventListener('blur', this.onBlur);
+    this.node.addEventListener('click', this.onClick);
   }
 
-  _onBlur() {
+  private onBlur() {
     this.isFocus = false;
 
     this.eventEmitter.emit({

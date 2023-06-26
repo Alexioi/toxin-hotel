@@ -18,6 +18,10 @@ class Carousel {
   constructor(root: Element) {
     this.root = root;
 
+    this.goToBackImg = this.goToBackImg.bind(this);
+    this.goToNextImg = this.goToNextImg.bind(this);
+    this.moveTargetImg = this.moveTargetImg.bind(this);
+
     this.init();
   }
 
@@ -40,10 +44,10 @@ class Carousel {
   }
 
   private attachEventHandlers() {
-    this.back?.addEventListener('click', this.goToBackImg.bind(this));
-    this.next?.addEventListener('click', this.goToNextImg.bind(this));
+    this.back?.addEventListener('click', this.goToBackImg);
+    this.next?.addEventListener('click', this.goToNextImg);
     this.buttons.forEach((node) => {
-      node.addEventListener('click', this.moveTargetImg.bind(this));
+      node.addEventListener('click', this.moveTargetImg);
     });
   }
 
@@ -71,13 +75,11 @@ class Carousel {
   }
 
   private moveTargetImg(event: Event) {
-    if (event.target !== null) {
-      if (event.target instanceof Element) {
-        const buttonIndex = [...this.buttons].indexOf(event.target);
+    if (event.target instanceof Element) {
+      const buttonIndex = [...this.buttons].indexOf(event.target);
 
-        this.currentImageIndex = buttonIndex;
-        this.hideImages();
-      }
+      this.currentImageIndex = buttonIndex;
+      this.hideImages();
     }
   }
 

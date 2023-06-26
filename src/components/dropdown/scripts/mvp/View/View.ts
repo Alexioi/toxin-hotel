@@ -47,6 +47,8 @@ class View {
 
     this.handleApplyButtonClick = this.handleApplyButtonClick.bind(this);
     this.handleClearButtonClick = this.handleClearButtonClick.bind(this);
+    this.toggleMenu = this.toggleMenu.bind(this);
+    this.onClickDocument = this.onClickDocument.bind(this);
 
     this.init();
   }
@@ -101,8 +103,8 @@ class View {
   private attachEventHandlers() {
     this.applyButton?.addEventListener('click', this.handleApplyButtonClick);
     this.clearButton?.addEventListener('click', this.handleClearButtonClick);
-    this.textField?.addEventListener('click', this.toggleMenu.bind(this));
-    document.addEventListener('click', this.onClickDocument.bind(this));
+    this.textField?.addEventListener('click', this.toggleMenu);
+    document.addEventListener('click', this.onClickDocument);
 
     return this;
   }

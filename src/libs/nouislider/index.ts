@@ -20,6 +20,8 @@ class NoUISlider {
     this.root = node;
     this.valueNode = valueNode;
 
+    this.updateValue = this.updateValue.bind(this);
+
     this.init(parameters);
   }
 
@@ -41,7 +43,7 @@ class NoUISlider {
     }
 
     // @ts-ignore
-    this.root.noUiSlider.on('update', this.updateValue.bind(this));
+    this.root.noUiSlider.on('update', this.updateValue);
   }
 
   private updateValue([from, to]: number[]) {
