@@ -7,14 +7,14 @@
     'like-button text';
   align-self: start;
   gap: 10px;
-  color: rgba(colors.$first, 0.75);
+  color: rgb(colors.$first, 0.75);
 
   &__img {
     grid-area: img;
     width: 48px;
     height: 48px;
     border: 2px solid white;
-    filter: drop-shadow(0 10px 20px rgba(colors.$first, 0.1));
+    filter: drop-shadow(0 10px 20px rgb(colors.$first, 0.1));
     border-radius: 32px;
   }
 

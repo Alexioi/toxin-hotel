@@ -30,19 +30,19 @@
       }
 
       &_dark-shade-75::before {
-        background: rgba(colors.$first, 0.75);
+        background: rgb(colors.$first, 0.75);
       }
 
       &_dark-shade-50::before {
-        background: rgba(colors.$first, 0.5);
+        background: rgb(colors.$first, 0.5);
       }
 
       &_dark-shade-25::before {
-        background: rgba(colors.$first, 0.25);
+        background: rgb(colors.$first, 0.25);
       }
 
       &_dark-shade-5::before {
-        background: rgba(colors.$first, 0.05);
+        background: rgb(colors.$first, 0.05);
       }
 
       &_purple::before {

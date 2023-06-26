@@ -60,7 +60,7 @@ $sample-width: 37px;
       #{$root}__description {
         font-size: 14px;
         line-height: 24px;
-        color: rgba(colors.$first, 0.75);
+        color: rgb(colors.$first, 0.75);
       }
     }
   }
@@ -71,7 +71,7 @@ $sample-width: 37px;
     max-width: $sample-width;
     justify-content: flex-end;
     margin-right: 30px;
-    color: rgba(colors.$first, 0.25);
+    color: rgb(colors.$first, 0.25);
     word-break: break-word;
   }
 

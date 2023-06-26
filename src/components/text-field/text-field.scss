@@ -10,41 +10,41 @@
     font-family: font.$first;
     font-size: 14px;
     line-height: 42px;
-    border: 1px solid rgba(colors.$first, 0.25);
+    border: 1px solid rgb(colors.$first, 0.25);
     border-radius: 4px;
     width: 100%;
     outline: none;
     padding: 0 44px 0 15px;
-    color: rgba(colors.$first, 0.25);
+    color: rgb(colors.$first, 0.25);
 
     &::placeholder {
-      color: rgba(colors.$first, 0.25);
+      color: rgb(colors.$first, 0.25);
     }
 
     #{$root}_text_dark & {
       &,
       &::placeholder {
-        color: rgba(colors.$first, 0.75);
+        color: rgb(colors.$first, 0.75);
       }
     }
 
     &:hover,
     &:focus,
     &_focused {
-      border: 1px solid rgba(colors.$first, 0.5);
-      color: rgba(colors.$first, 0.75);
+      border: 1px solid rgb(colors.$first, 0.5);
+      color: rgb(colors.$first, 0.75);
     }
 
     &_opened {
-      border-color: rgba(colors.$first, 0.5);
+      border-color: rgb(colors.$first, 0.5);
       outline: none;
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
     }
 
     #{$root}_hovered & {
-      border: 1px solid rgba(colors.$first, 0.5);
-      color: rgba(colors.$first, 0.75);
+      border: 1px solid rgb(colors.$first, 0.5);
+      color: rgb(colors.$first, 0.75);
     }
   }
 
@@ -75,6 +75,6 @@
     cursor: pointer;
     background-color: transparent;
     border: none;
-    color: rgba(31, 32, 65, 50%);
+    color: rgb(31, 32, 65, 50%);
   }
 }

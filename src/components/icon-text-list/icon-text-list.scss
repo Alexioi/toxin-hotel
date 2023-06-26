@@ -9,7 +9,7 @@
   &__item {
     display: flex;
     padding: 20px 0;
-    border-bottom: solid 1px rgba(colors.$first, 0.1);
+    border-bottom: solid 1px rgb(colors.$first, 0.1);
 
     &:first-child {
       padding-top: 0;
@@ -27,7 +27,7 @@
     font-size: 14px;
     line-height: 24px;
     margin-left: 10px;
-    color: rgba(colors.$first, 0.75);
+    color: rgb(colors.$first, 0.75);
     word-break: break-word;
   }
 

@@ -19,7 +19,7 @@
 
     &:focus {
       & ~ #{$root}__icon {
-        box-shadow: 0 0 10px rgba(colors.$first, 30%);
+        box-shadow: 0 0 10px rgb(colors.$first, 30%);
       }
     }
 
@@ -38,7 +38,7 @@
       }
 
       & ~ #{$root}__text {
-        color: rgba(colors.$first, 0.75);
+        color: rgb(colors.$first, 0.75);
       }
     }
   }
@@ -51,7 +51,7 @@
     align-items: center;
     width: 20px;
     height: 20px;
-    border: 1px solid rgba(colors.$first, 0.25);
+    border: 1px solid rgb(colors.$first, 0.25);
     border-radius: 10px;
     margin-right: 10px;
     cursor: pointer;
@@ -60,7 +60,7 @@
   &__text {
     font-size: 14px;
     line-height: 20px;
-    color: rgba(colors.$first, 0.5);
+    color: rgb(colors.$first, 0.5);
     cursor: pointer;
   }
 }

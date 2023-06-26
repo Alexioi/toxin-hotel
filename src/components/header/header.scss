@@ -6,7 +6,7 @@
 .header {
   $root: &;
 
-  box-shadow: 0 10px 20px rgba(colors.$first, 0.05);
+  box-shadow: 0 10px 20px rgb(colors.$first, 0.05);
   background-color: white;
   padding: 14px 0;
 
@@ -62,18 +62,18 @@
     position: relative;
     padding: 0;
     padding-right: 5px;
-    color: rgba(31, 32, 65, 50%);
+    color: rgb(colors.$first, 0.5);
   }
 
   &__button-content {
     font-family: font.$first;
     font-size: 14px;
     line-height: 17px;
-    color: rgba(colors.$first, 0.5);
+    color: rgb(colors.$first, 0.5);
     margin-right: 7px;
 
     &:hover {
-      color: rgba(colors.$first, 0.75);
+      color: rgb(colors.$first, 0.75);
     }
   }
 
@@ -83,7 +83,7 @@
     list-style: none;
     padding: 10px;
     background-color: white;
-    border: 1px solid rgba(colors.$first, 0.5);
+    border: 1px solid rgb(colors.$first, 0.5);
     border-radius: 4px;
 
     &_opened {
@@ -94,17 +94,17 @@
   &__navigation-link {
     text-decoration: none;
     align-items: center;
-    color: rgba(colors.$first, 0.5);
+    color: rgb(colors.$first, 0.5);
     font-size: 14px;
     line-height: 17px;
 
     &_active {
       font-weight: bold;
-      color: rgba(colors.$first, 0.75);
+      color: rgb(colors.$first, 0.75);
     }
 
     &:hover {
-      color: rgba(colors.$first, 0.75);
+      color: rgb(colors.$first, 0.75);
     }
   }
 
@@ -114,11 +114,11 @@
   }
 
   &__username {
-    border-left: 1px solid rgba(colors.$first, 0.1);
+    border-left: 1px solid rgb(colors.$first, 0.1);
     padding: 6px 0 6px 20px;
     font-size: 14px;
     line-height: 17px;
-    color: rgba(colors.$first, 0.5);
+    color: rgb(colors.$first, 0.5);
     text-align: center;
   }
 }
@@ -150,7 +150,7 @@
       width: 100%;
       display: none;
       padding-top: 20px;
-      border-top: 1px solid rgba(colors.$first, 0.1);
+      border-top: 1px solid rgb(colors.$first, 0.1);
       flex-direction: column;
       align-items: center;
     }

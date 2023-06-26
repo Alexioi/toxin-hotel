@@ -15,7 +15,7 @@
       justify-content: flex-end;
       font-size: 14px;
       line-height: 18px;
-      color: rgba(colors.$first, 0.75);
+      color: rgb(colors.$first, 0.75);
     }
 
     &-about {
@@ -27,7 +27,7 @@
       width: 20px;
       flex-shrink: 0;
       height: 20px;
-      border: 1px solid rgba(colors.$first, 0.25);
+      border: 1px solid rgb(colors.$first, 0.25);
       border-radius: 50%;
       display: flex;
       justify-content: center;
@@ -41,7 +41,7 @@
         font-weight: bold;
         font-size: 12px;
         line-height: 14px;
-        color: rgba(colors.$first, 0.25);
+        color: rgb(colors.$first, 0.25);
       }
 
       &::after {
@@ -54,7 +54,7 @@
         padding: 5px;
         top: 21px;
         z-index: 2;
-        border: 1px solid rgba(colors.$first, 0.25);
+        border: 1px solid rgb(colors.$first, 0.25);
         border-radius: 4px;
       }
 
@@ -93,7 +93,7 @@
 
     &-line {
       flex-grow: 1;
-      border-bottom: 1px dotted rgba(colors.$first, 0.25);
+      border-bottom: 1px dotted rgb(colors.$first, 0.25);
     }
 
     &-value {

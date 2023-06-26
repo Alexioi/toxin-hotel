@@ -9,7 +9,7 @@
   &__item {
     font-size: 14px;
     line-height: 24px;
-    color: rgba(colors.$first, 0.75);
+    color: rgb(colors.$first, 0.75);
     list-style-type: none;
     word-break: break-word;
     display: flex;
@@ -20,7 +20,7 @@
       display: block;
       width: 10px;
       height: 10px;
-      background: rgba(colors.$first, 0.25);
+      background: rgb(colors.$first, 0.25);
       border-radius: 50%;
       margin-right: 10px;
       flex-shrink: 0;

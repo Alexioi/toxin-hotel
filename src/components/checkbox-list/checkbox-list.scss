@@ -11,7 +11,7 @@
   &_rich {
     & #{$root}__text {
       font-weight: bold;
-      color: rgba(colors.$first, 0.75);
+      color: rgb(colors.$first, 0.75);
     }
   }
 
@@ -31,7 +31,7 @@
 
     &:focus {
       & ~ #{$root}__icon {
-        box-shadow: 0 0 10px rgba(colors.$first, 30%);
+        box-shadow: 0 0 10px rgb(colors.$first, 30%);
       }
     }
 
@@ -57,7 +57,7 @@
 
   &__icon {
     content: '';
-    border: 1px solid rgba(colors.$first, 0.25);
+    border: 1px solid rgb(colors.$first, 0.25);
     width: 20px;
     height: 20px;
     flex-shrink: 0;
@@ -71,7 +71,7 @@
   &__text {
     font-size: 14px;
     line-height: 18px;
-    color: rgba(colors.$first, 0.5);
+    color: rgb(colors.$first, 0.5);
     word-break: break-word;
     cursor: pointer;
     display: inline-block;
@@ -83,7 +83,7 @@
     font-size: 12px;
     line-height: 14px;
     word-break: break-word;
-    color: rgba(colors.$first, 0.5);
+    color: rgb(colors.$first, 0.5);
     display: inline-block;
     padding-top: 4px;
     padding-left: 30px;
