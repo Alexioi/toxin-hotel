@@ -47,7 +47,7 @@ mixin footer(options)
                   li.footer__list-item
                     a.footer__list-link(href=item.link)= item.text
         form.footer__subscription(method="POST", action="/change-it")
-          h3.footer__header.footer__header_margin-small= subscriptionHeader
+          h3.footer__header.footer__header_margin_small= subscriptionHeader
           p.footer__text= subscriptionText
           .footer__input
             +text-field(Object.assign({isSubscription: true, type: 'email', name: 'email', inputmode: 'email'}, textField))
