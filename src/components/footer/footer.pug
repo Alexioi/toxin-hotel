@@ -41,13 +41,13 @@ mixin footer(options)
         nav.footer__nav
           each navItem in navItems
             .footer__nav-item
-              span.footer__header= navItem.header
+              h3.footer__header= navItem.header
               ul.footer__list
                 each item in navItem.items
                   li.footer__list-item
                     a.footer__list-link(href=item.link)= item.text
         form.footer__subscription(method="POST", action="/change-it")
-          span.footer__header.footer__header_margin-small= subscriptionHeader
+          h3.footer__header.footer__header_margin-small= subscriptionHeader
           p.footer__text= subscriptionText
           .footer__input
             +text-field(Object.assign({isSubscription: true, type: 'email', name: 'email', inputmode: 'email'}, textField))
