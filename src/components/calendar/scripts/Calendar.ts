@@ -24,11 +24,11 @@ class Calendar {
     this.node = node;
 
     // eslint-disable-next-line fsd/no-heavy-constructor
-    this.onblur = this.onblur.bind(this);
+    this.handleInputBlur = this.handleInputBlur.bind(this);
     this.applyDates = this.applyDates.bind(this);
     this.clearDates = this.clearDates.bind(this);
     this.toggleVisible = this.toggleVisible.bind(this);
-    this.onClickDocument = this.onClickDocument.bind(this);
+    this.handleDocumentClick = this.handleDocumentClick.bind(this);
 
     this.init();
   }
@@ -61,12 +61,12 @@ class Calendar {
       node.addEventListener('click', this.toggleVisible);
     });
     this.inputs.forEach((node) => {
-      node.addEventListener('blur', this.onblur);
+      node.addEventListener('blur', this.handleInputBlur);
     });
-    document.addEventListener('click', this.onClickDocument);
+    document.addEventListener('click', this.handleDocumentClick);
   }
 
-  private onblur() {
+  private handleInputBlur() {
     if (this.inputs.length === 2) {
       const [inputFrom, inputTo] = this.inputs;
 
@@ -100,7 +100,7 @@ class Calendar {
     }
   }
 
-  private onClickDocument(event: Event) {
+  private handleDocumentClick(event: Event) {
     const [firstButton, secondButton] = this.toggleButtons;
     const elements = [this.menu, firstButton, secondButton];
     if (!helpers.isElementsIncludeNode(event, elements)) {

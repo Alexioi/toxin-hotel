@@ -19,7 +19,7 @@ class Header {
     this.root = root;
 
     this.toggleNavigation = this.toggleNavigation.bind(this);
-    this.onClickDocument = this.onClickDocument.bind(this);
+    this.handleDocumentClick = this.handleDocumentClick.bind(this);
     this.toggleSubNavigationList = this.toggleSubNavigationList.bind(this);
 
     this.init();
@@ -46,10 +46,10 @@ class Header {
     this.navigationButtons.forEach((navigationButton) => {
       navigationButton.addEventListener('click', this.toggleSubNavigationList);
     });
-    document.addEventListener('click', this.onClickDocument);
+    document.addEventListener('click', this.handleDocumentClick);
   }
 
-  private onClickDocument(event: Event) {
+  private handleDocumentClick(event: Event) {
     this.subNavigationLists.forEach((list, index) => {
       const elements = [list, this.navigationButtons[index]];
 

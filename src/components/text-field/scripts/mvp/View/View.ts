@@ -38,20 +38,20 @@ const calculateDayAndMount = (checkedDate: Date) => {
 };
 
 class View {
-  private node: HTMLInputElement;
+  private root: HTMLInputElement;
 
   private eventEmitter: EventEmitter;
 
   private isFocus = false;
 
-  constructor(node: HTMLInputElement, eventEmitter: EventEmitter) {
-    this.node = node;
+  constructor(root: HTMLInputElement, eventEmitter: EventEmitter) {
+    this.root = root;
     this.eventEmitter = eventEmitter;
 
-    this.onInput = this.onInput.bind(this);
-    this.onPaste = this.onPaste.bind(this);
-    this.onBlur = this.onBlur.bind(this);
-    this.onClick = this.onClick.bind(this);
+    this.handleTextFieldInput = this.handleTextFieldInput.bind(this);
+    this.handleTextFieldPaste = this.handleTextFieldPaste.bind(this);
+    this.handleTextFieldBlur = this.handleTextFieldBlur.bind(this);
+    this.handleTextFieldClick = this.handleTextFieldClick.bind(this);
 
     this.init();
   }
@@ -61,21 +61,21 @@ class View {
       const [from, to] = dates;
 
       if (from.day === '') {
-        this.node.value = '';
+        this.root.value = '';
         return;
       }
 
       const maskedFrom = calculateDayAndMount(from);
       const maskedTo = calculateDayAndMount(to);
 
-      this.node.value = `${maskedFrom} - ${maskedTo}`;
+      this.root.value = `${maskedFrom} - ${maskedTo}`;
       return;
     }
 
     const [date] = dates;
 
     if (!this.isFocus && date.day === '') {
-      this.node.value = '';
+      this.root.value = '';
       return;
     }
 
@@ -92,7 +92,7 @@ class View {
 
     const maskedDate = maskedDates.join('-');
 
-    this.node.value = maskedDate;
+    this.root.value = maskedDate;
 
     this.changeCaretPosition(maskedDate);
   }
@@ -100,7 +100,7 @@ class View {
   private changeCaretPosition(value: string): void {
     const cursorPosition = value.indexOf('_');
 
-    this.node.setSelectionRange(cursorPosition, cursorPosition);
+    this.root.setSelectionRange(cursorPosition, cursorPosition);
   }
 
   private init() {
@@ -108,13 +108,13 @@ class View {
   }
 
   private attachEventsHandler() {
-    this.node.addEventListener('input', this.onInput);
-    this.node.addEventListener('paste', this.onPaste);
-    this.node.addEventListener('blur', this.onBlur);
-    this.node.addEventListener('click', this.onClick);
+    this.root.addEventListener('input', this.handleTextFieldInput);
+    this.root.addEventListener('paste', this.handleTextFieldPaste);
+    this.root.addEventListener('blur', this.handleTextFieldBlur);
+    this.root.addEventListener('click', this.handleTextFieldClick);
   }
 
-  private onBlur() {
+  private handleTextFieldBlur() {
     this.isFocus = false;
 
     this.eventEmitter.emit({
@@ -123,7 +123,7 @@ class View {
     });
   }
 
-  private onPaste = (event: ClipboardEvent) => {
+  private handleTextFieldPaste = (event: ClipboardEvent) => {
     event.preventDefault();
     const inputData = event.clipboardData?.getData('text');
 
@@ -135,7 +135,7 @@ class View {
     }
   };
 
-  private onClick() {
+  private handleTextFieldClick() {
     this.isFocus = true;
     this.eventEmitter.emit({
       eventName: 'TouchInput',
@@ -143,7 +143,7 @@ class View {
     });
   }
 
-  private onInput = (event: Event) => {
+  private handleTextFieldInput = (event: Event) => {
     if (event instanceof InputEvent) {
       event.preventDefault();
 

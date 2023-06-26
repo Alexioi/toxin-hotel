@@ -48,7 +48,7 @@ class View {
     this.handleApplyButtonClick = this.handleApplyButtonClick.bind(this);
     this.handleClearButtonClick = this.handleClearButtonClick.bind(this);
     this.toggleMenu = this.toggleMenu.bind(this);
-    this.onClickDocument = this.onClickDocument.bind(this);
+    this.handleDocumentClick = this.handleDocumentClick.bind(this);
 
     this.init();
   }
@@ -104,7 +104,7 @@ class View {
     this.applyButton?.addEventListener('click', this.handleApplyButtonClick);
     this.clearButton?.addEventListener('click', this.handleClearButtonClick);
     this.textField?.addEventListener('click', this.toggleMenu);
-    document.addEventListener('click', this.onClickDocument);
+    document.addEventListener('click', this.handleDocumentClick);
 
     return this;
   }
@@ -135,7 +135,7 @@ class View {
     return this;
   }
 
-  private onClickDocument(event: Event) {
+  private handleDocumentClick(event: Event) {
     const elements = [this.menu, this.input, this.inputButton];
     if (!helpers.isElementsIncludeNode(event, elements)) {
       this.closeMenu();
