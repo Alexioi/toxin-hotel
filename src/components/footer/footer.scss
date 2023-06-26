@@ -163,10 +163,8 @@
       height: 22px;
     }
   }
-}
 
-@include mixins.media-breakpoint-down(display-sizes.$lg) {
-  .footer {
+  @include mixins.media-breakpoint-down(display-sizes.$lg) {
     &__main {
       grid-template-columns: 1fr 1fr;
       grid-template-areas:
@@ -179,10 +177,8 @@
       justify-content: space-between;
     }
   }
-}
 
-@include mixins.media-breakpoint-down(display-sizes.$sm) {
-  .footer {
+  @include mixins.media-breakpoint-down(display-sizes.$sm) {
     &__main {
       grid-template-columns: auto;
       grid-template-areas: 'about';

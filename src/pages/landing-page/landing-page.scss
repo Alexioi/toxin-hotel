@@ -38,10 +38,8 @@
     margin: 0;
     word-break: break-word;
   }
-}
 
-@include mixins.media-breakpoint-down(display-sizes.$lg) {
-  .landing-page {
+  @include mixins.media-breakpoint-down(display-sizes.$lg) {
     &__container {
       padding: 0 20px;
     }
@@ -58,18 +56,14 @@
       text-align: center;
     }
   }
-}
 
-@include mixins.media-breakpoint-down(display-sizes.$md) {
-  .landing-page {
+  @include mixins.media-breakpoint-down(display-sizes.$md) {
     &__text {
       margin-top: 50px;
     }
   }
-}
 
-@include mixins.media-breakpoint-down(display-sizes.$sm) {
-  .landing-page {
+  @include mixins.media-breakpoint-down(display-sizes.$sm) {
     &__container {
       padding: 0 10px;
     }

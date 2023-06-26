@@ -60,10 +60,8 @@
     justify-content: center;
     display: none;
   }
-}
 
-@include mixins.media-breakpoint-down(display-sizes.$md) {
-  .filter {
+  @include mixins.media-breakpoint-down(display-sizes.$md) {
     &__form {
       display: none;
     }

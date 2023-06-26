@@ -29,10 +29,8 @@
     display: flex;
     justify-content: center;
   }
-}
 
-@include mixins.media-breakpoint-down(display-sizes.$lg) {
-  .search-room {
+  @include mixins.media-breakpoint-down(display-sizes.$lg) {
     &__content {
       gap: 20px;
     }
@@ -43,10 +41,8 @@
       justify-content: center;
     }
   }
-}
 
-@include mixins.media-breakpoint-down(display-sizes.$md) {
-  .search-room {
+  @include mixins.media-breakpoint-down(display-sizes.$md) {
     &__content {
       flex-direction: column;
     }

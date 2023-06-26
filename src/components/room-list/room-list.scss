@@ -13,18 +13,14 @@
     list-style-type: none;
     width: calc(100% / 3 - 8px);
   }
-}
 
-@include mixins.media-breakpoint-down(display-sizes.$lg) {
-  .room-list {
+  @include mixins.media-breakpoint-down(display-sizes.$lg) {
     &__item {
       width: calc(100% / 2 - 6px);
     }
   }
-}
 
-@include mixins.media-breakpoint-down(display-sizes.$xs) {
-  .room-list {
+  @include mixins.media-breakpoint-down(display-sizes.$xs) {
     &__item {
       width: 100%;
     }
