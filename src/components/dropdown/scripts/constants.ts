@@ -1,6 +1,6 @@
 const cssSelectors = {
-  input: '.js-dropdown__input input',
-  inputButton: '.js-dropdown__input button',
+  input: '.js-text-field__input',
+  inputButton: '.js-text-field__dropdown-button',
   textField: '.js-dropdown__input',
   items: '.js-dropdown__item',
   clearButton: '.js-dropdown__clear-button',

@@ -46,5 +46,5 @@ mixin text-field(options)
         svg.text-field__subscription-icon(fill=`url(#${SVGgradientID})`)
           include ../../images/decorative/arrow.svg
     if isDropdown
-      button.text-field__dropdown-button&attributes(buttonAttributes)
+      button.text-field__dropdown-button.js-text-field__dropdown-button&attributes(buttonAttributes)
         include ../../images/decorative/expand-more.svg
