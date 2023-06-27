@@ -20,14 +20,12 @@ class TextField {
 
   private presenter: Presenter;
 
-  constructor(node: HTMLInputElement) {
-    this.node = node as HTMLInputElement & { plugin: TextField };
+  constructor(node: HTMLInputElementWithPlugin, type: MaskedType) {
+    this.node = node;
 
     this.node.plugin = this;
 
     this.eventEmitter = new EventEmitter();
-
-    const type = <MaskedType>node.dataset.maskedType;
 
     this.model = new Model(this.eventEmitter, type);
     this.view = new View(node, this.eventEmitter);
@@ -43,4 +41,4 @@ class TextField {
   }
 }
 
-export default TextField;
+export { TextField, HTMLInputElementWithPlugin };

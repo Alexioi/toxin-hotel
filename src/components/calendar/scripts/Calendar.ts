@@ -1,8 +1,8 @@
-import AirDatepicker from '@libs/air-datepicker';
+import { HTMLInputElementWithPlugin } from '@components/text-field/scripts/TextField';
+import { AirDatepicker, JQueryWithAirDatepicker } from '@libs/air-datepicker';
 import helpers from '@helpers/index';
 
 import cssSelectors from './constants';
-import HTMLInputElementWithPlugin from './types';
 import calculateFullDate from './methods';
 
 class Calendar {
@@ -23,7 +23,6 @@ class Calendar {
   constructor(node: Element) {
     this.node = node;
 
-    // eslint-disable-next-line fsd/no-heavy-constructor
     this.handleInputBlur = this.handleInputBlur.bind(this);
     this.applyDates = this.applyDates.bind(this);
     this.clearDates = this.clearDates.bind(this);
@@ -48,10 +47,11 @@ class Calendar {
   }
 
   private initDatepicker() {
-    const datepickerNode = this.node.querySelector(cssSelectors.datepicker);
+    const $datepickerNode = $(this.node).find(cssSelectors.datepicker);
 
-    // @ts-ignore
-    this.datepicker = new AirDatepicker(datepickerNode);
+    this.datepicker = new AirDatepicker(
+      $datepickerNode as JQueryWithAirDatepicker,
+    );
   }
 
   private attachEventsHandler() {
@@ -113,7 +113,11 @@ class Calendar {
   }
 
   applyDates() {
-    const [datepickerFrom, datepickerTo] = this.datepicker?.getSelectedDates();
+    if (this.datepicker === null) {
+      return;
+    }
+
+    const { datepickerFrom, datepickerTo } = this.datepicker.getSelectedDates();
 
     if (typeof datepickerTo === 'undefined') {
       return;

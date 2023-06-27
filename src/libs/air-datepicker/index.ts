@@ -1,41 +1,63 @@
-/* eslint-disable import/no-unresolved */
-/* eslint-disable import/no-webpack-loader-syntax */
 import 'air-datepicker';
+
 // @ts-ignore
+// eslint-disable-next-line import/no-webpack-loader-syntax
 import arrow from '!raw-loader!@images/decorative/arrow.svg';
 
+interface DatepickerData {
+  selectedDates: Date[];
+  selectDate(date: Date): void;
+  clear(): void;
+}
+
+interface AirDatepickerOptions {
+  range: boolean;
+  navTitles: {
+    days: string;
+  };
+  prevHtml: string;
+  nextHtml: string;
+  minDate: Date;
+}
+
 interface JQueryWithAirDatepicker extends JQuery {
-  datepicker: (airDatepickerOptions: any) => any;
+  datepicker(airDatepickerOptions: AirDatepickerOptions): this;
 }
 
 class AirDatepicker {
   private $node: JQueryWithAirDatepicker;
 
-  private datepickerData: any;
+  private datepickerData: DatepickerData | null = null;
 
-  constructor(node: Element) {
-    this.$node = <JQueryWithAirDatepicker>$(node);
+  constructor($node: JQueryWithAirDatepicker) {
+    this.$node = $node;
 
-    this._init();
+    this.init();
   }
 
   public getSelectedDates() {
-    return this.datepickerData.selectedDates;
+    if (this.datepickerData === null) {
+      return { datepickerFrom: undefined, datepickerTo: undefined };
+    }
+
+    const [datepickerFrom, datepickerTo] = this.datepickerData.selectedDates;
+
+    return { datepickerFrom, datepickerTo };
   }
 
   public changeDate(date: string) {
-    this.datepickerData.selectDate(new Date(date));
+    this.datepickerData?.selectDate(new Date(date));
   }
 
   public clearDates() {
-    this.datepickerData.clear();
+    this.datepickerData?.clear();
   }
 
-  private _init() {
-    this._initAirDatepicker();
+  private init() {
+    this.initAirDatepicker();
   }
 
-  private _initAirDatepicker() {
+  private initAirDatepicker() {
     const airDatepickerOptions = {
       range: true,
       navTitles: { days: 'MM yyyy' },
@@ -50,4 +72,4 @@ class AirDatepicker {
   }
 }
 
-export default AirDatepicker;
+export { AirDatepicker, JQueryWithAirDatepicker };

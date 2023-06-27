@@ -1,12 +1,16 @@
 import cssSelectors from './scripts/constants';
-import TextField from './scripts/TextField';
-import { MaskedType } from './scripts/types';
+import { TextField, HTMLInputElementWithPlugin } from './scripts/TextField';
 
 document.querySelectorAll(cssSelectors.input).forEach((node) => {
-  // @ts-ignore
-  const type = <MaskedType>node.dataset.maskedType;
+  if (node instanceof HTMLInputElement) {
+    const type = node.dataset.maskedType;
 
-  if (type !== 'none') {
-    new TextField(<HTMLInputElement>node);
+    if (typeof type === 'undefined') {
+      return;
+    }
+
+    if (type === 'date' || type === 'dates') {
+      new TextField(node as HTMLInputElementWithPlugin, type);
+    }
   }
 });
