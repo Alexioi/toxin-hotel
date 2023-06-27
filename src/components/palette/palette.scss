@@ -2,9 +2,8 @@
 
 .palette {
   display: flex;
-  gap: 34px;
+  gap: 27px;
   flex-direction: column;
-  padding: 7px 0;
 
   &__item {
     display: flex;
@@ -12,6 +11,7 @@
     position: relative;
     padding-left: 110px;
     word-break: break-word;
+    padding-top: 7px;
 
     &::before {
       display: block;
@@ -20,7 +20,7 @@
       height: 70px;
       position: absolute;
       left: 0;
-      top: -7px;
+      top: 0;
       border-radius: 6px;
     }
 

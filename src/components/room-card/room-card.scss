@@ -57,8 +57,10 @@
   &__buttons {
     position: absolute;
     z-index: 5;
-    right: 11px;
-    bottom: 13px;
+    right: 0;
+    bottom: 0;
+    padding-right: 11px;
+    padding-bottom: 13px;
   }
 
   &__button {
