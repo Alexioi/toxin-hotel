@@ -47,30 +47,30 @@
     word-break: break-word;
   }
 
+  &__counter-button {
+    flex-shrink: 0;
+    border: 1px solid rgb(colors.$first, 0.25);
+    background: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    font-size: 18px;
+    line-height: 30px;
+    color: rgb(colors.$first, 0.5);
+    cursor: pointer;
+
+    &_disabled {
+      opacity: 0.38;
+      cursor: default;
+    }
+  }
+
   &__counter {
     flex: 0 0 30px;
     text-align: center;
     font-weight: bold;
     line-height: 12px;
     word-break: break-word;
-
-    &-button {
-      flex-shrink: 0;
-      border: 1px solid rgb(colors.$first, 0.25);
-      background: white;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      font-size: 18px;
-      line-height: 30px;
-      color: rgb(colors.$first, 0.5);
-      cursor: pointer;
-
-      &_disabled {
-        opacity: 0.38;
-        cursor: default;
-      }
-    }
   }
 
   &__buttons {

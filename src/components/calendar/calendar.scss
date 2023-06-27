@@ -20,6 +20,10 @@
     gap: 20px;
   }
 
+  &__input {
+    width: 100%;
+  }
+
   &__menu {
     display: none;
     position: absolute;
@@ -40,9 +44,5 @@
     display: flex;
     justify-content: space-between;
     margin-top: 19px;
-  }
-
-  &__input {
-    width: 100%;
   }
 }

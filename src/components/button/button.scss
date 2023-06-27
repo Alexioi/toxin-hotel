@@ -18,55 +18,57 @@
     opacity: 0.5;
   }
 
-  &_theme_default {
-    padding: 14px 20px 12px;
-    background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-    border-radius: 22px;
+  &_theme {
+    &_default {
+      padding: 14px 20px 12px;
+      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+      border-radius: 22px;
 
-    #{$root}__text {
-      color: white;
-    }
-  }
-
-  &_theme_outlined {
-    padding: 14px 20px 12px;
-    border-radius: 22px;
-    background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-
-    &::before {
-      content: '';
-      position: absolute;
-      background: white;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      margin: 2px;
-      border-radius: inherit;
+      #{$root}__text {
+        color: white;
+      }
     }
 
-    #{$root}__text {
-      color: colors.$second;
+    &_outlined {
+      padding: 14px 20px 12px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+
+      &::before {
+        content: '';
+        position: absolute;
+        background: white;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: 2px;
+        border-radius: inherit;
+      }
+
+      #{$root}__text {
+        color: colors.$second;
+      }
     }
-  }
 
-  &_theme_link {
-    background: none;
+    &_link {
+      background: none;
 
-    #{$root}__text {
-      color: #bc9cff;
+      #{$root}__text {
+        color: #bc9cff;
+      }
     }
-  }
 
-  &_theme_long {
-    width: 100%;
-    padding: 14px 11px 12px 29px;
-    background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-    border-radius: 22px;
-
-    #{$root}__text {
+    &_long {
       width: 100%;
-      color: white;
+      padding: 14px 11px 12px 29px;
+      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+      border-radius: 22px;
+
+      #{$root}__text {
+        width: 100%;
+        color: white;
+      }
     }
   }
 

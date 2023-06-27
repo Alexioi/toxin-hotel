@@ -86,17 +86,6 @@
     gap: 40px;
   }
 
-  &__list {
-    display: grid;
-    gap: 20px;
-    margin: 0;
-    padding: 0;
-  }
-
-  &__list-item {
-    list-style: none;
-  }
-
   &__header {
     display: inline-block;
     font-weight: bold;
@@ -112,6 +101,17 @@
     &_margin_small {
       margin-bottom: 16px;
     }
+  }
+
+  &__list {
+    display: grid;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__list-item {
+    list-style: none;
   }
 
   &__list-link {
