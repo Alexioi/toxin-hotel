@@ -9,7 +9,7 @@ import {
 class Model {
   private eventEmitter: EventEmitter;
 
-  private groups: number[][] | never[] = [[]];
+  private groups: number[][] = [[]];
 
   private counters: number[] | never[] = [];
 
