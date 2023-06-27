@@ -121,10 +121,8 @@
     color: rgb(colors.$first, 0.5);
     text-align: center;
   }
-}
 
-@include mixins.media-breakpoint-down(display-sizes.$md) {
-  .header {
+  @include mixins.media-breakpoint-down(display-sizes.$md) {
     &__burger-button {
       display: flex;
     }

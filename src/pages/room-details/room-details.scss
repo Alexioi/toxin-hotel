@@ -82,10 +82,8 @@
     max-width: 380px;
     width: 100%;
   }
-}
 
-@include mixins.media-breakpoint-down(display-sizes.$lg) {
-  .room-details {
+  @include mixins.media-breakpoint-down(display-sizes.$lg) {
     &__content-block {
       gap: 20px;
       flex-direction: column;
@@ -109,10 +107,8 @@
       flex-basis: auto;
     }
   }
-}
 
-@include mixins.media-breakpoint-down(display-sizes.$sm) {
-  .room-details {
+  @include mixins.media-breakpoint-down(display-sizes.$sm) {
     &__room-statistic {
       gap: 20px;
       flex-direction: column;
