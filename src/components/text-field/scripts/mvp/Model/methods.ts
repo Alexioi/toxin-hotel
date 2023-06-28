@@ -73,13 +73,13 @@ const calculateMonth = (date: Date, key: number): Date => {
     return { day, month, year };
   }
 
-  if (month[0] === '0' && key === 0) {
+  if (month === '0' && key === 0) {
     const newMonth = `${key}1`;
 
     return { day, month: newMonth, year };
   }
 
-  if (month[0] === '1' && key > 2) {
+  if (month === '1' && key > 2) {
     const newMonth = `${key}2`;
 
     return { day, month: newMonth, year };
@@ -98,13 +98,13 @@ const calculateDay = (date: Date, key: number): Date => {
   }
 
   if (day.length === 1) {
-    if (day[0] === '0' && key === 0) {
+    if (day === '0' && key === 0) {
       const newDay = `${day}1`;
 
       return { day: newDay, month, year };
     }
 
-    if (day[0] === '3' && key > 0) {
+    if (day === '3' && key > 0) {
       const newDay = `${day}1`;
 
       return { day: newDay, month, year };

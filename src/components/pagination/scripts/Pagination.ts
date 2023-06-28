@@ -1,16 +1,15 @@
-// @ts-ignore
-import Paginationjs from '@libs/paginationjs';
+import { JQueryWithPaginationjs, Paginationjs } from '@libs/paginationjs';
 
 import cssSelectors from './constants';
 
 class Pagination {
   private root: Element;
 
-  private plugin: JQuery | null = null;
+  private plugin: Element | null = null;
 
-  private startItem: JQuery | null = null;
+  private startItem: Element | null = null;
 
-  private endItem: JQuery | null = null;
+  private endItem: Element | null = null;
 
   private count: number = 0;
 
@@ -27,22 +26,33 @@ class Pagination {
   }
 
   private findElements() {
-    this.plugin = $(this.root).find(cssSelectors.plugin);
-    this.startItem = $(this.root).find(cssSelectors.startItem);
-    this.endItem = $(this.root).find(cssSelectors.endItem);
+    this.plugin = this.root.querySelector(cssSelectors.plugin);
+    this.startItem = this.root.querySelector(cssSelectors.startItem);
+    this.endItem = this.root.querySelector(cssSelectors.endItem);
   }
 
   private getCount() {
     if (this.root instanceof HTMLElement) {
-      const { count } = this.root.dataset;
-      if (typeof count !== 'undefined') {
-        this.count = Number(count);
-      }
+      this.count = Number(this.root.dataset.count);
     }
   }
 
   private initPlugin() {
-    new Paginationjs(this.plugin, this.startItem, this.endItem, this.count);
+    if (this.plugin === null) {
+      return;
+    }
+
+    if (this.startItem === null) {
+      return;
+    }
+
+    if (this.endItem === null) {
+      return;
+    }
+
+    const $plugin = $(this.plugin) as JQueryWithPaginationjs;
+
+    new Paginationjs($plugin, this.startItem, this.endItem, this.count);
   }
 }
 

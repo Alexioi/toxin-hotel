@@ -1,25 +1,55 @@
-/* eslint-disable import/no-webpack-loader-syntax */
-/* eslint-disable import/no-unresolved */
 import 'paginationjs';
+
+// @ts-ignore
+// eslint-disable-next-line import/no-webpack-loader-syntax
 import arrow from '!raw-loader!@images/decorative/arrow.svg';
 
+interface Config {
+  pageSize: number;
+  pageRange: number;
+  prevText: string;
+  nextText: string;
+  callback: (data: number[]) => void;
+  dataSource: (done: (resulte: number[]) => void) => void;
+  afterPageOnClick: () => void;
+  afterNextOnClick: () => void;
+  afterPreviousOnClick: () => void;
+}
+
+interface JQueryWithPaginationjs extends JQuery<Element> {
+  pagination(config: Config): void;
+}
+
 class Paginationjs {
-  constructor($node, $startItem, $endItem, count) {
-    this.$node = $node;
-    this.$startItem = $startItem;
-    this.$endItem = $endItem;
+  private $node: JQueryWithPaginationjs;
+
+  private $startItem: JQuery<Element>;
+
+  private $endItem: JQuery<Element>;
+
+  private count: number;
+
+  constructor(
+    $root: JQueryWithPaginationjs,
+    startItem: Element,
+    endItem: Element,
+    count: number,
+  ) {
+    this.$node = $root;
+    this.$startItem = $(startItem);
+    this.$endItem = $(endItem);
     this.count = count;
 
     this._init();
   }
 
   _init() {
-    const callback = (data) => {
+    const callback = (data: number[]) => {
       this.$startItem.text(data[0]);
       this.$endItem.text(data[data.length - 1]);
     };
 
-    const dataSource = (done) => {
+    const dataSource = (done: (resulte: number[]) => void) => {
       const result = [...Array(this.count)].map((e, i) => {
         return i + 1;
       });
@@ -58,4 +88,4 @@ class Paginationjs {
   }
 }
 
-export default Paginationjs;
+export { Paginationjs, JQueryWithPaginationjs };

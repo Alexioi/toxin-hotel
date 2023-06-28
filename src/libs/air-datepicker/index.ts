@@ -25,12 +25,12 @@ interface JQueryWithAirDatepicker extends JQuery {
 }
 
 class AirDatepicker {
-  private $node: JQueryWithAirDatepicker;
+  private $root: JQueryWithAirDatepicker;
 
   private datepickerData: DatepickerData | null = null;
 
-  constructor($node: JQueryWithAirDatepicker) {
-    this.$node = $node;
+  constructor($root: JQueryWithAirDatepicker) {
+    this.$root = $root;
 
     this.init();
   }
@@ -66,7 +66,7 @@ class AirDatepicker {
       minDate: new Date(),
     };
 
-    this.datepickerData = this.$node
+    this.datepickerData = this.$root
       .datepicker(airDatepickerOptions)
       .data().datepicker;
   }
