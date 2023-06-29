@@ -1,5 +1,3 @@
-import helpers from '@helpers/index';
-
 import { Votes, DiagramColors } from './types';
 import drawDiagram from './methods';
 import { diagramParameters } from './constants';
@@ -49,9 +47,7 @@ class PieChartDiagram {
       if (typeof datasetVotes === 'string') {
         const votes = JSON.parse(datasetVotes);
 
-        if (helpers.isObjectEqual(this.votes, votes)) {
-          this.votes = votes;
-        }
+        this.votes = votes;
       }
     }
 
