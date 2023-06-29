@@ -10,7 +10,7 @@ interface Config {
   prevText: string;
   nextText: string;
   callback: (data: number[]) => void;
-  dataSource: (done: (resulte: number[]) => void) => void;
+  dataSource: (done: (result: number[]) => void) => void;
   afterPageOnClick: () => void;
   afterNextOnClick: () => void;
   afterPreviousOnClick: () => void;
@@ -49,7 +49,7 @@ class Paginationjs {
       this.$endItem.text(data[data.length - 1]);
     };
 
-    const dataSource = (done: (resulte: number[]) => void) => {
+    const dataSource = (done: (result: number[]) => void) => {
       const result = [...Array(this.count)].map((e, i) => {
         return i + 1;
       });
