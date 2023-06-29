@@ -52,7 +52,6 @@ class Carousel {
   }
 
   private goToBackImg() {
-    // eslint-disable-next-line operator-linebreak
     const currentImageIndex =
       this.currentImageIndex === 0
         ? this.quantityImageIndex
@@ -64,7 +63,6 @@ class Carousel {
   }
 
   private goToNextImg() {
-    // eslint-disable-next-line operator-linebreak
     const currentImageIndex =
       this.currentImageIndex === this.quantityImageIndex
         ? 0

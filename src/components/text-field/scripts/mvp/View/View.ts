@@ -79,9 +79,8 @@ class View {
       return;
     }
 
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    const maskedDates = dates.map((date): string => {
-      const { day, month, year } = date;
+    const maskedDates = dates.map((objectDate): string => {
+      const { day, month, year } = objectDate;
 
       const maskedDay = `${day}__`.slice(0, 2);
       const maskedMonth = `${month}__`.slice(0, 2);

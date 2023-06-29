@@ -1,6 +1,11 @@
 module.exports = {
   plugins: ['fsd'],
-  extends: ['airbnb-base', 'airbnb-typescript/base', 'plugin:fsd/all'],
+  extends: [
+    'airbnb-base',
+    'airbnb-typescript/base',
+    'plugin:fsd/all',
+    'prettier',
+  ],
   parserOptions: {
     project: './tsconfig.json',
   },

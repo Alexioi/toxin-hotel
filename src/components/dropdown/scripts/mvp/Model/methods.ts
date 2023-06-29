@@ -1,6 +1,5 @@
 const isArrayWithNumbers = (value: any[]): value is number[] => {
   return (
-    // eslint-disable-next-line operator-linebreak
     Array.isArray(value) &&
     value.every((item) => {
       return typeof item === 'number';
