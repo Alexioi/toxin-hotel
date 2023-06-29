@@ -1,4 +1,4 @@
-import noUiSlider from 'nouislider';
+import noUiSlider, { API } from 'nouislider';
 
 type Parameters = {
   min: number;
@@ -7,40 +7,12 @@ type Parameters = {
   to: number;
 };
 
-interface Config {
-  start: number[];
-  connect: boolean;
-  step: number;
-  range: {
-    min: number;
-    max: number;
-  };
-}
-
-interface ElementWithNoUiSlider extends Element {
-  noUiSlider: {
-    on: (method: 'update', data: ([from, to]: number[]) => void) => void;
-    create: (element: HTMLElement, config: Config) => void;
-    destroy: () => void;
-    steps: () => any;
-    off: () => void;
-    get: () => void;
-    set: () => void;
-    setHandle: () => void;
-    reset: () => void;
-    options: () => void;
-    updateOptions: () => void;
-    target: () => void;
-    removePips: () => void;
-    removeTooltips: () => void;
-    getTooltips: () => void;
-    getOrigins: () => void;
-    pips: () => void;
-  };
+interface TargetElement extends HTMLElement {
+  noUiSlider: API;
 }
 
 class NoUISlider {
-  private root: ElementWithNoUiSlider | null;
+  private root: TargetElement | null;
 
   private valueNode: Element | null;
 
@@ -49,7 +21,7 @@ class NoUISlider {
     valueNode: Element | null,
     parameters: Parameters,
   ) {
-    this.root = root as ElementWithNoUiSlider;
+    this.root = root as TargetElement;
     this.valueNode = valueNode;
 
     this.updateValue = this.updateValue.bind(this);
@@ -70,15 +42,14 @@ class NoUISlider {
       },
     };
 
-    if (this.root instanceof HTMLElement) {
-      // @ts-ignore
+    if (this.root instanceof Element) {
       noUiSlider.create(this.root, config);
     }
 
     this.root?.noUiSlider.on('update', this.updateValue);
   }
 
-  private updateValue([from, to]: number[]) {
+  private updateValue([from, to]: (string | number)[]) {
     if (this.valueNode !== null) {
       this.valueNode.innerHTML = `${from.toLocaleString()}₽ - ${to.toLocaleString()}₽`;
     }
