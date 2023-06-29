@@ -7,21 +7,6 @@ const isArrayWithNumbers = (value: any[]): value is number[] => {
   );
 };
 
-const isArrayOfStringArrays = (value: any): value is string[][] => {
-  if (!Array.isArray(value)) return false;
-
-  // eslint-disable-next-line no-restricted-syntax
-  for (const arr of value) {
-    if (!Array.isArray(arr)) return false;
-    // eslint-disable-next-line no-restricted-syntax
-    for (const item of arr) {
-      if (typeof item !== 'string') return false;
-    }
-  }
-
-  return true;
-};
-
 const getIndex = (isUnit: boolean, isPair: boolean): 0 | 1 | 2 => {
   if (isUnit) {
     return 0;
@@ -85,4 +70,4 @@ const calculateValue = (
   return value.join(', ');
 };
 
-export { calculateValue, isArrayOfStringArrays, isArrayWithNumbers };
+export { calculateValue, isArrayWithNumbers };

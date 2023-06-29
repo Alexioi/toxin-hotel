@@ -1,6 +1,5 @@
 type Date = { day: string; month: string; year: string };
 
-/* eslint-disable @typescript-eslint/indent */
 type EventObject =
   | {
       eventName: 'UpdatedDates';

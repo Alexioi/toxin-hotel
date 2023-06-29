@@ -1,10 +1,6 @@
 import EventEmitter from '@helpers/EventEmitter';
 
-import {
-  isArrayOfStringArrays,
-  isArrayWithNumbers,
-  calculateValue,
-} from './methods';
+import { isArrayWithNumbers, calculateValue } from './methods';
 
 class Model {
   private eventEmitter: EventEmitter;
@@ -80,9 +76,7 @@ class Model {
 
     this.groups = groups;
 
-    if (isArrayOfStringArrays(variants)) {
-      this.variants = variants;
-    }
+    this.variants = variants;
 
     if (isArrayWithNumbers(counters)) {
       this.counters = counters;

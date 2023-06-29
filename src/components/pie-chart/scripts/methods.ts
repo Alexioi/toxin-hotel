@@ -49,18 +49,15 @@ const drawString = (
   centerY: number,
   displacementCoefficient: number,
 ) => {
-  /* eslint-disable-next-line no-param-reassign */
-  canvas.fillStyle = diagramParameters.textColor;
-  /* eslint-disable-next-line no-param-reassign */
-  canvas.font = style;
-  /* eslint-disable-next-line no-param-reassign */
-  canvas.textBaseline = textBaseline;
-  /* eslint-disable-next-line no-param-reassign */
-  canvas.textAlign = 'center';
+  const drawingCanvas = canvas;
+  drawingCanvas.fillStyle = diagramParameters.textColor;
+  drawingCanvas.font = style;
+  drawingCanvas.textBaseline = textBaseline;
+  drawingCanvas.textAlign = 'center';
 
   const y = centerY + centerY / displacementCoefficient;
 
-  canvas.fillText(text, centerX, y);
+  drawingCanvas.fillText(text, centerX, y);
 };
 
 const drawText = (
@@ -69,8 +66,9 @@ const drawText = (
   centerX: number,
   centerY: number,
 ) => {
-  /* eslint-disable-next-line no-param-reassign */
-  canvas.fillStyle = diagramParameters.textColor;
+  const drawingCanvas = canvas;
+
+  drawingCanvas.fillStyle = diagramParameters.textColor;
 
   drawString(
     canvas,
@@ -105,27 +103,27 @@ const drawArc = ({
   innerRadius,
 }: ArcParameters) => {
   if (canvas !== null) {
+    const drawingCanvas = canvas;
     const start = startDegree + diagramParameters.arcPadding;
     const end = endDegree - diagramParameters.arcPadding;
     const startRadian = calculateRadian(start);
     const endRadian = calculateRadian(end);
 
-    canvas.beginPath();
-    canvas.arc(centerX, centerY, outerRadius, startRadian, endRadian);
+    drawingCanvas.beginPath();
+    drawingCanvas.arc(centerX, centerY, outerRadius, startRadian, endRadian);
     moveCursor(canvas, start, centerX, centerY, outerRadius);
-    canvas.arc(centerX, centerY, innerRadius, startRadian, endRadian);
+    drawingCanvas.arc(centerX, centerY, innerRadius, startRadian, endRadian);
     drawLine(canvas, end, centerX, centerY, outerRadius);
 
     const { x1, y1, x2, y2 } = diagramParameters.arcLinearGradient;
-    const gradient = canvas.createLinearGradient(x1, y1, x2, y2);
+    const gradient = drawingCanvas.createLinearGradient(x1, y1, x2, y2);
 
     gradient.addColorStop(0, colorFrom);
     gradient.addColorStop(1, colorTo);
 
-    /* eslint-disable-next-line no-param-reassign */
-    canvas.fillStyle = gradient;
+    drawingCanvas.fillStyle = gradient;
 
-    canvas.fill('evenodd');
+    drawingCanvas.fill('evenodd');
   }
 };
 

@@ -32,5 +32,6 @@ module.exports = {
     'no-new': 'off',
     'object-curly-newline': ['error', { multiline: true }],
     'arrow-body-style': ['error', 'always'],
+    '@typescript-eslint/indent': 'off',
   },
 };
