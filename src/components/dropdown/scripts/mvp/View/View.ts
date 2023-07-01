@@ -3,22 +3,14 @@ import EventEmitter from '@helpers/EventEmitter';
 
 import cssSelectors from '../../constants';
 import Counter from './subViews/Counter';
-
-const toggleClearButton = (clearButton: Element, countersValue: number[]) => {
-  if (clearButton === null) {
-    return;
-  }
-
-  const countersSum = countersValue.reduce((partialSum, counter) => {
-    return partialSum + counter;
-  }, 0);
-
-  if (countersSum === 0) {
-    clearButton.classList.add('dropdown__clear-button_hidden');
-  } else {
-    clearButton.classList.remove('dropdown__clear-button_hidden');
-  }
-};
+import {
+  toggleInputFocus,
+  toggleClearButton,
+  closeMenu,
+  toggleMenu,
+  createCounters,
+  updateCounters,
+} from './methods';
 
 class View {
   private root: Element;
@@ -41,6 +33,8 @@ class View {
 
   private isAutoUpdateInput = true;
 
+  private isUpdateButtonPressed = true;
+
   constructor(node: Element, eventEmitter: EventEmitter) {
     this.root = node;
     this.eventEmitter = eventEmitter;
@@ -53,16 +47,13 @@ class View {
     this.init();
   }
 
-  public update(counters: number[], value: string) {
-    this.counters.forEach((counter, index) => {
-      counter.update(counters[index]);
-    });
+  public update(counterValues: number[], value: string) {
+    updateCounters(this.counters, counterValues);
 
-    if (this.clearButton !== null) {
-      toggleClearButton(this.clearButton, counters);
-    }
+    toggleClearButton(this.clearButton, counterValues);
 
-    if (this.isAutoUpdateInput) {
+    if (this.isAutoUpdateInput || this.isUpdateButtonPressed) {
+      this.isUpdateButtonPressed = false;
       this.updateInputValue(value);
     }
   }
@@ -74,11 +65,14 @@ class View {
   }
 
   private init() {
-    this.findAndInitNodes()
+    this.initNodes()
       .attachEventHandlers()
       .initCounters()
-      .defineAutomaticInputDataModification()
-      .toggleInputFocus();
+      .defineAutomaticInputDataModification();
+
+    toggleInputFocus(this.root, this.input);
+
+    return this;
   }
 
   private defineAutomaticInputDataModification() {
@@ -89,7 +83,7 @@ class View {
     return this;
   }
 
-  private findAndInitNodes() {
+  private initNodes() {
     this.input = this.root.querySelector(cssSelectors.input);
     this.inputButton = this.root.querySelector(cssSelectors.inputButton);
     this.textField = this.root.querySelector(cssSelectors.textField);
@@ -114,53 +108,39 @@ class View {
       eventName: 'ClearCounters',
       eventArguments: null,
     });
+
+    return this;
   }
 
   private handleApplyButtonClick() {
+    this.isUpdateButtonPressed = true;
+
     this.eventEmitter.emit({
       eventName: 'ApplyDropdownData',
       eventArguments: null,
     });
+
+    return this;
   }
 
   private initCounters() {
-    const counters = this.root.querySelectorAll(cssSelectors.items);
-
-    counters.forEach((counterNode, index) => {
-      const counter = new Counter(counterNode, this.eventEmitter, index);
-
-      this.counters.push(counter);
-    });
+    this.counters = createCounters(this.root, this.eventEmitter);
 
     return this;
   }
 
   private handleDocumentClick(event: Event) {
     const elements = [this.menu, this.input, this.inputButton];
+
     if (!helpers.isElementsIncludeNode(event, elements)) {
-      this.closeMenu();
+      closeMenu(this.root, this.input);
     }
-  }
 
-  private closeMenu() {
-    this.root.classList.remove('dropdown_opened');
-
-    this.toggleInputFocus();
+    return this;
   }
 
   private toggleMenu() {
-    this.root.classList.toggle('dropdown_opened');
-    this.toggleInputFocus();
-  }
-
-  private toggleInputFocus() {
-    const isOpened = this.root.classList.contains('dropdown_opened');
-
-    if (isOpened) {
-      this.input?.classList.add('text-field__input_opened');
-    } else {
-      this.input?.classList.remove('text-field__input_opened');
-    }
+    toggleMenu(this.root, this.input);
 
     return this;
   }

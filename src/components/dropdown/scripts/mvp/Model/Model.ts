@@ -1,13 +1,13 @@
 import EventEmitter from '@helpers/EventEmitter';
 
-import { isArrayWithNumbers, calculateValue } from './methods';
+import { calculateCounter, calculateValue, resetCounters } from './methods';
 
 class Model {
   private eventEmitter: EventEmitter;
 
   private groups: number[][] = [[]];
 
-  private counters: number[] | never[] = [];
+  private counters: number[] = [];
 
   private variants: string[][] = [[]];
 
@@ -15,10 +15,10 @@ class Model {
 
   constructor(
     eventEmitter: EventEmitter,
-    groups: any,
-    variants: any,
-    placeholder: any,
-    counters: any,
+    groups: number[][],
+    variants: string[][],
+    placeholder: string,
+    counters: number[],
   ) {
     this.eventEmitter = eventEmitter;
 
@@ -26,39 +26,34 @@ class Model {
   }
 
   public incrementCounter(index: number) {
-    this.counters[index] += 1;
+    const { counters } = this;
 
-    this.calculateValueAndNotify();
+    this.counters = calculateCounter(counters, index, 1);
+
+    this.emitValue();
+
+    return this;
   }
 
   public decrementCounter(index: number) {
-    if (this.counters[index] > 0) {
-      this.counters[index] -= 1;
-    }
+    const { counters } = this;
 
-    this.calculateValueAndNotify();
+    this.counters = calculateCounter(counters, index, -1);
+
+    this.emitValue();
+
+    return this;
   }
 
   public resetCounters() {
-    this.counters = this.counters.map(() => {
-      return 0;
-    });
+    this.counters = resetCounters(this.counters);
 
-    this.calculateValueAndNotify();
+    this.emitValue();
+
+    return this;
   }
 
-  public getValue() {
-    const { groups, counters, variants, placeholder } = this;
-
-    const value = calculateValue(groups, counters, variants, placeholder);
-
-    this.eventEmitter.emit({
-      eventName: 'UpdateValue',
-      eventArguments: value,
-    });
-  }
-
-  private calculateValueAndNotify() {
+  public emitValue() {
     const { groups, counters, variants, placeholder } = this;
 
     const value = calculateValue(groups, counters, variants, placeholder);
@@ -67,20 +62,23 @@ class Model {
       eventName: 'UpdateCounters',
       eventArguments: { counters, value },
     });
+
+    return this;
   }
 
-  private init(groups: any, variants: any, placeholder: any, counters: any) {
-    if (typeof placeholder === 'string') {
-      this.placeholder = placeholder;
-    }
+  private init(
+    groups: number[][],
+    variants: string[][],
+    placeholder: string,
+    counters: number[],
+  ) {
+    this.placeholder = placeholder;
 
     this.groups = groups;
 
     this.variants = variants;
 
-    if (isArrayWithNumbers(counters)) {
-      this.counters = counters;
-    }
+    this.counters = counters;
 
     return this;
   }

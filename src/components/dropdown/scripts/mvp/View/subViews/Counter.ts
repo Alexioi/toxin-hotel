@@ -1,16 +1,7 @@
 import EventEmitter from '@helpers/EventEmitter';
 
 import cssSelectors from '../../../constants';
-
-const disableCounterButton = (node: Element | null, counter: number) => {
-  if (counter === 0) {
-    node?.classList.add('dropdown__counter-button_disabled');
-    node?.setAttribute('disabled', 'disabled');
-  } else {
-    node?.classList.remove('dropdown__counter-button_disabled');
-    node?.removeAttribute('disabled');
-  }
-};
+import { disableCounterButton } from './methods';
 
 class Counter {
   private root: Element;
@@ -45,19 +36,17 @@ class Counter {
     if (this.counterNode !== null) {
       this.counterNode.innerHTML = String(counter);
     }
+
+    return this;
   }
 
   private init() {
-    this.findAndInitNodes().attachEventHandlers();
+    this.initNodes().attachEventHandlers();
 
-    const counter = this.counterNode?.innerHTML;
-
-    if (counter === '0') {
-      disableCounterButton(this.decrementButton, Number(counter));
-    }
+    return this;
   }
 
-  private findAndInitNodes() {
+  private initNodes() {
     const [decrementButton, incrementButton] = this.root.querySelectorAll(
       cssSelectors.counterButtons,
     );
@@ -91,6 +80,8 @@ class Counter {
       eventName: 'DecrementCounter',
       eventArguments: this.index,
     });
+
+    return this;
   }
 
   private handleIncrementButtonClick() {
@@ -98,6 +89,8 @@ class Counter {
       eventName: 'IncrementCounter',
       eventArguments: this.index,
     });
+
+    return this;
   }
 }
 

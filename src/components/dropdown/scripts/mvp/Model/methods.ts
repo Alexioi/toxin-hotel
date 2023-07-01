@@ -1,12 +1,3 @@
-const isArrayWithNumbers = (value: any[]): value is number[] => {
-  return (
-    Array.isArray(value) &&
-    value.every((item) => {
-      return typeof item === 'number';
-    })
-  );
-};
-
 const getIndex = (isUnit: boolean, isPair: boolean): 0 | 1 | 2 => {
   if (isUnit) {
     return 0;
@@ -29,28 +20,6 @@ const getPlural = (forms: string[], count: number) => {
   return forms[idx] || '';
 };
 
-const calculateValues = (
-  variants: string[][],
-  counters: number[],
-  placeholder: string,
-) => {
-  const value = [];
-
-  variants.forEach((variant, index) => {
-    const count = counters[index];
-
-    if (count > 0) {
-      value.push(`${count} ${getPlural(variant, count)}`);
-    }
-  });
-
-  if (value.length === 0) {
-    value.push(placeholder);
-  }
-
-  return value;
-};
-
 const calculateValue = (
   groups: number[][],
   countersValue: number[],
@@ -65,9 +34,52 @@ const calculateValue = (
     }, initialValue);
   });
 
-  const value = calculateValues(variants, counters, placeholder);
+  const value = variants.reduce((accumulator, variant, index) => {
+    const count = counters[index];
+    const item = `${count} ${getPlural(variant, count)}`;
 
-  return value.join(', ');
+    if (count === 0) {
+      return accumulator;
+    }
+
+    if (accumulator === '') {
+      return item;
+    }
+
+    return accumulator + `, ${item}`;
+  }, '');
+
+  if (value === '') {
+    return placeholder;
+  }
+
+  return value;
 };
 
-export { calculateValue, isArrayWithNumbers };
+const calculateCounter = (
+  counters: number[],
+  index: number,
+  argument: number,
+) => {
+  return counters.map((counter, i) => {
+    if (i === index) {
+      const newCounters = counter + argument;
+
+      if (newCounters < 0) {
+        return 0;
+      }
+
+      return newCounters;
+    }
+
+    return counter;
+  });
+};
+
+const resetCounters = (counters: number[]) => {
+  return counters.map(() => {
+    return 0;
+  });
+};
+
+export { calculateValue, calculateCounter, resetCounters };
