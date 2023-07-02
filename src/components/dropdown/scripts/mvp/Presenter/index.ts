@@ -1,7 +1,7 @@
 import EventEmitter from '@helpers/EventEmitter';
 
-import View from '../View/View';
-import Model from '../Model/Model';
+import View from '../View';
+import Model from '../Model';
 
 class Presenter {
   private eventEmitter: EventEmitter;

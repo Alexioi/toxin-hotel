@@ -1,8 +1,8 @@
 import EventEmitter from '@helpers/EventEmitter';
 
-import Model from './mvp/Model/Model';
-import View from './mvp/View/View';
-import Presenter from './mvp/Presenter/Presenter';
+import Model from './mvp/Model';
+import View from './mvp/View';
+import Presenter from './mvp/Presenter';
 
 const getData = (node: Element, name: string) => {
   if (node instanceof HTMLElement) {
