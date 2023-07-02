@@ -8,26 +8,33 @@ class Filter {
   constructor(root: Element) {
     this.root = root;
 
-    this.toggleItems = this.toggleItems.bind(this);
+    this.handleButtonClick = this.handleButtonClick.bind(this);
 
     this.init();
   }
 
   private init() {
-    this.findAndInitElements();
-    this.attachEventHandlers();
+    this.initNodes().attachEventHandlers();
+
+    return this;
   }
 
-  private findAndInitElements() {
+  private initNodes() {
     this.button = this.root.querySelector(cssSelectors.toggleButton);
+
+    return this;
   }
 
   private attachEventHandlers() {
-    this.button?.addEventListener('click', this.toggleItems);
+    this.button?.addEventListener('click', this.handleButtonClick);
+
+    return this;
   }
 
-  private toggleItems() {
+  private handleButtonClick() {
     this.root.classList.toggle('filter_opened');
+
+    return this;
   }
 }
 
