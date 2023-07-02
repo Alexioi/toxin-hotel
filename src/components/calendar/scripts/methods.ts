@@ -1,4 +1,4 @@
-import { Date as customDate } from '@components/text-field/scripts/types';
+import { customDate as customDate } from '@components/text-field/scripts/types';
 import { HTMLInputElementWithPlugin } from '@components/text-field/scripts/TextField';
 import { AirDatepicker, JQueryWithAirDatepicker } from '@libs/air-datepicker';
 import helpers from '@helpers/index';

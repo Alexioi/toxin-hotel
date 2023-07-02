@@ -1,6 +1,6 @@
-import { Date } from '../../types';
+import { Dates, MaskedType, customDate } from '../../types';
 
-const isValidDate = (checkedDate: Date, key: number): boolean => {
+const isValidDate = (checkedDate: customDate, key: number): boolean => {
   const { day, month, year } = checkedDate;
 
   const newDay = Number(day);
@@ -20,7 +20,7 @@ const isValidDate = (checkedDate: Date, key: number): boolean => {
   return dateYear === newYear && dateMonth === newMonth && dateDay === newDay;
 };
 
-const calculateYear = (date: Date, key: number): Date => {
+const calculateYear = (date: customDate, key: number): customDate => {
   const { day, month, year } = date;
 
   if (year === '') {
@@ -46,7 +46,7 @@ const calculateYear = (date: Date, key: number): Date => {
   return { day, month, year: newYear };
 };
 
-const calculateMonth = (date: Date, key: number): Date => {
+const calculateMonth = (date: customDate, key: number): customDate => {
   const { day, month, year } = date;
 
   if (month === '') {
@@ -90,7 +90,7 @@ const calculateMonth = (date: Date, key: number): Date => {
   return { day, month: newMonth, year };
 };
 
-const calculateDay = (date: Date, key: number): Date => {
+const calculateDay = (date: customDate, key: number): customDate => {
   const { day, month, year } = date;
 
   if (day.length === 2) {
@@ -124,7 +124,7 @@ const calculateDay = (date: Date, key: number): Date => {
   return { day: newDay, month, year };
 };
 
-const removeLastSymbol = (date: Date): Date => {
+const removeLastSymbol = (date: customDate): customDate => {
   const { day, month, year } = date;
 
   if (year.length > 0) {
@@ -152,4 +152,84 @@ const isNumber = (key: string | null): boolean => {
   return /^\d$/.test(key);
 };
 
-export { calculateDay, isNumber, removeLastSymbol };
+const deleteIncompleteDate = (type: MaskedType, dates: Dates): Dates => {
+  if (type === 'date') {
+    const [date] = dates;
+    if (date.year.length !== 4) {
+      return [{ day: '', month: '', year: '' }];
+    }
+  }
+
+  if (type === 'dates') {
+    const [, to] = dates;
+
+    if (to.year.length !== 4) {
+      return [
+        { day: '', month: '', year: '' },
+        { day: '', month: '', year: '' },
+      ];
+    }
+  }
+
+  return dates;
+};
+
+const removeDate = (type: MaskedType, dates: Dates): Dates => {
+  if (type === 'date') {
+    const [date] = dates;
+
+    const newDate = removeLastSymbol(date);
+
+    return [newDate];
+  }
+
+  if (type === 'dates') {
+    const [from, to] = dates;
+
+    if (to.day.length !== 0) {
+      const newTo = removeLastSymbol(to);
+
+      return [from, newTo];
+    } else {
+      const newFrom = removeLastSymbol(from);
+
+      return [newFrom, to];
+    }
+  }
+
+  return dates;
+};
+
+const updateDates = (type: MaskedType, dates: Dates, data?: number): Dates => {
+  if (data === null) {
+    return dates;
+  }
+
+  const numberData = Number(data);
+
+  if (type === 'date') {
+    const [date] = dates;
+
+    const newFrom = calculateDay(date, numberData);
+
+    return [newFrom];
+  }
+
+  if (type === 'dates') {
+    const [from, to] = dates;
+
+    if (from.year.length !== 4) {
+      const newFrom = calculateDay(from, numberData);
+
+      return (dates = [newFrom, to]);
+    } else {
+      const newTo = calculateDay(to, numberData);
+
+      return (dates = [from, newTo]);
+    }
+  }
+
+  return dates;
+};
+
+export { isNumber, deleteIncompleteDate, removeDate, updateDates };

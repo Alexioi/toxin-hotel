@@ -16,8 +16,7 @@ class Presenter {
 
     this.view = view;
     this.model = model;
-    this.attachEventEmittersToModel();
-    this.attachEventEmittersToView();
+    this.attachEventEmittersToModel().attachEventEmittersToView();
   }
 
   public setDates(dates: Dates) {
@@ -28,7 +27,7 @@ class Presenter {
     return this.model.getDates();
   }
 
-  private attachEventEmittersToModel(): void {
+  private attachEventEmittersToModel() {
     const notifyModel = (data: string) => {
       this.model.updateData(data);
     };
@@ -54,14 +53,18 @@ class Presenter {
     this.eventEmitter.subscribe('DeleteData', notifyModelDelete);
 
     this.eventEmitter.subscribe('BlurInput', fixData);
+
+    return this;
   }
 
-  private attachEventEmittersToView(): void {
+  private attachEventEmittersToView() {
     const notifyViewUpdatedModelOptions = ({ dates }: Data): void => {
       this.view.displayDate(dates);
     };
 
     this.eventEmitter.subscribe('UpdatedDates', notifyViewUpdatedModelOptions);
+
+    return this;
   }
 }
 

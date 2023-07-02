@@ -1,41 +1,7 @@
 import EventEmitter from '@helpers/EventEmitter';
 
-import { Date } from '../../types';
-
-const isNumber = (key: string | null): boolean => {
-  if (key === null) {
-    return false;
-  }
-
-  return /^\d$/.test(key);
-};
-
-const calculateDayAndMount = (checkedDate: Date) => {
-  const { day, month, year } = checkedDate;
-
-  const monthNames = [
-    'янв',
-    'фев',
-    'мар',
-    'апр',
-    'май',
-    'июн',
-    'июл',
-    'авг',
-    'сен',
-    'окт',
-    'ноя',
-    'дек',
-  ];
-
-  const date = new Date(Number(year), Number(month) - 1, Number(day));
-
-  const monthNumber = date.getMonth();
-
-  const monthName = monthNames[monthNumber];
-
-  return `${day} ${monthName}`;
-};
+import { customDate } from '../../types';
+import { displayDate, emitInputData } from './methods';
 
 class View {
   private root: HTMLInputElement;
@@ -56,50 +22,8 @@ class View {
     this.init();
   }
 
-  public displayDate(dates: Date[]): void {
-    if (dates.length === 2 && !this.isFocus) {
-      const [from, to] = dates;
-
-      if (from.day === '') {
-        this.root.value = '';
-        return;
-      }
-
-      const maskedFrom = calculateDayAndMount(from);
-      const maskedTo = calculateDayAndMount(to);
-
-      this.root.value = `${maskedFrom} - ${maskedTo}`;
-      return;
-    }
-
-    const [date] = dates;
-
-    if (!this.isFocus && date.day === '') {
-      this.root.value = '';
-      return;
-    }
-
-    const maskedDates = dates.map((objectDate): string => {
-      const { day, month, year } = objectDate;
-
-      const maskedDay = `${day}__`.slice(0, 2);
-      const maskedMonth = `${month}__`.slice(0, 2);
-      const maskedYear = `${year}____`.slice(0, 4);
-
-      return `${maskedDay}.${maskedMonth}.${maskedYear}`;
-    });
-
-    const maskedDate = maskedDates.join('-');
-
-    this.root.value = maskedDate;
-
-    this.changeCaretPosition(maskedDate);
-  }
-
-  private changeCaretPosition(value: string): void {
-    const cursorPosition = value.indexOf('_');
-
-    this.root.setSelectionRange(cursorPosition, cursorPosition);
+  public displayDate(dates: customDate[]): void {
+    displayDate(dates, this.isFocus, this.root);
   }
 
   private init() {
@@ -143,32 +67,7 @@ class View {
   }
 
   private handleTextFieldInput = (event: Event) => {
-    if (event instanceof InputEvent) {
-      event.preventDefault();
-
-      const { data } = event;
-
-      if (event.inputType === 'deleteContentBackward') {
-        this.eventEmitter.emit({
-          eventName: 'DeleteData',
-          eventArguments: null,
-        });
-        return;
-      }
-
-      if (!isNumber(data)) {
-        this.eventEmitter.emit({
-          eventName: 'TouchInput',
-          eventArguments: null,
-        });
-        return;
-      }
-
-      this.eventEmitter.emit({
-        eventName: 'InputData',
-        eventArguments: String(data),
-      });
-    }
+    emitInputData(event, this.eventEmitter);
   };
 }
 

@@ -12,12 +12,6 @@ interface HTMLInputElementWithPlugin extends HTMLInputElement {
 class TextField {
   private node: HTMLInputElementWithPlugin;
 
-  private eventEmitter: EventEmitter;
-
-  private model: Model;
-
-  private view: View;
-
   private presenter: Presenter;
 
   constructor(node: HTMLInputElementWithPlugin, type: MaskedType) {
@@ -25,11 +19,11 @@ class TextField {
 
     this.node.plugin = this;
 
-    this.eventEmitter = new EventEmitter();
+    const eventEmitter = new EventEmitter();
+    const model = new Model(eventEmitter, type);
+    const view = new View(node, eventEmitter);
 
-    this.model = new Model(this.eventEmitter, type);
-    this.view = new View(node, this.eventEmitter);
-    this.presenter = new Presenter(this.view, this.model, this.eventEmitter);
+    this.presenter = new Presenter(view, model, eventEmitter);
   }
 
   public getDates() {
