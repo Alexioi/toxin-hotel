@@ -16,22 +16,29 @@ class DropdownList {
   }
 
   private init() {
-    this.findAndInitElements();
-    this.attachEventHandlers();
+    this.initNodes().attachEventHandlers();
+
+    return this;
   }
 
-  private findAndInitElements() {
+  private initNodes() {
     this.title = this.root.querySelector(cssSelectors.title);
     this.button = this.root.querySelector(cssSelectors.button);
+
+    return this;
   }
 
   private attachEventHandlers() {
     this.title?.addEventListener('click', this.toggleList);
     this.button?.addEventListener('click', this.toggleList);
+
+    return this;
   }
 
   private toggleList() {
     this.root.classList.toggle('dropdown-list_opened');
+
+    return this;
   }
 }
 
