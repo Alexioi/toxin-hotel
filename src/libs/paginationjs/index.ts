@@ -40,10 +40,10 @@ class Paginationjs {
     this.$endItem = $(endItem);
     this.count = count;
 
-    this._init();
+    this.init();
   }
 
-  _init() {
+  private init() {
     const callback = (data: number[]) => {
       this.$startItem.text(data[0]);
       this.$endItem.text(data[data.length - 1]);
@@ -85,6 +85,8 @@ class Paginationjs {
     };
 
     this.$node.pagination(config);
+
+    return this;
   }
 }
 

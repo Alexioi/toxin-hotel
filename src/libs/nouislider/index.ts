@@ -47,12 +47,16 @@ class NoUISlider {
     }
 
     this.root?.noUiSlider.on('update', this.updateValue);
+
+    return this;
   }
 
   private updateValue([from, to]: (string | number)[]) {
     if (this.valueNode !== null) {
       this.valueNode.innerHTML = `${from.toLocaleString()}₽ - ${to.toLocaleString()}₽`;
     }
+
+    return this;
   }
 }
 

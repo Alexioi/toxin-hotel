@@ -47,14 +47,20 @@ class AirDatepicker {
 
   public changeDate(date: string) {
     this.datepickerData?.selectDate(new Date(date));
+
+    return this;
   }
 
   public clearDates() {
     this.datepickerData?.clear();
+
+    return this;
   }
 
   private init() {
     this.initAirDatepicker();
+
+    return this;
   }
 
   private initAirDatepicker() {
@@ -69,6 +75,8 @@ class AirDatepicker {
     this.datepickerData = this.$root
       .datepicker(airDatepickerOptions)
       .data().datepicker;
+
+    return this;
   }
 }
 
