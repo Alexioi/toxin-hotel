@@ -1,11 +1,11 @@
 import cssSelectors from './scripts/constants';
 import { TextField, HTMLInputElementWithPlugin } from './scripts/TextField';
 
-function isHTMLInputElementWithPlugin(
+const isHTMLInputElementWithPlugin = (
   element: HTMLInputElement | HTMLInputElementWithPlugin,
-): element is HTMLInputElementWithPlugin {
+): element is HTMLInputElementWithPlugin => {
   return (element as HTMLInputElementWithPlugin).plugin === undefined;
-}
+};
 
 document.querySelectorAll(cssSelectors.input).forEach((node) => {
   if (node instanceof HTMLInputElement) {
