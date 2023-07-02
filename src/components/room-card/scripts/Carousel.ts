@@ -1,4 +1,10 @@
 import cssSelectors from './constants';
+import {
+  calculateBackIndex,
+  calculateNextIndex,
+  calculateTargetIndex,
+  hideImages,
+} from './methods';
 
 class Carousel {
   private root: Element;
@@ -18,9 +24,9 @@ class Carousel {
   constructor(root: Element) {
     this.root = root;
 
-    this.goToBackImg = this.goToBackImg.bind(this);
-    this.goToNextImg = this.goToNextImg.bind(this);
-    this.moveTargetImg = this.moveTargetImg.bind(this);
+    this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
+    this.handleNextButtonClick = this.handleNextButtonClick.bind(this);
+    this.handleTargetButtonClick = this.handleTargetButtonClick.bind(this);
 
     this.init();
   }
@@ -31,73 +37,61 @@ class Carousel {
       this.quantityImageIndex = Number(this.root.dataset.quantityImage);
     }
 
-    this.findAndInitElements();
-    this.attachEventHandlers();
-    this.hideImages();
+    this.initNodes().attachEventHandlers();
+
+    hideImages(this.images, this.buttons, this.currentImageIndex);
+
+    return this;
   }
 
-  private findAndInitElements() {
+  private initNodes() {
     this.images = this.root.querySelectorAll(cssSelectors.images);
     this.back = this.root.querySelector(cssSelectors.back);
     this.next = this.root.querySelector(cssSelectors.next);
     this.buttons = this.root.querySelectorAll(cssSelectors.buttons);
+
+    return this;
   }
 
   private attachEventHandlers() {
-    this.back?.addEventListener('click', this.goToBackImg);
-    this.next?.addEventListener('click', this.goToNextImg);
+    this.back?.addEventListener('click', this.handleBackButtonClick);
+    this.next?.addEventListener('click', this.handleNextButtonClick);
     this.buttons.forEach((node) => {
-      node.addEventListener('click', this.moveTargetImg);
+      node.addEventListener('click', this.handleTargetButtonClick);
     });
+
+    return this;
   }
 
-  private goToBackImg() {
-    const currentImageIndex =
-      this.currentImageIndex === 0
-        ? this.quantityImageIndex
-        : this.currentImageIndex - 1;
-
-    this.currentImageIndex = currentImageIndex;
-
-    this.hideImages();
-  }
-
-  private goToNextImg() {
-    const currentImageIndex =
-      this.currentImageIndex === this.quantityImageIndex
-        ? 0
-        : this.currentImageIndex + 1;
-
-    this.currentImageIndex = currentImageIndex;
-    this.hideImages();
-  }
-
-  private moveTargetImg(event: Event) {
-    if (event.target instanceof Element) {
-      const buttonIndex = [...this.buttons].indexOf(event.target);
-
-      this.currentImageIndex = buttonIndex;
-      this.hideImages();
-    }
-  }
-
-  private hideImages() {
-    this.images.forEach((node) => {
-      node.classList.add('room-card__image_hide');
-    });
-    this.buttons.forEach((node) => {
-      node.classList.remove('room-card__button_target');
-    });
-    this.showCurrentImg();
-  }
-
-  private showCurrentImg() {
-    this.images[this.currentImageIndex].classList.remove(
-      'room-card__image_hide',
+  private handleBackButtonClick() {
+    this.currentImageIndex = calculateBackIndex(
+      this.currentImageIndex,
+      this.quantityImageIndex,
     );
-    this.buttons[this.currentImageIndex].classList.add(
-      'room-card__button_target',
+    hideImages(this.images, this.buttons, this.currentImageIndex);
+
+    return this;
+  }
+
+  private handleNextButtonClick() {
+    this.currentImageIndex = calculateNextIndex(
+      this.currentImageIndex,
+      this.quantityImageIndex,
     );
+    hideImages(this.images, this.buttons, this.currentImageIndex);
+
+    return this;
+  }
+
+  private handleTargetButtonClick(event: Event) {
+    this.currentImageIndex = calculateTargetIndex(
+      event,
+      this.buttons,
+      this.currentImageIndex,
+    );
+    hideImages(this.images, this.buttons, this.currentImageIndex);
+
+    return this;
   }
 }
 

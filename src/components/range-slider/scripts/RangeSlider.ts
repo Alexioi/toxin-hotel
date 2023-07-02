@@ -8,16 +8,18 @@ class RangeSlider {
   constructor(node: Element) {
     this.root = node;
 
-    this._init();
+    this.init();
   }
 
-  _init() {
+  private init() {
     const parameters = { min: 0, max: 15000, from: 5000, to: 10000 };
 
     const sliderNode = this.root.querySelector(cssSelectors.sliderNode);
     const valueNode = this.root.querySelector(cssSelectors.value);
 
     new NoUISlider(sliderNode, valueNode, parameters);
+
+    return this;
   }
 }
 

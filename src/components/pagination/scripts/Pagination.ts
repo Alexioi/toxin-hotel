@@ -20,21 +20,25 @@ class Pagination {
   }
 
   private init() {
-    this.findElements();
-    this.getCount();
-    this.initPlugin();
+    this.initNodes().getCount().initPlugin();
+
+    return this;
   }
 
-  private findElements() {
+  private initNodes() {
     this.plugin = this.root.querySelector(cssSelectors.plugin);
     this.startItem = this.root.querySelector(cssSelectors.startItem);
     this.endItem = this.root.querySelector(cssSelectors.endItem);
+
+    return this;
   }
 
   private getCount() {
     if (this.root instanceof HTMLElement) {
       this.count = Number(this.root.dataset.count);
     }
+
+    return this;
   }
 
   private initPlugin() {
@@ -53,6 +57,8 @@ class Pagination {
     const $plugin = $(this.plugin) as JQueryWithPaginationjs;
 
     new Paginationjs($plugin, this.startItem, this.endItem, this.count);
+
+    return this;
   }
 }
 
