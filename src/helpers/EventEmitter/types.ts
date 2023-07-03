@@ -48,17 +48,57 @@ type EventObject =
       eventArguments: null;
     };
 
-type EventNames =
-  | 'UpdatedDates'
-  | 'InputData'
-  | 'TouchInput'
-  | 'DeleteData'
-  | 'BlurInput'
-  | 'UpdateCounters'
-  | 'IncrementCounter'
-  | 'DecrementCounter'
-  | 'ApplyDropdownData'
-  | 'UpdateValue'
-  | 'ClearCounters';
+type EventArguments =
+  | { dates: Date[] }
+  | null
+  | string
+  | number
+  | { counters: number[]; value: string };
 
-export { EventObject, EventNames };
+type EventObjectWithCallback =
+  | {
+      eventName: 'UpdatedDates';
+      callback: (args: { dates: Date[] }) => void;
+    }
+  | {
+      eventName: 'InputData';
+      callback: (args: string) => void;
+    }
+  | {
+      eventName: 'TouchInput';
+      callback: (args: null) => void;
+    }
+  | {
+      eventName: 'BlurInput';
+      callback: (args: null) => void;
+    }
+  | {
+      eventName: 'DeleteData';
+      callback: (args: null) => void;
+    }
+  | {
+      eventName: 'IncrementCounter';
+      callback: (args: number) => void;
+    }
+  | {
+      eventName: 'DecrementCounter';
+      callback: (args: number) => void;
+    }
+  | {
+      eventName: 'UpdateCounters';
+      callback: (args: { counters: number[]; value: string }) => void;
+    }
+  | {
+      eventName: 'ApplyDropdownData';
+      callback: (args: null) => void;
+    }
+  | {
+      eventName: 'UpdateValue';
+      callback: (args: string) => void;
+    }
+  | {
+      eventName: 'ClearCounters';
+      callback: (args: null) => void;
+    };
+
+export { EventObject, EventObjectWithCallback, EventArguments };

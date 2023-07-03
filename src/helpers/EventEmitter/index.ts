@@ -1,15 +1,9 @@
-import { EventNames, EventObject } from './types';
+import { EventObject, EventObjectWithCallback } from './types';
 
 class EventEmitter {
-  private events: {
-    [key: string]: ((args: any) => void)[];
-  };
+  private events: { [key: string]: ((args: any) => void)[] } = {};
 
-  constructor() {
-    this.events = {};
-  }
-
-  public subscribe(eventName: EventNames, callback: (args: any) => void): void {
+  public subscribe({ eventName, callback }: EventObjectWithCallback): void {
     if (typeof this.events[eventName] === 'undefined') {
       this.events[eventName] = [];
     }
@@ -17,10 +11,7 @@ class EventEmitter {
     this.events[eventName].push(callback);
   }
 
-  public unsubscribe(
-    eventName: EventNames,
-    callback: (args: any) => void,
-  ): void {
+  public unsubscribe({ eventName, callback }: EventObjectWithCallback): void {
     this.events[eventName] = this.events[eventName].filter((eventCallback) => {
       return callback !== eventCallback;
     });
