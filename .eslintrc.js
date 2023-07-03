@@ -33,5 +33,6 @@ module.exports = {
     'object-curly-newline': ['error', { multiline: true }],
     'arrow-body-style': ['error', 'always'],
     '@typescript-eslint/indent': 'off',
+    'import/no-webpack-loader-syntax': 'off',
   },
 };

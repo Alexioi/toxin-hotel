@@ -1,7 +1,6 @@
 import 'air-datepicker';
 
 // @ts-ignore
-// eslint-disable-next-line import/no-webpack-loader-syntax
 import arrow from '!raw-loader!@images/decorative/arrow.svg';
 
 interface DatepickerData {
