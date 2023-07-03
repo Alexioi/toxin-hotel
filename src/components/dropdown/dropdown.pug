@@ -5,6 +5,8 @@ include ../button/button
 mixin dropdown(options)
   -
     const {
+      hasButtons,
+      placeholder,
       hint = '',
       titleText = '',
       items = [ 
@@ -12,8 +14,7 @@ mixin dropdown(options)
       ], 
       isOpened = false, 
       variants = [['']],
-      hasButtons,
-      placeholder,
+
       groups = [[0],[1],[2]]
     } = options || {}
 
