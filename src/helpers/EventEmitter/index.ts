@@ -10,7 +10,7 @@ class EventEmitter {
   }
 
   public subscribe(eventName: EventNames, callback: (args: any) => void): void {
-    if (!this.events[eventName]) {
+    if (typeof this.events[eventName] === 'undefined') {
       this.events[eventName] = [];
     }
 
@@ -29,7 +29,7 @@ class EventEmitter {
   public emit({ eventName, eventArguments }: EventObject): void {
     const event = this.events[eventName];
 
-    if (event) {
+    if (event !== null) {
       event.forEach((callback) => {
         return callback.call(null, eventArguments);
       });

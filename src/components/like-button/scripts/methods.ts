@@ -32,12 +32,14 @@ const changeCounterValue = (
   const element = node;
   const value = calculateCounterValue(oldValue, isLiked);
 
-  if (element !== null) {
-    if (value > 999) {
-      element.innerHTML = '999+';
-    } else {
-      element.innerHTML = String(value);
-    }
+  if (element === null) {
+    return value;
+  }
+
+  if (value > 999) {
+    element.innerHTML = '999+';
+  } else {
+    element.innerHTML = String(value);
   }
 
   return value;
