@@ -31,7 +31,7 @@ class Model {
     this.dates = deleteIncompleteDate(this.type, this.dates);
 
     this.eventEmitter.emit({
-      eventName: 'UpdatedDates',
+      eventName: 'UpdateDates',
       eventArguments: { dates: this.dates },
     });
 
@@ -42,7 +42,7 @@ class Model {
     this.dates = dates;
 
     this.eventEmitter.emit({
-      eventName: 'UpdatedDates',
+      eventName: 'UpdateDates',
       eventArguments: { dates: this.dates },
     });
 
@@ -63,7 +63,7 @@ class Model {
     this.dates = updateDates(this.type, this.dates, data);
 
     this.eventEmitter.emit({
-      eventName: 'UpdatedDates',
+      eventName: 'UpdateDates',
       eventArguments: { dates: this.dates },
     });
 
@@ -74,7 +74,7 @@ class Model {
     this.dates = removeDate(this.type, this.dates);
 
     this.eventEmitter.emit({
-      eventName: 'UpdatedDates',
+      eventName: 'UpdateDates',
       eventArguments: { dates: this.dates },
     });
 

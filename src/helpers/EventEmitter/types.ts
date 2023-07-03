@@ -2,7 +2,7 @@ type Date = { day: string; month: string; year: string };
 
 type EventObject =
   | {
-      eventName: 'UpdatedDates';
+      eventName: 'UpdateDates';
       eventArguments: {
         dates: Date[];
       };
@@ -57,7 +57,7 @@ type EventArguments =
 
 type EventObjectWithCallback =
   | {
-      eventName: 'UpdatedDates';
+      eventName: 'UpdateDates';
       callback: (args: { dates: Date[] }) => void;
     }
   | {

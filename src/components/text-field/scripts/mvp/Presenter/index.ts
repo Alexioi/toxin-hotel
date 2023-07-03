@@ -75,7 +75,7 @@ class Presenter {
     };
 
     this.eventEmitter.subscribe({
-      eventName: 'UpdatedDates',
+      eventName: 'UpdateDates',
       callback: notifyViewUpdatedModelOptions,
     });
 
