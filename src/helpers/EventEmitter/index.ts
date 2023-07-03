@@ -1,30 +1,56 @@
 import { EventObject, EventObjectWithCallback } from './types';
 
+const emitEvents = (
+  events: { [key: string]: ((args: any) => void)[] },
+  { eventName, eventArguments }: EventObject,
+) => {
+  if (events[eventName] !== null) {
+    events[eventName].forEach((callback) => {
+      callback.call(null, eventArguments);
+    });
+  }
+};
+
+const removeEvents = (
+  events: { [key: string]: ((args: any) => void)[] },
+  { eventName, callback }: EventObjectWithCallback,
+) => {
+  const newEvents = { ...events };
+  newEvents[eventName] = events[eventName].filter((eventCallback) => {
+    return callback !== eventCallback;
+  });
+
+  return newEvents;
+};
+
+const updateEvents = (
+  events: { [key: string]: ((args: any) => void)[] },
+  { eventName, callback }: EventObjectWithCallback,
+) => {
+  const newEvents = { ...events };
+
+  if (typeof newEvents[eventName] === 'undefined') {
+    newEvents[eventName] = [];
+  }
+
+  newEvents[eventName].push(callback);
+
+  return newEvents;
+};
+
 class EventEmitter {
   private events: { [key: string]: ((args: any) => void)[] } = {};
 
-  public subscribe({ eventName, callback }: EventObjectWithCallback): void {
-    if (typeof this.events[eventName] === 'undefined') {
-      this.events[eventName] = [];
-    }
-
-    this.events[eventName].push(callback);
+  public subscribe(eventObjectWithCallback: EventObjectWithCallback): void {
+    this.events = updateEvents(this.events, eventObjectWithCallback);
   }
 
-  public unsubscribe({ eventName, callback }: EventObjectWithCallback): void {
-    this.events[eventName] = this.events[eventName].filter((eventCallback) => {
-      return callback !== eventCallback;
-    });
+  public unsubscribe(eventObjectWithCallback: EventObjectWithCallback): void {
+    this.events = removeEvents(this.events, eventObjectWithCallback);
   }
 
-  public emit({ eventName, eventArguments }: EventObject): void {
-    const event = this.events[eventName];
-
-    if (event !== null) {
-      event.forEach((callback) => {
-        return callback.call(null, eventArguments);
-      });
-    }
+  public emit(eventObject: EventObject): void {
+    emitEvents(this.events, eventObject);
   }
 }
 
