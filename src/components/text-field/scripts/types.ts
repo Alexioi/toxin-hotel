@@ -1,15 +1,15 @@
 type MaskedType = 'none' | 'date' | 'dates';
 
-type customDate = {
+type CustomDate = {
   day: string;
   month: string;
   year: string;
 };
 
-type Dates = customDate[];
+type Dates = CustomDate[];
 
 type Data = {
   dates: Dates;
 };
 
-export { customDate, MaskedType, Dates, Data };
+export { CustomDate, MaskedType, Dates, Data };

@@ -46,7 +46,7 @@ const calculateValue = (
       return item;
     }
 
-    return accumulator + `, ${item}`;
+    return `${accumulator}, ${item}`;
   }, '');
 
   if (value === '') {

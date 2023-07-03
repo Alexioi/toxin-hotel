@@ -1,7 +1,7 @@
 import EventEmitter from '@helpers/EventEmitter';
 
 import cssSelectors from '../../../constants';
-import { disableCounterButton } from './methods';
+import disableCounterButton from './methods';
 
 class Counter {
   private root: Element;

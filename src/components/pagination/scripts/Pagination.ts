@@ -43,15 +43,15 @@ class Pagination {
 
   private initPlugin() {
     if (this.plugin === null) {
-      return;
+      return this;
     }
 
     if (this.startItem === null) {
-      return;
+      return this;
     }
 
     if (this.endItem === null) {
-      return;
+      return this;
     }
 
     const $plugin = $(this.plugin) as JQueryWithPaginationjs;

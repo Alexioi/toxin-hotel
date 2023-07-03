@@ -1,6 +1,6 @@
-import { Dates, MaskedType, customDate } from '../../types';
+import { Dates, MaskedType, CustomDate } from '../../types';
 
-const isValidDate = (checkedDate: customDate, key: number): boolean => {
+const isValidDate = (checkedDate: CustomDate, key: number): boolean => {
   const { day, month, year } = checkedDate;
 
   const newDay = Number(day);
@@ -20,7 +20,7 @@ const isValidDate = (checkedDate: customDate, key: number): boolean => {
   return dateYear === newYear && dateMonth === newMonth && dateDay === newDay;
 };
 
-const calculateYear = (date: customDate, key: number): customDate => {
+const calculateYear = (date: CustomDate, key: number): CustomDate => {
   const { day, month, year } = date;
 
   if (year === '') {
@@ -46,7 +46,7 @@ const calculateYear = (date: customDate, key: number): customDate => {
   return { day, month, year: newYear };
 };
 
-const calculateMonth = (date: customDate, key: number): customDate => {
+const calculateMonth = (date: CustomDate, key: number): CustomDate => {
   const { day, month, year } = date;
 
   if (month === '') {
@@ -90,7 +90,7 @@ const calculateMonth = (date: customDate, key: number): customDate => {
   return { day, month: newMonth, year };
 };
 
-const calculateDay = (date: customDate, key: number): customDate => {
+const calculateDay = (date: CustomDate, key: number): CustomDate => {
   const { day, month, year } = date;
 
   if (day.length === 2) {
@@ -124,7 +124,7 @@ const calculateDay = (date: customDate, key: number): customDate => {
   return { day: newDay, month, year };
 };
 
-const removeLastSymbol = (date: customDate): customDate => {
+const removeLastSymbol = (date: CustomDate): CustomDate => {
   const { day, month, year } = date;
 
   if (year.length > 0) {
@@ -190,11 +190,11 @@ const removeDate = (type: MaskedType, dates: Dates): Dates => {
       const newTo = removeLastSymbol(to);
 
       return [from, newTo];
-    } else {
-      const newFrom = removeLastSymbol(from);
-
-      return [newFrom, to];
     }
+
+    const newFrom = removeLastSymbol(from);
+
+    return [newFrom, to];
   }
 
   return dates;
@@ -221,12 +221,12 @@ const updateDates = (type: MaskedType, dates: Dates, data?: number): Dates => {
     if (from.year.length !== 4) {
       const newFrom = calculateDay(from, numberData);
 
-      return (dates = [newFrom, to]);
-    } else {
-      const newTo = calculateDay(to, numberData);
-
-      return (dates = [from, newTo]);
+      return [newFrom, to];
     }
+
+    const newTo = calculateDay(to, numberData);
+
+    return [from, newTo];
   }
 
   return dates;

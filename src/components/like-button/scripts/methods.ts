@@ -29,13 +29,14 @@ const changeCounterValue = (
   isLiked: boolean,
   node: Element | null,
 ): number => {
+  const element = node;
   const value = calculateCounterValue(oldValue, isLiked);
 
-  if (node !== null) {
+  if (element !== null) {
     if (value > 999) {
-      node.innerHTML = '999+';
+      element.innerHTML = '999+';
     } else {
-      node.innerHTML = String(value);
+      element.innerHTML = String(value);
     }
   }
 

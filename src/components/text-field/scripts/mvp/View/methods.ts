@@ -1,5 +1,5 @@
 import EventEmitter from '@helpers/EventEmitter';
-import { customDate } from '../../types';
+import { CustomDate } from '../../types';
 
 const isNumber = (key: string | null): boolean => {
   if (key === null) {
@@ -9,7 +9,7 @@ const isNumber = (key: string | null): boolean => {
   return /^\d$/.test(key);
 };
 
-const calculateDayAndMount = (checkedDate: customDate) => {
+const calculateDayAndMount = (checkedDate: CustomDate) => {
   const { day, month, year } = checkedDate;
 
   const monthNames = [
@@ -43,29 +43,31 @@ const changeCaretPosition = (node: HTMLInputElement, value: string) => {
 };
 
 const displayDate = (
-  dates: customDate[],
+  dates: CustomDate[],
   isFocus: boolean,
   node: HTMLInputElement,
 ) => {
+  const input = node;
+
   if (dates.length === 2 && !isFocus) {
     const [from, to] = dates;
 
     if (from.day === '') {
-      node.value = '';
+      input.value = '';
       return;
     }
 
     const maskedFrom = calculateDayAndMount(from);
     const maskedTo = calculateDayAndMount(to);
 
-    node.value = `${maskedFrom} - ${maskedTo}`;
+    input.value = `${maskedFrom} - ${maskedTo}`;
     return;
   }
 
   const [date] = dates;
 
   if (!isFocus && date.day === '') {
-    node.value = '';
+    input.value = '';
     return;
   }
 
@@ -81,7 +83,7 @@ const displayDate = (
 
   const maskedDate = maskedDates.join('-');
 
-  node.value = maskedDate;
+  input.value = maskedDate;
 
   changeCaretPosition(node, maskedDate);
 };

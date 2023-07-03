@@ -1,4 +1,4 @@
-import { customDate as customDate } from '@components/text-field/scripts/types';
+import { CustomDate } from '@components/text-field/scripts/types';
 import { HTMLInputElementWithPlugin } from '@components/text-field/scripts/TextField';
 import { AirDatepicker, JQueryWithAirDatepicker } from '@libs/air-datepicker';
 import helpers from '@helpers/index';
@@ -19,7 +19,7 @@ const getDateToString = (date: number): string => {
   return String(date);
 };
 
-const calculateFullDate = (date: Date): customDate => {
+const calculateFullDate = (date: Date): CustomDate => {
   const day = getDateToString(date.getDate());
   const month = getDateToString(date.getMonth() + 1);
   const year = String(date.getFullYear());
@@ -195,8 +195,8 @@ const closeMenu = (
   if (!helpers.isElementsIncludeNode(event, elements)) {
     node?.classList.remove('calendar__menu_visible');
 
-    inputs.forEach((node) => {
-      node.classList.remove('text-field__input_focused');
+    inputs.forEach((input) => {
+      input.classList.remove('text-field__input_focused');
     });
   }
 };

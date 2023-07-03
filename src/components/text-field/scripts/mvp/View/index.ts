@@ -1,6 +1,6 @@
 import EventEmitter from '@helpers/EventEmitter';
 
-import { customDate } from '../../types';
+import { CustomDate } from '../../types';
 import { displayDate, emitInputData } from './methods';
 
 class View {
@@ -22,7 +22,7 @@ class View {
     this.init();
   }
 
-  public displayDate(dates: customDate[]): void {
+  public displayDate(dates: CustomDate[]): void {
     displayDate(dates, this.isFocus, this.root);
   }
 
