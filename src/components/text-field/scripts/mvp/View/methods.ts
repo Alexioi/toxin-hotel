@@ -44,12 +44,12 @@ const changeCaretPosition = (node: HTMLInputElement, value: string) => {
 
 const displayDate = (
   dates: CustomDate[],
-  isFocus: boolean,
+  isFocused: boolean,
   node: HTMLInputElement,
 ) => {
   const input = node;
 
-  if (dates.length === 2 && !isFocus) {
+  if (dates.length === 2 && !isFocused) {
     const [from, to] = dates;
 
     if (from.day === '') {
@@ -66,7 +66,7 @@ const displayDate = (
 
   const [date] = dates;
 
-  if (!isFocus && date.day === '') {
+  if (!isFocused && date.day === '') {
     input.value = '';
     return;
   }

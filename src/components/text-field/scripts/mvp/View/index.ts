@@ -8,7 +8,7 @@ class View {
 
   private eventEmitter: EventEmitter;
 
-  private isFocus = false;
+  private isFocused = false;
 
   constructor(root: HTMLInputElement, eventEmitter: EventEmitter) {
     this.root = root;
@@ -23,7 +23,7 @@ class View {
   }
 
   public displayDate(dates: CustomDate[]): void {
-    displayDate(dates, this.isFocus, this.root);
+    displayDate(dates, this.isFocused, this.root);
   }
 
   private init() {
@@ -38,7 +38,7 @@ class View {
   }
 
   private handleTextFieldBlur() {
-    this.isFocus = false;
+    this.isFocused = false;
 
     this.eventEmitter.emit({
       eventName: 'BlurInput',
@@ -59,7 +59,7 @@ class View {
   };
 
   private handleTextFieldClick() {
-    this.isFocus = true;
+    this.isFocused = true;
     this.eventEmitter.emit({
       eventName: 'TouchInput',
       eventArguments: null,

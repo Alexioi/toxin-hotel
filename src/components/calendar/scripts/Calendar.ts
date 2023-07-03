@@ -40,12 +40,12 @@ class Calendar {
   }
 
   private init() {
-    this.findAndAssignElements().initDatepicker().attachEventsHandler();
+    this.initNodes().initDatepicker().attachEventsHandler();
 
     return this;
   }
 
-  private findAndAssignElements() {
+  private initNodes() {
     this.inputs = this.root.querySelectorAll(cssSelectors.input);
     this.toggleButtons = this.root.querySelectorAll(cssSelectors.toggleButtons);
     this.menu = this.root.querySelector(cssSelectors.menu);

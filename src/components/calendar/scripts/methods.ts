@@ -11,7 +11,7 @@ const isJQueryWithAirDatepicker = (
   return (element as JQueryWithAirDatepicker).datepicker !== undefined;
 };
 
-const getDateToString = (date: number): string => {
+const convertDateToString = (date: number): string => {
   if (String(date).length !== 2) {
     return `0${date}`;
   }
@@ -20,8 +20,8 @@ const getDateToString = (date: number): string => {
 };
 
 const calculateFullDate = (date: Date): CustomDate => {
-  const day = getDateToString(date.getDate());
-  const month = getDateToString(date.getMonth() + 1);
+  const day = convertDateToString(date.getDate());
+  const month = convertDateToString(date.getMonth() + 1);
   const year = String(date.getFullYear());
 
   return { day, month, year };
