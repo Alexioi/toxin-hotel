@@ -1,5 +1,11 @@
 import { EventObject, EventObjectWithCallback } from './types';
 
+/* В данном случае не получилось обойтись без any. 
+Своими силами не удалось затипизировать. 
+В интернете решение не нашел. 
+Однако моя типизация выдает ошибку при указании неверное пары значений в методах класса. 
+При этом использование any не должно привести к ошибке */
+
 const emitEvents = (
   events: { [key: string]: ((args: any) => void)[] },
   { eventName, eventArguments }: EventObject,
