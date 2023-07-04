@@ -46,25 +46,14 @@ class Presenter {
       this.model.fixData();
     };
 
-    this.eventEmitter.subscribe({
-      eventName: 'InputData',
-      callback: notifyModel,
-    });
+    // @ts-ignore
+    this.eventEmitter.subscribe('InputData', notifyModel);
 
-    this.eventEmitter.subscribe({
-      eventName: 'TouchInput',
-      callback: getData,
-    });
+    this.eventEmitter.subscribe('TouchInput', getData);
 
-    this.eventEmitter.subscribe({
-      eventName: 'DeleteData',
-      callback: notifyModelDelete,
-    });
+    this.eventEmitter.subscribe('DeleteData', notifyModelDelete);
 
-    this.eventEmitter.subscribe({
-      eventName: 'BlurInput',
-      callback: fixData,
-    });
+    this.eventEmitter.subscribe('BlurInput', fixData);
 
     return this;
   }
@@ -74,10 +63,8 @@ class Presenter {
       this.view.displayDate(dates);
     };
 
-    this.eventEmitter.subscribe({
-      eventName: 'UpdateDates',
-      callback: notifyViewUpdatedModelOptions,
-    });
+    // @ts-ignore
+    this.eventEmitter.subscribe('UpdateDates', notifyViewUpdatedModelOptions);
 
     return this;
   }

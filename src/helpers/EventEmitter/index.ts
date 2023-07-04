@@ -1,16 +1,16 @@
-import { EventObject, EventObjectWithCallback } from './types';
-
-/* В данном случае не получилось обойтись без any. 
-Своими силами не удалось затипизировать. 
-В интернете решение не нашел. 
-Однако моя типизация выдает ошибку при указании неверное пары значений в методах класса. 
-При этом использование any не должно привести к ошибке */
+import {
+  EventObject,
+  EventObjectWithCallback,
+  Callback,
+  Data,
+  EventNames,
+} from './types';
 
 const emitEvents = (
-  events: { [key: string]: ((args: any) => void)[] },
+  events: Record<EventNames, Callback<Data>[]>,
   { eventName, eventArguments }: EventObject,
 ) => {
-  if (events[eventName] !== null) {
+  if (events[eventName] !== undefined) {
     events[eventName].forEach((callback) => {
       callback.call(null, eventArguments);
     });
@@ -18,7 +18,7 @@ const emitEvents = (
 };
 
 const removeEvents = (
-  events: { [key: string]: ((args: any) => void)[] },
+  events: Record<EventNames, Callback<Data>[]>,
   { eventName, callback }: EventObjectWithCallback,
 ) => {
   const newEvents = { ...events };
@@ -30,8 +30,9 @@ const removeEvents = (
 };
 
 const updateEvents = (
-  events: { [key: string]: ((args: any) => void)[] },
-  { eventName, callback }: EventObjectWithCallback,
+  events: Record<EventNames, Callback<Data>[]>,
+  eventName: EventNames,
+  callback: Callback<Data>,
 ) => {
   const newEvents = { ...events };
 
@@ -39,16 +40,21 @@ const updateEvents = (
     newEvents[eventName] = [];
   }
 
-  newEvents[eventName].push(callback);
+  const callbacks = [...newEvents[eventName], callback];
+
+  newEvents[eventName] = callbacks;
 
   return newEvents;
 };
 
 class EventEmitter {
-  private events: { [key: string]: ((args: any) => void)[] } = {};
+  private events: Record<EventNames, Callback<Data>[]> = {} as Record<
+    EventNames,
+    Callback<Data>[]
+  >;
 
-  public subscribe(eventObjectWithCallback: EventObjectWithCallback): void {
-    this.events = updateEvents(this.events, eventObjectWithCallback);
+  public subscribe(eventName: EventNames, callback: Callback<Data>): void {
+    this.events = updateEvents(this.events, eventName, callback);
   }
 
   public unsubscribe(eventObjectWithCallback: EventObjectWithCallback): void {

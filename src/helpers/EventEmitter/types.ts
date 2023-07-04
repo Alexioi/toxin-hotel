@@ -101,4 +101,33 @@ type EventObjectWithCallback =
       callback: (args: null) => void;
     };
 
-export { EventObject, EventObjectWithCallback, EventArguments };
+type Callback<T> = (args: T) => void;
+
+type Data =
+  | string
+  | null
+  | { counters: number[]; value: string }
+  | { dates: Date[] }
+  | number;
+
+type EventNames =
+  | 'UpdateDates'
+  | 'InputData'
+  | 'TouchInput'
+  | 'BlurInput'
+  | 'DeleteData'
+  | 'IncrementCounter'
+  | 'DecrementCounter'
+  | 'UpdateCounters'
+  | 'ApplyDropdownData'
+  | 'UpdateValue'
+  | 'ClearCounters';
+
+export {
+  EventObject,
+  EventObjectWithCallback,
+  EventArguments,
+  Callback,
+  Data,
+  EventNames,
+};

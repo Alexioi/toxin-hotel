@@ -41,22 +41,19 @@ class Presenter {
       this.model.resetCounters();
     };
 
-    this.eventEmitter.subscribe({
-      eventName: 'IncrementCounter',
-      callback: notifyModelAboutIncrementCounter,
-    });
-    this.eventEmitter.subscribe({
-      eventName: 'DecrementCounter',
-      callback: notifyModelAboutDecrementCounter,
-    });
-    this.eventEmitter.subscribe({
-      eventName: 'ApplyDropdownData',
-      callback: getValue,
-    });
-    this.eventEmitter.subscribe({
-      eventName: 'ClearCounters',
-      callback: notifyModelAboutClearCounters,
-    });
+    this.eventEmitter.subscribe(
+      'IncrementCounter',
+      // @ts-ignore
+      notifyModelAboutIncrementCounter,
+    );
+
+    this.eventEmitter.subscribe(
+      'DecrementCounter',
+      // @ts-ignore
+      notifyModelAboutDecrementCounter,
+    );
+    this.eventEmitter.subscribe('ApplyDropdownData', getValue);
+    this.eventEmitter.subscribe('ClearCounters', notifyModelAboutClearCounters);
 
     return this;
   }
@@ -76,14 +73,10 @@ class Presenter {
       this.view.updateInputValue(value);
     };
 
-    this.eventEmitter.subscribe({
-      eventName: 'UpdateCounters',
-      callback: notifyViewUpdatedCounters,
-    });
-    this.eventEmitter.subscribe({
-      eventName: 'UpdateValue',
-      callback: notifyViewUpdatedValue,
-    });
+    // @ts-ignore
+    this.eventEmitter.subscribe('UpdateCounters', notifyViewUpdatedCounters);
+    // @ts-ignore
+    this.eventEmitter.subscribe('UpdateValue', notifyViewUpdatedValue);
 
     return this;
   }
