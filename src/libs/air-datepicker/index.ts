@@ -1,6 +1,5 @@
 import 'air-datepicker';
 
-// @ts-ignore
 import arrow from '!raw-loader!@images/decorative/arrow.svg';
 
 interface DatepickerData {
