@@ -9,6 +9,7 @@ class EventEmitter<T> {
   ): void {
     if (typeof this.events[eventName] === 'undefined') {
       this.events[eventName] = [callback];
+      return;
     }
 
     this.events[eventName]?.push(callback);
