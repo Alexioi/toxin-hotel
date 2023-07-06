@@ -1,16 +1,15 @@
-import EventEmitter from '@helpers/EventEmitter';
-
+import DropdownEventEmitter from '../../types';
 import View from '../View';
 import Model from '../Model';
 
 class Presenter {
-  private eventEmitter: EventEmitter;
+  private eventEmitter: DropdownEventEmitter;
 
   private view: View;
 
   private model: Model;
 
-  constructor(view: View, model: Model, eventEmitter: EventEmitter) {
+  constructor(view: View, model: Model, eventEmitter: DropdownEventEmitter) {
     this.eventEmitter = eventEmitter;
 
     this.view = view;
@@ -43,13 +42,11 @@ class Presenter {
 
     this.eventEmitter.subscribe(
       'IncrementCounter',
-      // @ts-ignore
       notifyModelAboutIncrementCounter,
     );
 
     this.eventEmitter.subscribe(
       'DecrementCounter',
-      // @ts-ignore
       notifyModelAboutDecrementCounter,
     );
     this.eventEmitter.subscribe('ApplyDropdownData', getValue);
@@ -73,9 +70,7 @@ class Presenter {
       this.view.updateInputValue(value);
     };
 
-    // @ts-ignore
     this.eventEmitter.subscribe('UpdateCounters', notifyViewUpdatedCounters);
-    // @ts-ignore
     this.eventEmitter.subscribe('UpdateValue', notifyViewUpdatedValue);
 
     return this;

@@ -1,7 +1,6 @@
-import EventEmitter from '@helpers/EventEmitter';
-
 import cssSelectors from '../../constants';
 import Counter from './subViews/Counter';
+import DropdownEventEmitter from '../../types';
 
 const toggleClearButton = (
   clearButton: Element | null,
@@ -42,7 +41,7 @@ const toggleMenu = (node: Element, inputNode: Element | null) => {
   toggleInputFocus(node, inputNode);
 };
 
-const createCounters = (node: Element, eventEmitter: EventEmitter) => {
+const createCounters = (node: Element, eventEmitter: DropdownEventEmitter) => {
   const counterNodes = node.querySelectorAll(cssSelectors.items);
 
   const counters = [...counterNodes].map((counterNode, index) => {

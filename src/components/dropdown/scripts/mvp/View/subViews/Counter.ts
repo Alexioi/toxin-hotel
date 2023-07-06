@@ -1,12 +1,11 @@
-import EventEmitter from '@helpers/EventEmitter';
-
 import cssSelectors from '../../../constants';
+import DropdownEventEmitter from '../../../types';
 import disableCounterButton from './methods';
 
 class Counter {
   private root: Element;
 
-  private eventEmitter: EventEmitter;
+  private eventEmitter: DropdownEventEmitter;
 
   private index: number;
 
@@ -16,7 +15,11 @@ class Counter {
 
   private counterNode: Element | null = null;
 
-  constructor(node: Element, eventEmitter: EventEmitter, index: number) {
+  constructor(
+    node: Element,
+    eventEmitter: DropdownEventEmitter,
+    index: number,
+  ) {
     this.root = node;
     this.eventEmitter = eventEmitter;
     this.index = index;
@@ -76,19 +79,13 @@ class Counter {
   }
 
   private handleDecrementButtonClick() {
-    this.eventEmitter.emit({
-      eventName: 'DecrementCounter',
-      eventArguments: this.index,
-    });
+    this.eventEmitter.emit('DecrementCounter', this.index);
 
     return this;
   }
 
   private handleIncrementButtonClick() {
-    this.eventEmitter.emit({
-      eventName: 'IncrementCounter',
-      eventArguments: this.index,
-    });
+    this.eventEmitter.emit('IncrementCounter', this.index);
 
     return this;
   }

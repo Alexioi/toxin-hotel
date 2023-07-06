@@ -1,17 +1,15 @@
-import EventEmitter from '@helpers/EventEmitter';
-
-import { Dates, Data } from '../../types';
+import { Dates, Data, TextFieldEventEmitter } from '../../types';
 import Model from '../Model';
 import View from '../View';
 
 class Presenter {
-  private eventEmitter: EventEmitter;
+  private eventEmitter: TextFieldEventEmitter;
 
   private view: View;
 
   private model: Model;
 
-  constructor(view: View, model: Model, eventEmitter: EventEmitter) {
+  constructor(view: View, model: Model, eventEmitter: TextFieldEventEmitter) {
     this.eventEmitter = eventEmitter;
 
     this.view = view;
@@ -46,7 +44,6 @@ class Presenter {
       this.model.fixData();
     };
 
-    // @ts-ignore
     this.eventEmitter.subscribe('InputData', notifyModel);
 
     this.eventEmitter.subscribe('TouchInput', getData);
@@ -63,7 +60,6 @@ class Presenter {
       this.view.displayDate(dates);
     };
 
-    // @ts-ignore
     this.eventEmitter.subscribe('UpdateDates', notifyViewUpdatedModelOptions);
 
     return this;

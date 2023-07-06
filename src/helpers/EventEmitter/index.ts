@@ -1,68 +1,32 @@
-import {
-  EventObject,
-  EventObjectWithCallback,
-  Callback,
-  Data,
-  EventNames,
-} from './types';
+class EventEmitter<T> {
+  private events: {
+    [eventName in keyof T]?: ((value: T[eventName]) => void)[];
+  } = {};
 
-const emitEvents = (
-  events: Record<EventNames, Callback<Data>[]>,
-  { eventName, eventArguments }: EventObject,
-) => {
-  if (events[eventName] !== undefined) {
-    events[eventName].forEach((callback) => {
-      callback.call(null, eventArguments);
+  public subscribe<K extends keyof T>(
+    eventName: K,
+    callback: (value: T[K]) => void,
+  ): void {
+    if (typeof this.events[eventName] === 'undefined') {
+      this.events[eventName] = [callback];
+    }
+
+    this.events[eventName]?.push(callback);
+  }
+
+  public unsubscribe<K extends keyof T>(
+    eventName: K,
+    callback: (value: T[K]) => void,
+  ): void {
+    this.events[eventName] = this.events[eventName]?.filter((eventCallback) => {
+      return callback !== eventCallback;
     });
   }
-};
 
-const removeEvents = (
-  events: Record<EventNames, Callback<Data>[]>,
-  { eventName, callback }: EventObjectWithCallback,
-) => {
-  const newEvents = { ...events };
-  newEvents[eventName] = events[eventName].filter((eventCallback) => {
-    return callback !== eventCallback;
-  });
-
-  return newEvents;
-};
-
-const updateEvents = (
-  events: Record<EventNames, Callback<Data>[]>,
-  eventName: EventNames,
-  callback: Callback<Data>,
-) => {
-  const newEvents = { ...events };
-
-  if (typeof newEvents[eventName] === 'undefined') {
-    newEvents[eventName] = [];
-  }
-
-  const callbacks = [...newEvents[eventName], callback];
-
-  newEvents[eventName] = callbacks;
-
-  return newEvents;
-};
-
-class EventEmitter {
-  private events: Record<EventNames, Callback<Data>[]> = {} as Record<
-    EventNames,
-    Callback<Data>[]
-  >;
-
-  public subscribe(eventName: EventNames, callback: Callback<Data>): void {
-    this.events = updateEvents(this.events, eventName, callback);
-  }
-
-  public unsubscribe(eventObjectWithCallback: EventObjectWithCallback): void {
-    this.events = removeEvents(this.events, eventObjectWithCallback);
-  }
-
-  public emit(eventObject: EventObject): void {
-    emitEvents(this.events, eventObject);
+  public emit<K extends keyof T>(eventName: K, value: T[K]): void {
+    this.events[eventName]?.forEach((name) => {
+      return name(value);
+    });
   }
 }
 

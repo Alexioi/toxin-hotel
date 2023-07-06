@@ -1,7 +1,7 @@
 import helpers from '@helpers/index';
-import EventEmitter from '@helpers/EventEmitter';
 
 import cssSelectors from '../../constants';
+import DropdownEventEmitter from '../../types';
 import Counter from './subViews/Counter';
 import {
   toggleInputFocus,
@@ -15,7 +15,7 @@ import {
 class View {
   private root: Element;
 
-  private eventEmitter: EventEmitter;
+  private eventEmitter: DropdownEventEmitter;
 
   private input: Element | null = null;
 
@@ -35,7 +35,7 @@ class View {
 
   private isUpdateButtonPressed = true;
 
-  constructor(node: Element, eventEmitter: EventEmitter) {
+  constructor(node: Element, eventEmitter: DropdownEventEmitter) {
     this.root = node;
     this.eventEmitter = eventEmitter;
 
@@ -104,10 +104,7 @@ class View {
   }
 
   private handleClearButtonClick() {
-    this.eventEmitter.emit({
-      eventName: 'ClearCounters',
-      eventArguments: null,
-    });
+    this.eventEmitter.emit('ClearCounters', null);
 
     return this;
   }
@@ -115,10 +112,7 @@ class View {
   private handleApplyButtonClick() {
     this.isUpdateButtonPressed = true;
 
-    this.eventEmitter.emit({
-      eventName: 'ApplyDropdownData',
-      eventArguments: null,
-    });
+    this.eventEmitter.emit('ApplyDropdownData', null);
 
     return this;
   }

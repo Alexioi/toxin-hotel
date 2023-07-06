@@ -1,9 +1,8 @@
-import EventEmitter from '@helpers/EventEmitter';
-
+import DropdownEventEmitter from '../../types';
 import { calculateCounter, calculateValue, resetCounters } from './methods';
 
 class Model {
-  private eventEmitter: EventEmitter;
+  private eventEmitter: DropdownEventEmitter;
 
   private groups: number[][] = [[]];
 
@@ -14,7 +13,7 @@ class Model {
   private placeholder: string = '';
 
   constructor(
-    eventEmitter: EventEmitter,
+    eventEmitter: DropdownEventEmitter,
     groups: number[][],
     variants: string[][],
     placeholder: string,
@@ -58,10 +57,7 @@ class Model {
 
     const value = calculateValue(groups, counters, variants, placeholder);
 
-    this.eventEmitter.emit({
-      eventName: 'UpdateCounters',
-      eventArguments: { counters, value },
-    });
+    this.eventEmitter.emit('UpdateCounters', { counters, value });
 
     return this;
   }

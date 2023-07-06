@@ -1,16 +1,14 @@
-import EventEmitter from '@helpers/EventEmitter';
-
-import { CustomDate } from '../../types';
+import { CustomDate, TextFieldEventEmitter } from '../../types';
 import { displayDate, emitInputData } from './methods';
 
 class View {
   private root: HTMLInputElement;
 
-  private eventEmitter: EventEmitter;
+  private eventEmitter: TextFieldEventEmitter;
 
   private isFocused = false;
 
-  constructor(root: HTMLInputElement, eventEmitter: EventEmitter) {
+  constructor(root: HTMLInputElement, eventEmitter: TextFieldEventEmitter) {
     this.root = root;
     this.eventEmitter = eventEmitter;
 
@@ -40,10 +38,7 @@ class View {
   private handleTextFieldBlur() {
     this.isFocused = false;
 
-    this.eventEmitter.emit({
-      eventName: 'BlurInput',
-      eventArguments: null,
-    });
+    this.eventEmitter.emit('BlurInput', null);
   }
 
   private handleTextFieldPaste = (event: ClipboardEvent) => {
@@ -51,19 +46,13 @@ class View {
     const inputData = event.clipboardData?.getData('text');
 
     if (typeof inputData !== 'undefined') {
-      this.eventEmitter.emit({
-        eventName: 'InputData',
-        eventArguments: inputData,
-      });
+      this.eventEmitter.emit('InputData', inputData);
     }
   };
 
   private handleTextFieldClick() {
     this.isFocused = true;
-    this.eventEmitter.emit({
-      eventName: 'TouchInput',
-      eventArguments: null,
-    });
+    this.eventEmitter.emit('TouchInput', null);
   }
 
   private handleTextFieldInput = (event: Event) => {

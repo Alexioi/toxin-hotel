@@ -1,5 +1,4 @@
-import EventEmitter from '@helpers/EventEmitter';
-import { CustomDate } from '../../types';
+import { CustomDate, TextFieldEventEmitter } from '../../types';
 
 const isNumber = (key: string | null): boolean => {
   if (key === null) {
@@ -88,32 +87,23 @@ const displayDate = (
   changeCaretPosition(node, maskedDate);
 };
 
-const emitInputData = (event: Event, eventEmitter: EventEmitter) => {
+const emitInputData = (event: Event, eventEmitter: TextFieldEventEmitter) => {
   if (event instanceof InputEvent) {
     event.preventDefault();
 
     const { data } = event;
 
     if (event.inputType === 'deleteContentBackward') {
-      eventEmitter.emit({
-        eventName: 'DeleteData',
-        eventArguments: null,
-      });
+      eventEmitter.emit('DeleteData', null);
       return;
     }
 
     if (!isNumber(data)) {
-      eventEmitter.emit({
-        eventName: 'TouchInput',
-        eventArguments: null,
-      });
+      eventEmitter.emit('TouchInput', null);
       return;
     }
 
-    eventEmitter.emit({
-      eventName: 'InputData',
-      eventArguments: String(data),
-    });
+    eventEmitter.emit('InputData', String(data));
   }
 };
 

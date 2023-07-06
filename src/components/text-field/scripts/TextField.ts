@@ -19,7 +19,7 @@ class TextField {
 
     this.node.plugin = this;
 
-    const eventEmitter = new EventEmitter();
+    const eventEmitter: EventEmitter<{ TouchInput: null }> = new EventEmitter();
     const model = new Model(eventEmitter, type);
     const view = new View(node, eventEmitter);
 

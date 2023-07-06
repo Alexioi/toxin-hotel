@@ -1,3 +1,5 @@
+import EventEmitter from '@helpers/EventEmitter';
+
 type MaskedType = 'none' | 'date' | 'dates';
 
 type CustomDate = {
@@ -12,4 +14,12 @@ type Data = {
   dates: Dates;
 };
 
-export { CustomDate, MaskedType, Dates, Data };
+type TextFieldEventEmitter = EventEmitter<{
+  UpdateDates: { dates: Dates };
+  InputData: string;
+  TouchInput: null;
+  DeleteData: null;
+  BlurInput: null;
+}>;
+
+export { CustomDate, MaskedType, Dates, Data, TextFieldEventEmitter };
