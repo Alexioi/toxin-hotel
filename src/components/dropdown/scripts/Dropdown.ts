@@ -6,15 +6,17 @@ import Presenter from './mvp/Presenter';
 import DropdownEventEmitter from './types';
 
 const getData = (node: Element, name: string) => {
-  if (node instanceof HTMLElement) {
-    const dataset = node.dataset[name];
+  if (!(node instanceof HTMLElement)) {
+    return undefined;
+  }
 
-    if (typeof dataset === 'string') {
-      try {
-        return JSON.parse(dataset);
-      } catch (error) {
-        return dataset;
-      }
+  const dataset = node.dataset[name];
+
+  if (typeof dataset === 'string') {
+    try {
+      return JSON.parse(dataset);
+    } catch (error) {
+      return dataset;
     }
   }
 

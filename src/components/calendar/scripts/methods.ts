@@ -6,9 +6,9 @@ import helpers from '@helpers/index';
 import cssSelectors from './constants';
 
 const isJQueryWithAirDatepicker = (
-  element: JQuery | JQueryWithAirDatepicker,
+  element: JQuery,
 ): element is JQueryWithAirDatepicker => {
-  return (element as JQueryWithAirDatepicker).datepicker !== undefined;
+  return 'datepicker' in element;
 };
 
 const convertDateToString = (date: number): string => {
@@ -192,13 +192,15 @@ const closeMenu = (
   inputs: NodeListOf<HTMLInputElementWithPlugin> | never[],
   elements: (Element | null)[],
 ) => {
-  if (!helpers.isElementsIncludeNode(event, elements)) {
-    node?.classList.remove('calendar__menu_visible');
-
-    inputs.forEach((input) => {
-      input.classList.remove('text-field__input_focused');
-    });
+  if (helpers.isElementsIncludeNode(event, elements)) {
+    return;
   }
+
+  node?.classList.remove('calendar__menu_visible');
+
+  inputs.forEach((input) => {
+    input.classList.remove('text-field__input_focused');
+  });
 };
 
 export {

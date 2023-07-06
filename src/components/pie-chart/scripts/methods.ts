@@ -146,23 +146,25 @@ const drawDiagram = (
   }, 0);
 
   grades.forEach((item) => {
+    if (canvas === null) {
+      return;
+    }
+
     const [colorFrom, colorTo] = diagramColors[item];
     endDegree = (votes[item] / totalVotes) * 360 + startDegree;
 
     if (startDegree < endDegree) {
-      if (canvas !== null) {
-        drawArc({
-          canvas,
-          startDegree,
-          endDegree,
-          colorFrom,
-          colorTo,
-          centerX,
-          centerY,
-          outerRadius,
-          innerRadius,
-        });
-      }
+      drawArc({
+        canvas,
+        startDegree,
+        endDegree,
+        colorFrom,
+        colorTo,
+        centerX,
+        centerY,
+        outerRadius,
+        innerRadius,
+      });
     }
 
     startDegree = endDegree;
