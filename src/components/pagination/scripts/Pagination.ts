@@ -7,9 +7,7 @@ class Pagination {
 
   private plugin: Element | null = null;
 
-  private startItem: Element | null = null;
-
-  private endItem: Element | null = null;
+  private rangeNode: Element | null = null;
 
   private count: number = 0;
 
@@ -27,8 +25,7 @@ class Pagination {
 
   private initNodes() {
     this.plugin = this.root.querySelector(cssSelectors.plugin);
-    this.startItem = this.root.querySelector(cssSelectors.startItem);
-    this.endItem = this.root.querySelector(cssSelectors.endItem);
+    this.rangeNode = this.root.querySelector(cssSelectors.range);
 
     return this;
   }
@@ -46,17 +43,13 @@ class Pagination {
       return this;
     }
 
-    if (this.startItem === null) {
-      return this;
-    }
-
-    if (this.endItem === null) {
+    if (this.rangeNode === null) {
       return this;
     }
 
     const $plugin = $(this.plugin) as JQueryWithPaginationjs;
 
-    new Paginationjs($plugin, this.startItem, this.endItem, this.count);
+    new Paginationjs($plugin, this.rangeNode, this.count);
 
     return this;
   }

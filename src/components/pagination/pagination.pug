@@ -5,14 +5,11 @@ mixin pagination(options)
     } = options || {}
 
     const {
-      dash,
       numberOfOptions,
     } = require('@components/pagination/data.json')
 
   .pagination.js-pagination(data-count=count)
     .pagination__plugin.js-pagination__plugin
     .pagination__text
-      span.pagination__start-item.js-pagination__start-item 
-      = dash
-      span.pagination__end-item.js-pagination__end-item 
+      span.pagination__range.js-pagination__range
       = numberOfOptions

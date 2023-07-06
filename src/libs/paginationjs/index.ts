@@ -21,21 +21,18 @@ interface JQueryWithPaginationjs extends JQuery<Element> {
 class Paginationjs {
   private $node: JQueryWithPaginationjs;
 
-  private $startItem: JQuery<Element>;
-
-  private $endItem: JQuery<Element>;
+  private $range: JQuery<Element>;
 
   private count: number;
 
   constructor(
     $root: JQueryWithPaginationjs,
-    startItem: Element,
-    endItem: Element,
+    range: Element,
+
     count: number,
   ) {
     this.$node = $root;
-    this.$startItem = $(startItem);
-    this.$endItem = $(endItem);
+    this.$range = $(range);
     this.count = count;
 
     this.init();
@@ -43,8 +40,13 @@ class Paginationjs {
 
   private init() {
     const callback = (data: number[]) => {
-      this.$startItem.text(data[0]);
-      this.$endItem.text(data[data.length - 1]);
+      const [firstItem] = data;
+      const lastItem = data[data.length - 1];
+      if (firstItem === lastItem) {
+        this.$range.text(lastItem);
+        return;
+      }
+      this.$range.text(`${firstItem} - ${lastItem}`);
     };
 
     const dataSource = (done: (result: number[]) => void) => {
