@@ -7,12 +7,15 @@ class EventEmitter<T> {
     eventName: K,
     callback: (value: T[K]) => void,
   ): void {
-    if (typeof this.events[eventName] === 'undefined') {
-      this.events[eventName] = [callback];
+    const events = this.events[eventName];
+
+    if (events !== undefined) {
+      this.events[eventName] = [...events, callback];
+
       return;
     }
 
-    this.events[eventName]?.push(callback);
+    this.events[eventName] = [callback];
   }
 
   public unsubscribe<K extends keyof T>(

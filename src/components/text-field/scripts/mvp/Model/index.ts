@@ -69,7 +69,7 @@ class Model {
 
   private init(type: MaskedType) {
     if (type === 'dates') {
-      this.dates.push({ day: '', month: '', year: '' });
+      this.dates = [...this.dates, { day: '', month: '', year: '' }];
     }
 
     return this;
