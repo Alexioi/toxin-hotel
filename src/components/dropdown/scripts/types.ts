@@ -1,4 +1,4 @@
-import EventEmitter from '@helpers/EventEmitter';
+import { EventEmitter } from '@helpers/EventEmitter';
 
 type DropdownEventEmitter = EventEmitter<{
   IncrementCounter: { index: number };
@@ -12,4 +12,4 @@ type DropdownEventEmitter = EventEmitter<{
   UpdateValue: { value: string };
 }>;
 
-export default DropdownEventEmitter;
+export { DropdownEventEmitter };

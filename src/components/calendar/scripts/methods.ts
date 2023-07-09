@@ -1,9 +1,9 @@
 import { CustomDate } from '@components/text-field/scripts/types';
 import { HTMLInputElementWithPlugin } from '@components/text-field/scripts/TextField';
 import { AirDatepicker } from '@libs/air-datepicker';
-import helpers from '@helpers/index';
+import { helpers } from '@helpers/index';
 
-import cssSelectors from './constants';
+import { cssSelectors } from './constants';
 
 const convertDateToString = (date: number): string => {
   if (String(date).length !== 2) {

@@ -11,4 +11,4 @@ const cssSelectors = {
   dropdownMenu: '.js-dropdown',
 };
 
-export default cssSelectors;
+export { cssSelectors };

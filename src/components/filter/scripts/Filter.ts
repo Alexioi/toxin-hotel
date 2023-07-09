@@ -1,4 +1,4 @@
-import cssSelectors from './constants';
+import { cssSelectors } from './constants';
 
 class Filter {
   private root: Element;
@@ -38,4 +38,4 @@ class Filter {
   }
 }
 
-export default Filter;
+export { Filter };

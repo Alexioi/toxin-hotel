@@ -1,4 +1,4 @@
-import EventEmitter from '@helpers/EventEmitter';
+import { EventEmitter } from '@helpers/EventEmitter';
 
 type MaskedType = 'none' | 'date' | 'dates';
 

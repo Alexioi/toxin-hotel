@@ -1,6 +1,6 @@
-import cssSelectors from '../../constants';
-import Counter from './subViews/Counter';
-import DropdownEventEmitter from '../../types';
+import { cssSelectors } from '../../constants';
+import { Counter } from './subViews/Counter';
+import { DropdownEventEmitter } from '../../types';
 
 const toggleClearButton = (
   clearButton: Element | null,

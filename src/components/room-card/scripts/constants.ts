@@ -6,4 +6,4 @@ const cssSelectors = {
   buttons: '.js-room-card__button',
 };
 
-export default cssSelectors;
+export { cssSelectors };

@@ -1,8 +1,8 @@
-import helpers from '@helpers/index';
+import { helpers } from '@helpers/index';
 
-import cssSelectors from '../../constants';
-import DropdownEventEmitter from '../../types';
-import Counter from './subViews/Counter';
+import { cssSelectors } from '../../constants';
+import { DropdownEventEmitter } from '../../types';
+import { Counter } from './subViews/Counter';
 import {
   toggleInputFocus,
   toggleClearButton,
@@ -140,4 +140,4 @@ class View {
   }
 }
 
-export default View;
+export { View };

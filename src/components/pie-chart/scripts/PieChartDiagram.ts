@@ -1,5 +1,5 @@
 import { Votes, DiagramColors } from './types';
-import drawDiagram from './methods';
+import { drawDiagram } from './methods';
 import { diagramParameters } from './constants';
 
 class PieChartDiagram {
@@ -66,4 +66,4 @@ class PieChartDiagram {
   }
 }
 
-export default PieChartDiagram;
+export { PieChartDiagram };

@@ -3,4 +3,4 @@ const cssSelectors = {
   toggleButton: '.js-filter__toggle-button',
 };
 
-export default cssSelectors;
+export { cssSelectors };

@@ -70,4 +70,4 @@ class NoUISlider {
   }
 }
 
-export default NoUISlider;
+export { NoUISlider };

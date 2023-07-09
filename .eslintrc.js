@@ -34,5 +34,6 @@ module.exports = {
     'arrow-body-style': ['error', 'always'],
     '@typescript-eslint/indent': 'off',
     'import/no-webpack-loader-syntax': 'off',
+    'import/prefer-default-export': 'off',
   },
 };

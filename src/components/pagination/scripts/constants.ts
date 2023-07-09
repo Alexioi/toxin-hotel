@@ -4,4 +4,4 @@ const cssSelectors = {
   pagination: '.js-pagination',
 };
 
-export default cssSelectors;
+export { cssSelectors };

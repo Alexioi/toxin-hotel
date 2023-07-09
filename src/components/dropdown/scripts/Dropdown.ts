@@ -1,9 +1,9 @@
-import EventEmitter from '@helpers/EventEmitter';
+import { EventEmitter } from '@helpers/EventEmitter';
 
-import Model from './mvp/Model';
-import View from './mvp/View';
-import Presenter from './mvp/Presenter';
-import DropdownEventEmitter from './types';
+import { Model } from './mvp/Model';
+import { View } from './mvp/View';
+import { Presenter } from './mvp/Presenter';
+import { DropdownEventEmitter } from './types';
 
 const getData = (node: Element, name: string) => {
   if (!(node instanceof HTMLElement)) {
@@ -44,4 +44,4 @@ class Dropdown {
   }
 }
 
-export default Dropdown;
+export { Dropdown };

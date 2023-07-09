@@ -3,4 +3,4 @@ const cssSelectors = {
   counter: '.js-like-button__counter',
 };
 
-export default cssSelectors;
+export { cssSelectors };

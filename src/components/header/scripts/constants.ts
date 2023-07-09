@@ -5,4 +5,4 @@ const cssSelectors = {
   navigationButtons: '.js-header__navigation-button',
 };
 
-export default cssSelectors;
+export { cssSelectors };

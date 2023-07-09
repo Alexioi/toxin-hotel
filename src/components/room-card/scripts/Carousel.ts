@@ -1,4 +1,4 @@
-import cssSelectors from './constants';
+import { cssSelectors } from './constants';
 import {
   calculateBackIndex,
   calculateNextIndex,
@@ -95,4 +95,4 @@ class Carousel {
   }
 }
 
-export default Carousel;
+export { Carousel };

@@ -4,4 +4,4 @@ const cssSelectors = {
   value: '.js-range-slider__value',
 };
 
-export default cssSelectors;
+export { cssSelectors };

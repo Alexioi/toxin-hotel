@@ -1,6 +1,6 @@
 import { Data, Dates, TextFieldEventEmitter } from '../../types';
-import Model from '../Model';
-import View from '../View';
+import { Model } from '../Model';
+import { View } from '../View';
 
 class Presenter {
   private eventEmitter: TextFieldEventEmitter;
@@ -66,4 +66,4 @@ class Presenter {
   }
 }
 
-export default Presenter;
+export { Presenter };

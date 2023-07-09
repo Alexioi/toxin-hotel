@@ -1,5 +1,5 @@
-import isElementsIncludeNode from './isElementsIncludeNode';
+import { isElementsIncludeNode } from './isElementsIncludeNode';
 
 const helpers = { isElementsIncludeNode };
 
-export default helpers;
+export { helpers };

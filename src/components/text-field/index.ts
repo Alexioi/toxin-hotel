@@ -1,4 +1,4 @@
-import cssSelectors from './scripts/constants';
+import { cssSelectors } from './scripts/constants';
 import { TextField, HTMLInputElementWithPlugin } from './scripts/TextField';
 
 document

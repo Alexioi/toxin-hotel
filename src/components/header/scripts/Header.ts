@@ -1,4 +1,4 @@
-import cssSelectors from './constants';
+import { cssSelectors } from './constants';
 import {
   closeSubNavigationListOnClickOutsideBorders,
   toggleMobileNavigation,
@@ -83,4 +83,4 @@ class Header {
   }
 }
 
-export default Header;
+export { Header };

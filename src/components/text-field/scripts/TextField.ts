@@ -1,8 +1,8 @@
-import EventEmitter from '@helpers/EventEmitter';
+import { EventEmitter } from '@helpers/EventEmitter';
 
-import Model from './mvp/Model';
-import View from './mvp/View';
-import Presenter from './mvp/Presenter';
+import { Model } from './mvp/Model';
+import { View } from './mvp/View';
+import { Presenter } from './mvp/Presenter';
 import { Dates, MaskedType } from './types';
 
 interface HTMLInputElementWithPlugin extends HTMLInputElement {

@@ -1,4 +1,4 @@
-import cssSelectors from './constants';
+import { cssSelectors } from './constants';
 
 class DropdownList {
   private root: Element;
@@ -42,4 +42,4 @@ class DropdownList {
   }
 }
 
-export default DropdownList;
+export { DropdownList };

@@ -1,4 +1,4 @@
-import cssSelectors from './constants';
+import { cssSelectors } from './constants';
 import {
   changeCounterValue,
   changeIsLiked,
@@ -55,4 +55,4 @@ class LikeButton {
   }
 }
 
-export default LikeButton;
+export { LikeButton };

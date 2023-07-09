@@ -1,6 +1,6 @@
-import DropdownEventEmitter from '../../types';
-import View from '../View';
-import Model from '../Model';
+import { DropdownEventEmitter } from '../../types';
+import { View } from '../View';
+import { Model } from '../Model';
 
 class Presenter {
   private eventEmitter: DropdownEventEmitter;
@@ -77,4 +77,4 @@ class Presenter {
   }
 }
 
-export default Presenter;
+export { Presenter };

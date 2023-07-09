@@ -1,4 +1,4 @@
-import DropdownEventEmitter from '../../types';
+import { DropdownEventEmitter } from '../../types';
 import { calculateCounter, calculateValue, resetCounters } from './methods';
 
 class Model {
@@ -80,4 +80,4 @@ class Model {
   }
 }
 
-export default Model;
+export { Model };

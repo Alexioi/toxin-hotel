@@ -10,4 +10,4 @@ const isElementsIncludeNode = (event: Event, elements: (Element | null)[]) => {
   }, initialValue);
 };
 
-export default isElementsIncludeNode;
+export { isElementsIncludeNode };

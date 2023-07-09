@@ -1,6 +1,6 @@
-import NoUISlider from '@libs/nouislider';
+import { NoUISlider } from '@libs/nouislider';
 
-import cssSelectors from './constants';
+import { cssSelectors } from './constants';
 
 class RangeSlider {
   private root: Element;
@@ -23,4 +23,4 @@ class RangeSlider {
   }
 }
 
-export default RangeSlider;
+export { RangeSlider };

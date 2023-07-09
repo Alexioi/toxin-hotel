@@ -1,6 +1,6 @@
-import cssSelectors from '../../../constants';
-import DropdownEventEmitter from '../../../types';
-import disableCounterButton from './methods';
+import { cssSelectors } from '../../../constants';
+import { DropdownEventEmitter } from '../../../types';
+import { disableCounterButton } from './methods';
 
 class Counter {
   private root: Element;
@@ -91,4 +91,4 @@ class Counter {
   }
 }
 
-export default Counter;
+export { Counter };

@@ -8,4 +8,4 @@ const cssSelectors = {
   clearButton: '.js-calendar__clear-button',
 };
 
-export default cssSelectors;
+export { cssSelectors };

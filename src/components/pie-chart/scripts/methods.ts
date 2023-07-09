@@ -173,4 +173,4 @@ const drawDiagram = (
   drawText(canvas, totalVotes, centerX, centerY);
 };
 
-export default drawDiagram;
+export { drawDiagram };

@@ -4,4 +4,4 @@ const cssSelectors = {
   button: '.js-dropdown-list__button',
 };
 
-export default cssSelectors;
+export { cssSelectors };

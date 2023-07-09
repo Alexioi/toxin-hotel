@@ -1,6 +1,6 @@
 import { Paginationjs } from '@libs/paginationjs';
 
-import cssSelectors from './constants';
+import { cssSelectors } from './constants';
 
 class Pagination {
   private root: Element;
@@ -53,4 +53,4 @@ class Pagination {
   }
 }
 
-export default Pagination;
+export { Pagination };

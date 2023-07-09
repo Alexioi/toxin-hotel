@@ -1,7 +1,7 @@
 import { HTMLInputElementWithPlugin } from '@components/text-field/scripts/TextField';
 import { AirDatepicker } from '@libs/air-datepicker';
 
-import cssSelectors from './constants';
+import { cssSelectors } from './constants';
 import {
   applyDates,
   clearDates,
@@ -110,4 +110,4 @@ class Calendar {
   }
 }
 
-export default Calendar;
+export { Calendar };

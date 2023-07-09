@@ -1,4 +1,4 @@
-import helpers from '@helpers/index';
+import { helpers } from '@helpers/index';
 
 const closeSubNavigationList = (node: Element | null) => {
   node?.classList.remove('header__sub-navigation-list_opened');

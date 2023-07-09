@@ -8,4 +8,4 @@ const disableCounterButton = (node: Element | null, counter: number) => {
   }
 };
 
-export default disableCounterButton;
+export { disableCounterButton };
