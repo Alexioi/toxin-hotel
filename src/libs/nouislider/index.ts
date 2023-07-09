@@ -11,8 +11,12 @@ interface TargetElement extends HTMLElement {
   noUiSlider: API;
 }
 
+const isTargetElement = (element: HTMLElement): element is TargetElement => {
+  return 'noUiSlider' in element;
+};
+
 class NoUISlider {
-  private root: TargetElement | null;
+  private root: Element | null;
 
   private valueNode: Element | null;
 
@@ -21,7 +25,7 @@ class NoUISlider {
     valueNode: Element | null,
     parameters: Parameters,
   ) {
-    this.root = root as TargetElement;
+    this.root = root;
     this.valueNode = valueNode;
 
     this.updateValue = this.updateValue.bind(this);
@@ -42,8 +46,14 @@ class NoUISlider {
       },
     };
 
-    if (this.root instanceof Element) {
-      noUiSlider.create(this.root, config);
+    if (!(this.root instanceof HTMLElement)) {
+      return this;
+    }
+
+    noUiSlider.create(this.root, config);
+
+    if (!isTargetElement(this.root)) {
+      return this;
     }
 
     this.root?.noUiSlider.on('update', this.updateValue);
