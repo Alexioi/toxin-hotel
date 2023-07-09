@@ -28,7 +28,7 @@ class Model {
   public fixData() {
     this.dates = deleteIncompleteDate(this.type, this.dates);
 
-    this.eventEmitter.emit('UpdateDates', this.dates);
+    this.eventEmitter.emit('UpdateDates', { dates: this.dates });
 
     return this;
   }
@@ -36,7 +36,7 @@ class Model {
   public setDates(dates: Dates) {
     this.dates = dates;
 
-    this.eventEmitter.emit('UpdateDates', this.dates);
+    this.eventEmitter.emit('UpdateDates', { dates: this.dates });
 
     return this;
   }
@@ -54,7 +54,7 @@ class Model {
   private updateDates(data?: number) {
     this.dates = updateDates(this.type, this.dates, data);
 
-    this.eventEmitter.emit('UpdateDates', this.dates);
+    this.eventEmitter.emit('UpdateDates', { dates: this.dates });
 
     return this;
   }
@@ -62,7 +62,7 @@ class Model {
   public removeDate() {
     this.dates = removeDate(this.type, this.dates);
 
-    this.eventEmitter.emit('UpdateDates', this.dates);
+    this.eventEmitter.emit('UpdateDates', { dates: this.dates });
 
     return this;
   }

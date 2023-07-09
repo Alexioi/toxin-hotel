@@ -1,4 +1,4 @@
-import { Dates, TextFieldEventEmitter } from '../../types';
+import { Data, Dates, TextFieldEventEmitter } from '../../types';
 import Model from '../Model';
 import View from '../View';
 
@@ -26,7 +26,7 @@ class Presenter {
   }
 
   private attachEventEmittersToModel() {
-    const notifyModel = (data: string) => {
+    const notifyModel = ({ data }: { data: string }) => {
       this.model.updateData(data);
     };
 
@@ -56,7 +56,7 @@ class Presenter {
   }
 
   private attachEventEmittersToView() {
-    const notifyViewUpdatedModelOptions = (dates: Dates): void => {
+    const notifyViewUpdatedModelOptions = ({ dates }: Data): void => {
       this.view.displayDate(dates);
     };
 

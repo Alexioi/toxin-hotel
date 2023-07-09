@@ -1,15 +1,15 @@
 import EventEmitter from '@helpers/EventEmitter';
 
 type DropdownEventEmitter = EventEmitter<{
-  IncrementCounter: number;
-  DecrementCounter: number;
+  IncrementCounter: { index: number };
+  DecrementCounter: { index: number };
   ApplyDropdownData: null;
   ClearCounters: null;
   UpdateCounters: {
     counters: number[];
     value: string;
   };
-  UpdateValue: string;
+  UpdateValue: { value: string };
 }>;
 
 export default DropdownEventEmitter;

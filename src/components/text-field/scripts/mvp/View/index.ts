@@ -46,7 +46,7 @@ class View {
     const inputData = event.clipboardData?.getData('text');
 
     if (typeof inputData !== 'undefined') {
-      this.eventEmitter.emit('InputData', inputData);
+      this.eventEmitter.emit('InputData', { data: inputData });
     }
   };
 

@@ -103,7 +103,7 @@ const emitInputData = (event: Event, eventEmitter: TextFieldEventEmitter) => {
       return;
     }
 
-    eventEmitter.emit('InputData', String(data));
+    eventEmitter.emit('InputData', { data: String(data) });
   }
 };
 

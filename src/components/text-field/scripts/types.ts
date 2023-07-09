@@ -11,11 +11,15 @@ type CustomDate = {
 type Dates = CustomDate[];
 
 type TextFieldEventEmitter = EventEmitter<{
-  UpdateDates: Dates;
-  InputData: string;
+  UpdateDates: { dates: Dates };
+  InputData: { data: string };
   TouchInput: null;
   DeleteData: null;
   BlurInput: null;
 }>;
 
-export { CustomDate, MaskedType, Dates, TextFieldEventEmitter };
+type Data = {
+  dates: Dates;
+};
+
+export { CustomDate, MaskedType, Dates, TextFieldEventEmitter, Data };

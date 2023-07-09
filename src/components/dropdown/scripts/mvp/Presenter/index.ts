@@ -24,11 +24,11 @@ class Presenter {
   }
 
   private attachEventEmittersToModel() {
-    const notifyModelAboutDecrementCounter = (index: number) => {
+    const notifyModelAboutDecrementCounter = ({ index }: { index: number }) => {
       this.model.decrementCounter(index);
     };
 
-    const notifyModelAboutIncrementCounter = (index: number) => {
+    const notifyModelAboutIncrementCounter = ({ index }: { index: number }) => {
       this.model.incrementCounter(index);
     };
 
@@ -66,7 +66,7 @@ class Presenter {
       this.view.update(counters, value);
     };
 
-    const notifyViewUpdatedValue = (value: string): void => {
+    const notifyViewUpdatedValue = ({ value }: { value: string }): void => {
       this.view.updateInputValue(value);
     };
 
