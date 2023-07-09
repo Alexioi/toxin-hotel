@@ -1,15 +1,9 @@
 import { CustomDate } from '@components/text-field/scripts/types';
 import { HTMLInputElementWithPlugin } from '@components/text-field/scripts/TextField';
-import { AirDatepicker, JQueryWithAirDatepicker } from '@libs/air-datepicker';
+import { AirDatepicker } from '@libs/air-datepicker';
 import helpers from '@helpers/index';
 
 import cssSelectors from './constants';
-
-const isJQueryWithAirDatepicker = (
-  element: JQuery,
-): element is JQueryWithAirDatepicker => {
-  return 'datepicker' in element;
-};
 
 const convertDateToString = (date: number): string => {
   if (String(date).length !== 2) {
@@ -28,13 +22,12 @@ const calculateFullDate = (date: Date): CustomDate => {
 };
 
 const createDatepicker = (node: Element) => {
-  const $datepickerNode = $(node).find(cssSelectors.datepicker);
-
-  if (isJQueryWithAirDatepicker($datepickerNode)) {
-    return new AirDatepicker($datepickerNode);
+  const datepickerNode = node.querySelector(cssSelectors.datepicker);
+  if (datepickerNode === null) {
+    return null;
   }
 
-  return null;
+  return new AirDatepicker(datepickerNode);
 };
 
 const displayDates = (

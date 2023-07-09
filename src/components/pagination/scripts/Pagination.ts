@@ -1,4 +1,4 @@
-import { JQueryWithPaginationjs, Paginationjs } from '@libs/paginationjs';
+import { Paginationjs } from '@libs/paginationjs';
 
 import cssSelectors from './constants';
 
@@ -47,9 +47,7 @@ class Pagination {
       return this;
     }
 
-    const $plugin = $(this.plugin) as JQueryWithPaginationjs;
-
-    new Paginationjs($plugin, this.rangeNode, this.count);
+    new Paginationjs(this.plugin, this.rangeNode, this.count);
 
     return this;
   }

@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import 'paginationjs';
 
 import arrow from '!raw-loader!@images/decorative/arrow.svg';
@@ -9,30 +10,33 @@ interface Config {
   nextText: string;
   callback: (data: number[]) => void;
   dataSource: (done: (result: number[]) => void) => void;
-  afterPageOnClick: () => void;
-  afterNextOnClick: () => void;
-  afterPreviousOnClick: () => void;
+  afterPageOnClick: (node: JQueryWithDelegateTarget) => void;
+  afterNextOnClick: (node: JQueryWithDelegateTarget) => void;
+  afterPreviousOnClick: (node: JQueryWithDelegateTarget) => void;
 }
 
 interface JQueryWithPaginationjs extends JQuery<Element> {
   pagination(config: Config): void;
 }
 
-class Paginationjs {
-  private $node: JQueryWithPaginationjs;
+const isJQueryWithPaginationjs = (
+  element: JQuery<Element>,
+): element is JQueryWithPaginationjs => {
+  return 'pagination' in element;
+};
 
-  private $range: JQuery<Element>;
+type JQueryWithDelegateTarget = JQuery & { delegateTarget: HTMLElement };
+
+class Paginationjs {
+  private root: Element;
+
+  private range: Element;
 
   private count: number;
 
-  constructor(
-    $root: JQueryWithPaginationjs,
-    range: Element,
-
-    count: number,
-  ) {
-    this.$node = $root;
-    this.$range = $(range);
+  constructor(root: Element, range: Element, count: number) {
+    this.root = root;
+    this.range = range;
     this.count = count;
 
     this.init();
@@ -43,10 +47,11 @@ class Paginationjs {
       const [firstItem] = data;
       const lastItem = data[data.length - 1];
       if (firstItem === lastItem) {
-        this.$range.text(lastItem);
+        this.range.innerHTML = String(lastItem);
         return;
       }
-      this.$range.text(`${firstItem} - ${lastItem}`);
+
+      this.range.innerHTML = `${firstItem} - ${lastItem}`;
     };
 
     const dataSource = (done: (result: number[]) => void) => {
@@ -60,16 +65,25 @@ class Paginationjs {
     const iconBack = `<svg class="paginationjs__icon paginationjs__icon_back">${arrow}</svg>`;
     const iconNext = `<svg class="paginationjs__icon">${arrow}</svg>`;
 
-    const afterPageOnClick = () => {
-      this.$node.find('.active').next().find('a').focus();
+    const afterPageOnClick = (node: JQueryWithDelegateTarget) => {
+      node.delegateTarget
+        .querySelector('.active')
+        ?.nextElementSibling?.querySelector('a')
+        ?.focus();
     };
 
-    const afterNextOnClick = () => {
-      this.$node.find('.paginationjs-next').find('a').focus();
+    const afterNextOnClick = (node: JQueryWithDelegateTarget) => {
+      node.delegateTarget
+        .querySelector('.paginationjs-next')
+        ?.querySelector('a')
+        ?.focus();
     };
 
-    const afterPreviousOnClick = () => {
-      this.$node.find('.paginationjs-prev').find('a').focus();
+    const afterPreviousOnClick = (node: JQueryWithDelegateTarget) => {
+      node.delegateTarget
+        .querySelector('.paginationjs-prev')
+        ?.querySelector('a')
+        ?.focus();
     };
 
     const config = {
@@ -84,7 +98,11 @@ class Paginationjs {
       afterPreviousOnClick,
     };
 
-    this.$node.pagination(config);
+    const $root = $(this.root);
+
+    if (isJQueryWithPaginationjs($root)) {
+      $root.pagination(config);
+    }
 
     return this;
   }

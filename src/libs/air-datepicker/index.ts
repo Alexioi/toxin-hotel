@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import 'air-datepicker';
 
 import arrow from '!raw-loader!@images/decorative/arrow.svg';
@@ -18,17 +19,23 @@ interface AirDatepickerOptions {
   minDate: Date;
 }
 
-interface JQueryWithAirDatepicker extends JQuery {
+interface JQueryWithAirDatepicker extends JQuery<Element> {
   datepicker(airDatepickerOptions: AirDatepickerOptions): this;
 }
 
+const isJQueryWithAirDatepicker = (
+  element: JQuery<Element>,
+): element is JQueryWithAirDatepicker => {
+  return 'datepicker' in element;
+};
+
 class AirDatepicker {
-  private $root: JQueryWithAirDatepicker;
+  private root: Element;
 
   private datepickerData: DatepickerData | null = null;
 
-  constructor($root: JQueryWithAirDatepicker) {
-    this.$root = $root;
+  constructor(root: Element) {
+    this.root = root;
 
     this.init();
   }
@@ -70,9 +77,13 @@ class AirDatepicker {
       minDate: new Date(),
     };
 
-    this.datepickerData = this.$root
-      .datepicker(airDatepickerOptions)
-      .data().datepicker;
+    const $root = $(this.root);
+
+    if (isJQueryWithAirDatepicker($root)) {
+      this.datepickerData = $root
+        .datepicker(airDatepickerOptions)
+        .data().datepicker;
+    }
 
     return this;
   }
