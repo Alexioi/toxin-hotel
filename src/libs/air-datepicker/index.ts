@@ -23,7 +23,7 @@ interface JQueryWithAirDatepicker extends JQuery<Element> {
   datepicker(airDatepickerOptions: AirDatepickerOptions): this;
 }
 
-const isJQueryWithAirDatepicker = (
+const isElementWithAirDatepicker = (
   element: JQuery<Element>,
 ): element is JQueryWithAirDatepicker => {
   return 'datepicker' in element;
@@ -79,7 +79,7 @@ class AirDatepicker {
 
     const $root = $(this.root);
 
-    if (isJQueryWithAirDatepicker($root)) {
+    if (isElementWithAirDatepicker($root)) {
       this.datepickerData = $root
         .datepicker(airDatepickerOptions)
         .data().datepicker;

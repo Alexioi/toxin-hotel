@@ -19,7 +19,7 @@ interface JQueryWithPaginationjs extends JQuery<Element> {
   pagination(config: Config): void;
 }
 
-const isJQueryWithPaginationjs = (
+const isElementWithPaginationjs = (
   element: JQuery<Element>,
 ): element is JQueryWithPaginationjs => {
   return 'pagination' in element;
@@ -100,7 +100,7 @@ class Paginationjs {
 
     const $root = $(this.root);
 
-    if (isJQueryWithPaginationjs($root)) {
+    if (isElementWithPaginationjs($root)) {
       $root.pagination(config);
     }
 
