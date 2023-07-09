@@ -8,7 +8,7 @@ const isNumber = (key: string | null): boolean => {
   return /^\d$/.test(key);
 };
 
-const calculateDayAndMount = (checkedDate: CustomDate) => {
+const calculateDayAndMonth = (checkedDate: CustomDate) => {
   const { day, month, year } = checkedDate;
 
   const monthNames = [
@@ -56,8 +56,8 @@ const displayDate = (
       return;
     }
 
-    const maskedFrom = calculateDayAndMount(from);
-    const maskedTo = calculateDayAndMount(to);
+    const maskedFrom = calculateDayAndMonth(from);
+    const maskedTo = calculateDayAndMonth(to);
 
     input.value = `${maskedFrom} - ${maskedTo}`;
     return;
