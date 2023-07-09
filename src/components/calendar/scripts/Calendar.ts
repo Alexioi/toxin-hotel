@@ -80,8 +80,8 @@ class Calendar {
   }
 
   private handleDocumentClick(event: Event) {
-    const [firstButton, secondButton] = this.toggleButtons;
-    const elements = [this.menu, firstButton, secondButton];
+    const [firstToggleButton, secondToggleButton] = this.toggleButtons;
+    const elements = [this.menu, firstToggleButton, secondToggleButton];
 
     closeMenu(event, this.menu, this.inputs, elements);
   }
