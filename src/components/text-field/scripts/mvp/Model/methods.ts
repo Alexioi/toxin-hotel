@@ -1,6 +1,6 @@
 import { Dates, MaskedType, CustomDate } from '../../types';
 
-const isValidDate = (checkedDate: CustomDate, key: number): boolean => {
+const isDateValid = (checkedDate: CustomDate, key: number): boolean => {
   const { day, month, year } = checkedDate;
 
   const newDay = Number(day);
@@ -34,7 +34,7 @@ const calculateYear = (date: CustomDate, key: number): CustomDate => {
   }
 
   if (year.length === 3) {
-    if (isValidDate(date, key)) {
+    if (isDateValid(date, key)) {
       return { day, month, year: `${year}${key}` };
     }
 
