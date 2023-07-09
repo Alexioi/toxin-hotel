@@ -69,8 +69,6 @@ class Carousel {
       this.quantityImageIndex,
     );
     hideImages(this.images, this.buttons, this.currentImageIndex);
-
-    return this;
   }
 
   private handleNextButtonClick() {
@@ -79,8 +77,6 @@ class Carousel {
       this.quantityImageIndex,
     );
     hideImages(this.images, this.buttons, this.currentImageIndex);
-
-    return this;
   }
 
   private handleTargetButtonClick(event: Event) {
@@ -90,8 +86,6 @@ class Carousel {
       this.currentImageIndex,
     );
     hideImages(this.images, this.buttons, this.currentImageIndex);
-
-    return this;
   }
 }
 

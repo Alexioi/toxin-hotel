@@ -105,16 +105,12 @@ class View {
 
   private handleClearButtonClick() {
     this.eventEmitter.emit('ClearCounters', null);
-
-    return this;
   }
 
   private handleApplyButtonClick() {
     this.isUpdateButtonPressed = true;
 
     this.eventEmitter.emit('ApplyDropdownData', null);
-
-    return this;
   }
 
   private initCounters() {
@@ -129,8 +125,6 @@ class View {
     if (!helpers.isElementsIncludeNode(event, elements)) {
       closeMenu(this.root, this.input);
     }
-
-    return this;
   }
 
   private toggleMenu() {

@@ -26,6 +26,8 @@ class View {
 
   private init() {
     this.attachEventsHandler();
+
+    return this;
   }
 
   private attachEventsHandler() {
@@ -33,6 +35,8 @@ class View {
     this.root.addEventListener('paste', this.handleTextFieldPaste);
     this.root.addEventListener('blur', this.handleTextFieldBlur);
     this.root.addEventListener('click', this.handleTextFieldClick);
+
+    return this;
   }
 
   private handleTextFieldBlur() {

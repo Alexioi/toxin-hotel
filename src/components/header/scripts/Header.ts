@@ -62,8 +62,6 @@ class Header {
       this.navigationButtons,
       this.subNavigationLists,
     );
-
-    return this;
   }
 
   private handleNavigationButtonClick(event: Event) {
@@ -72,14 +70,10 @@ class Header {
       this.navigationButtons,
       this.subNavigationLists,
     );
-
-    return this;
   }
 
   private handleBurgerButtonClick() {
     toggleMobileNavigation(this.root);
-
-    return this;
   }
 }
 

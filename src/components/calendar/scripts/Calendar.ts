@@ -77,8 +77,6 @@ class Calendar {
 
   private handleInputBlur() {
     displayDates(this.inputs);
-
-    return this;
   }
 
   private handleDocumentClick(event: Event) {
@@ -86,27 +84,19 @@ class Calendar {
     const elements = [this.menu, firstButton, secondButton];
 
     closeMenu(event, this.menu, this.inputs, elements);
-
-    return this;
   }
 
   private handleApplyButtonClick() {
     applyDates(this.datepicker, this.inputs);
-
-    return this;
   }
 
   private handleCleanButtonClick() {
     clearDates(this.datepicker, this.inputs);
-
-    return this;
   }
 
   private handleToggleButtonClick() {
     toggleMenu(this.menu, this.inputs);
     selectDatesInDatepicker(this.datepicker, this.inputs);
-
-    return this;
   }
 }
 

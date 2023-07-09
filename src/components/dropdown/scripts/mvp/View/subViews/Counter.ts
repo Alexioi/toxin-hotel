@@ -80,14 +80,10 @@ class Counter {
 
   private handleDecrementButtonClick() {
     this.eventEmitter.emit('DecrementCounter', { index: this.index });
-
-    return this;
   }
 
   private handleIncrementButtonClick() {
     this.eventEmitter.emit('IncrementCounter', { index: this.index });
-
-    return this;
   }
 }
 

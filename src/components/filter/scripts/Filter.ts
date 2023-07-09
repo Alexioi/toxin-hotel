@@ -33,8 +33,6 @@ class Filter {
 
   private handleButtonClick() {
     this.root.classList.toggle('filter_opened');
-
-    return this;
   }
 }
 

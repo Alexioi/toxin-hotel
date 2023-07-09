@@ -50,8 +50,6 @@ class LikeButton {
     this.isLiked = changeIsLiked(this.isLiked, this.root);
 
     this.value = changeCounterValue(this.value, this.isLiked, this.counter);
-
-    return this;
   }
 }
 
