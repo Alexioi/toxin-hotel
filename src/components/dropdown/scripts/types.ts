@@ -1,15 +1,19 @@
-import { EventEmitter } from '@helpers/EventEmitter';
-
-type DropdownEventEmitter = EventEmitter<{
-  IncrementCounter: { index: number };
-  DecrementCounter: { index: number };
+type ViewEvents = {
   ApplyDropdownData: null;
   ClearCounters: null;
+};
+
+type CounterEvents = {
+  IncrementCounter: { index: number };
+  DecrementCounter: { index: number };
+};
+
+type ModelEvents = {
   UpdateCounters: {
     counters: number[];
     value: string;
   };
   UpdateValue: { value: string };
-}>;
+};
 
-export { DropdownEventEmitter };
+export { ModelEvents, ViewEvents, CounterEvents };

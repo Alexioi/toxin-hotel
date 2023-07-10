@@ -1,5 +1,3 @@
-import { EventEmitter } from '@helpers/EventEmitter';
-
 import { Model } from './mvp/Model';
 import { View } from './mvp/View';
 import { Presenter } from './mvp/Presenter';
@@ -19,11 +17,10 @@ class TextField {
 
     this.node.plugin = this;
 
-    const eventEmitter: EventEmitter<{ TouchInput: null }> = new EventEmitter();
-    const model = new Model(eventEmitter, type);
-    const view = new View(node, eventEmitter);
+    const model = new Model(type);
+    const view = new View(node);
 
-    this.presenter = new Presenter(view, model, eventEmitter);
+    this.presenter = new Presenter(view, model);
   }
 
   public getDates() {

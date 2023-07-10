@@ -1,4 +1,6 @@
-import { Dates, MaskedType, TextFieldEventEmitter } from '../../types';
+import { EventEmitter } from '@helpers/EventEmitter';
+
+import { Dates, MaskedType, ModelEvents } from '../../types';
 import {
   deleteIncompleteDate,
   isNumber,
@@ -6,15 +8,13 @@ import {
   updateDates,
 } from './methods';
 
-class Model {
-  private eventEmitter: TextFieldEventEmitter;
-
+class Model extends EventEmitter<ModelEvents> {
   private dates: Dates = [{ day: '', month: '', year: '' }];
 
   private type: MaskedType;
 
-  constructor(eventEmitter: TextFieldEventEmitter, type: MaskedType) {
-    this.eventEmitter = eventEmitter;
+  constructor(type: MaskedType) {
+    super();
 
     this.type = type;
 
@@ -28,7 +28,7 @@ class Model {
   public fixData() {
     this.dates = deleteIncompleteDate(this.type, this.dates);
 
-    this.eventEmitter.emit('UpdateDates', { dates: this.dates });
+    this.emit('UpdateDates', { dates: this.dates });
 
     return this;
   }
@@ -36,7 +36,7 @@ class Model {
   public setDates(dates: Dates) {
     this.dates = dates;
 
-    this.eventEmitter.emit('UpdateDates', { dates: this.dates });
+    this.emit('UpdateDates', { dates: this.dates });
 
     return this;
   }
@@ -54,7 +54,7 @@ class Model {
   private updateDates(data?: number) {
     this.dates = updateDates(this.type, this.dates, data);
 
-    this.eventEmitter.emit('UpdateDates', { dates: this.dates });
+    this.emit('UpdateDates', { dates: this.dates });
 
     return this;
   }
@@ -62,7 +62,7 @@ class Model {
   public removeDate() {
     this.dates = removeDate(this.type, this.dates);
 
-    this.eventEmitter.emit('UpdateDates', { dates: this.dates });
+    this.emit('UpdateDates', { dates: this.dates });
 
     return this;
   }

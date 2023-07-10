@@ -1,17 +1,13 @@
-import { Data, Dates, TextFieldEventEmitter } from '../../types';
+import { Data, Dates } from '../../types';
 import { Model } from '../Model';
 import { View } from '../View';
 
 class Presenter {
-  private eventEmitter: TextFieldEventEmitter;
-
   private view: View;
 
   private model: Model;
 
-  constructor(view: View, model: Model, eventEmitter: TextFieldEventEmitter) {
-    this.eventEmitter = eventEmitter;
-
+  constructor(view: View, model: Model) {
     this.view = view;
     this.model = model;
     this.attachEventEmittersToModel().attachEventEmittersToView();
@@ -44,13 +40,13 @@ class Presenter {
       this.model.fixData();
     };
 
-    this.eventEmitter.subscribe('InputData', notifyModel);
+    this.view.subscribe('InputData', notifyModel);
 
-    this.eventEmitter.subscribe('TouchInput', getData);
+    this.view.subscribe('TouchInput', getData);
 
-    this.eventEmitter.subscribe('DeleteData', notifyModelDelete);
+    this.view.subscribe('DeleteData', notifyModelDelete);
 
-    this.eventEmitter.subscribe('BlurInput', fixData);
+    this.view.subscribe('BlurInput', fixData);
 
     return this;
   }
@@ -60,7 +56,7 @@ class Presenter {
       this.view.displayDate(dates);
     };
 
-    this.eventEmitter.subscribe('UpdateDates', notifyViewUpdatedModelOptions);
+    this.model.subscribe('UpdateDates', notifyViewUpdatedModelOptions);
 
     return this;
   }

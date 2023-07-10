@@ -1,16 +1,17 @@
-import { CustomDate, TextFieldEventEmitter } from '../../types';
-import { displayDate, emitInputData } from './methods';
+import { EventEmitter } from '@helpers/EventEmitter';
 
-class View {
+import { CustomDate, ViewEvents } from '../../types';
+import { displayDate, isNumber } from './methods';
+
+class View extends EventEmitter<ViewEvents> {
   private root: HTMLInputElement;
-
-  private eventEmitter: TextFieldEventEmitter;
 
   private isFocused = false;
 
-  constructor(root: HTMLInputElement, eventEmitter: TextFieldEventEmitter) {
+  constructor(root: HTMLInputElement) {
+    super();
+
     this.root = root;
-    this.eventEmitter = eventEmitter;
 
     this.handleTextFieldInput = this.handleTextFieldInput.bind(this);
     this.handleTextFieldPaste = this.handleTextFieldPaste.bind(this);
@@ -42,7 +43,7 @@ class View {
   private handleTextFieldBlur() {
     this.isFocused = false;
 
-    this.eventEmitter.emit('BlurInput', null);
+    this.emit('BlurInput', null);
   }
 
   private handleTextFieldPaste = (event: ClipboardEvent) => {
@@ -50,17 +51,35 @@ class View {
     const inputData = event.clipboardData?.getData('text');
 
     if (typeof inputData !== 'undefined') {
-      this.eventEmitter.emit('InputData', { data: inputData });
+      this.emit('InputData', { data: inputData });
     }
   };
 
   private handleTextFieldClick() {
     this.isFocused = true;
-    this.eventEmitter.emit('TouchInput', null);
+    this.emit('TouchInput', null);
   }
 
   private handleTextFieldInput = (event: Event) => {
-    emitInputData(event, this.eventEmitter);
+    event.preventDefault();
+
+    if (!(event instanceof InputEvent)) {
+      return;
+    }
+
+    const { data } = event;
+
+    if (event.inputType === 'deleteContentBackward') {
+      this.emit('DeleteData', null);
+      return;
+    }
+
+    if (!isNumber(data)) {
+      this.emit('TouchInput', null);
+      return;
+    }
+
+    this.emit('InputData', { data: String(data) });
   };
 }
 

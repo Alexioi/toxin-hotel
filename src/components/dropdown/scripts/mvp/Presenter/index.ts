@@ -1,17 +1,12 @@
-import { DropdownEventEmitter } from '../../types';
 import { View } from '../View';
 import { Model } from '../Model';
 
 class Presenter {
-  private eventEmitter: DropdownEventEmitter;
-
   private view: View;
 
   private model: Model;
 
-  constructor(view: View, model: Model, eventEmitter: DropdownEventEmitter) {
-    this.eventEmitter = eventEmitter;
-
+  constructor(view: View, model: Model) {
     this.view = view;
     this.model = model;
 
@@ -40,17 +35,16 @@ class Presenter {
       this.model.resetCounters();
     };
 
-    this.eventEmitter.subscribe(
-      'IncrementCounter',
-      notifyModelAboutIncrementCounter,
-    );
+    this.view.counters.forEach((counter) => {
+      counter.subscribe('IncrementCounter', notifyModelAboutIncrementCounter);
+    });
 
-    this.eventEmitter.subscribe(
-      'DecrementCounter',
-      notifyModelAboutDecrementCounter,
-    );
-    this.eventEmitter.subscribe('ApplyDropdownData', getValue);
-    this.eventEmitter.subscribe('ClearCounters', notifyModelAboutClearCounters);
+    this.view.counters.forEach((counter) => {
+      counter.subscribe('DecrementCounter', notifyModelAboutDecrementCounter);
+    });
+
+    this.view.subscribe('ApplyDropdownData', getValue);
+    this.view.subscribe('ClearCounters', notifyModelAboutClearCounters);
 
     return this;
   }
@@ -70,8 +64,8 @@ class Presenter {
       this.view.updateInputValue(value);
     };
 
-    this.eventEmitter.subscribe('UpdateCounters', notifyViewUpdatedCounters);
-    this.eventEmitter.subscribe('UpdateValue', notifyViewUpdatedValue);
+    this.model.subscribe('UpdateCounters', notifyViewUpdatedCounters);
+    this.model.subscribe('UpdateValue', notifyViewUpdatedValue);
 
     return this;
   }

@@ -1,7 +1,8 @@
+import { EventEmitter } from '@helpers/EventEmitter';
 import { helpers } from '@helpers/index';
 
 import { cssSelectors } from '../../constants';
-import { DropdownEventEmitter } from '../../types';
+
 import { Counter } from './subViews/Counter';
 import {
   toggleInputFocus,
@@ -11,11 +12,10 @@ import {
   createCounters,
   updateCounters,
 } from './methods';
+import { ViewEvents } from '../../types';
 
-class View {
+class View extends EventEmitter<ViewEvents> {
   private root: Element;
-
-  private eventEmitter: DropdownEventEmitter;
 
   private input: Element | null = null;
 
@@ -23,7 +23,7 @@ class View {
 
   private textField: Element | null = null;
 
-  private counters: Counter[] = [];
+  public counters: Counter[] = [];
 
   private clearButton: Element | null = null;
 
@@ -35,9 +35,10 @@ class View {
 
   private isUpdateButtonPressed = true;
 
-  constructor(node: Element, eventEmitter: DropdownEventEmitter) {
+  constructor(node: Element) {
+    super();
+
     this.root = node;
-    this.eventEmitter = eventEmitter;
 
     this.handleApplyButtonClick = this.handleApplyButtonClick.bind(this);
     this.handleClearButtonClick = this.handleClearButtonClick.bind(this);
@@ -104,17 +105,17 @@ class View {
   }
 
   private handleClearButtonClick() {
-    this.eventEmitter.emit('ClearCounters', null);
+    this.emit('ClearCounters', null);
   }
 
   private handleApplyButtonClick() {
     this.isUpdateButtonPressed = true;
 
-    this.eventEmitter.emit('ApplyDropdownData', null);
+    this.emit('ApplyDropdownData', null);
   }
 
   private initCounters() {
-    this.counters = createCounters(this.root, this.eventEmitter);
+    this.counters = createCounters(this.root);
 
     return this;
   }
