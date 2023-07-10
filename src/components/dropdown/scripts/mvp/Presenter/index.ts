@@ -35,13 +35,14 @@ class Presenter {
       this.model.resetCounters();
     };
 
-    this.view.counters.forEach((counter) => {
-      counter.subscribe('IncrementCounter', notifyModelAboutIncrementCounter);
-    });
-
-    this.view.counters.forEach((counter) => {
-      counter.subscribe('DecrementCounter', notifyModelAboutDecrementCounter);
-    });
+    this.view.subscribeCountersToEvents(
+      'IncrementCounter',
+      notifyModelAboutIncrementCounter,
+    );
+    this.view.subscribeCountersToEvents(
+      'DecrementCounter',
+      notifyModelAboutDecrementCounter,
+    );
 
     this.view.subscribe('ApplyDropdownData', getValue);
     this.view.subscribe('ClearCounters', notifyModelAboutClearCounters);

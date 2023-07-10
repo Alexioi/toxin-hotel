@@ -1,9 +1,9 @@
-import { EventEmitter } from '@helpers/EventEmitter';
+import { EventEmitter, Callback } from '@helpers/EventEmitter';
 import { helpers } from '@helpers/index';
 
 import { cssSelectors } from '../../constants';
-
 import { Counter } from './subViews/Counter';
+import { CounterEvents, ViewEvents } from '../../types';
 import {
   toggleInputFocus,
   toggleClearButton,
@@ -12,7 +12,6 @@ import {
   createCounters,
   updateCounters,
 } from './methods';
-import { ViewEvents } from '../../types';
 
 class View extends EventEmitter<ViewEvents> {
   private root: Element;
@@ -23,7 +22,7 @@ class View extends EventEmitter<ViewEvents> {
 
   private textField: Element | null = null;
 
-  public counters: Counter[] = [];
+  private counters: Counter[] = [];
 
   private clearButton: Element | null = null;
 
@@ -63,6 +62,15 @@ class View extends EventEmitter<ViewEvents> {
     if (this.input instanceof HTMLInputElement) {
       this.input.value = value;
     }
+  }
+
+  public subscribeCountersToEvents(
+    eventName: keyof CounterEvents,
+    callback: Callback<CounterEvents, keyof CounterEvents>,
+  ) {
+    this.counters.forEach((counter) => {
+      counter.subscribe(eventName, callback);
+    });
   }
 
   private init() {

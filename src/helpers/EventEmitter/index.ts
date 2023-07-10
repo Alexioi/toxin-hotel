@@ -36,4 +36,4 @@ class EventEmitter<T extends object> {
   }
 }
 
-export { EventEmitter };
+export { EventEmitter, Callback };
