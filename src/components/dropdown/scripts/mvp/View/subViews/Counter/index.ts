@@ -1,7 +1,7 @@
 import { EventEmitter } from '@helpers/EventEmitter';
 
-import { cssSelectors } from '../../../constants';
-import { CounterEvents } from '../../../types';
+import { cssSelectors } from '../../../../constants';
+import { CounterEvents } from '../../../../types';
 import { disableCounterButton } from './methods';
 
 class Counter extends EventEmitter<CounterEvents> {

@@ -1,6 +1,4 @@
-import { Model } from './mvp/Model';
-import { View } from './mvp/View';
-import { Presenter } from './mvp/Presenter';
+import { Model, View, Presenter } from './mvp';
 import { Dates, MaskedType } from './types';
 
 interface HTMLInputElementWithPlugin extends HTMLInputElement {

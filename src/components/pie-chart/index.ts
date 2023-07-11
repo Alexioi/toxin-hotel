@@ -1,5 +1,4 @@
-import { PieChartDiagram } from './scripts/PieChartDiagram';
-import { cssSelectors } from './scripts/constants';
+import { PieChartDiagram, cssSelectors } from './scripts';
 
 document.querySelectorAll(cssSelectors.diagram).forEach((node) => {
   new PieChartDiagram(node);

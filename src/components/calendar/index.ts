@@ -1,5 +1,4 @@
-import { Calendar } from './scripts/Calendar';
-import { cssSelectors } from './scripts/constants';
+import { Calendar, cssSelectors } from './scripts';
 
 document.querySelectorAll(cssSelectors.calendar).forEach((node) => {
   new Calendar(node);

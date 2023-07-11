@@ -1,5 +1,4 @@
-import { Dropdown } from './scripts/Dropdown';
-import { cssSelectors } from './scripts/constants';
+import { Dropdown, cssSelectors } from './scripts';
 
 document.querySelectorAll(cssSelectors.dropdownMenu).forEach((node) => {
   new Dropdown(node);

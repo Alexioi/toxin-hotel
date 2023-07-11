@@ -1,5 +1,4 @@
-import { cssSelectors } from './scripts/constants';
-import { TextField, HTMLInputElementWithPlugin } from './scripts/TextField';
+import { cssSelectors, TextField, HTMLInputElementWithPlugin } from './scripts';
 
 document
   .querySelectorAll<HTMLInputElementWithPlugin>(cssSelectors.input)

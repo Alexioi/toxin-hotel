@@ -1,6 +1,4 @@
-import { Model } from './mvp/Model';
-import { View } from './mvp/View';
-import { Presenter } from './mvp/Presenter';
+import { Model, View, Presenter } from './mvp';
 
 const getData = (node: Element, name: string) => {
   if (!(node instanceof HTMLElement)) {

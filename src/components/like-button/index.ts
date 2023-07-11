@@ -1,5 +1,4 @@
-import { LikeButton } from './scripts/LikeButton';
-import { cssSelectors } from './scripts/constants';
+import { LikeButton, cssSelectors } from './scripts';
 
 document.querySelectorAll(cssSelectors.likeButton).forEach((node) => {
   new LikeButton(node);

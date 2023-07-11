@@ -1,5 +1,4 @@
-import { Filter } from './scripts/Filter';
-import { cssSelectors } from './scripts/constants';
+import { Filter, cssSelectors } from './scripts';
 
 document.querySelectorAll(cssSelectors.filter).forEach((node) => {
   new Filter(node);

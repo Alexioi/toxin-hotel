@@ -2,8 +2,8 @@ import { EventEmitter, Callback } from '@helpers/EventEmitter';
 import { helpers } from '@helpers/index';
 
 import { cssSelectors } from '../../constants';
-import { Counter } from './subViews/Counter';
 import { CounterEvents, ViewEvents } from '../../types';
+import { Counter } from './subViews';
 import {
   toggleInputFocus,
   toggleClearButton,
