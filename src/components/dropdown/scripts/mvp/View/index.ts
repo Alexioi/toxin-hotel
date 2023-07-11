@@ -64,9 +64,9 @@ class View extends EventEmitter<ViewEvents> {
     }
   }
 
-  public subscribeCountersToEvents(
-    eventName: keyof CounterEvents,
-    callback: Callback<CounterEvents, keyof CounterEvents>,
+  public subscribeCountersToEvents<K extends keyof CounterEvents>(
+    eventName: K,
+    callback: Callback<CounterEvents, K>,
   ) {
     this.counters.forEach((counter) => {
       counter.subscribe(eventName, callback);
