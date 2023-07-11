@@ -1,4 +1,4 @@
-import { HTMLInputElementWithPlugin } from '@components/text-field/scripts/TextField';
+import * as TextField from '@components/text-field';
 import { AirDatepicker } from '@libs/air-datepicker';
 
 import { cssSelectors } from './constants';
@@ -15,7 +15,8 @@ import {
 class Calendar {
   private root: Element;
 
-  private inputs: NodeListOf<HTMLInputElementWithPlugin> | never[] = [];
+  private inputs: NodeListOf<TextField.HTMLInputElementWithPlugin> | never[] =
+    [];
 
   private toggleButtons: NodeListOf<Element> | never[] = [];
 

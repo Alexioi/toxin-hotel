@@ -1,4 +1,9 @@
-import { cssSelectors, TextField, HTMLInputElementWithPlugin } from './scripts';
+import {
+  cssSelectors,
+  TextField,
+  HTMLInputElementWithPlugin,
+  CustomDate,
+} from './scripts';
 
 document
   .querySelectorAll<HTMLInputElementWithPlugin>(cssSelectors.input)
@@ -19,3 +24,5 @@ document
 
     new TextField(node, type);
   });
+
+export { HTMLInputElementWithPlugin, CustomDate };
