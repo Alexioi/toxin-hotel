@@ -68,6 +68,7 @@ class View extends EventEmitter<ViewEvents> {
     const dom = initNodes(node);
 
     this.attachEventHandlers(dom);
+
     const counters = createCounters(node);
     const props = initProps(dom);
 
@@ -86,23 +87,14 @@ class View extends EventEmitter<ViewEvents> {
     return this;
   }
 
-  private handleClearButtonClick() {
-    this.emit('ClearCounters', null);
-  }
-
   private handleApplyButtonClick() {
     this.props.isUpdateButtonPressed = true;
 
     this.emit('ApplyDropdownData', null);
   }
 
-  private handleDocumentClick(event: Event) {
-    const { menu, input, inputButton } = this.dom;
-    const elements = [menu, input, inputButton];
-
-    if (!helpers.isElementsIncludeNode(event, elements)) {
-      closeMenu(this.dom.root, this.dom.input);
-    }
+  private handleClearButtonClick() {
+    this.emit('ClearCounters', null);
   }
 
   private toggleMenu() {
@@ -111,6 +103,17 @@ class View extends EventEmitter<ViewEvents> {
     toggleMenu(root, input);
 
     return this;
+  }
+
+  private handleDocumentClick(event: Event) {
+    const { menu, input, inputButton } = this.dom;
+    const elements = [menu, input, inputButton];
+
+    if (helpers.isElementsIncludeNode(event, elements)) {
+      return;
+    }
+
+    closeMenu(this.dom.root, this.dom.input);
   }
 }
 

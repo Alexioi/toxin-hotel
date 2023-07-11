@@ -2,21 +2,15 @@ import { EventEmitter } from '@helpers/EventEmitter';
 
 import { CounterEvents } from '../../../../types';
 import { disableCounterButton, initNodes } from './methods';
+import { Dom } from './type';
 
 class Counter extends EventEmitter<CounterEvents> {
-  private dom: {
-    root: Element;
-    decrementButton: Element | null;
-    incrementButton: Element | null;
-    counterNode: Element | null;
-  };
+  private dom: Dom;
 
-  private index: number;
+  private props: { index: number };
 
   constructor(node: Element, index: number) {
     super();
-
-    this.index = index;
 
     this.handleDecrementButtonClick =
       this.handleDecrementButtonClick.bind(this);
@@ -24,9 +18,10 @@ class Counter extends EventEmitter<CounterEvents> {
     this.handleIncrementButtonClick =
       this.handleIncrementButtonClick.bind(this);
 
-    this.dom = initNodes(node);
+    const { dom, props } = this.init(node, index);
 
-    this.init();
+    this.dom = dom;
+    this.props = props;
   }
 
   public update(counter: number) {
@@ -40,14 +35,16 @@ class Counter extends EventEmitter<CounterEvents> {
     return this;
   }
 
-  private init() {
-    this.attachEventHandlers();
+  private init(node: Element, index: number) {
+    const dom = initNodes(node);
 
-    return this;
+    this.attachEventHandlers(dom);
+
+    return { dom, props: { index } };
   }
 
-  private attachEventHandlers() {
-    const { decrementButton, incrementButton } = this.dom;
+  private attachEventHandlers(dom: Dom) {
+    const { decrementButton, incrementButton } = dom;
 
     decrementButton?.addEventListener('click', this.handleDecrementButtonClick);
     incrementButton?.addEventListener('click', this.handleIncrementButtonClick);
@@ -56,11 +53,11 @@ class Counter extends EventEmitter<CounterEvents> {
   }
 
   private handleDecrementButtonClick() {
-    this.emit('DecrementCounter', { index: this.index });
+    this.emit('DecrementCounter', { index: this.props.index });
   }
 
   private handleIncrementButtonClick() {
-    this.emit('IncrementCounter', { index: this.index });
+    this.emit('IncrementCounter', { index: this.props.index });
   }
 }
 

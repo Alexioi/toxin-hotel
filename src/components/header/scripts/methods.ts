@@ -1,5 +1,19 @@
 import { helpers } from '@helpers/index';
 
+import { cssSelectors } from './constants';
+
+const initNodes = (root: Element) => {
+  const burgerButton = root.querySelector(cssSelectors.burgerButton);
+  const subNavigationLists = root.querySelectorAll(
+    cssSelectors.subNavigationLists,
+  );
+  const navigationButtons = root.querySelectorAll(
+    cssSelectors.navigationButtons,
+  );
+
+  return { root, burgerButton, subNavigationLists, navigationButtons };
+};
+
 const closeSubNavigationList = (node: Element | null) => {
   node?.classList.remove('header__sub-navigation-list_opened');
 };
@@ -37,6 +51,7 @@ const closeSubNavigationListOnClickOutsideBorders = (
 };
 
 export {
+  initNodes,
   toggleMobileNavigation,
   toggleSubNavigationList,
   closeSubNavigationListOnClickOutsideBorders,

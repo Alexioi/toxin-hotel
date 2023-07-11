@@ -1,51 +1,38 @@
-import { cssSelectors } from './constants';
 import {
   closeSubNavigationListOnClickOutsideBorders,
+  initNodes,
   toggleMobileNavigation,
   toggleSubNavigationList,
 } from './methods';
+import { Dom } from './type';
 
 class Header {
-  private root: Element;
+  private dom: Dom;
 
-  private burgerButton: Element | null = null;
-
-  private subNavigationLists: NodeListOf<Element> | never[] = [];
-
-  private navigationButtons: NodeListOf<Element> | never[] = [];
-
-  constructor(root: Element) {
-    this.root = root;
-
+  constructor(node: Element) {
     this.handleBurgerButtonClick = this.handleBurgerButtonClick.bind(this);
     this.handleDocumentClick = this.handleDocumentClick.bind(this);
     this.handleNavigationButtonClick =
       this.handleNavigationButtonClick.bind(this);
 
-    this.init();
+    const { dom } = this.init(node);
+
+    this.dom = dom;
   }
 
-  private init() {
-    this.initNodes().attachEventHandlers();
+  private init(node: Element) {
+    const root = node;
+    const dom = initNodes(root);
 
-    return this;
+    this.attachEventHandlers(dom);
+
+    return { dom };
   }
 
-  private initNodes() {
-    this.burgerButton = this.root.querySelector(cssSelectors.burgerButton);
-    this.subNavigationLists = this.root.querySelectorAll(
-      cssSelectors.subNavigationLists,
-    );
-    this.navigationButtons = this.root.querySelectorAll(
-      cssSelectors.navigationButtons,
-    );
-
-    return this;
-  }
-
-  private attachEventHandlers() {
-    this.burgerButton?.addEventListener('click', this.handleBurgerButtonClick);
-    this.navigationButtons.forEach((navigationButton) => {
+  private attachEventHandlers(dom: Dom) {
+    const { burgerButton, navigationButtons } = dom;
+    burgerButton?.addEventListener('click', this.handleBurgerButtonClick);
+    navigationButtons.forEach((navigationButton) => {
       navigationButton.addEventListener(
         'click',
         this.handleNavigationButtonClick,
@@ -56,24 +43,24 @@ class Header {
     return this;
   }
 
-  private handleDocumentClick(event: Event) {
-    closeSubNavigationListOnClickOutsideBorders(
-      event,
-      this.navigationButtons,
-      this.subNavigationLists,
-    );
-  }
-
   private handleNavigationButtonClick(event: Event) {
-    toggleSubNavigationList(
-      event,
-      this.navigationButtons,
-      this.subNavigationLists,
-    );
+    const { navigationButtons, subNavigationLists } = this.dom;
+
+    toggleSubNavigationList(event, navigationButtons, subNavigationLists);
   }
 
   private handleBurgerButtonClick() {
-    toggleMobileNavigation(this.root);
+    toggleMobileNavigation(this.dom.root);
+  }
+
+  private handleDocumentClick(event: Event) {
+    const { navigationButtons, subNavigationLists } = this.dom;
+
+    closeSubNavigationListOnClickOutsideBorders(
+      event,
+      navigationButtons,
+      subNavigationLists,
+    );
   }
 }
 

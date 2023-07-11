@@ -1,4 +1,5 @@
 import * as TextField from '@components/text-field';
+import { AirDatepicker } from '@libs/air-datepicker';
 
 type Dom = {
   root: Element;
@@ -9,4 +10,6 @@ type Dom = {
   clear: Element | null;
 };
 
-export { Dom };
+type Libs = { datepicker: AirDatepicker | null };
+
+export { Dom, Libs };

@@ -1,6 +1,4 @@
-import { AirDatepicker } from '@libs/air-datepicker';
-
-import { Dom } from './type';
+import { Dom, Libs } from './type';
 import {
   applyDates,
   clearDates,
@@ -15,7 +13,7 @@ import {
 class Calendar {
   private dom: Dom;
 
-  private datepicker: AirDatepicker | null;
+  private libs: Libs;
 
   constructor(node: Element) {
     this.handleInputBlur = this.handleInputBlur.bind(this);
@@ -24,18 +22,19 @@ class Calendar {
     this.handleToggleButtonClick = this.handleToggleButtonClick.bind(this);
     this.handleDocumentClick = this.handleDocumentClick.bind(this);
 
-    const { dom, datepicker } = this.init(node);
+    const { dom, libs } = this.init(node);
 
     this.dom = dom;
-    this.datepicker = datepicker;
+    this.libs = libs;
   }
 
   private init(node: Element) {
     const dom = initNodes(node);
     const datepicker = createDatepicker(node);
+
     this.attachEventsHandler(dom);
 
-    return { dom, datepicker };
+    return { dom, libs: { datepicker } };
   }
 
   private attachEventsHandler(dom: Dom) {
@@ -54,6 +53,20 @@ class Calendar {
     return this;
   }
 
+  private handleApplyButtonClick() {
+    applyDates(this.libs.datepicker, this.dom.inputs);
+  }
+
+  private handleCleanButtonClick() {
+    clearDates(this.libs.datepicker, this.dom.inputs);
+  }
+
+  private handleToggleButtonClick() {
+    const { menu, inputs } = this.dom;
+    toggleMenu(menu, inputs);
+    selectDatesInDatepicker(this.libs.datepicker, inputs);
+  }
+
   private handleInputBlur() {
     displayDates(this.dom.inputs);
   }
@@ -64,20 +77,6 @@ class Calendar {
     const elements = [menu, firstToggleButton, secondToggleButton];
 
     closeMenu(event, menu, inputs, elements);
-  }
-
-  private handleApplyButtonClick() {
-    applyDates(this.datepicker, this.dom.inputs);
-  }
-
-  private handleCleanButtonClick() {
-    clearDates(this.datepicker, this.dom.inputs);
-  }
-
-  private handleToggleButtonClick() {
-    const { menu, inputs } = this.dom;
-    toggleMenu(menu, inputs);
-    selectDatesInDatepicker(this.datepicker, inputs);
   }
 }
 

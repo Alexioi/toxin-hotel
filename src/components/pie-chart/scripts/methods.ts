@@ -173,4 +173,49 @@ const drawDiagram = (
   drawText(canvas, totalVotes, centerX, centerY);
 };
 
-export { drawDiagram };
+const init = (root: Element) => {
+  const { height, width } = diagramParameters;
+  const innerRadius = width / 2 - diagramParameters.arcWidth;
+  const outerRadius = width / 2;
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const { grades } = diagramParameters;
+  const diagramColors: DiagramColors = diagramParameters.colors;
+
+  if (!(root instanceof HTMLCanvasElement)) {
+    return;
+  }
+
+  const canvas = root?.getContext('2d');
+
+  root?.setAttribute('height', String(height));
+  root?.setAttribute('width', String(width));
+
+  if (!(root instanceof HTMLElement)) {
+    return;
+  }
+
+  const datasetVotes = root?.dataset.votes;
+
+  const votes: Votes =
+    typeof datasetVotes === 'string'
+      ? JSON.parse(datasetVotes)
+      : diagramParameters.votes;
+
+  if (canvas === null) {
+    return;
+  }
+
+  drawDiagram(
+    votes,
+    canvas,
+    grades,
+    diagramColors,
+    centerX,
+    centerY,
+    outerRadius,
+    innerRadius,
+  );
+};
+
+export { init };

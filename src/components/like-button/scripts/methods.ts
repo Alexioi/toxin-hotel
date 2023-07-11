@@ -1,7 +1,10 @@
-const calculateCounterValue = (value: number, isLiked: boolean): number => {
-  const newValue = isLiked ? value + 1 : value - 1;
+import { cssSelectors } from './constants';
+import { Dom } from './types';
 
-  return newValue;
+const initNodes = (root: Element) => {
+  const counter = root.querySelector(cssSelectors.counter);
+
+  return { root, counter };
 };
 
 const initIsLiked = (node: Element, value: number): boolean => {
@@ -22,6 +25,21 @@ const initCounterValue = (node: Element | null) => {
   }
 
   return 0;
+};
+
+const initProps = (dom: Dom) => {
+  const { counter, root } = dom;
+
+  const value = initCounterValue(counter);
+  const isLiked = initIsLiked(root, value);
+
+  return { value, isLiked };
+};
+
+const calculateCounterValue = (value: number, isLiked: boolean): number => {
+  const newValue = isLiked ? value + 1 : value - 1;
+
+  return newValue;
 };
 
 const changeCounterValue = (
@@ -51,4 +69,11 @@ const changeIsLiked = (isLiked: boolean, node: Element) => {
   return !isLiked;
 };
 
-export { initIsLiked, initCounterValue, changeCounterValue, changeIsLiked };
+export {
+  initNodes,
+  initIsLiked,
+  initCounterValue,
+  initProps,
+  changeCounterValue,
+  changeIsLiked,
+};

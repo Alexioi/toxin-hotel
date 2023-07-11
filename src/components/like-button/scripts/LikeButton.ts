@@ -1,55 +1,50 @@
-import { cssSelectors } from './constants';
 import {
   changeCounterValue,
   changeIsLiked,
-  initCounterValue,
-  initIsLiked,
+  initNodes,
+  initProps,
 } from './methods';
+import { Dom, Props } from './types';
 
 class LikeButton {
-  private root: Element;
+  private dom: Dom;
 
-  private counter: Element | null = null;
+  private props: Props;
 
-  private value = 0;
+  constructor(node: Element) {
+    const { dom, props } = this.init(node);
 
-  private isLiked = false;
-
-  constructor(root: Element) {
-    this.root = root;
-
-    this.init();
+    this.dom = dom;
+    this.props = props;
   }
 
-  private init() {
-    this.initNodes().attachEventHandlers().initParameters();
+  private init(node: Element) {
+    const root = node;
+    const dom = initNodes(root);
+    const props = initProps(dom);
 
-    return this;
+    this.attachEventHandlers(dom);
+
+    return { dom, props };
   }
 
-  private initNodes() {
-    this.counter = this.root.querySelector(cssSelectors.counter);
+  private attachEventHandlers(dom: Dom) {
+    const { root } = dom;
 
-    return this;
-  }
-
-  private attachEventHandlers() {
-    this.root.addEventListener('click', this.handleButtonClick.bind(this));
-
-    return this;
-  }
-
-  private initParameters() {
-    this.value = initCounterValue(this.counter);
-    this.isLiked = initIsLiked(this.root, this.value);
+    root.addEventListener('click', this.handleButtonClick.bind(this));
 
     return this;
   }
 
   private handleButtonClick() {
-    this.isLiked = changeIsLiked(this.isLiked, this.root);
+    const { root, counter } = this.dom;
+    const { isLiked, value } = this.props;
 
-    this.value = changeCounterValue(this.value, this.isLiked, this.counter);
+    const newIsLiked = changeIsLiked(isLiked, root);
+
+    const newValue = changeCounterValue(value, newIsLiked, counter);
+
+    this.props = { isLiked: newIsLiked, value: newValue };
   }
 }
 

@@ -1,42 +1,36 @@
-import { cssSelectors } from './constants';
+import { initNodes } from './methods';
+import { Dom } from './type';
 
 class DropdownList {
-  private root: Element;
-
-  private title: Element | null = null;
-
-  private button: Element | null = null;
+  private dom: Dom;
 
   constructor(node: Element) {
-    this.root = node;
-
     this.toggleList = this.toggleList.bind(this);
 
-    this.init();
+    const { dom } = this.init(node);
+
+    this.dom = dom;
   }
 
-  private init() {
-    this.initNodes().attachEventHandlers();
+  private init(node: Element) {
+    const root = node;
+    const dom = initNodes(root);
 
-    return this;
+    this.attachEventHandlers(dom);
+
+    return { dom };
   }
 
-  private initNodes() {
-    this.title = this.root.querySelector(cssSelectors.title);
-    this.button = this.root.querySelector(cssSelectors.button);
-
-    return this;
-  }
-
-  private attachEventHandlers() {
-    this.title?.addEventListener('click', this.toggleList);
-    this.button?.addEventListener('click', this.toggleList);
+  private attachEventHandlers(dom: Dom) {
+    const { title, button } = dom;
+    title?.addEventListener('click', this.toggleList);
+    button?.addEventListener('click', this.toggleList);
 
     return this;
   }
 
   private toggleList() {
-    this.root.classList.toggle('dropdown-list_opened');
+    this.dom.root.classList.toggle('dropdown-list_opened');
 
     return this;
   }

@@ -2,15 +2,10 @@ import { EventEmitter } from '@helpers/EventEmitter';
 
 import { ModelEvents } from '../../types';
 import { calculateCounter, calculateValue, resetCounters } from './methods';
+import { Props } from './type';
 
 class Model extends EventEmitter<ModelEvents> {
-  private groups: number[][] = [[]];
-
-  private counters: number[] = [];
-
-  private variants: string[][] = [[]];
-
-  private placeholder: string = '';
+  private props: Props;
 
   constructor(
     groups: number[][],
@@ -20,13 +15,13 @@ class Model extends EventEmitter<ModelEvents> {
   ) {
     super();
 
-    this.init(groups, variants, placeholder, counters);
+    this.props = { placeholder, groups, variants, counters };
   }
 
   public incrementCounter(index: number) {
-    const { counters } = this;
+    const counters = calculateCounter(this.props.counters, index, 1);
 
-    this.counters = calculateCounter(counters, index, 1);
+    this.props = { ...this.props, counters };
 
     this.emitValue();
 
@@ -34,9 +29,9 @@ class Model extends EventEmitter<ModelEvents> {
   }
 
   public decrementCounter(index: number) {
-    const { counters } = this;
+    const counters = calculateCounter(this.props.counters, index, -1);
 
-    this.counters = calculateCounter(counters, index, -1);
+    this.props = { ...this.props, counters };
 
     this.emitValue();
 
@@ -44,7 +39,9 @@ class Model extends EventEmitter<ModelEvents> {
   }
 
   public resetCounters() {
-    this.counters = resetCounters(this.counters);
+    const counters = resetCounters(this.props.counters);
+
+    this.props = { ...this.props, counters };
 
     this.emitValue();
 
@@ -52,28 +49,11 @@ class Model extends EventEmitter<ModelEvents> {
   }
 
   public emitValue() {
-    const { groups, counters, variants, placeholder } = this;
+    const { groups, counters, variants, placeholder } = this.props;
 
     const value = calculateValue(groups, counters, variants, placeholder);
 
     this.emit('UpdateCounters', { counters, value });
-
-    return this;
-  }
-
-  private init(
-    groups: number[][],
-    variants: string[][],
-    placeholder: string,
-    counters: number[],
-  ) {
-    this.placeholder = placeholder;
-
-    this.groups = groups;
-
-    this.variants = variants;
-
-    this.counters = counters;
 
     return this;
   }

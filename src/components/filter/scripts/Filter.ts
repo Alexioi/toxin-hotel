@@ -1,38 +1,36 @@
-import { cssSelectors } from './constants';
+import { initNodes } from './methods';
+import { Dom } from './types';
 
 class Filter {
-  private root: Element;
+  private dom: Dom;
 
-  private button: Element | null = null;
-
-  constructor(root: Element) {
-    this.root = root;
-
+  constructor(node: Element) {
     this.handleButtonClick = this.handleButtonClick.bind(this);
 
-    this.init();
+    const { dom } = this.init(node);
+
+    this.dom = dom;
   }
 
-  private init() {
-    this.initNodes().attachEventHandlers();
+  private init(node: Element) {
+    const root = node;
+    const dom = initNodes(root);
 
-    return this;
+    this.attachEventHandlers(dom);
+
+    return { dom };
   }
 
-  private initNodes() {
-    this.button = this.root.querySelector(cssSelectors.toggleButton);
+  private attachEventHandlers(dom: Dom) {
+    const { button } = dom;
 
-    return this;
-  }
-
-  private attachEventHandlers() {
-    this.button?.addEventListener('click', this.handleButtonClick);
+    button?.addEventListener('click', this.handleButtonClick);
 
     return this;
   }
 
   private handleButtonClick() {
-    this.root.classList.toggle('filter_opened');
+    this.dom.root.classList.toggle('filter_opened');
   }
 }
 
