@@ -4,6 +4,19 @@ import { helpers } from '@helpers/index';
 
 import { cssSelectors } from './constants';
 
+const initNodes = (node: Element) => {
+  const root = node;
+  const inputs = root.querySelectorAll<TextField.HTMLInputElementWithPlugin>(
+    cssSelectors.input,
+  );
+  const toggleButtons = root.querySelectorAll(cssSelectors.toggleButtons);
+  const menu = root.querySelector(cssSelectors.menu);
+  const apply = root.querySelector(cssSelectors.applyButton);
+  const clear = root.querySelector(cssSelectors.clearButton);
+
+  return { root, inputs, toggleButtons, menu, apply, clear };
+};
+
 const convertDateToString = (date: number): string => {
   if (String(date).length !== 2) {
     return `0${date}`;
@@ -30,7 +43,7 @@ const createDatepicker = (node: Element) => {
 };
 
 const displayDates = (
-  inputs: NodeListOf<TextField.HTMLInputElementWithPlugin> | never[],
+  inputs: NodeListOf<TextField.HTMLInputElementWithPlugin>,
 ) => {
   if (inputs.length === 2) {
     const [inputFrom, inputTo] = inputs;
@@ -67,7 +80,7 @@ const displayDates = (
 
 const applyDates = (
   datepicker: AirDatepicker | null,
-  inputs: NodeListOf<TextField.HTMLInputElementWithPlugin> | never[],
+  inputs: NodeListOf<TextField.HTMLInputElementWithPlugin>,
 ) => {
   if (datepicker === null) {
     return;
@@ -99,7 +112,7 @@ const applyDates = (
 
 const clearDates = (
   datepicker: AirDatepicker | null,
-  inputs: NodeListOf<TextField.HTMLInputElementWithPlugin> | never[],
+  inputs: NodeListOf<TextField.HTMLInputElementWithPlugin>,
 ) => {
   const emptyDate = {
     day: '',
@@ -126,7 +139,7 @@ const clearDates = (
 
 const selectDatesInDatepicker = (
   datepicker: AirDatepicker | null,
-  inputs: NodeListOf<TextField.HTMLInputElementWithPlugin> | never[],
+  inputs: NodeListOf<TextField.HTMLInputElementWithPlugin>,
 ) => {
   datepicker?.clearDates();
 
@@ -163,7 +176,7 @@ const selectDatesInDatepicker = (
 
 const toggleMenu = (
   menu: Element | null,
-  inputs: NodeListOf<TextField.HTMLInputElementWithPlugin> | never[],
+  inputs: NodeListOf<TextField.HTMLInputElementWithPlugin>,
 ) => {
   menu?.classList.toggle('calendar__menu_visible');
 
@@ -181,7 +194,7 @@ const toggleMenu = (
 const closeMenu = (
   event: Event,
   node: Element | null,
-  inputs: NodeListOf<TextField.HTMLInputElementWithPlugin> | never[],
+  inputs: NodeListOf<TextField.HTMLInputElementWithPlugin>,
   elements: (Element | null)[],
 ) => {
   if (helpers.isElementsIncludeNode(event, elements)) {
@@ -196,6 +209,7 @@ const closeMenu = (
 };
 
 export {
+  initNodes,
   createDatepicker,
   displayDates,
   applyDates,

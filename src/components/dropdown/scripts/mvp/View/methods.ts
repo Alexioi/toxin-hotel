@@ -1,5 +1,37 @@
 import { cssSelectors } from '../../constants';
 import { Counter } from './subViews/Counter';
+import { Dom } from './type';
+
+const initNodes = (node: Element) => {
+  const root = node;
+  const input = node.querySelector(cssSelectors.input);
+  const inputButton = node.querySelector(cssSelectors.inputButton);
+  const textField = node.querySelector(cssSelectors.textField);
+  const clearButton = node.querySelector(cssSelectors.clearButton);
+  const applyButton = node.querySelector(cssSelectors.applyButton);
+  const menu = node.querySelector(cssSelectors.menu);
+
+  return {
+    root,
+    input,
+    inputButton,
+    textField,
+    clearButton,
+    applyButton,
+    menu,
+  };
+};
+
+const initProps = (dom: Dom) => {
+  const isUpdateButtonPressed = true;
+  if (dom.applyButton === null) {
+    const isAutoUpdateInput = true;
+    return { isUpdateButtonPressed, isAutoUpdateInput };
+  }
+  const isAutoUpdateInput = false;
+
+  return { isUpdateButtonPressed, isAutoUpdateInput };
+};
 
 const toggleClearButton = (
   clearButton: Element | null,
@@ -57,6 +89,8 @@ const updateCounters = (counters: Counter[], counterValues: number[]) => {
 };
 
 export {
+  initNodes,
+  initProps,
   toggleClearButton,
   toggleInputFocus,
   closeMenu,

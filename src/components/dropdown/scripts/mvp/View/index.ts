@@ -1,9 +1,7 @@
 import { EventEmitter, Callback } from '@helpers/EventEmitter';
 import { helpers } from '@helpers/index';
 
-import { cssSelectors } from '../../constants';
 import { CounterEvents, ViewEvents } from '../../types';
-import { Counter } from './subViews';
 import {
   toggleInputFocus,
   toggleClearButton,
@@ -11,102 +9,78 @@ import {
   toggleMenu,
   createCounters,
   updateCounters,
+  initNodes,
+  initProps,
 } from './methods';
+import { Dom, Props, SubView } from './type';
 
 class View extends EventEmitter<ViewEvents> {
-  private root: Element;
+  private dom: Dom;
 
-  private input: Element | null = null;
+  private subViews: SubView;
 
-  private inputButton: Element | null = null;
-
-  private textField: Element | null = null;
-
-  private counters: Counter[] = [];
-
-  private clearButton: Element | null = null;
-
-  private applyButton: Element | null = null;
-
-  private menu: Element | null = null;
-
-  private isAutoUpdateInput = true;
-
-  private isUpdateButtonPressed = true;
+  private props: Props;
 
   constructor(node: Element) {
     super();
-
-    this.root = node;
 
     this.handleApplyButtonClick = this.handleApplyButtonClick.bind(this);
     this.handleClearButtonClick = this.handleClearButtonClick.bind(this);
     this.toggleMenu = this.toggleMenu.bind(this);
     this.handleDocumentClick = this.handleDocumentClick.bind(this);
 
-    this.init();
+    const { dom, subViews, props } = this.init(node);
+
+    this.dom = dom;
+    this.props = props;
+    this.subViews = subViews;
   }
 
   public update(counterValues: number[], value: string) {
-    updateCounters(this.counters, counterValues);
+    updateCounters(this.subViews.counters, counterValues);
 
-    toggleClearButton(this.clearButton, counterValues);
+    toggleClearButton(this.dom.clearButton, counterValues);
 
-    if (this.isAutoUpdateInput || this.isUpdateButtonPressed) {
-      this.isUpdateButtonPressed = false;
+    if (this.props.isAutoUpdateInput || this.props.isUpdateButtonPressed) {
+      this.props.isUpdateButtonPressed = false;
       this.updateInputValue(value);
     }
   }
 
   public updateInputValue(value: string) {
-    if (this.input instanceof HTMLInputElement) {
-      this.input.value = value;
+    if (!(this.dom.input instanceof HTMLInputElement)) {
+      return;
     }
+
+    this.dom.input.value = value;
   }
 
   public subscribeCountersToEvents<K extends keyof CounterEvents>(
     eventName: K,
     callback: Callback<CounterEvents, K>,
   ) {
-    this.counters.forEach((counter) => {
+    this.subViews.counters.forEach((counter) => {
       counter.subscribe(eventName, callback);
     });
   }
 
-  private init() {
-    this.initNodes()
-      .attachEventHandlers()
-      .initCounters()
-      .defineAutomaticInputDataModification();
+  private init(node: Element) {
+    const dom = initNodes(node);
 
-    toggleInputFocus(this.root, this.input);
+    this.attachEventHandlers(dom);
+    const counters = createCounters(node);
+    const props = initProps(dom);
 
-    return this;
+    toggleInputFocus(node, dom.input);
+
+    return { dom, subViews: { counters }, props };
   }
 
-  private defineAutomaticInputDataModification() {
-    if (this.applyButton !== null) {
-      this.isAutoUpdateInput = false;
-    }
-
-    return this;
-  }
-
-  private initNodes() {
-    this.input = this.root.querySelector(cssSelectors.input);
-    this.inputButton = this.root.querySelector(cssSelectors.inputButton);
-    this.textField = this.root.querySelector(cssSelectors.textField);
-    this.clearButton = this.root.querySelector(cssSelectors.clearButton);
-    this.applyButton = this.root.querySelector(cssSelectors.applyButton);
-    this.menu = this.root.querySelector(cssSelectors.menu);
-
-    return this;
-  }
-
-  private attachEventHandlers() {
-    this.applyButton?.addEventListener('click', this.handleApplyButtonClick);
-    this.clearButton?.addEventListener('click', this.handleClearButtonClick);
-    this.textField?.addEventListener('click', this.toggleMenu);
+  private attachEventHandlers(dom: Dom) {
+    const { applyButton, clearButton, textField } = dom;
+    applyButton?.addEventListener('click', this.handleApplyButtonClick);
+    clearButton?.addEventListener('click', this.handleClearButtonClick);
+    textField?.addEventListener('click', this.toggleMenu);
     document.addEventListener('click', this.handleDocumentClick);
 
     return this;
@@ -117,27 +91,24 @@ class View extends EventEmitter<ViewEvents> {
   }
 
   private handleApplyButtonClick() {
-    this.isUpdateButtonPressed = true;
+    this.props.isUpdateButtonPressed = true;
 
     this.emit('ApplyDropdownData', null);
   }
 
-  private initCounters() {
-    this.counters = createCounters(this.root);
-
-    return this;
-  }
-
   private handleDocumentClick(event: Event) {
-    const elements = [this.menu, this.input, this.inputButton];
+    const { menu, input, inputButton } = this.dom;
+    const elements = [menu, input, inputButton];
 
     if (!helpers.isElementsIncludeNode(event, elements)) {
-      closeMenu(this.root, this.input);
+      closeMenu(this.dom.root, this.dom.input);
     }
   }
 
   private toggleMenu() {
-    toggleMenu(this.root, this.input);
+    const { root, input } = this.dom;
+
+    toggleMenu(root, input);
 
     return this;
   }

@@ -1,74 +1,52 @@
-import * as TextField from '@components/text-field';
 import { AirDatepicker } from '@libs/air-datepicker';
 
-import { cssSelectors } from './constants';
+import { Dom } from './type';
 import {
   applyDates,
   clearDates,
   closeMenu,
   createDatepicker,
   displayDates,
+  initNodes,
   selectDatesInDatepicker,
   toggleMenu,
 } from './methods';
 
 class Calendar {
-  private root: Element;
+  private dom: Dom;
 
-  private inputs: NodeListOf<TextField.HTMLInputElementWithPlugin> | never[] =
-    [];
+  private datepicker: AirDatepicker | null;
 
-  private toggleButtons: NodeListOf<Element> | never[] = [];
-
-  private menu: Element | null = null;
-
-  private apply: Element | null = null;
-
-  private clear: Element | null = null;
-
-  private datepicker: AirDatepicker | null = null;
-
-  constructor(root: Element) {
-    this.root = root;
-
+  constructor(node: Element) {
     this.handleInputBlur = this.handleInputBlur.bind(this);
     this.handleApplyButtonClick = this.handleApplyButtonClick.bind(this);
     this.handleCleanButtonClick = this.handleCleanButtonClick.bind(this);
     this.handleToggleButtonClick = this.handleToggleButtonClick.bind(this);
     this.handleDocumentClick = this.handleDocumentClick.bind(this);
 
-    this.init();
+    const { dom, datepicker } = this.init(node);
+
+    this.dom = dom;
+    this.datepicker = datepicker;
   }
 
-  private init() {
-    this.initNodes().initDatepicker().attachEventsHandler();
+  private init(node: Element) {
+    const dom = initNodes(node);
+    const datepicker = createDatepicker(node);
+    this.attachEventsHandler(dom);
 
-    return this;
+    return { dom, datepicker };
   }
 
-  private initNodes() {
-    this.inputs = this.root.querySelectorAll(cssSelectors.input);
-    this.toggleButtons = this.root.querySelectorAll(cssSelectors.toggleButtons);
-    this.menu = this.root.querySelector(cssSelectors.menu);
-    this.apply = this.root.querySelector(cssSelectors.applyButton);
-    this.clear = this.root.querySelector(cssSelectors.clearButton);
+  private attachEventsHandler(dom: Dom) {
+    const { apply, clear, toggleButtons, inputs } = dom;
 
-    return this;
-  }
-
-  private initDatepicker() {
-    this.datepicker = createDatepicker(this.root);
-
-    return this;
-  }
-
-  private attachEventsHandler() {
-    this.apply?.addEventListener('click', this.handleApplyButtonClick);
-    this.clear?.addEventListener('click', this.handleCleanButtonClick);
-    this.toggleButtons.forEach((node) => {
+    apply?.addEventListener('click', this.handleApplyButtonClick);
+    clear?.addEventListener('click', this.handleCleanButtonClick);
+    toggleButtons.forEach((node) => {
       node.addEventListener('click', this.handleToggleButtonClick);
     });
-    this.inputs.forEach((node) => {
+    inputs.forEach((node) => {
       node.addEventListener('blur', this.handleInputBlur);
     });
     document.addEventListener('click', this.handleDocumentClick);
@@ -77,27 +55,29 @@ class Calendar {
   }
 
   private handleInputBlur() {
-    displayDates(this.inputs);
+    displayDates(this.dom.inputs);
   }
 
   private handleDocumentClick(event: Event) {
-    const [firstToggleButton, secondToggleButton] = this.toggleButtons;
-    const elements = [this.menu, firstToggleButton, secondToggleButton];
+    const { menu, toggleButtons, inputs } = this.dom;
+    const [firstToggleButton, secondToggleButton] = toggleButtons;
+    const elements = [menu, firstToggleButton, secondToggleButton];
 
-    closeMenu(event, this.menu, this.inputs, elements);
+    closeMenu(event, menu, inputs, elements);
   }
 
   private handleApplyButtonClick() {
-    applyDates(this.datepicker, this.inputs);
+    applyDates(this.datepicker, this.dom.inputs);
   }
 
   private handleCleanButtonClick() {
-    clearDates(this.datepicker, this.inputs);
+    clearDates(this.datepicker, this.dom.inputs);
   }
 
   private handleToggleButtonClick() {
-    toggleMenu(this.menu, this.inputs);
-    selectDatesInDatepicker(this.datepicker, this.inputs);
+    const { menu, inputs } = this.dom;
+    toggleMenu(menu, inputs);
+    selectDatesInDatepicker(this.datepicker, inputs);
   }
 }
 

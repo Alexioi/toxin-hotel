@@ -1,24 +1,20 @@
 import { EventEmitter } from '@helpers/EventEmitter';
 
-import { cssSelectors } from '../../../../constants';
 import { CounterEvents } from '../../../../types';
-import { disableCounterButton } from './methods';
+import { disableCounterButton, initNodes } from './methods';
 
 class Counter extends EventEmitter<CounterEvents> {
-  private root: Element;
+  private dom: {
+    root: Element;
+    decrementButton: Element | null;
+    incrementButton: Element | null;
+    counterNode: Element | null;
+  };
 
   private index: number;
 
-  private decrementButton: Element | null = null;
-
-  private incrementButton: Element | null = null;
-
-  private counterNode: Element | null = null;
-
   constructor(node: Element, index: number) {
     super();
-
-    this.root = node;
 
     this.index = index;
 
@@ -28,50 +24,33 @@ class Counter extends EventEmitter<CounterEvents> {
     this.handleIncrementButtonClick =
       this.handleIncrementButtonClick.bind(this);
 
+    this.dom = initNodes(node);
+
     this.init();
   }
 
   public update(counter: number) {
-    disableCounterButton(this.decrementButton, counter);
+    const { decrementButton, counterNode } = this.dom;
+    disableCounterButton(decrementButton, counter);
 
-    if (this.counterNode !== null) {
-      this.counterNode.innerHTML = String(counter);
+    if (counterNode !== null) {
+      counterNode.innerHTML = String(counter);
     }
 
     return this;
   }
 
   private init() {
-    this.initNodes().attachEventHandlers();
-
-    return this;
-  }
-
-  private initNodes() {
-    const [decrementButton, incrementButton] = this.root.querySelectorAll(
-      cssSelectors.counterButtons,
-    );
-
-    this.decrementButton =
-      typeof decrementButton === 'undefined' ? null : decrementButton;
-
-    this.incrementButton =
-      typeof incrementButton === 'undefined' ? null : incrementButton;
-
-    this.counterNode = this.root.querySelector(cssSelectors.counter);
+    this.attachEventHandlers();
 
     return this;
   }
 
   private attachEventHandlers() {
-    this.decrementButton?.addEventListener(
-      'click',
-      this.handleDecrementButtonClick,
-    );
-    this.incrementButton?.addEventListener(
-      'click',
-      this.handleIncrementButtonClick,
-    );
+    const { decrementButton, incrementButton } = this.dom;
+
+    decrementButton?.addEventListener('click', this.handleDecrementButtonClick);
+    incrementButton?.addEventListener('click', this.handleIncrementButtonClick);
 
     return this;
   }
