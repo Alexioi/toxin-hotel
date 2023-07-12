@@ -1,4 +1,4 @@
-import { helpers } from '@helpers/index';
+import { helpers } from '@helpers';
 
 import { cssSelectors } from './constants';
 

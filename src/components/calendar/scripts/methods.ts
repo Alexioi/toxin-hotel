@@ -1,6 +1,6 @@
 import * as TextField from '@components/text-field';
 import { AirDatepicker } from '@libs/air-datepicker';
-import { helpers } from '@helpers/index';
+import { helpers } from '@helpers';
 
 import { cssSelectors } from './constants';
 

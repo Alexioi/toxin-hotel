@@ -1,5 +1,5 @@
 import { EventEmitter, Callback } from '@helpers/EventEmitter';
-import { helpers } from '@helpers/index';
+import { helpers } from '@helpers';
 
 import { CounterEvents, ViewEvents } from '../../types';
 import {
