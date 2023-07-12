@@ -4,44 +4,50 @@ import { CustomDate, ViewEvents } from '../../types';
 import { displayDate, isNumber } from './methods';
 
 class View extends EventEmitter<ViewEvents> {
-  private root: HTMLInputElement;
+  private dom: { root: HTMLInputElement };
 
-  private isFocused = false;
+  private props: { isFocused: boolean };
 
-  constructor(root: HTMLInputElement) {
+  constructor(node: HTMLInputElement) {
     super();
-
-    this.root = root;
 
     this.handleTextFieldInput = this.handleTextFieldInput.bind(this);
     this.handleTextFieldPaste = this.handleTextFieldPaste.bind(this);
     this.handleTextFieldBlur = this.handleTextFieldBlur.bind(this);
     this.handleTextFieldClick = this.handleTextFieldClick.bind(this);
 
-    this.init();
+    const { dom, props } = this.init(node);
+
+    this.dom = dom;
+    this.props = props;
   }
 
   public displayDate(dates: CustomDate[]): void {
-    displayDate(dates, this.isFocused, this.root);
+    displayDate(dates, this.props.isFocused, this.dom.root);
   }
 
-  private init() {
-    this.attachEventsHandler();
+  private init(root: HTMLInputElement) {
+    const dom = { root };
+    const props = { isFocused: false };
 
-    return this;
+    this.attachEventsHandler(dom);
+
+    return { dom, props };
   }
 
-  private attachEventsHandler() {
-    this.root.addEventListener('input', this.handleTextFieldInput);
-    this.root.addEventListener('paste', this.handleTextFieldPaste);
-    this.root.addEventListener('blur', this.handleTextFieldBlur);
-    this.root.addEventListener('click', this.handleTextFieldClick);
+  private attachEventsHandler(dom: { root: HTMLInputElement }) {
+    const { root } = dom;
+
+    root.addEventListener('input', this.handleTextFieldInput);
+    root.addEventListener('paste', this.handleTextFieldPaste);
+    root.addEventListener('blur', this.handleTextFieldBlur);
+    root.addEventListener('click', this.handleTextFieldClick);
 
     return this;
   }
 
   private handleTextFieldBlur() {
-    this.isFocused = false;
+    this.props = { isFocused: false };
 
     this.emit('BlurInput', null);
   }
@@ -56,7 +62,7 @@ class View extends EventEmitter<ViewEvents> {
   };
 
   private handleTextFieldClick() {
-    this.isFocused = true;
+    this.props = { isFocused: true };
     this.emit('TouchInput', null);
   }
 

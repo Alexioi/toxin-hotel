@@ -1,62 +1,49 @@
-import { cssSelectors } from './constants';
 import {
   calculateBackIndex,
   calculateNextIndex,
   calculateTargetIndex,
   hideImages,
+  initNodes,
 } from './methods';
+import { Dom, Props } from './type';
 
 class Carousel {
-  private root: Element;
+  private dom: Dom;
 
-  private images: NodeListOf<Element> | never[] = [];
+  private props: Props;
 
-  private back: Element | null = null;
-
-  private next: Element | null = null;
-
-  private buttons: NodeListOf<Element> | never[] = [];
-
-  private currentImageIndex = 0;
-
-  private quantityImageIndex = 0;
-
-  constructor(root: Element) {
-    this.root = root;
-
+  constructor(node: Element) {
     this.handleBackButtonClick = this.handleBackButtonClick.bind(this);
     this.handleNextButtonClick = this.handleNextButtonClick.bind(this);
     this.handleTargetButtonClick = this.handleTargetButtonClick.bind(this);
 
-    this.init();
+    const { dom, props } = this.init(node);
+
+    this.dom = dom;
+    this.props = props;
   }
 
-  private init() {
-    if (this.root instanceof HTMLElement) {
-      this.currentImageIndex = Number(this.root.dataset.currentImage);
-      this.quantityImageIndex = Number(this.root.dataset.quantityImage);
-    }
+  private init(root: Element) {
+    const currentImageIndex =
+      root instanceof HTMLElement ? Number(root.dataset.currentImage) : 0;
+    const quantityImageIndex =
+      root instanceof HTMLElement ? Number(root.dataset.quantityImage) : 0;
 
-    this.initNodes().attachEventHandlers();
+    const dom = initNodes(root);
 
-    hideImages(this.images, this.buttons, this.currentImageIndex);
+    this.attachEventHandlers(dom);
 
-    return this;
+    hideImages(dom, currentImageIndex);
+
+    return { dom, props: { currentImageIndex, quantityImageIndex } };
   }
 
-  private initNodes() {
-    this.images = this.root.querySelectorAll(cssSelectors.images);
-    this.back = this.root.querySelector(cssSelectors.back);
-    this.next = this.root.querySelector(cssSelectors.next);
-    this.buttons = this.root.querySelectorAll(cssSelectors.buttons);
+  private attachEventHandlers(dom: Dom) {
+    const { back, next, buttons } = dom;
 
-    return this;
-  }
-
-  private attachEventHandlers() {
-    this.back?.addEventListener('click', this.handleBackButtonClick);
-    this.next?.addEventListener('click', this.handleNextButtonClick);
-    this.buttons.forEach((node) => {
+    back?.addEventListener('click', this.handleBackButtonClick);
+    next?.addEventListener('click', this.handleNextButtonClick);
+    buttons.forEach((node) => {
       node.addEventListener('click', this.handleTargetButtonClick);
     });
 
@@ -64,28 +51,52 @@ class Carousel {
   }
 
   private handleBackButtonClick() {
-    this.currentImageIndex = calculateBackIndex(
-      this.currentImageIndex,
-      this.quantityImageIndex,
+    const { currentImageIndex, quantityImageIndex } = this.props;
+
+    const newCurrentImageIndex = calculateBackIndex(
+      currentImageIndex,
+      quantityImageIndex,
     );
-    hideImages(this.images, this.buttons, this.currentImageIndex);
+
+    this.props = {
+      currentImageIndex: newCurrentImageIndex,
+      quantityImageIndex,
+    };
+
+    hideImages(this.dom, newCurrentImageIndex);
   }
 
   private handleNextButtonClick() {
-    this.currentImageIndex = calculateNextIndex(
-      this.currentImageIndex,
-      this.quantityImageIndex,
+    const { currentImageIndex, quantityImageIndex } = this.props;
+
+    const newCurrentImageIndex = calculateNextIndex(
+      currentImageIndex,
+      quantityImageIndex,
     );
-    hideImages(this.images, this.buttons, this.currentImageIndex);
+
+    this.props = {
+      currentImageIndex: newCurrentImageIndex,
+      quantityImageIndex,
+    };
+
+    hideImages(this.dom, newCurrentImageIndex);
   }
 
   private handleTargetButtonClick(event: Event) {
-    this.currentImageIndex = calculateTargetIndex(
+    const { currentImageIndex, quantityImageIndex } = this.props;
+
+    const newCurrentImageIndex = calculateTargetIndex(
       event,
-      this.buttons,
-      this.currentImageIndex,
+      this.dom.buttons,
+      currentImageIndex,
     );
-    hideImages(this.images, this.buttons, this.currentImageIndex);
+
+    this.props = {
+      currentImageIndex: newCurrentImageIndex,
+      quantityImageIndex,
+    };
+
+    hideImages(this.dom, newCurrentImageIndex);
   }
 }
 

@@ -6,17 +6,17 @@ interface HTMLInputElementWithPlugin extends HTMLInputElement {
 }
 
 class TextField {
-  private node: HTMLInputElementWithPlugin;
+  private dom: { root: HTMLInputElementWithPlugin };
 
   private presenter: Presenter;
 
   constructor(node: HTMLInputElementWithPlugin, type: MaskedType) {
-    this.node = node;
+    this.dom = { root: node };
 
-    this.node.plugin = this;
+    this.dom.root.plugin = this;
 
     const model = new Model(type);
-    const view = new View(node);
+    const view = new View(this.dom.root);
 
     this.presenter = new Presenter(view, model);
   }

@@ -3,40 +3,48 @@ import { EventEmitter } from '@helpers/EventEmitter';
 import { Dates, MaskedType, ModelEvents } from '../../types';
 import {
   deleteIncompleteDate,
+  init,
   isNumber,
   removeDate,
   updateDates,
 } from './methods';
 
 class Model extends EventEmitter<ModelEvents> {
-  private dates: Dates = [{ day: '', month: '', year: '' }];
-
-  private type: MaskedType;
+  private props: {
+    dates: Dates;
+    type: MaskedType;
+  };
 
   constructor(type: MaskedType) {
     super();
 
-    this.type = type;
+    const { props } = init(type);
 
-    this.init(type);
+    this.props = props;
   }
 
   public getDates() {
-    return this.dates;
+    return this.props.dates;
   }
 
   public fixData() {
-    this.dates = deleteIncompleteDate(this.type, this.dates);
+    const { type, dates } = this.props;
 
-    this.emit('UpdateDates', { dates: this.dates });
+    const newDates = deleteIncompleteDate(type, dates);
+
+    this.props = { type, dates: newDates };
+
+    this.emit('UpdateDates', { dates: newDates });
 
     return this;
   }
 
   public setDates(dates: Dates) {
-    this.dates = dates;
+    const { type } = this.props;
 
-    this.emit('UpdateDates', { dates: this.dates });
+    this.props = { type, dates };
+
+    this.emit('UpdateDates', { dates });
 
     return this;
   }
@@ -51,26 +59,26 @@ class Model extends EventEmitter<ModelEvents> {
     return this;
   }
 
-  private updateDates(data?: number) {
-    this.dates = updateDates(this.type, this.dates, data);
-
-    this.emit('UpdateDates', { dates: this.dates });
-
-    return this;
-  }
-
   public removeDate() {
-    this.dates = removeDate(this.type, this.dates);
+    const { type, dates } = this.props;
 
-    this.emit('UpdateDates', { dates: this.dates });
+    const newDates = removeDate(type, dates);
+
+    this.props = { type, dates: newDates };
+
+    this.emit('UpdateDates', { dates: newDates });
 
     return this;
   }
 
-  private init(type: MaskedType) {
-    if (type === 'dates') {
-      this.dates = [...this.dates, { day: '', month: '', year: '' }];
-    }
+  private updateDates(data?: number) {
+    const { type, dates } = this.props;
+
+    const newDates = updateDates(type, dates, data);
+
+    this.props = { type, dates: newDates };
+
+    this.emit('UpdateDates', { dates: newDates });
 
     return this;
   }

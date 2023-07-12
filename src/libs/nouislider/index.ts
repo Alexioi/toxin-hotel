@@ -16,24 +16,23 @@ const isTargetElement = (element: HTMLElement): element is TargetElement => {
 };
 
 class NoUISlider {
-  private root: Element | null;
-
-  private valueNode: Element | null;
+  private dom: {
+    value: Element | null;
+  };
 
   constructor(
     root: Element | null,
     valueNode: Element | null,
     parameters: Parameters,
   ) {
-    this.root = root;
-    this.valueNode = valueNode;
+    this.dom = { value: valueNode };
 
     this.updateValue = this.updateValue.bind(this);
 
-    this.init(parameters);
+    this.init(root, parameters);
   }
 
-  private init(parameters: Parameters) {
+  private init(root: Element | null, parameters: Parameters) {
     const { min, max, from, to } = parameters;
 
     const config = {
@@ -46,25 +45,27 @@ class NoUISlider {
       },
     };
 
-    if (!(this.root instanceof HTMLElement)) {
-      return this;
+    if (!(root instanceof HTMLElement)) {
+      return;
     }
 
-    noUiSlider.create(this.root, config);
+    noUiSlider.create(root, config);
 
-    if (!isTargetElement(this.root)) {
-      return this;
+    if (!isTargetElement(root)) {
+      return;
     }
 
-    this.root?.noUiSlider.on('update', this.updateValue);
-
-    return this;
+    root?.noUiSlider.on('update', this.updateValue);
   }
 
   private updateValue([from, to]: (string | number)[]) {
-    if (this.valueNode !== null) {
-      this.valueNode.innerHTML = `${from.toLocaleString()}₽ - ${to.toLocaleString()}₽`;
+    if (this.dom.value === null) {
+      return this;
     }
+
+    this.dom.value.innerHTML = `${Math.trunc(Number(from))}₽ - ${Math.trunc(
+      Number(to),
+    )}₽`;
 
     return this;
   }

@@ -1,5 +1,13 @@
 import { Dates, MaskedType, CustomDate } from '../../types';
 
+const init = (type: MaskedType) => {
+  const date = { day: '', month: '', year: '' };
+
+  const dates = type === 'dates' ? [{ ...date }, { ...date }] : [{ ...date }];
+
+  return { props: { type, dates } };
+};
+
 const isDateValid = (checkedDate: CustomDate, key: number): boolean => {
   const { day, month, year } = checkedDate;
 
@@ -232,4 +240,4 @@ const updateDates = (type: MaskedType, dates: Dates, data?: number): Dates => {
   return dates;
 };
 
-export { isNumber, deleteIncompleteDate, removeDate, updateDates };
+export { init, isNumber, deleteIncompleteDate, removeDate, updateDates };

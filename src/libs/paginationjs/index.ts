@@ -28,16 +28,18 @@ const isElementWithPaginationjs = (
 type JQueryWithDelegateTarget = JQuery & { delegateTarget: HTMLElement };
 
 class Paginationjs {
-  private root: Element;
+  private dom: {
+    root: Element;
+    range: Element;
+  };
 
-  private range: Element;
+  private props: {
+    count: number;
+  };
 
-  private count: number;
-
-  constructor(root: Element, range: Element, count: number) {
-    this.root = root;
-    this.range = range;
-    this.count = count;
+  constructor(node: Element, range: Element, count: number) {
+    this.dom = { root: node, range };
+    this.props = { count };
 
     this.init();
   }
@@ -47,15 +49,15 @@ class Paginationjs {
       const [firstItem] = data;
       const lastItem = data[data.length - 1];
       if (firstItem === lastItem) {
-        this.range.innerHTML = String(lastItem);
+        this.dom.range.innerHTML = String(lastItem);
         return;
       }
 
-      this.range.innerHTML = `${firstItem} - ${lastItem}`;
+      this.dom.range.innerHTML = `${firstItem} - ${lastItem}`;
     };
 
     const dataSource = (done: (result: number[]) => void) => {
-      const result = [...Array(this.count)].map((e, i) => {
+      const result = [...Array(this.props.count)].map((e, i) => {
         return i + 1;
       });
 
@@ -98,7 +100,7 @@ class Paginationjs {
       afterPreviousOnClick,
     };
 
-    const $root = $(this.root);
+    const $root = $(this.dom.root);
 
     if (isElementWithPaginationjs($root)) {
       $root.pagination(config);

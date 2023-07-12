@@ -1,3 +1,15 @@
+import { Dom } from './type';
+import { cssSelectors } from './constants';
+
+const initNodes = (root: Element) => {
+  const images = root.querySelectorAll(cssSelectors.images);
+  const back = root.querySelector(cssSelectors.back);
+  const next = root.querySelector(cssSelectors.next);
+  const buttons = root.querySelectorAll(cssSelectors.buttons);
+
+  return { root, images, back, next, buttons };
+};
+
 const showCurrentImage = (
   images: NodeListOf<Element> | never[],
   buttons: NodeListOf<Element> | never[],
@@ -7,11 +19,9 @@ const showCurrentImage = (
   buttons[currentImageIndex].classList.add('room-card__button_target');
 };
 
-const hideImages = (
-  images: NodeListOf<Element> | never[],
-  buttons: NodeListOf<Element> | never[],
-  currentImageIndex: number,
-) => {
+const hideImages = (dom: Dom, currentImageIndex: number) => {
+  const { images, buttons } = dom;
+
   images.forEach((node) => {
     node.classList.add('room-card__image_hide');
   });
@@ -45,6 +55,7 @@ const calculateNextIndex = (currentIndex: number, quantityIndex: number) => {
 };
 
 export {
+  initNodes,
   hideImages,
   calculateTargetIndex,
   calculateBackIndex,
