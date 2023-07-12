@@ -14,7 +14,7 @@ class Presenter {
   }
 
   private init() {
-    this.model.emitValue();
+    this.model.calculateValue();
     return this;
   }
 
@@ -28,7 +28,7 @@ class Presenter {
     };
 
     const getValue = () => {
-      this.model.emitValue();
+      this.model.calculateValue();
     };
 
     const notifyModelAboutClearCounters = () => {

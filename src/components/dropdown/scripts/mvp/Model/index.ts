@@ -48,7 +48,11 @@ class Model extends EventEmitter<ModelEvents> {
     return this;
   }
 
-  public emitValue() {
+  public calculateValue() {
+    this.emitValue();
+  }
+
+  private emitValue() {
     const { groups, counters, variants, placeholder } = this.props;
 
     const value = calculateValue(groups, counters, variants, placeholder);
