@@ -152,14 +152,6 @@ const removeLastSymbol = (date: CustomDate): CustomDate => {
   return { day: newDay, month, year };
 };
 
-const isNumber = (key: string | null): boolean => {
-  if (key === null) {
-    return false;
-  }
-
-  return /^\d$/.test(key);
-};
-
 const deleteIncompleteDate = (type: MaskedType, dates: Dates): Dates => {
   if (type === 'date') {
     const [date] = dates;
@@ -240,4 +232,4 @@ const updateDates = (type: MaskedType, dates: Dates, data?: number): Dates => {
   return dates;
 };
 
-export { init, isNumber, deleteIncompleteDate, removeDate, updateDates };
+export { init, deleteIncompleteDate, removeDate, updateDates };

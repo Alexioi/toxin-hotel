@@ -1,7 +1,8 @@
 import { EventEmitter } from '@helpers/EventEmitter';
+import { helpers } from '@helpers';
 
 import { CustomDate, ViewEvents } from '../../types';
-import { displayDate, isNumber } from './methods';
+import { displayDate } from './methods';
 
 class View extends EventEmitter<ViewEvents> {
   private dom: { root: HTMLInputElement };
@@ -60,7 +61,7 @@ class View extends EventEmitter<ViewEvents> {
       return;
     }
 
-    if (!isNumber(data)) {
+    if (!helpers.isNumber(data)) {
       this.emit('TouchInput', null);
       return;
     }

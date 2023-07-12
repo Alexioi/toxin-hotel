@@ -1,13 +1,5 @@
 import { CustomDate } from '../../types';
 
-const isNumber = (key: string | null): boolean => {
-  if (key === null) {
-    return false;
-  }
-
-  return /^\d$/.test(key);
-};
-
 const calculateDayAndMonth = (checkedDate: CustomDate) => {
   const { day, month, year } = checkedDate;
 
@@ -87,4 +79,4 @@ const displayDate = (
   changeCaretPosition(node, maskedDate);
 };
 
-export { displayDate, isNumber };
+export { displayDate };

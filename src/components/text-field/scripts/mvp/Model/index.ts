@@ -1,13 +1,8 @@
 import { EventEmitter } from '@helpers/EventEmitter';
+import { helpers } from '@helpers';
 
 import { Dates, MaskedType, ModelEvents } from '../../types';
-import {
-  deleteIncompleteDate,
-  init,
-  isNumber,
-  removeDate,
-  updateDates,
-} from './methods';
+import { deleteIncompleteDate, init, removeDate, updateDates } from './methods';
 
 class Model extends EventEmitter<ModelEvents> {
   private props: {
@@ -51,7 +46,7 @@ class Model extends EventEmitter<ModelEvents> {
 
   public updateData(data: string) {
     data.split('').forEach((value) => {
-      if (isNumber(value)) {
+      if (helpers.isNumber(value)) {
         this.updateDates(Number(value));
       }
     });
