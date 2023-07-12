@@ -190,12 +190,10 @@ const init = (root: Element) => {
 
   const canvas = root?.getContext('2d');
 
-  root?.setAttribute('height', String(height));
-  root?.setAttribute('width', String(width));
+  const canvasNode = root;
 
-  if (!(root instanceof HTMLElement)) {
-    return;
-  }
+  canvasNode.height = height;
+  canvasNode.width = width;
 
   const datasetVotes = root?.dataset.votes;
 

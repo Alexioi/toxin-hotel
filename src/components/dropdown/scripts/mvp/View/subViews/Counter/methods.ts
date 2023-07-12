@@ -18,14 +18,20 @@ const initNodes = (node: Element) => {
 };
 
 const disableCounterButton = (node: Element | null, counter: number) => {
-  if (counter === 0) {
-    node?.classList.add('dropdown__counter-button_disabled');
-    node?.setAttribute('disabled', 'disabled');
+  if (!(node instanceof HTMLButtonElement)) {
     return;
   }
 
-  node?.classList.remove('dropdown__counter-button_disabled');
-  node?.removeAttribute('disabled');
+  const button = node;
+
+  if (counter === 0) {
+    button.classList.add('dropdown__counter-button_disabled');
+    button.disabled = true;
+    return;
+  }
+
+  button.classList.remove('dropdown__counter-button_disabled');
+  button.disabled = false;
 };
 
 export { disableCounterButton, initNodes };
