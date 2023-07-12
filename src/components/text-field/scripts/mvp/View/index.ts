@@ -46,26 +46,6 @@ class View extends EventEmitter<ViewEvents> {
     return this;
   }
 
-  private handleTextFieldBlur() {
-    this.props = { isFocused: false };
-
-    this.emit('BlurInput', null);
-  }
-
-  private handleTextFieldPaste = (event: ClipboardEvent) => {
-    event.preventDefault();
-    const inputData = event.clipboardData?.getData('text');
-
-    if (typeof inputData !== 'undefined') {
-      this.emit('InputData', { data: inputData });
-    }
-  };
-
-  private handleTextFieldClick() {
-    this.props = { isFocused: true };
-    this.emit('TouchInput', null);
-  }
-
   private handleTextFieldInput = (event: Event) => {
     event.preventDefault();
 
@@ -87,6 +67,26 @@ class View extends EventEmitter<ViewEvents> {
 
     this.emit('InputData', { data: String(data) });
   };
+
+  private handleTextFieldPaste = (event: ClipboardEvent) => {
+    event.preventDefault();
+    const inputData = event.clipboardData?.getData('text');
+
+    if (typeof inputData !== 'undefined') {
+      this.emit('InputData', { data: inputData });
+    }
+  };
+
+  private handleTextFieldBlur() {
+    this.props = { isFocused: false };
+
+    this.emit('BlurInput', null);
+  }
+
+  private handleTextFieldClick() {
+    this.props = { isFocused: true };
+    this.emit('TouchInput', null);
+  }
 }
 
 export { View };

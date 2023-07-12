@@ -43,14 +43,14 @@ class Header {
     return this;
   }
 
+  private handleBurgerButtonClick() {
+    toggleMobileNavigation(this.dom.root);
+  }
+
   private handleNavigationButtonClick(event: Event) {
     const { navigationButtons, subNavigationLists } = this.dom;
 
     toggleSubNavigationList(event, navigationButtons, subNavigationLists);
-  }
-
-  private handleBurgerButtonClick() {
-    toggleMobileNavigation(this.dom.root);
   }
 
   private handleDocumentClick(event: Event) {
