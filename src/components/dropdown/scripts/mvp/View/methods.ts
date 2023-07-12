@@ -47,9 +47,10 @@ const toggleClearButton = (
 
   if (countersSum === 0) {
     clearButton.classList.add('dropdown__clear-button_hidden');
-  } else {
-    clearButton.classList.remove('dropdown__clear-button_hidden');
+    return;
   }
+
+  clearButton.classList.remove('dropdown__clear-button_hidden');
 };
 
 const toggleInputFocus = (node: Element, inputNode: Element | null) => {
@@ -57,9 +58,10 @@ const toggleInputFocus = (node: Element, inputNode: Element | null) => {
 
   if (isOpened) {
     inputNode?.classList.add('text-field__input_opened');
-  } else {
-    inputNode?.classList.remove('text-field__input_opened');
+    return;
   }
+
+  inputNode?.classList.remove('text-field__input_opened');
 };
 
 const closeMenu = (node: Element, inputNode: Element | null) => {

@@ -27,13 +27,15 @@ const toggleSubNavigationList = (
   navigationButtons: NodeListOf<Element>,
   subNavigationLists: NodeListOf<Element>,
 ) => {
-  if (event.currentTarget instanceof Element) {
-    const targetIndex = [...navigationButtons].indexOf(event.currentTarget);
-
-    subNavigationLists[targetIndex].classList.toggle(
-      'header__sub-navigation-list_opened',
-    );
+  if (!(event.currentTarget instanceof Element)) {
+    return;
   }
+
+  const targetIndex = [...navigationButtons].indexOf(event.currentTarget);
+
+  subNavigationLists[targetIndex].classList.toggle(
+    'header__sub-navigation-list_opened',
+  );
 };
 
 const closeSubNavigationListOnClickOutsideBorders = (

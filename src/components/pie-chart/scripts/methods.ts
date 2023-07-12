@@ -102,29 +102,31 @@ const drawArc = ({
   outerRadius,
   innerRadius,
 }: ArcParameters) => {
-  if (canvas !== null) {
-    const drawingCanvas = canvas;
-    const start = startDegree + diagramParameters.arcPadding;
-    const end = endDegree - diagramParameters.arcPadding;
-    const startRadian = calculateRadian(start);
-    const endRadian = calculateRadian(end);
-
-    drawingCanvas.beginPath();
-    drawingCanvas.arc(centerX, centerY, outerRadius, startRadian, endRadian);
-    moveCursor(canvas, start, centerX, centerY, outerRadius);
-    drawingCanvas.arc(centerX, centerY, innerRadius, startRadian, endRadian);
-    drawLine(canvas, end, centerX, centerY, outerRadius);
-
-    const { x1, y1, x2, y2 } = diagramParameters.arcLinearGradient;
-    const gradient = drawingCanvas.createLinearGradient(x1, y1, x2, y2);
-
-    gradient.addColorStop(0, colorFrom);
-    gradient.addColorStop(1, colorTo);
-
-    drawingCanvas.fillStyle = gradient;
-
-    drawingCanvas.fill('evenodd');
+  if (canvas === null) {
+    return;
   }
+
+  const drawingCanvas = canvas;
+  const start = startDegree + diagramParameters.arcPadding;
+  const end = endDegree - diagramParameters.arcPadding;
+  const startRadian = calculateRadian(start);
+  const endRadian = calculateRadian(end);
+
+  drawingCanvas.beginPath();
+  drawingCanvas.arc(centerX, centerY, outerRadius, startRadian, endRadian);
+  moveCursor(canvas, start, centerX, centerY, outerRadius);
+  drawingCanvas.arc(centerX, centerY, innerRadius, startRadian, endRadian);
+  drawLine(canvas, end, centerX, centerY, outerRadius);
+
+  const { x1, y1, x2, y2 } = diagramParameters.arcLinearGradient;
+  const gradient = drawingCanvas.createLinearGradient(x1, y1, x2, y2);
+
+  gradient.addColorStop(0, colorFrom);
+  gradient.addColorStop(1, colorTo);
+
+  drawingCanvas.fillStyle = gradient;
+
+  drawingCanvas.fill('evenodd');
 };
 
 const drawDiagram = (

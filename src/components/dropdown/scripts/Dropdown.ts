@@ -7,15 +7,15 @@ const getData = (node: Element, name: string) => {
 
   const dataset = node.dataset[name];
 
-  if (typeof dataset === 'string') {
-    try {
-      return JSON.parse(dataset);
-    } catch (error) {
-      return dataset;
-    }
+  if (!(typeof dataset === 'string')) {
+    return undefined;
   }
 
-  return undefined;
+  try {
+    return JSON.parse(dataset);
+  } catch (error) {
+    return dataset;
+  }
 };
 
 class Dropdown {

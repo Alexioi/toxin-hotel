@@ -41,17 +41,17 @@ const calculateYear = (date: CustomDate, key: number): CustomDate => {
     return date;
   }
 
-  if (year.length === 3) {
-    if (isDateValid(date, key)) {
-      return { day, month, year: `${year}${key}` };
-    }
+  if (year.length !== 3) {
+    const newYear = `${year}${key}`;
 
-    return date;
+    return { day, month, year: newYear };
   }
 
-  const newYear = `${year}${key}`;
+  if (isDateValid(date, key)) {
+    return { day, month, year: `${year}${key}` };
+  }
 
-  return { day, month, year: newYear };
+  return date;
 };
 
 const calculateMonth = (date: CustomDate, key: number): CustomDate => {

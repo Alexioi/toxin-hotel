@@ -42,7 +42,7 @@ const createDatepicker = (node: Element) => {
   return new AirDatepicker(datepickerNode);
 };
 
-const displayDates = (
+const getFromAndTo = (
   inputs: NodeListOf<TextField.HTMLInputElementWithPlugin>,
 ) => {
   if (inputs.length === 2) {
@@ -52,29 +52,48 @@ const displayDates = (
 
     const [to] = inputTo.plugin.getDates();
 
-    if (from.year.length === 4 && to.year.length === 4) {
-      const fromDate = `${from.year}.${from.month}.${from.day}`;
-      const toDate = `${to.year}.${to.month}.${to.day}`;
+    return { from, to };
+  }
 
-      if (new Date(fromDate) > new Date(toDate)) {
-        inputFrom.plugin.setDates([to]);
+  const [input] = inputs;
 
-        inputTo.plugin.setDates([from]);
-      }
-    }
-  } else {
-    const [input] = inputs;
+  const [from, to] = input.plugin.getDates();
 
-    const [from, to] = input.plugin.getDates();
+  return { from, to };
+};
 
-    if (to.year.length === 4) {
-      const fromDate = `${from.year}.${from.month}.${from.day}`;
-      const toDate = `${to.year}.${to.month}.${to.day}`;
+const reverseDates = (
+  from: TextField.CustomDate,
+  to: TextField.CustomDate,
+  inputs: NodeListOf<TextField.HTMLInputElementWithPlugin>,
+) => {
+  if (inputs.length === 2) {
+    const [inputFrom, inputTo] = inputs;
 
-      if (new Date(fromDate) > new Date(toDate)) {
-        input.plugin.setDates([to, from]);
-      }
-    }
+    inputFrom.plugin.setDates([to]);
+    inputTo.plugin.setDates([from]);
+    return;
+  }
+
+  const [input] = inputs;
+
+  input.plugin.setDates([to, from]);
+};
+
+const displayDates = (
+  inputs: NodeListOf<TextField.HTMLInputElementWithPlugin>,
+) => {
+  const { from, to } = getFromAndTo(inputs);
+
+  if (!(from.year.length === 4 && to.year.length === 4)) {
+    return;
+  }
+
+  const fromDate = `${from.year}.${from.month}.${from.day}`;
+  const toDate = `${to.year}.${to.month}.${to.day}`;
+
+  if (new Date(fromDate) > new Date(toDate)) {
+    reverseDates(from, to, inputs);
   }
 };
 
@@ -101,13 +120,12 @@ const applyDates = (
     inputFrom.plugin.setDates([from]);
 
     inputTo.plugin.setDates([to]);
+    return;
   }
 
-  if (inputs.length === 1) {
-    const [input] = inputs;
+  const [input] = inputs;
 
-    input.plugin.setDates([from, to]);
-  }
+  input.plugin.setDates([from, to]);
 };
 
 const clearDates = (
@@ -143,34 +161,14 @@ const selectDatesInDatepicker = (
 ) => {
   datepicker?.clearDates();
 
-  if (inputs.length === 2) {
-    const [inputFrom, inputTo] = inputs;
+  const { from, to } = getFromAndTo(inputs);
 
-    const [from] = inputFrom.plugin.getDates();
+  if (from.year !== '') {
+    datepicker?.changeDate(`${from.year}.${from.month}.${from.day}`);
+  }
 
-    const [to] = inputTo.plugin.getDates();
-
-    if (from.year !== '') {
-      const { day, month, year } = from;
-
-      datepicker?.changeDate(`${year}.${month}.${day}`);
-    }
-
-    if (to.year !== '') {
-      const { day, month, year } = to;
-
-      datepicker?.changeDate(`${year}.${month}.${day}`);
-    }
-  } else {
-    const [input] = inputs;
-
-    const [from, to] = input.plugin.getDates();
-
-    if (from.year !== '') {
-      datepicker?.changeDate(`${from.year}.${from.month}.${from.day}`);
-
-      datepicker?.changeDate(`${to.year}.${to.month}.${to.day}`);
-    }
+  if (to.year !== '') {
+    datepicker?.changeDate(`${to.year}.${to.month}.${to.day}`);
   }
 };
 
@@ -185,9 +183,10 @@ const toggleMenu = (
   inputs.forEach((node) => {
     if (isOpened) {
       node.classList.add('text-field__input_focused');
-    } else {
-      node.classList.remove('text-field__input_focused');
+      return;
     }
+
+    node.classList.remove('text-field__input_focused');
   });
 };
 

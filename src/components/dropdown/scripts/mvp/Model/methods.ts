@@ -62,17 +62,17 @@ const calculateCounter = (
   argument: number,
 ) => {
   return counters.map((counter, i) => {
-    if (i === index) {
-      const newCounters = counter + argument;
-
-      if (newCounters < 0) {
-        return 0;
-      }
-
-      return newCounters;
+    if (i !== index) {
+      return counter;
     }
 
-    return counter;
+    const newCounters = counter + argument;
+
+    if (newCounters < 0) {
+      return 0;
+    }
+
+    return newCounters;
   });
 };
 
