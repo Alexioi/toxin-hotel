@@ -1,5 +1,7 @@
 import noUiSlider, { API } from 'nouislider';
 
+import { config } from './config';
+
 type Parameters = {
   min: number;
   max: number;
@@ -33,23 +35,20 @@ class NoUISlider {
   }
 
   private init(root: Element | null, parameters: Parameters) {
-    const { min, max, from, to } = parameters;
-
-    const config = {
-      start: [from, to],
-      connect: true,
-      step: 100,
-      range: {
-        min,
-        max,
-      },
-    };
-
     if (!(root instanceof HTMLElement)) {
       return;
     }
 
-    noUiSlider.create(root, config);
+    const { min, max, from, to } = parameters;
+
+    noUiSlider.create(root, {
+      ...config,
+      start: [from, to],
+      range: {
+        min,
+        max,
+      },
+    });
 
     if (!isTargetElement(root)) {
       return;

@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import 'paginationjs';
 
-import arrow from '!raw-loader!@images/decorative/arrow.svg';
+import { config } from './config';
 
 interface Config {
   pageSize: number;
@@ -64,9 +64,6 @@ class Paginationjs {
       done(result);
     };
 
-    const iconBack = `<svg class="paginationjs__icon paginationjs__icon_back">${arrow}</svg>`;
-    const iconNext = `<svg class="paginationjs__icon">${arrow}</svg>`;
-
     const afterPageOnClick = (node: JQueryWithDelegateTarget) => {
       node.delegateTarget
         .querySelector('.active')
@@ -88,22 +85,17 @@ class Paginationjs {
         ?.focus();
     };
 
-    const config = {
-      pageSize: 12,
-      pageRange: 1,
-      prevText: `<span class="paginationjs__arrow">${iconBack}</span>`,
-      nextText: `<span class="paginationjs__arrow">${iconNext}</span>`,
-      callback,
-      dataSource,
-      afterPageOnClick,
-      afterNextOnClick,
-      afterPreviousOnClick,
-    };
-
     const $root = $(this.dom.root);
 
     if (isElementWithPaginationjs($root)) {
-      $root.pagination(config);
+      $root.pagination({
+        ...config,
+        callback,
+        dataSource,
+        afterPageOnClick,
+        afterNextOnClick,
+        afterPreviousOnClick,
+      });
     }
 
     return this;
