@@ -3,7 +3,7 @@ import 'paginationjs';
 
 import { config } from './config';
 
-interface Config {
+type Config = {
   pageSize: number;
   pageRange: number;
   prevText: string;
@@ -13,7 +13,7 @@ interface Config {
   afterPageOnClick: (node: JQueryWithDelegateTarget) => void;
   afterNextOnClick: (node: JQueryWithDelegateTarget) => void;
   afterPreviousOnClick: (node: JQueryWithDelegateTarget) => void;
-}
+};
 
 interface JQueryWithPaginationjs extends JQuery<Element> {
   pagination(config: Config): void;

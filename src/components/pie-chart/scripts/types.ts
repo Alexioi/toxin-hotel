@@ -1,16 +1,16 @@
-interface Votes {
+type Votes = {
   [key: string]: number;
   perfectly: number;
   good: number;
   satisfactory: number;
   bad: number;
-}
+};
 
-interface DiagramColors {
+type DiagramColors = {
   [key: string]: string[];
-}
+};
 
-interface ArcParameters {
+type ArcParameters = {
   startDegree: number;
   endDegree: number;
   colorFrom: string;
@@ -20,6 +20,6 @@ interface ArcParameters {
   centerY: number;
   outerRadius: number;
   innerRadius: number;
-}
+};
 
 export { Votes, DiagramColors, ArcParameters };
