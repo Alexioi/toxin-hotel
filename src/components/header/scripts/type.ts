@@ -3,9 +3,9 @@ type Dom = {
 
   burgerButton: Element | null;
 
-  subNavigationLists: NodeListOf<Element> | never[];
+  subNavigationLists: NodeListOf<Element>;
 
-  navigationButtons: NodeListOf<Element> | never[];
+  navigationButtons: NodeListOf<Element>;
 };
 
 export { Dom };

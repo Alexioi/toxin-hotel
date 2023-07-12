@@ -24,8 +24,8 @@ const toggleMobileNavigation = (node: Element) => {
 
 const toggleSubNavigationList = (
   event: Event,
-  navigationButtons: NodeListOf<Element> | never[],
-  subNavigationLists: NodeListOf<Element> | never[],
+  navigationButtons: NodeListOf<Element>,
+  subNavigationLists: NodeListOf<Element>,
 ) => {
   if (event.currentTarget instanceof Element) {
     const targetIndex = [...navigationButtons].indexOf(event.currentTarget);
@@ -38,8 +38,8 @@ const toggleSubNavigationList = (
 
 const closeSubNavigationListOnClickOutsideBorders = (
   event: Event,
-  navigationButtons: NodeListOf<Element> | never[],
-  subNavigationLists: NodeListOf<Element> | never[],
+  navigationButtons: NodeListOf<Element>,
+  subNavigationLists: NodeListOf<Element>,
 ) => {
   subNavigationLists.forEach((list, index) => {
     const elements = [list, navigationButtons[index]];

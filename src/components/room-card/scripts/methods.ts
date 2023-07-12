@@ -11,8 +11,8 @@ const initNodes = (root: Element) => {
 };
 
 const showCurrentImage = (
-  images: NodeListOf<Element> | never[],
-  buttons: NodeListOf<Element> | never[],
+  images: NodeListOf<Element>,
+  buttons: NodeListOf<Element>,
   currentImageIndex: number,
 ) => {
   images[currentImageIndex].classList.remove('room-card__image_hide');
@@ -34,7 +34,7 @@ const hideImages = (dom: Dom, currentImageIndex: number) => {
 
 const calculateTargetIndex = (
   event: Event,
-  buttons: NodeListOf<Element> | never[],
+  buttons: NodeListOf<Element>,
   currentIndex: number,
 ) => {
   if (event.target instanceof Element) {
