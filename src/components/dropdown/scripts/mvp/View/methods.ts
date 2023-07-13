@@ -1,6 +1,6 @@
 import { cssSelectors } from '../../constants';
 import { Counter } from './subViews/Counter';
-import { Dom } from './type';
+import { Dom, Props } from './type';
 
 const initNodes = (node: Element) => {
   const root = node;
@@ -22,15 +22,16 @@ const initNodes = (node: Element) => {
   };
 };
 
-const initProps = (dom: Dom) => {
+const initProps = ({ root, applyButton }: Dom): Props => {
+  const isOpened = root.classList.contains('dropdown_opened');
   const isUpdateButtonPressed = true;
-  if (dom.applyButton === null) {
+  if (applyButton === null) {
     const isAutoUpdateInput = true;
-    return { isUpdateButtonPressed, isAutoUpdateInput };
+    return { isUpdateButtonPressed, isAutoUpdateInput, isOpened };
   }
   const isAutoUpdateInput = false;
 
-  return { isUpdateButtonPressed, isAutoUpdateInput };
+  return { isUpdateButtonPressed, isAutoUpdateInput, isOpened };
 };
 
 const toggleClearButton = (
@@ -53,9 +54,7 @@ const toggleClearButton = (
   clearButton.classList.remove('dropdown__clear-button_hidden');
 };
 
-const toggleInputFocus = (node: Element, inputNode: Element | null) => {
-  const isOpened = node.classList.contains('dropdown_opened');
-
+const toggleInputFocus = (inputNode: Element | null, isOpened: boolean) => {
   if (isOpened) {
     inputNode?.classList.add('text-field__input_opened');
     return;
@@ -66,12 +65,24 @@ const toggleInputFocus = (node: Element, inputNode: Element | null) => {
 
 const closeMenu = (node: Element, inputNode: Element | null) => {
   node.classList.remove('dropdown_opened');
-  toggleInputFocus(node, inputNode);
+  toggleInputFocus(inputNode, false);
+  return false;
 };
 
-const toggleMenu = (node: Element, inputNode: Element | null) => {
-  node.classList.toggle('dropdown_opened');
-  toggleInputFocus(node, inputNode);
+const toggleMenu = (
+  node: Element,
+  inputNode: Element | null,
+  isOpened: boolean,
+) => {
+  if (isOpened) {
+    node.classList.remove('dropdown_opened');
+    toggleInputFocus(inputNode, false);
+    return false;
+  }
+
+  node.classList.add('dropdown_opened');
+  toggleInputFocus(inputNode, true);
+  return true;
 };
 
 const createCounters = (node: Element) => {

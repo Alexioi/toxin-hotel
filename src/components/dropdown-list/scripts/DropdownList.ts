@@ -4,12 +4,15 @@ import { Dom } from './type';
 class DropdownList {
   private dom: Dom;
 
-  constructor(node: Element) {
-    this.toggleList = this.toggleList.bind(this);
+  private props: { isOpened: boolean };
 
-    const { dom } = this.init(node);
+  constructor(node: Element) {
+    this.handleToggleList = this.handleToggleList.bind(this);
+
+    const { dom, props } = this.init(node);
 
     this.dom = dom;
+    this.props = props;
   }
 
   private init(node: Element) {
@@ -17,22 +20,32 @@ class DropdownList {
     const dom = initNodes(root);
 
     this.attachEventHandlers(dom);
+    const isOpened = dom.root.classList.contains('dropdown-list_opened');
 
-    return { dom };
+    return { dom, props: { isOpened } };
   }
 
   private attachEventHandlers(dom: Dom) {
     const { title, button } = dom;
-    title?.addEventListener('click', this.toggleList);
-    button?.addEventListener('click', this.toggleList);
+    title?.addEventListener('click', this.handleToggleList);
+    button?.addEventListener('click', this.handleToggleList);
 
     return this;
   }
 
-  private toggleList() {
-    this.dom.root.classList.toggle('dropdown-list_opened');
+  private handleToggleList() {
+    const { isOpened } = this.props;
 
-    return this;
+    if (isOpened) {
+      this.dom.root.classList.remove('dropdown-list_opened');
+
+      this.props = { isOpened: false };
+      return;
+    }
+
+    this.dom.root.classList.add('dropdown-list_opened');
+
+    this.props = { isOpened: true };
   }
 }
 

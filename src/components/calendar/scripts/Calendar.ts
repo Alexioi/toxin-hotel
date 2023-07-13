@@ -1,3 +1,5 @@
+import { helpers } from '@helpers';
+
 import { Dom, Libs } from './type';
 import {
   applyDates,
@@ -15,6 +17,8 @@ class Calendar {
 
   private libs: Libs;
 
+  private props: { isOpened: boolean };
+
   constructor(node: Element) {
     this.handleInputBlur = this.handleInputBlur.bind(this);
     this.handleApplyButtonClick = this.handleApplyButtonClick.bind(this);
@@ -22,10 +26,11 @@ class Calendar {
     this.handleToggleButtonClick = this.handleToggleButtonClick.bind(this);
     this.handleDocumentClick = this.handleDocumentClick.bind(this);
 
-    const { dom, libs } = this.init(node);
+    const { dom, libs, props } = this.init(node);
 
     this.dom = dom;
     this.libs = libs;
+    this.props = props;
   }
 
   private init(node: Element) {
@@ -34,7 +39,10 @@ class Calendar {
 
     this.attachEventsHandler(dom);
 
-    return { dom, libs: { datepicker } };
+    // @ts-ignore
+    const isOpened = dom.menu.classList.contains('calendar__menu_visible');
+
+    return { dom, libs: { datepicker }, props: { isOpened } };
   }
 
   private attachEventsHandler(dom: Dom) {
@@ -63,7 +71,11 @@ class Calendar {
 
   private handleToggleButtonClick() {
     const { menu, inputs } = this.dom;
-    toggleMenu(menu, inputs);
+    const { isOpened } = this.props;
+    const newIsOpened = toggleMenu(menu, inputs, isOpened);
+
+    this.props = { isOpened: newIsOpened };
+
     selectDatesInDatepicker(this.libs.datepicker, inputs);
   }
 
@@ -76,7 +88,13 @@ class Calendar {
     const [firstToggleButton, secondToggleButton] = toggleButtons;
     const elements = [menu, firstToggleButton, secondToggleButton];
 
-    closeMenu(event, menu, inputs, elements);
+    if (helpers.isElementsIncludeNode(event, elements)) {
+      return;
+    }
+
+    const newIsOpened = closeMenu(menu, inputs);
+
+    this.props = { isOpened: newIsOpened };
   }
 }
 

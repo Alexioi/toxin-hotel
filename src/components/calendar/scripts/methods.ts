@@ -1,6 +1,5 @@
 import * as TextField from '@components/text-field';
 import { AirDatepicker } from '@libs/air-datepicker';
-import { helpers } from '@helpers';
 
 import { cssSelectors } from './constants';
 
@@ -172,39 +171,45 @@ const selectDatesInDatepicker = (
   }
 };
 
-const toggleMenu = (
-  menu: Element | null,
+const toggleInputFocus = (
   inputs: NodeListOf<TextField.HTMLInputElementWithPlugin>,
+  isOpened: boolean,
 ) => {
-  menu?.classList.toggle('calendar__menu_visible');
-
-  const isOpened = menu?.classList.contains('calendar__menu_visible');
-
   inputs.forEach((node) => {
     if (isOpened) {
-      node.classList.add('text-field__input_focused');
+      node.classList.remove('text-field__input_focused');
       return;
     }
 
-    node.classList.remove('text-field__input_focused');
+    node.classList.add('text-field__input_focused');
   });
 };
 
-const closeMenu = (
-  event: Event,
-  node: Element | null,
+const toggleMenu = (
+  menu: Element | null,
   inputs: NodeListOf<TextField.HTMLInputElementWithPlugin>,
-  elements: (Element | null)[],
-) => {
-  if (helpers.isElementsIncludeNode(event, elements)) {
-    return;
+  isOpened: boolean,
+): boolean => {
+  if (isOpened) {
+    menu?.classList.remove('calendar__menu_visible');
+  } else {
+    menu?.classList.add('calendar__menu_visible');
   }
 
+  toggleInputFocus(inputs, isOpened);
+
+  return !isOpened;
+};
+
+const closeMenu = (
+  node: Element | null,
+  inputs: NodeListOf<TextField.HTMLInputElementWithPlugin>,
+): boolean => {
   node?.classList.remove('calendar__menu_visible');
 
-  inputs.forEach((input) => {
-    input.classList.remove('text-field__input_focused');
-  });
+  toggleInputFocus(inputs, true);
+
+  return false;
 };
 
 export {

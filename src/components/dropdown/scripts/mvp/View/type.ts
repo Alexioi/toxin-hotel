@@ -12,8 +12,8 @@ type Dom = {
 
 type Props = {
   isAutoUpdateInput: boolean;
-
   isUpdateButtonPressed: boolean;
+  isOpened: boolean;
 };
 
 type SubView = { counters: Counter[] };

@@ -64,7 +64,11 @@ const changeCounterValue = (
 };
 
 const changeIsLiked = (isLiked: boolean, node: Element) => {
-  node.classList.toggle('like-button_liked');
+  if (isLiked) {
+    node.classList.remove('like-button_liked');
+  } else {
+    node.classList.add('like-button_liked');
+  }
 
   return !isLiked;
 };

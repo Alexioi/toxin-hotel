@@ -4,12 +4,15 @@ import { Dom } from './types';
 class Filter {
   private dom: Dom;
 
+  private props: { isOpened: boolean };
+
   constructor(node: Element) {
     this.handleButtonClick = this.handleButtonClick.bind(this);
 
-    const { dom } = this.init(node);
+    const { dom, props } = this.init(node);
 
     this.dom = dom;
+    this.props = props;
   }
 
   private init(node: Element) {
@@ -18,7 +21,9 @@ class Filter {
 
     this.attachEventHandlers(dom);
 
-    return { dom };
+    const isOpened = dom.root.classList.contains('filter_opened');
+
+    return { dom, props: { isOpened } };
   }
 
   private attachEventHandlers(dom: Dom) {
@@ -30,7 +35,18 @@ class Filter {
   }
 
   private handleButtonClick() {
-    this.dom.root.classList.toggle('filter_opened');
+    const { isOpened } = this.props;
+
+    if (isOpened) {
+      this.dom.root.classList.remove('filter_opened');
+
+      this.props = { isOpened: false };
+      return;
+    }
+
+    this.dom.root.classList.add('filter_opened');
+
+    this.props = { isOpened: true };
   }
 }
 

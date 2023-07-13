@@ -26,7 +26,7 @@ class View extends EventEmitter<ViewEvents> {
 
     this.handleApplyButtonClick = this.handleApplyButtonClick.bind(this);
     this.handleClearButtonClick = this.handleClearButtonClick.bind(this);
-    this.toggleMenu = this.toggleMenu.bind(this);
+    this.handleToggleMenu = this.handleToggleMenu.bind(this);
     this.handleDocumentClick = this.handleDocumentClick.bind(this);
 
     const { dom, subViews, props } = this.init(node);
@@ -72,7 +72,7 @@ class View extends EventEmitter<ViewEvents> {
     const counters = createCounters(node);
     const props = initProps(dom);
 
-    toggleInputFocus(node, dom.input);
+    toggleInputFocus(dom.input, props.isOpened);
 
     return { dom, subViews: { counters }, props };
   }
@@ -81,7 +81,7 @@ class View extends EventEmitter<ViewEvents> {
     const { applyButton, clearButton, textField } = dom;
     applyButton?.addEventListener('click', this.handleApplyButtonClick);
     clearButton?.addEventListener('click', this.handleClearButtonClick);
-    textField?.addEventListener('click', this.toggleMenu);
+    textField?.addEventListener('click', this.handleToggleMenu);
     document.addEventListener('click', this.handleDocumentClick);
 
     return this;
@@ -97,23 +97,38 @@ class View extends EventEmitter<ViewEvents> {
     this.emit('ClearCounters', null);
   }
 
-  private toggleMenu() {
+  private handleToggleMenu() {
     const { root, input } = this.dom;
+    const { isAutoUpdateInput, isUpdateButtonPressed, isOpened } = this.props;
 
-    toggleMenu(root, input);
+    const newIsOpened = toggleMenu(root, input, isOpened);
+
+    this.props = {
+      isAutoUpdateInput,
+      isUpdateButtonPressed,
+      isOpened: newIsOpened,
+    };
 
     return this;
   }
 
   private handleDocumentClick(event: Event) {
-    const { menu, input, inputButton } = this.dom;
+    const { root, menu, input, inputButton } = this.dom;
     const elements = [menu, input, inputButton];
 
     if (helpers.isElementsIncludeNode(event, elements)) {
       return;
     }
 
-    closeMenu(this.dom.root, this.dom.input);
+    const { isAutoUpdateInput, isUpdateButtonPressed } = this.props;
+
+    const newIsOpened = closeMenu(root, input);
+
+    this.props = {
+      isAutoUpdateInput,
+      isUpdateButtonPressed,
+      isOpened: newIsOpened,
+    };
   }
 }
 
