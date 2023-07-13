@@ -39,7 +39,6 @@ class Calendar {
 
     this.attachEventsHandler(dom);
 
-    // @ts-ignore
     const isOpened = dom.menu.classList.contains('calendar__menu_visible');
 
     return { dom, libs: { datepicker }, props: { isOpened } };
@@ -48,8 +47,8 @@ class Calendar {
   private attachEventsHandler(dom: Dom) {
     const { apply, clear, toggleButtons, inputs } = dom;
 
-    apply?.addEventListener('click', this.handleApplyButtonClick);
-    clear?.addEventListener('click', this.handleCleanButtonClick);
+    apply.addEventListener('click', this.handleApplyButtonClick);
+    clear.addEventListener('click', this.handleCleanButtonClick);
     toggleButtons.forEach((node) => {
       node.addEventListener('click', this.handleToggleButtonClick);
     });

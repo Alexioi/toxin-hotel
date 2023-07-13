@@ -1,7 +1,13 @@
+import { helpers } from '@helpers';
+
 import { cssSelectors } from '../constants';
 
 const initNodes = (root: Element) => {
   const burgerButton = root.querySelector(cssSelectors.burgerButton);
+
+  if (burgerButton === null) {
+    throw new helpers.SearchElementError('header burger button equal null');
+  }
 
   return { root, burgerButton };
 };

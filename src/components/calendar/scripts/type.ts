@@ -5,11 +5,11 @@ type Dom = {
   root: Element;
   inputs: NodeListOf<TextField.HTMLInputElementWithPlugin>;
   toggleButtons: NodeListOf<Element>;
-  menu: Element | null;
-  apply: Element | null;
-  clear: Element | null;
+  menu: Element;
+  apply: Element;
+  clear: Element;
 };
 
-type Libs = { datepicker: AirDatepicker | null };
+type Libs = { datepicker: AirDatepicker };
 
 export { Dom, Libs };

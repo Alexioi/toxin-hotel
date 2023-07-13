@@ -1,15 +1,31 @@
+import { helpers } from '@helpers';
 import { cssSelectors } from '../../constants';
 import { Counter } from './subViews/Counter';
 import { Dom, Props } from './type';
 
-const initNodes = (node: Element) => {
-  const root = node;
-  const input = node.querySelector(cssSelectors.input);
-  const inputButton = node.querySelector(cssSelectors.inputButton);
-  const textField = node.querySelector(cssSelectors.textField);
-  const clearButton = node.querySelector(cssSelectors.clearButton);
-  const applyButton = node.querySelector(cssSelectors.applyButton);
-  const menu = node.querySelector(cssSelectors.menu);
+const initNodes = (root: Element) => {
+  const input = root.querySelector(cssSelectors.input);
+  const inputButton = root.querySelector(cssSelectors.inputButton);
+  const textField = root.querySelector(cssSelectors.textField);
+  const clearButton = root.querySelector(cssSelectors.clearButton);
+  const applyButton = root.querySelector(cssSelectors.applyButton);
+  const menu = root.querySelector(cssSelectors.menu);
+
+  if (input === null) {
+    throw new helpers.SearchElementError('dropdown input equal null');
+  }
+
+  if (inputButton === null) {
+    throw new helpers.SearchElementError('dropdown input button equal null');
+  }
+
+  if (textField === null) {
+    throw new helpers.SearchElementError('dropdown text field equal null');
+  }
+
+  if (menu === null) {
+    throw new helpers.SearchElementError('dropdown menu equal null');
+  }
 
   return {
     root,
@@ -38,42 +54,34 @@ const toggleClearButton = (
   clearButton: Element | null,
   countersValue: number[],
 ) => {
-  if (clearButton === null) {
-    return;
-  }
-
   const countersSum = countersValue.reduce((partialSum, counter) => {
     return partialSum + counter;
   }, 0);
 
   if (countersSum === 0) {
-    clearButton.classList.add('dropdown__clear-button_hidden');
+    clearButton?.classList.add('dropdown__clear-button_hidden');
     return;
   }
 
-  clearButton.classList.remove('dropdown__clear-button_hidden');
+  clearButton?.classList.remove('dropdown__clear-button_hidden');
 };
 
-const toggleInputFocus = (inputNode: Element | null, isOpened: boolean) => {
+const toggleInputFocus = (inputNode: Element, isOpened: boolean) => {
   if (isOpened) {
-    inputNode?.classList.add('text-field__input_opened');
+    inputNode.classList.add('text-field__input_opened');
     return;
   }
 
-  inputNode?.classList.remove('text-field__input_opened');
+  inputNode.classList.remove('text-field__input_opened');
 };
 
-const closeMenu = (node: Element, inputNode: Element | null) => {
+const closeMenu = (node: Element, inputNode: Element) => {
   node.classList.remove('dropdown_opened');
   toggleInputFocus(inputNode, false);
   return false;
 };
 
-const toggleMenu = (
-  node: Element,
-  inputNode: Element | null,
-  isOpened: boolean,
-) => {
+const toggleMenu = (node: Element, inputNode: Element, isOpened: boolean) => {
   if (isOpened) {
     node.classList.remove('dropdown_opened');
     toggleInputFocus(inputNode, false);

@@ -1,5 +1,15 @@
+import { helpers } from '@helpers';
+
 import { Filter, cssSelectors } from './scripts';
 
 document.querySelectorAll(cssSelectors.filter).forEach((node) => {
-  new Filter(node);
+  try {
+    new Filter(node);
+  } catch (err) {
+    helpers.createErrorMassage(
+      err,
+      node,
+      'Элемент сломался. Мы скоро его починим.',
+    );
+  }
 });

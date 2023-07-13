@@ -1,9 +1,9 @@
 type Dom = {
   root: Element;
 
-  plugin: Element | null;
+  plugin: Element;
 
-  range: Element | null;
+  range: Element;
 };
 
 export { Dom };

@@ -27,8 +27,8 @@ class DropdownList {
 
   private attachEventHandlers(dom: Dom) {
     const { title, button } = dom;
-    title?.addEventListener('click', this.handleToggleList);
-    button?.addEventListener('click', this.handleToggleList);
+    title.addEventListener('click', this.handleToggleList);
+    button.addEventListener('click', this.handleToggleList);
 
     return this;
   }

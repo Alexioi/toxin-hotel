@@ -1,3 +1,5 @@
+import { helpers } from '@helpers';
+
 import { Dom } from './type';
 import { cssSelectors } from './constants';
 
@@ -6,6 +8,14 @@ const initNodes = (root: Element) => {
   const back = root.querySelector(cssSelectors.back);
   const next = root.querySelector(cssSelectors.next);
   const buttons = root.querySelectorAll(cssSelectors.buttons);
+
+  if (back === null) {
+    throw new helpers.SearchElementError('room card back button equal null');
+  }
+
+  if (next === null) {
+    throw new helpers.SearchElementError('room card next button equal null');
+  }
 
   return { root, images, back, next, buttons };
 };

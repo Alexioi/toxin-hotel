@@ -1,3 +1,5 @@
+import { helpers } from '@helpers';
+
 import {
   cssSelectors,
   TextField,
@@ -14,15 +16,19 @@ document
 
     const type = node.dataset.maskedType;
 
-    if (typeof type === 'undefined') {
-      return;
-    }
-
     if (!(type === 'date' || type === 'dates')) {
       return;
     }
 
-    new TextField(node, type);
+    try {
+      new TextField(node, type);
+    } catch (err) {
+      helpers.createErrorMassage(
+        err,
+        node,
+        'Элемент сломался. Мы скоро его починим.',
+      );
+    }
   });
 
 export { HTMLInputElementWithPlugin, CustomDate };

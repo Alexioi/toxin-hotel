@@ -1,9 +1,9 @@
 type Dom = {
   root: Element;
 
-  title: Element | null;
+  title: Element;
 
-  button: Element | null;
+  button: Element;
 };
 
 export { Dom };

@@ -3,7 +3,7 @@ import { DatepickerData, JQueryWithAirDatepicker } from './type';
 
 class AirDatepicker {
   private props: {
-    datepickerData: DatepickerData | null;
+    datepickerData: DatepickerData;
   };
 
   constructor(node: Element) {
@@ -13,10 +13,6 @@ class AirDatepicker {
   }
 
   public getSelectedDates() {
-    if (this.props.datepickerData === null) {
-      return { datepickerFrom: undefined, datepickerTo: undefined };
-    }
-
     const [datepickerFrom, datepickerTo] =
       this.props.datepickerData.selectedDates;
 

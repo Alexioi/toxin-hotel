@@ -1,8 +1,8 @@
 type Dom = {
   root: Element;
   images: NodeListOf<Element>;
-  back: Element | null;
-  next: Element | null;
+  back: Element;
+  next: Element;
   buttons: NodeListOf<Element>;
 };
 

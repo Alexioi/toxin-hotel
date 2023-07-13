@@ -29,7 +29,7 @@ class Filter {
   private attachEventHandlers(dom: Dom) {
     const { button } = dom;
 
-    button?.addEventListener('click', this.handleButtonClick);
+    button.addEventListener('click', this.handleButtonClick);
 
     return this;
   }

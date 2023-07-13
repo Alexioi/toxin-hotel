@@ -1,17 +1,30 @@
 import * as TextField from '@components/text-field';
 import { AirDatepicker } from '@libs/air-datepicker';
+import { helpers } from '@helpers';
 
 import { cssSelectors } from './constants';
 
-const initNodes = (node: Element) => {
-  const root = node;
+const initNodes = (root: Element) => {
   const inputs = root.querySelectorAll<TextField.HTMLInputElementWithPlugin>(
     cssSelectors.input,
   );
+
   const toggleButtons = root.querySelectorAll(cssSelectors.toggleButtons);
   const menu = root.querySelector(cssSelectors.menu);
   const apply = root.querySelector(cssSelectors.applyButton);
   const clear = root.querySelector(cssSelectors.clearButton);
+
+  if (menu === null) {
+    throw new helpers.SearchElementError('calendar menu equal null');
+  }
+
+  if (apply === null) {
+    throw new helpers.SearchElementError('calendar apply button equal null');
+  }
+
+  if (clear === null) {
+    throw new helpers.SearchElementError('calendar clear button equal null');
+  }
 
   return { root, inputs, toggleButtons, menu, apply, clear };
 };
@@ -35,7 +48,7 @@ const calculateFullDate = (date: Date): TextField.CustomDate => {
 const createDatepicker = (node: Element) => {
   const datepickerNode = node.querySelector(cssSelectors.datepicker);
   if (datepickerNode === null) {
-    return null;
+    throw new helpers.SearchElementError('datepicker node equal null');
   }
 
   return new AirDatepicker(datepickerNode);
@@ -97,13 +110,9 @@ const displayDates = (
 };
 
 const applyDates = (
-  datepicker: AirDatepicker | null,
+  datepicker: AirDatepicker,
   inputs: NodeListOf<TextField.HTMLInputElementWithPlugin>,
 ) => {
-  if (datepicker === null) {
-    return;
-  }
-
   const { datepickerFrom, datepickerTo } = datepicker.getSelectedDates();
 
   if (typeof datepickerTo === 'undefined') {
@@ -128,7 +137,7 @@ const applyDates = (
 };
 
 const clearDates = (
-  datepicker: AirDatepicker | null,
+  datepicker: AirDatepicker,
   inputs: NodeListOf<TextField.HTMLInputElementWithPlugin>,
 ) => {
   const emptyDate = {
@@ -151,23 +160,23 @@ const clearDates = (
     input.plugin.setDates([{ ...emptyDate }, { ...emptyDate }]);
   }
 
-  datepicker?.clearDates();
+  datepicker.clearDates();
 };
 
 const selectDatesInDatepicker = (
-  datepicker: AirDatepicker | null,
+  datepicker: AirDatepicker,
   inputs: NodeListOf<TextField.HTMLInputElementWithPlugin>,
 ) => {
-  datepicker?.clearDates();
+  datepicker.clearDates();
 
   const { from, to } = getFromAndTo(inputs);
 
   if (from.year !== '') {
-    datepicker?.changeDate(`${from.year}.${from.month}.${from.day}`);
+    datepicker.changeDate(`${from.year}.${from.month}.${from.day}`);
   }
 
   if (to.year !== '') {
-    datepicker?.changeDate(`${to.year}.${to.month}.${to.day}`);
+    datepicker.changeDate(`${to.year}.${to.month}.${to.day}`);
   }
 };
 
@@ -186,14 +195,14 @@ const toggleInputFocus = (
 };
 
 const toggleMenu = (
-  menu: Element | null,
+  menu: Element,
   inputs: NodeListOf<TextField.HTMLInputElementWithPlugin>,
   isOpened: boolean,
 ): boolean => {
   if (isOpened) {
-    menu?.classList.remove('calendar__menu_visible');
+    menu.classList.remove('calendar__menu_visible');
   } else {
-    menu?.classList.add('calendar__menu_visible');
+    menu.classList.add('calendar__menu_visible');
   }
 
   toggleInputFocus(inputs, isOpened);
@@ -202,10 +211,10 @@ const toggleMenu = (
 };
 
 const closeMenu = (
-  node: Element | null,
+  node: Element,
   inputs: NodeListOf<TextField.HTMLInputElementWithPlugin>,
 ): boolean => {
-  node?.classList.remove('calendar__menu_visible');
+  node.classList.remove('calendar__menu_visible');
 
   toggleInputFocus(inputs, true);
 

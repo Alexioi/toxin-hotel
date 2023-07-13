@@ -35,7 +35,7 @@ class Header {
 
   private attachEventHandlers(dom: Dom) {
     const { burgerButton } = dom;
-    burgerButton?.addEventListener('click', this.handleBurgerButtonClick);
+    burgerButton.addEventListener('click', this.handleBurgerButtonClick);
 
     return this;
   }

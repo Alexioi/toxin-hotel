@@ -2,12 +2,12 @@ import { Counter } from './subViews';
 
 type Dom = {
   root: Element;
-  input: Element | null;
-  inputButton: Element | null;
-  textField: Element | null;
+  input: Element;
+  inputButton: Element;
+  textField: Element;
   clearButton: Element | null;
   applyButton: Element | null;
-  menu: Element | null;
+  menu: Element;
 };
 
 type Props = {

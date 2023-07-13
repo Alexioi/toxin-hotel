@@ -19,14 +19,10 @@ const isTargetElement = (element: HTMLElement): element is TargetElement => {
 
 class NoUISlider {
   private dom: {
-    value: Element | null;
+    value: Element;
   };
 
-  constructor(
-    root: Element | null,
-    valueNode: Element | null,
-    parameters: Parameters,
-  ) {
+  constructor(root: Element, valueNode: Element, parameters: Parameters) {
     this.dom = { value: valueNode };
 
     this.updateValue = this.updateValue.bind(this);
@@ -34,7 +30,7 @@ class NoUISlider {
     this.init(root, parameters);
   }
 
-  private init(root: Element | null, parameters: Parameters) {
+  private init(root: Element, parameters: Parameters) {
     if (!(root instanceof HTMLElement)) {
       return;
     }
@@ -54,7 +50,7 @@ class NoUISlider {
       return;
     }
 
-    root?.noUiSlider.on('update', this.updateValue);
+    root.noUiSlider.on('update', this.updateValue);
   }
 
   private updateValue([from, to]: (string | number)[]) {

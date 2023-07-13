@@ -41,8 +41,8 @@ class Carousel {
   private attachEventHandlers(dom: Dom) {
     const { back, next, buttons } = dom;
 
-    back?.addEventListener('click', this.handleBackButtonClick);
-    next?.addEventListener('click', this.handleNextButtonClick);
+    back.addEventListener('click', this.handleBackButtonClick);
+    next.addEventListener('click', this.handleNextButtonClick);
     buttons.forEach((node) => {
       node.addEventListener('click', this.handleTargetButtonClick);
     });

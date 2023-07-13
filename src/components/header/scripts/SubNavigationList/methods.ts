@@ -12,7 +12,6 @@ const toggleSubNavigationList = (
   subNavigationList: Element,
   isOpened: boolean,
 ): boolean => {
-  console.log(subNavigationList, isOpened);
   if (isOpened) {
     subNavigationList.classList.remove('header__sub-navigation-list_opened');
     return false;

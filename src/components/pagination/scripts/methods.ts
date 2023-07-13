@@ -1,4 +1,5 @@
 import { Paginationjs } from '@libs/paginationjs';
+import { helpers } from '@helpers';
 
 import { cssSelectors } from './constants';
 import { Dom } from './type';
@@ -6,6 +7,14 @@ import { Dom } from './type';
 const initNodes = (root: Element) => {
   const plugin = root.querySelector(cssSelectors.plugin);
   const range = root.querySelector(cssSelectors.range);
+
+  if (plugin === null) {
+    throw new helpers.SearchElementError('pagination plugin equal null');
+  }
+
+  if (range === null) {
+    throw new helpers.SearchElementError('pagination range equal null');
+  }
 
   return { root, plugin, range };
 };
@@ -24,14 +33,6 @@ const getCount = (dom: Dom) => {
 
 const initPlugin = (dom: Dom, count: number) => {
   const { plugin, range } = dom;
-
-  if (plugin === null) {
-    return;
-  }
-
-  if (range === null) {
-    return;
-  }
 
   new Paginationjs(plugin, range, count);
 };

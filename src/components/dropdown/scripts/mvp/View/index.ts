@@ -77,11 +77,10 @@ class View extends EventEmitter<ViewEvents> {
     return { dom, subViews: { counters }, props };
   }
 
-  private attachEventHandlers(dom: Dom) {
-    const { applyButton, clearButton, textField } = dom;
+  private attachEventHandlers({ applyButton, clearButton, textField }: Dom) {
     applyButton?.addEventListener('click', this.handleApplyButtonClick);
     clearButton?.addEventListener('click', this.handleClearButtonClick);
-    textField?.addEventListener('click', this.handleToggleMenu);
+    textField.addEventListener('click', this.handleToggleMenu);
     document.addEventListener('click', this.handleDocumentClick);
 
     return this;

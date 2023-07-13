@@ -1,7 +1,7 @@
 type Dom = {
   root: Element;
 
-  button: Element | null;
+  button: Element;
 };
 
 export { Dom };
