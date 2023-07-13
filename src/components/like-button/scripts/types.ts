@@ -1,6 +1,6 @@
 type Dom = {
   root: Element;
-  counter: Element | null;
+  counter: Element;
 };
 
 type Props = {
