@@ -2,11 +2,12 @@
 @use '@style/constants/mixins';
 @use '@style/constants/display-sizes';
 @use '@style/constants/font';
+@use '@style/constants/shadows';
 
 .header {
   $root: &;
 
-  box-shadow: 0 10px 20px rgb(colors.$first, 0.05);
+  box-shadow: shadows.$first;
   background-color: white;
   padding: 14px 0;
 

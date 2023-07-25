@@ -1,5 +1,6 @@
 @use '@style/constants/colors';
 @use '@style/constants/gradients';
+@use '@style/constants/shadows';
 
 .toggle {
   $root: &;
@@ -14,7 +15,7 @@
 
     &:focus {
       & ~ #{$root}__icon {
-        box-shadow: 0 0 10px rgb(colors.$first, 30%);
+        box-shadow: shadows.$second;
       }
     }
 

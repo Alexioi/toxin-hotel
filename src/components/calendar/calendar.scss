@@ -1,4 +1,5 @@
 @use '@style/constants/colors';
+@use '@style/constants/shadows';
 
 .calendar {
   $root: &;
@@ -31,7 +32,7 @@
     padding: 20px 20px 19px;
     background: white;
     border: 1px solid rgb(colors.$first, 0.25);
-    box-shadow: 0 10px 20px rgb(colors.$first, 0.05);
+    box-shadow: shadows.$first;
     border-radius: 4px;
     margin-top: 5px;
 

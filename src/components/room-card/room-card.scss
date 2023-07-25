@@ -1,12 +1,13 @@
 @use '@style/constants/colors';
 @use '@style/constants/gradients';
+@use '@style/constants/shadows';
 
 .room-card {
   $root: &;
 
   width: 100%;
   background: white;
-  box-shadow: 0 10px 20px rgb(colors.$first, 0.05);
+  box-shadow: shadows.$first;
   border-radius: 4px;
 
   &:hover {
