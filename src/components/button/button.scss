@@ -1,5 +1,6 @@
 @use '@style/constants/colors';
 @use '@style/constants/font';
+@use '@style/constants/gradients';
 
 .button {
   $root: &;
@@ -21,7 +22,7 @@
   &_theme {
     &_default {
       padding: 14px 20px 12px;
-      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+      background: gradients.$first;
       border-radius: 22px;
 
       #{$root}__text {
@@ -32,7 +33,7 @@
     &_outlined {
       padding: 14px 20px 12px;
       border-radius: 22px;
-      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+      background: gradients.$first;
 
       &::before {
         content: '';
@@ -62,7 +63,7 @@
     &_long {
       width: 100%;
       padding: 14px 11px 12px 29px;
-      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+      background: gradients.$first;
       border-radius: 22px;
 
       #{$root}__text {

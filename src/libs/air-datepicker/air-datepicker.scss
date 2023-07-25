@@ -1,4 +1,5 @@
 @use '@style/constants/colors';
+@use '@style/constants/gradients';
 
 .datepicker {
   &--nav {
@@ -85,14 +86,14 @@
       &.-current- {
         color: white;
         font-weight: bold;
-        background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+        background: gradients.$third;
         border-radius: 50%;
       }
 
       &.-selected- {
         font-weight: bold;
         color: white;
-        background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+        background: gradients.$first;
         border-radius: 50%;
       }
 
@@ -103,11 +104,7 @@
         height: 100%;
         position: absolute;
         border-radius: 50% 0 0 50%;
-        background: linear-gradient(
-          180deg,
-          rgb(colors.$second, 25%) 0%,
-          rgb(139, 164, 249, 25%) 100%
-        );
+        background: gradients.$sixth;
       }
 
       &.-range-to-::before {
@@ -116,11 +113,7 @@
         width: 100%;
         height: 100%;
         position: absolute;
-        background: linear-gradient(
-          180deg,
-          rgb(colors.$second, 25%) 0%,
-          rgb(139, 164, 249, 25%) 100%
-        );
+        background: gradients.$sixth;
         border-radius: 0 22px 22px 0;
       }
 

@@ -1,4 +1,5 @@
 @use '@style/constants/colors';
+@use '@style/constants/gradients';
 
 .paginationjs {
   height: 40px;
@@ -23,7 +24,7 @@
 
   &-prev,
   &-next {
-    background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+    background: gradients.$third;
     border-radius: 22px;
 
     & > a {
@@ -69,7 +70,7 @@
     }
 
     &.active {
-      background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+      background: gradients.$first;
 
       & > a {
         font-weight: bold;

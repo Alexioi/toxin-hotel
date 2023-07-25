@@ -1,5 +1,6 @@
 @use '@style/constants/colors';
 @use '@style/constants/font';
+@use '@style/constants/gradients';
 
 .like-button {
   $root: &;
@@ -14,7 +15,7 @@
   cursor: pointer;
 
   &_liked {
-    background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+    background: gradients.$first;
 
     #{$root} {
       &__icon {
