@@ -54,8 +54,8 @@ const toggleClearButton = (
   clearButton: Element | null,
   countersValue: number[],
 ) => {
-  const countersSum = countersValue.reduce((partialSum, counter) => {
-    return partialSum + counter;
+  const countersSum = countersValue.reduce((acc, value) => {
+    return acc + value;
   }, 0);
 
   if (countersSum === 0) {

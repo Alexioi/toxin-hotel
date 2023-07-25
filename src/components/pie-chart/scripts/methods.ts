@@ -143,8 +143,8 @@ const drawDiagram = (
   let endDegree = 0;
 
   const voteValues = Object.values(votes);
-  const totalVotes = voteValues.reduce((acc, curr) => {
-    return acc + curr;
+  const totalVotes = voteValues.reduce((acc, value) => {
+    return acc + value;
   }, 0);
 
   grades.forEach((item) => {

@@ -29,24 +29,24 @@ const calculateValue = (
   const counters = groups.map((group) => {
     const initialValue = 0;
 
-    return group.reduce((sum: number, index: number) => {
-      return sum + countersValue[index];
+    return group.reduce((acc: number, i: number) => {
+      return acc + countersValue[i];
     }, initialValue);
   });
 
-  const value = variants.reduce((accumulator, variant, index) => {
-    const count = counters[index];
+  const value = variants.reduce((acc, variant, i) => {
+    const count = counters[i];
     const item = `${count} ${getPlural(variant, count)}`;
 
     if (count === 0) {
-      return accumulator;
+      return acc;
     }
 
-    if (accumulator === '') {
+    if (acc === '') {
       return item;
     }
 
-    return `${accumulator}, ${item}`;
+    return `${acc}, ${item}`;
   }, '');
 
   if (value === '') {

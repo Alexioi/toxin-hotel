@@ -1,12 +1,12 @@
 const isElementsIncludeNode = (event: Event, elements: (Element | null)[]) => {
   const initialValue = false;
 
-  return elements.reduce((sum, currentValue) => {
-    if (currentValue !== null) {
-      return sum || event.composedPath().includes(currentValue);
+  return elements.reduce((acc, element) => {
+    if (element !== null) {
+      return acc || event.composedPath().includes(element);
     }
 
-    return sum;
+    return acc;
   }, initialValue);
 };
 
