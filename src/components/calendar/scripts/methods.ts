@@ -37,7 +37,7 @@ const convertDateToString = (date: number): string => {
   return String(date);
 };
 
-const calculateFullDate = (date: Date): TextField.CustomDate => {
+const calculateFullCustomDate = (date: Date): TextField.CustomDate => {
   const day = convertDateToString(date.getDate());
   const month = convertDateToString(date.getMonth() + 1);
   const year = String(date.getFullYear());
@@ -119,8 +119,8 @@ const applyDates = (
     return;
   }
 
-  const from = calculateFullDate(datepickerFrom);
-  const to = calculateFullDate(datepickerTo);
+  const from = calculateFullCustomDate(datepickerFrom);
+  const to = calculateFullCustomDate(datepickerTo);
 
   if (inputs.length === 2) {
     const [inputFrom, inputTo] = inputs;
