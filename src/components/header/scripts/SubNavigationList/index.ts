@@ -1,6 +1,8 @@
+import { helpers } from '@helpers';
+
 import { cssSelectors } from '../constants';
 import {
-  closeSubNavigationListOnClickOutsideBorder,
+  closeSubNavigationList,
   initNodes,
   toggleSubNavigationList,
 } from './methods';
@@ -24,7 +26,12 @@ class SubNavigationList {
     this.props = props;
   }
 
-  private init(root: Element) {
+  private init(root: Element): {
+    dom: Dom;
+    props: {
+      isOpened: boolean;
+    };
+  } {
     const dom = initNodes(root);
 
     this.attachEventHandlers(dom);
@@ -50,9 +57,7 @@ class SubNavigationList {
   private handleNavigationButtonClick() {
     const { subNavigationList } = this.dom;
 
-    // @ts-ignore
     const isOpened = toggleSubNavigationList(
-      // @ts-ignore
       subNavigationList,
       this.props.isOpened,
     );
@@ -63,12 +68,15 @@ class SubNavigationList {
   private handleDocumentClick(event: Event) {
     const { navigationButton, subNavigationList } = this.dom;
 
-    closeSubNavigationListOnClickOutsideBorder(
-      event,
-      navigationButton,
-      // @ts-ignore
-      subNavigationList,
-    );
+    const elements = [subNavigationList, navigationButton];
+
+    if (helpers.isElementsIncludeNode(event, elements)) {
+      return;
+    }
+
+    closeSubNavigationList(subNavigationList);
+
+    this.props = { isOpened: false };
   }
 }
 

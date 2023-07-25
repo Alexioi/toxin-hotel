@@ -26,7 +26,7 @@ class Header {
 
     const isOpened = root.classList.contains(cssSelectors.subNavigationLists);
 
-    root.querySelectorAll(cssSelectors.subNavigationLists).forEach((node) => {
+    root.querySelectorAll(cssSelectors.navigationMenu).forEach((node) => {
       new SubNavigationList(node);
     });
 

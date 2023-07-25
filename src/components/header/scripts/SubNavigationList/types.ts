@@ -1,9 +1,9 @@
 type Dom = {
   root: Element;
 
-  subNavigationList: Element | null;
+  subNavigationList: Element;
 
-  navigationButton: Element | null;
+  navigationButton: Element;
 };
 
 export { Dom };

@@ -32,7 +32,7 @@ mixin header(options)
             each navItem, index in navItems
               li.header__navigation-item
                 if navItem.list
-                  .header__sub-navigation-menu
+                  .header__sub-navigation-menu.js-header__navigation-menu
                     button.header__navigation-button.js-header__navigation-button
                       span.header__button-content= navItem.text
                       include ../../images/decorative/expand-more.svg
