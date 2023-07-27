@@ -2,11 +2,16 @@ mixin typography(options)
   -
     const {
       text = '',
-      tag = '',
+      variant = '',
       hint = '',
     } = options || {}
 
-    const tagClass = tag && `typography__heading typography__heading_type_${tag}`
+    const getTag = (variant) => {
+      return variant
+    }
+
+    const tag = getTag(variant)
+    const tagClass = `typography__heading typography__heading_type_${variant}`
     const classes = [tagClass]
 
   .typography

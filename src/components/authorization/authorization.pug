@@ -16,7 +16,7 @@ mixin authorization
   .authorization
     +card
       form.authorization__form(method="POST", action="/change-it")
-        +typography(Object.assign({tag: 'h2'}, title )) 
+        +typography(Object.assign({variant: 'h2'}, title )) 
         .authorization__login-input
           +text-field(Object.assign({type: 'email', inputmode: 'email', name: 'email'}, textFields.email))
         .authorization__password-input

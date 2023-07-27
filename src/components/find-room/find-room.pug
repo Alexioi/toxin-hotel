@@ -16,7 +16,7 @@ mixin find-room
 
   .find-room
     +card
-      +typography(Object.assign({tag: 'h2'}, title)) 
+      +typography(Object.assign({variant: 'h2'}, title)) 
       form.find-room__form(method="POST", action="/change-it")
         .find-room__calendar
           +calendar(Object.assign({hasTwoInputs: true}, calendar))

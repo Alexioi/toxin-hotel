@@ -44,45 +44,45 @@ block main
   .form-elements
     .form-elements__row
       .form-elements__text-fields-and-buttons-left-column
-        +typography(Object.assign({tag: 'h4'}, titles.defaultTextField))
+        +typography(Object.assign({variant: 'h4'}, titles.defaultTextField))
         +text-field(textFields.default)
         .form-elements__text-fields-and-buttons-left
-          +typography(Object.assign({tag: 'h4'}, titles.hoverTextField))
+          +typography(Object.assign({variant: 'h4'}, titles.hoverTextField))
           +text-field(textFields.hover)
         .form-elements__text-fields-and-buttons-left
           +dropdown(dropdowns.guestsClose)
         .form-elements__text-fields-and-buttons-left
-          +typography(Object.assign({tag: 'h4'}, titles.maskedTextField))
+          +typography(Object.assign({variant: 'h4'}, titles.maskedTextField))
           +text-field(textFields.masked)
         .form-elements__text-fields-and-buttons-left
           +calendar(Object.assign({hasTwoInputs: true}, calendar.single))
         .form-elements__text-fields-and-buttons-left
           +calendar(Object.assign({hasTwoInputs: false}, calendar.double))
         .form-elements__text-fields-and-buttons-left
-          +typography(Object.assign({tag: 'h4'}, titles.subscriptionTextField))
+          +typography(Object.assign({variant: 'h4'}, titles.subscriptionTextField))
           +text-field(textFields.email)
 
       .form-elements__text-fields-and-buttons-middle-column
-        +typography(Object.assign({tag: 'h4'}, titles.checkbox))
+        +typography(Object.assign({variant: 'h4'}, titles.checkbox))
         .form-elements__text-fields-and-buttons-middle
           +checkbox-list(checkboxLists.short)
         .form-elements__text-fields-and-buttons-middle
-          +typography(Object.assign({tag: 'h4'}, titles.radioButton))
+          +typography(Object.assign({variant: 'h4'}, titles.radioButton))
         .form-elements__text-fields-and-buttons-middle
           +radio-buttons(radioButtons)
         .form-elements__text-fields-and-buttons-middle
-          +typography(Object.assign({tag: 'h4'}, titles.toggle))
+          +typography(Object.assign({variant: 'h4'}, titles.toggle))
         .form-elements__text-fields-and-buttons-middle
           +toggle(toggles.checked)
         .form-elements__text-fields-and-buttons-middle
           +toggle(toggles.default)
         .form-elements__text-fields-and-buttons-middle
-          +typography(Object.assign({tag: 'h4'}, titles.likeButton))
+          +typography(Object.assign({variant: 'h4'}, titles.likeButton))
         .form-elements__text-fields-and-buttons-middle
           +like-button(likeButtons.default)
           +like-button(likeButtons.liked)
         .form-elements__text-fields-and-buttons-middle
-          +typography(Object.assign({tag: 'h4'}, titles.rateButton))
+          +typography(Object.assign({variant: 'h4'}, titles.rateButton))
         .form-elements__text-fields-and-buttons-middle
           +rate(rates.four)
           +rate(rates.five)
@@ -91,7 +91,7 @@ block main
         .form-elements__text-fields-and-buttons-right
           +range-slider(rangeSlider)
         .form-elements__text-fields-and-buttons-right
-          +typography(Object.assign({tag: 'h4'}, titles.buttons))
+          +typography(Object.assign({variant: 'h4'}, titles.buttons))
         .form-elements__text-fields-and-buttons-right
           +button(Object.assign({theme: 'default', type: 'button'}, buttons.defaultButton))
           +button(Object.assign({theme: 'default', type: 'button'}, buttons.defaultButtonDisable))
@@ -104,7 +104,7 @@ block main
         .form-elements__text-fields-and-buttons-right
           +button(Object.assign({theme: 'long', type: 'button'}, buttons.longButton))
         .form-elements__text-fields-and-buttons-right
-          +typography(Object.assign({tag: 'h4'}, titles.pagination))
+          +typography(Object.assign({variant: 'h4'}, titles.pagination))
         .form-elements__text-fields-and-buttons-right
           +pagination(pagination)
 
@@ -129,12 +129,12 @@ block main
             +checkbox-list(checkboxLists.long)
 
       .form-elements__lists-middle-column
-        +typography(Object.assign({tag: 'h4'}, titles.richCheckboxButtons))
+        +typography(Object.assign({variant: 'h4'}, titles.richCheckboxButtons))
         .form-elements__lists-middle
           +checkbox-list(checkboxLists.rich)
 
       .form-elements__lists-right-column
-        +typography(Object.assign({tag: 'h4'}, titles.bulletList))
+        +typography(Object.assign({variant: 'h4'}, titles.bulletList))
         .form-elements__lists-right
           +bullet-list(bulletList)
 

@@ -38,14 +38,14 @@ block main
         .room-details__content-column
           .room-details__room-statistic
             section.room-details__icon-text-list
-              +typography(Object.assign({tag: 'h3'}, titles.aboutNumber))
+              +typography(Object.assign({variant: 'h3'}, titles.aboutNumber))
               +icon-text-list(iconTextList)
             section.room-details__pie-chart
-              +typography(Object.assign({tag: 'h3'}, titles.roomImpression))
+              +typography(Object.assign({variant: 'h3'}, titles.roomImpression))
               +pie-chart(pieChart)
           section.room-details__comments-section
             .room-details__comments-title
-              +typography(Object.assign({tag: 'h3'}, titles.reviewNumber))
+              +typography(Object.assign({variant: 'h3'}, titles.reviewNumber))
               span.room-details__text= `${comments.length} ${reviews}`
             .room-details__comments
               each comment in comments
@@ -53,10 +53,10 @@ block main
           .room-details__rules
             section.room-details__bullet-list
               .room-details__rules-title
-                +typography(Object.assign({tag: 'h3'}, titles.rules))
+                +typography(Object.assign({variant: 'h3'}, titles.rules))
               +bullet-list(bulletList)
             section.room-details__reset
-              +typography(Object.assign({tag: 'h3'}, titles.reset))
+              +typography(Object.assign({variant: 'h3'}, titles.reset))
               p.room-details__text= resetText
 
         .room-details__room-booking

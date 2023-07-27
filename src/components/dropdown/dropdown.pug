@@ -34,7 +34,7 @@ mixin dropdown(options)
     data-counters=counters
   )
     .dropdown__input.js-dropdown__input
-      +typography({tag: 'h4', text: titleText, hint})
+      +typography({variant: 'h4', text: titleText, hint})
       +text-field({isReadonly: true, type: 'text', isDropdown: true, name: type})
     .dropdown__menu.js-dropdown__menu
       ul.dropdown__list
