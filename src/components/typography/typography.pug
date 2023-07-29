@@ -1,15 +1,20 @@
 mixin typography(options)
   -
     const {
+      tagMapping,
       text = '',
       variant = '',
     } = options || {}
 
     const getTag = (variant) => {
+      if (variant === 'body1') {
+        return 'p'
+      }
+
       return variant
     }
 
-    const tag = getTag(variant)
+    const tag = tagMapping ? tagMapping : getTag(variant)
     const tagClass = `typography typography_type_${variant}`
     const classes = [tagClass]
 

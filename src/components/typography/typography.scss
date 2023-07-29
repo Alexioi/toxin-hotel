@@ -1,6 +1,8 @@
 @use '@style/constants/colors';
 
 .typography {
+  word-break: break-word;
+
   &_type {
     &_h2 {
       font-size: 24px;
@@ -25,6 +27,13 @@
       color: colors.$first;
       font-weight: bold;
       margin: 0;
+    }
+
+    &_body1 {
+      font-size: 14px;
+      line-height: 24px;
+      color: rgb(colors.$first, 0.75);
+      word-break: break-word;
     }
   }
 }
