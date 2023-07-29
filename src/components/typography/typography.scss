@@ -1,0 +1,30 @@
+@use '@style/constants/colors';
+
+.typography {
+  &_type {
+    &_h2 {
+      font-size: 24px;
+      line-height: 29px;
+      color: colors.$first;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    &_h3 {
+      font-size: 19px;
+      line-height: 23px;
+      color: colors.$first;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    &_h4 {
+      font-size: 12px;
+      text-transform: uppercase;
+      padding-bottom: 5px;
+      color: colors.$first;
+      font-weight: bold;
+      margin: 0;
+    }
+  }
+}

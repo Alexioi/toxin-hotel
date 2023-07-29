@@ -1,0 +1,16 @@
+mixin typography(options)
+  -
+    const {
+      text = '',
+      variant = '',
+    } = options || {}
+
+    const getTag = (variant) => {
+      return variant
+    }
+
+    const tag = getTag(variant)
+    const tagClass = `typography typography_type_${variant}`
+    const classes = [tagClass]
+
+  #{tag}(class=classes)= text
