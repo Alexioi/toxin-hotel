@@ -1,6 +1,6 @@
 @use '@style/constants/colors';
 
-.typography {
+.heading {
   display: flex;
   justify-content: space-between;
   word-break: break-word;
@@ -22,6 +22,7 @@
       }
 
       &_h4 {
+        font-size: 12px;
         text-transform: uppercase;
         padding-bottom: 5px;
       }

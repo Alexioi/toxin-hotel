@@ -1,4 +1,4 @@
-include ../typography/typography
+include ../heading/heading
 include ../text-field/text-field
 include ../button/button
 
@@ -34,7 +34,7 @@ mixin dropdown(options)
     data-counters=counters
   )
     .dropdown__input.js-dropdown__input
-      +typography({variant: 'h4', text: titleText, hint})
+      +heading({variant: 'h4', text: titleText, hint})
       +text-field({isReadonly: true, type: 'text', isDropdown: true, name: type})
     .dropdown__menu.js-dropdown__menu
       ul.dropdown__list

@@ -1,5 +1,5 @@
 include ../card/card
-include ../typography/typography
+include ../heading/heading
 include ../text-field/text-field
 include ../button/button
 include ../question-about-authorization/question-about-authorization
@@ -16,7 +16,7 @@ mixin authorization
   .authorization
     +card
       form.authorization__form(method="POST", action="/change-it")
-        +typography(Object.assign({variant: 'h2'}, title )) 
+        +heading(Object.assign({variant: 'h2'}, title )) 
         .authorization__login-input
           +text-field(Object.assign({type: 'email', inputmode: 'email', name: 'email'}, textFields.email))
         .authorization__password-input

@@ -1,6 +1,6 @@
 include ../button/button
 include ../card/card
-include ../typography/typography
+include ../heading/heading
 include ../calendar/calendar
 include ../dropdown/dropdown
 
@@ -16,7 +16,7 @@ mixin find-room
 
   .find-room
     +card
-      +typography(Object.assign({variant: 'h2'}, title)) 
+      +heading(Object.assign({variant: 'h2'}, title)) 
       form.find-room__form(method="POST", action="/change-it")
         .find-room__calendar
           +calendar(Object.assign({hasTwoInputs: true}, calendar))

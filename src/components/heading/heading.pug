@@ -1,4 +1,4 @@
-mixin typography(options)
+mixin heading(options)
   -
     const {
       text = '',
@@ -11,10 +11,10 @@ mixin typography(options)
     }
 
     const tag = getTag(variant)
-    const tagClass = `typography__heading typography__heading_type_${variant}`
+    const tagClass = `heading__heading heading__heading_type_${variant}`
     const classes = [tagClass]
 
-  .typography
+  .heading
     #{tag}(class=classes)= text
     if hint !== ''
-      span.typography__hint= hint
+      span.heading__hint= hint

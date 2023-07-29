@@ -1,5 +1,5 @@
 @use '@style/constants/colors';
 
-$first: 0 10px 20px rgb(colors.$first, 0.05);
+$first: 0 10px 20px rgb(colors.$first, 5%);
 $second: 0 0 10px rgb(colors.$first, 30%);
 $third: 0 0 25px rgb(0, 0, 0, 20%);

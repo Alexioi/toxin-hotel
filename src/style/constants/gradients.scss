@@ -7,11 +7,11 @@ $fourth: linear-gradient(180deg, #919191 0%, #3d4975 100%);
 $fifth: linear-gradient(
   90deg,
   rgb(0, 0, 0, 50%) 0%,
-  rgb(0, 0, 0, 0) 99.99%,
+  rgb(0, 0, 0, 0%) 99.99%,
   rgb(255, 255, 255, 0%) 100%
 );
 $sixth: linear-gradient(
   180deg,
   rgb(colors.$second, 25%) 0%,
   rgb(139, 164, 249, 25%) 100%
-); ;
+);
