@@ -4,10 +4,11 @@ mixin typography(options)
       tagMapping,
       text = '',
       variant = '',
+      isBold = false
     } = options || {}
 
     const getTag = (variant) => {
-      if (variant === 'body1') {
+      if (variant.indexOf('body') !== -1) {
         return 'p'
       }
 
@@ -16,6 +17,7 @@ mixin typography(options)
 
     const tag = tagMapping ? tagMapping : getTag(variant)
     const tagClass = `typography typography_type_${variant}`
-    const classes = [tagClass]
+    const boldClass = isBold && 'typography_bold'
+    const classes = [tagClass, boldClass]
 
-  #{tag}(class=classes)= text
+  #{tag}(class=classes)!= text

@@ -1,3 +1,5 @@
+include ../typography/typography
+
 mixin checkbox-list(options)
   -
     const {  
@@ -16,6 +18,12 @@ mixin checkbox-list(options)
         label.checkbox-list__label
           input.checkbox-list__input(type="checkbox", checked=item.isChecked)
           span.checkbox-list__icon
-          span.checkbox-list__text!= item.text
+          if isRich
+            .checkbox-list__text
+              +typography({text: item.text, variant: 'body5', isBold: true, tagMapping: 'span'})
+          else
+            .checkbox-list__text
+              +typography({text: item.text, variant: 'body2', isBold: false, tagMapping: 'span'})
         if isRich
-          span.checkbox-list__sub-text!= item.subText
+          .checkbox-list__sub-text
+            +typography({text: item.subText, variant: 'body4', isBold: false})

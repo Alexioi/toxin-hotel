@@ -10,13 +10,6 @@
   padding: 0;
   margin: 0;
 
-  &_rich {
-    & #{$root}__text {
-      font-weight: bold;
-      color: rgb(colors.$first, 0.75);
-    }
-  }
-
   &__item {
     list-style: none;
   }
@@ -71,22 +64,12 @@
   }
 
   &__text {
-    font-size: 14px;
-    line-height: 18px;
-    color: rgb(colors.$first, 0.5);
-    word-break: break-word;
     cursor: pointer;
-    display: inline-block;
+    display: block;
     padding-top: 1px;
   }
 
   &__sub-text {
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 14px;
-    word-break: break-word;
-    color: rgb(colors.$first, 0.5);
-    display: inline-block;
     padding-top: 4px;
     padding-left: 30px;
   }
