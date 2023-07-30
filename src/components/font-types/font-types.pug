@@ -1,3 +1,5 @@
+include ../typography/typography
+
 mixin font-types(options)
   -
     const {
@@ -17,5 +19,7 @@ mixin font-types(options)
         const classes = [themeClass]
 
       .font-types__item(class=classes)
-        span.font-types__sample= item.sample
-        span.font-types__description!= item.description
+        .font-types__sample
+          +typography({text: item.sample, variant: item.variant, isBold: false, tagMapping: 'span'})
+        .font-types__description
+          +typography({text: item.description, variant: item.variant, isBold: item.isBold})

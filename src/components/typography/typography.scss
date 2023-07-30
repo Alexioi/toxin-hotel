@@ -1,5 +1,4 @@
 @use '@style/constants/colors';
-@use '@style/constants/font';
 
 .typography {
   word-break: break-word;
@@ -10,38 +9,36 @@
     &_h2 {
       font-size: 24px;
       line-height: 29px;
-      color: colors.$first;
+      // color: colors.$first;
     }
 
     &_h3 {
       font-size: 19px;
       line-height: 23px;
-      color: colors.$first;
+      // color: colors.$first;
     }
 
     &_h4 {
       font-size: 12px;
       text-transform: uppercase;
-      padding-bottom: 5px;
-      color: colors.$first;
+      // color: colors.$first;
     }
 
     &_body {
       &1 {
         font-size: 14px;
         line-height: 24px;
-        color: rgb(colors.$first, 0.75);
+        // color: rgb(colors.$first, 0.75);
       }
 
       &2 {
         font-size: 14px;
         line-height: 18px;
-        color: rgb(colors.$first, 0.5);
+        // color: rgb(colors.$first, 0.5);
       }
 
       &3 {
-        font-family: font.$first;
-        font-weight: bold;
+        // font-weight: bold;
         font-size: 12px;
         line-height: 18px;
         text-transform: uppercase;
@@ -51,13 +48,13 @@
       &4 {
         font-size: 12px;
         line-height: 14px;
-        color: rgb(colors.$first, 0.5);
+        // color: rgb(colors.$first, 0.5);
       }
 
       &5 {
         font-size: 14px;
         line-height: 18px;
-        color: rgb(colors.$first, 0.75);
+        // color: rgb(colors.$first, 0.75);
       }
     }
   }

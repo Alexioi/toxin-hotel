@@ -13,54 +13,8 @@ $sample-width: 37px;
     display: flex;
 
     &_theme {
-      &_h1 {
-        #{$root}__sample {
-          font-size: 24px;
-          line-height: 29px;
-        }
-
-        #{$root}__description {
-          font-weight: bold;
-          font-size: 24px;
-          line-height: 29px;
-        }
-      }
-
-      &_h2 {
-        #{$root}__sample {
-          font-size: 19px;
-          line-height: 23px;
-        }
-
-        #{$root}__description {
-          font-weight: bold;
-          font-size: 19px;
-          line-height: 23px;
-        }
-      }
-
-      &_h3 {
-        #{$root}__sample {
-          font-size: 12px;
-          line-height: 15px;
-        }
-
-        #{$root}__description {
-          font-weight: bold;
-          line-height: 15px;
-          text-transform: uppercase;
-        }
-      }
-
       &_body {
-        #{$root}__sample {
-          font-size: 14px;
-          line-height: 24px;
-        }
-
         #{$root}__description {
-          font-size: 14px;
-          line-height: 24px;
           color: rgb(colors.$first, 0.75);
         }
       }
@@ -74,11 +28,9 @@ $sample-width: 37px;
     justify-content: flex-end;
     margin-right: 30px;
     color: rgb(colors.$first, 0.25);
-    word-break: break-word;
   }
 
   &__description {
     color: colors.$first;
-    word-break: break-word;
   }
 }

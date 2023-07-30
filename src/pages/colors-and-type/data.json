@@ -4,22 +4,30 @@
       {
         "theme": "h1",
         "sample": "H1",
-        "description": "This one is the sub-section or\nwidget title"
+        "description": "This one is the sub-section or<br>widget title",
+        "variant": "h2",
+        "isBold": true
       },
       {
         "theme": "h2",
         "sample": "H2",
-        "description": "Next one is the item title inside\nwidgets"
+        "description": "Next one is the item title inside<br>widgets",
+        "variant": "h3",
+        "isBold": true
       },
       {
         "theme": "h3",
         "sample": "H3",
-        "description": "This is a label or CTA text"
+        "description": "This is a label or CTA text",
+        "variant": "h4",
+        "isBold": true
       },
       {
         "theme": "body",
         "sample": "Body",
-        "description": "This is the body text which is used for most<br>of the design, like paragraphs, lists, etc."
+        "description": "This is the body text which is used for most<br>of the design, like paragraphs, lists, etc.",
+        "variant": "body1",
+        "isBold": false
       }
     ]
   },
