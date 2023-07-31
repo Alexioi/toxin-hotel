@@ -10,4 +10,5 @@ mixin heading(options)
 
   .heading
     +typography({text, variant})
-    span.heading__hint= hint
+    if hint !== ''
+      span.heading__hint= hint

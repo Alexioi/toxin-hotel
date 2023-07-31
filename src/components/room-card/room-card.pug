@@ -55,5 +55,5 @@ mixin room-card(options)
         .room-card__rate
           +rate({quantity})
         .room-card__reviews
-          +typography({text: reviews, variant: 'body', isBold: true})
-          +typography({text: reviewsText, variant: 'body'})
+          +typography({text: reviews, variant: 'body', isBold: true, tagMapping: 'span'})
+          +typography({text: reviewsText, variant: 'body', tagMapping: 'span'})

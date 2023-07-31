@@ -8,7 +8,6 @@ include ../../components/typography/typography
 include ../../components/gallery/gallery
 include ../../components/container/container
 include ../../components/pie-chart/pie-chart
-include ../../components/typography/typography
 
 block var
   -
@@ -47,7 +46,8 @@ block main
           section.room-details__comments-section
             .room-details__comments-title
               +typography(Object.assign({variant: 'h3'}, titles.reviewNumber))
-              span.room-details__text= `${comments.length} ${reviews}`
+              span.room-details__text
+                +typography({variant: 'body', text: `${comments.length} ${reviews}`, tagMapping: 'span'})
             .room-details__comments
               each comment in comments
                 +comment(comment) 
@@ -58,7 +58,7 @@ block main
               +bullet-list(bulletList)
             section.room-details__reset
               +typography(Object.assign({variant: 'h3'}, titles.reset))
-              .room-details__text= resetText
+              .room-details__text
                 +typography({text: resetText, variant: 'body'})
 
         .room-details__room-booking

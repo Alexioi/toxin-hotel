@@ -1,5 +1,6 @@
 @use '@style/constants/colors';
 @use '@style/constants/gradients';
+@use '@style/constants/mixins';
 
 .datepicker {
   &--nav {
@@ -18,9 +19,7 @@
 
     &-title {
       font-weight: bold;
-      // mix h3
-      font-size: 19px;
-      line-height: 23px;
+      @include mixins.h3;
       color: colors.$first;
       cursor: pointer;
     }

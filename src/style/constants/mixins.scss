@@ -3,3 +3,13 @@
     @content;
   }
 }
+
+@mixin h3() {
+  font-size: 19px;
+  line-height: 23px;
+}
+
+@mixin body() {
+  font-size: 14px;
+  line-height: 24px;
+}

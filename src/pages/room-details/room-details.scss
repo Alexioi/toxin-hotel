@@ -30,11 +30,11 @@
   &__pie-chart {
     display: flex;
     flex-direction: column;
-    gap: 21px;
+    gap: 22px;
   }
 
   &__comments-title {
-    margin-top: 16px;
+    margin-top: 14px;
     display: flex;
     justify-content: space-between;
   }
@@ -44,7 +44,7 @@
   }
 
   &__comments {
-    margin-top: 16px;
+    margin-top: 18px;
     display: flex;
     flex-direction: column;
     gap: 25px;

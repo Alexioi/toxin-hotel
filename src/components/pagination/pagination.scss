@@ -1,4 +1,5 @@
 @use '@style/constants/colors';
+@use '@style/constants/mixins';
 
 .pagination {
   display: inline-flex;
@@ -6,10 +7,8 @@
   align-items: center;
 
   &__text {
+    @include mixins.body;
     padding-top: 7px;
-    // mix body
-    font-size: 14px;
-    line-height: 24px;
     color: rgb(colors.$first, 0.75);
   }
 }
