@@ -4,10 +4,11 @@ include ../../components/icon-text-list/icon-text-list
 include ../../components/comment/comment
 include ../../components/bullet-list/bullet-list
 include ../../components/room-booking/room-booking
-include ../../components/heading/heading
+include ../../components/typography/typography
 include ../../components/gallery/gallery
 include ../../components/container/container
 include ../../components/pie-chart/pie-chart
+include ../../components/typography/typography
 
 block var
   -
@@ -38,14 +39,14 @@ block main
         .room-details__content-column
           .room-details__room-statistic
             section.room-details__icon-text-list
-              +heading(Object.assign({variant: 'h3'}, titles.aboutNumber))
+              +typography(Object.assign({variant: 'h3'}, titles.aboutNumber))
               +icon-text-list(iconTextList)
             section.room-details__pie-chart
-              +heading(Object.assign({variant: 'h3'}, titles.roomImpression))
+              +typography(Object.assign({variant: 'h3'}, titles.roomImpression))
               +pie-chart(pieChart)
           section.room-details__comments-section
             .room-details__comments-title
-              +heading(Object.assign({variant: 'h3'}, titles.reviewNumber))
+              +typography(Object.assign({variant: 'h3'}, titles.reviewNumber))
               span.room-details__text= `${comments.length} ${reviews}`
             .room-details__comments
               each comment in comments
@@ -53,11 +54,12 @@ block main
           .room-details__rules
             section.room-details__bullet-list
               .room-details__rules-title
-                +heading(Object.assign({variant: 'h3'}, titles.rules))
+                +typography(Object.assign({variant: 'h3'}, titles.rules))
               +bullet-list(bulletList)
             section.room-details__reset
-              +heading(Object.assign({variant: 'h3'}, titles.reset))
-              p.room-details__text= resetText
+              +typography(Object.assign({variant: 'h3'}, titles.reset))
+              .room-details__text= resetText
+                +typography({text: resetText, variant: 'body'})
 
         .room-details__room-booking
           +room-booking(roomBooking)

@@ -35,25 +35,4 @@ const closeSubNavigationList = (node: Element) => {
   node.classList.remove('header__sub-navigation-list_opened');
 };
 
-// const closeSubNavigationListOnClickOutsideBorder = (
-//   event: Event,
-//   navigationButton: Element,
-//   subNavigationList: Element,
-// ) => {
-//   const elements = [subNavigationList, navigationButton];
-
-//   if (helpers.isElementsIncludeNode(event, elements)) {
-//     return false;
-//   }
-
-//   closeSubNavigationList(subNavigationList);
-
-//   return true;
-// };
-
-export {
-  initNodes,
-  toggleSubNavigationList,
-  // closeSubNavigationListOnClickOutsideBorder,
-  closeSubNavigationList,
-};
+export { initNodes, toggleSubNavigationList, closeSubNavigationList };

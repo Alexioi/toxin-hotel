@@ -1,6 +1,7 @@
 extends ../../templates/website-pages/website-pages
 
 include ../../components/find-room/find-room
+include ../../components/typography/typography
 
 block var
   -
@@ -22,4 +23,5 @@ block main
         .landing-page__form-wrapper
           +find-room
       .landing-page__text-row
-        p.landing-page__text= text
+        .landing-page__text
+          +typography({text, variant: 'body'})

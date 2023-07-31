@@ -8,7 +8,7 @@ mixin typography(options)
     } = options || {}
 
     const getTag = (variant) => {
-      if (variant.indexOf('body') !== -1) {
+      if (variant === 'body') {
         return 'p'
       }
 

@@ -9,53 +9,21 @@
     &_h2 {
       font-size: 24px;
       line-height: 29px;
-      // color: colors.$first;
     }
 
     &_h3 {
       font-size: 19px;
       line-height: 23px;
-      // color: colors.$first;
     }
 
     &_h4 {
       font-size: 12px;
       text-transform: uppercase;
-      // color: colors.$first;
     }
 
     &_body {
-      &1 {
-        font-size: 14px;
-        line-height: 24px;
-        // color: rgb(colors.$first, 0.75);
-      }
-
-      &2 {
-        font-size: 14px;
-        line-height: 18px;
-        // color: rgb(colors.$first, 0.5);
-      }
-
-      &3 {
-        // font-weight: bold;
-        font-size: 12px;
-        line-height: 18px;
-        text-transform: uppercase;
-        white-space: nowrap;
-      }
-
-      &4 {
-        font-size: 12px;
-        line-height: 14px;
-        // color: rgb(colors.$first, 0.5);
-      }
-
-      &5 {
-        font-size: 14px;
-        line-height: 18px;
-        // color: rgb(colors.$first, 0.75);
-      }
+      font-size: 14px;
+      line-height: 24px;
     }
   }
 

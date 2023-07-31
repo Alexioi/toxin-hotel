@@ -2,6 +2,7 @@ include ../text-field/text-field
 include ../logo/logo
 include ../container/container
 include ../svg/theme/gradient/gradient
+include ../typography/typography
 
 mixin footer(options)
   -
@@ -37,7 +38,8 @@ mixin footer(options)
         .footer__about
           .footer__logo
             +logo({ type: 'full' })
-          p.footer__about-text= aboutText
+          .footer__about-text
+            +typography({text: aboutText, variant: 'body'})
         nav.footer__nav
           each navItem in navItems
             .footer__nav-item
@@ -48,13 +50,15 @@ mixin footer(options)
                     a.footer__list-link(href=item.link)= item.text
         form.footer__subscription(method="POST", action="/change-it")
           h3.footer__header.footer__header_margin_small= subscriptionHeader
-          p.footer__text= subscriptionText
+          .footer__text
+            +typography({text: subscriptionText, variant: 'body'})
           .footer__input
             +text-field(Object.assign({isSubscription: true, type: 'email', name: 'email', inputmode: 'email'}, textField))
     .footer__line
       +container
         .footer__sub
-          span.footer__text-copyright= copyrightText
+          .footer__text-copyright
+            +typography({text: copyrightText, variant: 'body', tagMapping: 'span'})
           .footer__social
             each social in socials
               a.footer__social-link(

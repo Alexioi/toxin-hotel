@@ -1,5 +1,6 @@
 include ../room-info/room-info
 include ../rate/rate
+include ../typography/typography
 
 mixin room-card(options)
   -
@@ -53,6 +54,6 @@ mixin room-card(options)
       .room-card__rating
         .room-card__rate
           +rate({quantity})
-        span.room-card__reviews
-          span.room-card__reviews-value= reviews
-          span.room-card__reviews-text= reviewsText
+        .room-card__reviews
+          +typography({text: reviews, variant: 'body', isBold: true})
+          +typography({text: reviewsText, variant: 'body'})

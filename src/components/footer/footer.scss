@@ -64,20 +64,12 @@
     margin-bottom: 16px;
   }
 
-  &__text {
-    font-size: 14px;
-    line-height: 24px;
+  &__about-text {
     color: rgb(colors.$first, 0.75);
-    margin: 0;
-    word-break: break-word;
   }
 
-  &__about-text {
-    font-size: 14px;
-    line-height: 24px;
+  &__text {
     color: rgb(colors.$first, 0.75);
-    margin: 0;
-    word-break: break-word;
   }
 
   &__nav {
@@ -143,11 +135,8 @@
   }
 
   &__text-copyright {
-    font-size: 14px;
-    line-height: 24px;
     color: rgb(colors.$first, 0.75);
     text-align: center;
-    word-break: break-word;
   }
 
   &__social {

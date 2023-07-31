@@ -1,4 +1,5 @@
 include ../like-button/like-button
+include ../typography/typography
 
 mixin comment(options)
   -
@@ -18,8 +19,10 @@ mixin comment(options)
       alt=`Фото автора ${authorName}`
     )
     .comment__header
-      span.comment__author-name= authorName
-      time.comment__date(datetime=datetime)= date
+      +typography({text: authorName, variant: 'body', isBold: true, tagMapping: 'span'})
+      time.comment__date(datetime=datetime)
+        +typography({text: date, variant: 'body', isBold: false, tagMapping: 'span'})
     .comment__like-button
       +like-button({counter, isLiked})
-    blockquote.comment__text= text
+    .comment__text
+      +typography({text, variant: 'body', isBold: false})
