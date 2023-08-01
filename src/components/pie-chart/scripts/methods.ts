@@ -143,17 +143,17 @@ const drawDiagram = (
   let endDegree = 0;
 
   const voteValues = Object.values(votes);
-  const totalVotes = voteValues.reduce((acc, value) => {
-    return acc + value;
+  const totalVotes = voteValues.reduce((acc, el) => {
+    return acc + el;
   }, 0);
 
-  grades.forEach((item) => {
+  grades.forEach((el) => {
     if (canvas === null) {
       return;
     }
 
-    const [colorFrom, colorTo] = diagramColors[item];
-    endDegree = (votes[item] / totalVotes) * 360 + startDegree;
+    const [colorFrom, colorTo] = diagramColors[el];
+    endDegree = (votes[el] / totalVotes) * 360 + startDegree;
 
     if (startDegree < endDegree) {
       drawArc({

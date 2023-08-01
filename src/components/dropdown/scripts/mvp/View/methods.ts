@@ -54,8 +54,8 @@ const toggleClearButton = (
   clearButton: Element | null,
   countersValue: number[],
 ) => {
-  const countersSum = countersValue.reduce((acc, value) => {
-    return acc + value;
+  const countersSum = countersValue.reduce((acc, el) => {
+    return acc + el;
   }, 0);
 
   if (countersSum === 0) {
@@ -96,16 +96,16 @@ const toggleMenu = (node: Element, inputNode: Element, isOpened: boolean) => {
 const createCounters = (node: Element) => {
   const counterNodes = node.querySelectorAll(cssSelectors.items);
 
-  const counters = [...counterNodes].map((counterNode, index) => {
-    return new Counter(counterNode, index);
+  const counters = [...counterNodes].map((el, i) => {
+    return new Counter(el, i);
   });
 
   return counters;
 };
 
 const updateCounters = (counters: Counter[], counterValues: number[]) => {
-  counters.forEach((counter, index) => {
-    counter.update(counterValues[index]);
+  counters.forEach((el, i) => {
+    el.update(counterValues[i]);
   });
 };
 

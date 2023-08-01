@@ -62,8 +62,8 @@ const displayDate = (
     return;
   }
 
-  const maskedDates = dates.map((objectDate): string => {
-    const { day, month, year } = objectDate;
+  const maskedDates = dates.map((el): string => {
+    const { day, month, year } = el;
 
     const maskedDay = `${day}__`.slice(0, 2);
     const maskedMonth = `${month}__`.slice(0, 2);

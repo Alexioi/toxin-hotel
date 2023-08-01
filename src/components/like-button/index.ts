@@ -2,13 +2,13 @@ import { helpers } from '@helpers';
 
 import { LikeButton, cssSelectors } from './scripts';
 
-document.querySelectorAll(cssSelectors.likeButton).forEach((node) => {
+document.querySelectorAll(cssSelectors.likeButton).forEach((el) => {
   try {
-    new LikeButton(node);
+    new LikeButton(el);
   } catch (err) {
     helpers.createErrorMassage(
       err,
-      node,
+      el,
       'Элемент сломался. Мы скоро его починим.',
     );
   }

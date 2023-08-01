@@ -2,13 +2,13 @@ import { helpers } from '@helpers';
 
 import { Dropdown, cssSelectors } from './scripts';
 
-document.querySelectorAll(cssSelectors.dropdownMenu).forEach((node) => {
+document.querySelectorAll(cssSelectors.dropdownMenu).forEach((el) => {
   try {
-    new Dropdown(node);
+    new Dropdown(el);
   } catch (err) {
     helpers.createErrorMassage(
       err,
-      node,
+      el,
       'Элемент сломался. Мы скоро его починим.',
     );
   }

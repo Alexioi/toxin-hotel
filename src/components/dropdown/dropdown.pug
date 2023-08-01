@@ -23,7 +23,7 @@ mixin dropdown(options)
     const openedClass = isOpened && 'dropdown_opened'
     const classes = [openedClass]
 
-    const counters = items.map((obj) => obj.counter);
+    const counters = items.map((el) => el.counter);
 
   .dropdown.js-dropdown(
     class=classes,

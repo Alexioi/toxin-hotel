@@ -59,8 +59,8 @@ class View extends EventEmitter<ViewEvents> {
     eventName: K,
     callback: Callback<CounterEvents, K>,
   ) {
-    this.subViews.counters.forEach((counter) => {
-      counter.subscribe(eventName, callback);
+    this.subViews.counters.forEach((el) => {
+      el.subscribe(eventName, callback);
     });
   }
 

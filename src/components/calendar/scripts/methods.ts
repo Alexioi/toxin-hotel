@@ -184,13 +184,13 @@ const toggleInputFocus = (
   inputs: NodeListOf<TextField.HTMLInputElementWithPlugin>,
   isOpened: boolean,
 ) => {
-  inputs.forEach((node) => {
+  inputs.forEach((el) => {
     if (isOpened) {
-      node.classList.remove('text-field__input_focused');
+      el.classList.remove('text-field__input_focused');
       return;
     }
 
-    node.classList.add('text-field__input_focused');
+    el.classList.add('text-field__input_focused');
   });
 };
 

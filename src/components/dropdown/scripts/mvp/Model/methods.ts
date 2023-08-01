@@ -26,17 +26,17 @@ const calculateValue = (
   variants: string[][],
   placeholder: string,
 ) => {
-  const counters = groups.map((group) => {
+  const counters = groups.map((elements) => {
     const initialValue = 0;
 
-    return group.reduce((acc: number, i: number) => {
-      return acc + countersValue[i];
+    return elements.reduce((acc: number, el: number) => {
+      return acc + countersValue[el];
     }, initialValue);
   });
 
-  const value = variants.reduce((acc, variant, i) => {
+  const value = variants.reduce((acc, el, i) => {
     const count = counters[i];
-    const item = `${count} ${getPlural(variant, count)}`;
+    const item = `${count} ${getPlural(el, count)}`;
 
     if (count === 0) {
       return acc;
@@ -61,12 +61,12 @@ const calculateCounter = (
   index: number,
   argument: number,
 ) => {
-  return counters.map((counter, i) => {
+  return counters.map((el, i) => {
     if (i !== index) {
-      return counter;
+      return el;
     }
 
-    const newCounters = counter + argument;
+    const newCounters = el + argument;
 
     if (newCounters < 0) {
       return 0;

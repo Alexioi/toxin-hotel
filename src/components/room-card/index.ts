@@ -2,13 +2,13 @@ import { helpers } from '@helpers';
 
 import { Carousel, cssSelectors } from './scripts';
 
-document.querySelectorAll(cssSelectors.carousel).forEach((node) => {
+document.querySelectorAll(cssSelectors.carousel).forEach((el) => {
   try {
-    new Carousel(node);
+    new Carousel(el);
   } catch (err) {
     helpers.createErrorMassage(
       err,
-      node,
+      el,
       'Элемент сломался. Мы скоро его починим.',
     );
   }

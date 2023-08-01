@@ -57,7 +57,7 @@ class Paginationjs {
     };
 
     const dataSource = (done: (result: number[]) => void) => {
-      const result = [...Array(this.props.count)].map((e, i) => {
+      const result = [...Array(this.props.count)].map((el, i) => {
         return i + 1;
       });
 

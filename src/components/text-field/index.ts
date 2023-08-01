@@ -9,23 +9,23 @@ import {
 
 document
   .querySelectorAll<HTMLInputElementWithPlugin>(cssSelectors.input)
-  .forEach((node) => {
-    if (!(node instanceof HTMLInputElement)) {
+  .forEach((el) => {
+    if (!(el instanceof HTMLInputElement)) {
       return;
     }
 
-    const type = node.dataset.maskedType;
+    const type = el.dataset.maskedType;
 
     if (!(type === 'date' || type === 'dates')) {
       return;
     }
 
     try {
-      new TextField(node, type);
+      new TextField(el, type);
     } catch (err) {
       helpers.createErrorMassage(
         err,
-        node,
+        el,
         'Элемент сломался. Мы скоро его починим.',
       );
     }

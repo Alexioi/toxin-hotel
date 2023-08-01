@@ -2,13 +2,13 @@ import { helpers } from '@helpers';
 
 import { Calendar, cssSelectors } from './scripts';
 
-document.querySelectorAll(cssSelectors.calendar).forEach((node) => {
+document.querySelectorAll(cssSelectors.calendar).forEach((el) => {
   try {
-    new Calendar(node);
+    new Calendar(el);
   } catch (err) {
     helpers.createErrorMassage(
       err,
-      node,
+      el,
       'Элемент сломался. Мы скоро его починим.',
     );
   }

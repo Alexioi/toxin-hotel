@@ -2,13 +2,13 @@ import { helpers } from '@helpers';
 
 import { PieChartDiagram, cssSelectors } from './scripts';
 
-document.querySelectorAll(cssSelectors.diagram).forEach((node) => {
+document.querySelectorAll(cssSelectors.diagram).forEach((el) => {
   try {
-    new PieChartDiagram(node);
+    new PieChartDiagram(el);
   } catch (err) {
     helpers.createErrorMassage(
       err,
-      node,
+      el,
       'Элемент сломался. Мы скоро его починим.',
     );
   }

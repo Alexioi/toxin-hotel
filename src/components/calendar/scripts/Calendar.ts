@@ -49,11 +49,11 @@ class Calendar {
 
     apply.addEventListener('click', this.handleApplyButtonClick);
     clear.addEventListener('click', this.handleCleanButtonClick);
-    toggleButtons.forEach((node) => {
-      node.addEventListener('click', this.handleToggleButtonClick);
+    toggleButtons.forEach((el) => {
+      el.addEventListener('click', this.handleToggleButtonClick);
     });
-    inputs.forEach((node) => {
-      node.addEventListener('blur', this.handleInputBlur);
+    inputs.forEach((el) => {
+      el.addEventListener('blur', this.handleInputBlur);
     });
     document.addEventListener('click', this.handleDocumentClick);
 

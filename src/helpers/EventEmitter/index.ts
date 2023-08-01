@@ -24,14 +24,14 @@ class EventEmitter<T extends object> {
     eventName: K,
     callback: Callback<T, K>,
   ): void {
-    this.events[eventName] = this.events[eventName]?.filter((eventCallback) => {
-      return callback !== eventCallback;
+    this.events[eventName] = this.events[eventName]?.filter((el) => {
+      return callback !== el;
     });
   }
 
   public emit<K extends keyof T>(eventName: K, value: T[K]): void {
-    this.events[eventName]?.forEach((name) => {
-      return name(value);
+    this.events[eventName]?.forEach((el) => {
+      return el(value);
     });
   }
 }

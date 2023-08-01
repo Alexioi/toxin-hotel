@@ -32,11 +32,11 @@ const showCurrentImage = (
 const hideImages = (dom: Dom, currentImageIndex: number) => {
   const { images, buttons } = dom;
 
-  images.forEach((node) => {
-    node.classList.add('room-card__image_hide');
+  images.forEach((el) => {
+    el.classList.add('room-card__image_hide');
   });
-  buttons.forEach((node) => {
-    node.classList.remove('room-card__button_target');
+  buttons.forEach((el) => {
+    el.classList.remove('room-card__button_target');
   });
 
   showCurrentImage(images, buttons, currentImageIndex);

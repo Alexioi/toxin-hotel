@@ -43,8 +43,8 @@ class Carousel {
 
     back.addEventListener('click', this.handleBackButtonClick);
     next.addEventListener('click', this.handleNextButtonClick);
-    buttons.forEach((node) => {
-      node.addEventListener('click', this.handleTargetButtonClick);
+    buttons.forEach((el) => {
+      el.addEventListener('click', this.handleTargetButtonClick);
     });
 
     return this;

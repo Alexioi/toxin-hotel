@@ -3,13 +3,13 @@ import { helpers } from '@helpers';
 
 import { RangeSlider, cssSelectors } from './scripts';
 
-document.querySelectorAll(cssSelectors.slider).forEach((node) => {
+document.querySelectorAll(cssSelectors.slider).forEach((el) => {
   try {
-    new RangeSlider(node);
+    new RangeSlider(el);
   } catch (err) {
     helpers.createErrorMassage(
       err,
-      node,
+      el,
       'Элемент сломался. Мы скоро его починим.',
     );
   }

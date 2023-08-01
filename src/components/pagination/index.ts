@@ -3,13 +3,13 @@ import { helpers } from '@helpers';
 
 import { Pagination, cssSelectors } from './scripts';
 
-document.querySelectorAll(cssSelectors.pagination).forEach((node) => {
+document.querySelectorAll(cssSelectors.pagination).forEach((el) => {
   try {
-    new Pagination(node);
+    new Pagination(el);
   } catch (err) {
     helpers.createErrorMassage(
       err,
-      node,
+      el,
       'Элемент сломался. Мы скоро его починим.',
     );
   }

@@ -2,13 +2,13 @@ import { helpers } from '@helpers';
 
 import { Filter, cssSelectors } from './scripts';
 
-document.querySelectorAll(cssSelectors.filter).forEach((node) => {
+document.querySelectorAll(cssSelectors.filter).forEach((el) => {
   try {
-    new Filter(node);
+    new Filter(el);
   } catch (err) {
     helpers.createErrorMassage(
       err,
-      node,
+      el,
       'Элемент сломался. Мы скоро его починим.',
     );
   }

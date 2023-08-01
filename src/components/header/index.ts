@@ -3,13 +3,13 @@ import { helpers } from '@helpers';
 
 import { Header, cssSelectors } from './scripts';
 
-document.querySelectorAll(cssSelectors.header).forEach((node) => {
+document.querySelectorAll(cssSelectors.header).forEach((el) => {
   try {
-    new Header(node);
+    new Header(el);
   } catch (err) {
     helpers.createErrorMassage(
       err,
-      node,
+      el,
       'Элемент сломался. Мы скоро его починим.',
     );
   }

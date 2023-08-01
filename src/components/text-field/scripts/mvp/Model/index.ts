@@ -45,9 +45,9 @@ class Model extends EventEmitter<ModelEvents> {
   }
 
   public updateData(data: string) {
-    data.split('').forEach((value) => {
-      if (helpers.isNumber(value)) {
-        this.updateDates(Number(value));
+    data.split('').forEach((el) => {
+      if (helpers.isNumber(el)) {
+        this.updateDates(Number(el));
       }
     });
 
