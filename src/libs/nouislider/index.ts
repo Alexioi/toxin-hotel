@@ -19,10 +19,14 @@ const isTargetElement = (element: HTMLElement): element is TargetElement => {
 
 class NoUISlider {
   private dom: {
-    value: Element;
+    value: HTMLElement;
   };
 
-  constructor(root: Element, valueNode: Element, parameters: Parameters) {
+  constructor(
+    root: HTMLElement,
+    valueNode: HTMLElement,
+    parameters: Parameters,
+  ) {
     this.dom = { value: valueNode };
 
     this.updateValue = this.updateValue.bind(this);
@@ -30,11 +34,7 @@ class NoUISlider {
     this.init(root, parameters);
   }
 
-  private init(root: Element, parameters: Parameters) {
-    if (!(root instanceof HTMLElement)) {
-      return;
-    }
-
+  private init(root: HTMLElement, parameters: Parameters) {
     const { min, max, from, to } = parameters;
 
     noUiSlider.create(root, {

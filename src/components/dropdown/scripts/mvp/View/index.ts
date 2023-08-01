@@ -48,10 +48,6 @@ class View extends EventEmitter<ViewEvents> {
   }
 
   public updateInputValue(value: string) {
-    if (!(this.dom.input instanceof HTMLInputElement)) {
-      return;
-    }
-
     this.dom.input.value = value;
   }
 

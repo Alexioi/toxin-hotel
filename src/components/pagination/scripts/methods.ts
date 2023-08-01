@@ -4,9 +4,13 @@ import { helpers } from '@helpers';
 import { cssSelectors } from './constants';
 import { Dom } from './type';
 
-const initNodes = (root: Element) => {
+const initNodes = (root: Element): Dom => {
   const plugin = root.querySelector(cssSelectors.plugin);
   const range = root.querySelector(cssSelectors.range);
+
+  if (!(root instanceof HTMLElement)) {
+    throw new helpers.SearchElementError('root not equal HTMLElement');
+  }
 
   if (plugin === null) {
     throw new helpers.SearchElementError('pagination plugin equal null');
@@ -21,10 +25,6 @@ const initNodes = (root: Element) => {
 
 const getCount = (dom: Dom) => {
   const { root } = dom;
-
-  if (!(root instanceof HTMLElement)) {
-    return 0;
-  }
 
   const count = Number(root.dataset.count);
 

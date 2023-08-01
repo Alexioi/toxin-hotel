@@ -11,7 +11,7 @@ const initNodes = (root: Element) => {
   const applyButton = root.querySelector(cssSelectors.applyButton);
   const menu = root.querySelector(cssSelectors.menu);
 
-  if (input === null) {
+  if (!(input instanceof HTMLInputElement)) {
     throw new helpers.SearchElementError('dropdown input equal null');
   }
 

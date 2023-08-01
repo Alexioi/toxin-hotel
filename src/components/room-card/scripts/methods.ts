@@ -9,6 +9,10 @@ const initNodes = (root: Element) => {
   const next = root.querySelector(cssSelectors.next);
   const buttons = root.querySelectorAll(cssSelectors.buttons);
 
+  if (!(root instanceof HTMLElement)) {
+    throw new helpers.SearchElementError('room card back button equal null');
+  }
+
   if (back === null) {
     throw new helpers.SearchElementError('room card back button equal null');
   }

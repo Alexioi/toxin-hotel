@@ -2,7 +2,7 @@ import { Counter } from './subViews';
 
 type Dom = {
   root: Element;
-  input: Element;
+  input: HTMLInputElement;
   inputButton: Element;
   textField: Element;
   clearButton: Element | null;

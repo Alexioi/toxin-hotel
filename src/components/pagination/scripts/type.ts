@@ -1,8 +1,6 @@
 type Dom = {
-  root: Element;
-
+  root: HTMLElement;
   plugin: Element;
-
   range: Element;
 };
 

@@ -23,13 +23,13 @@ class Carousel {
     this.props = props;
   }
 
-  private init(root: Element) {
-    const currentImageIndex =
-      root instanceof HTMLElement ? Number(root.dataset.currentImage) : 0;
-    const quantityImageIndex =
-      root instanceof HTMLElement ? Number(root.dataset.quantityImage) : 0;
-
+  private init(root: Element): { dom: Dom; props: Props } {
     const dom = initNodes(root);
+
+    const { currentImage, quantityImage } = dom.root.dataset;
+
+    const currentImageIndex = Number(currentImage);
+    const quantityImageIndex = Number(quantityImage);
 
     this.attachEventHandlers(dom);
 

@@ -9,12 +9,16 @@ const init = (root: Element) => {
   const sliderNode = root.querySelector(cssSelectors.sliderNode);
   const valueNode = root.querySelector(cssSelectors.value);
 
-  if (sliderNode === null) {
-    throw new helpers.SearchElementError('range slider node equal null');
+  if (!(sliderNode instanceof HTMLElement)) {
+    throw new helpers.SearchElementError(
+      'range slider node not equal HTMLElement',
+    );
   }
 
-  if (valueNode === null) {
-    throw new helpers.SearchElementError('range slider value node equal null');
+  if (!(valueNode instanceof HTMLElement)) {
+    throw new helpers.SearchElementError(
+      'range slider value node not equal HTMLElement',
+    );
   }
 
   new NoUISlider(sliderNode, valueNode, parameters);

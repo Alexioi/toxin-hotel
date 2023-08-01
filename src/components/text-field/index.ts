@@ -10,10 +10,6 @@ import {
 document
   .querySelectorAll<HTMLInputElementWithPlugin>(cssSelectors.input)
   .forEach((el) => {
-    if (!(el instanceof HTMLInputElement)) {
-      return;
-    }
-
     const type = el.dataset.maskedType;
 
     if (!(type === 'date' || type === 'dates')) {

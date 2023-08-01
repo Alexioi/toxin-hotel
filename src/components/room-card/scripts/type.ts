@@ -1,5 +1,5 @@
 type Dom = {
-  root: Element;
+  root: HTMLElement;
   images: NodeListOf<Element>;
   back: Element;
   next: Element;
