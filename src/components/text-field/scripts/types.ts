@@ -12,13 +12,13 @@ type Data = {
   dates: Dates;
 };
 
-type ModelEvents = { UpdateDates: { dates: Dates } };
+type ModelEvents = { updateDates: { dates: Dates } };
 
 type ViewEvents = {
-  InputData: { data: string };
-  TouchInput: null;
-  DeleteData: null;
-  BlurInput: null;
+  inputData: { data: string };
+  touchInput: null;
+  deleteData: null;
+  blurInput: null;
 };
 
 export { MaskedType, CustomDate, Dates, Data, ModelEvents, ViewEvents };

@@ -40,13 +40,13 @@ class Presenter {
       this.model.fixData();
     };
 
-    this.view.subscribe('InputData', notifyModel);
+    this.view.subscribe('inputData', notifyModel);
 
-    this.view.subscribe('TouchInput', getData);
+    this.view.subscribe('touchInput', getData);
 
-    this.view.subscribe('DeleteData', notifyModelDelete);
+    this.view.subscribe('deleteData', notifyModelDelete);
 
-    this.view.subscribe('BlurInput', fixData);
+    this.view.subscribe('blurInput', fixData);
 
     return this;
   }
@@ -56,7 +56,7 @@ class Presenter {
       this.view.displayDate(dates);
     };
 
-    this.model.subscribe('UpdateDates', notifyViewUpdatedModelOptions);
+    this.model.subscribe('updateDates', notifyViewUpdatedModelOptions);
 
     return this;
   }

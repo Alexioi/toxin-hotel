@@ -85,11 +85,11 @@ class View extends EventEmitter<ViewEvents> {
   private handleApplyButtonClick() {
     this.props.isUpdateButtonPressed = true;
 
-    this.emit('ApplyDropdownData', null);
+    this.emit('applyDropdownData', null);
   }
 
   private handleClearButtonClick() {
-    this.emit('ClearCounters', null);
+    this.emit('clearCounters', null);
   }
 
   private handleToggleMenu() {

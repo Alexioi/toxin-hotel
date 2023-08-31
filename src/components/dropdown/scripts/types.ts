@@ -1,6 +1,6 @@
 type ViewEvents = {
-  ApplyDropdownData: null;
-  ClearCounters: null;
+  applyDropdownData: null;
+  clearCounters: null;
 };
 
 type CounterEvents = {
@@ -9,11 +9,11 @@ type CounterEvents = {
 };
 
 type ModelEvents = {
-  UpdateCounters: {
+  updateCounters: {
     counters: number[];
     value: string;
   };
-  UpdateValue: { value: string };
+  updateValue: { value: string };
 };
 
 export { ModelEvents, ViewEvents, CounterEvents };

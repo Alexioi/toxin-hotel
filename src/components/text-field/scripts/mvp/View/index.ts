@@ -57,16 +57,16 @@ class View extends EventEmitter<ViewEvents> {
     const { data } = event;
 
     if (event.inputType === 'deleteContentBackward') {
-      this.emit('DeleteData', null);
+      this.emit('deleteData', null);
       return;
     }
 
     if (!helpers.isNumber(data)) {
-      this.emit('TouchInput', null);
+      this.emit('touchInput', null);
       return;
     }
 
-    this.emit('InputData', { data: String(data) });
+    this.emit('inputData', { data: String(data) });
   };
 
   private handleTextFieldPaste = (event: ClipboardEvent) => {
@@ -74,19 +74,19 @@ class View extends EventEmitter<ViewEvents> {
     const inputData = event.clipboardData?.getData('text');
 
     if (typeof inputData !== 'undefined') {
-      this.emit('InputData', { data: inputData });
+      this.emit('inputData', { data: inputData });
     }
   };
 
   private handleTextFieldBlur() {
     this.props = { isFocused: false };
 
-    this.emit('BlurInput', null);
+    this.emit('blurInput', null);
   }
 
   private handleTextFieldClick() {
     this.props = { isFocused: true };
-    this.emit('TouchInput', null);
+    this.emit('touchInput', null);
   }
 }
 

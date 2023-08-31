@@ -1,6 +1,8 @@
-type Callback<T extends object, K extends keyof T> = (value: T[K]) => void;
+type Callback<T extends Record<string, unknown>, K extends keyof T> = (
+  value: T[K],
+) => void;
 
-class EventEmitter<T extends object> {
+class EventEmitter<T extends Record<string, unknown>> {
   private events: {
     [eventName in keyof T]?: Callback<T, eventName>[];
   } = {};

@@ -44,8 +44,8 @@ class Presenter {
       notifyModelAboutDecrementCounter,
     );
 
-    this.view.subscribe('ApplyDropdownData', getValue);
-    this.view.subscribe('ClearCounters', notifyModelAboutClearCounters);
+    this.view.subscribe('applyDropdownData', getValue);
+    this.view.subscribe('clearCounters', notifyModelAboutClearCounters);
 
     return this;
   }
@@ -65,8 +65,8 @@ class Presenter {
       this.view.updateInputValue(value);
     };
 
-    this.model.subscribe('UpdateCounters', notifyViewUpdatedCounters);
-    this.model.subscribe('UpdateValue', notifyViewUpdatedValue);
+    this.model.subscribe('updateCounters', notifyViewUpdatedCounters);
+    this.model.subscribe('updateValue', notifyViewUpdatedValue);
 
     return this;
   }

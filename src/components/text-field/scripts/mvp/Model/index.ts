@@ -29,7 +29,7 @@ class Model extends EventEmitter<ModelEvents> {
 
     this.props = { type, dates: newDates };
 
-    this.emit('UpdateDates', { dates: newDates });
+    this.emit('updateDates', { dates: newDates });
 
     return this;
   }
@@ -39,7 +39,7 @@ class Model extends EventEmitter<ModelEvents> {
 
     this.props = { type, dates };
 
-    this.emit('UpdateDates', { dates });
+    this.emit('updateDates', { dates });
 
     return this;
   }
@@ -61,7 +61,7 @@ class Model extends EventEmitter<ModelEvents> {
 
     this.props = { type, dates: newDates };
 
-    this.emit('UpdateDates', { dates: newDates });
+    this.emit('updateDates', { dates: newDates });
 
     return this;
   }
@@ -73,7 +73,7 @@ class Model extends EventEmitter<ModelEvents> {
 
     this.props = { type, dates: newDates };
 
-    this.emit('UpdateDates', { dates: newDates });
+    this.emit('updateDates', { dates: newDates });
 
     return this;
   }

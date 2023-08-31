@@ -57,7 +57,7 @@ class Model extends EventEmitter<ModelEvents> {
 
     const value = calculateValue(groups, counters, variants, placeholder);
 
-    this.emit('UpdateCounters', { counters, value });
+    this.emit('updateCounters', { counters, value });
 
     return this;
   }
