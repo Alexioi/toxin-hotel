@@ -18,7 +18,7 @@
     display: none;
     width: 100%;
     background-color: white;
-    padding: 7px 7px 6px 15px;
+    padding: 7px 7px 3px 15px;
     border: 1px solid rgb(colors.$first, 0.5);
     border-top: none;
     border-radius: 0 0 4px 4px;
@@ -42,7 +42,7 @@
   &__item-name {
     margin-right: auto;
     font-weight: bold;
-    line-height: 15px;
+    line-height: 12px;
     text-transform: uppercase;
     word-break: break-word;
   }
@@ -55,7 +55,6 @@
     height: 30px;
     border-radius: 50%;
     font-size: 18px;
-    line-height: 30px;
     color: rgb(colors.$first, 0.5);
     cursor: pointer;
 
