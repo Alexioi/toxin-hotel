@@ -6,6 +6,17 @@
 
   position: relative;
 
+  &_readonly {
+    #{$root}__input {
+      cursor: pointer;
+      user-select: none;
+
+      &::selection {
+        background: transparent;
+      }
+    }
+  }
+
   &__input {
     font-family: font.$first;
     font-size: 14px;

@@ -16,8 +16,9 @@ mixin text-field(options)
     } = options || {}
 
     const hoverClass = isHovered && 'text-field_hovered'
+    const readonlyClass = isReadonly && 'text-field_readonly'
     const textDarkClass = isDropdown && 'text-field_text_dark'
-    const classes = [hoverClass, textDarkClass]
+    const classes = [hoverClass, readonlyClass, textDarkClass]
 
     const inputAttributes = {
       type,
