@@ -172,11 +172,11 @@ const selectDatesInDatepicker = (
   const { from, to } = getFromAndTo(inputs);
 
   if (from.year !== '') {
-    datepicker.changeDate(`${from.year}.${from.month}.${from.day}`);
+    datepicker.changeDate(`${from.year},${from.month},${from.day}`);
   }
 
   if (to.year !== '') {
-    datepicker.changeDate(`${to.year}.${to.month}.${to.day}`);
+    datepicker.changeDate(`${to.year},${to.month},${to.day}`);
   }
 };
 
