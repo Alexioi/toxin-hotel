@@ -5,7 +5,7 @@
 .toggle {
   $root: &;
 
-  display: flex;
+  display: inline-flex;
 
   &__checkbox {
     opacity: 0;
