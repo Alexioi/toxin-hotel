@@ -7,7 +7,12 @@
   "textFields": {
     "name": { "placeholder": "Имя" },
     "surname": { "placeholder": "Фамилия" },
-    "birthday": { "placeholder": "ДД.ММ.ГГГГ" },
+    "birthday": {
+      "isMasked": true,
+      "placeholder": "ДД.ММ.ГГГГ",
+      "manageable": "true",
+      "maskedType": "date"
+    },
     "email": { "placeholder": "Email" },
     "password": { "placeholder": "Пароль" }
   },
