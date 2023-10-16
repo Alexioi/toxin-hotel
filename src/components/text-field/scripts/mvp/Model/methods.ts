@@ -31,23 +31,13 @@ const isDateValid = (checkedDate: CustomDate, key: number): boolean => {
 const calculateYear = (date: CustomDate, key: number): CustomDate => {
   const { day, month, year } = date;
 
-  if (year === '') {
-    const newYear = `${key}`;
-
-    return { day, month, year: newYear };
-  }
-
-  if (year.length === 4) {
-    return date;
-  }
-
-  if (year.length !== 3) {
+  if (year.length < 3) {
     const newYear = `${year}${key}`;
 
     return { day, month, year: newYear };
   }
 
-  if (isDateValid(date, key)) {
+  if (year.length === 3 && isDateValid(date, key)) {
     return { day, month, year: `${year}${key}` };
   }
 
@@ -56,22 +46,6 @@ const calculateYear = (date: CustomDate, key: number): CustomDate => {
 
 const calculateMonth = (date: CustomDate, key: number): CustomDate => {
   const { day, month, year } = date;
-
-  if (month === '') {
-    if (Number(day) > 29 && key === 2) {
-      return { day, month, year };
-    }
-
-    if (key > 1) {
-      const newMonth = `0${key}`;
-
-      return { day, month: newMonth, year };
-    }
-
-    const newMonth = `${key}`;
-
-    return { day, month: newMonth, year };
-  }
 
   if (month.length === 2) {
     return calculateYear(date, key);
@@ -82,13 +56,19 @@ const calculateMonth = (date: CustomDate, key: number): CustomDate => {
   }
 
   if (month === '0' && key === 0) {
-    const newMonth = `${key}1`;
+    return { day, month: '01', year };
+  }
 
-    return { day, month: newMonth, year };
+  if (month === '0' && key === 0) {
+    return { day, month: '01', year };
   }
 
   if (month === '1' && key > 2) {
-    const newMonth = `${key}2`;
+    return { day, month: '12', year };
+  }
+
+  if (key > 1) {
+    const newMonth = `0${key}`;
 
     return { day, month: newMonth, year };
   }
@@ -107,28 +87,24 @@ const calculateDay = (date: CustomDate, key: number): CustomDate => {
 
   if (day.length === 1) {
     if (day === '0' && key === 0) {
-      const newDay = `${day}1`;
-
-      return { day: newDay, month, year };
+      return { day: '01', month, year };
     }
 
     if (day === '3' && key > 0) {
-      const newDay = `${day}1`;
-
-      return { day: newDay, month, year };
+      return { day: '31', month, year };
     }
 
-    const newDay = day + String(key);
+    const newDay = `${day}${key}`;
     return { day: newDay, month, year };
   }
 
   if (key > 3) {
-    const newDay = `${day}0${key}`;
+    const newDay = `0${key}`;
 
     return { day: newDay, month, year };
   }
 
-  const newDay = day + String(key);
+  const newDay = `${day}${key}`;
   return { day: newDay, month, year };
 };
 
