@@ -11,21 +11,15 @@ const init = (type: MaskedType) => {
 const isDateValid = (checkedDate: CustomDate, key: number): boolean => {
   const { day, month, year } = checkedDate;
 
-  const newDay = Number(day);
-  const newMonth = Number(month);
-  const newYear = Number(`${year}${key}`);
+  const date = `${year}${key},${month},${day}`;
 
-  const currentDate = new Date(newYear, newMonth, newDay);
+  const currentDate = new Date(date);
 
-  if (currentDate < new Date()) {
-    return false;
-  }
+  const isDayValid = Number(day) === currentDate.getDate();
+  const isMonthValid = Number(month) === currentDate.getMonth() + 1;
+  const isYearValid = Number(`${year}${key}`) === currentDate.getFullYear();
 
-  const dateYear = currentDate.getFullYear();
-  const dateMonth = currentDate.getMonth();
-  const dateDay = currentDate.getDate();
-
-  return dateYear === newYear && dateMonth === newMonth && dateDay === newDay;
+  return isYearValid && isMonthValid && isDayValid;
 };
 
 const calculateYear = (date: CustomDate, key: number): CustomDate => {
@@ -59,11 +53,7 @@ const calculateMonth = (date: CustomDate, key: number): CustomDate => {
     return { day, month: '01', year };
   }
 
-  if (month === '0' && key === 0) {
-    return { day, month: '01', year };
-  }
-
-  if (month === '1' && key > 2) {
+  if (month === '1' && key > 1) {
     return { day, month: '12', year };
   }
 

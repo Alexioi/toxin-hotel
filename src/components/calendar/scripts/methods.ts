@@ -74,6 +74,32 @@ const getFromAndTo = (
   return { from, to };
 };
 
+const isDateGreaterThanCurrent = (date: TextField.CustomDate) => {
+  const currentDate = new Date(`${date.year},${date.month},${date.day}`);
+
+  return currentDate > new Date();
+};
+
+const getDatesGreaterThanCurrent = (
+  from: TextField.CustomDate,
+  to: TextField.CustomDate,
+) => {
+  const emptyDate = {
+    day: '',
+    month: '',
+    year: '',
+  };
+
+  const fromGreaterThanCurrent = isDateGreaterThanCurrent(from)
+    ? from
+    : { ...emptyDate };
+  const toGreaterThanCurrent = isDateGreaterThanCurrent(to)
+    ? to
+    : { ...emptyDate };
+
+  return { fromGreaterThanCurrent, toGreaterThanCurrent };
+};
+
 const reverseDates = (
   from: TextField.CustomDate,
   to: TextField.CustomDate,
@@ -97,12 +123,45 @@ const displayDates = (
 ) => {
   const { from, to } = getFromAndTo(inputs);
 
-  if (!(from.year.length === 4 && to.year.length === 4)) {
+  const { fromGreaterThanCurrent, toGreaterThanCurrent } =
+    getDatesGreaterThanCurrent(from, to);
+
+  if (
+    !(
+      fromGreaterThanCurrent.year.length === 4 &&
+      toGreaterThanCurrent.year.length === 4
+    )
+  ) {
+    if (inputs.length === 2) {
+      const [inputFrom, inputTo] = inputs;
+
+      inputFrom.plugin.setDates([fromGreaterThanCurrent]);
+      inputTo.plugin.setDates([toGreaterThanCurrent]);
+      return;
+    }
+
+    const [input] = inputs;
+
+    if (
+      fromGreaterThanCurrent.year === '' ||
+      toGreaterThanCurrent.year === ''
+    ) {
+      const emptyDate = {
+        day: '',
+        month: '',
+        year: '',
+      };
+
+      input.plugin.setDates([{ ...emptyDate }, { ...emptyDate }]);
+      return;
+    }
+
+    input.plugin.setDates([fromGreaterThanCurrent, toGreaterThanCurrent]);
     return;
   }
 
-  const fromDate = `${from.year}.${from.month}.${from.day}`;
-  const toDate = `${to.year}.${to.month}.${to.day}`;
+  const fromDate = `${from.year},${from.month},${from.day}`;
+  const toDate = `${to.year},${to.month},${to.day}`;
 
   if (new Date(fromDate) > new Date(toDate)) {
     reverseDates(from, to, inputs);
